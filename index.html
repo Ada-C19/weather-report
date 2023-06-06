@@ -12,5 +12,40 @@
 <body>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- An element that displays the temperature
+A clickable element to increase temperature
+A clickable element to decrease temperature
+An element that displays a landscape -->
+
+<h1>Weather Report</h1>
+<p>for the lovely city of: Lousiville</p>
+
+<section id="landscape">
+    <h2>Weather Garden</h2>
+    <p id="landscape-container"></p>
+</section>
+
+<section id="temperature">
+    <h2>Temperature</h2>
+    <h3 id="temp-display"> 0 </h3>
+    <button id="add-temp">Up</button>
+    <button id="sub-temp">Down</button>
+    <button id="real-time-temp">Current Temperature</button>
+</section>
+
+
+
+<section id = "sky">
+    <h2>Sky</h2>
+    <select id ="sky-menu"></select>
+</section>
+
+<section id = "city-name">
+    <h2>City Name</h2>
+  <input type="text" placeholder="Search.." name="search2">
+  <button type="submit" id="reset"><i class="fa fa-search"></i></button>    
+</section>
+
+
 </body>
 </html>
