@@ -10,6 +10,42 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <header> 
+        <h1 id="title">Weather Report</h1>
+        <span>
+        For the lovely city of &nbsp; </span>
+        <span>"Seattle"</span>
+    </header>
+    <section>
+        <h2>Temperature</h2>
+        <div>
+            <span>⬆️</span>
+            <span>25</span>
+            <span>⬇️</span>
+        </div>
+        <button>Get Realtime Temperature</button>
+    </section>
+    <section>
+        <h2>Sky</h2>
+        <label>Precipitation Menu</label>
+        <select>
+            <option>Sunny</option>
+            <option>Cloudy</option>
+            <option>Rainy</option>
+            <option>Snowy</option>
+        </select>
+    </section>
+
+    <section>
+        <h2>City Name</h2>
+        <input type="text" value="Seattle">
+        <button>Reset</button>
+    </section>
+    <section>
+        <h2>Weather Garden</h2>
+        <div id="sky"></div>
+        <div id="garden"></div>
+    </section>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
