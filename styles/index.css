@@ -9,4 +9,6 @@ h2 {
 
 .weather-box {
     border:solid 5px thistle;
+    width: 50%;
+    margin-left: 25%
 }
