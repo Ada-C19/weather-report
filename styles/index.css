@@ -12,3 +12,14 @@ h2 {
     width: 50%;
     margin-left: 25%
 }
+
+#temperature{
+    display: inline;
+    text-align: left;
+}
+
+#city {
+    float: right;
+    clear:both;
+
+}
