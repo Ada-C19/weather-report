@@ -1,0 +1,13 @@
+.inline {
+    display: inline
+}
+
+div {
+    display:flex;
+    text-align:left;
+    background-color: aquamarine;
+    flex-direction: column;
+    height: auto;
+    width: auto
+}
+
