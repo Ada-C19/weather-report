@@ -55,6 +55,26 @@ div {
 
 }
 
+.above80 {
+    color: red;
+}
+
+.seventies {
+    color: orange;
+}
+
+.sixties {
+    color:yellow;
+}
+
+.fifties {
+    color: green;
+}
+
+.below49 {
+    color: teal;
+}
+
 #current_temp_button {
     background-color: #1b69f9;
     border: none;
