@@ -1,5 +1,22 @@
 # Weather Report
 
+## Co-working agreements
+Collaboration style:
+- Working together / Pair programming as much as possible
+Communication styles:
+- Ask all the way
+- Feedbacks: give and receive direct and detailed feedbacks in a patient manner
+Goals:
+- Willing to work outside of co-working hours if needed
+- Finish everything by Fri
+  - Tue: Wave 1 done
+  - Wed: Wave 2 done
+  - Thurs: Wave 3 and 4 done
+  - Fri: The rest
+Needs:
+- Trang: If I go off topic, drag me back.
+- Ruth and Trang: Need to timebox better and ask for help more often.
+  
 ## Skills Assessed
 
 - Following directions and reading comprehension
