@@ -1,9 +1,12 @@
+
 html {
-    background-color: rgba(37, 73, 232, 0.79);
+    background: linear-gradient(5deg, rgb(20, 108, 148) 0%, rgb(25, 167, 206) 35%, rgb(175, 211, 226) 100%);
+    font-family: monospace;
+    border: 10px solid rgb(60, 72, 107);
 }
 
 section div {
-    border: 1px;
+    border-radius: 29px;
     border-style: solid;
     border-color: red;
     background-color: white;
@@ -15,11 +18,14 @@ section div {
     grid-template-columns: 1fr 2fr;
     justify-content: center;
     justify-content: space-between;
+    grid-row-gap: 24px;
+    grid-column-gap: 16px;
 }
 
 .section-title {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    padding-left: 3cqmax;
 }
 
 #temperature-section {
@@ -27,6 +33,7 @@ section div {
 }
 
 #sky-section {
+    align-items: center;
     height: 200px;
 }
 
