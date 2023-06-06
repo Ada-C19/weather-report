@@ -7,20 +7,21 @@ const state = {
 };
 
 // changing font color
+
 const changeTempFontColor = () => {
     let temp = state.temp;
+    temperature = document.getElementById('tempnumber')
     if (temp >= 80) {
-        color = 'red';
-    }else if (temp >= 70) {
-        color = 'orange';
+        temperature.className = 'red';
+    }else if (temp >=70) {
+        temperature.className = 'orange';
     }else if (temp >= 60) {
-        color = 'yellow';
-    }else if (temp >= 50) {
-        color = 'green';
+        temperature.className ='yellow';
+    }else if (temp >=50) {
+        temperature.className = 'green';
     }else {
-        color = 'brown';
+        temperature.className = 'brown';
     }
-
 };
 
 
