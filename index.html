@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
-</body>
     <header class = "header">
         <h1>Weather Report</h1>
         <span>"For the lovely city of "
@@ -32,4 +29,28 @@
             <button id="current_temp_button">Get Realtime Temperature</button>
         </div>
     </section>
+    <section class="sky">
+        <h2>Sky</h2>
+        <select id="sky_selector">
+            <option>Sunny</option>
+            <option>Cloudy</option>
+            <option>Rainy</option>
+            <option>Snowy</option>
+        </select>
+    </section>
+    <section class="city_name">
+        <h2>City Name</h2>
+        <input type="text" id="cityNameInput" value="Seattle">
+        <button id="cityNameReset" class="cityNameResetButton">Reset</button>
+    </section>
+    <section class="garden">
+        <h2>Weather Garden</h2>
+        <div id="gardenContent" class="gardenContentSunny" >
+            <div id="sky">sun</div>
+            <div id="landscape">flowers</div>
+        </div>
+    </section>
+    <script src="./src/index.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+</body>
 </html>
