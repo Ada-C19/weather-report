@@ -11,16 +11,16 @@ const updateTemp = () => {
     let temp = state.temp;
     let color = "above80";
 
-    if (state.temp >= 80) {
-        let color = "above80";
-    } else if (70 <= state.temp < 80) {
-        let color = "seventies";
-    } else if (60 <= state.temp < 70) {
-        let color = "sixties";
-    } else if (50 <= state.temp < 60) {
-        let color = "fifties";
+    if (temp >= 80) {
+        color = "above80";
+    } else if (70 <= temp < 80) {
+        color = "seventies";
+    } else if (60 <= temp < 70) {
+        color = "sixties";
+    } else if (50 <= temp < 60) {
+        color = "fifties";
     } else {
-        let color = "below49";
+        color = "below49";
     }
 
     const temperature = document.getElementById('temp_value');
@@ -29,7 +29,7 @@ const updateTemp = () => {
 }
 
 const registerEventHandlers = () => {
-    updateTemp()l
+    updateTemp();
     const increaseButton = document.getElementById("increase_temp");
     increaseButton.addEventListener("click", increaseTemp);
 }
