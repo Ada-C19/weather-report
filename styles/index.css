@@ -9,12 +9,16 @@ body {
     margin: 2rem;
 }
 
-header {
+.header {
     color: #fff;
-    grid-column: span 4;
+    grid-column: span 3;
     display: flex;
     align-items: center;
     margin: 2rem auto 3rem 0;
+}
+.header > h1{
+    margin-right: 5rem;
+    font-size: 3em;
 }
 
 div {
@@ -22,7 +26,7 @@ div {
     background-color: #fff;
 }
 
-.cityName {
+.header_city_name {
     font-style: oblique;
     font-size: 2rem;
 }
