@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
+
 <body>
+    <header>
+        <h1>Weather Report</h1>
+        <h4>For the lovely city of </h4>
+    </header>
+    <section>
+        <div class="temperature">
+            Temperature
+        </div>
+        <div class="sky">
+            Sky
+            <label for="skies"></label>
+            <select name="skies" id="skies">
+                <option value="sunny">Sunny</option>
+                <option value="rainy">Rainy</option>
+                <option value="snowy">Snowy</option>
+                <option value="windy">Windy</option>
+            </select>
+        </div>
+        <div class="city-name">
+            <form>
+                <label for="city-name">City Name
+                </label>
+                <input type="text" id="city-name" name="City">
+            </form>
+        </div>
+    </section>
+    <section>
+        <div>
+            Weather Garden
+        </div>
+        <div>
+            ☁️☁️☁️☁️☀️☁️☁️
+        </div>
+    </section>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
+
 </html>
