@@ -1,5 +1,5 @@
-import 'regenerator-runtime/runtime';
-import axios from 'axios';
+// import 'regenerator-runtime/runtime';
+// import axios from 'axios';
 
 const state = {
   city: 'Seattle',
@@ -7,6 +7,14 @@ const state = {
 };
 
 const increaseTemp = () => {
-    let up = document.getElementById('up')
+    state.temp += 1;
+    const tempNumber = document.getElementById("tempnumber");
+    tempNumber.textContent = `${state.temp}`;
+
 }
+
+const increaseButton = document.getElementById("up");
+increaseButton.addEventListener("click", increaseTemp);
+
+
 
