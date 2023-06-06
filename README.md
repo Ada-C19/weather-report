@@ -1,5 +1,11 @@
 # Weather Report
 
+## Plan of Action
+- Access needs: Try to work on it during co-working hours. Schedule more time as needed. 
+- Learning Styles: Independent research, tinkering/testing, sharing out. Analyze code independently and discuss it in group after.
+- Feedback Style: In person, good verbal communication. 
+- Communication skills to improve: Improve techincal vocabulary that is appropriate to each language. Communicate good time-boxing skills. 
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
