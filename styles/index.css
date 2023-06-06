@@ -1,0 +1,127 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 1rem;
+    font-family: Rubik,sans-serif;
+    font-size: 18px;
+    background-color: #8adbf6;
+    margin: 2rem;
+}
+
+header {
+    color: #fff;
+    grid-column: span 4;
+    display: flex;
+    align-items: center;
+    margin: 2rem auto 3rem 0;
+}
+
+div {
+    display: block;
+    background-color: #fff;
+}
+
+.cityName {
+    font-style: oblique;
+    font-size: 2rem;
+}
+
+.temperature {
+    grid-row: 2;
+}
+
+.temperature_content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.temperature_controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#increase_temp {
+
+}
+
+#decrease_temp {
+
+}
+
+#temp_value {
+
+}
+
+#current_temp_button {
+    background-color: #1b69f9;
+    border: none;
+    color: #fff;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.sky, .city_name, .temperature {
+    grid-row: 3;
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: #fff;
+}
+
+.city_name {
+    grid-row: 4;
+}
+
+.temperature {
+    grid-row: 2;
+}
+
+.cityNameResetButton {
+    border: 0;
+    background-color: #1655cc;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    font-family: Rubik,sans-serif;
+}
+
+.garden {
+    grid-row: 2/span 3;
+    grid-column: 2;
+    text-align: center;
+    align-self: center;
+}
+
+.gardenContent {
+    min-height: 200px;
+    max-width: fit-content;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    font-size: 2em;
+}
+
+.sunny { 
+
+}
+
+.rainy {
+
+}
+
+.cloudy {
+
+}
+
+.snowy {
+
+}
