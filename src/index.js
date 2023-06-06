@@ -16,6 +16,10 @@ const decreaseTemp = (event) => {
     tempCount.textContent = `${state.temperature}`;  
 };
 
+const changeColorByTemp = (event) => {
+    // make js to change color using state temperature variable 
+}
+
 
 const registerEventHandlers = (event) => {
     const tempUpButton = document.querySelector("#up-arrow");
