@@ -10,6 +10,25 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <main>
+        <h1>Weather Report</h1>
+        <section id="location">Location</section>
+        <section class="temperatureSection">
+            <h2>Temperature</h2>
+            <section class="temperatureControls">
+                <button id="increaseTempButton">⬆️</button>
+                <span id="tempValue" class="orange">75</span>
+                <button id="decreaseTempButton">⬇️</button>
+            </section>
+            <button id="currentTemp">Current Temperature</button>
+        </section>
+        <section class ="picSection">
+            <h2>Picture</h2>
+            <p>🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂</p>
+        </section>
+        <section id ="sky">Sky</section>
+        <section id ="change">Change Location</section>
+    </main>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
