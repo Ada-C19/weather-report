@@ -16,36 +16,43 @@
         For the lovely city of &nbsp; </span>
         <span>"Seattle"</span>
     </header>
-    <section>
-        <h2>Temperature</h2>
-        <div>
-            <span>⬆️</span>
-            <span>25</span>
-            <span>⬇️</span>
+    <div id="flex-container">
+        <div id="sidebar">
+            <section id="temperature">
+                <h2>Temperature</h2>
+                <div id="alignment">
+                    <div id="temperature-controls">
+                        <div id="raise-temp">⬆️</div>
+                        <div id="temp-display">25</div>
+                        <div id="lower-temp">⬇️</div>
+                    </div>
+                    <div id="temp-button">
+                        <button>Get Realtime Temperature</button>
+                    </div>
+                </div>
+            </section>
+            <section id="sky">
+                <h2>Sky</h2>
+                <label>Precipitation Menu</label>
+                <select>
+                    <option>Sunny</option>
+                    <option>Cloudy</option>
+                    <option>Rainy</option>
+                    <option>Snowy</option>
+                </select>
+            </section>
+            <section id="city">
+                <h2>City Name</h2>
+                <input type="text" value="Seattle">
+                <button>Reset</button>
+            </section>
         </div>
-        <button>Get Realtime Temperature</button>
-    </section>
-    <section>
-        <h2>Sky</h2>
-        <label>Precipitation Menu</label>
-        <select>
-            <option>Sunny</option>
-            <option>Cloudy</option>
-            <option>Rainy</option>
-            <option>Snowy</option>
-        </select>
-    </section>
-
-    <section>
-        <h2>City Name</h2>
-        <input type="text" value="Seattle">
-        <button>Reset</button>
-    </section>
-    <section>
-        <h2>Weather Garden</h2>
-        <div id="sky"></div>
-        <div id="garden"></div>
-    </section>
+        <section id="weather-garden">
+            <h2>Weather Garden</h2>
+            <div id="sky"></div>
+            <div id="garden"></div>
+        </section>
+    </div>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
