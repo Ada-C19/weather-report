@@ -26,6 +26,7 @@ function updateTemperatureDisplay() {
   }
 }
 
+
 // Function to update the landscape display
 function updateLandscapeDisplay() {
   let landscape = '';
@@ -130,3 +131,49 @@ function resetCityName() {
   
   // Initial display update
   updateCityNameDisplay();
+
+// Wave 4: Calling APIs
+let temp;
+
+const getLatLon = (cityName) => {
+    return axios.get("http://localhost:5000/location", { params: { q: cityName } });
+  };
+  
+  const getTemp = (latLonData) => {
+    const lat = latLonData.lat;
+    const lon = latLonData.lon;
+    return axios.get("http://localhost:5000/weather", { params: { lat, lon } });
+  };
+  
+
+    const publishTempData = (tempData) => {
+    const realTemp = tempData.main.temp;
+    const farTemp = Math.round((realTemp - 273.15) * 1.8 + 32);
+    temperature = farTemp; // Update the global temperature variable
+    updateTemperatureDisplay(temperature); // Pass the temperature to the function
+    updateLandscapeDisplay(temperature); // Pass the temperature to the function
+  };
+    
+        const getTempForCity = (cityName) => {
+            return getLatLon(cityName)
+              .then((response) => {
+                console.log("LatLon Data:", response.data[0]); // Log the received latLonData
+                return getTemp(response.data[0]);
+              })
+              .then((response) => {
+                console.log("Temperature Data:", response.data); // Log the received temperature data
+                return publishTempData(response.data);
+              })
+              .catch((err) => console.log(err));
+          };
+  
+  const realTimeButton = document.querySelector("#currentTempButton");
+  realTimeButton.addEventListener("click", () => {
+    const cityName = document.getElementById("cityNameInput").value;
+    getTempForCity(cityName);
+  });
+  
+    const updateTemp = (temperature) => {
+        const tempElement = document.getElementById("tempValue");
+        tempElement.innerText = `Temperature: ${temperature}°F`;
+    };
