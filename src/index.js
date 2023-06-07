@@ -31,32 +31,31 @@ const tempRange = () => {
         const temp = document.getElementById("temp-display")
         temp.className ="teal";
         const landscape = document.getElementById("landscape-container")
-        landscape.append(landscapeImg["5"]);
-        
+        landscape.textContent = landscapeImg["5"];
     }
     else if (state.tempCount <= 59 && state.tempCount >= 50){
         const temp = document.getElementById("temp-display")
         temp.className ="green";
         const landscape = document.getElementById("landscape-container")
-        landscape.append(landscapeImg["4"]);
+        landscape.textContent = landscapeImg["4"];
     }
     else if (state.tempCount <= 69 && state.tempCount >=60){
         const temp = document.getElementById("temp-display")
         temp.className ="yellow";
         const landscape = document.getElementById("landscape-container")
-        landscape.append(landscapeImg["3"]);
+        landscape.textContent = landscapeImg["3"];
     } 
     else if (state.tempCount  >= 70 && state.tempCount <= 79){
         const temp = document.getElementById("temp-display")
         temp.className ="orange";
         const landscape = document.getElementById("landscape-container")
-        landscape.append(landscapeImg["2"]);
+        landscape.textContent = landscapeImg["2"];
     }
     else if (state.tempCount >= 80){
         const temp = document.getElementById("temp-display")
         temp.className ="red";
         const landscape = document.getElementById("landscape-container")
-        landscape.append(landscapeImg["1"]);
+        landscape.textContent = landscapeImg["1"];
     }
 }
 
