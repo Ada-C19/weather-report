@@ -22,8 +22,7 @@
 - Timeboxing and explaining during the process
 
 ## Signatures
-Kimberly Lantigua & Sage Choi
-Date: 6/7/2023
+Kimberly Lantigua & Sage Choi (6/7/2023)
 
 ## Skills Assessed
 
