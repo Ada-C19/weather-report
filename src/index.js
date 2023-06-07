@@ -6,8 +6,9 @@ const state = {
     getRealtimeTemperatureButton: null,
 
     // data
-    temperatureDefault: 72,
+    temperatureValue: 72,
 };
+
 
 const loadControls = () => {
     state.temperatureLabel = document.getElementById("tempValue");
@@ -17,14 +18,47 @@ const loadControls = () => {
 };
 
 const handleTemperatureDecreaseButtonClick = () => {
-    state.temperatureDefault -= 1
-    state.temperatureLabel.textContent = state.temperatureDefault;
+    state.temperatureValue -= 1
+    state.temperatureLabel.textContent = state.temperatureValue;
+
+    if (state.temperatureValue >= 80) {
+        state.temperatureLabel.classList.remove('orange');
+        state.temperatureLabel.classList.add('red');
+    } else if (state.temperatureValue >= 70) {
+        state.temperatureLabel.classList.remove('red');
+        state.temperatureLabel.classList.add('orange');
+    } else if (state.temperatureValue >= 60) {
+        state.temperatureLabel.classList.remove('orange');
+        state.temperatureLabel.classList.add('yellow');
+    } else if (state.temperatureValue >= 50) {
+        state.temperatureLabel.classList.remove('yellow');
+        state.temperatureLabel.classList.add('green');
+    } else {
+        state.temperatureLabel.classList.remove('green');
+        state.temperatureLabel.classList.add('teal');
+    }
 }
 
 const handleTemperatureIncreaseButtonClick = () => {
-    state.temperatureDefault += 1
-    state.temperatureLabel.textContent = state.temperatureDefault;
+    state.temperatureValue+= 1
+    state.temperatureLabel.textContent = state.temperatureValue;
 
+    if (state.temperatureValue >= 80) {
+        state.temperatureLabel.classList.remove('orange');
+        state.temperatureLabel.classList.add('red');
+    } else if (state.temperatureValue >= 70) {
+        state.temperatureLabel.classList.remove('red');
+        state.temperatureLabel.classList.add('orange');
+    } else if (state.temperatureValue >= 60) {
+        state.temperatureLabel.classList.remove('orange');
+        state.temperatureLabel.classList.add('yellow');
+    } else if (state.temperatureValue >= 50) {
+        state.temperatureLabel.classList.remove('yellow');
+        state.temperatureLabel.classList.add('green');
+    } else {
+        state.temperatureLabel.classList.remove('green');
+        state.temperatureLabel.classList.add('teal');
+    }
 }
 
 const handleGetRealtimeTemperatureButtonClick = () => {
