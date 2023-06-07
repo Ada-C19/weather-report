@@ -15,6 +15,21 @@
         <span id="temperature">0°C</span>
         <button id="increase-button">+</button> 
     </div>
+    <div id= "city-wrapper">
+        <h2 id= "city-name">City</h2>
+        <input type="text" id="city-input" placeholder="Enter your city" />
+        <button id="reset-button">Reset</button>
+    </div>
+    <div id="sky-wrapper">
+        <select id="sky-select">
+            <option value="sunny">Sunny</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="rainy">Rainy</option>
+            <option value="snowy">Snowy</option>
+        </select>
+        <div id="sky></div>
+    </div>
+
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
