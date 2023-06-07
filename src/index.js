@@ -8,19 +8,26 @@ const state = {
 
 // changing font color
 
-const changeTempFontColor = () => {
+const changeTempFontColorAndLandscape = () => {
     let temp = state.temp;
-    temperature = document.getElementById('tempnumber')
+    const groundemoji = document.getElementById("groundemoji")
+    const temperature = document.getElementById('tempnumber')
     if (temp >= 80) {
         temperature.className = 'red';
+        groundemoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+
     }else if (temp >=70) {
         temperature.className = 'orange';
+        groundemoji.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
     }else if (temp >= 60) {
-        temperature.className ='yellow';
+        temperature.className = 'yellow';
+        groundemoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
     }else if (temp >=50) {
         temperature.className = 'green';
+        groundemoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }else {
         temperature.className = 'brown';
+        groundemoji.textContent = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
     }
 };
 
@@ -31,7 +38,7 @@ const increaseTemp = () => {
     state.temp += 1;
     const upTempNumber = document.getElementById("tempnumber");
     upTempNumber.textContent = `${state.temp}`;
-    changeTempFontColor();
+    changeTempFontColorAndLandscape();
 
 }
 const increaseButton = document.getElementById("up");
@@ -42,7 +49,7 @@ const decreaseTemp = () => {
   state.temp -= 1;
   const downTempNumber = document.getElementById("tempnumber");
   downTempNumber.textContent = `${state.temp}`;
-  changeTempFontColor();
+  changeTempFontColorAndLandscape();
 };
 
 const decreaseButton = document.getElementById("down");
