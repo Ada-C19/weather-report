@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#temperature-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#temperature-wrapper button {
+    font-size: 24px;
+    padding: 5 px 10 px;
+}
+
+#temperature {
+    font-size: 48px;
+}
+
+#city-wrapper, #sky-wrapper {
+    margin-bottom:20px;
+}
+
+#city-input {
+    margin-top: 10px;
+    padding: 5px;
+}
+
+#reset-button {
+    margin-top: 10px;
+}
+
+#sky-select {
+    display: block;
+    margin-top: 10px;
+}
