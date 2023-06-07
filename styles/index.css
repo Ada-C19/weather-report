@@ -3,8 +3,12 @@
 h1:hover {
     color: pink;
 } */
-
-
+body {
+    background-color: rgb(29, 151, 211);
+    background-image: url(../assets/weather_imagejpg.webp);
+    background-repeat: repeat-x;
+    color: rgb(9, 8, 8);
+}
 
 #weather-report-id:hover {
     color: pink;
