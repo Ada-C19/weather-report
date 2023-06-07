@@ -108,3 +108,11 @@ if (document.readyState !== "loading") {
 }
 
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const cityName = document.getElementById('city-name');
+    const cityInput = document.getElementById('city-input');
+    
+    cityInput.addEventListener('input', () => {
+        cityName.textContent = cityInput.value;
+    });
+});
