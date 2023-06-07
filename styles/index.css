@@ -32,6 +32,8 @@ section div {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     padding-left: 3cqmax;
+    font-size: x-large;
+
 }
 
 #output1 {
@@ -50,12 +52,10 @@ section div {
 #sky-section {
     align-items: center;
     height: 200px;
-    font-size: x-large;
 }
 
 #city-name-section {
     height: 200px;
-    font-size: x-large
 }
 
 .garden-section {
@@ -76,10 +76,19 @@ section div {
 .garden-display {
     background-color: gray;
     padding-bottom: 40px;
-    padding-top: 80px;
+    padding-top: 20px;
     align-items: center;
     font-size: 40px;
     text-align: center;
+}
+
+.garden-display div {
+    background-color: transparent;
+    border: none;
+}
+
+#seasonal-landscape {
+    padding-top: 150px;
 }
 
 #buttonCity {

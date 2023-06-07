@@ -8,6 +8,7 @@ const displayCityText = () => {
     txtBox.value = "";
 }
 
+// Default state
 const temperatureState = {
     degrees: 67
 }
@@ -30,11 +31,13 @@ const registerEventHandlers = (event) => {
     buttonCity.addEventListener('click', displayCityText)
 
     const upButton = document.querySelector('#up');
-    upButton.addEventListener("click", increaseTemp);
+    upButton.addEventListener('click', increaseTemp);
 
     const downButton = document.querySelector('#down');
-    downButton.addEventListener("click", decreaseTemp);
+    downButton.addEventListener('click', decreaseTemp);
 }
 
 // Triggers Event Handlers:
 document.addEventListener('DOMContentLoaded', registerEventHandlers)
+
+
