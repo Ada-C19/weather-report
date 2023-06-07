@@ -20,11 +20,11 @@ const updateTemp = () => {
     if (state.temp >= 80) {
         color = "above80";
     // some changes here to add the "&& state.temp"
-    } else if (70 <= state.temp && state.temp < 80) {
+    } else if (70 <= temp && temp < 80) {
         color = "seventies";
-    } else if (60 <= state.temp && state.temp < 70) {
+    } else if (60 <= temp && temp < 70) {
         color = "sixties";
-    } else if (50 <= state.temp && state.temp < 60) {
+    } else if (50 <= temp && temp < 60) {
         color = "fifties";
     } else {
         color = "below49";
