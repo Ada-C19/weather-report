@@ -1,5 +1,6 @@
 const state = {
-    temp: 72
+    temp: 72, 
+    city: "Seattle"
 }
 
 const increaseTemp = () => {
@@ -45,6 +46,13 @@ const updateTemp = () => {
 
 }
 
+const updateCity = () => {
+    const cityInput = document.getElementById('cityNameInput').value;
+    const headerCity = document.getElementById('cityName');
+    state.city = cityInput;
+    headerCity.textContent = state.city;
+}
+
 const registerEventHandlers = () => {
     updateTemp();
     const increaseButton = document.getElementById("increase_temp");
@@ -52,6 +60,10 @@ const registerEventHandlers = () => {
 
     const decreaseButton = document.getElementById("decrease_temp");
     decreaseButton.addEventListener("click", decreaseTemp);
+
+    updateCity();
+    const cityInput = document.getElementById('cityNameInput');
+    cityInput.addEventListener("input", updateCity);
 }
 
 
