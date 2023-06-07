@@ -4,10 +4,24 @@ const state = {
     temperatureIncreaseButton: null,
     temperatureDecreaseButton: null,
     getRealtimeTemperatureButton: null,
+    skyImage: null,
+    landscapeImage: null,
 
     // data
     temperatureValue: 72,
 };
+
+const setLandscapeImage = temperature => {
+    if (temperature >= 80) {
+        return "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"
+    } else if (temperature >= 70) {
+        return "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
+    } else if (temperature >= 60) {
+        return "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
+    } else {
+        return "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+    }
+}
 
 
 const loadControls = () => {
@@ -15,11 +29,14 @@ const loadControls = () => {
     state.temperatureDecreaseButton = document.getElementById("decreaseTempControl");
     state.temperatureIncreaseButton = document.getElementById("increaseTempControl");
     state.getRealtimeTemperatureButton = document.getElementById("currentTempButton");
+    state.skyImage = document.getElementById("sky");
+    state.landscapeImage = document.getElementById("landscape");
 };
 
 const handleTemperatureDecreaseButtonClick = () => {
     state.temperatureValue -= 1
     state.temperatureLabel.textContent = state.temperatureValue;
+    state.landscapeImage.textContent = setLandscapeImage(state.temperatureValue);
 
     if (state.temperatureValue >= 80) {
         state.temperatureLabel.classList.remove('orange');
@@ -42,6 +59,7 @@ const handleTemperatureDecreaseButtonClick = () => {
 const handleTemperatureIncreaseButtonClick = () => {
     state.temperatureValue+= 1
     state.temperatureLabel.textContent = state.temperatureValue;
+    state.landscapeImage.textContent = setLandscapeImage(state.temperatureValue);
 
     if (state.temperatureValue >= 80) {
         state.temperatureLabel.classList.remove('orange');
