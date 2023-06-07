@@ -44,7 +44,7 @@ const getLandscape = () => {
     } else if (current_temp >= 50) {
         landscape.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
     } else {
-        landscape.textContent = "⛄️⛄️🎁❄❄⛄️🦌❄🎁⛄️⛄️🦌🦌⛄️🎁"
+        landscape.textContent = "⛄️⛄️🎁🎿🎿⛄️🦌🎿🎁⛄️⛄️🦌🦌⛄️🎁"
     }
 }
 
