@@ -56,5 +56,14 @@ const decreaseButton = document.getElementById("down");
 decreaseButton.addEventListener("click", decreaseTemp);
 
 
-
+// update the city
+const changeCity = () => {
+    const city = document.getElementById("city");
+    const inputCity = document.getElementById("searchbar").value;
+    state.city = inputCity;
+    city.textContent = state.city;
+    }
+    
+const cityInput = document.getElementById("searchbar");
+cityInput.addEventListener("input", changeCity);
 
