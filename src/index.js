@@ -114,3 +114,19 @@ skySelect.addEventListener('change', updateSkyDisplay);
 
 // Initial display update
 updateSkyDisplay();
+
+//Wave 6
+// Define the resetCityName function
+function resetCityName() {
+    cityNameInput.value = 'Austin'; // Set the input value to blank
+    updateCityNameDisplay(); // Update the city name display
+  }
+  
+  // Get the reset button element
+  const resetButton = document.getElementById('cityNameReset');
+  
+  // Add event listener to the reset button
+  cityNameReset.addEventListener('click', resetCityName);
+  
+  // Initial display update
+  updateCityNameDisplay();
