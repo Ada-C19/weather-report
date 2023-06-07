@@ -1,6 +1,6 @@
 const increaseButton=document.getElementById('increase-button');
 const decreaseButton=document.getElementById('decrease-button');
-const temperature=document.getElementById('temperature');
+const temperatureElement=document.getElementById('temperature');
 const cityNameElement=document.getElementById('city-name');
 const cityInput=document.getElementById('city-input');
 const resetButton=document.getElementById('reset-button');
@@ -21,3 +21,18 @@ function kelvinToFahrenheit(kelvin) {
     return Math.round((kelvin-273.15)*9/5+32);
     
 ]*/
+
+let temperature=0;
+
+increaseButton.addEventListener('click', function(){
+    temperature++;
+    temperatureElement.textContent=temperature.toString();
+    updateTemperatureColor();
+});
+
+decreaseButton.addEventListener('click', function(){
+    temperature--;
+    temperatureElement.textContent=temperature.toString();
+    updateTemperatureColor();
+});
+
