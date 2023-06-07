@@ -27,5 +27,8 @@ section{
     border-radius: 10px;
 }
 .garden_box{
-
+    width: 60%;
+    padding:25px;
+    background-color: rgb(112, 213, 128);
+    border-radius: 10px;
 }
