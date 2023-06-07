@@ -1,5 +1,5 @@
 const state = {
-    temp: 0
+    temp: 32
 };
 
 const increaseTemp = () => {
@@ -18,27 +18,26 @@ const decreaseTemp = () => {
 
 const changeColor = (temp) => {
     if (temp >= 80) {
-        tempValue.style.color = 'red';
-    } else if (temp < 79 && temp > 70){
-        tempValue.style.color = "orange";
-    } else if (temp < 69 && temp > 60){
-        tempValue.style.color = "yellow";
-    } else if (temp < 59 && temp > 50){
-        tempValue.style.color = "green";
+        state.tempValue.style.color = 'red';
+    } else if (temp <= 79 && temp >= 70) {
+        state.tempValue.style.color = "orange";
+    } else if (temp <= 69 && temp >= 60) {
+        state.tempValue.style.color = "yellow";
+    } else if (temp <= 59 && temp >= 50) {
+        state.tempValue.style.color = "green";
     } else {
-        tempValue.style.color = "teal";
+        state.tempValue.style.color = "teal";
     }
 }
-
 const changeLandscape = (temp) => {
     if (temp >= 80) {
-        landscapeEmojis.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
-    } else if (temp < 79 && temp > 70){
-        landscapeEmojis.textContent ='🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
-    } else if (temp < 69 && temp > 60){
-        landscapeEmojis.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
-    } else{
-        landscapeEmojis.textContent ='🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+        state.landscapeEmojis.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
+    } else if (temp <= 79 && temp >= 70) {
+        state.landscapeEmojis.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
+    } else if (temp <= 69 && temp >= 60) {
+        state.landscapeEmojis.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+    } else {
+        state.landscapeEmojis.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
     }
 }
 
@@ -56,7 +55,6 @@ const registerEvents = () => {
 
 
 const onLoaded = () => {
-    // steps to carry out when the page has loaded
     loadControls();
     registerEvents();
 };
