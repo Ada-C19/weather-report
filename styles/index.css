@@ -10,7 +10,6 @@ section div {
     border-style: solid;
     border-color: red;
     background-color: white;
-
 }
 
 .outer-grid {
@@ -28,6 +27,10 @@ section div {
     padding-left: 3cqmax;
 }
 
+#output1 {
+    font-size: xx-large;
+}
+
 #temperature-section {
     height: 250px;
 }
@@ -35,13 +38,23 @@ section div {
 #sky-section {
     align-items: center;
     height: 200px;
+    font-size: x-large;
 }
 
 #city-name-section {
-    height: 200px
+    height: 200px;
+    font-size: x-large
 }
 
 .garden-section {
     display: grid;
     grid-template-rows: 1fr 3fr;
 }
+
+#buttonCity {
+    background-color: blue;
+    color: aliceblue;
+    border-radius: 10;
+    text-align: centerr;
+}
+
