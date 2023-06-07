@@ -97,6 +97,16 @@ skyDropdown.addEventListener("click", (event) => {
     }
 });
 
+if (document.readyState !== "loading") {
+    getTemp();
+    getLandscape();
+    getSky();
+} else {
+    document.addEventListener("DOMContentLoaded", getTemp);
+    document.addEventListener("DOMContentLoaded", getLandscape);
+    document.addEventListener("DOMContentLoaded", getSky);
+}
+
 
 
 
