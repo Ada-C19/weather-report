@@ -16,23 +16,33 @@ const decreaseTemp = () => {
 const updateTemp = () => {
     let temp = state.temp;
     let color = "above80";
+    //added here
+    let landscapeEmojis = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
 
-    if (state.temp >= 80) {
+    if (temp >= 80) {
         color = "above80";
-    // some changes here to add the "&& state.temp"
+        landscapeEmojis = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"
     } else if (70 <= temp && temp < 80) {
         color = "seventies";
+        landscapeEmojis = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
     } else if (60 <= temp && temp < 70) {
         color = "sixties";
+        landscapeEmojis = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
     } else if (50 <= temp && temp < 60) {
         color = "fifties";
+        landscapeEmojis = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     } else {
         color = "below49";
+        landscapeEmojis = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }
 
     const temperature = document.getElementById('temp_value');
     temperature.className = color;
     temperature.textContent = String(state.temp);
+
+    const landscape = document.getElementById("landscape");
+    landscape.textContent = String(landscapeEmojis);
+
 }
 
 const registerEventHandlers = () => {
@@ -40,7 +50,6 @@ const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase_temp");
     increaseButton.addEventListener("click", increaseTemp);
 
-    // this is new
     const decreaseButton = document.getElementById("decrease_temp");
     decreaseButton.addEventListener("click", decreaseTemp);
 }
