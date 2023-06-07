@@ -16,15 +16,11 @@ const loadData = () => {
 };
 
 const registerEventHandlers = (event) => {
-  //All event handlers will be called here
+  //All event handlers will be defined here
   loadData();
+  cityReset();
   state.cityTextField.addEventListener("input", cityUpdate);
   state.cityResetButton.addEventListener("click", cityReset);
-  //Initialize value of header city
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => (state.headerCity.textContent = state.cityTextField.value)
-  );
 };
 
 const state = {
