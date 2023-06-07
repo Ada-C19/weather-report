@@ -6,7 +6,23 @@ h1:hover {
 
 
 
-#change-h1-color:hover {
+#weather-report-id:hover {
     color: pink;
+}
+
+#temperature-id:hover {
+    color: red
+}
+
+#sky-id:hover {
+    color: skyblue
+}
+
+#city-name-id:hover {
+    color: blueviolet
+}
+
+#weather-garden-id:hover {
+    color: forestgreen
 }
 

@@ -15,14 +15,14 @@
   <body>
     <header class="header__header">
       <!-- <h1>Weather Report</h1> -->
-      <h1 id="change-h1-color">Weather Report</h1>
+      <h1 id="weather-report-id">Weather Report</h1>
       <span
         >For the lovely city of
         <span id="headerCityName" class="header__city-name">Seattle</span></span
       >
     </header>
     <section class="temperature__section">
-      <h2>Temperature</h2>
+      <h2 id="temperature-id">Temperature</h2>
       <div class="temperature__content">
         <div class="temperature__controls">
           <span id="increaseTempControl">⬆️</span>
@@ -33,7 +33,7 @@
       </div>
     </section>
     <section class="sky__section">
-      <h2>Sky</h2>
+      <h2 id="sky-id">Sky</h2>
       <select id="skySelect">
         <option>Sunny</option>
         <option>Cloudy</option>
@@ -42,21 +42,23 @@
       </select>
     </section>
     <section class="city-name__section">
-      <h2>City Name</h2>
+      <h2 id="city-name-id">City Name</h2>
       <input type="text" id="cityNameInput" value="Seattle" />
       <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
     </section>
     <section class="garden__section">
-      <h2>Weather Garden</h2>
+      <h2 id="weather-garden-id">Weather Garden</h2>
       <div id="gardenContent" class="garden__content sunny">
         <div id="sky">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
         <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
       </div>
     </section>
-    <script src="/weather-report/src.8b33c05a.js"></script>
+    <script src="./src/index.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
   </body>
 </html>
 
+<!-- // initial code in this document  -->
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,3 +75,7 @@
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
 </html> -->
+
+<!-- <script src="/weather-report/src.8b33c05a.js"></script>
+<script src="./src/index.js"></script>
+<script src="./node_modules/axios/dist/axios.min.js"></script> -->
