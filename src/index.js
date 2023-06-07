@@ -67,3 +67,10 @@ const changeCity = () => {
 const cityInput = document.getElementById("searchbar");
 cityInput.addEventListener("input", changeCity);
 
+//update sky
+const skyemoji = document.getElementById("skyemoji");
+const skystatus = document.getElementById("skystatus");
+skystatus.addEventListener("change", () => {
+    const skySelected = skystatus.options[skystatus.selectedIndex].value;
+    skyemoji.textContent = skySelected;
+})
