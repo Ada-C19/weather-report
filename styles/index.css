@@ -1,0 +1,102 @@
+* {
+    border: 1px antiquewhite dashed;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 1rem;
+    font-family: Rubik,sans-serif;
+    font-size: 18px;
+    background-color: #7d9fdd;
+    margin: 2rem;
+}
+
+.header__header {
+    color: white;
+    grid-column: span 3;
+    display: flex;
+    align-items: center;
+    margin: 2rem auto 3rem 0;
+}
+
+.header__header > h1 {
+    margin-right: 2rem;
+    font-size: 3em;
+}
+
+h2 {
+    margin: 0 auto 2rem auto;
+}
+
+.header__city-name::before,
+.header__city-name::after {
+    content: "✨";
+}
+
+.temperature__section,
+.sky__section,
+.city-name__section {
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: white;
+    grid-row: 2;
+
+}
+
+.garden__section {
+    grid-row: 3 / span 4;
+    grid-column: 2;
+    text-align: center;
+    align-self: center;
+}
+
+.garden__section > h2 {
+    padding: 3rem;
+    color: white;
+
+}
+
+.garden__content {
+    min-height: 200px;
+    max-width: fit-content;
+    margin: auto;
+    padding: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    border-radius: 8px;
+    font-size: 2em;
+}
+
+
+.cloudy {
+    background-color: lightgrey;
+}
+    
+.sunny {
+    background-color: rgb(221, 255, 255);
+}
+
+.rainy {
+    background-color: lightblue;
+}
+
+.snowy {
+    background-color: lightsteelblue;
+}
+    
+
+
+
+
+/* TODO 
+1. make Get Realtime Temp button smaller
+2. Change arrow emoji buttons
+3. Personalize weather garden emojis  */
+
+
+
