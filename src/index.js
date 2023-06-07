@@ -1,6 +1,7 @@
 "use strict";
 
-let current_temp = 72
+let current_temp = 72;
+let sky = "";
 
 const getTemp = () => {
     const temperature = document.getElementById("temp");
@@ -47,12 +48,63 @@ const getLandscape = () => {
     }
 }
 
+const button3 = document.getElementById("sky_button");
+button3.addEventListener("click", () => {
+    sky_dropdown.classList.toggle("show")
+})
+
+const sunnyWeather = document.getElementById("sunny");
+sunnyWeather.addEventListener("click", () => {
+    sky = "sunny";
+    getSky();
+    sky_dropdown.classList = ("sky_dropdown")
+})
+
+const cloudyWeather = document.getElementById("cloudy");
+cloudyWeather.addEventListener("click", () => {
+    sky = "cloudy";
+    getSky();
+    sky_dropdown.classList = ("sky_dropdown")
+})
+
+const rainyWeather = document.getElementById("rainy");
+rainyWeather.addEventListener("click", () => {
+    sky = "rainy";
+    getSky();
+    sky_dropdown.classList = ("sky_dropdown")
+})
+
+const snowyWeather = document.getElementById("snowy");
+snowyWeather.addEventListener("click", () => {
+    sky = "snowy";
+    getSky();
+    sky_dropdown.classList = ("sky_dropdown")
+})
+
+const getSky = () => {
+    const sky_element = document.getElementById("sky");
+    if (sky === "sunny") {
+        sky_element.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️"
+    } else if (sky === "cloudy") {
+        sky_element.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️"
+    } else if (sky === "rainy") {
+        sky_element.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
+    } else if (sky === "snowy") {
+        sky_element.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+    } else {
+        sky_element.textContent = ""
+    }
+}
+
+
 if (document.readyState !== "loading") {
     getTemp();
     getLandscape();
+    getSky();
 } else {
     document.addEventListener("DOMContentLoaded", getTemp);
     document.addEventListener("DOMContentLoaded", getLandscape);
+    document.addEventListener("DOMContentLoaded", getSky);
 }
 
 
