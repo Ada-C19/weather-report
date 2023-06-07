@@ -24,24 +24,26 @@ const tempChange = () => {
     temperature.textContent = String(state.temp);
 };
 
-const upTemp = () => {
+const upTemp = (event) => {
     state.temp += 1;
-    tempChange();
+    const tempCount = document.querySelector('#tempValue');
+    tempCount.textContent = state.temp;
 };
 
-const downTemp = () => {
+const downTemp = (event) => {
     state.temp -= 1;
-    tempChange();
+    const tempCount = document.querySelector('#tempValue');
+    tempCount.textContent = state.temp;
 };
 
-const registerEventHandlers = () => {
-    tempChange();
+const registerEventHandlers = (event) => {
+    // tempChange();
 
-    const upTemp = document.getElementById('increaseTempControl');
-    increaseTempControl.addEventListener('click', upTemp);
+    const upTempButton = document.querySelector('#increaseTempControl');
+    upTempButton.addEventListener('click', upTemp);
 
-    const downTemp = document.getElementById('decreaseTempControl');
-    decreaseTempControl.addEventListener('click', downTemp);
+    const downTempButton = document.querySelector('#decreaseTempControl');
+    downTempButton.addEventListener('click', downTemp);
 }
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
