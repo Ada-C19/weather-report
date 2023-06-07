@@ -85,3 +85,32 @@ cityNameInput.addEventListener('input', updateCityNameDisplay);
 
 // Initial display update
 updateCityNameDisplay();
+
+//Wave 5
+// Get the sky display element
+const skyDisplay = document.getElementById('sky');
+
+// Function to update the sky display
+function updateSkyDisplay() {
+  const selectedSky = skySelect.value;
+  let sky = '';
+
+  if (selectedSky === 'sunny') {
+    sky = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+  } else if (selectedSky === 'cloudy') {
+    sky = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+  } else if (selectedSky === 'rainy') {
+    sky = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+  } else if (selectedSky === 'snowy') {
+    sky = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+  }
+
+  skyDisplay.textContent = sky;
+}
+
+// Add event listener to the sky select element
+const skySelect = document.getElementById('skySelect');
+skySelect.addEventListener('change', updateSkyDisplay);
+
+// Initial display update
+updateSkyDisplay();
