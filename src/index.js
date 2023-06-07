@@ -20,24 +20,28 @@ const tempChange = () => {
     } 
 
     const temperature = document.getElementById('tempValue');
-    temperature.className = color;
+    // temperature.className = color;
+    temperature.style.color = color;
     temperature.textContent = String(state.temp);
 };
 
 const upTemp = (event) => {
     state.temp += 1;
     const tempCount = document.querySelector('#tempValue');
-    tempCount.textContent = state.temp;
+    // tempCount.textContent = state.temp; 
+    // Here we can call our function from above instead
+    tempChange();
 };
 
 const downTemp = (event) => {
     state.temp -= 1;
     const tempCount = document.querySelector('#tempValue');
-    tempCount.textContent = state.temp;
+    // tempCount.textContent = state.temp;
+    tempChange();
 };
 
 const registerEventHandlers = (event) => {
-    // tempChange();
+    tempChange();
 
     const upTempButton = document.querySelector('#increaseTempControl');
     upTempButton.addEventListener('click', upTemp);
