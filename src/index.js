@@ -97,6 +97,14 @@ skyDropdown.addEventListener("click", (event) => {
     }
 });
 
+const cityInput = document.getElementById("city-input");
+const cityName = document.getElementById("city-name");
+
+cityInput.addEventListener("input", (event) => {
+    cityName.textContent = event.target.value;
+});
+
+
 
 
 
