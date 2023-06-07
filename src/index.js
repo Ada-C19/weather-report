@@ -1,5 +1,7 @@
+
 const state = {
-    tempCount : 0
+    tempCount : 0,
+    city: "Lousiville"
 }
 
 const landscapeImg = { 
@@ -9,23 +11,34 @@ const landscapeImg = {
     "4" : "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
     "5" : "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
 };
+//change header city name from search input
+const updateCityHeader = () => {
+    const inputName = document.getElementById("cityInput").value;
+    const header = document.getElementById("headerCityName");
+    state.city = inputName;
+    header.textContent = state.city;
+}
 
+
+//function updates number of temp 
 const changeTemp = () => {
     const tempContainer = document.getElementById("temp-display");
     tempContainer.textContent = `${state.tempCount}`;
     tempRange()
 }
 
-const addTemp = () => {
+const addTemp = () => { //adds 1 to temp
     state.tempCount += 1;
     changeTemp()
 };
 
-const subtractTemp = () => {
+const subtractTemp = () => { //subtracts 1 from temp
     state.tempCount -= 1;
     changeTemp()
 };
 
+//this function sets ranges for temp and changes color
+//of temp number and prints emojis to landscape
 const tempRange = () => {
     if (state.tempCount <= 49){
         const temp = document.getElementById("temp-display")
@@ -60,12 +73,16 @@ const tempRange = () => {
 }
 
 
-
+//registering all event handlers
 const registerEventHandlers = () => {
 
-    document.getElementById("add-temp").addEventListener("click", addTemp);
-    document.getElementById("sub-temp").addEventListener("click",subtractTemp );
-
+    const addTempButton = document.getElementById("add-temp").addEventListener("click", addTemp);
+    
+    const lowerTempButton = document.getElementById("sub-temp").addEventListener("click",subtractTemp );
+    
+    updateCityHeader();
+    const updateCity = document.getElementById("cityInput");
+    updateCity.addEventListener('input', updateCityHeader)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
