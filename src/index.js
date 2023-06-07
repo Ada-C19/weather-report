@@ -68,4 +68,20 @@ decreaseControl.addEventListener('click', decreaseTemperature);
 updateTemperatureDisplay();
 updateLandscapeDisplay();
 
+//Wave 3
+// Get the city name display element
+const cityNameDisplay = document.getElementById('headerCityName');
 
+// Get the city name input element
+const cityNameInput = document.getElementById('cityNameInput');
+
+// Function to update the city name display
+function updateCityNameDisplay() {
+  cityNameDisplay.textContent = cityNameInput.value;
+}
+
+// Add event listener to the city name input element
+cityNameInput.addEventListener('input', updateCityNameDisplay);
+
+// Initial display update
+updateCityNameDisplay();
