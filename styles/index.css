@@ -13,6 +13,10 @@ font-size: 18px;
 background-color: #1b69f9;
 margin: 2rem;
 }
+.garden__section{
+    background-color: lightcyan;
+    border-radius: 30px;
+}
 
 .header__header {
 color: white;
