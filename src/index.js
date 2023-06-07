@@ -10,10 +10,8 @@ const cityReset = () => {
 
 const loadData = () => {
   //Assign selected HTML elements to attributes of state
-  //Initialize value of header city
   state.cityTextField = document.querySelector("#cityNameInput");
   state.headerCity = document.querySelector("#headerCityName");
-  state.headerCity.textContent = state.cityTextField.value;
   state.cityResetButton = document.querySelector("#cityNameReset");
 };
 
@@ -22,6 +20,11 @@ const registerEventHandlers = (event) => {
   loadData();
   state.cityTextField.addEventListener("input", cityUpdate);
   state.cityResetButton.addEventListener("click", cityReset);
+  //Initialize value of header city
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => (state.headerCity.textContent = state.cityTextField.value)
+  );
 };
 
 const state = {
