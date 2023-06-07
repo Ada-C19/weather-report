@@ -17,7 +17,26 @@ const handleTempChange = (adj) => {
     let currentTemp = parseInt(state.tempValue.innerText);
     let newTemp = currentTemp + adj;
     state.tempValue.innerText = newTemp;
+    //Changed text color based on temp
+    let color, landscape;
+    if (newTemp >= 80) {
+        color = 'red';
+        landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    } else if (newTemp >= 70 && newTemp <= 79) {
+        color = 'orange';
+        landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+    } else if (newTemp >= 60 && newTemp <= 69) {
+        color = 'yellow'
+        landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    } else {
+        landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"; 
+        color = newTemp >= 50 && newTemp <=59 ? 'green': 'teal';
+    }
+    state.tempValue.style.color = color;
+    state.landscape.innerText = landscape;
 }
+
+
 
 const onLoaded = () => {
     loadControls();
@@ -25,3 +44,5 @@ const onLoaded = () => {
 }
 
 document.addEventListener("DOMContentLoaded", onLoaded);
+
+
