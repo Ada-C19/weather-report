@@ -10,10 +10,57 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <header> </header>
-    <main>  </main>
+    <header> 
+        <h1>
+            Weather Report
+        </h1>
+        <h2>
+            Seattle
+        </h2>
+    </header>
+    <main>  
+        <section>
+            <div>
+                <h2>
+                    City Name
+                </h2>
+                <input type="text" id="cityname" name="cityname" placeholder="city">
+                <button id="searchbtn" type="button">Search</button>
+                <button id="resetbtn" type="button">Reset</button>
+            </div>           
+        </section>
+
+        <section>
+            <div>
+                <h2>
+                    Temperature
+                </h2>
+                <button id="upbtn" type="button">⬆️</button>
+                <div id ="temp">100</div>
+                <button id="downbt" type="button">⬇️</button>
+                <button id="tempbtn" type="button">Get Temperature</button>  
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <h2>
+                    Sky
+                </h2>
+                    <form action="/action_page.php">
+                    <label for="sky">Sky Condition:</label>
+                    <select name="sky" id="sky">
+                    <option value="rainy">Rainy</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="Snowy">Snowy</option>
+                    <option value="cloudy">Cloudy</option>
+                    </select>
+            </div>
+        </section>
+        <!-- Ask about making sky and temperature images/colors take up whole background of page -->
+    </main>
     <footer> </footer>
-    
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
