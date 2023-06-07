@@ -1,29 +1,48 @@
 const state = {
     temp: 72, 
-    city: "Seattle"
-}
+    city: "Seattle", 
+    lat: 47.6038321, 
+    long: -122.3300624
+};
 
-const API = /weather-report-proxy-server/routes.py
+const axios = require('axios'); 
+const proxyLocation = "http://127.0.0.1:5000/location";
+const proxyWeather = "http://127.0.0.1:5000/weather";
+
+const convertKtoF = (temp) => {
+    return (temp - 273.15) * (9/5) + 32;
+};
 
 const findCoordinates = () => {
     let latitude, longitude; 
 
-    axios.get(API, {params: {
-        q: document.getElementById('cityName'), 
+    axios.get(proxyLocation, {params: {
+        q: state.city, 
     }})
     .then((response) => {
-        latitude = response.data[0].lat;
-        longitude = response.data[0].lon;
+        state.lat = response.data[0].lat;
+        state.long = response.data[0].lon;
+        getWeather();
     })
     .catch( (error) => {
-        console.log('error in findLatitudeAndLongitude!');
+        console.log('error in findCoordinates!');
       });
-    
-      return {
-        lat: latitude,
-        lon: longitude
-    }
-}
+};
+
+const getWeather = () => {
+    axios.get(proxyWeather, {params: {
+        lat: state.lat,
+        long: state.long
+    }})
+    .then((response) => {
+        const weather = response.data;
+        state.temp = Math.round(convertKtoF(weather.main.temp));
+        updateTempLandscape();
+    })
+    .catch((error) => {
+        console.log("Error getting the weather:", error);
+    });
+};
 
 const increaseTemp = () => {
     state.temp += 1;
@@ -33,7 +52,7 @@ const increaseTemp = () => {
 const decreaseTemp = () => {
     state.temp -= 1;
     updateTemp();
-}
+};
 
 const updateTempLandscape = () => {
     let temp = state.temp;
