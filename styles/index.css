@@ -4,6 +4,8 @@ h2 {
 }
   
 body {
+/* background-image: url('https://media0.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47ebce121o1zbs2i2vnqtv3l9zce0l85937shzehed&ep=v1_gifs_search&rid=giphy.gif&ct=g' );
+background-repeat: repeat; */
 background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
 display: grid;
 grid-template-columns: 1fr 2fr;
@@ -65,3 +67,7 @@ flex-direction: column;
 }
 
 
+.landscape{
+    background-image: url('https://media0.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47ebce121o1zbs2i2vnqtv3l9zce0l85937shzehed&ep=v1_gifs_search&rid=giphy.gif&ct=g' );
+    background-repeat: repeat;
+}
