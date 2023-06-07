@@ -1,15 +1,22 @@
-
 html {
     background: linear-gradient(5deg, rgb(20, 108, 148) 0%, rgb(25, 167, 206) 35%, rgb(175, 211, 226) 100%);
     font-family: monospace;
     border: 10px solid rgb(60, 72, 107);
 }
 
+h1 {
+    font-size: 40px;
+}
+
+header {
+    display: inline-block;
+}
+
 section div {
     border-radius: 29px;
     border-style: solid;
-    border-color: red;
     background-color: white;
+    margin-left: 60px;
 
 }
 
@@ -44,4 +51,23 @@ section div {
 .garden-section {
     display: grid;
     grid-template-rows: 1fr 3fr;
+    margin: 100px;
+}
+
+#garden-title {
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    padding-top: 70px;
+    background-color: transparent;
+    border: none;
+}
+
+.garden-display {
+    background-color: gray;
+    padding-bottom: 40px;
+    padding-top: 80px;
+    align-items: center;
+    font-size: 40px;
+    text-align: center;
 }
