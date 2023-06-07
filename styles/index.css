@@ -10,13 +10,13 @@ h1 {
 
 header {
     display: inline-block;
+    margin-left: 25px
 }
 
 section div {
     border-radius: 29px;
     border-style: solid;
     background-color: white;
-
 }
 
 .outer-grid {
@@ -26,6 +26,7 @@ section div {
     justify-content: space-between;
     grid-row-gap: 24px;
     grid-column-gap: 16px;
+    margin-left: 25px;
 }
 
 .section-title {
@@ -33,7 +34,7 @@ section div {
     font-weight: bold;
     padding-left: 3cqmax;
     font-size: x-large;
-
+    padding-top: 10px;
 }
 
 #output1 {
