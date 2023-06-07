@@ -3,38 +3,49 @@ const state = {
     decreaseTempButton: null,
     tempValue: null,
     temperature: 69,
+    landscape: null,
 };
 
 const loadControls = () => {
     state.increaseTempButton = document.getElementById("increaseTempControl");
     state.decreaseTempButton = document.getElementById("decreaseTempControl");
     state.tempValue = document.getElementById("tempValue");
+    state.landscape = document.getElementById("landscape");
 };
 
 const handleIncreaseTempClicked = () => {
     ++state.temperature;
     state.tempValue.textContent = state.temperature;
-    setTempColor();
+    setTempDisplay();
 };
 
 const handleDecreaseTempClicked = () => {
     --state.temperature;
     state.tempValue.textContent = state.temperature;
-    setTempColor();
+    setTempDisplay();
 };
 
-const setTempColor = () => {
-    let colorIdentifier = Math.floor(state.temperature / 10) 
-    state.tempValue.classList.toggle('teal', colorIdentifier <= 4);
-    state.tempValue.classList.toggle('green', colorIdentifier === 5);
-    state.tempValue.classList.toggle('yellow', colorIdentifier === 6);
-    state.tempValue.classList.toggle('orange', colorIdentifier === 7);
-    state.tempValue.classList.toggle('red', colorIdentifier >= 8);
+const setTempDisplay = () => {
+    let displayIdentifier = Math.floor(state.temperature / 10) 
+    state.tempValue.classList.toggle('teal', displayIdentifier <= 4);
+    state.tempValue.classList.toggle('green', displayIdentifier === 5);
+    state.tempValue.classList.toggle('yellow', displayIdentifier === 6);
+    state.tempValue.classList.toggle('orange', displayIdentifier === 7);
+    state.tempValue.classList.toggle('red', displayIdentifier >= 8);
+    
+    const landscapeTexts = [
+        '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲',
+        '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃',
+        '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷',
+        '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂'
+    ];
+    let displayIndex = displayIdentifier >= 5 ? displayIdentifier - 5 : 0;
+    state.landscape.textContent = landscapeTexts[displayIndex];
 }
 
 const registerEventHandlers = () => {
     loadControls();
-    setTempColor();
+    setTempDisplay();
     state.increaseTempButton.addEventListener("click", handleIncreaseTempClicked);
     state.decreaseTempButton.addEventListener("click", handleDecreaseTempClicked);
 };
