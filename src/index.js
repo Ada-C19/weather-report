@@ -3,8 +3,16 @@ const state = {
 }
 
 const updateTemp = () => {
-    const 
+    const tempElement = document.querySelector("#temp");
+    tempElement.textContent = `${state.temp}`;
 }
-state.temp += 1
-const changeTemp = document.querySelector("#temp")
-temp.textContent = `{${state.temp}}`
+
+const increaseTemp = document.querySelector("#upTempControl")
+
+const upTemp = () => {
+    const changeTemp = document.querySelector("#changeTemp");
+    state.temp += 1;
+    updateTemp();
+}
+
+increaseTemp.addEventListener("click",upTemp)
