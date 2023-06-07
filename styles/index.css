@@ -10,14 +10,21 @@ section{
     width: 50%;
     padding:25px;
     background-color: whitesmoke;
+    border-radius: 10px;
 }
 
 .temp_box{
-
+    width: 30%;
+    padding:25px;
+    background-color: whitesmoke;
+    border-radius: 10px;
 }
 
 .sky_box{
-    
+    width: 30%;
+    padding:25px;
+    background-color: whitesmoke;
+    border-radius: 10px;
 }
 .garden_box{
 
