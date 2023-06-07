@@ -48,71 +48,57 @@ const getLandscape = () => {
     }
 }
 
-const button3 = document.getElementById("sky_button");
-button3.addEventListener("click", () => {
-    sky_dropdown.classList.toggle("show")
-})
+const skyDropdown = document.getElementById("sky_dropdown");
 
-const sunnyWeather = document.getElementById("sunny");
-sunnyWeather.addEventListener("click", () => {
-    sky = "sunny";
-    getSky();
-    sky_dropdown.classList = ("sky_dropdown")
-})
-
-const cloudyWeather = document.getElementById("cloudy");
-cloudyWeather.addEventListener("click", () => {
-    sky = "cloudy";
-    getSky();
-    sky_dropdown.classList = ("sky_dropdown")
-})
-
-const rainyWeather = document.getElementById("rainy");
-rainyWeather.addEventListener("click", () => {
-    sky = "rainy";
-    getSky();
-    sky_dropdown.classList = ("sky_dropdown")
-})
-
-const snowyWeather = document.getElementById("snowy");
-snowyWeather.addEventListener("click", () => {
-    sky = "snowy";
-    getSky();
-    sky_dropdown.classList = ("sky_dropdown")
-})
+// add click event listeners for each sky option
+skyDropdown.addEventListener("click", (event) => {
+    if (event.target.tagName === 'A') {
+        sky = event.target.id;
+        getSky();
+    }
+});
 
 const getSky = () => {
-    const sky_element = document.getElementById("sky");
-    if (sky === "sunny") {
-        sky_element.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️"
-    } else if (sky === "cloudy") {
-        sky_element.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️"
-    } else if (sky === "rainy") {
-        sky_element.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
-    } else if (sky === "snowy") {
-        sky_element.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
-    } else {
-        sky_element.textContent = ""
+    const skyElement = document.getElementById('sky');
+    switch (sky) {
+        case 'sunny':
+            skyElement.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+            break;
+        case 'cloudy':
+            skyElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+            break;
+        case 'rainy':
+            skyElement.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+            break;
+        case 'snowy':
+            skyElement.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+            break;
+        default:
+            skyElement.textContent = '';
+            break;
     }
 }
 
+const skyButton = document.getElementById("sky_button");
 
-if (document.readyState !== "loading") {
-    getTemp();
-    getLandscape();
-    getSky();
-} else {
-    document.addEventListener("DOMContentLoaded", getTemp);
-    document.addEventListener("DOMContentLoaded", getLandscape);
-    document.addEventListener("DOMContentLoaded", getSky);
-}
-
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const cityName = document.getElementById('city-name');
-    const cityInput = document.getElementById('city-input');
-    
-    cityInput.addEventListener('input', () => {
-        cityName.textContent = cityInput.value;
-    });
+skyButton.addEventListener("click", () => {
+    if (skyDropdown.classList.contains('show')) {
+        skyDropdown.classList.remove('show');
+    } else {
+        skyDropdown.classList.add('show');
+    }
 });
+
+skyDropdown.addEventListener("click", (event) => {
+    if (event.target.tagName === 'A') {
+        sky = event.target.id;
+        getSky();
+        skyDropdown.classList.remove('show'); 
+    }
+});
+
+
+
+
+
+
