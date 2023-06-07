@@ -8,12 +8,33 @@ const displayCityText = () => {
     txtBox.value = "";
 }
 
+const temperatureState = {
+    degrees: 67
+}
+
+const increaseTemp = (event) => {
+    temperatureState.degrees += 1;
+    const degrees = document.querySelector('#degrees');
+    degrees.textContent = temperatureState.degrees;
+};
+
+const decreaseTemp = (event) => {
+    temperatureState.degrees -= 1;
+    const degrees = document.querySelector('#degrees');
+    degrees.textContent = temperatureState.degrees;
+};
+
 // Function for all Event Handlers
-const registerEventHandlers = () => {
+const registerEventHandlers = (event) => {
     // Display city text from input box
     buttonCity.addEventListener('click', displayCityText)
+
+    const upButton = document.querySelector('#up');
+    upButton.addEventListener("click", increaseTemp);
+
+    const downButton = document.querySelector('#down');
+    downButton.addEventListener("click", decreaseTemp);
 }
 
 // Triggers Event Handlers:
 document.addEventListener('DOMContentLoaded', registerEventHandlers)
-

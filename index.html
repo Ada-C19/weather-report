@@ -15,12 +15,16 @@
     <header>
         <h1>Weather Report</h1>
         <h4>For the lovely city of </h4>
-        <p class="text-output" id="output1"></p>
     </header>
     <section class="outer-grid">
         <section>
             <div class="section-title" id="temperature-section">
                 Temperature
+                <div class="temperature">
+                    <button id="up">🔼</button>
+                    <h3 id="degrees">67</h3>
+                    <button id="down">🔽</button>
+                </div>
             </div>
             <div class="section-title" id="sky-section">
                 Sky
@@ -37,7 +41,6 @@
                     <label for="city-name">City Name
                     </label>
                     <input type="text" id="city-name" name="City">
-                    <input type="btn" id="buttonCity" value="Submit">
                 </form>
             </div>
         </section>
