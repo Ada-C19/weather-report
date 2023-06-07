@@ -1,7 +1,7 @@
 
 const state = {
     tempCount : 0,
-    city: "Lousiville"
+    city: "Seattle"
 }
 
 const landscapeImg = { 
@@ -18,6 +18,8 @@ const skyImg = {
     "2" : "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
     "3" : "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 };
+
+
 //change header city name from search input
 const updateCityHeader = () => {
     const inputName = document.getElementById("cityInput").value;
@@ -46,8 +48,8 @@ const updateSky = () => {
       skyColor = 'snowy';
     }
     skyContainer.textContent = sky;
-    const gardenContent = document.getElementById('gardenContent');
-    gardenContent.classList = `garden__content ${skyColor}`;
+    // const gardenContent = document.getElementById('gardenContent');
+    // gardenContent.classList = `garden__content ${skyColor}`;
   };
 
 //function updates number of temp 
@@ -115,7 +117,7 @@ const registerEventHandlers = () => {
     updateCity.addEventListener('input', updateCityHeader)
 
     updateSky();
-    const skySelector = document.getElementById("sky-container");
+    const skySelector = document.getElementById("sky-menu");
     skySelector.addEventListener("change",updateSky);
 };
 
