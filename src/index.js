@@ -3,21 +3,41 @@ const state = {
     city: "Seattle"
 }
 
+const API = /weather-report-proxy-server/routes.py
+
+const findCoordinates = () => {
+    let latitude, longitude; 
+
+    axios.get(API, {params: {
+        q: document.getElementById('cityName'), 
+    }})
+    .then((response) => {
+        latitude = response.data[0].lat;
+        longitude = response.data[0].lon;
+    })
+    .catch( (error) => {
+        console.log('error in findLatitudeAndLongitude!');
+      });
+    
+      return {
+        lat: latitude,
+        lon: longitude
+    }
+}
+
 const increaseTemp = () => {
     state.temp += 1;
     updateTemp();
 };
 
-// this is new
 const decreaseTemp = () => {
     state.temp -= 1;
     updateTemp();
 }
 
-const updateTemp = () => {
+const updateTempLandscape = () => {
     let temp = state.temp;
     let color = "above80";
-    //added here
     let landscapeEmojis = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
 
     if (temp >= 80) {
@@ -54,7 +74,7 @@ const updateCity = () => {
 }
 
 const registerEventHandlers = () => {
-    updateTemp();
+    updateTempLandscape();
     const increaseButton = document.getElementById("increase_temp");
     increaseButton.addEventListener("click", increaseTemp);
 
