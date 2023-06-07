@@ -2,3 +2,10 @@
     color: gray;
     font-size: 2em;
 }
+
+#temp-count.red {color: red;}
+#temp-count.orange {color: orange;}
+#temp-count.yellow {color: yellow;}
+#temp-count.green {color: green;}
+#temp-count.teal {color: teal;}
+
