@@ -5,6 +5,7 @@
 body {
     background-color: darkblue;
     color: whitesmoke;
+    display: grid;
 }
 
 #flex-container {
@@ -13,19 +14,26 @@ body {
 }
 
 h1, h2 {
-    color: whitesmoke;
     font-family: cursive;
+    font-size: xx-large;
 }
+
 
 #sidebar {
     width: 30%;
+    justify-content: space-between;
+    flex-direction: column;
+    
 }
 
 #temperature, #sky, #city {
-    background-color:darkgray;
-    margin-top: 10px;
-    padding: 10px;
+    color: blue;
+    background-color:rgb(225, 248, 248);
+    margin-top: 15px;
+    padding: 15px;
     border-radius: 15%;
+    display: block;
+    
 }
 
 #alignment {
@@ -45,11 +53,43 @@ button {
 }
 
 #weather-garden {
-    width: 60%;
+    width: 30%;
+    margin-right: 20%;
+    height: 60%;
+    color: wheat;
+    font-size: xx-large;
+    
 }
 
 #temp-display {
     color: teal;
     font-size: xx-large;
     text-align: center;
+}
+
+#sky-emoji {
+    height: auto; 
+    font-size: xx-large;
+    margin-top: 15px;
+    margin-bottom: 100px;
+    white-space: nowrap;
+}
+
+/* Updated CSS for garden emoji container */
+#garden-emoji {
+    font-size: 2.5rem;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    white-space: nowrap;
+}
+#garden-sky {
+    background-color:rgb(225, 248, 248);
+    margin-top: 55px;
+    padding: 15px;
+    border-radius: 15%;
+    height: auto;
+    width: 35rem;
+    font-size: 1.5rem;
+    
 }
