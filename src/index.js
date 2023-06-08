@@ -1,5 +1,6 @@
-import 'regenerator-runtime/runtime';
-import axios from "axios";
+//import 'regenerator-runtime/runtime';
+//import axios from 'axios';
+
 
 const state = {
     city: 'Seattle',
@@ -12,6 +13,9 @@ const convertKtoF = (temp) => {
     return (temp - 273.15) * (9 / 5) + 32;
 };
 
+const temptemp = () => {
+    temp = state.temp;
+}
 
 const findLatAndLong = () => {
     //let lat, long;
@@ -30,42 +34,6 @@ const findLatAndLong = () => {
         .catch((error) => {
             console.log('Error finding the latitude and longitude:', error.response);
         });
-};
-
-const landscape = {
-    summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
-    spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-    autumn: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-    winter: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-}
-
-const formatTempAndGarden = (temperature) => {
-    let temperature = state.temp;
-    let landscape = landscape.summer;
-    let color = red;
-
-    if (temperature <= 49) {
-        landscape = landscape.winter;
-        color = 'teal';
-    } else if (temperature <= 59) {
-        landscape = landscape.winter;
-        color = 'green';
-    } else if (temperature <= 69) {
-        landscape = landscape.autumn;
-        color = 'yellow'
-    } else if (temperature <= 79) {
-        landscape = landscape.spring;
-        color = 'orange';
-    } else {
-        landscape = landscape.summer;
-        color = 'red';
-    }
-
-    const newLandscape = document.getElementById('landscape');
-    newLandscape.textContent = landscape;
-    const temperature = document.getElementById('real-time-temp');
-    temperature.className = color;
-    temperature.textContent = String(state.temp);
 };
 
 
@@ -87,22 +55,67 @@ const getWeather = () => {
         });
 };
 
-const changeTempUp = () => {
-    state.temp += 1;
+
+const landscapeType = {
+    summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
+    spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+    autumn: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+    winter: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
 }
 
-const changeTempDown = () => {
-    state.temp -=1;
+const formatTempAndGarden = () => {
+
+    let temp = state.temp;
+    let landscape = landscapeType.summer;
+    let color = 'red';
+
+    if (temp <= 49) {
+        landscape = landscapeType.winter;
+        color = 'teal';
+    } else if (temp <= 59) {
+        landscape = landscapeType.winter;
+        color = 'green';
+    } else if (temp <= 69) {
+        landscape = landscapeType.autumn;
+        color = 'yellow'
+    } else if (temp <= 79) {
+        landscape = landscapeType.spring;
+        color = 'orange';
+    } else {
+        landscape = landscapeType.summer;
+        color = 'red';
+    }
+
+    const newLandscape = document.getElementById('landscape');
+    newLandscape.textContent = landscape;
+    const temperature = document.getElementById('real-time-temp');
+    temperature.className = color;
+    temperature.textContent = String(state.temp);
+    console.log("garden poked");
+};
+
+
+const handleTempUp = () => {
+    state.temp += 1;
+    formatTempAndGarden();
+}
+
+const handleTempDown = () => {
+    state.temp -= 1;
+    formatTempAndGarden();
 }
 
 const registerEventHandlers = () => {
+    formatTempAndGarden();
+
     const realTimeTemp = document.getElementById('real-time-temp');
-    realTimeTemp.addEventListener('click', findLatAndLong);
+    realTimeTemp.addEventListener('click', temptemp);
 
     const changeTempUp = document.getElementById("temp-button-up");
-    changeTempUp.addEventListener("click", changeTempUp);
+    changeTempUp.addEventListener("click", handleTempUp);
 
     const changeTempDown = document.getElementById("temp-button-down");
-    changeTempDown.addEventListener("click", changeTempDown);
+    changeTempDown.addEventListener("click", handleTempDown);
+    console.log("handler initiated");
 };
     document.addEventListener("DOMContentLoaded", registerEventHandlers);
