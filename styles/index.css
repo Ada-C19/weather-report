@@ -2,12 +2,42 @@
     display: inline
 }
 
-div {
-    display:flex;
-    text-align:left;
-    background-color: aquamarine;
-    flex-direction: column;
-    height: auto;
-    width: auto
+header {
+    display: flex;
+    background-color: rgb(69, 157, 212);
+    color: white;
+    flex-wrap: nowrap;
 }
 
+#tempsection {
+    display: flex;
+}
+
+#changeTemp {
+    display:flex;
+    text-align:center;
+    background-color: white;
+    flex-direction: column;
+    height: auto;
+    width: 3rem;
+}
+
+#realTimeTemp {
+    background-color: rgb(69, 157, 212);
+    font-size: medium;
+    color:white;
+    margin: 1em;
+}
+
+#temp {
+    color: rgb(200, 91, 51);
+    font-size: xx-large;
+}
+
+body {
+    background-color: rgb(69, 157, 212);
+}
+
+h2,h3,label {
+    color: white;
+}
