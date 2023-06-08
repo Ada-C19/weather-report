@@ -1,4 +1,28 @@
-"use strict";
+
+const getLocation = (location) => {
+    const url ='http://127.0.0.1:5000/location';
+
+    return axios.get(url, {params:{q:location}})
+    .then((response)=>{
+
+    let latitude = response.data[0].lat;
+    let longitude = response.data[0].lon
+    console.log("working")
+    console.log(latitude)
+    return {latitude:latitude, longitude: longitude};
+
+
+    })
+    .catch( (error) => {
+        console.log('error in findLatitudeAndLongitude!');
+      });
+    
+ }
+ getLocation("Seattle")
+
+
+
+
 
 // states
 const state = {
