@@ -1,3 +1,4 @@
+// elements
 let temperatureLabel = null;
 let temperatureIncreaseButton = null;
 let temperatureDecreaseButton = null;
@@ -7,15 +8,18 @@ let landscapeImage = null;
 let cityNameInput = null;
 let cityNameResetButton = null;
 let cityNameValue = null;
+
+// values
 let temperatureValue = 72;
 let defaultCityName = 'Denver';
 let cityName = defaultCityName;
+
 
 const showTemp = () => {
     temperatureLabel.textContent = temperatureValue;
 }; 
 
-const showCity= () => {
+const showCity = () => {
     cityNameLabel.textContent = cityName;
     cityNameInput.value = cityName;
 }; 
@@ -59,6 +63,28 @@ const updateTemperature = () => {
     setTempLabelColor(temperatureValue);
 };
 
+const getCoordinates = async (placeName) => {
+    const response = await axios.get('http://127.0.0.1:5000/location', {
+        params: {
+            q: placeName,
+        },
+    });
+
+    const { lat: latitude, lon: longitude } = response.data[0];
+    return { latitude, longitude };
+}
+
+const getWeather = async (coordinates) => {
+    const response = await axios.get('http://127.0.0.1:5000/weather', {
+        params: {
+            lat: coordinates["latitude"],
+            lon: coordinates["longitude"],
+        },
+    });
+    return response;
+};
+
+
 const loadControls = () => {
     temperatureLabel = document.getElementById("tempValue");
     temperatureDecreaseButton = document.getElementById("decreaseTempControl");
@@ -83,7 +109,6 @@ const handleTemperatureIncreaseButtonClick = () => {
 
 const handleCityNameInputChange = () => {
     cityNameLabel.textContent = cityNameInput.value;
-
 };
 
 const handleCityNameResetButton = () => {
@@ -91,8 +116,11 @@ const handleCityNameResetButton = () => {
     cityNameInput.value = defaultCityName;
 };
 
-const handleGetRealtimeTemperatureButtonClick = () => {
-
+const handleGetRealtimeTemperatureButtonClick = async () => {
+    const coordinates = await getCoordinates(cityName);
+    const temperature = await getWeather(coordinates);
+    temperatureValue = temperature;
+    updateTemperature();
 };
 
 const registerEvents = () => {
@@ -100,7 +128,7 @@ const registerEvents = () => {
     temperatureIncreaseButton.addEventListener("click", handleTemperatureIncreaseButtonClick);
     getRealtimeTemperatureButton.addEventListener("click", handleGetRealtimeTemperatureButtonClick);
     cityNameResetButton.addEventListener("click", handleCityNameResetButton);
-    cityNameInput.addEventListener("input", handleCityNameInputChange)
+    cityNameInput.addEventListener("input", handleCityNameInputChange);
 };
 
 const onLoad = () => {
