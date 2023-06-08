@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/index.css">
   </head>
+
   <body>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
@@ -20,11 +21,11 @@
         <span id="headerCityName">Seattle</span></span>
     </header>
 
-    <section class="temperature__section">
-      <h2 id="temperature-id">Temperature</h2>
+    <section id="temperature-id">
+      <h2>Temperature</h2>
       <div class="temperature__content">
         <div class="temperature__controls">
-          <button type="button" id="increaseTempControl">⬆️</button>
+          <button id="increaseTempControl">⬆️</button>
           <span id="tempValue" class="orange">72</span>
           <button type="button" id="decreaseTempControl">⬇️</button>
         </div>
@@ -42,22 +43,22 @@
       </select>
 
     </section>
-    <section class="city-name__section">
-      <h2 id="city-name-id">City Name</h2>
+    <section id="city-name-id">
+      <h2>City Name</h2>
       <input type="text" id="cityNameInput" value="Seattle">
-      <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
+      <button type="submit" id="cityNameReset">Reset</button>
     </section>
 
-    <section class="garden__section">
-      <h2 id="weather-garden-id">Weather Garden</h2>
+    <section id="weather-garden-id">
+      <h2>Weather Garden</h2>
       <div id="gardenContent" class="garden__content sunny">
         <div id="sky">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
         <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
       </div>
     </section>
 
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- <script src="./src/index.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script> -->
   </body>
 </html>
 

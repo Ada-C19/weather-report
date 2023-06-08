@@ -46,31 +46,31 @@ const tempRange = () => {
     if (state.tempCount <= 49){
         const temp = document.getElementById("temperature-id")
         temp.className="teal";
-        const landscape = document.getElementById("landscape-container")
+        const landscape = document.getElementById("weather-garden-id")
         landscape.textContent = landscapeEmojis["5"];
     }
     else if (state.tempCount <= 59 && state.tempCount >= 50){
         const temp = document.getElementById("temperature-id")
         temp.className="green";
-        const landscape = document.getElementById("landscape-container")
+        const landscape = document.getElementById("weather-garden-id")
         landscape.textContent = landscapeEmojis["4"];
     }
     else if (state.tempCount <= 69 && state.tempCount >= 60){
         const temp = document.getElementById("temperature-id")
         temp.className="yellow";
-        const landscape = document.getElementById("landscape-container")
+        const landscape = document.getElementById("weather-garden-id")
         landscape.textContent = landscapeEmojis["3"];
     }
     else if (state.tempCount >=70 && state.tempCount <= 79){
         const temp = document.getElementById("temperature-id")
         temp.className="orange";
-        const landscape = document.getElementById("landscape-container")
+        const landscape = document.getElementById("weather-garden-id")
         landscape.textContent = landscapeEmojis["2"];
     }
     else if (state.tempCount >= 80){
         const temp = document.getElementById("temperature-id")
         temp.className ="red";
-        const landscape = document.getElementById("landscape-container")
+        const landscape = document.getElementById("weather-garden-id")
         landscape.textContent = landscapeEmojis["1"];
     }
 }
@@ -81,22 +81,22 @@ const registerEventHandlers = () => {
 // document keyword grabs everything in index.html
 // then you run func on document called querySelector
 // then you are grabbing the id of #increaseTempControl
-    const upTempArrow = document.querySelector("#increaseTempControl");
-    const downTempArrow = document.querySelector("#decreaseTempControl");
+    const upTempArrow = document.getElementById("#increaseTempControl").addEventListener("click", increaseTemperature);
+    const downTempArrow = document.getElementById("#decreaseTempControl").addEventListener("click", decreaseTemperature);
 
 // upTempArrow watches for a click
 // set a call back function that handles the click event
 // the event that the event listener is watching for is a click event
 // you can change click to hover, mouse, etc. 
-    upTempArrow.addEventListener('click', (event) => {
-        console.log({ event, upTempArrow })
-    });
+    // upTempArrow.addEventListener('click', (event) => {
+    //     console.log({ event, upTempArrow })
+    // });
 
-    downTempArrow.addEventListener('click', (event) => {
-        console.log({ event, downTempArrow })});
+    // downTempArrow.addEventListener('click', (event) => {
+    //     console.log({ event, downTempArrow })});
     
-    updateCityHeader():
-    const updateCity = document.getElementById("cityInput");
+    updateCityHeader();
+    const updateCity = document.getElementById("cityNameInput");
     updateCity.addEventListener('input', updateCityHeader)
     };
 
