@@ -1,3 +1,5 @@
+// const { default: axios } = require('axios');
+
 // const so 72 is not hard coded, used in increaseTemp & decreaseTemp functions
 const tempValue = document.getElementById('tempValue');
 
@@ -19,22 +21,11 @@ const landscapeEmojis = {
 };
 
 const skyEmojis = {
-    "0" : "add emoji here",
-    "1": "add emji here too",
-    "2" : "finding these takes a little time",
-    "3" : "so put it off till it's all working"
+    "0" : "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    "1": "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    "2" : "🌧🌈🌧💧🌈🌈💧🌧🌈🌧",
+    "3" : "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 };
-
-
-// DO NOT NEED ANYMORE, BUT LEAVING FOR REVIEW
-// functions to update the number on temp gauge
-// const changeTemperature = () => {
-//     const tempContainer = document.getElementById("temperature-id");
-//     tempContainer.textContent = `${state.tempCount}`;
-//     tempRange()
-// }
-
-
 
 // add 1 degree to temp
 // had to transform str to int to +1 properly, otherwise it was 721
@@ -93,7 +84,49 @@ const tempRange = () => {
         landscape.textContent = landscapeEmojis["1"];
     }
 }
+// function to get city name
+// const inputElement = document.getElementById("cityNameInput")
 
+// function for calling APIs
+// const searchLocation = () => {
+//     const axios = require('axios');
+//     const key = process.env['key'];
+
+//     axios
+//     .get('http://127.0.0.1:5000/location', {
+//         params: {
+//             q: state.cityName,
+//         },
+//     })
+//     .then((response) => {
+//     console.log('success!' + JSON.stringify(response.data[0]));
+//     state.late = response.data[0].lat;
+//     state.lon = response.data[0].lon;
+//     searchTemperature();
+//         })
+//     .catch((error) => {
+//         console.log('searchLocation error: ' +
+//         error.response);
+//     });
+// };
+
+// const searchTemperature = () => {
+//     axios
+//     .get('http://localhost:5000/weather', {
+//         params: {
+//         lat: state.lat,
+//         lon: state.lon,
+//         },
+//     })
+//     .then((response) => {
+//         console.log('success!' + JSON.stringify(response.data.current.temp));
+//         state.temp = convertKtoC(response.data.current.temp);
+//         changeLandscapeTemp();
+//     })
+//     .catch((error) => {
+//         console.log('searchTemperature error: ' + error.response);
+//     });
+// };
 
 const registerEventHandlers = () => {
 
@@ -105,13 +138,6 @@ downTempArrow.addEventListener("click", decreaseTemperature);
 
 const upTempArrow = document.getElementById("increaseTempControl");
 upTempArrow.addEventListener("click", increaseTemperature);
-
-
-// NOTE FOR CHAINED EVENTS BELOW: YOU CAN'T PULL OUT/LOOK AT 1 SPECIFIC EVENT AT A TIME
-// Because you are storing in memory you can't grab individual events, chaining can be problematic for this reason
-    // const upTempArrow = document.getElementById("#increaseTempControl").addEventListener("click", increaseTemperature);
-    // const downTempArrow = document.getElementById("#decreaseTempControl").addEventListener("click", decreaseTemperature);
-
     
     // updateCityHeader();
     // const updateCity = document.getElementById("cityNameInput");
@@ -122,3 +148,13 @@ upTempArrow.addEventListener("click", increaseTemperature);
 registerEventHandlers();
 
 
+
+// registercityName and change location functions
+// inputElement.addEventListener("input", function () {
+//     const cityName = inputElement.tempValue;
+//     const cityNameInput = document.querySelector("h3");
+//     cityName.textContent = "For the lovely city of " + cityName;
+
+// const changeLocation = document.querySelector('cityNameInput');
+// changeLocation.addEventListener('click', searchLocation);
+// });
