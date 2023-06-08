@@ -31,7 +31,7 @@ body{
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: 2px solid gray;
     border-radius: 40px;
-    height: auto;
+    height: 800px;
     
 }
 
@@ -75,45 +75,41 @@ header{
 }
 #up{
     border-radius: 50px;
-    padding: 5px;
+    padding: 10px;
     border: none;
     color: rgb(83, 80, 80);
+    background: linear-gradient(to bottom, rgb(255, 140, 0), green);
 
 
 
 }
 #down{
     border-radius: 50px;
-    padding: 5px;
+    padding: 10px;
     border: none;
     color: rgb(83, 80, 80);
+    background: linear-gradient(to bottom, rgb(0, 166, 255), green);
 
 
 
 
 }
 #realtime{
-    flex-direction: flex;
-    direction: ;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 15px;
-    padding: 5px;
+    margin-left: 20px;
+    padding: 10px;
     border-radius: 10px;
     border: none;
-    color: rgb(83, 80, 80);
+    background-color: rgb(81, 218, 226);
 
 
 
 }
 #realtime:hover{
-    background-color: yellow;
+    background-color: rgb(20, 158, 183)
+
 }
 
-/* Sky */
+/* Sky Block */
 .sky{
     border: 1px solid;
     width: 300px;
@@ -127,9 +123,14 @@ header{
 }
 
 #skystatus{
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
     color: rgb(83, 80, 80);
+    background-color: rgb(81, 218, 226);
+
+
+
+
 
 
 }
@@ -156,25 +157,31 @@ header{
     height: 150px;
     color: wheat;
 
+
+
 }
 
 #searchbar, #reset {
     border-radius: 10px;
-    padding: 5px;
+    padding: 10px;
     border: none;
 }
 #reset{
     margin-left: 30px;
     border: none;
-    color: rgb(83, 80, 80);
+    background-color: rgb(81, 218, 226);
 
 
+}
+
+#reset:hover{
+    background-color: gray;
 }
 
 /* Weather Garden */
 .garden{
     border: 1px solid;
-    width: 500px;
+    width: 600px;
     background-color: aqua;
     border-radius: 5%;
     padding: 20px;
@@ -182,9 +189,11 @@ header{
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    background-color: rgb(97, 205, 205);
+    background: linear-gradient(to bottom, rgb(0, 166, 255), rgb(127, 210, 127));
+    /* background-color: rgb(97, 205, 205); */
     border: none;
     border-radius: 40px;
+    font-size: large;
 
 
 }
@@ -192,7 +201,8 @@ header{
 #groundemoji{
     margin-top: 20px;
     font-size: xx-large;
-    background-color: rgb(97, 205, 205);
+    
+    /* background-color: rgb(97, 205, 205); */
     border: 2px solid gray;
     border-top-width: 0;
     border-radius: 5px;
@@ -201,10 +211,12 @@ header{
 
 .temperature, .sky, .city_name{
     margin-left: 150px;
-    background-color: rgb(47, 116, 116);
+    /* background-color: rgb(47, 116, 116); */
+    background: linear-gradient(to bottom, rgb(0, 166, 255), rgb(127, 210, 127));
     border: 1px solid gray;
     width: 400px;
     border-radius: 40px;
+    font-size: large;
 
    
 }
