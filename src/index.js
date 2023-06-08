@@ -1,6 +1,4 @@
 "use strict";
-import 'regenerator-runtime/runtime';
-import axios from 'axios';
 
 const state = {
 city: 'Seattle',
@@ -23,8 +21,8 @@ axios
     })
     .then((response) => {
         console.log(response.data);
-        state.lat = response.data[0].lat;
-        state.long = response.data[0].long;
+        state.lat = response.data.lat;
+        state.long = response.data.long;
         getWeather();
     })
     .catch((error) => {
@@ -55,14 +53,13 @@ const updateCityName = () => {
     const headerCityName = document.getElementById('headerCityName');
     state.city = inputName;
     headerCityName.textContent = state.city;
-    };
+};
     
-    const resetCityName = () => {
+const resetCityName = () => {
     const cityNameInput = document.getElementById('cityNameInput');
-    cityNameInput.value = 'Seattle';
+    cityNameInput.value = 'Seattle'; 
     updateCityName();
-    };
-
+};
 
 const increaseTemp = () => {
     state.temp += 1;
@@ -72,7 +69,6 @@ const decreaseTemp = () => {
 };
 
 const registerEventHandlers = () => {
-    formatTempAndGarden();
 
     updateCityName();
     const cityNameInput = document.getElementById('cityNameInput');
