@@ -103,3 +103,24 @@ cityNameReset.addEventListener("click", () => {
   const defaultOption = skySelect.value;
   updateSky(defaultOption);
 
+// Optional:
+// add color change to the background if the temperature is at a certain level.
+
+const tempValue = document.getElementById('tempValue');
+const body = document.body;
+
+tempValue.addEventListener('input', () => {
+  const temperature = parseInt(tempValue.textContent);
+
+  if (temperature >= 80) {
+    body.style.backgroundColor = 'red';
+  } else if (temperature >= 60 && temperature < 40) {
+    body.style.backgroundColor = 'orange';
+  } else if (temperature >= 40 && temperature < 32) {
+    body.style.backgroundColor = 'yellow';
+  } else if (temperature >= 32 && temperature < 0) {
+    body.style.backgroundColor = 'green';
+  } else {
+    body.style.backgroundColor = 'blue';
+  }
+});
