@@ -1,6 +1,6 @@
 
 const state = {
-    tempCount : 0,
+    tempCount : 70,
     city: "Seattle"
 }
 
@@ -18,6 +18,15 @@ const skyImg = {
     "2" : "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
     "3" : "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 };
+
+//reset button changes city header and search to seattle
+const resetCityName = () => {
+    const header = document.getElementById("headerCityName");
+    const citySearchBar = document.getElementById("cityInput")
+    state.city = "Seattle";
+    header.textContent = state.city;
+    citySearchBar.value = state.city;
+}
 
 
 //change header city name from search input
@@ -119,6 +128,10 @@ const registerEventHandlers = () => {
     updateSky();
     const skySelector = document.getElementById("sky-menu");
     skySelector.addEventListener("change",updateSky);
+
+    const resetNameButton = document.getElementById("reset");
+    resetNameButton.addEventListener("click", resetCityName)
 };
+
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
