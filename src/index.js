@@ -50,3 +50,9 @@ axios
     });
 };
 
+const increaseTemp = () => {
+    state.temp += 1;
+};
+const decreaseTemp = () => {
+    state.temp -= 1;;
+};
