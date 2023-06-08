@@ -66,3 +66,11 @@ footer{
 .blue {
     color: blue;
 }
+
+.city {
+    font-style: oblique;
+}
+.city::before, .city::after {
+    content: " 💝 ";
+}
+

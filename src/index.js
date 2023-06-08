@@ -21,7 +21,7 @@ const checkTemp = function(tempValue) {
     }
 };
 
-const increaseButton =document.getElementById("topButton");
+const increaseButton = document.getElementById("topButton");
 increaseButton.addEventListener("click", () => {
     tempValueInt++;
     tempValue.innerHTML = tempValueInt;
@@ -33,5 +33,20 @@ decreaseButton.addEventListener("click", () => {
     tempValueInt--;
     tempValue.innerHTML = tempValueInt;
     checkTemp(tempValue);
-})
+});
 
+// const citySearch = document.getElementById("siteSearch").value;
+
+// goButton.addEventListener("click", () => {
+//     cityHolder = document.getElementById("siteSearch").value;
+//     headerLocation.textContent = cityHolder;
+// });
+
+
+const headerLocation = document.getElementById("cityLocation");
+const goButton = document.getElementById("citySearch");
+let cityHolder = '';
+goButton.addEventListener("click", () => {
+    cityHolder = document.getElementById("siteSearch").value;
+    headerLocation.textContent = cityHolder;
+});
