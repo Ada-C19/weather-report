@@ -58,3 +58,26 @@ const registerEventHandlers = (event) => {
     })
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
+
+
+const axios = require('axios');
+const key = process.env['key'];
+
+axios
+.get('http://127.0.0.1:5000/location', {
+    params: {
+        q: state.city,
+    },
+})
+.then((response) => {
+    console.log('sucess!' +
+    JSON.stringify(response.data[0]));
+    state.lat = response.data[0].lat;
+    state.lon = response.data[0].lon;
+    changeCity();
+    searchTemperature();
+})
+.catch((error) => {
+    console.log('searchLocation error: ' +
+    error.response);
+});
