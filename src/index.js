@@ -6,20 +6,27 @@ const state = {
 
 const tempChange = () => {
     let temp = state.temp;
-    // let landscape = 
+    let landscape = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
     let color = 'red';
     if (temp > 80) {
         color = 'red';
-        // landscape
+        landscape = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
     } else if (temp > 70) {
         color = 'orange';
+        landscape = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
     } else if (temp > 60) {
         color = 'green';
+        landscape = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
     } else if (temp > 50) {
         color = 'green';
+        landscape = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
     } else {
         color = 'teal';
+        landscape = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
     } 
+
+    const changeLandscape = document.getElementById('groundFloor');
+    changeLandscape.textContent  = landscape;
 
     const temperature = document.getElementById('tempValue');
     // temperature.className = color;
