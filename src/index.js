@@ -36,7 +36,6 @@ const changeTempColor = () => {
 const increaseTempButton = document.getElementById("increaseTempButton");
 increaseTempButton.addEventListener("click", () => {
     const tempValue = document.getElementById("tempValue");
-    // console.log(state);
     tempValue.textContent = state.tempValue += 1 
     changeTempColor()
 })
@@ -44,25 +43,21 @@ increaseTempButton.addEventListener("click", () => {
 const decreaseTempButton = document.getElementById("decreaseTempButton");
 decreaseTempButton.addEventListener("click", () => {
     const tempValue = document.getElementById("tempValue");
-    // console.log(state);
-    tempValue.textContent = state.tempValue -= 1
-    changeTempColor()
+    tempValue.textContent = state.tempValue -= 1;
+    changeTempColor();
 })
 
-// const updateCityName = () => {
-//     const cityName = document.getElementById("cityName").value;
-//     const cityDisplay = document.getElementById("cityDisplay");
-//     state.city = cityName.value
-//     cityDisplay.textContent(`For the city of ${state.city}`)
-// }
-
-// const cityName = document.getElementById("cityName").value;
-const cityName = document.querySelector("input");
-cityName.addEventListener("input", () => {
-    // const cityName = document.getElementById("cityName").value;
+const updateCityName = (e) => {
     const cityDisplay = document.getElementById("cityDisplay");
-    state.city = cityName.value;
-    cityDisplay.textContent(`For the city of ${state.city}`);
-    
-})
+    state.city = e.target.value;
+    cityDisplay.textContent = `For the city of ${state.city}`;
+};
 
+const cityNameInputBar = document.querySelector("input");
+cityNameInputBar.addEventListener("input", updateCityName);
+
+const resetButton = document.getElementById("cityChange");
+resetButton.addEventListener("click", () => {
+    cityNameInputBar.value = "Seattle";
+    updateCityName();
+});
