@@ -2,15 +2,38 @@ const state = {
 	tempValue: null,
 	increaseTempControl: null,
 	decreaseTempControl: null,
+	gardenLandscape: null,
+	tempValueEl: null,
 };
 
 const loadControls = () => {
-	state.tempValue = document.getElementById('tempValue');
+	state.tempValueEl = document.getElementById('tempValue');
 	state.increaseTempControl = document.getElementById('increaseTempControl');
 	state.decreaseTempControl = document.getElementById('decreaseTempControl');
+	state.tempValue = parseInt(state.tempValueEl.textContent);
+	state.gardenLandscape = document.getElementById('landscape');
+	state.gardenLandscapeValue = state.gardenLandscape.textContent;
+
+	console.log(state);
 };
 
-const ChangeColorAndLandscape = () => {
+const increaseTemp = () => {
+	const increaseTempControl = state.increaseTempControl;
+	const currentTemp = document.getElementById('currentTempButton');
+	state.tempValue += 1;
+	state.tempValueEl.textContent = `${state.tempValue}`;
+	changeColorAndLandscape();
+};
+
+const decreaseTemp = () => {
+	const decreaseTempControl = state.decreaseTempControl;
+	const currentTemp = document.getElementById('currentTempButton');
+	state.tempValue -= 1;
+	state.tempValueEl.textContent = `${state.tempValue}`;
+	changeColorAndLandscape();
+};
+
+const changeColorAndLandscape = () => {
 	let temp = state.tempValue;
 	if (temp >= 80) {
 		state.tempValueEl.classList = 'red';
@@ -30,10 +53,15 @@ const ChangeColorAndLandscape = () => {
 	}
 };
 
-const registerEvents = () => {
+const setUp = () => {
 	loadControls();
-	state.increaseTempControl.addEventListener('click', changeColor);
-	state.decreaseTempControl.addEventListener('click', changeColor);
+	registerEvents();
+	changeColorAndLandscape();
 };
 
-document.addEventListener('DOMContentLoaded', registerEvents);
+const registerEvents = () => {
+	state.increaseTempControl.addEventListener('click', increaseTemp);
+	state.decreaseTempControl.addEventListener('click', decreaseTemp);
+};
+
+document.addEventListener('DOMContentLoaded', setUp);
