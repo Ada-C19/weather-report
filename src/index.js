@@ -11,11 +11,13 @@ const increaseTemp = (event) => {
 	++state.tempValueCount;
 	state.tempValue.textContent = state.tempValueCount;
 	handleTempColors();
+	handleLandscapePics();
 };
 const decreaseTemp = (event) => {
 	--state.tempValueCount;
 	state.tempValue.textContent = state.tempValueCount;
 	handleTempColors();
+	handleLandscapePics();
 };
 
 const handleTempColors = () => {
@@ -29,6 +31,18 @@ const handleTempColors = () => {
 		state.tempValue.style.color = "green";
 	} else if (state.tempValueCount <= 49) {
 		state.tempValue.style.color = "teal";
+	}
+};
+
+const handleLandscapePics = () => {
+	if (state.tempValueCount >= 80) {
+		state.landscapeContainer.innerHTML = `"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"`;
+	} else if (state.tempValueCount >= 70 && state.tempValueCount <= 79) {
+		state.landscapeContainer.innerHTML = `"🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"`;
+	} else if (state.tempValueCount >= 60 && state.tempValueCount <= 69) {
+		state.landscapeContainer.innerHTML = `"🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"`;
+	} else if (state.tempValueCount <= 59) {
+		state.landscapeContainer.innerHTML = `"🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"`;
 	}
 };
 
@@ -49,6 +63,7 @@ const onLoaded = () => {
 	loadControls();
 	registerEvents();
 	handleTempColors();
+	handleLandscapePics();
 };
 
 onLoaded();
