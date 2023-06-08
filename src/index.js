@@ -1,27 +1,11 @@
 "use strict";
 
 const state = {
-    degrees: 62
+    degrees: 62,
+    cityName: "Seattle"
 };
 
-// const addDegreen = (event) => {
-//     const newDegree = document.createElement("span");
-// }
-
-// const button1 = document.getElementById("up");
-// button1.addEventListener("click", () => {
-//     document.body.className = "degrees";
-
-// })
-
-// const up = document.getElementById("up");
-// up.addEventListener("click", () => {
-//     const tempNum = document.getElementsByClassName('degrees');
-//     tempNum.textContent = state.degrees += 1;
-
-// })
-
-
+// Wave 2
 const increaseTemp = (event) => {
     state.degrees += 1;
     // const degreeCount = document.querySelector('#degrees');
@@ -69,6 +53,14 @@ const tempColorLandscape = () => {
 
 };
 
+// Wave 3
+const changecityName = (event) => {
+    let cityNameHTML = document.getElementById("name").value;
+    state.cityName = cityNameHTML
+    const city = document.getElementById("city");
+    city.textContent = state.cityName;
+}
+
 const registerEventHandlers = (event) => {
     tempColorLandscape();
 
@@ -81,7 +73,8 @@ const registerEventHandlers = (event) => {
     const downButton = document.getElementById('down');
     downButton.addEventListener("click", decreaseTemp);
 
-
+    const resetButton = document.getElementById('reset')
+    resetButton.addEventListener("click", changecityName)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
