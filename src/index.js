@@ -2,22 +2,34 @@
 
 let temperature = document.getElementById("tempValue");
 
-temperature.textContent = 420;
+const increaseTempButton = document.getElementById("increaseTempControl");
+
+const decreaseTempButton = document.getElementById("decreaseTempControl");
+
+temperature.textContent = 0;
+
+// the two helper functions below can maybe get condensed into one by using callback functions
 
 const incrementValue = (numberString) => {
-  // cast currentTemp from string to int
+  // cast numberString from string to int
   number = parseInt(numberString);
 
-  console.log(parseInt(temperature.textContent));
-  console.log("the function ran");
-  // return a value
+  // return incremented value
   return number + 1;
 };
 
-const increaseTempButton = document.getElementById("increaseTempControl");
+const decrementValue = (numberString) => {
+  number = parseInt(numberString);
+
+  return number - 1;
+};
 
 increaseTempButton.addEventListener("click", () => {
   temperature.textContent = incrementValue(temperature.textContent);
+});
+
+decreaseTempButton.addEventListener("click", () => {
+  temperature.textContent = decrementValue(temperature.textContent);
 });
 
 // end of Abby's section on 2023.6.7
