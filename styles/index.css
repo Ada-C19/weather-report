@@ -1,3 +1,4 @@
+/* To Do: Change default background image/color */
 body{
   background-color: rgb(57, 57, 217);
   margin: 20px;
@@ -23,6 +24,16 @@ body{
   margin: 15px;
   padding: 20px;
 }
+
+.div_city{
+  color: black;
+  width: 50%;
+  height: 60%;
+  background-color: white;
+  margin: 15px;
+  padding: 20px;
+}
+
 #garden{
   background-color: white;
   width: 50%;
