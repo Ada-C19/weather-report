@@ -35,18 +35,32 @@ decreaseButton.addEventListener("click", () => {
     checkTemp(tempValue);
 });
 
-// const citySearch = document.getElementById("siteSearch").value;
-
-// goButton.addEventListener("click", () => {
-//     cityHolder = document.getElementById("siteSearch").value;
-//     headerLocation.textContent = cityHolder;
-// });
-
-
 const headerLocation = document.getElementById("cityLocation");
 const goButton = document.getElementById("citySearch");
 let cityHolder = '';
+
+const locationAPI = "http://127.0.0.1:5000/location";
+const weatherAPI = "http://127.0.0.1:5000/weather";
+
+const callAPI = (location) => {
+    axios
+        .get(locationAPI, {params: {q: location, format: 'json'}})
+        .then((result) => {
+            const lon = result.data[0].lon;
+            const lat = result.data[0].lat;
+            axios
+                .get(weatherAPI, {params: {lat: lat, lon: lon, format: 'json'}})
+                .then((result) => {
+                    return result.data['main']['temp'];
+                    // return temp;
+                });
+        });
+};
+
 goButton.addEventListener("click", () => {
     cityHolder = document.getElementById("siteSearch").value;
     headerLocation.textContent = cityHolder;
+    tempValue.innerHTML = callAPI(cityHolder);
+    console.log(tempValue);
 });
+
