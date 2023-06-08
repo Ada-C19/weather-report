@@ -39,6 +39,8 @@ const changeColorByTemp = (event) => {
     }
 }
 
+const inputElement = document.getElementById("city-name")
+
 
 const registerEventHandlers = (event) => {
     const tempUpButton = document.querySelector("#up-arrow");
@@ -47,5 +49,12 @@ const registerEventHandlers = (event) => {
 
     const tempDownButton = document.querySelector("#down-arrow");
     tempDownButton.addEventListener("click", decreaseTemp);
+
+    
+    inputElement.addEventListener("input", function () {
+        const cityName = inputElement.value;
+        const cityDisplay = document.querySelector("h3");
+        cityDisplay.textContent = "For the lovely city of " + "⭐"+cityName+"⭐";
+    })
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)

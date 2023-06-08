@@ -9,3 +9,11 @@
 #temp-count.green {color: green;}
 #temp-count.teal {color: teal;}
 
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input, label {
+    margin: 0.4rem 0;
+}
