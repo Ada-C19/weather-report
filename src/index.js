@@ -1,5 +1,4 @@
 //Wave 2
-//realized I need to make states for these:
 const state = {
     tempValue: 60,
     increaseTemp: null,
@@ -37,8 +36,6 @@ const onLoad = () => {
     registerEvents();
     loadControls();
 };
-
-
 //changes color + landscape
 let temp = 60
 const changeTemp = () => {
