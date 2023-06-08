@@ -5,6 +5,8 @@ const state = {
 	decreaseTempControl: null,
 	skyContainer: null,
 	landscapeContainer: null,
+	cityInput: null,
+	cityHeader: "Seattle",
 };
 
 const increaseTemp = (event) => {
@@ -46,9 +48,14 @@ const handleLandscapePics = () => {
 	}
 };
 
+const handleTextInput = () => {
+	state.cityHeader.textContent = state.cityInput.value;
+};
+
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener("click", increaseTemp);
 	state.decreaseTempControl.addEventListener("click", decreaseTemp);
+	state.cityInput.addEventListener("beforeinput", handleTextInput);
 };
 
 const loadControls = () => {
@@ -57,6 +64,8 @@ const loadControls = () => {
 	state.decreaseTempControl = document.getElementById("decreaseTempControl");
 	state.skyContainer = document.getElementById("sky");
 	state.landscapeContainer = document.getElementById("landscape");
+	state.cityInput = document.getElementById("cityNameInput");
+	state.cityHeader = document.getElementById("headerCityName");
 };
 
 const onLoaded = () => {
