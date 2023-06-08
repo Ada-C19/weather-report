@@ -6,6 +6,7 @@ let temperature = 70; // Initial temperature
 const temperatureElement = document.getElementById('temperature');
 const increaseBtn = document.getElementById('increase-btn');
 const decreaseBtn = document.getElementById('decrease-btn');
+const landscapeImg = document.getElementById('landscape-img');
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
@@ -29,18 +30,23 @@ function updateTemperatureDisplay() {
 
     if (temperature >= 80) {
         temperatureElement.style.color = 'red';
-        document.body.innerHTML = '<img src="styles/summer.jpeg" alt="Summer">';
+        landscapeImg.src = 'styles/sunny1.jpeg';
+        landscapeImg.alt = 'Sunny';
     } else if (temperature >= 70 && temperature <= 79) {
         temperatureElement.style.color = 'orange';
-        document.body.innerHTML = '<img src="styles/cloudy.jpeg" alt="Cloudy">';
+        landscapeImg.src = 'styles/cloudy.jpeg';
+        landscapeImg.alt = 'Cloudy';
     } else if (temperature >= 60 && temperature <= 69) {
         temperatureElement.style.color = 'yellow';
-        document.body.innerHTML = '<img src="styles/rainy.jpeg" alt="Rainy">';
+        landscapeImg.src = 'styles/rainy.jpeg';
+        landscapeImg.alt = 'Rainy';
     } else if (temperature >= 50 && temperature <= 59) {
         temperatureElement.style.color = 'green';
-        document.body.innerHTML = '<img src="styles/snowy.jpeg" alt="Snowy">';
+        landscapeImg.src = 'styles/autumn.jpeg';
+        landscapeImg.alt = 'Snowy';
     } else {
         temperatureElement.style.color = 'teal';
-        document.body.innerHTML = '<img src="styles/autumn.jpeg" alt="Autumn">';
+        landscapeImg.src = 'styles/snowy.jpeg';
+        landscapeImg.alt = 'Autumn';
     }
 }

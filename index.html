@@ -10,13 +10,30 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <header>
+        <nav>
+            <h1>Weather Report</h1>
+        </nav>
+    </header>
+
     <div id="temperature-container">
         <button id="decrease-btn">Decrease</button>
         <span id="temperature">70°F</span>
         <button id="increase-btn">Increase</button>
     </div>
 
+    <div id="landscape-container">
+        <figure>
+            <img id="landscape-img" src="" alt="">
+        </figure>
+    </div>
+
+    <footer>
+        <p>© 2023 Hannah & Phalesa </p>
+    </footer>
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
 </html>
+

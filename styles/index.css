@@ -1,4 +1,4 @@
-#temperature-container {
+/* #temperature-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,4 +35,61 @@ figure img {
     width: 100%;
     max-width: 300px;
     height: 300px;
+}
+ */
+
+
+ body {
+    font-family: 'Rubik', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: rgba(11, 31, 94, 0.906);
+    text-align: center;
+    padding: 20px;
+}
+
+nav h1 {
+    color: white;
+    font-size: 24px;
+}
+
+#temperature-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+#temperature {
+    margin: 0 20px;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 18px;
+}
+
+#landscape-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    overflow: hidden;
+}
+
+#landscape-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+footer {
+    background-color: rgb(40, 12, 181);
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+    color: white;
 }
