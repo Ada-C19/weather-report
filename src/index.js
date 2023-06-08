@@ -4,8 +4,8 @@ const cityUpdate = () => {
 };
 
 const cityReset = () => {
-  state.cityTextField.value = state.cityDefault;
-  state.headerCity.textContent = state.cityDefault;
+  state.cityTextField.value = cityDefault;
+  state.headerCity.textContent = cityDefault;
 };
 
 const landscapeUpdate = () => {
