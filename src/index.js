@@ -16,7 +16,7 @@ const convertKtoF = (temp) => {
 const findLatAndLong = () => {
   //let lat, long;
 axios
-.get('', {
+.get('https://api.openweathermap.org/data/2.5/weather', {
     params: {
     q: state.city,
     },
@@ -34,7 +34,7 @@ axios
 
 const getWeather = () => {
 axios
-    .get('', {
+    .get('https://us1.locationiq.com/v1/search.php', {
     params: {
         lat: state.lat,
         lon: state.long,
@@ -50,9 +50,37 @@ axios
     });
 };
 
+const updateCityName = () => {
+    const inputName = document.getElementById('cityNameInput').value;
+    const headerCityName = document.getElementById('headerCityName');
+    state.city = inputName;
+    headerCityName.textContent = state.city;
+    };
+    
+    const resetCityName = () => {
+    const cityNameInput = document.getElementById('cityNameInput');
+    cityNameInput.value = 'Seattle';
+    updateCityName();
+    };
+
+
 const increaseTemp = () => {
     state.temp += 1;
 };
 const decreaseTemp = () => {
     state.temp -= 1;;
 };
+
+const registerEventHandlers = () => {
+    formatTempAndGarden();
+
+    updateCityName();
+    const cityNameInput = document.getElementById('cityNameInput');
+    cityNameInput.addEventListener('input', updateCityName);
+
+    const cityNameResetBtn = document.getElementById('cityNameReset');
+    cityNameResetBtn.addEventListener('click', resetCityName);
+
+};
+
+document.addEventListener('DOMContentLoaded', registerEventHandlers);
