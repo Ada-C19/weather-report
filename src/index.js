@@ -7,7 +7,7 @@ const increaseTemp = () => {
     const currentTemp = document.querySelector('#display-temperature');
     console.log(state.currentTemp);
     currentTemp.textContent = `${state.currentTemp}`;
-    // setTempAndColor();
+    changeTempColor();
 };
 
 const decreaseTemp = () => {
@@ -15,7 +15,7 @@ const decreaseTemp = () => {
     const currentTemp = document.querySelector('#display-temperature');
     console.log(state.currentTemp);
     currentTemp.textContent = `${state.currentTemp}`;
-    // setTempAndColor();
+    changeTempColor();
 };
 
 // const setTempAndLandscape = () => {
@@ -25,27 +25,27 @@ const decreaseTemp = () => {
 //     landscapeTitle();
 // }
 
-// const changeTempColor = () => {
-//     const tempCurrent = document.getElementById('display-temperature');
-//     let color;
-//     switch (true) {
-//         case currentTemp.currTemp >= 80:
-//             color = 'red';
-//             break;
-//         case currentTemp.currTemp >= 70:
-//             color = 'orange';
-//             break;
-//         case currentTemp.currTemp >= 60:
-//             color = 'yellow';
-//             break; 
-//         case currentTemp.currTemp >= 50:
-//             color = 'green';
-//             break;
-//         default:
-//             color = 'teal';
-//     }
-//     tempCurrent.className = color;
-// };
+const changeTempColor = () => {
+    const tempCurrent = document.getElementById('display-temperature');
+    let color;
+    switch (true) {
+        case state.currentTemp >= 80:
+            color = 'red';
+            break;
+        case state.currentTemp >= 70:
+            color = 'orange';
+            break;
+        case state.currentTemp >= 60:
+            color = 'yellow';
+            break; 
+        case state.currentTemp >= 50:
+            color = 'green';
+            break;
+        default:
+            color = 'teal';
+    }
+    tempCurrent.className = color;
+};
 
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
