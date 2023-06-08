@@ -1,3 +1,4 @@
+
 const state = {
     increaseTempButton: null,
     decreaseTempButton: null,
@@ -6,8 +7,9 @@ const state = {
     cityNameOutput : null,
     cityNameInput: null,
     cityName : "Seattle",
-};
+    currentWeatherButton : null,
 
+};
 
 const setDefaultValues = () => {
     state.cityNameInput.value = `${state.cityName}`;
@@ -17,6 +19,7 @@ const setDefaultValues = () => {
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener("click", increaseTemp, changeColor, changeLandscape);
     state.decreaseTempButton.addEventListener("click", decreaseTemp, changeColor, changeLandscape);
+    state.currentWeatherButton.addEventListener("click", displayCurrentWeather);
     state.cityNameInput.addEventListener("input", displayCityName); 
 };
 
@@ -25,9 +28,10 @@ const loadControls = () => {
     state.decreaseTempButton = document.getElementById("decreaseTempControl");
     state.cityNameInput = document.getElementById("cityNameInput");
     state.cityNameOutput = document.getElementById("headerCityName");
-    // state.cityNameInput.value = `${state.cityName}`;
-    // state.cityNameOutput.textContent =  `${state.cityName}`;
+    state.currentWeatherButton = document.getElementById("currentTempButton");
 };
+
+
 
 const increaseTemp = () => {
     state.tempDeg += 1;
@@ -81,13 +85,66 @@ const changeLandscape = () => {
     }
 };
 
-// cityNameOutput : "Seattle",
-// cityNameInput: null,
 
 const displayCityName = (event) => {
     const cityInput = event.target.value; //text value
     state.cityNameOutput.textContent = cityInput;
 };
+
+const displayCurrentWeather = () => {
+    const weather = findLatAndLon();
+    // console.log(currentTemp)
+    // const convertedTemp = (currentTemp - 273.15);
+    // // const conv = (currentTemp - 273.15) * 9/5 + 32;
+    // tempValue.textContent = `${convertedTemp}`;
+    
+}
+
+const findLatAndLon= (query) => {
+    let latitude, longitude;
+    axios.get('http://localhost:5000/location',
+    {
+        params: {
+            q: `${state.cityNameOutput.textContent}`,
+            format: 'json'
+        }
+})
+.then( (response) => {
+    latitude = response.data[0].lat;
+    longitude = response.data[0].lon;
+    console.log('success in findLatAndLon', latitude, longitude)
+        
+    findWeather(latitude, longitude); 
+})
+.catch( (error) => {
+    console.log('error in findLatAndLon!');
+})
+};
+
+const findWeather = (latitude, longitude) => {
+    axios.get('http://localhost:5000/weather',
+    {
+        params: {
+            format: 'json',
+            lat: latitude,
+            lon: longitude
+        }
+    })
+    .then( (response) => {
+    
+    console.log('success in findWeather!', response.data.main.temp);
+    state.tempDeg = Math.round((response.data.main.temp - 273.15) * 9/5 + 32);
+    const tempValue = document.getElementById("tempValue");
+    tempValue.textContent = `${state.tempDeg}`
+
+        
+    })
+    .catch( (error) => {
+        console.log('error in findWeather!');
+    });
+}
+
+
 
 const onLoaded = () => {
     loadControls();
