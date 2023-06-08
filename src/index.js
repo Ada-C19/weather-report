@@ -1,12 +1,31 @@
-//Wave 2
+//      ---Wave 2---
 
 //ask in office hours abt this
 const increaseTemp = document.getElementById('increaseTempControl');
 const decreaseTemp = document.getElementById('decreaseTempControl');
 const tempValue = document.getElementById('tempValue');
 const landscape = document.getElementById('landscape');
+// -- Event Handling---
+const incTempButton = () => {
+    temp++;
+    tempValue.textContent = `${temp}`;
+};
 
-
+const decTempButton = () => {
+    temp--;
+    tempValue.textContent = `${temp}`;
+};
+const registerEvents = () => {
+    increaseTemp.addEventListener('click', incTempButton);
+    decreaseTemp.addEventListener('click', decTempButton);
+    increaseTemp.addEventListener('click', changeTemp);
+    decreaseTemp.addEventListener('click', changeTemp);
+    
+};
+const onLoad = () => {
+    registerEvents();
+    
+};
 
 //changes color + landscape
 let temp = 60
@@ -36,7 +55,6 @@ const changeTemp = () => {
 const cityNameInput = document.getElementById('cityNameInput');
 const cityNameReset = document.getElementById('cityNameReset'); 
 const headerCityName = document.getElementById('headerCityName');
-//Functions for event handling
 cityNameInput.addEventListener('input', () => {
     headerCityName.textContent = cityNameInput.value;
 });
@@ -45,25 +63,8 @@ cityNameReset.addEventListener('click', () => {
     cityNameInput.value = headerCityName.textContent = ''; 
 }); 
 
+// --- Wave 5 ----
+const sky = document.getElementById('sky');
+const skySelect = document.getElementById('SkySelect');
 
-const incTempButton = () => {
-    temp++;
-    tempValue.textContent = `${temp}`;
-};
-
-const decTempButton = () => {
-    temp--;
-    tempValue.textContent = `${temp}`;
-};
-const registerEvents = () => {
-    increaseTemp.addEventListener('click', incTempButton);
-    decreaseTemp.addEventListener('click', decTempButton);
-    increaseTemp.addEventListener('click', changeTemp);
-    decreaseTemp.addEventListener('click', changeTemp);
-    
-};
-const onLoad = () => {
-    registerEvents();
-    
-};
 onLoad();
