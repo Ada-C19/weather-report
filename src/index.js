@@ -43,7 +43,7 @@ const formatTempAndGarden = (temperature) => {
     let temperature = state.temp;
     let landscape = landscape.summer;
     let color = red;
-    
+
     if (temperature <= 49) {
         landscape = landscape.winter;
         color = 'teal';
@@ -60,7 +60,13 @@ const formatTempAndGarden = (temperature) => {
         landscape = landscape.summer;
         color = 'red';
     }
-}
+
+    const newLandscape = document.getElementById('landscape');
+    newLandscape.textContent = landscape;
+    const temperature = document.getElementById('real-time-temp');
+    temperature.className = color;
+    temperature.textContent = String(state.temp);
+};
 
 
 const getWeather = () => {
