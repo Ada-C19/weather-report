@@ -1,0 +1,17 @@
+.above80Temp {
+    color: red;
+}
+
+.above80Bk {
+    background-color: red;
+    opacity: 50%;
+}
+
+.temp69To80 {
+    color: orange;
+}
+
+.temp69To80Bk {
+    background-color: orange;
+    opacity: 50%;
+}
