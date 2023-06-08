@@ -1,5 +1,5 @@
 const state = {
-    tempCount : 0,
+    tempCount : 0,git 
     city: "Seattle"
 }
 
