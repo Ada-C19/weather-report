@@ -51,7 +51,7 @@ section div {
 }
 
 #degrees {
-    color: rgba(10, 3, 3, 0.997);
+    color: orange;
 }
 
 #sky-section {
@@ -79,7 +79,7 @@ section div {
 }
 
 .garden-display {
-    background-color: gray;
+    background-color: A1ABB5;
     padding-bottom: 40px;
     padding-top: 20px;
     align-items: center;

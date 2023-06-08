@@ -41,12 +41,16 @@ const landscape = {
 function displayLandscape(degrees) {
     if (degrees <= 59) {
         currentLandscape.textContent = landscape.winter;
+        document.getElementById("whole-landscape").style.backgroundColor = "#66FFFF";
     } else if (degrees <= 69) {
         currentLandscape.textContent = landscape.autumn;
+        document.getElementById("whole-landscape").style.backgroundColor = "#A1ABB5";
     } else if (degrees <= 79) {
         currentLandscape.textContent = landscape.spring;
+        document.getElementById("whole-landscape").style.backgroundColor = "#60ABF6";
     } else {
         currentLandscape.textContent = landscape.summer;
+        document.getElementById("whole-landscape").style.backgroundColor = "#0E76DE";
     }
 }
 
