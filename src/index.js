@@ -2,34 +2,6 @@ const state = {
     liveTemp : 68
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const tempIncrease = () => {
     //temp behavior
     state.liveTemp += 1;
