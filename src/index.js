@@ -32,7 +32,7 @@ const loadData = () => {
   state.temperature = document.querySelector("#tempValue").textContent;
   state.currTempButton = document.querySelector("#currentTempButton");
   state.tempDownButton = document.querySelector("#decreaseTempControl");
-  state.TempUpButton = document.querySelector("#increaseTempControl");
+  state.tempUpButton = document.querySelector("#increaseTempControl");
 };
 
 const registerEventHandlers = (event) => {
