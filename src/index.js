@@ -1,3 +1,9 @@
+
+const API = "http://127.0.0.1:5000";
+const locationURL = "/location";
+const weatherURL = "/weather";
+
+
 const state = {
     liveTemp : 68
 };
@@ -45,6 +51,37 @@ const displayCityInput = () => {
     cityDisplay.textContent = `For the city of  ${cityInput}`;
 }
 
+const getCityInput = () => {
+    let cityInput = document.getElementById("city_input").value;
+    return cityInput;
+}
+
+const getCityCoord = () => {
+    const cityName = document.getElementById("city_input").value;
+    console.log(cityName);
+    console.log("here!")
+    const locationRoute = API + locationURL;
+    const weatherRoute = API + weatherURL;
+    // let cityCoords = {"lat": 0, "lon": 0 };
+    let tempInKel = 0;
+    axios
+        .get(locationRoute, { params: { q : `${cityName}`, format: "json"} })
+        .then((result) => {
+            let coorLat = result.data[0]["lat"];
+            let coorLon = result.data[0]["lon"];
+            axios
+                .get(weatherRoute, { params: { lat : `${coorLat}`, lon : `${coorLon}`, format: "json"} })
+                .then((result) => {
+                    tempInKel = result.data["main"]["temp"];
+                    console.log(tempInKel);
+        })
+        })
+
+    
+
+}
+
+
 const registerEventHandlers = () => {
     const tempIncButton = document.querySelector("#increase_button");
     tempIncButton.addEventListener('click', tempIncrease);
@@ -60,10 +97,11 @@ const registerEventHandlers = () => {
 
     const cityDisplay = document.querySelector("#city_input");
     cityDisplay.addEventListener("input", displayCityInput);
+
+    const searchCityButton = document.querySelector("#set_city");
+    searchCityButton.addEventListener('click', getCityCoord);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
-// const getCityInput = () => {
-//     let cityInput = document.querySelector("h2");
-// }
+
