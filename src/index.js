@@ -72,13 +72,22 @@ const updateLandscape = () => {
     document.getElementById("garden-emoji").textContent = landscape;
     document.getElementById("sky-emoji").textContent = sky_i;
 }
-
-const updateCity = () => {
-    let cityInput = document.getElementById("city-input").value;
-    document.getElementById("header-city").textContent = cityInput;
-}
-
 updateLandscape()
+
+// Followed curiosity. This function uses the HTML attribute onkeyup
+// to allow the text box to update city name in header.
+const updateCity = (value) => {
+    document.getElementById("header-city").textContent = value;
+}
+// Here's a solution that uses addEventListener
+// const updatedCityName = () => {
+//     cityInput.addEventListener("input", (e) => {
+//         cityName.textContent = e.target.value;
+//     })
+// };
+// updatedCityName();
+
+
 // if (document.readyState !== "loading") {
 //   getTasks();
 // } else {
