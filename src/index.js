@@ -3,6 +3,7 @@ const buttonCity = document.getElementById('buttonCity');
 const txtOutput = document.getElementById('output1');
 let currentLandscape = document.getElementById('seasonal-landscape');
 // Function that takes the value of Input box
+// // Function that takes the value of Input box
 const displayCityText = () => {
     txtOutput.innerHTML = txtBox.value;
     // Reset text from input box
@@ -14,7 +15,22 @@ const temperatureState = {
     degrees: 67
 }
 
-// Seasonal Landscape
+const changeColorTemp = () => {
+    const num = temperatureState.degrees
+
+    if (num <= 49) {
+        document.getElementById('degrees').style.color = 'teal';
+    } else if (num > 49 && num <= 59) {
+        document.getElementById('degrees').style.color = 'green';
+    } else if (num > 59 && num <= 69) {
+        document.getElementById('degrees').style.color = 'yellow';
+    } else if (num > 69 && num <= 79) {
+        document.getElementById('degrees').style.color = 'orange';
+    } else {
+        document.getElementById('degrees').style.color = 'red'
+    }
+}
+
 const landscape = {
     summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
     spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
@@ -33,6 +49,7 @@ function displayLandscape(degrees) {
         currentLandscape.textContent = landscape.summer;
     }
 }
+
 
 const increaseTemp = (event) => {
     temperatureState.degrees += 1;
@@ -55,9 +72,11 @@ const registerEventHandlers = (event) => {
 
     const upButton = document.querySelector('#up');
     upButton.addEventListener('click', increaseTemp);
+    upButton.addEventListener('click', changeColorTemp);
 
     const downButton = document.querySelector('#down');
     downButton.addEventListener('click', decreaseTemp);
+    downButton.addEventListener('click', changeColorTemp);
 }
 
 
