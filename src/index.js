@@ -1,41 +1,13 @@
 //Wave 2
-const state = {
-    tempValue: 60,
-    increaseTemp: null,
-    decreaseTemp: null,
-    landscape: null,
-}
+
 //ask in office hours abt this
 const increaseTemp = document.getElementById('increaseTempControl');
 const decreaseTemp = document.getElementById('decreaseTempControl');
 const tempValue = document.getElementById('tempValue');
 const landscape = document.getElementById('landscape');
-//Event handler, fns and Load
-const loadControls = () => {
-    state.increaseTemp = document.getElementById('increaseTempControl');
-    state.decreaseTemp = document.getElementById('decreaseTempControl');
-    state.tempValue = document.getElementById('tempValue');
-    state.landscape = document.getElementById('landscape');
-};
-const incTempButton = () => {
-    temp++;
-    tempValue.textContent = `${temp}`;
-};
 
-const decTempButton = () => {
-    temp--;
-    tempValue.textContent = `${temp}`;
-};
-const registerEvents = () => {
-    increaseTemp.addEventListener('click', incTempButton);
-    decreaseTemp.addEventListener('click', decTempButton);
-    increaseTemp.addEventListener('click', changeTemp);
-    decreaseTemp.addEventListener('click', changeTemp);
-};
-const onLoad = () => {
-    registerEvents();
-    loadControls();
-};
+
+
 //changes color + landscape
 let temp = 60
 const changeTemp = () => {
@@ -64,7 +36,7 @@ const changeTemp = () => {
 const cityNameInput = document.getElementById('cityNameInput');
 const cityNameReset = document.getElementById('cityNameReset'); 
 const headerCityName = document.getElementById('headerCityName');
-
+//Functions for event handling
 cityNameInput.addEventListener('input', () => {
     headerCityName.textContent = cityNameInput.value;
 });
@@ -74,4 +46,24 @@ cityNameReset.addEventListener('click', () => {
 }); 
 
 
+const incTempButton = () => {
+    temp++;
+    tempValue.textContent = `${temp}`;
+};
+
+const decTempButton = () => {
+    temp--;
+    tempValue.textContent = `${temp}`;
+};
+const registerEvents = () => {
+    increaseTemp.addEventListener('click', incTempButton);
+    decreaseTemp.addEventListener('click', decTempButton);
+    increaseTemp.addEventListener('click', changeTemp);
+    decreaseTemp.addEventListener('click', changeTemp);
+    
+};
+const onLoad = () => {
+    registerEvents();
+    
+};
 onLoad();
