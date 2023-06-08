@@ -1,5 +1,3 @@
-// const { default: axios } = require('axios');
-
 // const so 72 is not hard coded, used in increaseTemp & decreaseTemp functions
 const tempValue = document.getElementById('tempValue');
 
@@ -7,7 +5,9 @@ const tempValue = document.getElementById('tempValue');
 // assign a constant state for temp
 const state = {
     tempCount : tempValue.innerText, 
-    city: "Seattle"
+    city: "Seattle",
+    lat: "",
+    lon: "",
 }
 
 // assign variable for landscape and sky image icons
@@ -22,7 +22,7 @@ const landscapeEmojis = {
 
 const skyEmojis = {
     "0" : "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
-    "1": "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    "1": "🌞🌞🌞🌤🌞🌞🌞 🌤",
     "2" : "🌧🌈🌧💧🌈🌈💧🌧🌈🌧",
     "3" : "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 };
@@ -84,6 +84,27 @@ const tempRange = () => {
         landscape.textContent = landscapeEmojis["1"];
     }
 }
+
+const updateSky = () => {
+    const inputSky = document.getElementById('skySelect').value;
+    const skyContainer = document.getElementById('sky');
+    let sky = '';
+    let skyColor = '';
+    if (inputSky === 'Cloudy') {
+        sky = skyEmojis[0];
+        skyColor = 'cloudy';
+    } else if (inputSky === 'Sunny') {
+        sky = skyEmojis[1];
+        skyColor = 'sunny';
+    } else if (inputSky === 'Rainy') {
+        sky = skyEmojis[2];
+        skyColor = 'rainy';
+    } else if (inputSky === 'Snowy') {
+        sky = skyEmojis[3];
+        skyColor = 'snowy';
+    }
+    skyContainer.textContent = sky;
+};
 // function to get city name
 // const inputElement = document.getElementById("cityNameInput")
 
@@ -138,7 +159,9 @@ downTempArrow.addEventListener("click", decreaseTemperature);
 
 const upTempArrow = document.getElementById("increaseTempControl");
 upTempArrow.addEventListener("click", increaseTemperature);
-    
+
+const skySelector = document.getElementById("skySelect");
+skySelector.addEventListener("change",updateSky);
     // updateCityHeader();
     // const updateCity = document.getElementById("cityNameInput");
     // updateCity.addEventListener('input', updateCityHeader)
