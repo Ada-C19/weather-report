@@ -133,7 +133,17 @@ header {
 }
 
 .header-city {
+    display: inline-block;
+    position: relative;
     font-size: 3rem;
     font-family: cursive;
-    margin-right: 2rem;
+    /* margin-right: 2rem; */
 }
+.stars-before,
+.stars-after {
+    font-size: 3rem;
+}
+
+
+
+
