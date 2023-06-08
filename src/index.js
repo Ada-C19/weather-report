@@ -97,3 +97,13 @@ document.addEventListener("DOMContentLoaded", registerEventHandlers);
 // then weather report takes the location response and sends a GET request to
 // the proxy server, which forwards the GET request to WEATHER and returns it
 // all the way back to our weather report website 
+
+
+//HTML "change" for select option in wave 5
+//working in skySelect
+//state.skySelect.addEventListener("change", handleSkySelectOption)
+// <!-- <option value="">--Please choose an option--</option>
+// <option value="sunny">Sunny</option>
+// <option value="cloudy">Cloudy</option>
+// <option value="rainy">Rainy</option> -->
+// <option value="snowy">Snowy</option> -->
