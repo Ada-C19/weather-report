@@ -53,8 +53,8 @@ const getWeatherTemp = () => {
   })
 }
 
-const realtimeButton = document.getElementById('realtime');
-realtimeButton.addEventListener('click', longitudeAndLatitude);
+// const realtimeButton = document.getElementById('realtime');
+// realtimeButton.addEventListener('click', longitudeAndLatitude);
 
 
 
@@ -97,8 +97,8 @@ const increaseTemp = () => {
     changeTempFontColorAndLandscape();
 
 };
-const increaseButton = document.getElementById("up");
-increaseButton.addEventListener("click", increaseTemp);
+// const increaseButton = document.getElementById("up");
+// increaseButton.addEventListener("click", increaseTemp);
 
 // decrease
 const decreaseTemp = () => {
@@ -106,8 +106,8 @@ const decreaseTemp = () => {
   changeTempFontColorAndLandscape();
 };
 
-const decreaseButton = document.getElementById("down");
-decreaseButton.addEventListener("click", decreaseTemp);
+// const decreaseButton = document.getElementById("down");
+// decreaseButton.addEventListener("click", decreaseTemp);
 
 
 // update the city
@@ -118,8 +118,8 @@ const changeCity = () => {
     city.textContent = state.city;
     }
     
-const cityInput = document.getElementById("searchbar");
-cityInput.addEventListener("input", changeCity);
+// const cityInput = document.getElementById("searchbar");
+// cityInput.addEventListener("input", changeCity);
 
 //update sky
 
@@ -147,17 +147,48 @@ const updateSky = () => {
       garden.style.backgroundColor = "white";
     }
     
-}
-const skyOption = document.getElementById("skystatus");
-skyOption.addEventListener("change", updateSky);
+};
+// const skyOption = document.getElementById("skystatus");
+// skyOption.addEventListener("change", updateSky);
 
 // Reset city 
 const resetCity = () => {
   const inputCity = document.getElementById("searchbar");
+  const city = document.getElementById("city");
   inputCity.value = "Seattle";
-}
+  city.textContent = "Seattle";
+};
 
 // resetInputButton
 
-const inputButton = document.getElementById("reset");
-inputButton.addEventListener('click', resetCity);
+// const inputButton = document.getElementById("reset");
+// inputButton.addEventListener('click', resetCity);
+
+
+const registerEventHandlers = () => {
+
+  changeTempFontColorAndLandscape();
+
+  const realtimeButton = document.getElementById('realtime');
+  realtimeButton.addEventListener('click', longitudeAndLatitude);
+
+  const increaseButton = document.getElementById("up");
+  increaseButton.addEventListener("click", increaseTemp);
+
+  const decreaseButton = document.getElementById("down");
+  decreaseButton.addEventListener("click", decreaseTemp); 
+
+  changeCity();
+  const cityInput = document.getElementById("searchbar");
+  cityInput.addEventListener("input", changeCity)
+
+  const inputButton = document.getElementById("reset");
+  inputButton.addEventListener('click', resetCity);
+
+  updateSky();
+  const skyOption = document.getElementById("skystatus");
+  skyOption.addEventListener("change", updateSky);
+
+};
+
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
