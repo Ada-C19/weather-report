@@ -17,10 +17,21 @@ h2 {
     margin: o auto 2rem auto;
 }
 
-
+.temperature_section button{
+    
+}
+.temperature_content {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+#tempValue {
+    font-size: 3rem;
+    margin-left: 1.5rem;
+}
 /* Format the temperature control box */
 .temperature_controls {
-    display:block;
+    display:flex;
     flex-direction:column;
     align-items:center; 
 }
