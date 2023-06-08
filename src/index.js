@@ -1,6 +1,7 @@
 "use strict";
 
 const state = {
+    city: 'Seattle',
     temp: 75,
 };
 
@@ -49,10 +50,6 @@ const downTemp = (event) => {
     tempChange();
 };
 
-
-
-
-
 const updateSky = () => {
     const inputSky = document.getElementById('skySelection').value;
     const skyContainer = document.getElementById('topFloor');
@@ -78,9 +75,18 @@ const updateSky = () => {
   };
 
 
+const changeCityName = () => {
+    const inputName = document.getElementById('nameInput').value;
+    const headerName = document.getElementById('cityHeader');
+    state.city = inputName;
+    headerName.textContent = state.city;
+};
 
-
-
+const resetCityBtn = () => {
+    const cityName = document.getElementById('nameInput');
+    cityName.value = 'Seattle';
+    changeCityName();
+}
 
 
 
@@ -96,6 +102,13 @@ const registerEventHandlers = (event) => {
     updateSky();
     const skySelection = document.getElementById('skySelection');
     skySelection.addEventListener('change', updateSky);
+
+    changeCityName();
+    const nameInput = document.getElementById('nameInput');
+    nameInput.addEventListener('input', changeCityName);
+
+    const resetBtn = document.getElementById('nameReset');
+    resetBtn.addEventListener('click', resetCityBtn);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
