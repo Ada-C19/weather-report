@@ -4,28 +4,20 @@ const state = {
 
 const increaseTemp = () => {
     state.currentTemp++;
-    const currentTemp = document.querySelector('#display-temperature');
-    console.log(state.currentTemp);
-    currentTemp.textContent = `${state.currentTemp}`;
-    changeTempColor();
-    changeLandscape();
+    setTempAndLandscape();
 };
 
 const decreaseTemp = () => {
     state.currentTemp--;
+    setTempAndLandscape();
+};
+
+const setTempAndLandscape = () => {
     const currentTemp = document.querySelector('#display-temperature');
-    console.log(state.currentTemp);
     currentTemp.textContent = `${state.currentTemp}`;
     changeTempColor();
     changeLandscape();
-};
-
-// const setTempAndLandscape = () => {
-//     const currentTemp = document.querySelector('#display-temperature');
-//     currentTemp.textContent = `${state.currentTemp}`;
-//     changeTempColor();
-//     landscapeTitle();
-// }
+}
 
 const changeTempColor = () => {
     const tempCurrent = document.getElementById('display-temperature');
