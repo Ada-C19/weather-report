@@ -107,7 +107,7 @@ cityNameReset.addEventListener("click", () => {
   const defaultOption = skySelect.value;
   updateSky(defaultOption);
 
-// Optional:
+/* Optional:
 // add color change to the background if the temperature is at a certain level.
 
 const tempValue = document.getElementById('tempValue');
@@ -128,3 +128,35 @@ tempValue.addEventListener('input', () => {
     body.style.backgroundColor = 'blue';
   }
 });
+
+const tempValue = document.getElementById('tempValue');
+const tempConversionButton = document.getElementById('tempConversionButton');
+
+let temperatureUnit = "K"; // Variable to track the current temperature unit
+
+
+tempConversionButton.addEventListener('click', () => {
+  const currentTemp = parseFloat(tempValue.textContent);
+  let convertedTemp;
+
+  if (temperatureUnit === "K") {
+    // Convert from Kelvin to Fahrenheit 
+    convertedTemp = (currentTemp - 273.15) * (9/5) + 32;
+    tempValue.textContent = convertedTemp.toFixed(2) + "°F";
+    tempConversionButton.textContent = "Convert to Celsius";
+    temperatureUnit = "F";
+  } else if (temperatureUnit === "F") {
+    // Convert from Fahrenheit to Celsius 
+    convertedTemp = (currentTemp - 32) * (5/9);
+    tempValue.textContent = convertedTemp.toFixed(2) + "°C";
+    tempConversionButton.textContent = "Convert to Kelvin";
+    temperatureUnit = "C";
+  } else {
+    // Convert from Celsius  to Kelvin 
+    convertedTemp = currentTemp + 273.15;
+    tempValue.textContent = convertedTemp.toFixed(2) + "K";
+    tempConversionButton.textContent = "Convert to Fahrenheit";
+    temperatureUnit = "K";
+  }
+}); */
+
