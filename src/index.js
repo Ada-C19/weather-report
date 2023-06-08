@@ -19,11 +19,11 @@ const changeColorTemp = () => {
     const num = temperatureState.degrees
 
     if (num <= 49) {
-        document.getElementById('degrees').style.color = 'teal';
+        document.getElementById('degrees').style.color = 'darkturquoise';
     } else if (num > 49 && num <= 59) {
         document.getElementById('degrees').style.color = 'green';
     } else if (num > 59 && num <= 69) {
-        document.getElementById('degrees').style.color = 'yellow';
+        document.getElementById('degrees').style.color = 'gold';
     } else if (num > 69 && num <= 79) {
         document.getElementById('degrees').style.color = 'orange';
     } else {
