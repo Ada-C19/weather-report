@@ -13,6 +13,12 @@
     <main>
         <header>
             <h1>Oh Hail No!</h1>
+            <span>
+                Current Weather for...
+                <span id="cityHeader" class="cityHeaderName">
+                    "Seattle"
+                </span>
+            </span>
         </header>
         <section class="temp_section">
             <h2>Temperature</h2>
@@ -23,9 +29,9 @@
             </section>
         </section>
 
-        <section class="skyMenu">
+        <section>
             <label>Sky</label>
-            <select id="skySelection" class="skyClass">
+            <select id="skySelection">
                 <option value="Cloudy">Cloudy</option>
                 <option value="Sunny">Sunny</option>
                 <option value="Rainy">Rainy</option>
@@ -35,6 +41,8 @@
 
         <section class="city_section">
             <h2>City Name</h2>
+            <input type="text" id="nameInput" value="Seattle">
+            <button id="nameReset" class="nameResetButton">Reset</button>
         </section>
         
         
