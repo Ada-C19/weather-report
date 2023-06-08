@@ -2,6 +2,10 @@
     border: 1px antiquewhite dashed;
 }
 
+h2 {
+    margin: 0 auto 2rem auto;
+}
+
 body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -9,7 +13,10 @@ body {
     grid-gap: 1rem;
     font-family: Rubik,sans-serif;
     font-size: 18px;
-    background-color: #7d9fdd;
+    /* background-color: #7d9fdd; */
+    background-image: url("../images/clouds3.jpg");
+    background-size: cover;
+    background-position: center;
     margin: 2rem;
 }
 
@@ -26,13 +33,35 @@ body {
     font-size: 3em;
 }
 
-h2 {
-    margin: 0 auto 2rem auto;
-}
-
 .header__city-name::before,
 .header__city-name::after {
     content: "✨";
+}
+
+.current__control {
+    display: flex;
+    align-self: flex-start;
+    text-align: justify;
+}
+
+.temperature__section button {
+    display: flex;
+    background-color: #e7b434;
+    justify-content: center;
+    border: none;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #c3992d;
+}
+
+.temperature__content {
+    display: flex;
+    justify-content: space-around;
 }
 
 .temperature__section,
@@ -40,7 +69,7 @@ h2 {
 .city-name__section {
     border-radius: 8px;
     padding: 2rem;
-    background-color: white;
+    background-color: whitesmoke;
     grid-row: 2;
 }
 
