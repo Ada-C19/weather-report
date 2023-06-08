@@ -1,4 +1,4 @@
-// 👩🏻‍💻 Abby's section on 2023.6.7
+  // 👩🏻‍💻 Abby's section on 2023.6.7
 
 let temperature = document.getElementById("tempValue");
 
@@ -35,41 +35,71 @@ decreaseTempButton.addEventListener("click", () => {
 // 👩🏻‍💻 end of Abby's section on 2023.6.7
 
 console.log("what's up world");
-const cityNameInput = document.getElementById("cityNameInput");
-const headerCityName = document.getElementById("headerCityName");
 
-cityNameInput.addEventListener("input", () => {
+const cityNameInput = document.getElementById('cityNameInput');
+const headerCityName = document.getElementById('headerCityName');
+
+cityNameInput.addEventListener('input', () => {
   headerCityName.textContent = cityNameInput.value;
+
+cityNameReset.addEventListener("click", () => {
+  cityNameInput.value = ""; 
+  headerCityName.textContent = "";
+  });
+
 });
 
-const skySelect = document.getElementById("skySelect");
-const gardenContent = document.getElementById("gardenContent");
-const sky = document.getElementById("sky");
+  const skySelect = document.getElementById("skySelect");
+  const gardenContent = document.getElementById("gardenContent");
+  const sky = document.getElementById("sky");
 
-skySelect.addEventListener("change", () => {
-  const selectedOption = skySelect.value;
-  updateSky(selectedOption);
-});
+  skySelect.addEventListener("change", () => {
+    const selectedOption = skySelect.value;
+    updateSky(selectedOption);
+  });
 
-function updateSky(option) {
-  gardenContent.className = ""; // Remove all existing classes from gardenContent
-  gardenContent.classList.add(option); // Add the selected sky option as a class
+  const updateSky = (option) => {
+    const skyClassName = getSkyClassName(option);
+    const skyEmoji = getSkyEmoji(option);
 
-  const skyEmoji = getSkyEmoji(option);
-  sky.innerHTML = skyEmoji; // Use innerHTML instead of textContent to render the emojis
-}
+    gardenContent.className = `garden__content ${skyClassName}`;
+    sky.innerHTML = skyEmoji;
+  };
 
-function getSkyEmoji(option) {
-  switch (option) {
-    case "sunny":
-      return "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
-    case "cloudy":
-      return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
-    case "rainy":
-      return "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
-    case "snowy":
-      return "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
-    default:
-      return "";
-  }
-}
+  const getSkyClassName = (option) => {
+    switch (option) {
+      case "":
+      case "sunny":
+        return "sunny";
+      case "cloudy":
+        return "cloudy";
+      case "rainy":
+        return "rainy";
+      case "snowy":
+        return "snowy";
+      default:
+        return "";
+    }
+  };
+  
+  const getSkyEmoji = (option) => {
+    switch (option) {
+      case "":
+      case "sunny":
+        return "☁️ ☁️  ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️";
+      case "cloudy":
+        return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+      case "rainy":
+        return "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧";
+      case "snowy":
+        return "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+      default:
+        return "";
+    }
+  };
+
+
+  // Set the initial sky and garden content based on the default selected option
+  const defaultOption = skySelect.value;
+  updateSky(defaultOption);
+

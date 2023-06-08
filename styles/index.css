@@ -104,19 +104,25 @@ align-items: center;
 /* Updated CSS for Wave 5 */
 .garden__section > h2 {
 color: white;
+text-align: center;
 }
 
+.garden__content #sky {
+    font-size: 2rem;
+    content: center;
+}
 
 .garden__content {
-min-height: 200px;
-max-width: fit-content;
+height: 200px; 
+width: 400px;
 margin: auto;
 padding: 2rem;
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+justify-content: flex-start;
+align-items: center;
 border-radius: 8px;
-font-size: 2em;
+overflow: hidden;
 }
 
 .cloudy {
