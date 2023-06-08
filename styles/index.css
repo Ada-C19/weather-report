@@ -1,0 +1,9 @@
+.directional-arrow {
+    width: 20px;
+    height:20px;
+    background-color:#000;
+    border:none;
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    }
