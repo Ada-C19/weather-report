@@ -47,18 +47,6 @@ div {
     align-items: center;
 }
 
-#increase_temp {
-
-}
-
-#decrease_temp {
-
-}
-
-#temp_value {
-
-}
-
 .above80 {
     color: red;
 }
@@ -91,6 +79,10 @@ div {
     border-radius: 10px;
 }
 
+#current_temp_button:hover {
+    background: #8adbf6;
+}
+
 .sky, .city_name, .temperature {
     grid-row: 3;
     border-radius: 8px;
@@ -115,6 +107,10 @@ div {
     font-family: Rubik,sans-serif;
 }
 
+.cityNameResetButton:hover {
+    background: #8adbf6;
+}
+
 .garden {
     grid-row: 2/span 3;
     grid-column: 2;
@@ -134,18 +130,9 @@ div {
     font-size: 2em;
 }
 
-.sunny { 
-
-}
-
-.rainy {
-
-}
-
-.cloudy {
-
-}
-
-.snowy {
-
+#sunimage {
+    width: 200px;
+    height: 200px;
+    margin-left: 200px;
+    border-radius: 200px;
 }
