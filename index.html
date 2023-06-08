@@ -12,25 +12,34 @@
 <body class="grad">
     <header>
         <h1>Weather Report</h1>
-        <h5>For the lovely city of {city}</h5>
+        <h5>For the lovely city of ✨Seattle✨</h5>
     </header>
     <main>
-        <section id="Temperature"></section>
-            <h3>Temperature</h3>
+        <section id="temperature-box">
+            <h3 class="content-title">Temperature</h3>
             <h4>Get Realtime Temperature</h4>
-            <button id="increase-temp">⬆️</button>
-            <section id="display-temperature">72</section>
-            <button id="decrease-temp">⬇️</button>
-            <section id="Sky">Sky</section>
-            <button>Rainy</button>
-        <section id="City-Name">City Name</section>
-            <div id="search-bar">{city}</div>
-            <button>Reset</button>
-        <section id="Weather-Station">Weather Garden</section>
+                <button id="increase-temp">⬆️</button>
+                <section id="display-temperature">72</section>
+                <button id="decrease-temp">⬇️</button>
+        <section id="Sky">
+            <h3 class="content-title">Sky</h3>
+                <button>Rainy</button>
+        </section>
+        <section id="city-box">
+            <h3 class="content-title">City Name</h3>
+            <div id="search-bar">
+                <input id="city-input" type="text" placeholder="Enter City">
+                <button id="city-reset">Reset to Seattle</button>
+            </div>
+        </section>
+        <section id="Weather-Station">
+            <h3 class="content-title">Weather Garden</h3>
                 <div id="sky"></div>
                 <div id="landscape"></div>
-            <script src="./node_modules/axios/dist/axios.min.js"></script>
-            <script src="./src/index.js"></script>
+        </section>
     </main>
+
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
