@@ -35,8 +35,6 @@ const registerEventHandlers = (event) => {
 
     const downButton = document.querySelector('#down');
     downButton.addEventListener('click', decreaseTemp);
-
-    
 }
 
 // Triggers Event Handlers:
