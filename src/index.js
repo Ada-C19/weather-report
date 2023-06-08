@@ -2,7 +2,7 @@ const cityNameInput = document.getElementById('cityNameInput');
 const headerCityName = document.getElementById('headerCityName');
 
 cityNameInput.addEventListener('input', () => {
-    headerCityName.textContent = cityNameInput.value;
+  headerCityName.textContent = cityNameInput.value;
 });
 
 const skySelect = document.getElementById('skySelect');
