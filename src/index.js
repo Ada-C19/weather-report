@@ -1,3 +1,5 @@
+// const { default: axios } = require("axios");
+
 const state = {
     increaseTempButton: null,
     decreaseTempButton: null,
@@ -45,7 +47,9 @@ const setTempDisplay = () => {
         '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷',
         '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂'
     ];
-    let displayIndex = displayIdentifier >= 5 ? displayIdentifier - 5 : 0;
+
+    let displayIndex = displayIdentifier < 6 ? 0 : displayIdentifier <= 8 ? displayIdentifier - 5 : 3;
+    
     state.landscape.textContent = landscapeTexts[displayIndex];
 }
 
@@ -54,21 +58,45 @@ const handleCityNameInput = () => {
     state.headerCityName.textContent = cityInput;
 };
 
-const handleRealtimeTemperatureClicked = () => {
+const getLocationData = () => {
     let cityInput = state.cityNameInput.value;
     let latitude, longitude;
-    axios
+    return axios
         // request is being received and returning status code 500
         .get('http://127.0.0.1:5000/location', {params: {q:cityInput}})
         .then((response) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
-            console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+            return {latitude: latitude, longitude: longitude};
         })
         .catch( (error) => {
             console.log('error in finding location data');
         });
-    console.log(cityInput);
+}
+
+const getWeatherDataFromLocation = (location) => {
+    // console.log(`${state.cityNameInput.value} is located at`, location.latitude, location.longitude);
+    return axios
+            .get('http://127.0.0.1:5000/weather', {
+                params: {
+                    lat: location.latitude,
+                    lon: location.longitude
+                }
+            })
+            .then( (response) => {
+                let cityTemperature = changeKelvinToFaren(response.data.main.temp);
+                state.tempValue.textContent = state.temperature = cityTemperature;
+            })
+}
+
+const changeKelvinToFaren = (temperature) => { 
+    return Math.floor((temperature - 273.15) * 9/5 + 32)
+}
+
+const handleRealtimeTemperatureClicked = () => {
+    getLocationData()
+        .then( (location) => getWeatherDataFromLocation(location))
+        .then( () => setTempDisplay());
 }
 
 const registerEventHandlers = () => {
