@@ -23,6 +23,13 @@ body{
   margin: 15px;
   padding: 20px;
 }
+#garden{
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  margin: 15px;
+  padding: 20px;
+}
 
 #temp{
   background-color: white;
@@ -34,9 +41,25 @@ body{
   padding: 10px;
   align-self: center;
 }
+
 #upbtn{
   margin-left: 60px;
 }
 #downbtn{
   margin-left: 60px;
+}
+.red{
+  color: red;
+}
+.orange{
+  color: orange;
+}
+.yellow{
+  color: rgb(255, 255, 3);
+}
+.green{
+  color: green;
+}
+.teal{
+  color: teal;
 }
