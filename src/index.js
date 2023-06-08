@@ -9,6 +9,9 @@ const state = {
     cityNameInput: null,
     headerCityName: null,
     currentTempButton: null,
+    skySelect: null,
+    sky: null,
+    gardenContent: null,
 };
 
 const loadControls = () => {
@@ -19,6 +22,9 @@ const loadControls = () => {
     state.cityNameInput = document.getElementById("cityNameInput");
     state.headerCityName = document.getElementById("headerCityName");
     state.currentTempButton = document.getElementById("currentTempButton");
+    state.skySelect = document.getElementById("skySelect");
+    state.sky = document.getElementById("sky");
+    state.gardenContent = document.getElementById("gardenContent");
 };
 
 const handleIncreaseTempClicked = () => {
@@ -99,6 +105,20 @@ const handleRealtimeTemperatureClicked = () => {
         .then( () => setTempDisplay());
 }
 
+const handleSkySelectOption = () => {
+    console.log("hey the sky is falling");
+    const weatherPatterns = {
+        pride: ['🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈', 'sunny'],  
+        sunny: ['☁️ ☁️ ☁️ ☀️ ☁️ ☁️', 'sunny'],
+        cloudy: ['☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️', 'cloudy'],
+        rainy: ['🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧', 'rainy'],
+        snowy: ['🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨', 'snowy']
+    };
+    state.sky.textContent = weatherPatterns[state.skySelect.value][0];
+    // state.gardenContent.classList.toggle(state.gardenContent.classList, weatherPatterns[state.skySelect.value][1]);
+    // state.gardenContent.style = weatherPatterns[state.skySelect.value][1];
+}
+
 const registerEventHandlers = () => {
     loadControls();
     setTempDisplay();
@@ -106,6 +126,7 @@ const registerEventHandlers = () => {
     state.decreaseTempButton.addEventListener("click", handleDecreaseTempClicked);
     state.cityNameInput.addEventListener("input", handleCityNameInput);
     state.currentTempButton.addEventListener("click", handleRealtimeTemperatureClicked);
+    state.skySelect.addEventListener("change", handleSkySelectOption);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
@@ -130,8 +151,3 @@ document.addEventListener("DOMContentLoaded", registerEventHandlers);
 //HTML "change" for select option in wave 5
 //working in skySelect
 //state.skySelect.addEventListener("change", handleSkySelectOption)
-// <!-- <option value="">--Please choose an option--</option>
-// <option value="sunny">Sunny</option>
-// <option value="cloudy">Cloudy</option>
-// <option value="rainy">Rainy</option> -->
-// <option value="snowy">Snowy</option> -->
