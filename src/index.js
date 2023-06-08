@@ -57,8 +57,8 @@ const searchLocation = () => {
     .then((response) => {
         // state.lat = response.data[0].lat
     console.log('success!' + JSON.stringify(response.data[0].lat));
-    let lat = response.data[0].lat;
-    let lon = response.data[0].lon;
+    state.lat = response.data[0].lat;
+    state.lon = response.data[0].lon;
     searchTemperature();
         })
     
