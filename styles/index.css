@@ -1,9 +1,13 @@
+* {
+    border: .5px red solid;
+}
+
 .above80Temp {
     color: red;
 }
 
 .above80Bk {
-    background-color: red;
+    background-color: salmon;
     opacity: 50%;
 }
 
@@ -12,6 +16,72 @@
 }
 
 .temp69To80Bk {
-    background-color: orange;
-    opacity: 50%;
+    background-color: lightsalmon;
+}
+
+.temp59To70 {
+    color: yellow;
+}
+
+.temp59To70bk {
+    background-color: bisque;
+}
+
+.temp49To60 {
+    color: green;
+}
+
+.temp49To60Bk {
+    background-color: yellowgreen;
+}
+
+.blow50 {
+    color:teal;
+}
+
+.blow50Bk {
+    background-color: lightcyan;
+}
+
+#city-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#city {
+    color: blue
+}
+
+main {
+    height: 100vh;
+    flex:auto;
+    /* width: 50%; */
+}
+
+#content-container {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+}
+
+#temp-container {
+    display: flex;
+}
+
+#temp {
+    padding: .25rem;
+}
+#temp-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25%;
+    padding: .5rem;
+}
+
+#change-content-container {
+    display: flex;
+    flex-direction: column;
 }
