@@ -1,8 +1,12 @@
+* {
+    border: 1px antiquewhite dashed;
+}
+
 
 h2 {
     margin: 0 auto 2rem auto;
 }
-  
+
 body {
 /* background-image: url('https://media0.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47ebce121o1zbs2i2vnqtv3l9zce0l85937shzehed&ep=v1_gifs_search&rid=giphy.gif&ct=g' );
 background-repeat: repeat; */
@@ -11,11 +15,10 @@ display: grid;
 grid-template-columns: 1fr 2fr;
 grid-template-rows: auto auto auto auto;
 grid-gap: 1rem;
-
-font-family: "Rubik", sans-serif;
+font-family: Rubik, sans-serif;
 font-size: 18px;
 background-color: #1b69f9;
-margin: 2rem;
+margin:2rem
 }
 
 .header__header {
@@ -38,24 +41,23 @@ font-size: 2rem;
 
 .header__city-name::before,
 .header__city-name::after {
-content: "✨";
+content: "🌟";
 }
 
-.temp_section,
-.sky__section,
-.city-name__section {
+.temp_section, .skyClass, .city_section, .skyMenu {
 border-radius: 8px;
 padding: 2rem;
 background-color: white;
 }
 
 .temp_section {
-display: flex;
-flex-direction: column;
+/* display: flex;
+flex-direction: column; */
+    grid-row:2
 }
 
 .temp_section button {
-    background-color: #1b69f9;
+    background-color: yellowgreen;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -71,3 +73,57 @@ flex-direction: column;
     background-image: url('https://media0.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47ebce121o1zbs2i2vnqtv3l9zce0l85937shzehed&ep=v1_gifs_search&rid=giphy.gif&ct=g' );
     background-repeat: repeat;
 }
+
+.skyClass {
+    grid-row:3
+}
+
+.city_section {
+    grid-row:4
+}
+
+.landscape {
+    grid-row: 2/span 3;
+    grid-column: 2;
+    text-align: center;
+    align-self:center
+}
+
+.temp_section {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around
+}
+
+
+/*  */
+
+
+#tempValue {
+    font-size: 3rem;
+    margin-left:1.5rem
+}
+
+.temperature__controls {
+    display: flex;
+    flex-direction: column;
+    align-items:center
+}
+
+.landscape > h2 {
+    color:#fff
+}
+
+.landscape {
+    min-height: 200px;
+    max-width: fit-content;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    font-size:2em
+}
+
+
