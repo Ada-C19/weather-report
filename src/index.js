@@ -1,5 +1,6 @@
 const state = {
-    currentTemp: 72
+    currentTemp: 72,
+    defaultCity: 'Seattle'
 };
 
 const increaseTemp = () => {
@@ -59,6 +60,15 @@ const changeLandscape = () => {
     }
     landscape.textContent = emoji;
 };
+
+// const changeCity = (i) => {
+//     const currentCityName = document.getElementById('current-city');
+//     currentCityName.innerHTML = `This is the weather for ${i.target.value}!`;
+//     state.defaultCity = i.target.value;
+// };
+
+// const cityInputField = document.getElementById('city-input');
+// cityInputField.value = '';
 
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
