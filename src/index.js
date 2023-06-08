@@ -51,8 +51,7 @@ const callAPI = (location) => {
             axios
                 .get(weatherAPI, {params: {lat: lat, lon: lon, format: 'json'}})
                 .then((result) => {
-                    return result.data['main']['temp'];
-                    // return temp;
+                    tempValue.innerHTML = result.data['main']['temp'];
                 });
         });
 };
@@ -60,7 +59,6 @@ const callAPI = (location) => {
 goButton.addEventListener("click", () => {
     cityHolder = document.getElementById("siteSearch").value;
     headerLocation.textContent = cityHolder;
-    tempValue.innerHTML = callAPI(cityHolder);
-    console.log(tempValue);
+    callAPI(cityHolder);
 });
 
