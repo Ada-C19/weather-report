@@ -1,4 +1,4 @@
-// Abby's section on 2023.6.7
+// 👩🏻‍💻 Abby's section on 2023.6.7
 
 let temperature = document.getElementById("tempValue");
 
@@ -32,7 +32,7 @@ decreaseTempButton.addEventListener("click", () => {
   temperature.textContent = decrementValue(temperature.textContent);
 });
 
-// end of Abby's section on 2023.6.7
+// 👩🏻‍💻 end of Abby's section on 2023.6.7
 
 console.log("what's up world");
 const cityNameInput = document.getElementById("cityNameInput");
