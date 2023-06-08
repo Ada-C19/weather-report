@@ -1,5 +1,7 @@
 let temperature = document.getElementById("tempValue");
 
+// Abby's section on 2023.6.7
+
 temperature.textContent = 420;
 
 const incrementValue = (numberString) => {
@@ -14,12 +16,14 @@ const incrementValue = (numberString) => {
 
 temperature.textContent = incrementValue(temperature.textContent);
 
+// end of Abby's section on 2023.6.7
+
 console.log("what's up world");
 const cityNameInput = document.getElementById("cityNameInput");
 const headerCityName = document.getElementById("headerCityName");
 
-cityNameInput.addEventListener('input', () => {
-    headerCityName.textContent = cityNameInput.value;
+cityNameInput.addEventListener("input", () => {
+  headerCityName.textContent = cityNameInput.value;
 });
 
 const skySelect = document.getElementById("skySelect");
