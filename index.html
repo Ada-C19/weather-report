@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -33,23 +35,23 @@
 
             <section id="temp-display">
                 <!-- Temperature Buttons -->
-                <div id= "temp-adustment-container">
+                <div id="temp-adustment-container">
                     <button></button>
                     <section id="temp-number">72</section>
                     <button></button>
                 </div>
-            </section> 
+            </section>
         </div>
 
         <!-- Sky conditions -->
         <div id="sky-container">
-            <section id="sky-header">Sky Conditions</section>
-            <select name="condition" id="condition">
-                <option value="">Free</option>
-                <option value="">Bronze</option>
-                <option value="silver" selected>Silver</option>
-                <option value="Gold">Gold</option>
-              </select>
+            <label for="weather-conditions">Sky Conditions</label>
+            <select name="weather-conditions" id="weather-conditions">
+                <option value="sunny" selected>Sunny</option>
+                <option value="cloudy">Cloudy</option>
+                <option value="rainy">Rainy</option>
+                <option value="snowy">Snowy</option>
+            </select>
         </div>
 
 
@@ -89,7 +91,7 @@
 
         </div>
     </main>
-    
+
     <!-- Footer -->
     <footer>
         <p>© Proudly designed by Anba & Stacey</p>
@@ -97,4 +99,5 @@
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
+
 </html>
