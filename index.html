@@ -10,6 +10,46 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <header class = "header">
+        <h1>Weather Report</h1>
+        <span>For the lovely city of: 
+        <span id="cityName" class="header_city_name">"Seattle"</span> 
+        </span>  
+        <img src="assets/sun.png" alt="cartoon sun" id="sunimage">
+    </header>
+    
+    <section class="temperature">
+        <h2>Temperature</h2>
+        <div class="temperature_content">
+            <div class="temperature_controls">
+                <button id="increase_temp">Up</button>
+                <span id="temp_value">72</span>
+                <button id="decrease_temp">Down</button>
+            </div>
+            <button id="current_temp_button">Get Realtime Temperature</button>
+        </div>
+    </section>
+    <section class="sky">
+        <h2>Sky</h2>
+        <select id="sky_selector">
+            <option>Sunny</option>
+            <option>Cloudy</option>
+            <option>Rainy</option>
+            <option>Snowy</option>
+        </select>
+    </section>
+    <section class="city_name">
+        <h2>City Name</h2>
+        <input type="text" id="cityNameInput" value="Seattle">
+        <button id="cityNameReset" class="cityNameResetButton">Reset</button>
+    </section>
+    <section class="garden">
+        <h2>Weather Garden</h2>
+        <div id="gardenContent" class="gardenContent sunny" >
+            <div id="sky">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
+            <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+        </div>
+    </section>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
