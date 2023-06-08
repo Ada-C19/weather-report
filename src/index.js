@@ -11,8 +11,8 @@ const displayCityText = () => {
 }
 
 const getRealTimeTemp = () => {
-    const endpointLocation = "https://127.0.0.1:5000/location"
-    const endpointWeather = "https://127.0.0.1:5000/weather"
+    const endpointLocation = "http://127.0.0.1:5000/location"
+    const endpointWeather = "http://127.0.0.1:5000/weather"
     // const axios = require('axios')
 
     const apiCallLocation = async (query) => {
@@ -29,14 +29,18 @@ const getRealTimeTemp = () => {
                 lon: longitude
             })
             .then((response) => {
-                
+                const degreesKelvin = response.main.temp
+                const degreesFarenheit = (((degreesKelvin - 273.15) * 9) / 5) + 32;
+                return degreesFarenheit;
+            })
+            .catch((error) => {
+                console.log(response.error.data)
             })
         })
         .catch((error) => {
             console.log(response.error.data)
         });
     }
-
 }
 
 // Default state
