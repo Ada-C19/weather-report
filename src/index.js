@@ -1,3 +1,4 @@
+// const { default: axios } = require("axios");
 
 const state = {
   temp: 90,
@@ -73,28 +74,56 @@ const registerEventHandlers = () => {
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
 
-const LOCATIONIQ_KEY = "pk.6623ff3b3334090d644e85b10850a67d";
-const qCity = "Seattle";
+// const LOCATIONIQ_KEY = "pk.6623ff3b3334090d644e85b10850a67d";
+// const qCity = "Seattle";
 
 const findLatitudeAndLongitude = (query) => {
+  console.log("Hi, find latitude and longtitude")
   let latitude, longitude;
   axios
-    .get("https://us1.locationiq.com/v1/search.php", {
+    .get("http://127.0.0.1:5000/location", {
       params: {
-        key: LOCATIONIQ_KEY,
-        q: qCity,
+        q: "Seattle",
         format: "json",
       },
-    })
-    .then((response) => {
+    }).then((response) => {
       latitude = response.data[0].lat;
       longitude = response.data[0].lon;
+      state.latitude = latitude;
+      state.longitude = longitude;
       console.log("success in findLatitudeAndLongitude!", latitude, longitude);
+      findTemperature(latitude, longitude)
+
+    }).catch((error) => {
+        console.log("error in findLatitudeAndLongitude!");
+    }); 
+
+    
+    
+  };    
 
       // make the next API call here!
-      findTemperature(latitude, longitude);
-    })
-    .catch((error) => {
-      console.log("error in findLatitudeAndLongitude!");
-    });
-};
+const findTemperature = (query) => {
+    console.log("find inside temp")
+    console.log(state.latitude, state.longitude)
+    axios
+      .get("http://127.0.0.1:5000/weather", {
+        params: {
+          lat: state.latitude,
+          lon: state.longitude,
+          // units: "imperial",
+          // format: "json",
+      },
+      }).then((response) => {
+        console.log(response)
+        realTimeTemp = response["data"]["main"]["temp"];
+        console.log("success in find realTimeTemp", realTimeTemp);
+      }).catch((error) => {
+          console.log("error in find realTimeTemp");
+      });     
+    };    
+
+
+
+findLatitudeAndLongitude()
+console.log("Hello Houston")
