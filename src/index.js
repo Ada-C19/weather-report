@@ -6,8 +6,14 @@ const loadControls = () => {
 }
 
 const registerEvents = () => {
-    state.increaseTempControl.addEventListener('click', handleIncrease)
-    state.decreaseTempControl.addEventListener('click', handleDecrease)
+    state.increaseTempControl.addEventListener('click', handleIncrease);
+    state.decreaseTempControl.addEventListener('click', handleDecrease);
+    state.cityNameInput.addEventListener('input', handleCityNameUpdate);
+}
+
+const handleCityNameUpdate = () => {
+    let city = state.cityNameInput.value;
+    state.headerCityName.innerText = city;
 }
 
 const handleIncrease = () => handleTempChange(1);
@@ -29,7 +35,7 @@ const handleTempChange = (adj) => {
         color = 'yellow'
         landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
     } else {
-        landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"; 
+        landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
         color = newTemp >= 50 && newTemp <=59 ? 'green': 'teal';
     }
     state.tempValue.style.color = color;
