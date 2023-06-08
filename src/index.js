@@ -1,4 +1,10 @@
 const state = {
+    tempValue: null,
+    increaseButton: null,
+    decreaseButton: null,
+    landscapeEmojis: null,
+    cityNameInput: null,
+    headerCityName: null,
     temp: 32
 };
 
@@ -15,6 +21,11 @@ const decreaseTemp = () => {
     changeColor(state.temp);
     changeLandscape(state.temp);
 }
+
+const changeCityName = () => {
+    state.headerCityName.textContent = state.cityNameInput.value;
+}
+
 
 const changeColor = (temp) => {
     if (temp >= 80) {
@@ -46,11 +57,14 @@ const loadControls = () => {
     state.increaseButton = document.getElementById("increaseTempControl");
     state.decreaseButton = document.getElementById("decreaseTempControl");
     state.landscapeEmojis = document.getElementById("landscape");
+    state.cityNameInput = document.getElementById("cityNameInput");
+    state.headerCityName = document.getElementById("headerCityName");
 }
 
 const registerEvents = () => {
     state.increaseButton.addEventListener("click", increaseTemp);
     state.decreaseButton.addEventListener("click", decreaseTemp);
+    state.cityNameInput.addEventListener("input", changeCityName);
 }
 
 
