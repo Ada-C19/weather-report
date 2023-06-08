@@ -217,7 +217,7 @@ header{
 }
 
 .temperature, .sky, .city_name{
-    margin-left: 150px;
+    margin-left: 100px;
     /* background-color: rgb(47, 116, 116); */
     background: linear-gradient(to bottom, rgb(0, 166, 255), rgb(127, 210, 127));
     border: 1px solid gray;
