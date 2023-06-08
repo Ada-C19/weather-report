@@ -29,6 +29,7 @@ const applyColorAndGarden = (element, temperature) => {
       landscape = '🎄❄️🌨️🌲⛄️🌨️❄️🌨️⛄️🌲🌨️❄️🎄';
     }
   
+    // wave 2 increase and decrease temp buttons change number, helper function adds color and emojis
     const landscapeElement = document.querySelector("#landscape");
     landscapeElement.textContent = landscape;
   };
@@ -55,7 +56,29 @@ const applyColorAndGarden = (element, temperature) => {
   
     const decreaseTempControl = document.getElementById('decreaseTempControl');
     decreaseTempControl.addEventListener('click', decreaseTemp);
+
+    // update city event handler here somehow?!
+    // not working
+    const cityNameInput = document.getElementById('cityNameInput');
+    cityNameInput.addEventListener('input', updateCity);
+      //update city becomes event handler function, input is the event 
   };
   
   document.addEventListener("DOMContentLoaded", registerEventHandlers);
   
+
+  //wave 3 
+
+  //This feature requires you to grab the value of the text input element.
+  //input: line 40 "cityNameInput"
+  //output: line 18 id="headerCityName"
+
+
+  //use on change event to citynameInput?
+  const updateCity = () => {
+    const cityBox = document.getElementById('cityNameInput').value;
+    //get element by id is our document method
+    const cityHeader = document.getElementById('headerCityName');
+    state.city = cityBox;
+    cityHeader.textContent = state.city;
+  }
