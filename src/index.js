@@ -19,11 +19,11 @@ const landscapes = {
 
 const landscapeUpdate = () => {
   let newLandscape;
-  if (state.temperature >= 80) {
+  if (state.currentTemperature >= 80) {
     newLandscape = landscapes.hotLandscape;
-  } else if (state.temperature >= 70) {
+  } else if (state.currentTemperature >= 70) {
     newLandscape = landscapes.warmLandscape;
-  } else if (state.temperature >= 60) {
+  } else if (state.currentTemperature >= 60) {
     newLandscape = landscapes.coolLandscape;
   } else {
     newLandscape = landscapes.coldLandscape;
