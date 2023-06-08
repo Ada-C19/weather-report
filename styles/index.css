@@ -27,11 +27,12 @@
 body{
     background-color: rgb(28,105,249);
     margin: 100px;
-    background: linear-gradient(to top, rgb(96, 214, 122), rgb(65, 167, 167));
+    background-color: rgb(15,54,94);
+    /* background: linear-gradient(to top, rgb(96, 214, 122), rgb(65, 167, 167)); */
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     border: 2px solid gray;
     border-radius: 40px;
-    height: 800px;
+    height: 850px;
     
 }
 
@@ -42,7 +43,9 @@ header{
     
 }
 .weather-text{
-    color: rgb(60, 59, 59);
+    /* color: rgb(60, 59, 59); */
+    color: rgb(196, 202, 217);
+
 
 }
 
@@ -54,6 +57,8 @@ header{
 
 .city{
     color: rgb(83, 80, 80);
+    color: wheat;
+
 
 }
 /* temperature block */
@@ -65,6 +70,7 @@ header{
     margin-bottom: 20px;
     padding: 20px;
     color: wheat;
+    height: 150px;
     
 
 }
@@ -100,6 +106,8 @@ header{
     border-radius: 10px;
     border: none;
     background-color: rgb(81, 218, 226);
+    color: rgb(83, 80, 80);
+
 
 
 
@@ -127,10 +135,7 @@ header{
     border-radius: 10px;
     color: rgb(83, 80, 80);
     background-color: rgb(81, 218, 226);
-
-
-
-
+    border: none;
 
 
 }
@@ -170,6 +175,8 @@ header{
     margin-left: 30px;
     border: none;
     background-color: rgb(81, 218, 226);
+    color: rgb(83, 80, 80);
+
 
 
 }
