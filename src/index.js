@@ -1,7 +1,5 @@
 "use strict";
 
-const { default: axios } = require("axios");
-
 const state = {
     degrees: 62,
     cityName: "Seattle",
@@ -60,25 +58,28 @@ const tempColorLandscape = () => {
 // Wave 3
 const changecityName = (event) => {
     let cityNameHTML = document.getElementById("name").value;
-    state.cityName = cityNameHTML
+    state.cityName = cityNameHTML;
     const city = document.getElementById("city");
     city.textContent = state.cityName;
 }
 
 // Wave 4
-const getLocation = (cityName) => {
-    axios.get('http://127.0.0.1:5000/location', { params: {q: cityName, format: 'json'}})
+const getLocation = () => {
+    axios.get('http://127.0.0.1:5000/location', { params: {q: state.cityName, format: 'json'}})
         .then((result)=> {
-            state.lat = result.data[0]['lat']
-            state.lon = result.data[0]['lon']
+            state.cityLat = result.data[0]['lat'];
+            state.cityLon = result.data[0]['lon'];
         })
 }
 
-const getWeather = (cityName, cityLat, cityLon) => {
-    getLocation(cityName)
-    axios.get('http://127.0.0.1:5000/weather', { params: {lat: cityLat, lon: cityLon, format: 'json', units: 'imperial'}})
+const getWeather = () => {
+    getLocation(state.cityName)
+    axios.get('http://127.0.0.1:5000/weather', { params: {lat: state.cityLat, lon: state.cityLon, format: 'json', units: 'imperial'}})
         .then((result) => {
-            console.log(result)
+            state.degrees = result.data["main"]["temp"];
+            const degreeCount = document.getElementById('degrees');
+            degreeCount.textContent = state.degrees;
+            console.log("OK");
         })
 }
 
