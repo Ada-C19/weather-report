@@ -56,7 +56,7 @@ body {
 }
 
 button:hover {
-    background-color: #c3992d;
+    background-color: #dbd7d3;
 }
 
 .temperature__content {
@@ -97,6 +97,17 @@ button:hover {
 
     border-radius: 8px;
     font-size: 2em;
+}
+
+.city-name__reset-btn {
+    display: flex;
+    background-color: #ee6eac;
+    justify-content: space-around;
+    border: none;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1 rem;
+    border-radius: 10px;
 }
 
 #tempValue {

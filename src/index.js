@@ -13,7 +13,20 @@ const landscapes = {
     warm: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷", 
     cool: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃", 
     cold: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-}
+};
+
+const updateCityName = () => {
+    const inputName = document.getElementById("cityNameInput").value; 
+    const headerCityName = document.getElementById("headerCityName"); 
+    state.city = inputName;
+    headerCityName.textContent = state.city;
+};
+
+const resetCityName = () => {
+    const cityNameInput = document.getElementById("cityNameInput"); 
+    cityNameInput.value = 'Seattle';
+    updateCityName(); 
+};
 
 const formatTempAndGarden = () => {
     let temp = state.temp;
@@ -89,6 +102,14 @@ const registerEventHandlers = () => {
 
     const decreaseTempBtn = document.getElementById('decreaseTempBtn');
     decreaseTempBtn.addEventListener('click', decreaseTemp);
+
+    updateCityName();
+
+    const cityNameInput = document.getElementById('cityNameInput'); 
+    cityNameInput.addEventListener('input', updateCityName);
+
+    const cityNameResetBtn = document.getElementById('cityNameReset');
+    cityNameResetBtn.addEventListener('click', resetCityName); 
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
