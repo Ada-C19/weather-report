@@ -5,6 +5,11 @@ const state = {
 const updateTemp = () => {
     const tempElement = document.querySelector("#temp");
     tempElement.textContent = `${state.temp}`;
+    if (tempElement.textContent >= 85) {
+        tempElement.style.color = 'red';
+    } else if (tempElement.textContent <= 55) {
+        tempElement.style.color = 'blue';
+    }
 }
 
 const increaseTemp = document.querySelector("#upTempControl")
