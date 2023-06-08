@@ -15,7 +15,6 @@ body {
 
 h1, h2 {
     font-family: cursive;
-    font-size: xx-large;
 }
 
 
@@ -73,15 +72,20 @@ button {
     margin-top: 15px;
     margin-bottom: 100px;
     white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
-/* Updated CSS for garden emoji container */
 #garden-emoji {
     font-size: 2.5rem;
     margin-top: 5px;
     margin-bottom: 15px;
     margin-left: auto;
     white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 #garden-sky {
     background-color:rgb(225, 248, 248);
@@ -92,4 +96,44 @@ button {
     width: 35rem;
     font-size: 1.5rem;
     
+}
+#header-city {
+    font-size: 3rem;
+    font-family:cursive;
+}
+header {
+    display: flex;
+    align-items: center;
+    font-family: cursive;
+}
+
+#title {
+    margin-right: 10px;
+}
+
+#city-heading {
+    font-size: 2rem;
+}
+#title {
+    font-size: 3rem;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    margin-right: 2rem;
+
+}
+
+.header-city-heading {
+    margin-right: 2rem;
+    font-size: 1.5rem; 
+}
+
+.header-city {
+    font-size: 3rem;
+    font-family: cursive;
+    margin-right: 2rem;
 }

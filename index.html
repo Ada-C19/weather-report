@@ -10,11 +10,10 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <header> 
-        <h1 id="title">Weather Report</h1>
-        <span>
-        For the lovely city of &nbsp; </span>
-        <span>"Seattle"</span>
+    <header class="header-container"> 
+        <h1 id="title" class="header-title"> Weather Report &nbsp</h1>
+        <span id="city-heading" class="header-city-heading"> for the lovely city of </span>
+        <span id="header-city" class="header-city"> ✨Seattle✨ </span>
     </header>
     <div id="flex-container">
         <div id="sidebar">
@@ -43,7 +42,7 @@
             </section>
             <section id="city">
                 <h2>City Name</h2>
-                <input type="text" value="Seattle">
+                <input type="text" value="Seattle" id="city-input">
                 <button>Reset</button>
             </section>
         </div>
