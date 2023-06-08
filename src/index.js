@@ -7,13 +7,10 @@ let skyImage = null;
 let landscapeImage = null;
 let cityNameInput = null;
 let cityNameResetButton = null;
-// let cityNameValue = null;
-// let cityName = null;
 
 // values
 let temperatureValue = 72;
 let defaultCityName = 'Denver';
-// let cityName = defaultCityName;
 
 // helper functions
 const setTempLabelColor = (temperature) => {
