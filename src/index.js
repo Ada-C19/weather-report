@@ -70,7 +70,6 @@ const getLocationData = () => {
     let cityInput = state.cityNameInput.value;
     let latitude, longitude;
     return axios
-        // request is being received and returning status code 500
         .get('http://127.0.0.1:5000/location', {params: {q:cityInput}})
         .then((response) => {
             latitude = response.data[0].lat;
@@ -84,6 +83,10 @@ const getLocationData = () => {
 
 const getWeatherDataFromLocation = (location) => {
     // console.log(`${state.cityNameInput.value} is located at`, location.latitude, location.longitude);
+    const changeKelvinToFaren = (temperature) => { 
+        return Math.floor((temperature - 273.15) * 9/5 + 32)
+    }
+    
     return axios
             .get('http://127.0.0.1:5000/weather', {
                 params: {
@@ -95,10 +98,6 @@ const getWeatherDataFromLocation = (location) => {
                 let cityTemperature = changeKelvinToFaren(response.data.main.temp);
                 state.tempValue.textContent = state.temperature = cityTemperature;
             })
-}
-
-const changeKelvinToFaren = (temperature) => { 
-    return Math.floor((temperature - 273.15) * 9/5 + 32)
 }
 
 const handleRealtimeTemperatureClicked = () => {
@@ -122,8 +121,8 @@ const handleSkySelectOption = () => {
 }
 
 const handleResetButtonClicked = () => {
-    state.headerCityName.textContent = 'Los Angeles'
-    
+    state.cityNameInput.value = state.headerCityName.textContent = 'Los Angeles';
+    handleRealtimeTemperatureClicked();
 }
 
 const registerEventHandlers = () => {
