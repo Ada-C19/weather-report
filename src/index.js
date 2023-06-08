@@ -1,9 +1,11 @@
-
+//STATES
 const state = {
     city: 'Seattle',
     temp: 72,
 };
 
+
+// WAVE 2 HELPER FUNCTION //////////////////////
 const applyColorAndGarden = (element, temperature) => {
     element.classList.remove('red', 'orange', 'yellow', 'green', 'teal', 'ice');
   
@@ -28,12 +30,17 @@ const applyColorAndGarden = (element, temperature) => {
       element.classList.add('ice');
       landscape = '🎄❄️🌨️🌲⛄️🌨️❄️🌨️⛄️🌲🌨️❄️🎄';
     }
-  
-    // wave 2 increase and decrease temp buttons change number, helper function adds color and emojis
     const landscapeElement = document.querySelector("#landscape");
     landscapeElement.textContent = landscape;
   };
-  
+
+
+// WAVE 2 increase and decrease temp buttons change number///////
+
+// line 24  <span id="increaseTempControl">⬆️</span>
+// line 25  <span id="tempValue"></span>
+// line 26  <span id="decreaseTempControl">⬇️</span>
+
   const increaseTemp = () => {
     const tempContainer = document.querySelector("#tempValue");
     state.temp++;
@@ -44,37 +51,23 @@ const applyColorAndGarden = (element, temperature) => {
   
   const decreaseTemp = () => {
     const tempContainer = document.querySelector("#tempValue");
+    // query selector is our document method
     state.temp--;
     console.log(state.temp);
     tempContainer.textContent = state.temp;
     applyColorAndGarden(tempContainer, state.temp);
   };
-  
-  const registerEventHandlers = () => {
-    const increaseTempControl = document.getElementById('increaseTempControl');
-    increaseTempControl.addEventListener('click', increaseTemp);
-  
-    const decreaseTempControl = document.getElementById('decreaseTempControl');
-    decreaseTempControl.addEventListener('click', decreaseTemp);
 
-    // update city event handler here somehow?!
-    // not working
-    const cityNameInput = document.getElementById('cityNameInput');
-    cityNameInput.addEventListener('input', updateCity);
-      //update city becomes event handler function, input is the event 
-  };
-  
-  document.addEventListener("DOMContentLoaded", registerEventHandlers);
-  
 
-  //wave 3 
+  //WAVE 3 grab the value of the text input elemen.//////////////////////
 
-  //This feature requires you to grab the value of the text input element.
+  // THIS IS THE NAME INPUT BOX   
   //input: line 40 "cityNameInput"
+
+  //THIS IS THE HEADER WITH THE STARS CSS
   //output: line 18 id="headerCityName"
 
-
-  //use on change event to citynameInput?
+  // WAVE 3 FUNCTION ////////////////////////////
   const updateCity = () => {
     const cityBox = document.getElementById('cityNameInput').value;
     //get element by id is our document method
@@ -82,3 +75,70 @@ const applyColorAndGarden = (element, temperature) => {
     state.city = cityBox;
     cityHeader.textContent = state.city;
   }
+
+
+
+//WAVE 5  need to change a select element//////////////////////
+
+//THIS IS THE DROPDOWN SELECTOR 
+//input line 33  <select id="skySelect">
+
+//THIS IS WHERE YOU WILL SEE THE SKY EMOJIS
+//output  line 47 <div id="sky"></div>
+
+//sky emojis ref, make this prettier its hideous
+// Sunny 	"☁️ ☁️ ☁️ ☀️ ☁️ ☁️"
+// Cloudy 	"☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️"
+// Rainy 	"🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
+// Snowy 	"🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+
+//WAVE 5 SKY HELPER FUNCTION? //////////////////////
+// const applySky = (selector) => {}
+
+
+//WAVE 5 FUNCTION //////////////////////
+// const skyView = () => {
+//   const skySelector = document.getElementById('skySelect').value;
+//   const skyContainer = document.getElementById('sky');
+//   applySky()
+// };
+
+
+// WAVE 6 reset city name ////////////////////////
+
+//WAVE 6 FUNCTION /////////////////////
+
+// const resetCount = () => {
+//     state.cityNameInput = 'Seattle';
+//     console.log(state.cityNameInput);
+
+//     cityButton.textContent = state.cityNameInput;
+//     cityContainer.textContent = state.cityNameInput;
+// };
+
+
+  // EVENT HANDLERS FOR ALL WAVES LIVE HERE ! //////////////
+  const registerEventHandlers = () => {
+    // WAVE 2 event is 'click listening to increase decrease Temp handler///////
+    const increaseTempControl = document.getElementById('increaseTempControl');
+    increaseTempControl.addEventListener('click', increaseTemp);
+  
+    const decreaseTempControl = document.getElementById('decreaseTempControl');
+    decreaseTempControl.addEventListener('click', decreaseTemp);
+
+    // WAVE 3 event is 'input' listening to updateCity handler //////////// 
+    const cityNameInput = document.getElementById('cityNameInput');
+    cityNameInput.addEventListener('input', updateCity);
+
+    // WAVE 5 event is 'change' listening to skyView handler ///////
+    //const skyUpdate = document.getElementById('skySelect');
+    // SkyUpdate.addeventListenere('change', skyView)
+
+
+    //WAVE 6 event is 'click' listening to 'resetCount' handler /////
+    //const resetButton = document.querySelector("#cityNameReset");
+    //resetButton.addEventListener("click", resetCount);
+
+  };
+  document.addEventListener("DOMContentLoaded", registerEventHandlers);
+  
