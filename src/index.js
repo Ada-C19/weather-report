@@ -37,51 +37,57 @@ const state = {
   headerCity: null,
   cityResetButton: null,
   landscapeField: null,
-  temperature: null,
   currTempButton: null,
-  tempUpButton: null,
-  tempDownButton: null,
+  temperatureValue: null,
+  currentTemperature: 50,
+  temperatureIncreaseButton: null,
+  temperatureDecreaseButton: null,
 };
 
 const getTemperatureColor = (temperature) => {
   if (temperature >= 80) {
     return "red";
-  }
-  else if (temperature >= 70 && temperature <= 79) {
+  } else if (temperature >= 70 && temperature <= 79) {
     return "orange";
-  }
-  else if (temperature >= 60 && temperature <= 69) {
+  } else if (temperature >= 60 && temperature <= 69) {
     return "yellow";
-  }
-  else if (temperature >= 50 && temperature <= 59) {
+  } else if (temperature >= 50 && temperature <= 59) {
     return "green";
-  }
-  else if (temperature <= 49) {
+  } else if (temperature <= 49) {
     return "teal";
   }
-}
+};
 
 const increaseTemperature = () => {
   state.currentTemperature += 1;
   state.temperatureValue.textContent = state.currentTemperature;
-  state.temperatureValue.className = `${getTemperatureColor(state.currentTemperature)}`;
-}
+  state.temperatureValue.className = `${getTemperatureColor(
+    state.currentTemperature
+  )}`;
+};
 
 const decreaseTemperature = () => {
   state.currentTemperature -= 1;
   state.temperatureValue.textContent = state.currentTemperature;
-  state.temperatureValue.className = `${getTemperatureColor(state.currentTemperature)}`;
-}
+  state.temperatureValue.className = `${getTemperatureColor(
+    state.currentTemperature
+  )}`;
+};
 
 const loadData = () => {
   //Assign selected HTML elements to attributes of state
   state.cityTextField = document.querySelector("#cityNameInput");
   state.headerCity = document.querySelector("#headerCityName");
   state.cityResetButton = document.querySelector("#cityNameReset");
-
+  state.landscapeField = document.querySelector("#landscape");
+  state.currTempButton = document.querySelector("#currentTempButton");
   state.temperatureValue = document.querySelector("#tempValue");
-  state.temperatureIncreaseButton = document.querySelector("#increaseTempControl");
-  state.temperatureDecreaseButton = document.querySelector("#decreaseTempControl");
+  state.temperatureIncreaseButton = document.querySelector(
+    "#increaseTempControl"
+  );
+  state.temperatureDecreaseButton = document.querySelector(
+    "#decreaseTempControl"
+  );
 };
 
 const registerEventHandlers = (event) => {
@@ -91,23 +97,18 @@ const registerEventHandlers = (event) => {
   state.cityTextField.addEventListener("input", cityUpdate);
   state.cityResetButton.addEventListener("click", cityReset);
 
-  state.temperatureIncreaseButton.addEventListener("click", increaseTemperature);
-  state.temperatureDecreaseButton.addEventListener("click", decreaseTemperature);
-};
+  state.temperatureIncreaseButton.addEventListener(
+    "click",
+    increaseTemperature
+  );
+  state.temperatureDecreaseButton.addEventListener(
+    "click",
+    decreaseTemperature
+  );
+  state.temperatureIncreaseButton.addEventListener("click", landscapeUpdate);
+  state.temperatureDecreaseButton.addEventListener("click", landscapeUpdate);
 
-const state = {
-  cityTextField: null,
-  headerCity: null,
-  cityDefault: "Boston",
-  cityResetButton: null,
-
-  currentTemperature: 50,
-  temperatureValue: null, 
-  temperatureIncreaseButton: null, 
-  temperatureDecreaseButton: null
   state.currTempButton.addEventListener("click", landscapeUpdate);
-  state.tempDownButton.addEventListener("click", landscapeUpdate);
-  state.tempUpButton.addEventListener("click", landscapeUpdate);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
