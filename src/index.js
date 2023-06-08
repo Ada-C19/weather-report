@@ -10,10 +10,13 @@ const increaseTemp = () => {
     // setTempAndColor();
 };
 
-// const decreaseTemp = () => {
-//     currentTemp.currTemp--;
-//     setTempAndColor();
-// };
+const decreaseTemp = () => {
+    state.currentTemp--;
+    const currentTemp = document.querySelector('#display-temperature');
+    console.log(state.currentTemp);
+    currentTemp.textContent = `${state.currentTemp}`;
+    // setTempAndColor();
+};
 
 // const setTempAndLandscape = () => {
 //     const currentTemp = document.querySelector('#display-temperature');
@@ -46,7 +49,10 @@ const increaseTemp = () => {
 
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
+    const decreaseButton = document.getElementById("decrease-temp");
     increaseButton.addEventListener("click", increaseTemp);
+    decreaseButton.addEventListener("click", decreaseTemp);
+
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
