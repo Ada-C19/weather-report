@@ -1,3 +1,6 @@
+const { default: axios } = require("axios");
+
+
 const state = {
     tempValue: 75,
     city: "Seattle",
@@ -64,3 +67,48 @@ resetButton.addEventListener("click", () => {
     cityDisplay.textContent = `For the city of ${state.city}`;
 
 });
+
+const converttoF = (temp) => {
+    return (temp - 273.15) * (9 / 5) + 32;
+};
+
+
+// API calls
+const getLatAndLong = () => {
+    axios
+    .get("http://127.0.0.1:5000/location")
+}
+
+
+
+
+const getCurrentWeather = () => {
+    console.log(state.lat, state.long)
+    axios
+    .get("http://127.0.0.1:5000/weather", {
+        params: {
+            lat: state.lat,
+            lon: state.long,
+        },
+    })
+    .then((response) => {
+        const weather = response.data;
+        console.log(weather)
+        console.log(state)
+        console.log(Math.round(converttoF(weather.main.temp)))
+        state.temp = Math.round(converttoF(weather.main.temp));
+        console.log("inside of success response")
+        // we need to get the temp to change the garden pic
+        console.log(state.temp)
+    })
+    .catch((error) => {
+        console.log("Unable to retrieve weather data:", error);
+    })
+};
+
+const currentTempButton = document.getElementById("currentTemp");
+currentTempButton.addEventListener("click", () => {
+    getCurrentWeather();
+    let tempValue = document.getElementById("tempValue");
+    tempValue = state.temp;
+})
