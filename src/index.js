@@ -1,25 +1,28 @@
-`"use strict";`
+// `"use strict";`
 const state = {
     increaseTempButton: null,
-    tempNumberLabel: null,
-    tempNumber: 0,
+    tempNumberContainer: null,
+    tempNumber: 1,
 };
 
+// const handleIncreaseTempButtonClicked = (event) => {
+    
+// };
 const loadControls = () => {
     state.increaseTempButton = document.getElementById('increaseTempButton');
-
+    state.tempNumber = parseInt(document.getElementById('tempNumberContainer').innerText);
+    state.tempNumberContainer = document.getElementById('tempNumberContainer');
 };
 
-const registerEventHandler = () => {
-    state.increaseTempButton.addEventListener('click', (handleIncreaseTempButtonClicked) => {
-        ++state.tempNumber;
-        state.tempNumberLabel.textContent = state.tempNumber;
+const registerEventHandlers = () => {
+    state.increaseTempButton.addEventListener('click', () => {
+        state.tempNumberContainer.innerText = ++state.tempNumber;
     });
-}
+};
 
 const onLoaded = () => {
     loadControls();
-    registerEventHandler();
+    registerEventHandlers();
 }
 
 onLoaded();
