@@ -25,7 +25,15 @@
                     </div>
                     <button id="realTimeButton">Get Real-Time Temperature-</button>
                 </div>
-                <div class="data">Sky</div>
+                <div class="data">
+                    <label for="Sky-select">Sky</label>
+                    <select name="skies" id = "Sky-select">
+                        <option value = "Sunny">Sunny</option>
+                        <option value = "Cloudy">Cloudy</option>
+                        <option value = "Rainy">Rainy</option>
+                        <option value = "Snowy">Snowy</option>
+                    </select>
+                </div>
                 <div class="data"><label for="name">City Name</label>
                     <input type="text" id="name" name="name" required>
                     <button id="reset">Reset</button>
