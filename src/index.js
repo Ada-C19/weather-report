@@ -32,6 +32,36 @@ const findLatAndLong = () => {
         });
 };
 
+const landscape = {
+    summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
+    spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+    autumn: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+    winter: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+}
+
+const formatTempAndGarden = (temperature) => {
+    let temperature = state.temp;
+    let landscape = landscape.summer;
+    let color = red;
+    
+    if (temperature <= 49) {
+        landscape = landscape.winter;
+        color = 'teal';
+    } else if (temperature <= 59) {
+        landscape = landscape.winter;
+        color = 'green';
+    } else if (temperature <= 69) {
+        landscape = landscape.autumn;
+        color = 'yellow'
+    } else if (temperature <= 79) {
+        landscape = landscape.spring;
+        color = 'orange';
+    } else {
+        landscape = landscape.summer;
+        color = 'red';
+    }
+}
+
 
 const getWeather = () => {
     axios
