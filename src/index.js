@@ -83,8 +83,7 @@ const searchTemperature = () => {
         },
       })
     .then((response) => {
-        // fix decimal points for Farenheit data
-        state.temperature = (Math.floor(response.data.main.temp - 273.15) * 1.8 + 32);
+        state.temperature = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
  
         // return current temp and assign to #temp count
         const tempCount = document.querySelector("#temp-count");
