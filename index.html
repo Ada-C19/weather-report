@@ -10,6 +10,40 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <main>
+        <header id="sky">
+            <section id="city-container">
+                <h1 id="city">Anamosa</h1>
+                <select name="" id="sky-dropdown">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+            </section>
+            <section id="content-container">
+                <section id="temp-container">
+                    <aside id="temp">
+                    </aside>
+                    <section>
+                        <button id="temp-increase" type="button"></button>
+                        <button id="temp-decrease" type="button"></button>
+                    </section>
+                </section>
+                <section id="change-content-container">
+                    <section id="city-choice-container"></section>
+                        <label for="city-choice"></label>
+                        <input type="text" name="city-choice" id="city-choice">
+                    </section>
+                    <section id="button-container">
+                        <button type="button" id="get-current-temp"></button>
+                        <button type="button" id="reset-city"></button>
+                    </section>
+                </section>
+            </section>
+            <section id="landscape">
+            </section>
+        </header>
+    </main>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
