@@ -7,7 +7,7 @@ const cityDefault = "Boston";
 
 const cityReset = () => {
   state.cityTextField.value = cityDefault;
-  state.headerCity.textContent = cityDefault;
+  state.headerCity.textContent = state.cityTextField.value;
 };
 
 const landscapes = {
