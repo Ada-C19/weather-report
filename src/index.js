@@ -1,13 +1,21 @@
 const state = {
     tempValue: 70,
     tempLabel: null,
-    emoji: null
+    emoji: null,
+    cityLabel: null,
+    cityValue: null
 };
 
 
 const updateUI = () =>  {
     state.tempLabel.textContent = state.tempValue;
 }; 
+
+const updateCity = (event) => {
+    state.cityValue = event.target.value
+    state.cityLabel.textContent = state.cityValue;
+}
+
 
 const increaseTemp = () => {
     ++state.tempValue;
@@ -58,6 +66,9 @@ const registerEventHandlers = () => {
 topButton.addEventListener("click", increaseTemp);
     const bottomButton = document.querySelector("#decreaseTempControl");
 bottomButton.addEventListener("click", decreaseTemp);
+    const cityButton = document.querySelector("#cityNameInput");
+cityButton.addEventListener("keydown", updateCity);
+
 }
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
@@ -65,6 +76,8 @@ document.addEventListener("DOMContentLoaded", registerEventHandlers);
 const loadControls = () => {
     state.tempLabel = document.getElementById("tempLabel");
     state.emoji = document.getElementById("landscape");
+    state.cityLabel = document.getElementById("headerCityName");
+    state.cityValue = document.getElementById("cityNameInput").value;
 };
 
 const onLoaded = () => {

@@ -32,7 +32,9 @@ font-style: oblique;
 font-size: 2rem;
 }
 
-.header__city-name::before,
+.header__city-name::before{
+content: "✨";
+}
 .header__city-name::after {
 content: "✨";
 }
