@@ -1,0 +1,17 @@
+html {
+    height: 100%
+}
+
+.grad {
+    background-image: linear-gradient(skyblue, white);
+    background-repeat: no-repeat;
+}
+
+header {
+    text-align: center;
+}
+
+#Temperature {
+    color: blue;
+}
+

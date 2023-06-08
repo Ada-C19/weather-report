@@ -9,24 +9,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
-<body>
+<body class="grad">
     <header>
         <h1>Weather Report</h1>
         <h5>For the lovely city of {city}</h5>
     </header>
-    <section id="Temperature"></section>
-        <h3>Temperature</h3>
-        <h4>Get Realtime Temperature</h4>
-        <section id="display-temperature">62</section>
-    <section id="Sky">Sky</section>
-        <button>Rainy</button>
-    <section id="City-Name">City Name</section>
-        <div id="search-bar">{city}</div>
-        <button>Reset</button>
-    <section id="Weather-Station">Weather Garden</section>
-        <div id="sky"></div>
-        <div id="landscape"></div>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <main>
+        <section id="Temperature"></section>
+            <h3>Temperature</h3>
+            <h4>Get Realtime Temperature</h4>
+            <section id="display-temperature">62</section>
+        <section id="Sky">Sky</section>
+            <button>Rainy</button>
+        <section id="City-Name">City Name</section>
+            <div id="search-bar">{city}</div>
+            <button>Reset</button>
+        <section id="Weather-Station">Weather Garden</section>
+                <div id="sky"></div>
+                <div id="landscape"></div>
+            <script src="./node_modules/axios/dist/axios.min.js"></script>
+            <script src="./src/index.js"></script>
+    </main>
 </body>
 </html>
