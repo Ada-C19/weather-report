@@ -15,3 +15,23 @@ header {
     color: blue;
 }
 
+/* Classes for temp color */
+.red {
+    color: red
+}
+
+.orange {
+    color: orange
+}
+
+.yellow {
+    color: yellow
+}
+
+.green {
+    color: green
+}
+
+.teal {
+    color: teal
+}
