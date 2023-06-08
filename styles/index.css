@@ -40,7 +40,7 @@ body {
 
 .current__control {
     display: flex;
-    align-self: flex-start;
+    align-self: center;
     text-align: justify;
 }
 
