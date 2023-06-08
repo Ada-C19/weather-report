@@ -75,11 +75,14 @@ const getLocationandTemp = () => {
         })
     }
     
-    //Update 
+    //Update Location and Temp when browser loads
     getLocationandTemp()
 
 //create an eventlistener for current temp button to be updated when clicked
-
+const updatedCurrentTemp = () => {
+    const currentTempButton = document.getElementById("real-time-temp");
+    getLocationandTemp(state.city);
+}
 //reset button changes city header and search to seattle
 const resetCityName = () => {
     const header = document.getElementById("headerCityName");
@@ -87,6 +90,7 @@ const resetCityName = () => {
     state.city = "Seattle";
     header.textContent = state.city;
     citySearchBar.value = state.city;
+    getLocationandTemp();
 }
 
 
@@ -198,6 +202,9 @@ const registerEventHandlers = () => {
 
     const resetNameButton = document.getElementById("reset");
     resetNameButton.addEventListener("click", resetCityName)
+
+    const updateCurrentTemp = document.getElementById("real-time-temp");
+    updateCurrentTemp.addEventListener("click", updatedCurrentTemp);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
