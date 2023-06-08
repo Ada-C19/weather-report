@@ -1,0 +1,72 @@
+#temperature {
+    display: flex;
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:blue;
+    padding: 20px;
+    margin: 40px;
+    
+}
+
+#realtime {
+    display: flex;
+    background-color:rgb(202, 50, 50);
+    /* border: transparent; */
+    border-radius:10px;
+    padding: 20px;
+    margin: 40px;
+}
+
+#sky {
+    display: flex;
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:pink;
+    padding: 20px;
+    margin: 40px;
+    
+}
+
+#mood {
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+}
+
+#city {
+    display: flex;
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:purple;
+    padding: 20px;
+    margin: 40px;
+    
+}
+
+#search {
+    border: 5px;
+    border-color:black solid;
+    border-radius: 5px;
+    margin: 45px;
+}
+#reset {
+    display: flex;
+    background-color:rgb(202, 50, 50);
+    /* border: transparent; */
+    border-radius:10px;
+    padding: 10px;
+    margin: 40px;
+    width: 10%;
+    justify-content: center;
+}
+
+#garden {
+    display: flex;
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:greenyellow;
+    padding: 20px;
+    margin: 40px;
+    
+}
+
