@@ -140,6 +140,9 @@ background-color: lightblue;
 background-color: lightsteelblue;
 }
 
+.apocalyptic {
+background-color: rgb(11, 247, 46);
+}
 
 .city-name__reset-btn {
 border: 0;

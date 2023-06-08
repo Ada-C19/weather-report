@@ -77,6 +77,8 @@ cityNameReset.addEventListener("click", () => {
         return "rainy";
       case "snowy":
         return "snowy";
+      case "apocalyptic":
+        return "apocalyptic";
       default:
         return "";
     }
@@ -93,6 +95,8 @@ cityNameReset.addEventListener("click", () => {
         return "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧";
       case "snowy":
         return "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+      case "apocalyptic":
+        return "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🧟‍♀️🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️"
       default:
         return "";
     }
