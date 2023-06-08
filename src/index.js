@@ -10,42 +10,50 @@ const displayCityText = () => {
     txtBox.value = "";
 }
 
+
+// Default state
+const temperatureState = {
+    degrees: 67
+}
+
 const getRealTimeTemp = () => {
     const endpointLocation = "http://127.0.0.1:5000/location"
     const endpointWeather = "http://127.0.0.1:5000/weather"
     // const axios = require('axios')
 
-    const apiCallLocation = async (query) => {
+    const apiCallLocation = () => {
         let latitude, longitude;
+        // console.log(txtOutput.innerHTML)
         axios.get(endpointLocation, {
-            q: query,
-            format: 'json'
+            params: {
+                q: txtOutput.innerHTML,
+                format: 'json'
+            }
         })
-        .then((response) => {
-            latitude = response.data[0].lat;
-            longitude = response.data[0].lon;
-            axios.get(endpointWeather, {
-                lat: latitude,
-                lon: longitude
-            })
             .then((response) => {
-                const degreesKelvin = response.main.temp
-                const degreesFarenheit = (((degreesKelvin - 273.15) * 9) / 5) + 32;
-                return degreesFarenheit;
+                latitude = response.data[0].lat;
+                longitude = response.data[0].lon;
+                axios.get(endpointWeather, {
+                    params: {
+                        lat: latitude,
+                        lon: longitude
+                    }
+                })
+                    .then((response) => {
+                        const degreesKelvin = response.data.main.temp
+                        const degreesFahrenheit = Math.floor(((degreesKelvin - 273.15) * (9 / 5) + 32));
+                        temperatureState.degrees = degreesFahrenheit
+                        document.querySelector('#degrees').textContent = temperatureState.degrees;
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    })
             })
             .catch((error) => {
-                console.log(response.error.data)
-            })
-        })
-        .catch((error) => {
-            console.log(response.error.data)
-        });
+                console.log(error)
+            });
     }
-}
-
-// Default state
-const temperatureState = {
-    degrees: 67
+    apiCallLocation();
 }
 
 const changeColorTemp = () => {
