@@ -83,23 +83,48 @@ const getWeather = () => {
         })
 }
 
+// Wave 5
+const changeLandscape = (event) => {
+    let weatherState = document.getElementById("skySelect").value;
+    const skyEmojis = document.getElementById("sky-emojis");
+    const backgroundColor = document.getElementById('weather-box');
+    if (weatherState === "Sunny") {
+        skyEmojis.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+        backgroundColor.style.backgroundColor = 'red';
+    }
+    else if (weatherState === "Cloudy") {
+        skyEmojis.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+        backgroundColor.style.backgroundColor = 'green';
+    }
+    else if (weatherState === "Rainy") {
+        skyEmojis.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+        backgroundColor.style.backgroundColor = 'blue';
+    }
+    else if (weatherState === "Sunny") {
+        skyEmojis.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+        backgroundColor.style.backgroundColor = 'purple';
+    }
+}
+
+
+
 const registerEventHandlers = (event) => {
     tempColorLandscape();
 
-    // const upButton = document.querySelector('#up');
     const upButton = document.getElementById('up');
     upButton.addEventListener("click", increaseTemp);
 
-
-    // const downButton = document.querySelector('#down');
     const downButton = document.getElementById('down');
     downButton.addEventListener("click", decreaseTemp);
 
-    const resetButton = document.getElementById('reset')
-    resetButton.addEventListener("click", changecityName)
+    const resetButton = document.getElementById('reset');
+    resetButton.addEventListener("click", changecityName);
 
-    const realTimeButton = document.getElementById('realTimeButton')
-    realTimeButton.addEventListener("click", getWeather)
+    const realTimeButton = document.getElementById('realTimeButton');
+    realTimeButton.addEventListener("click", getWeather);
+
+    const weatherSelect = document.getElementById('skySelect');
+    weatherSelect.addEventListener("change", changeLandscape);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
