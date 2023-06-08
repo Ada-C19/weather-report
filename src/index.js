@@ -8,6 +8,7 @@ const increaseTemp = () => {
     console.log(state.currentTemp);
     currentTemp.textContent = `${state.currentTemp}`;
     changeTempColor();
+    changeLandscape();
 };
 
 const decreaseTemp = () => {
@@ -16,6 +17,7 @@ const decreaseTemp = () => {
     console.log(state.currentTemp);
     currentTemp.textContent = `${state.currentTemp}`;
     changeTempColor();
+    changeLandscape();
 };
 
 // const setTempAndLandscape = () => {
@@ -45,6 +47,25 @@ const changeTempColor = () => {
             color = 'teal';
     }
     tempCurrent.className = color;
+};
+
+const changeLandscape = () => {
+    const landscape = document.getElementById('landscape');
+    let emoji;
+    switch (true) {
+        case state.currentTemp >= 80:
+            emoji = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
+            break;
+        case state.currentTemp >= 70:
+            emoji = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
+            break;
+        case state.currentTemp >= 60:
+            emoji = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+            break;
+        default:
+            emoji = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+    }
+    landscape.textContent = emoji;
 };
 
 const registerEventHandlers = () => {
