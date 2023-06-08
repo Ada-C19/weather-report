@@ -1,5 +1,5 @@
 const baseURL = 'http://127.0.0.1:5000/'
-const state = {}
+const state = {defaultCity:'Los Angeles'}
 
 const loadControls = () => {
     const elementsWithId = document.querySelectorAll('[id')
@@ -12,6 +12,7 @@ const registerEvents = () => {
     state.cityNameInput.addEventListener('input', handleCityNameUpdate);
     state.currentTempButton.addEventListener('click', handleGetCurrentTemp);
     state.skySelect.addEventListener('change',handleSkyUpdate);
+    state.cityNameReset.addEventListener('click', handleCityNameReset);
 };
 
 const handleSkyUpdate = (option) => {
@@ -48,7 +49,7 @@ const handleTempChange = (adj) => {
     let currentTemp = parseInt(state.tempValue.innerText);
     let newTemp = currentTemp + adj;
     state.tempValue.innerText = newTemp;
-    //Changed text color based on temp
+    
     let color, landscape;
     if (newTemp >= 80) {
         color = 'red';
@@ -66,6 +67,11 @@ const handleTempChange = (adj) => {
     state.tempValue.style.color = color;
     state.landscape.innerText = landscape;
 };
+
+const handleCityNameReset = () => {
+    state.headerCityName.innerText = state.defaultCity;
+    state.cityNameInput.value = "";
+}
 
 
 
