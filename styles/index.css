@@ -86,7 +86,7 @@ button:hover {
 }
 
 .garden__content {
-    min-height: 200px;
+    min-height: fit-content;
     max-width: fit-content;
     margin: auto;
     padding: 2rem;
@@ -100,13 +100,20 @@ button:hover {
 }
 
 .city-name__reset-btn {
-    display: flex;
     background-color: #ee6eac;
-    justify-content: space-around;
     border: none;
     color: #fff;
     padding: 12px 30px;
-    font-size: 1 rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 20px;
     border-radius: 10px;
 }
 
