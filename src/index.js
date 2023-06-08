@@ -7,23 +7,15 @@ let skyImage = null;
 let landscapeImage = null;
 let cityNameInput = null;
 let cityNameResetButton = null;
-let cityNameValue = null;
+// let cityNameValue = null;
+// let cityName = null;
 
 // values
 let temperatureValue = 72;
 let defaultCityName = 'Denver';
-let cityName = defaultCityName;
+// let cityName = defaultCityName;
 
-
-const showTemp = () => {
-    temperatureLabel.textContent = temperatureValue;
-}; 
-
-const showCity = () => {
-    cityNameLabel.textContent = cityName;
-    cityNameInput.value = cityName;
-}; 
-
+// helper functions
 const setTempLabelColor = (temperature) => {
     if (temperature >= 80) {
         return temperatureLabel.setAttribute("class", "red");
@@ -81,9 +73,9 @@ const getWeather = async (coordinates) => {
             lon: coordinates["longitude"],
         },
     });
-    return response;
-};
 
+    return response.data["main"]["temp"];
+};
 
 const loadControls = () => {
     temperatureLabel = document.getElementById("tempValue");
@@ -117,9 +109,9 @@ const handleCityNameResetButton = () => {
 };
 
 const handleGetRealtimeTemperatureButtonClick = async () => {
-    const coordinates = await getCoordinates(cityName);
+    const coordinates = await getCoordinates(cityNameInput.value);
     const temperature = await getWeather(coordinates);
-    temperatureValue = temperature;
+    temperatureValue = Math.floor((temperature - 273.15) * 9/5 + 32);
     updateTemperature();
 };
 
@@ -130,6 +122,15 @@ const registerEvents = () => {
     cityNameResetButton.addEventListener("click", handleCityNameResetButton);
     cityNameInput.addEventListener("input", handleCityNameInputChange);
 };
+
+const showTemp = () => {
+    temperatureLabel.textContent = temperatureValue;
+}; 
+
+const showCity = () => {
+    cityNameLabel.textContent = defaultCityName;
+    cityNameInput.value = defaultCityName;
+}; 
 
 const onLoad = () => {
     loadControls();
