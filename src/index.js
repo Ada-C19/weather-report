@@ -9,6 +9,8 @@ const updateTemp = () => {
         tempElement.style.color = 'red';
     } else if (tempElement.textContent <= 55) {
         tempElement.style.color = 'blue';
+    } else {
+        tempElement.style.color = 'rgb(200, 91, 51)';
     }
 }
 
