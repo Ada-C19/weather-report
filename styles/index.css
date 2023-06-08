@@ -102,24 +102,38 @@ align-items: center;
 
 
 /* Updated CSS for Wave 5 */
-.garden__section {
-    grid-row: 2 / span 3;
-    grid-column: 2;
-    text-align: center;
-    align-self: center;
+.garden__section > h2 {
+color: white;
 }
 
+
 .garden__content {
-    min-height: 200px;
-    max-width: fit-content;
-    margin: auto;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 8px;
-    font-size: 2em;
+min-height: 200px;
+max-width: fit-content;
+margin: auto;
+padding: 2rem;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+border-radius: 8px;
+font-size: 2em;
 }
+
+.cloudy {
+background-color: lightgrey;
+}  
+.sunny {
+background-color: rgb(221, 255, 255);
+}
+
+.rainy {
+background-color: lightblue;
+}
+
+.snowy {
+background-color: lightsteelblue;
+}
+
 
 .city-name__reset-btn {
 border: 0;
@@ -160,21 +174,3 @@ color: green;
 color: teal;
 }
 
-
-.cloudy {
-background-color: lightgrey;
-}
-
-.sunny {
-background-color: rgb(221, 255, 255);
-}
-
-
-.rainy {
-background-color: lightblue;
-}
-
-
-.snowy {
-background-color: lightsteelblue;
-}
