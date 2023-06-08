@@ -20,16 +20,22 @@ const decreaseTemp = (event) => {
 const changeColorByTemp = (event) => {
     // make js to change color using state temperature variable
     const tempCount = document.querySelector('#temp-count');
+    const emojiLandscape = document.querySelector('#landscape')
     if (state.temperature >= 80) {
         tempCount.setAttribute("class", "red");
+        emojiLandscape.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
     } else if (state.temperature >= 70 && state.temperature <= 79) {
         tempCount.setAttribute("class", "orange");
+        emojiLandscape.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
     } else if (state.temperature >= 60 && state.temperature <= 69) {
         tempCount.setAttribute("class", "yellow");
+        emojiLandscape.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
     } else if (state.temperature >= 50 && state.temperature <= 59) {
         tempCount.setAttribute("class", "green");
+        emojiLandscape.textContent= "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     } else if (state.temperature <= 49) {
         tempCount.setAttribute("class", "teal");
+        emojiLandscape.textContent= "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }
 }
 
