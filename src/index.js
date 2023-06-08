@@ -126,8 +126,27 @@ cityInput.addEventListener("input", changeCity);
 const updateSky = () => {
     const skyemoji = document.getElementById("skyemoji");
     const skystatus = document.getElementById("skystatus")
+    const garden = document.querySelector(".garden")
+
     const skySelected = skystatus.options[skystatus.selectedIndex].value;
-    skyemoji.textContent = skySelected
+    skyemoji.textContent = skySelected;
+
+    const skyBackground = skystatus.options[skystatus.selectedIndex].id;
+    
+
+    if (skyBackground === "cloudy") {
+        garden.style.backgroundColor = "lightblue";
+    }
+    else if (skyBackground === "sunny") {
+      garden.style.backgroundColor = "rgb(81, 218, 226)";
+    }
+    else if (skyBackground === "rainy") {
+      garden.style.backgroundColor = "gray";
+    }
+    else if (skyBackground === "haily") {
+      garden.style.backgroundColor = "white";
+    }
+    
 }
 const skyOption = document.getElementById("skystatus");
 skyOption.addEventListener("change", updateSky);

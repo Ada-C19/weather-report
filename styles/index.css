@@ -189,14 +189,14 @@ header{
 .garden{
     border: 1px solid;
     width: 600px;
-    background-color: aqua;
     border-radius: 5%;
+    background-color: lightblue;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
-    background: linear-gradient(to bottom, rgb(0, 166, 255), rgb(127, 210, 127));
+    /* background: linear-gradient(to bottom, rgb(0, 166, 255), rgb(127, 210, 127)); */
     /* background-color: rgb(97, 205, 205); */
     border: none;
     border-radius: 40px;
@@ -217,7 +217,7 @@ header{
 }
 
 .temperature, .sky, .city_name{
-    margin-left: 100px;
+    margin-left: 150px;
     /* background-color: rgb(47, 116, 116); */
     background: linear-gradient(to bottom, rgb(0, 166, 255), rgb(127, 210, 127));
     border: 1px solid gray;
@@ -227,3 +227,4 @@ header{
 
    
 }
+
