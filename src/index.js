@@ -1,5 +1,3 @@
-//const axios = require('axios'); 
-
 const state = {
     temp: 72, 
     city: "Seattle", 
@@ -25,14 +23,14 @@ const findCoordinates = () => {
         getWeather();
     })
     .catch((error) => {
-        console.log('error in findCoordinates!');
+        console.log('error in findCoordinates!', error.response);
       });
 };
 
 const getWeather = () => {
     axios.get(proxyWeather, {params: {
         lat: state.lat,
-        long: state.long
+        lon: state.long
     }})
     .then((response) => {
         const weather = response.data;
@@ -122,6 +120,9 @@ const registerEventHandlers = () => {
     const decreaseButton = document.getElementById("decrease_temp");
     decreaseButton.addEventListener("click", decreaseTemp);
 
+    const realTimeButton = document.getElementById("current_temp_button");
+    realTimeButton.addEventListener("click", findCoordinates);
+
     updateCity();
     const cityInput = document.getElementById('cityNameInput');
     cityInput.addEventListener("input", updateCity);
@@ -133,6 +134,7 @@ const registerEventHandlers = () => {
     resetCity();
     const resetButton = document.getElementById("cityNameReset");
     resetButton.addEventListener("click", resetCity);
+    
 };
 
 
