@@ -2,7 +2,9 @@
 
 const state = {
     degrees: 62,
-    cityName: "Seattle"
+    cityName: "Seattle",
+    lat: 0,
+    lon: 0
 };
 
 // Wave 2
@@ -61,6 +63,15 @@ const changecityName = (event) => {
     city.textContent = state.cityName;
 }
 
+// Wave 4
+const getLocation = (cityName) => {
+    axios.get('http://127.0.0.1:5000/location', { params: {q: cityName, format: 'json'}})
+        .then((result)=> {
+            state.lat = result.data[0]['lat']
+            state.lon = result.data[0]['lon']
+        })
+}
+
 const registerEventHandlers = (event) => {
     tempColorLandscape();
 
@@ -75,13 +86,9 @@ const registerEventHandlers = (event) => {
 
     const resetButton = document.getElementById('reset')
     resetButton.addEventListener("click", changecityName)
+
+    const realTimeButton = document.getElementById('realTimeButton')
+    realTimeButton.addEventListener("click", getLocation)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
-
-// Wave 4
-const axios = require("axios");
-const locationAPI = 'https://us1.location.iq.com/v1/search';
-const locationKey = 'pk.65ae4b850255defb3343d169002c200b';
-const weatherAPI = 'https://api.openweathermap.org/data/2.5/weather';
-const weatherKey = '9940961df94fc8bb47b7c0447752e867';
