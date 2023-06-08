@@ -1,6 +1,9 @@
 const state = {
-    tempCount : 70,
-    city: "Seattle"
+    tempCount : "",
+    city: "Seattle",
+    lat: "",
+    lon: "", 
+    
 }
 
 const landscapeImg = { 
@@ -17,6 +20,65 @@ const skyImg = {
     "2" : "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
     "3" : "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 };
+
+//GET location API call
+const getLocationandTemp = () => {
+    axios 
+        .get(`http://127.0.0.1:5000/location`,
+        //request body
+        {
+            params : {
+                q : state.city
+            }
+        },
+        //config stuff, and a key called headers
+        { 
+        })
+        .then((response) => {
+            //what to do if it works
+            console.log("Success") 
+            state.lat = response.data[0].lat
+            state.lon = response.data[0].lon
+            getTemperature();
+
+        
+        })
+        .catch((error)=> {
+            //if unsuccessul
+            console.log("fail")
+        })
+    }
+    
+    // API Call to get temperature
+    const getTemperature = () => {
+        axios 
+        .get(`http://127.0.0.1:5000/weather`,
+        //request body
+        {params : {
+            lat: state.lat,
+            lon: state.lon
+        }},
+        )
+        .then((response) => {
+            //what to do if it works
+            console.log(response.data)
+            console.log("Success")
+            state.tempCount = convertTemp(response.data.main.temp)
+            console.log(state.tempCount)
+            displayTemp();
+            tempRange();
+            updateSky();
+        })
+        .catch((error)=> {
+            //if unsuccessul
+            console.log("fail")
+        })
+    }
+    
+    //Update 
+    getLocationandTemp()
+
+//create an eventlistener for current temp button to be updated when clicked
 
 //reset button changes city header and search to seattle
 const resetCityName = () => {
@@ -113,18 +175,24 @@ const tempRange = () => {
 }
 
 
+
+//display state.tempCount in temp container
+const displayTemp = () => {
+    const tempContainer = document.querySelector("#temp-display")
+    tempContainer.textContent = `${state.tempCount}`;
+}
+
 //registering all event handlers
 const registerEventHandlers = () => {
 
     const addTempButton = document.getElementById("add-temp").addEventListener("click", addTemp);
     
     const lowerTempButton = document.getElementById("sub-temp").addEventListener("click",subtractTemp );
-    
+
     updateCityHeader();
     const updateCity = document.getElementById("cityInput");
     updateCity.addEventListener('input', updateCityHeader)
 
-    updateSky();
     const skySelector = document.getElementById("sky-menu");
     skySelector.addEventListener("change",updateSky);
 
@@ -135,57 +203,10 @@ const registerEventHandlers = () => {
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
 
+//change temperature from K to F
+const convertTemp = (temp) => {
+    return Math.floor((temp - 273.15) * (9 / 5) + 32);
+  };
 
 
 
-
-// const query_params = {
-
-//     "q": state.city,
- 
-// }
-
-// axios 
-// .get(`http://127.0.0.1:5000/location`,
-// //request body
-// {params :query_params},
-// //config stuff, and a key called headers
-// { headers: {
-//     "Content-Type": "application/json",
-//     "Authorization": `Bearer ${process.env.SLACK_TOKEN}`
-//     }
-// })
-// .then((response) => {
-//     //what to do if it works
-//     console.log(response.data)
-//     console.log("Success")
-    
-
-// })
-// .catch((error)=> {
-//     //if unsuccessul
-//     console.log("fail")
-// })
-
-axios 
-.get(`http://127.0.0.1:5000/location`,
-//request body
-{
-    params : {
-        q : state.city
-    }
-  },
-//config stuff, and a key called headers
-{ 
-})
-.then((response) => {
-    //what to do if it works
-    console.log(response.data)
-    console.log("Success")
-    
-
-})
-.catch((error)=> {
-    //if unsuccessul
-    console.log("fail")
-})
