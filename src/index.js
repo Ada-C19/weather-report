@@ -2,11 +2,20 @@
 
 
 const state = {
-    temperature: 0 
     // start temparture with info from API call
     // state city name from
-    // lat: 0
+    city: "",
+    temperature: 0, 
+    lat: 0,
+    lon: 0,
 };
+
+const getCityName = (event) => {
+    const inputElement = document.getElementById("city-name")
+    state.city = inputElement.value;
+    const cityDisplay = document.querySelector("h3");
+    cityDisplay.textContent = "For the lovely city of " + "🌟" + state.city + "🌟";
+}
 
 const increaseTemp = (event) => {
     state.temperature += 1;
@@ -42,8 +51,9 @@ const changeColorByTemp = (event) => {
     }
 }
 
-const inputElement = document.getElementById("city-name")
-
+const convertTemp = (temperture) => {
+       return (Math.floor(temperature - 273.15) * 1.8 + 32).toFixed(0);
+}
 
 // Calling API's
 const searchLocation = () => {
@@ -51,14 +61,14 @@ const searchLocation = () => {
     axios
     .get('http://127.0.0.1:5000/location', {
         params:{
-        q: 'Seattle',  
+        q: state.city, //insert city name of input
         }  
     })
     .then((response) => {
-        // state.lat = response.data[0].lat
-    console.log('success!' + JSON.stringify(response.data[0].lat));
+    console.log('success!');
     state.lat = response.data[0].lat;
-    state.lon = response.data[0].lon;
+    state.lon = response.data[0].lon
+    // wait to get results lat and lon to call search temp
     searchTemperature();
         })
     
@@ -77,15 +87,19 @@ const searchTemperature = () => {
         },
       })
     .then((response) => {
-        console.log('success!' + JSON.stringify(response.data.main.temp));
-        state.temp = convertKtoC(response.data.current.temp);
+        // fix decimal points for Farenheit data
+        state.temperature = (Math.floor(response.data.main.temp - 273.15) * 1.8 + 32);
+ 
         // return current temp and assign to #temp count
+        const tempCount = document.querySelector("#temp-count");
+        tempCount.textContent = `${state.temperature}`; 
         changeLandscapeTemp();
       })
     .catch((error) => {
         console.log('searchTemperature error: ' + error.response);
       });
   };
+
 
 const registerEventHandlers = (event) => {
     const tempUpButton = document.querySelector("#up-arrow");
@@ -95,18 +109,16 @@ const registerEventHandlers = (event) => {
     const tempDownButton = document.querySelector("#down-arrow");
     tempDownButton.addEventListener("click", decreaseTemp);
 
-    
-    inputElement.addEventListener("input", function () {
-        const cityName = inputElement.value;
-        const cityDisplay = document.querySelector("h3");
-        cityDisplay.textContent = "For the lovely city of " + "⭐"+cityName+"⭐";
-        // refactor cityname to get value as global temp
-
+    const inputElement = document.querySelector("#city-name");
+    inputElement.addEventListener("input", getCityName);
+        
     const changeLocation = document.querySelector('#realtime-button-weather');
     changeLocation.addEventListener('click', searchLocation);
-    })
+    
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
 
+console.log(getCityName())
 console.log('testing!')
 console.log(searchLocation())
+
