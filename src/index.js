@@ -3,9 +3,18 @@ const cityUpdate = () => {
   state.headerCity.textContent = newCityText;
 };
 
+const cityDefault = "Boston";
+
 const cityReset = () => {
   state.cityTextField.value = cityDefault;
   state.headerCity.textContent = cityDefault;
+};
+
+const landscapes = {
+  coldLandscape: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+  coolLandscape: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+  warmLandscape: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+  hotLandscape: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
 };
 
 const landscapeUpdate = () => {
@@ -21,6 +30,17 @@ const landscapeUpdate = () => {
   }
 
   state.landscapeField.textContent = newLandscape;
+};
+
+const state = {
+  cityTextField: null,
+  headerCity: null,
+  cityResetButton: null,
+  landscapeField: null,
+  temperature: null,
+  currTempButton: null,
+  tempUpButton: null,
+  tempDownButton: null,
 };
 
 const loadData = () => {
@@ -45,25 +65,5 @@ const registerEventHandlers = (event) => {
   state.tempDownButton.addEventListener("click", landscapeUpdate);
   state.tempUpButton.addEventListener("click", landscapeUpdate);
 };
-
-const state = {
-  cityTextField: null,
-  headerCity: null,
-  cityResetButton: null,
-  landscapeField: null,
-  temperature: null,
-  currTempButton: null,
-  tempUpButton: null,
-  tempDownButton: null,
-};
-
-const landscapes = {
-  coldLandscape: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
-  coolLandscape: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-  warmLandscape: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-  hotLandscape: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
-};
-
-const cityDefault = "Boston";
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
