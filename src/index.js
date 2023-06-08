@@ -51,10 +51,6 @@ const changeColorByTemp = (event) => {
     }
 }
 
-const convertTemp = (temperture) => {
-       return (Math.floor(temperature - 273.15) * 1.8 + 32).toFixed(0);
-}
-
 // Calling API's
 const searchLocation = () => {
     
