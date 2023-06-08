@@ -9,31 +9,31 @@ section {
     justify-content: center;
     width: 50%;
     padding:25px;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 10px;
 }
 
 .temp_box{
     width: 30%;
     padding:25px;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 10px;
 }
 
-#live_temp {
-    color: rgb(232, 211, 22);
-}
+/* #live_temp {
+    color: yellow;
+} */
 
-.hot {
+ .hot {
     color: red
 }
 
-.warm {
+ .warm {
     color: orange
 }
 
 .moderate {
-    color: rgb(232, 211, 22)
+    color: rgb(227, 227, 101);
 }
 
 .cool {
@@ -42,12 +42,12 @@ section {
 
 .cold {
     color: teal
-}
+} 
 
 .sky_box{
     width: 30%;
     padding:25px;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 10px;
 }
 .garden_box{
