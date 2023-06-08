@@ -59,5 +59,8 @@ cityNameInputBar.addEventListener("input", updateCityName);
 const resetButton = document.getElementById("cityChange");
 resetButton.addEventListener("click", () => {
     cityNameInputBar.value = "Seattle";
-    updateCityName();
+    const cityDisplay = document.getElementById("cityDisplay");
+    state.city = 'Seattle';
+    cityDisplay.textContent = `For the city of ${state.city}`;
+
 });
