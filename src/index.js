@@ -1,4 +1,5 @@
 const state = {
+    defaultCity: 'San Francisco',
     city: 'San Francisco, CA',
     temperature: 68,
     latitude: 45.5152,
@@ -24,6 +25,13 @@ const renameCityHeader = () => {
     headerCity.innerText = state.city;
 };
 
+const resetCity = () => {
+    const headerCity = document.querySelector('#headerCityName');
+    headerCity.innerText = state.defaultCity;
+    const newCity = document.querySelector('#cityNameInput');
+    newCity.value = state.defaultCity;
+};
+
 const registerEventHandlers = () => {
     const increaseTempBtn = document.querySelector('#increaseTempControl');
     increaseTempBtn.addEventListener("click", increaseTemp);
@@ -33,6 +41,9 @@ const registerEventHandlers = () => {
 
     const cityNameInput = document.querySelector('#cityNameInput');
     cityNameInput.addEventListener("input", renameCityHeader);
+
+    const reset = document.querySelector('#cityNameReset');
+    reset.addEventListener("click", resetCity);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
