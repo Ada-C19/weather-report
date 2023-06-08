@@ -20,12 +20,7 @@ const landState = {
     snowy: '🏔️🏔️🏔️🏔️🏔️🏔️🏔️🏔️🏔️'
 }
 
-
 const locationUrl = 'http://127.0.0.1:5000/location';
-const params = {
-    q: state.city,
-    format: "json",
-};
 const weatherUrl= 'http://127.0.0.1:5000/weather';
 
 const increaseTemp = () => {
@@ -56,27 +51,6 @@ const resetCity = () => {
     headerCity.innerText = state.defaultCity;
     const newCity = document.querySelector('#cityNameInput');
     newCity.value = state.defaultCity;
-};
-
-const registerEventHandlers = () => {
-    const increaseTempBtn = document.querySelector('#increaseTempControl');
-    increaseTempBtn.addEventListener("click", increaseTemp);
-
-    const decreaseTempBtn = document.querySelector('#decreaseTempControl');
-    decreaseTempBtn.addEventListener("click", decreaseTemp);
-
-    const cityNameInput = document.querySelector('#cityNameInput');
-    cityNameInput.addEventListener("input", renameCityHeader);
-
-    const reset = document.querySelector('#cityNameReset');
-    reset.addEventListener("click", resetCity);
-
-    const getRealTimeTempBtn = document.querySelector('#currentTempButton');
-    getRealTimeTempBtn.addEventListener("click", getLatAndLon);
-
-    const skySelectInput = document.querySelector('#skySelect');
-    skySelectInput.addEventListener("change", changeSky);
-
 };
 
 const getLatAndLon = () => {
@@ -164,9 +138,26 @@ const changeTempColor = () => {
     } else if (state.temperature <= 49) {
         tempContainer.style.color = "teal";
     }
-}
+};
 
+const registerEventHandlers = () => {
+    const increaseTempBtn = document.querySelector('#increaseTempControl');
+    increaseTempBtn.addEventListener("click", increaseTemp);
 
+    const decreaseTempBtn = document.querySelector('#decreaseTempControl');
+    decreaseTempBtn.addEventListener("click", decreaseTemp);
 
+    const cityNameInput = document.querySelector('#cityNameInput');
+    cityNameInput.addEventListener("input", renameCityHeader);
+
+    const reset = document.querySelector('#cityNameReset');
+    reset.addEventListener("click", resetCity);
+
+    const getRealTimeTempBtn = document.querySelector('#currentTempButton');
+    getRealTimeTempBtn.addEventListener("click", getLatAndLon);
+
+    const skySelectInput = document.querySelector('#skySelect');
+    skySelectInput.addEventListener("change", changeSky);
+};
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
