@@ -4,11 +4,20 @@ let temperatureDecreaseButton = null;
 let getRealtimeTemperatureButton = null;
 let skyImage = null;
 let landscapeImage = null;
-let cityName = null;
+let cityNameInput = null;
+let cityNameResetButton = null;
+let cityNameValue = null;
 let temperatureValue = 72;
+let defaultCityName = 'Denver';
+let cityName = defaultCityName;
 
 const showTemp = () => {
     temperatureLabel.textContent = temperatureValue;
+}; 
+
+const showCity= () => {
+    cityNameLabel.textContent = cityName;
+    cityNameInput.value = cityName;
 }; 
 
 const setTempLabelColor = (temperature) => {
@@ -57,6 +66,9 @@ const loadControls = () => {
     getRealtimeTemperatureButton = document.getElementById("currentTempButton");
     skyImage = document.getElementById("sky");
     landscapeImage = document.getElementById("landscape");
+    cityNameLabel = document.getElementById("headerCityName");
+    cityNameInput = document.getElementById("cityNameInput");
+    cityNameResetButton = document.getElementById("cityNameReset");
 };
 
 const handleTemperatureDecreaseButtonClick = () => {
@@ -69,6 +81,16 @@ const handleTemperatureIncreaseButtonClick = () => {
     updateTemperature();
 };
 
+const handleCityNameInputChange = () => {
+    cityNameLabel.textContent = cityNameInput.value;
+
+};
+
+const handleCityNameResetButton = () => {
+    cityNameLabel.textContent = defaultCityName;
+    cityNameInput.value = defaultCityName;
+};
+
 const handleGetRealtimeTemperatureButtonClick = () => {
 
 };
@@ -77,12 +99,15 @@ const registerEvents = () => {
     temperatureDecreaseButton.addEventListener("click", handleTemperatureDecreaseButtonClick);
     temperatureIncreaseButton.addEventListener("click", handleTemperatureIncreaseButtonClick);
     getRealtimeTemperatureButton.addEventListener("click", handleGetRealtimeTemperatureButtonClick);
+    cityNameResetButton.addEventListener("click", handleCityNameResetButton);
+    cityNameInput.addEventListener("input", handleCityNameInputChange)
 };
 
 const onLoad = () => {
     loadControls();
     registerEvents();
     showTemp();
+    showCity();
 };
 
 onLoad();
