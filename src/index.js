@@ -68,9 +68,18 @@ const cityInput = document.getElementById("searchbar");
 cityInput.addEventListener("input", changeCity);
 
 //update sky
-const skyemoji = document.getElementById("skyemoji");
-const skystatus = document.getElementById("skystatus");
-skystatus.addEventListener("change", () => {
+// const skyemoji = document.getElementById("skyemoji");
+// const skystatus = document.getElementById("skystatus");
+// skystatus.addEventListener("change", () => {
+//     const skySelected = skystatus.options[skystatus.selectedIndex].value;
+//     skyemoji.textContent = skySelected;
+// })
+
+const updateSky = () => {
+    const skyemoji = document.getElementById("skyemoji");
+    const skystatus = document.getElementById("skystatus")
     const skySelected = skystatus.options[skystatus.selectedIndex].value;
-    skyemoji.textContent = skySelected;
-})
+    skyemoji.textContent = skySelected
+}
+const skyOption = document.getElementById("skystatus");
+skyOption.addEventListener("change", updateSky);

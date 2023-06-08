@@ -12,11 +12,11 @@
 <body>
     <main>
         <header>
-            <h1>Weather Report</h1>
-            <p>For the lovely city of <span id ="city">Seattle</span></p>
+            <h1 class="weather-text">Weather Report</h1>
+            <h2 class="city">For the lovely city of ✨✨✨✨<span id ="city">Seattle</span></>
         </header>
 <!-- temperature block -->
-        <section>
+        <section class="temperature">
             <section>
             <h2>Temperature</h2>
             </section>
@@ -28,7 +28,8 @@
             </section>
         </section>
 <!--Sky Block  -->
-        <section>
+        <section class="sky-garden">
+            <section class="sky">
             <h2>Sky</h2>
             <select id ="skystatus">
                 <option id="cloudy" value=	"☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️">Cloudy</option>
@@ -37,20 +38,28 @@
                 <option id="haily" value="🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨">Haily</option>
             </select>
         </section>
-<!-- City Block -->
-        <section id="city">
-            <h2>City Name</h2>
-            <input type="text" name="" id="searchbar" placeholder="Search...">
-            <button>Reset</button>
-        </section>
 
-    </main>
-<!-- Weather Garden Block -->
+        <!-- Weather Garden Block -->
         <section class="garden">
             <h1>Weather Garden</h1>
             <section id="skyemoji">☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️</section>
             <section id="groundemoji">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</section>
         </section>
+    </section>
+
+        
+<!-- City Block -->
+        <section id="city" class="city_name">
+            <h2 class="h2-city">City Name</h2>
+            <input type="text" name="" id="searchbar" placeholder="Search...">
+            <button id="reset">Reset</button>
+        </section>
+
+    </main>
+    <section>
+        
+    </section>
+
 
 
     <script src="./src/index.js"></script>
