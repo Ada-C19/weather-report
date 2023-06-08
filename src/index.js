@@ -1,7 +1,6 @@
 "use strict";
 
 
-
 const changeTextColor = function(tempValue) {
     
     tempValueElement.classList.remove("red", "orange", "green", "teal", "yellow")
@@ -43,17 +42,28 @@ const tempValueElement = document.getElementById('tempValue');
 
 
 // CHANGE SKY FUNCTION //
-document.getElementById('tempValue').addEventListener('<select onchange="changeSky()">', changeTextColor);
 
-const skyElement = document.getElementById('sky');
 
-const changeSky = function(sky) {
-    
-    tempValueElement.classList.remove(""red", "orange", "green", "teal", "yellow"")
-    if (sky = cloudy) {
-        skyElement.classList.add("cloudy");
+const skyElementSelector = document.getElementById('skySelect');
+const skyElementWithEmojis = document.getElementById('sky');
+
+
+const changeSky = function(event) {
+    const value = event.target.value;
+    console.log("hello", value)
+
+    skyElementSelector.classList.remove("cloudy", "sunny", "rainy", "snowy")
+    if (value === "Cloudy") {
+        skyElementSelector.classList.add("cloudy");
+        skyElementWithEmojis.innerText = "☁️☁️☁️☁️☁️☁️☁️"
     } 
 }
+document.getElementById('skySelect').addEventListener('change', changeSky);
+
+// function changeSky() {
+//     var x = document.getElementById("skySelect").value;
+//     document.getElementById("skySelect").innerHTML = "You selected: " + x;
+// }
 
 
 /* < id="gardenContent" class="garden-content sunny">
@@ -63,3 +73,6 @@ const changeSky = function(sky) {
 
 // END OF SKY CHANGE FUNCTION //
 
+
+// making an api call
+// .get to 127.0.0.1:5000
