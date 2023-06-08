@@ -12,5 +12,54 @@
 <body>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <section class="container" id="main-app-container">
+        <section class="child" id="weatherReport">
+            <h2 id="weatherHeader">Weather Report</h2>
+            <h3 id="weatherCity">For the lovely city of **city goes here**</h3>
+        </section>
+        <section class="child" id="temp">
+            <h2 id="tempHeader">Temperature</h2>
+            <section id="tempChangesSection">
+                <div id="tempNumberLabel">
+                    <h2 id="tempNumber">55</h2>
+                </div>
+                <div>
+                    <button id="increaseTempButton">Temp Up</button>
+                </div>
+                <div>
+                    <button id="decreaseTempButton">Temp Down</button>
+                </div>
+                <div>
+                    <button id="realTimeTempButton">Real Time Temp</button>
+                </div>
+            </section>
+        </section>
+        <section class="child" id="sky">
+            <div>
+                <h2 id="sky-header">Sky</h2>
+            </div>
+            <div>
+                <button id="sky-dropdown">This will be a dropdown</button>
+            </div>
+        </section>
+        <section class="child" id="city-name">
+            <div id="city-name-header-div">
+                <h2 id="city-header">City Name</h2>
+            </div>
+            <div id="city-changes-div">
+                <input id="city-input" type="text">
+                <button id="city-reset-button" type="reset">Reset</button>
+            </div>
+        </section>
+        <section class="child" id="weather-garden-section">
+            <div id="weather-garden-header-div">
+                <h2 id="weather-garden-header">Weather Garden</h2>
+            </div>
+            <div id="landscape-emoji-div">
+                <div id="sky-emoji-div">sky emojis go here (connected to sky)</div>
+                <div id="land-emoji-section">landscape goes here (connected to city)</div>
+            </div>
+        </section>
+    </section>
 </body>
 </html>
