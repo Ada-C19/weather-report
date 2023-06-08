@@ -61,14 +61,24 @@ const displayCityName = () => {
     headerCityName.textContent = cityInput;
 }
 
+// function to clear city name
+const clearCityName = () => {
+    let cityInput = document.getElementById("cityNameInput");
+
+    cityInput.value = "";
+    displayCityName();
+}
+
 const registerEventHandlers = (event) => {
     const increaseTempButton = document.querySelector("#increaseTempControl");
     const decreaseTempButton = document.querySelector("#decreaseTempControl");
     const cityNameInputted = document.querySelector("#cityNameInput");
+    const cityNameResetButton = document.querySelector("#cityNameReset");
 
     increaseTempButton.addEventListener("click", increaseTemp);
     decreaseTempButton.addEventListener("click", decreaseTemp);
     cityNameInputted.addEventListener("input", displayCityName);
+    cityNameResetButton.addEventListener("click", clearCityName);
 
     displayTemp();
     displayLandscape();
