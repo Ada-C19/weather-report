@@ -1,14 +1,18 @@
 "use strict";
 const state = {
     temp: 0,
-    landscape:"🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+    landscape:"🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+    city: "Seattle"
+
 }
 
-const temp = document.getElementById("tempValue")
-const controlUp = document.getElementById("increaseTempControl")
-const controlDown = document.getElementById("decreaseTempControl")
-const landscape = document.getElementById("landscape")
-
+const temp = document.getElementById("tempValue");
+const controlUp = document.getElementById("increaseTempControl");
+const controlDown = document.getElementById("decreaseTempControl");
+const landscape = document.getElementById("landscape");
+const cityName = document.getElementById("headerCityName");
+const cityInput = document.getElementById("cityNameInput");
+const reset = document.getElementById("cityNameReset");
 
 const changeColor = () =>{
     if (state.temp>80){
@@ -50,3 +54,13 @@ const decreaseTemp = () => {
 }
 
 controlDown.addEventListener('click', decreaseTemp)
+
+cityInput.addEventListener('input', function(){
+    cityName.textContent = this.value;
+})
+
+const resetCity = () =>{
+    cityName.textContent = state.city;
+}
+reset.addEventListener("click", resetCity)
+
