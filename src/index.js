@@ -10,6 +10,12 @@ const displayCityText = () => {
     txtBox.value = "";
 }
 
+const getRealTimeTemp = () => {
+    const endpointLocation = "https://127.0.0.1:5000/location"
+    const endpointWeather = "https://127.0.0.1:5000/weather"
+
+}
+
 // Default state
 const temperatureState = {
     degrees: 67
@@ -73,6 +79,10 @@ const decreaseTemp = (event) => {
 const registerEventHandlers = (event) => {
     // Display city text from input box
     buttonCity.addEventListener('click', displayCityText)
+
+    const realTimeButton = document.querySelector('#realTimeTemp');
+    realTimeButton.addEventListener('click', getRealTimeTemp);
+
 
     const upButton = document.querySelector('#up');
     upButton.addEventListener('click', increaseTemp);
