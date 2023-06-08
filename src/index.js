@@ -131,3 +131,14 @@ const updateSky = () => {
 }
 const skyOption = document.getElementById("skystatus");
 skyOption.addEventListener("change", updateSky);
+
+// Reset city 
+const resetCity = () => {
+  const inputCity = document.getElementById("searchbar");
+  inputCity.value = "Seattle";
+}
+
+// resetInputButton
+
+const inputButton = document.getElementById("reset");
+inputButton.addEventListener('click', resetCity);
