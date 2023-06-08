@@ -3,16 +3,17 @@ const tempValue = document.getElementById("tempValue");
 const landscapeEmoji = document.getElementById("landscapeEmoji");
 
 const checkTemp = function(tempValue) {
-    if (tempValueInt < 49) {
+    const temp = Number(tempValue.textContent);
+    if (temp < 49) {
         tempValue.className = "blue";
         landscapeEmoji.textContent = "🏔 ❄ 🏂 ☃ ⛄ 😓 🌨 🏔";
-    } else if (tempValueInt >= 50 && tempValueInt <= 59) {
+    } else if (temp >= 50 && temp <= 59) {
         tempValue.className = "green";
         landscapeEmoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-    } else if (tempValueInt >= 60 && tempValueInt <= 69) {
+    } else if (temp >= 60 && temp <= 69) {
         tempValue.className = "yellow";
         landscapeEmoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
-    } else if (tempValueInt >= 70 && tempValueInt <= 79) {
+    } else if (temp >= 70 && temp <= 79) {
         tempValue.className = "orange";
         landscapeEmoji.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
     } else {
@@ -51,7 +52,8 @@ const callAPI = (location) => {
             axios
                 .get(weatherAPI, {params: {lat: lat, lon: lon, format: 'json'}})
                 .then((result) => {
-                    tempValue.innerHTML = result.data['main']['temp'];
+                    tempValue.innerHTML = Math.floor(1.8 * (result.data['main']['temp'] - 273.15) + 32);
+                    checkTemp(tempValue);
                 });
         });
 };
@@ -62,3 +64,22 @@ goButton.addEventListener("click", () => {
     callAPI(cityHolder);
 });
 
+const skyEmoji = document.getElementById("skyEmoji");
+const weather = document.getElementById("weatherChoice");
+const skyOption = {
+    Sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    Cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    Rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    Snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+};
+
+weather.addEventListener("change", (event) => {
+    skyEmoji.textContent = skyOption[`${event.target.value}`];
+});
+
+const resetPage = document.getElementById("reset");
+resetPage.addEventListener("click", () => {
+    tempValue.innerHTML = 65;
+    headerLocation.innerHTML = 'Seattle';
+    checkTemp(tempValue);
+});
