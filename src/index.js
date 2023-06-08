@@ -1,50 +1,72 @@
-const tempState = {
+const state = {
     liveTemp : 68
 };
 
 
-let temp = tempState.liveTemp;
-let color = 'yellow';
-if (temp >= 80) {
-    color = 'hot';
-} else if (temp >= 70) {
-    color = 'warm';
-} else if (temp >= 60) {
-    color = 'moderate';
-} else if (temp >= 50) {
-    color = 'cool';
-} else {
-    color = 'cold';
-}
 
-const temperature = document.getElementById('live_temp');
-temperature.className = color;
-temperature.textContent = String(tempState.liveTemp);
 
-const tempIncrease = (event) => {
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const tempIncrease = () => {
     //temp behavior
-    tempState.liveTemp += 1;
-    const liveTempContainer = document.querySelector("#live_temp");
-    liveTempContainer.textContent = `${tempState.liveTemp}`;
+    state.liveTemp += 1;
+};
 
-}
-const tempDecrease = (event) => {
-    
+const tempDecrease = () => {
     //temp behavior
-    tempState.liveTemp -= 1;
-    const liveTempContainer = document.querySelector("#live_temp");
-    liveTempContainer.textContent = `${tempState.liveTemp}`;
+    state.liveTemp -= 1;
+};
 
+const displayCityInput = () => {
+    let cityInput = document.getElementById("city_input").value;
+    let cityDisplay = document.querySelector("h2");
+    cityDisplay.textContent = `For the city of  ${cityInput}`;
 }
 
-const registerEventHandlers = (event) => {
+const registerEventHandlers = () => {
     const tempIncButton = document.querySelector("#increase_button");
     tempIncButton.addEventListener("click", tempIncrease);
+    
+    
+    
+    
     const tempDecButton = document.querySelector("#decrease_button");
     tempDecButton.addEventListener("click", tempDecrease);
+
+
+    
+    
+    const cityDisplay = document.querySelector("#city_input");
+    cityDisplay.addEventListener("input", displayCityInput);
+
+
 }
 
-
-
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+// const getCityInput = () => {
+//     let cityInput = document.querySelector("h2");
+// }
