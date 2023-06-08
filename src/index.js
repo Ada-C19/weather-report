@@ -42,6 +42,49 @@ const changeColorByTemp = (event) => {
 const inputElement = document.getElementById("city-name")
 
 
+// Calling API's
+const searchLocation = () => {
+
+    const axios = require('axios');
+    const key = process.env['key'];
+    
+    axios
+    .get('http://127.0.0.1:5000/location', {
+        params: {
+            q: state.cityName,
+        },
+    })
+    .then((response) => {
+    console.log('success!' + JSON.stringify(response.data[0]));
+    state.lat = response.data[0].lat;
+    state.lon = response.data[0].lon;
+    searchTemperature();
+        })
+    
+    .catch((error) => {
+        console.log('searchLocation error: ' +
+        error.response);
+    });
+};
+
+const searchTemperature = () => {
+    axios
+    .get('http://localhost:5000/weather', {
+        params: {
+        lat: state.lat,
+        lon: state.lon,
+        },
+      })
+    .then((response) => {
+        console.log('success!' + JSON.stringify(response.data.current.temp));
+        state.temp = convertKtoC(response.data.current.temp);
+        changeLandscapeTemp();
+      })
+    .catch((error) => {
+        console.log('searchTemperature error: ' + error.response);
+      });
+  };
+
 const registerEventHandlers = (event) => {
     const tempUpButton = document.querySelector("#up-arrow");
     tempUpButton.addEventListener("click", increaseTemp);
@@ -55,31 +98,12 @@ const registerEventHandlers = (event) => {
         const cityName = inputElement.value;
         const cityDisplay = document.querySelector("h3");
         cityDisplay.textContent = "For the lovely city of " + "⭐"+cityName+"⭐";
+
+    const changeLocation = document.querySelector('#realtime-button-weather');
+    changeLocation.addEventListener('click', searchLocation);
     })
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
 
 
-const getTempFromCoordinates = () => {
-
-const axios = require('axios');
-const key = process.env['key'];
-
-axios
-.get('http://127.0.0.1:5000/location', {
-    params: {
-        q: cityName,
-    },
-})
-.then((response) => {
-    console.log('sucess!', reponse);
-    const returnObj = {
-    lat: response.data[0].lat,
-    lon: response.data[0].lon, 
-    }
-})
-.catch((error) => {
-    console.log('searchLocation error: ' +
-    error.response);
-});
 
