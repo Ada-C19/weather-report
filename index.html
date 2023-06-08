@@ -10,6 +10,90 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <h1>AnS Weather Report</h1>
+
+    </header>
+    <main>
+        <!-- Search section -->
+        <div id="search-container">
+            <input id="search-text-box" type="text" placeholder="Please enter City">
+            <button>Search</button>
+        </div>
+
+        <!-- City Header -->
+        <div id="city-container">
+            <span></span>
+        </div>
+
+        <!-- Temperature -->
+        <div id="temperature-container">
+            <section id="temp-header">Temperature</section>
+
+            <section id="temp-display">
+                <!-- Temperature Buttons -->
+                <div id= "temp-adustment-container">
+                    <button></button>
+                    <section id="temp-number">72</section>
+                    <button></button>
+                </div>
+            </section> 
+        </div>
+
+        <!-- Sky conditions -->
+        <div id="sky-container">
+            <section id="sky-header">Sky Conditions</section>
+            <select name="condition" id="condition">
+                <option value="">Free</option>
+                <option value="">Bronze</option>
+                <option value="silver" selected>Silver</option>
+                <option value="Gold">Gold</option>
+              </select>
+        </div>
+
+
+        <!-- Weather Garden -->
+        <div id="weather-garden-container">
+            <h3>Weather Garden</h3>
+            <div id="sunny-garden-image-container">
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+            </div>
+
+            <div id="rainy-garden-image-container">
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+            </div>
+
+            <div id="cloudy-garden-image-container">
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+            </div>
+
+            <div id="snowy-garden-image-container">
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+                <div id="garden-icon"></div>
+            </div>
+
+
+
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <p>© Proudly designed by Anba & Stacey</p>
+    </footer>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
