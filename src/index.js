@@ -1,6 +1,6 @@
-let temperature = document.getElementById("tempValue");
-
 // Abby's section on 2023.6.7
+
+let temperature = document.getElementById("tempValue");
 
 temperature.textContent = 420;
 
@@ -14,7 +14,11 @@ const incrementValue = (numberString) => {
   return number + 1;
 };
 
-temperature.textContent = incrementValue(temperature.textContent);
+const increaseTempButton = document.getElementById("increaseTempControl");
+
+increaseTempButton.addEventListener("click", () => {
+  temperature.textContent = incrementValue(temperature.textContent);
+});
 
 // end of Abby's section on 2023.6.7
 
