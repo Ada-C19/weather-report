@@ -44,15 +44,12 @@ const inputElement = document.getElementById("city-name")
 
 // Calling API's
 const searchLocation = () => {
-
-    const axios = require('axios');
-    const key = process.env['key'];
     
     axios
     .get('http://127.0.0.1:5000/location', {
-        params: {
-            q: state.cityName,
-        },
+        params:{
+        q: cityName,  
+        }  
     })
     .then((response) => {
     console.log('success!' + JSON.stringify(response.data[0]));
