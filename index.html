@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
     <section class="container" id="main-app-container">
         <section class="child" id="weatherReport">
             <h2 id="weatherHeader">Weather Report</h2>
@@ -21,7 +19,7 @@
             <h2 id="tempHeader">Temperature</h2>
             <section id="tempChangesSection">
                 <div id="tempNumberLabel">
-                    <h2 id="tempNumber">55</h2>
+                    <h2 id="tempNumberContainer">55</h2>
                 </div>
                 <div>
                     <button id="increaseTempButton">Temp Up</button>
@@ -61,5 +59,7 @@
             </div>
         </section>
     </section>
+    <script src="./src/index.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
 </html>
