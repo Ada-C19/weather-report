@@ -11,7 +11,13 @@ const registerEvents = () => {
     state.decreaseTempControl.addEventListener('click', handleDecrease);
     state.cityNameInput.addEventListener('input', handleCityNameUpdate);
     state.currentTempButton.addEventListener('click', handleGetCurrentTemp);
+    state.skySelect.addEventListener('change',handleSkyUpdate);
 };
+
+const handleSkyUpdate = (option) => {
+  const sky = option.target.value;
+  state.sky.innerText = sky;
+}
 
 const handleGetCurrentTemp = async () => {
     const locationURL = `${baseURL}location?q=${state.cityName}`;
@@ -27,7 +33,7 @@ const handleGetCurrentTemp = async () => {
 };
 
 const convertKelvinToFahrenheit = (kelvinTemp) => {
-    return Math.floor((kelvinTemp - 273.15) * 9/5 +32); 
+    return Math.floor((kelvinTemp - 273.15) * 9/5 +32);
 };
 
 const handleCityNameUpdate = () => {
