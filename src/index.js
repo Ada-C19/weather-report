@@ -1,6 +1,9 @@
 "use strict";
 
+
+
 const changeTextColor = function(tempValue) {
+    
     tempValueElement.classList.remove("red", "orange", "green", "teal", "yellow")
     if (tempValue >= 80) {
         tempValueElement.classList.add("red");
@@ -39,12 +42,24 @@ document.getElementById('tempValue').addEventListener('click', changeTextColor);
 const tempValueElement = document.getElementById('tempValue');
 
 
+// CHANGE SKY FUNCTION //
+document.getElementById('tempValue').addEventListener('<select onchange="changeSky()">', changeTextColor);
+
+const skyElement = document.getElementById('sky');
+
+const changeSky = function(sky) {
+    
+    tempValueElement.classList.remove(""red", "orange", "green", "teal", "yellow"")
+    if (sky = cloudy) {
+        skyElement.classList.add("cloudy");
+    } 
+}
 
 
+/* < id="gardenContent" class="garden-content sunny">
+<div id="sky"> ☀️☀️☀️☀️☀️</div>
+<div id="landscape">🌼🌼🌼🌼🌼</div>*/
 
-// Temperature (F)	Color
-// 80+	Red
-// 70-79	Orange
-// 60-69	Yellow
-// 50-59	Green
-// 49 or below	Teal
+
+// END OF SKY CHANGE FUNCTION //
+
