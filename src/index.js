@@ -1,3 +1,5 @@
+//const axios = require('axios'); 
+
 const state = {
     temp: 72, 
     city: "Seattle", 
@@ -5,42 +7,42 @@ const state = {
     long: -122.3300624
 };
 
-//const axios = require('axios'); 
-//const proxyLocation = "http://127.0.0.1:5000/location";
-//const proxyWeather = "http://127.0.0.1:5000/weather";
 
-// const convertKtoF = (temp) => {
-//     return (temp - 273.15) * (9/5) + 32;
-// };
+const proxyLocation = "http://127.0.0.1:5000/location";
+const proxyWeather = "http://127.0.0.1:5000/weather";
 
-// const findCoordinates = () => {
-//     axios.get(proxyLocation, {params: {
-//         q: state.city, 
-//     }})
-//     .then((response) => {
-//         state.lat = response.data[0].lat;
-//         state.long = response.data[0].lon;
-//         getWeather();
-//     })
-//     .catch((error) => {
-//         console.log('error in findCoordinates!');
-//       });
-// };
+ const convertKtoF = (temp) => {
+     return (temp - 273.15) * (9/5) + 32;
+ };
 
-// const getWeather = () => {
-//     axios.get(proxyWeather, {params: {
-//         lat: state.lat,
-//         long: state.long
-//     }})
-//     .then((response) => {
-//         const weather = response.data;
-//         state.temp = Math.round(convertKtoF(weather.main.temp));
-//         updateTempLandscape();
-//     })
-//     .catch((error) => {
-//         console.log("Error getting the weather:", error);
-//     });
-// };
+const findCoordinates = () => {
+    axios.get(proxyLocation, {params: {
+        q: state.city, 
+    }})
+    .then((response) => {
+        state.lat = response.data[0].lat;
+        state.long = response.data[0].lon;
+        getWeather();
+    })
+    .catch((error) => {
+        console.log('error in findCoordinates!');
+      });
+};
+
+const getWeather = () => {
+    axios.get(proxyWeather, {params: {
+        lat: state.lat,
+        long: state.long
+    }})
+    .then((response) => {
+        const weather = response.data;
+        state.temp = Math.round(convertKtoF(weather.main.temp));
+        updateTempLandscape();
+    })
+    .catch((error) => {
+        console.log("Error getting the weather:", error);
+    });
+};
 
 const increaseTemp = () => {
     state.temp += 1;
@@ -106,6 +108,12 @@ const updateCity = () => {
     headerCity.textContent = state.city;
 };
 
+const resetCity = () => {
+    const cityInput = document.getElementById("cityNameInput");
+    cityInput.value = "Seattle";
+    updateCity();
+}
+
 const registerEventHandlers = () => {
     updateTempLandscape();
     const increaseButton = document.getElementById("increase_temp");
@@ -121,6 +129,10 @@ const registerEventHandlers = () => {
     updateSky();
     const skySelector = document.getElementById("sky_selector");
     skySelector.addEventListener("change", updateSky);
+
+    resetCity();
+    const resetButton = document.getElementById("cityNameReset");
+    resetButton.addEventListener("click", resetCity);
 };
 
 
