@@ -33,15 +33,15 @@ function updateTemperatureDisplay() {
         landscapeImg.src = 'styles/sunny1.jpeg';
         landscapeImg.alt = 'Sunny';
     } else if (temperature >= 70 && temperature <= 79) {
-        temperatureElement.style.color = 'orange';
+        temperatureElement.style.color = 'grey';
         landscapeImg.src = 'styles/cloudy.jpeg';
         landscapeImg.alt = 'Cloudy';
     } else if (temperature >= 60 && temperature <= 69) {
-        temperatureElement.style.color = 'yellow';
+        temperatureElement.style.color = 'indigo';
         landscapeImg.src = 'styles/rainy.jpeg';
         landscapeImg.alt = 'Rainy';
     } else if (temperature >= 50 && temperature <= 59) {
-        temperatureElement.style.color = 'green';
+        temperatureElement.style.color = 'orange';
         landscapeImg.src = 'styles/autumn.jpeg';
         landscapeImg.alt = 'Snowy';
     } else {
