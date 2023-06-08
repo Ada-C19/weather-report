@@ -7,6 +7,20 @@ const state = {
 const displayTemp = () => {
     const tempContainer = document.getElementById("tempValue");
     tempContainer.textContent = `${state.tempNum}`;
+
+    tempContainer.className = ``;
+
+    if (state.tempNum > 79) {
+        tempContainer.className = `${tempContainer.className} red`;
+    } else if (state.tempNum > 69) {
+        tempContainer.className = `${tempContainer.className} orange`;
+    } else if (state.tempNum > 59) {
+        tempContainer.className = `${tempContainer.className} yellow`;
+    } else if (state.tempNum > 49) {
+        tempContainer.className = `${tempContainer.className} green`;
+    } else {
+        tempContainer.className = `${tempContainer.className} teal`;
+    }
 }
 
 // function to increase temperature
@@ -35,5 +49,3 @@ const registerEventHandlers = (event) => {
 }
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
-
-displayTemp()
