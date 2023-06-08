@@ -21,6 +21,4 @@ decreaseTempControl.addEventListener('click', () => {
 
 function updateTemperature() {
 	tempValue.textContent = temperature;
-	applyTemperatureColor();
-	updateLandscape();
 }
