@@ -7,12 +7,21 @@ let skyImage = null;
 let landscapeImage = null;
 let cityNameInput = null;
 let cityNameResetButton = null;
-
-// values
-let temperatureValue = 72;
-let defaultCityName = 'Denver';
+let skySelectValue = null;
+let gardenBackground = null;
+let temperatureValue = null;
+let defaultCityName = null;
 
 // helper functions
+const showTemp = () => {
+    temperatureLabel.textContent = temperatureValue;
+}; 
+
+const showCity = () => {
+    cityNameLabel.textContent = defaultCityName;
+    cityNameInput.value = defaultCityName;
+}; 
+
 const setTempLabelColor = (temperature) => {
     if (temperature >= 80) {
         return temperatureLabel.setAttribute("class", "red");
@@ -34,6 +43,13 @@ const landscapeImages = {
     50: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
 };
 
+const skyImages = {
+    Sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    Cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    Rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    Snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
+};
+
 const setLandscapeImage = temperature => {
     if (temperature >= 80) {
         return landscapeImages[80];
@@ -43,6 +59,22 @@ const setLandscapeImage = temperature => {
         return landscapeImages[60];
     } else {
         return landscapeImages[50];
+    }
+};
+
+const setSkyImage = skyDescription => {
+    return skyImages[skyDescription];
+};
+
+const setGardenBackgroundColor = (skyDescription) => {
+    if (skyDescription === "Sunny") {
+        return gardenBackground.setAttribute("class", "garden__content sunny");
+    } else if (skyDescription === "Cloudy") {
+        return gardenBackground.setAttribute("class", "garden__content cloudy");
+    } else if (skyDescription === "Rainy") {
+        return gardenBackground.setAttribute("class", "garden__content rainy");
+    } else if (skyDescription === "Snowy") {
+        return gardenBackground.setAttribute("class", "garden__content snowy");
     }
 };
 
@@ -79,11 +111,13 @@ const loadControls = () => {
     temperatureDecreaseButton = document.getElementById("decreaseTempControl");
     temperatureIncreaseButton = document.getElementById("increaseTempControl");
     getRealtimeTemperatureButton = document.getElementById("currentTempButton");
-    skyImage = document.getElementById("sky");
     landscapeImage = document.getElementById("landscape");
     cityNameLabel = document.getElementById("headerCityName");
     cityNameInput = document.getElementById("cityNameInput");
     cityNameResetButton = document.getElementById("cityNameReset");
+    skyImage = document.getElementById("sky");
+    skySelectValue = document.getElementById("skySelect");
+    gardenBackground = document.getElementById("gardenContent");
 };
 
 const handleTemperatureDecreaseButtonClick = () => {
@@ -101,8 +135,7 @@ const handleCityNameInputChange = () => {
 };
 
 const handleCityNameResetButton = () => {
-    cityNameLabel.textContent = defaultCityName;
-    cityNameInput.value = defaultCityName;
+    setDefaults();
 };
 
 const handleGetRealtimeTemperatureButtonClick = async () => {
@@ -112,26 +145,34 @@ const handleGetRealtimeTemperatureButtonClick = async () => {
     updateTemperature();
 };
 
+const handleChangeSkySelect = () => {
+    skyImage.textContent = setSkyImage(skySelectValue.value);
+    gardenBackground.backgroundColor = setGardenBackgroundColor(skySelectValue.value);
+};
+
 const registerEvents = () => {
     temperatureDecreaseButton.addEventListener("click", handleTemperatureDecreaseButtonClick);
     temperatureIncreaseButton.addEventListener("click", handleTemperatureIncreaseButtonClick);
     getRealtimeTemperatureButton.addEventListener("click", handleGetRealtimeTemperatureButtonClick);
     cityNameResetButton.addEventListener("click", handleCityNameResetButton);
     cityNameInput.addEventListener("input", handleCityNameInputChange);
+    skySelectValue.addEventListener("change", handleChangeSkySelect);
 };
 
-const showTemp = () => {
-    temperatureLabel.textContent = temperatureValue;
-}; 
-
-const showCity = () => {
-    cityNameLabel.textContent = defaultCityName;
-    cityNameInput.value = defaultCityName;
-}; 
+const setDefaults = () => {
+    temperatureValue = 72;
+    defaultCityName = 'Denver';
+    skySelectValue.value = 'Sunny';
+    showTemp();
+    showCity();
+    handleChangeSkySelect();
+    updateTemperature();
+}
 
 const onLoad = () => {
     loadControls();
     registerEvents();
+    setDefaults();
     showTemp();
     showCity();
 };
