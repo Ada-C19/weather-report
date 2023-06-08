@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+// const { default: axios } = ("axios");
 
 
 const state = {
@@ -76,11 +76,22 @@ const converttoF = (temp) => {
 // API calls
 const getLatAndLong = () => {
     axios
-    .get("http://127.0.0.1:5000/location")
-}
+    .get("http://127.0.0.1:5000/location", {
+        params: {
+            q: state.city,
+        }
+    })
+    .then((response) => {
+        console.log(response.data);
+        state.lat = response.data[0].lat;
+        state.long = response.data[0].lon;
+        getCurrentWeather();
+    })
+    .catch((error) => {
+        console.log("Cannot find location:", error.response);
+    });
 
-
-
+};
 
 const getCurrentWeather = () => {
     console.log(state.lat, state.long)
@@ -108,7 +119,8 @@ const getCurrentWeather = () => {
 
 const currentTempButton = document.getElementById("currentTemp");
 currentTempButton.addEventListener("click", () => {
-    getCurrentWeather();
+    // getCurrentWeather();
+    getLatAndLong()
     let tempValue = document.getElementById("tempValue");
     tempValue = state.temp;
 })
