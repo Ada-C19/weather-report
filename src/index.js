@@ -8,7 +8,9 @@ const state = {
     long: -122.3300624,
 };
 
-const changeTempColor = () => {
+const changeTempAndLandscape = () => {
+    tempValue.textContent = state.tempValue;
+
     if (state.tempValue >= 80) {
         document.getElementById("tempValue").className = "red";
         const landscapeDisplay = document.getElementById("landscape");
@@ -40,14 +42,14 @@ const increaseTempButton = document.getElementById("increaseTempButton");
 increaseTempButton.addEventListener("click", () => {
     const tempValue = document.getElementById("tempValue");
     tempValue.textContent = state.tempValue += 1 
-    changeTempColor()
+    changeTempAndLandscape()
 })
 
 const decreaseTempButton = document.getElementById("decreaseTempButton");
 decreaseTempButton.addEventListener("click", () => {
     const tempValue = document.getElementById("tempValue");
     tempValue.textContent = state.tempValue -= 1;
-    changeTempColor();
+    changeTempAndLandscape();
 })
 
 const updateCityName = (e) => {
@@ -90,11 +92,9 @@ const getLatAndLong = () => {
     .catch((error) => {
         console.log("Cannot find location:", error.response);
     });
-
 };
 
 const getCurrentWeather = () => {
-    console.log(state.lat, state.long)
     axios
     .get("http://127.0.0.1:5000/weather", {
         params: {
@@ -104,13 +104,8 @@ const getCurrentWeather = () => {
     })
     .then((response) => {
         const weather = response.data;
-        console.log(weather)
-        console.log(state)
-        console.log(Math.round(converttoF(weather.main.temp)))
-        state.temp = Math.round(converttoF(weather.main.temp));
-        console.log("inside of success response")
-        // we need to get the temp to change the garden pic
-        console.log(state.temp)
+        state.tempValue = Math.round(converttoF(weather.main.temp));
+        changeTempAndLandscape();
     })
     .catch((error) => {
         console.log("Unable to retrieve weather data:", error);
@@ -121,5 +116,5 @@ const currentTempButton = document.getElementById("currentTemp");
 currentTempButton.addEventListener("click", () => {
     getLatAndLong()
     let tempValue = document.getElementById("tempValue");
-    tempValue = state.temp;
+    tempValue = state.tempValue;
 })
