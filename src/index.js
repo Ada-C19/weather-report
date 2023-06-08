@@ -32,7 +32,7 @@ const setUpTemperature = () => {
   let garden = document.querySelector("#garden");
   garden.textContent = gardenType
 }
-  
+
 
 function Up() {
   let temp = document.querySelector("#temp");
