@@ -12,3 +12,31 @@
 
 /* cloud ☁️☁️☁️☁️☁️ */
 /* leaf 🍁🍁🍁🍁🍁 */
+
+h2 {
+    margin: o auto 2rem auto;
+}
+
+
+/* Format the temperature control box */
+.temperature_controls {
+    display:block;
+    flex-direction:column;
+    align-items:center; 
+}
+/* Temp number color changes based on temp range */
+.red {
+    color: red;
+}
+.orange {
+    color: orange;
+}
+.yellow {
+    color: yellow;
+}
+.green {
+    color:green;
+}
+.teal {
+    color: teal;
+}
