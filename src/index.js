@@ -73,6 +73,11 @@ const updateLandscape = () => {
     document.getElementById("sky-emoji").textContent = sky_i;
 }
 
+const updateCity = () => {
+    let cityInput = document.getElementById("city-input").value;
+    document.getElementById("header-city").textContent = cityInput;
+}
+
 updateLandscape()
 // if (document.readyState !== "loading") {
 //   getTasks();
