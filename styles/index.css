@@ -50,6 +50,10 @@ section div {
     border: none;
 }
 
+#degrees {
+    color: red;
+}
+
 #sky-section {
     align-items: center;
     height: 200px;
