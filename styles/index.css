@@ -42,7 +42,6 @@ h2 {
     padding: 2rem;
     background-color: white;
     grid-row: 2;
-
 }
 
 .garden__section {
@@ -55,7 +54,6 @@ h2 {
 .garden__section > h2 {
     padding: 3rem;
     color: white;
-
 }
 
 .garden__content {
@@ -63,20 +61,24 @@ h2 {
     max-width: fit-content;
     margin: auto;
     padding: 2rem;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+
     border-radius: 8px;
     font-size: 2em;
 }
 
+#tempValue {
+    font-size: 3rem;
+    margin-left: 1.5rem;
+}
 
 .cloudy {
     background-color: lightgrey;
 }
-    
+
 .sunny {
     background-color: rgb(221, 255, 255);
 }
@@ -88,15 +90,9 @@ h2 {
 .snowy {
     background-color: lightsteelblue;
 }
-    
 
 
-
-
-/* TODO 
+/* TODO
 1. make Get Realtime Temp button smaller
 2. Change arrow emoji buttons
 3. Personalize weather garden emojis  */
-
-
-
