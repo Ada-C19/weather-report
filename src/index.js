@@ -2,33 +2,91 @@
 // import axios from 'axios';
 
 const state = {
-  city: 'Seattle',
-  temp: 72,
+    city: 'Seattle',
+    lat: 47.6038321,
+    long: -122.3300624,
+    temp: 72,
 };
+
+const convertTempF = (temp) => {
+  return (temp - 273.15) * (9 / 5) + 32;
+};
+
+// find latitude and longitude
+const longitudeAndLatitude = () => {
+  axios
+  .get('http://127.0.0.1:5000/location',
+  {
+    params: {
+      q: (state.city),
+    },
+  })
+  .then((response) => {
+    console.log(response);
+    state.lat = response.data[0]['lat'];
+    state.long= response.data[0]['lon'];
+    getWeatherTemp();
+    })
+  .catch((error) => {
+    console.log("Error!");
+    console.log(error.response.data)
+  });
+};
+
+
+
+const getWeatherTemp = () => {
+  axios
+  .get('http://127.0.0.1:5000/weather', {
+    params: {
+      lat: state.lat,
+      lon: state.long
+    },
+  })
+  .then((response) => {
+    const weatherReport = response.data;
+    state.temp = Math.round(convertTempF(weatherReport.main.temp));
+    changeTempFontColorAndLandscape();
+  })
+  .catch((error) => {
+    console.log("ERROR!")
+  })
+}
+
+const realtimeButton = document.getElementById('realtime');
+realtimeButton.addEventListener('click', longitudeAndLatitude);
+
+
+
+
 
 // changing font color
 
 const changeTempFontColorAndLandscape = () => {
     let temp = state.temp;
-    const groundemoji = document.getElementById("groundemoji")
-    const temperature = document.getElementById('tempnumber')
+    let color = 'orange';
+    let ground = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷'
     if (temp >= 80) {
-        temperature.className = 'red';
-        groundemoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-
+        color = 'red';
+        ground = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
     }else if (temp >=70) {
-        temperature.className = 'orange';
-        groundemoji.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+        color = 'orange';
+        ground = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
     }else if (temp >= 60) {
-        temperature.className = 'yellow';
-        groundemoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+        color = 'yellow';
+        ground = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
     }else if (temp >=50) {
-        temperature.className = 'green';
-        groundemoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        color = 'green';
+        ground = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }else {
-        temperature.className = 'brown';
-        groundemoji.textContent = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
+        color = 'brown';
+        ground = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
     }
+    const newGround = document.getElementById("groundemoji");
+    newGround.textContent = ground;
+    const temperature = document.getElementById('tempnumber');
+    temperature.className = color;
+    temperature.textContent = String(state.temp)
 };
 
 
@@ -36,19 +94,15 @@ const changeTempFontColorAndLandscape = () => {
 // increase
 const increaseTemp = () => {
     state.temp += 1;
-    const upTempNumber = document.getElementById("tempnumber");
-    upTempNumber.textContent = `${state.temp}`;
     changeTempFontColorAndLandscape();
 
-}
+};
 const increaseButton = document.getElementById("up");
 increaseButton.addEventListener("click", increaseTemp);
 
 // decrease
 const decreaseTemp = () => {
   state.temp -= 1;
-  const downTempNumber = document.getElementById("tempnumber");
-  downTempNumber.textContent = `${state.temp}`;
   changeTempFontColorAndLandscape();
 };
 
