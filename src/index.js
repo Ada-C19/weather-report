@@ -67,7 +67,7 @@ topButton.addEventListener("click", increaseTemp);
     const bottomButton = document.querySelector("#decreaseTempControl");
 bottomButton.addEventListener("click", decreaseTemp);
     const cityButton = document.querySelector("#cityNameInput");
-cityButton.addEventListener("keydown", updateCity);
+cityButton.addEventListener("keyup", updateCity);
 
 }
 
