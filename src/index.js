@@ -10,6 +10,15 @@ const landscapeImg = {
     "4" : "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
     "5" : "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
 };
+
+const skyImg = { 
+    "0" : "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    "1": "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    "2" : "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    "3" : "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+};
+
+
 //change header city name from search input
 const updateCityHeader = () => {
     const inputName = document.getElementById("cityInput").value;
@@ -18,6 +27,29 @@ const updateCityHeader = () => {
     header.textContent = state.city;
 }
 
+//change sky according to dropdown select
+const updateSky = () => {
+    const inputSky = document.getElementById('sky-menu').value;
+    const skyContainer = document.getElementById('sky-container');
+    let sky = '';
+    let skyColor = '';
+    if (inputSky === 'Cloudy') {
+      sky = skyImg[0];
+      skyColor = 'cloudy';
+    } else if (inputSky === 'Sunny') {
+        sky = skyImg[1];
+      skyColor = 'sunny';
+    } else if (inputSky === 'Rainy') {
+        sky = skyImg[2];
+      skyColor = 'rainy';
+    } else if (inputSky === 'Snowy') {
+        sky = skyImg[3];
+      skyColor = 'snowy';
+    }
+    skyContainer.textContent = sky;
+    // const gardenContent = document.getElementById('gardenContent');
+    // gardenContent.classList = `garden__content ${skyColor}`;
+  };
 
 //function updates number of temp 
 const changeTemp = () => {
@@ -82,6 +114,10 @@ const registerEventHandlers = () => {
     updateCityHeader();
     const updateCity = document.getElementById("cityInput");
     updateCity.addEventListener('input', updateCityHeader)
+
+    updateSky();
+    const skySelector = document.getElementById("sky-menu");
+    skySelector.addEventListener("change",updateSky);
 };
 
 //document.addEventListener("DOMContentLoaded", registerEventHandlers);
