@@ -12,6 +12,7 @@ const state = {
     skySelect: null,
     sky: null,
     gardenContent: null,
+    resetButton: null,
 };
 
 const loadControls = () => {
@@ -25,6 +26,7 @@ const loadControls = () => {
     state.skySelect = document.getElementById("skySelect");
     state.sky = document.getElementById("sky");
     state.gardenContent = document.getElementById("gardenContent");
+    state.resetButton = document.getElementById("cityNameReset");
 };
 
 const handleIncreaseTempClicked = () => {
@@ -119,6 +121,11 @@ const handleSkySelectOption = () => {
     // state.gardenContent.style = weatherPatterns[state.skySelect.value][1];
 }
 
+const handleResetButtonClicked = () => {
+    state.headerCityName.textContent = 'Los Angeles'
+    
+}
+
 const registerEventHandlers = () => {
     loadControls();
     setTempDisplay();
@@ -127,6 +134,7 @@ const registerEventHandlers = () => {
     state.cityNameInput.addEventListener("input", handleCityNameInput);
     state.currentTempButton.addEventListener("click", handleRealtimeTemperatureClicked);
     state.skySelect.addEventListener("change", handleSkySelectOption);
+    state.resetButton.addEventListener("click", handleResetButtonClicked);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
