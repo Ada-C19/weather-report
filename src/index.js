@@ -1,4 +1,6 @@
 "use strict";
+
+// states
 const state = {
     temp: 0,
     landscape:"🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
@@ -6,6 +8,7 @@ const state = {
 
 }
 
+// selected elements
 const temp = document.getElementById("tempValue");
 const controlUp = document.getElementById("increaseTempControl");
 const controlDown = document.getElementById("decreaseTempControl");
@@ -13,7 +16,12 @@ const landscape = document.getElementById("landscape");
 const cityName = document.getElementById("headerCityName");
 const cityInput = document.getElementById("cityNameInput");
 const reset = document.getElementById("cityNameReset");
+const skyImage = document.getElementById("sky");
+const sky = document.getElementById("skySelect");
+const weatherGarden = document.getElementById("gardenContent")
 
+
+// helper functions
 const changeColor = () =>{
     if (state.temp>80){
         temp.className = 'red';
@@ -37,14 +45,13 @@ const changeColor = () =>{
     }
 }
 
+// functions
 const increaseTemp = () =>{
     changeColor()
     state.temp+= 1
     temp.innerText = state.temp
     
 }
-
-controlUp.addEventListener('click', increaseTemp)
 
 const decreaseTemp = () => {
     changeColor()
@@ -53,14 +60,49 @@ const decreaseTemp = () => {
     
 }
 
-controlDown.addEventListener('click', decreaseTemp)
+const resetCity = () =>{
+    cityName.textContent = state.city;
+    cityInput.value = state.city;
 
+}
+
+const changeSky= () =>{
+   const skyValue = document.getElementById("skySelect").value;
+
+   if (skyValue === "snowy"){
+        skyImage.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+        weatherGarden.className = "snowy";
+
+    }
+   else if (skyValue === "rainy"){
+        skyImage.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
+        weatherGarden.className = "rainy";
+
+    }
+   else if (skyValue === "sunny") {
+        skyImage.textContent = "☁️ ☁️ ☁️☁️ ☁️ ☀️ ☁️ ☁️☁️ ☁️"
+        weatherGarden.className = "sunny";
+   }
+   
+   else if (skyValue === "cloudy") {
+        skyImage.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️ ☁️☁️☁️"
+        weatherGarden.className = "cloudy";
+   }
+
+
+
+}
+
+// event listeners
+controlUp.addEventListener('click', increaseTemp)
+controlDown.addEventListener('click', decreaseTemp)
 cityInput.addEventListener('input', function(){
     cityName.textContent = this.value;
 })
-
-const resetCity = () =>{
-    cityName.textContent = state.city;
-}
+sky.addEventListener('change', changeSky)
 reset.addEventListener("click", resetCity)
+
+
+
+
 

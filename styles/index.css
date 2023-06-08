@@ -13,10 +13,7 @@ font-size: 18px;
 background-color: #1b69f9;
 margin: 2rem;
 }
-.garden__section{
-    background-color: lightcyan;
-    border-radius: 30px;
-}
+
 
 .header__header {
 color: white;
@@ -103,19 +100,19 @@ align-items: center;
 color: white;
 }
 
-.garden__content {
+#gardenContent{
 min-height: 200px;
 max-width: fit-content;
 margin: auto;
 padding: 2rem;
-
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 
-border-radius: 8px;
 font-size: 2em;
+border-radius: 30px;
 }
+
 
 .city-name__reset-btn {
 border: 0;

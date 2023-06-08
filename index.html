@@ -31,7 +31,7 @@
     <section class="sky__section">
         <h2>Sky</h2>
         <select id="skySelect">
-          <option value="snow">Snowy</option>
+          <option value="snowy">Snowy</option>
           <option value="rainy">Rainy</option>
           <option value="cloudy">Cloudy</option>
           <option value="sunny">Sunny</option>
@@ -40,15 +40,15 @@
 
     <section class="city-name__section">
         <h2>City Name</h2>
-        <input type="text" id="cityNameInput">
+        <input type="text" id="cityNameInput" value="Seattle">
         <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
     </section>
 
     <section class="garden__section">
         <h2>Weather Garden</h2>
-        <div id="gardenContent" class="garden__content">
+        <div id="gardenContent" class="snowy">
             <div id="sky">🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧</div>
-            <div id="landscape"></div>
+            <div id="landscape">🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲</div>
         </div>
     </section>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
