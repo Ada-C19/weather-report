@@ -1,27 +1,37 @@
 let tempValueInt = 65;
+const tempValue = document.getElementById("tempValue");
+const landscapeEmoji = document.getElementById("landscapeEmoji");
 
-const increaseButton = document.getElementById("topButton");
+const checkTemp = function(tempValue) {
+    if (tempValueInt < 49) {
+        tempValue.className = "blue";
+        landscapeEmoji.textContent = "🏔 ❄ 🏂 ☃ ⛄ 😓 🌨 🏔";
+    } else if (tempValueInt >= 50 && tempValueInt <= 59) {
+        tempValue.className = "green";
+        landscapeEmoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+    } else if (tempValueInt >= 60 && tempValueInt <= 69) {
+        tempValue.className = "yellow";
+        landscapeEmoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    } else if (tempValueInt >= 70 && tempValueInt <= 79) {
+        tempValue.className = "orange";
+        landscapeEmoji.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+    } else {
+        tempValue.className = "red";
+        landscapeEmoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    }
+};
+
+const increaseButton =document.getElementById("topButton");
 increaseButton.addEventListener("click", () => {
-    const tempValue = document.getElementById("tempValue");
     tempValueInt++;
     tempValue.innerHTML = tempValueInt;
-    tempValue.className = tempValueInt < 49 ? "teal"
-        : tempValueInt >= 50 && tempValueInt <= 59 ? "green"
-        : tempValueInt >= 60 && tempValueInt <= 69 ? "yellow"
-        : tempValueInt >= 70 && tempValueInt <= 79 ? "orange"
-        : "red";
-    // if (tempValueInt < 49) {
-    //     tempValue.className = "blue";
-    // } else if (tempValueInt >= 50 && tempValueInt <= 59) {
-    //     tempValue.className = "green";
-    // }
+    checkTemp(tempValue);
 });
 
 const decreaseButton = document.getElementById("bottomButton");
 decreaseButton.addEventListener("click", () => {
-    const tempValue = document.getElementById("tempValue");
     tempValueInt--;
     tempValue.innerHTML = tempValueInt;
+    checkTemp(tempValue);
 })
-
 
