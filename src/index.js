@@ -31,6 +31,8 @@ const loadData = () => {
   state.landscapeField = document.querySelector("#landscape");
   state.temperature = document.querySelector("#tempValue").textContent;
   state.currTempButton = document.querySelector("#currentTempButton");
+  state.tempDownButton = document.querySelector("#decreaseTempControl");
+  state.TempUpButton = document.querySelector("#increaseTempControl");
 };
 
 const registerEventHandlers = (event) => {
@@ -40,6 +42,8 @@ const registerEventHandlers = (event) => {
   state.cityTextField.addEventListener("input", cityUpdate);
   state.cityResetButton.addEventListener("click", cityReset);
   state.currTempButton.addEventListener("click", landscapeUpdate);
+  state.tempDownButton.addEventListener("click", landscapeUpdate);
+  state.tempUpButton.addEventListener("click", landscapeUpdate);
 };
 
 const state = {
@@ -49,6 +53,8 @@ const state = {
   landscapeField: null,
   temperature: null,
   currTempButton: null,
+  tempUpButton: null,
+  tempDownButton: null,
 };
 
 const landscapes = {
