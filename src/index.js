@@ -78,3 +78,10 @@ const registerEventHandlers = (event) => {
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+// Wave 4
+const axios = require("axios");
+const locationAPI = 'https://us1.location.iq.com/v1/search';
+const locationKey = 'pk.65ae4b850255defb3343d169002c200b';
+const weatherAPI = 'https://api.openweathermap.org/data/2.5/weather';
+const weatherKey = '9940961df94fc8bb47b7c0447752e867';
