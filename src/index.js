@@ -58,20 +58,55 @@ const getTemperatureColor = (temperature) => {
   }
 };
 
+const tempColorUpdate = () => {
+  state.temperatureValue.className = getTemperatureColor(
+    state.currentTemperature
+  );
+};
+
 const increaseTemperature = () => {
   state.currentTemperature += 1;
   state.temperatureValue.textContent = state.currentTemperature;
-  state.temperatureValue.className = `${getTemperatureColor(
-    state.currentTemperature
-  )}`;
+  allGraphicsUpdate();
 };
 
 const decreaseTemperature = () => {
   state.currentTemperature -= 1;
   state.temperatureValue.textContent = state.currentTemperature;
-  state.temperatureValue.className = `${getTemperatureColor(
-    state.currentTemperature
-  )}`;
+  allGraphicsUpdate();
+};
+
+const locUrl = "http://localhost:5000/location";
+const weatherUrl = "http://localhost:5000/weather";
+
+const getTempFromLocation = () => {
+  const q = state.cityTextField.value;
+  axios
+    .get(locUrl, { params: { q } })
+    .then((response) => {
+      const lat = response.data[0].lat;
+      const lon = response.data[0].lon;
+      axios
+        .get(weatherUrl, { params: { lat, lon } })
+        .then((weatherResponse) => {
+          const tempCelsius = weatherResponse.data.main.temp - 273.15;
+          const newTemp = Math.floor(tempCelsius * (9 / 5) + 32);
+          state.currentTemperature = newTemp;
+          state.temperatureValue.textContent = state.currentTemperature;
+          allGraphicsUpdate();
+        })
+        .catch((error) => {
+          console.log("Weather call failed", error);
+        });
+    })
+    .catch((error) => {
+      console.log("Location call failed", error);
+    });
+};
+
+const allGraphicsUpdate = () => {
+  tempColorUpdate();
+  landscapeUpdate();
 };
 
 const loadData = () => {
@@ -93,7 +128,7 @@ const loadData = () => {
 const registerEventHandlers = (event) => {
   //All event handlers will be defined here
   loadData();
-  landscapeUpdate();
+  allGraphicsUpdate();
   state.cityTextField.addEventListener("input", cityUpdate);
   state.cityResetButton.addEventListener("click", cityReset);
 
@@ -105,10 +140,8 @@ const registerEventHandlers = (event) => {
     "click",
     decreaseTemperature
   );
-  state.temperatureIncreaseButton.addEventListener("click", landscapeUpdate);
-  state.temperatureDecreaseButton.addEventListener("click", landscapeUpdate);
 
-  state.currTempButton.addEventListener("click", landscapeUpdate);
+  state.currTempButton.addEventListener("click", getTempFromLocation);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
