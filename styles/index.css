@@ -1,0 +1,38 @@
+#temperature-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rubik', sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+}
+nav {
+    text-align: center;
+    background-color: rgba(11, 31, 94, 0.906);
+}
+
+body {
+    background-color:  rgb(80, 168, 205);
+    
+}
+
+    #temperature {
+    margin: 0 20px;
+}
+
+    button {
+    padding: 8px 16px;
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+}
+
+footer {
+    background-color: rgb(40, 12, 181);
+    font-size: 25px;
+}
+
+figure img {
+    width: 100%;
+    max-width: 300px;
+    height: 300px;
+}
