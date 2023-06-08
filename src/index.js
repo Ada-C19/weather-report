@@ -1,3 +1,4 @@
+const baseURL = 'http://127.0.0.1:5000/'
 const state = {}
 
 const loadControls = () => {
@@ -9,11 +10,18 @@ const registerEvents = () => {
     state.increaseTempControl.addEventListener('click', handleIncrease);
     state.decreaseTempControl.addEventListener('click', handleDecrease);
     state.cityNameInput.addEventListener('input', handleCityNameUpdate);
+    state.currentTempButton.addEventListener('click', handleGetCurrentTemp);
+}
+
+const handleGetCurrentTemp = async () => {
+  const locationURL = `${baseURL}location?q=${state.cityName}`
+  const locationResponse = await axios.get(locationURL);
+  const { lat, lon } = locationResponse.data[0]
 }
 
 const handleCityNameUpdate = () => {
-    let city = state.cityNameInput.value;
-    state.headerCityName.innerText = city;
+    state.cityName = state.cityNameInput.value;
+    state.headerCityName.innerText = state.cityName;
 }
 
 const handleIncrease = () => handleTempChange(1);
