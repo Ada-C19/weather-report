@@ -1,10 +1,12 @@
 "use strict";
 
+const { default: axios } = require("axios");
+
 const state = {
     degrees: 62,
     cityName: "Seattle",
-    lat: 0,
-    lon: 0
+    cityLat: 0,
+    cityLon: 0
 };
 
 // Wave 2
@@ -72,6 +74,14 @@ const getLocation = (cityName) => {
         })
 }
 
+const getWeather = (cityName, cityLat, cityLon) => {
+    getLocation(cityName)
+    axios.get('http://127.0.0.1:5000/weather', { params: {lat: cityLat, lon: cityLon, format: 'json', units: 'imperial'}})
+        .then((result) => {
+            console.log(result)
+        })
+}
+
 const registerEventHandlers = (event) => {
     tempColorLandscape();
 
@@ -88,7 +98,7 @@ const registerEventHandlers = (event) => {
     resetButton.addEventListener("click", changecityName)
 
     const realTimeButton = document.getElementById('realTimeButton')
-    realTimeButton.addEventListener("click", getLocation)
+    realTimeButton.addEventListener("click", getWeather)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
