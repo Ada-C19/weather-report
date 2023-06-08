@@ -1,8 +1,11 @@
 "use strict";
 
+
 const state = {
     temperature: 0 
     // start temparture with info from API call
+    // state city name from
+    // lat: 0
 };
 
 const increaseTemp = (event) => {
@@ -48,13 +51,14 @@ const searchLocation = () => {
     axios
     .get('http://127.0.0.1:5000/location', {
         params:{
-        q: cityName,  
+        q: 'Seattle',  
         }  
     })
     .then((response) => {
-    console.log('success!' + JSON.stringify(response.data[0]));
-    state.lat = response.data[0].lat;
-    state.lon = response.data[0].lon;
+        // state.lat = response.data[0].lat
+    console.log('success!' + JSON.stringify(response.data[0].lat));
+    let lat = response.data[0].lat;
+    let lon = response.data[0].lon;
     searchTemperature();
         })
     
@@ -73,8 +77,9 @@ const searchTemperature = () => {
         },
       })
     .then((response) => {
-        console.log('success!' + JSON.stringify(response.data.current.temp));
+        console.log('success!' + JSON.stringify(response.data.main.temp));
         state.temp = convertKtoC(response.data.current.temp);
+        // return current temp and assign to #temp count
         changeLandscapeTemp();
       })
     .catch((error) => {
@@ -95,6 +100,7 @@ const registerEventHandlers = (event) => {
         const cityName = inputElement.value;
         const cityDisplay = document.querySelector("h3");
         cityDisplay.textContent = "For the lovely city of " + "⭐"+cityName+"⭐";
+        // refactor cityname to get value as global temp
 
     const changeLocation = document.querySelector('#realtime-button-weather');
     changeLocation.addEventListener('click', searchLocation);
@@ -102,5 +108,5 @@ const registerEventHandlers = (event) => {
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
 
-
-
+console.log('testing!')
+console.log(searchLocation())
