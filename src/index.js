@@ -1,7 +1,6 @@
-
 const state = {
     tempCount : 0,
-    city: "Lousiville"
+    city: "Seattle"
 }
 
 const landscapeImg = { 
@@ -85,4 +84,60 @@ const registerEventHandlers = () => {
     updateCity.addEventListener('input', updateCityHeader)
 };
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
+//document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+
+
+
+
+
+// const query_params = {
+
+//     "q": state.city,
+ 
+// }
+
+// axios 
+// .get(`http://127.0.0.1:5000/location`,
+// //request body
+// {params :query_params},
+// //config stuff, and a key called headers
+// { headers: {
+//     "Content-Type": "application/json",
+//     "Authorization": `Bearer ${process.env.SLACK_TOKEN}`
+//     }
+// })
+// .then((response) => {
+//     //what to do if it works
+//     console.log(response.data)
+//     console.log("Success")
+    
+
+// })
+// .catch((error)=> {
+//     //if unsuccessul
+//     console.log("fail")
+// })
+
+axios 
+.get(`http://127.0.0.1:5000/location`,
+//request body
+{
+    params : {
+        q : state.city
+    }
+  },
+//config stuff, and a key called headers
+{ 
+})
+.then((response) => {
+    //what to do if it works
+    console.log(response.data)
+    console.log("Success")
+    
+
+})
+.catch((error)=> {
+    //if unsuccessul
+    console.log("fail")
+})
