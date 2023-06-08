@@ -1,6 +1,3 @@
-const dotenv = require('dotenv');
-const axios = require('axios');
-
 // get temperature display and arrows
 const tempDisplay = document.getElementById("temp-display");
 
