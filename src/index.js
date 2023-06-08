@@ -9,9 +9,17 @@ const state = {
 const skyState = {
     sunny: '🌞🌞🌞🌞🌞🌞🌞🌞🌞',
     cloudy: '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️',
-    rainy: '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧',
+    rainy: '🌧🌈🌧🌧💧🌧🌦🌧💧🌧🌧',
     snowy: '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨'
 }
+
+const landState = {
+    sunny: '🌵🌵🌵🌵🌵🌵🌵🌵🌵',
+    cloudy: '🌳🌳🌳🌳🌳🌳🌳🌳🌳',
+    rainy: '🌴🌴🌴🌴🌴🌴🌴🌴🌴',
+    snowy: '🏔️🏔️🏔️🏔️🏔️🏔️🏔️🏔️🏔️'
+}
+
 
 const locationUrl = 'http://127.0.0.1:5000/location';
 const params = {
@@ -24,12 +32,16 @@ const increaseTemp = () => {
     const tempContainer = document.querySelector('#tempValue');
     state.temperature++;
     tempContainer.textContent = state.temperature;
+    changeTempColor();
+    changeLandscape();
 };
 
 const decreaseTemp = () => {
     const tempContainer = document.querySelector('#tempValue');
     state.temperature--;
     tempContainer.textContent = state.temperature;
+    changeTempColor();
+    changeLandscape();
 };
 
 const renameCityHeader = () => {
@@ -64,6 +76,7 @@ const registerEventHandlers = () => {
 
     const skySelectInput = document.querySelector('#skySelect');
     skySelectInput.addEventListener("change", changeSky);
+
 };
 
 const getLatAndLon = () => {
@@ -90,6 +103,8 @@ const tempConvertKtoF = (temp) => {
 const setTempToRealTimeTemp = () => {
     const tempContainer = document.querySelector('#tempValue');
     tempContainer.innerText = state.temperature;
+    changeTempColor();
+    changeLandscape();
 };
 
 const getCurrentWeather = () => {
@@ -122,6 +137,36 @@ const changeSky = () => {
         skyContainer.innerText = skyState.snowy;
     }
 };
+
+const changeLandscape = () => {
+    const landscapeContainer = document.querySelector('#landscape');
+    if (state.temperature >= 80) {
+        landscapeContainer.innerText = landState.sunny;
+    } else if (state.temperature >= 70) {
+        landscapeContainer.innerText = landState.cloudy;
+    } else if (state.temperature >= 60) {
+        landscapeContainer.innerText = landState.rainy;
+    } else if (state.temperature <= 59) {
+        landscapeContainer.innerText = landState.snowy;
+    }
+};
+
+const changeTempColor = () => {
+    const tempContainer = document.querySelector('#tempValue');
+    if (state.temperature >= 80) {
+        tempContainer.style.color = "red";
+    } else if (state.temperature >= 70) {
+        tempContainer.style.color = "orange";
+    } else if (state.temperature >= 60) {
+        tempContainer.style.color = "gold";
+    } else if (state.temperature >= 50) {
+        tempContainer.style.color = "green";
+    } else if (state.temperature <= 49) {
+        tempContainer.style.color = "teal";
+    }
+}
+
+
 
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
