@@ -87,6 +87,36 @@ const updateCity = (value) => {
 // };
 // updatedCityName();
 
+const getLocation = () => {
+    const location = document.getElementById("city-input").value;
+    axios
+      .get("http://127.0.0.1:5000/location", { params: {q: location} })
+      .then((result) => {
+       const lat = result.data[0].lat;
+       const lon = result.data[0].lon;
+       getWeather(lat, lon);
+      });
+};
+
+const getWeather = (lat_query, lon_query) => {
+    axios
+    .get("http://127.0.0.1:5000/weather", { params: {lat: lat_query, lon: lon_query} })
+    .then((result) => {
+        const kelvin = result.data.main.temp;
+        const celsius = Math.round(kelvin - 273.15);
+        document.getElementById("temp-display").textContent = celsius;
+    })
+};
+
+const tempButton = document.getElementById("temp-button");
+tempButton.addEventListener("click", () => {
+    getLocation();
+    }
+);
+
+
+
+
 
 // if (document.readyState !== "loading") {
 //   getTasks();
