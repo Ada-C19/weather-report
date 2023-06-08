@@ -1,5 +1,11 @@
 const baseURL = 'http://127.0.0.1:5000/'
-const state = {defaultCity:'Los Angeles'}
+const state = {
+    cityName: 'Los Angeles', //default city
+    temp: 70, //default temp
+    color: '',
+    landscapeText: '',
+    skyText: ''
+}
 
 const loadControls = () => {
     const elementsWithId = document.querySelectorAll('[id')
@@ -16,8 +22,8 @@ const registerEvents = () => {
 };
 
 const handleSkyUpdate = (option) => {
-  const sky = option.target.value;
-  state.sky.innerText = sky;
+    state.skyText = option.target.value;
+    state.sky.innerText = state.skyText;
 }
 
 const handleGetCurrentTemp = async () => {
@@ -29,8 +35,8 @@ const handleGetCurrentTemp = async () => {
     const weatherResponse = await axios.get(weatherURL);
     const kelvinTemp = weatherResponse.data['main']['temp'];
 
-    state.cityTemp = convertKelvinToFahrenheit(kelvinTemp);
-    state.tempValue.innerText = state.cityTemp;
+    state.temp = convertKelvinToFahrenheit(kelvinTemp);
+    handleTempChange();
 };
 
 const convertKelvinToFahrenheit = (kelvinTemp) => {
@@ -45,39 +51,43 @@ const handleCityNameUpdate = () => {
 const handleIncrease = () => handleTempChange(1);
 const handleDecrease = () => handleTempChange(-1);
 
-const handleTempChange = (adj) => {
-    let currentTemp = parseInt(state.tempValue.innerText);
-    let newTemp = currentTemp + adj;
-    state.tempValue.innerText = newTemp;
-    
-    let color, landscape;
-    if (newTemp >= 80) {
-        color = 'red';
-        landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-    } else if (newTemp >= 70 && newTemp <= 79) {
-        color = 'orange';
-        landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
-    } else if (newTemp >= 60 && newTemp <= 69) {
-        color = 'yellow'
-        landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+const handleTempChange = (adj=0) => {
+    state.temp = state.temp + adj;
+
+    if (state.temp >= 80) {
+        state.color = 'red';
+        state.landscapeText = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    } else if (state.temp >= 70 && state.temp <= 79) {
+        state.color = 'orange';
+        state.landscapeText = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+    } else if (state.temp >= 60 && state.temp <= 69) {
+        state.color = 'yellow'
+        state.landscapeText = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
     } else {
-        landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-        color = newTemp >= 50 && newTemp <=59 ? 'green': 'teal';
+        state.landscapeText = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        state.color = state.temp >= 50 && state.temp <=59 ? 'green': 'teal';
     }
-    state.tempValue.style.color = color;
-    state.landscape.innerText = landscape;
+
+    refreshUI();
 };
 
 const handleCityNameReset = () => {
-    state.headerCityName.innerText = state.defaultCity;
+    state.cityName = 'Los Angeles';
     state.cityNameInput.value = "";
+    refreshUI();
 }
 
-
+const refreshUI = () => {
+    state.headerCityName.innerText = state.cityName;
+    state.tempValue.innerText = state.temp;
+    state.landscape.innerText = state.landscapeText;
+    state.tempValue.style.color = state.color;
+}
 
 const onLoaded = () => {
     loadControls();
     registerEvents();
+    refreshUI();
 };
 
 document.addEventListener("DOMContentLoaded", onLoaded);
