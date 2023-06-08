@@ -53,13 +53,22 @@ const displayLandscape = () => {
     }
 }
 
+// function to display city name
+const displayCityName = () => {
+    const cityInput = document.getElementById("cityNameInput").value;
+    const headerCityName = document.getElementById("headerCityName");
+
+    headerCityName.textContent = cityInput;
+}
+
 const registerEventHandlers = (event) => {
     const increaseTempButton = document.querySelector("#increaseTempControl");
     const decreaseTempButton = document.querySelector("#decreaseTempControl");
+    const cityNameInputted = document.querySelector("#cityNameInput");
 
     increaseTempButton.addEventListener("click", increaseTemp);
     decreaseTempButton.addEventListener("click", decreaseTemp);
-    // call function to change landscape depending on temp
+    cityNameInputted.addEventListener("input", displayCityName);
 
     displayTemp();
     displayLandscape();
