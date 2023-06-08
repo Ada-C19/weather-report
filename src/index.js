@@ -1,5 +1,5 @@
 const state = {
-    tempCount : 0,git 
+    tempCount : 0,
     city: "Seattle"
 }
 
@@ -120,7 +120,7 @@ const registerEventHandlers = () => {
     skySelector.addEventListener("change",updateSky);
 };
 
-//document.addEventListener("DOMContentLoaded", registerEventHandlers);
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
 
 
