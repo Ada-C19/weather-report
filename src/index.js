@@ -119,7 +119,6 @@ const getCurrentWeather = () => {
 
 const currentTempButton = document.getElementById("currentTemp");
 currentTempButton.addEventListener("click", () => {
-    // getCurrentWeather();
     getLatAndLong()
     let tempValue = document.getElementById("tempValue");
     tempValue = state.temp;
