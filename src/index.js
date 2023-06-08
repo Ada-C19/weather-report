@@ -13,6 +13,29 @@ const displayCityText = () => {
 const getRealTimeTemp = () => {
     const endpointLocation = "https://127.0.0.1:5000/location"
     const endpointWeather = "https://127.0.0.1:5000/weather"
+    // const axios = require('axios')
+
+    const apiCallLocation = async (query) => {
+        let latitude, longitude;
+        axios.get(endpointLocation, {
+            q: query,
+            format: 'json'
+        })
+        .then((response) => {
+            latitude = response.data[0].lat;
+            longitude = response.data[0].lon;
+            axios.get(endpointWeather, {
+                lat: latitude,
+                lon: longitude
+            })
+            .then((response) => {
+                
+            })
+        })
+        .catch((error) => {
+            console.log(response.error.data)
+        });
+    }
 
 }
 
@@ -92,7 +115,6 @@ const registerEventHandlers = (event) => {
     downButton.addEventListener('click', decreaseTemp);
     downButton.addEventListener('click', changeColorTemp);
 }
-
 
 // Triggers Event Handlers:
 document.addEventListener('DOMContentLoaded', registerEventHandlers)
