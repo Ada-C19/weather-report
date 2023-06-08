@@ -9,7 +9,16 @@ grid-gap: 1rem;
 
 font-family: "Rubik", sans-serif;
 font-size: 18px;
-background-color: #1b69f9;
+background: linear-gradient(
+    to bottom,
+    rgb(207, 223, 238),
+    rgb(81, 153, 184),
+    rgb(108, 144, 229),
+    rgb(81, 65, 200),
+    rgb(71, 34, 221),
+    rgb(19, 25, 134),
+    rgb(12, 18, 80)
+);
 margin: 2rem;
 }
 
@@ -100,7 +109,7 @@ color: white;
 }
 
 .garden__content {
-min-height: 200px;
+min-height: px;
 max-width: fit-content;
 margin: auto;
 padding: 2rem;
@@ -145,6 +154,10 @@ color: green;
 .teal {
 color: teal;
 }
+
+.ice {
+    color: rgb(84, 128, 248);
+    }
 
 .cloudy {
 background-color: lightgrey;
