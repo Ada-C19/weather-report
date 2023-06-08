@@ -6,14 +6,23 @@ cityNameInput.addEventListener('input', () => {
 });
 
 const skySelect = document.getElementById('skySelect');
+const gardenContent = document.getElementById('gardenContent');
 const sky = document.getElementById('sky');
 
 skySelect.addEventListener('change', () => {
   const selectedOption = skySelect.value;
-  sky.textContent = getSkyEmoji(selectedOption);
+  updateSky(selectedOption);
 });
 
-const getSkyEmoji = (option) => {
+function updateSky(option) {
+  gardenContent.className = ''; // Remove all existing classes from gardenContent
+  gardenContent.classList.add(option); // Add the selected sky option as a class
+
+  const skyEmoji = getSkyEmoji(option);
+  sky.innerHTML = skyEmoji; // Use innerHTML instead of textContent to render the emojis
+}
+
+function getSkyEmoji(option) {
   switch (option) {
     case 'sunny':
       return '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
@@ -26,4 +35,4 @@ const getSkyEmoji = (option) => {
     default:
       return '';
   }
-};
+}
