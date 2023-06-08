@@ -1,9 +1,12 @@
+import axios from 'axios'
+
 const state = {
     tempValue: 70,
     tempLabel: null,
     emoji: null,
     cityLabel: null,
-    cityValue: null
+    cityValue: null,
+    currentTempButton: null
 };
 
 
@@ -15,6 +18,14 @@ const updateCity = (event) => {
     state.cityValue = event.target.value
     state.cityLabel.textContent = state.cityValue;
 }
+
+const updateRealtimeWeather = () => {
+}
+// Create an event handler & register an event
+// Event handler - makes axios call (.then & .catch - proper logging)
+// Save values returned form location IQ api - save to state to make another call to Weather endpoint
+// "http://localhost:5000/endpoint"
+
 
 
 const increaseTemp = () => {
@@ -68,7 +79,8 @@ topButton.addEventListener("click", increaseTemp);
 bottomButton.addEventListener("click", decreaseTemp);
     const cityButton = document.querySelector("#cityNameInput");
 cityButton.addEventListener("keyup", updateCity);
-
+    const realTempButton = document.querySelector("#currentTempButton");
+realTempButton.addEventListener("click", updateRealtimeWeather);
 }
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
@@ -78,6 +90,7 @@ const loadControls = () => {
     state.emoji = document.getElementById("landscape");
     state.cityLabel = document.getElementById("headerCityName");
     state.cityValue = document.getElementById("cityNameInput").value;
+    state.currentTempButton = document.getElementById("currentTempButton");
 };
 
 const onLoaded = () => {
