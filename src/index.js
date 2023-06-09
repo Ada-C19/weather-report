@@ -81,11 +81,27 @@ const getCityLocation = (city) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
             console.log('success in getCityLocation', latitude, longitude);
-            return placeholder({ lat: latitude, lon: longitude });
+            return getWeather({ lat: latitude, lon: longitude });
         })
         .catch((error) => {
             console.log(`This city does not exist`);
             return state.currentTemp;
+        });
+};
+
+const getWeather = (query) => {
+    return axios
+        .get('http://127.0.0.1:5000/weather', {
+            params: {
+                lat: query.lat,
+                lon: query.lon,
+            },
+        })
+        .then((response) => {
+            return Math.floor((response.data.main.temp - 273.15) * 1.8 +32);
+        })
+        .catch((error) => {
+            console.log('Error: weather API not working properly');
         });
 };
 
