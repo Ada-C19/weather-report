@@ -85,9 +85,9 @@ const sky = {
 }
 
 const displaySky = () => {
-    
+
     const selectedVal = dropDownOutput.value
-    
+
     if (selectedVal in sky) {
         skyLandscape.textContent = sky[selectedVal]
     }
@@ -117,17 +117,15 @@ const decreaseTemp = (event) => {
     displayLandscape(state.degrees);
 };
 
-
-
 const displayNewCity = () => {
-    const newCity = document.getElementById('cityName').value;
+    const newCity = document.getElementById('cityNameInput').value;
     const defaultCity = document.getElementById('defaultCity')
     state.city = newCity;
     defaultCity.innerHTML = state.city;
 }
 
 const resetCity = () => {
-    const newCity = document.getElementById('cityName');
+    const newCity = document.getElementById('cityNameInput');
     newCity.value = 'Seattle'
     displayNewCity();
 }
@@ -150,11 +148,11 @@ const registerEventHandlers = (event) => {
     downButton.addEventListener('click', decreaseTemp);
     downButton.addEventListener('click', changeColorTemp);
 
-    const newCity = document.getElementById('cityName');
-    newCity.addEventListener('input', displayNewCity);
+    const newCityInput = document.getElementById('cityNameInput');
+    newCityInput.addEventListener('input', displayNewCity);
 
-    const reset = document.getElementById('resetCity')
-    reset.addEventListener('click', resetCity);
+    const resetButton = document.getElementById('resetCity')
+    resetButton.addEventListener('click', resetCity);
 }
 
 // Triggers Event Handlers:
