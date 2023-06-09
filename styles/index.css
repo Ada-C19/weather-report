@@ -1,0 +1,22 @@
+* {
+    background-color: lightgrey;
+    /* outline: 1px solid black !important; */
+    background-color: #042d8d0d !important ;
+}
+
+.header {
+    display: grid;
+    justify-content: center;
+}
+
+#garden {
+    display: grid;
+    justify-content: center;
+    /* grid-column: 2 / 4; */
+    grid-row: 1 / span 3;
+    background-color: aqua;
+}
+
+/* #temperature-now {
+    color: red;
+} */
