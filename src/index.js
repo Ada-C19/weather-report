@@ -1,10 +1,14 @@
-// get temperature display and arrows
+/***********************************************************
+            Temperature variables and controls
+***********************************************************/
+
 const tempDisplay = document.getElementById("temp-display");
+let temperature = parseInt(tempDisplay.textContent);
+// previous version:
+// const tempDisplay = document.getElementById("temp-display");
+// const tempString = tempDisplay.textContent;
+// let temperature = parseInt(tempString);
 
-const tempString = tempDisplay.textContent;
-let temperature = parseInt(tempString);
-
-//update temperature display
 const updateTemperature = () => {
     tempDisplay.textContent  = temperature;
     if (temperature >= 27) {
@@ -18,60 +22,79 @@ const updateTemperature = () => {
     } else {
         tempDisplay.style.color = "teal"
     }
-};  
-// event listener to increase temp
-const raiseTemp = document.getElementById("raise-temp");
-raiseTemp.addEventListener("click", () => {
-    temperature++;
-    updateTemperature();
-    updateLandscape()
-});
-
-// event listener to decrease temp
-const lowerTemp = document.getElementById("lower-temp");
-lowerTemp.addEventListener("click", () => {
-    temperature--;
-    updateTemperature();
-    updateLandscape()
-});
-
+};
+// this code isn't necessary anymore:  
 //initial temp display
-updateTemperature();
+// updateTemperature();
 
 
-const landscapes = {
-    "27+":	"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
-	"15": "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-	"6": "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-    "5 or below": "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-}
+/***********************************************************
+            Landscape variables and controls
+***********************************************************/
+
+const gardenEmoji = document.getElementById("garden-emoji");
+let landscape = gardenEmoji.textContent;
 
 const updateLandscape = () => {
-    let landscape  = "";
     if (temperature >= 27) {
-        landscape = landscapes["27+"];
+        landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
     } else if (temperature >= 15) {
-        landscape = landscapes["15"];
+        landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
     } else if (temperature >= 6) {
-        landscape = landscapes["6"];
+        landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
     } else {
-        landscape = landscapes["5 or below"];
+        landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     } 
-    
     document.getElementById("garden-emoji").textContent = landscape;
-}
-updateLandscape()
+};
 
-// Followed curiosity. This function uses the HTML attribute onkeyup
-// to allow the text box to update city name in header.
+// previous version:
+// const landscapes = {
+//     "27+":	"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
+// 	"15": "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+// 	"6": "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+//     "5 or below": "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+// }
+
+// const updateLandscape = () => {
+//     let landscape  = "";
+//     if (temperature >= 27) {
+//         landscape = landscapes["27+"];
+//     } else if (temperature >= 15) {
+//         landscape = landscapes["15"];
+//     } else if (temperature >= 6) {
+//         landscape = landscapes["6"];
+//     } else {
+//         landscape = landscapes["5 or below"];
+//     } 
+    
+//     document.getElementById("garden-emoji").textContent = landscape;
+// }
+// updateLandscape();
+
+
+/***********************************************************
+            City variables and controls
+
+    Note: we explored using HTML attributes like "onkeyup"
+    and "onclick" instead of addEventListener for these
+***********************************************************/
+
 const updateCity = (value) => {
     document.getElementById("header-city").textContent = value;
-}
-function resetCity() {
+};
+const resetCity = () => {
     document.getElementById("city-input").value = "Seattle";
     updateCity("Seattle");
-}
-//traditional way
+};
+// Here's how we'd do it the other way:
+// const updatedCityName = () => {
+//     cityInput.addEventListener("input", (e) => {
+//         cityName.textContent = e.target.value;
+//     })
+// };
+// updatedCityName();
+
 // const resetButton = document.getElementById("reset-button")
 // resetButton.addEventListener("click", () => {
 //     const cityInput = document.getElementById("city-input");
@@ -80,14 +103,65 @@ function resetCity() {
 //     cityInput.value = defaultCityName;
 //     updateCity(defaultCityName); 
 // });
-// Here's a solution that uses addEventListener
-// const updatedCityName = () => {
-//     cityInput.addEventListener("input", (e) => {
-//         cityName.textContent = e.target.value;
-//     })
-// };
-// updatedCityName();
 
+
+/***********************************************************
+            Sky variables and controls
+
+    Note: we used the HTML attribute "onchange" instead of
+    addEventListener for this one
+***********************************************************/
+
+const skyOptions = {
+    sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
+};
+
+const updateSkyEmoji = (selectedOption) => {
+    const skyEmoji = document.getElementById("sky-emoji");
+    skyEmoji.textContent = skyOptions[selectedOption];
+};
+// Here's how we'd do it the other way:
+// const skySelect = document.getElementById("sky-select");
+// const skyEmoji = document.getElementById("sky-emoji");
+
+// skySelect.addEventListener("change", () => {
+//     const selectedOption = skySelect.value;
+//     skyEmoji.textContent = skyOptions[selectedOption];
+// });
+
+
+/***********************************************************
+            All EventHandler Registrations
+***********************************************************/
+
+const registerEventHandlers = () => {
+    // Increase temperature
+    const raiseTemp = document.getElementById("raise-temp");
+    raiseTemp.addEventListener("click", () => {
+        temperature++;
+        updateTemperature();
+        updateLandscape();
+    });
+    // Decrease temperature
+    const lowerTemp = document.getElementById("lower-temp");
+    lowerTemp.addEventListener("click", () => {
+        temperature--;
+        updateTemperature();
+        updateLandscape();
+    });
+  };
+  
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+
+/***********************************************************
+            Location and Weather API calls
+***********************************************************/
+
+// Bella's version 1.0:
 // const getLocation = () => {
 //     const location = document.getElementById("city-input").value;
 //     axios
@@ -119,34 +193,36 @@ function resetCity() {
 //     getLocation();
 // });
 
-const getLocationAndWeather = async () => {
-    const location = document.getElementById("city-input").value;
+// Bella's version 2.0:
+// const getLocationAndWeather = async () => {
+//     const location = document.getElementById("city-input").value;
 
-    try {
-    const locationResult = await axios.get("http://127.0.0.1:5000/location", { params: { q: location } });
+//     try {
+//     const locationResult = await axios.get("http://127.0.0.1:5000/location", { params: { q: location } });
 
-    const weatherResult = await axios.get("http://127.0.0.1:5000/weather", {
-        params: {
-        lat: locationResult.data[0].lat,
-        lon: locationResult.data[0].lon,
-        },
-    });
+//     const weatherResult = await axios.get("http://127.0.0.1:5000/weather", {
+//         params: {
+//         lat: locationResult.data[0].lat,
+//         lon: locationResult.data[0].lon,
+//         },
+//     });
 
-    const celsius = Math.round(weatherResult.data.main.temp - 273.15);
+//     const celsius = Math.round(weatherResult.data.main.temp - 273.15);
 
-    document.getElementById("temp-display").textContent = celsius;
-    } catch (error) {
-    console.error("Error:", error);
+//     document.getElementById("temp-display").textContent = celsius;
+//     } catch (error) {
+//     console.error("Error:", error);
     
-    }
-};
+//     }
+// };
 
-const tempButton = document.getElementById("temp-button");
-tempButton.addEventListener("click", () => {
-    getLocationAndWeather();
-});
-//Jasmine's version
-// const getLocation = () => {
+// const tempButton = document.getElementById("temp-button");
+// tempButton.addEventListener("click", () => {
+//     getLocationAndWeather();
+// });
+
+//Jasmine's version:
+// const getLatAndLon = () => {
 //     const location = document.getElementById("city-input").value;
 //     axios
 //     .get("http://127.0.0.1:5000/location", { params: {q: location} })
@@ -162,42 +238,25 @@ tempButton.addEventListener("click", () => {
 //     .get("http://127.0.0.1:5000/weather", { params: {lat: lat_query, lon: lon_query} })
 //     .then((result) => {
 //         const kelvin = result.data.main.temp;
-//         const celsius = Math.round(kelvin - 273.15);
-//         document.getElementById("temp-display").textContent = celsius;
+//         temperature = kelvinToCelsius(kelvin);
+//         updateTemperature();
 //     })
 // };
 
 // const tempButton = document.getElementById("temp-button");
 // tempButton.addEventListener("click", () => {
-//     getLocation();
-//     }
-// );
-
-
-// Sky options and corresponding emojis
-const skyOptions = {
-    sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
-    cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
-    rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
-    snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
-};
-function updateSkyEmoji(selectedOption) {
-    const skyEmoji = document.getElementById("sky-emoji");
-    skyEmoji.textContent = skyOptions[selectedOption];
-}
-
-// // Update sky emoji based on selected option
-// const skySelect = document.getElementById("sky-select");
-// const skyEmoji = document.getElementById("sky-emoji");
-
-// skySelect.addEventListener("change", () => {
-//     const selectedOption = skySelect.value;
-//     skyEmoji.textContent = skyOptions[selectedOption];
+//     getLatAndLon();
 // });
 
+/***********************************************************
+            Temperature Conversions (WIP)
+***********************************************************/
 
-// if (document.readyState !== "loading") {
-//   getTasks();
-// } else {
-//   document.addEventListener("DOMContentLoaded", getTasks);
-// }
+const kelvinToCelsius = (kelvin) => {
+    return Math.round(kelvin - 273.15);
+};
+
+const kelvinToFahrenheit = (kelvin) => {
+    let fahrenheit = (kelvin - 273.15) * (9/5) + 32;
+    return Math.round(fahrenheit);
+};
