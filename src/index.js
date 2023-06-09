@@ -5,7 +5,8 @@ const state = {
 	gardenLandscape: null,
 	tempValueEl: null,
 	cityNameEl: null,
-  	cityInputEl: null,
+	cityInputEl: null,
+	cityLocation: { lat: 28.5421109, lon: -81.3790304 },
 };
 
 const loadControls = () => {
@@ -16,7 +17,7 @@ const loadControls = () => {
 	state.gardenLandscape = document.getElementById('landscape');
 	state.gardenLandscapeValue = state.gardenLandscape.textContent;
 	state.cityNameEl = document.getElementById('headerCityName');
-  	state.cityInputEl = document.getElementById('cityNameInput');
+	state.cityInputEl = document.getElementById('cityNameInput');
 
 	console.log(state);
 };
@@ -61,6 +62,34 @@ const updateCityName = () => {
 	state.cityNameEl.textContent = state.cityInputEl.value;
 };
 
+const convertKToF = (k) => (k - 273.15) * (9 / 5) + 32;
+
+const getLocationInfo = () => {
+	return axios
+		.get('http://localhost:5000/location', {
+			params: {
+				q: state.cityLocation.value,
+			},
+		})
+		.then((response) => {
+			state.cityLocation['lat'] = response.data[0].lat;
+			state.cityLocation['lon'] = response.data[0].lon;
+			return state.cityLocation;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+};
+
+const updateCurrentTemp = () => {
+	const currentTemp = document.getElementById('currentTempButton');
+	getLocationInfo()
+		.then(getWeatherInfo)
+		.then((temp) => {
+			state.tempValueEl.textContent = `${state.tempValue}`;
+		});
+};
+
 const setUp = () => {
 	loadControls();
 	registerEvents();
@@ -71,6 +100,8 @@ const registerEvents = () => {
 	state.increaseTempControl.addEventListener('click', increaseTemp);
 	state.decreaseTempControl.addEventListener('click', decreaseTemp);
 	state.cityInputEl.addEventListener('input', updateCityName);
+	const updateTemp = document.querySelector('#currentTempButton');
+	updateTemp.addEventListener('click', updateCurrentTemp);
 };
 
 document.addEventListener('DOMContentLoaded', setUp);
