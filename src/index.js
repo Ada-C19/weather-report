@@ -68,6 +68,22 @@ function clearInput() {
   }
 }
 
+mySelect = document.getElementById("sky");
+
+mySelect.onchange = function selectSky() {
+  selectedSky = document.getElementById("sky").value
+  pElement = document.getElementById("sky-emoji")
+  if (selectedSky == "rainy") {
+    pElement.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+  } else if (selectedSky == "sunny") {
+    pElement.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+  } else if (selectedSky == "snowy") {
+    pElement.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+  } else if (selectedSky == "cloudy") {
+    pElement.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+  }
+}
+
 const findLatitudeAndLongitude = (query) => {
   console.log("Hi, find latitude and longtitude")
   let latitude, longitude;
@@ -132,7 +148,6 @@ const registerEventHandlers = () => {
   const searchButtonCity = document.getElementById("searchbtn");
   searchButtonCity.addEventListener("click", City);
 
-  // To do: work on reset button
   const buttonReset = document.getElementById("resetbtn");
   buttonReset.addEventListener("click", clearInput)
 };
