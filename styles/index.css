@@ -77,9 +77,11 @@ footer{
 }
 .red{
   color: red;
+  background-color: rgb(189, 84, 84);
 }
 .orange{
   color: orange;
+  background-color: rgb(212, 168, 87);
 }
 .yellow{
   color: rgb(255, 255, 3);

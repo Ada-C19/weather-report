@@ -30,6 +30,7 @@ const setUpTemperature = () => {
 
   let garden = document.querySelector("#garden");
   garden.textContent = gardenType;
+  garden.setAttribute("class", classType);
 };
 
 function Up() {
