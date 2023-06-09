@@ -1,6 +1,4 @@
-/* To Do: Change default background image/color */
 body{
-  /* background-color: rgb(57, 57, 217); */
   background-image: url("../assets/oregon.jpg");
   height: 100%;
   background-position: center;
@@ -10,6 +8,11 @@ body{
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(17, 16, 16);
 }
+
+h1 {
+  margin-left: 15px;
+}
+
 footer{
   height: 5%;
   background-color: black;
@@ -18,6 +21,7 @@ footer{
   padding: 1%;
   padding-left: 5%;
 }
+
 .div_temp{
   color: black;
   width: 50%;
@@ -86,3 +90,4 @@ footer{
 .teal{
   color: teal;
 }
+

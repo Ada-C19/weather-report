@@ -15,22 +15,10 @@
             Weather Report
         </h1>
         <h2>
-            Seattle
         </h2>
     </header>
-    <main>  
-        <section>
-            <div class="div_city">
-                <h2>
-                    City Name
-                </h2>
-                <input type="text" id="cityname" name="cityname"
-                minlength="4" maxlength="100" size="30" placeholder="Enter city name here">
-                <button id="searchbtn" type="button">Search</button>
-                <button id="resetbtn" type="button">Reset</button>         
-            </div>           
-        </section>
-
+    
+    <main> 
         <section>
             <div class="div_temp">
                 <h2>
@@ -39,7 +27,7 @@
                 <button id="upbtn" type="button">⬆️</button>
                 <div id ="temp"></div>
                 <button id="downbtn" type="button">⬇️</button>
-                <button id="tempbtn" type="button">Get Temperature</button> 
+                <button id="tempbtn" type="button">Get Realtime Temperature</button> 
             </div>
         </section>
 
@@ -63,10 +51,20 @@
                 <p id="sky-emoji"></p>
             </div>
         </section>
-        <!-- Ask about making sky and temperature images/colors take up whole background of page -->
+        <section>
+            <div class="div_city">
+                <h2>
+                    City Name
+                </h2>
+                <input type="text" id="cityname" name="cityname"
+                minlength="4" maxlength="100" size="30" placeholder="Enter city name here">
+                <button id="resetbtn" type="button">Reset</button>         
+            </div>           
+        </section>
     </main>
+
     <footer> 
-        <p>@Anh & Laura</p>
+        <p>&copy; Anh & Laura</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>

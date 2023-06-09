@@ -1,10 +1,3 @@
-// TASK LIST:
-// AH: create helper function to convert into F
-// AH: call helper function and pass its output into state 
-// LP: change logic of both buttons so Reset button has a 
-// default city name (e.g., Seattle) (Wave 5)
-// AH + LP: do the sky (Wave 6)
-
 const state = {
   temp: 90,
   cityName: "Seattle"
@@ -53,17 +46,44 @@ function Down() {
   setUpTemperature();
 }
 
-//search button function
+// update city name and h2 values
 function City() {
   const cityName = document.getElementById("cityname").value;
   const cityHeader = document.querySelector("h2");
   cityHeader.textContent = cityName;
   state.cityName = cityName;
+}
+
+function clearInput() {
+  const cityName = document.getElementById("cityname");
+  const cityHeader = document.querySelector("h2");
+  if (cityName.value != "") {
+    cityName.value = "";
+    cityHeader.textContent = "";
+  }
+}
+
+mySelect = document.getElementById("sky");
+mySelect.onchange = function selectSky() {
+  selectedSky = document.getElementById("sky").value
+  pElement = document.getElementById("sky-emoji")
+  if (selectedSky == "rainy") {
+    pElement.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+  } else if (selectedSky == "sunny") {
+    pElement.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+  } else if (selectedSky == "snowy") {
+    pElement.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+  } else if (selectedSky == "cloudy") {
+    pElement.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+  }
+}
+
+function findRealTimeTemp() {
   findLatitudeAndLongitude();
+  setUpTemperature();
 }
 
 const findLatitudeAndLongitude = (query) => {
-  console.log("Hi, find latitude and longtitude")
   let latitude, longitude;
   axios
     .get("http://127.0.0.1:5000/location", {
@@ -76,7 +96,6 @@ const findLatitudeAndLongitude = (query) => {
       longitude = response.data[0].lon;
       state.latitude = latitude;
       state.longitude = longitude;
-      console.log("success in findLatitudeAndLongitude!", latitude, longitude);
       findTemperature(latitude, longitude)
 
     }).catch((error) => {
@@ -86,20 +105,14 @@ const findLatitudeAndLongitude = (query) => {
 
 // make weather call to proxy server
 const findTemperature = (query) => {
-  console.log("find inside temp")
-  console.log(state.latitude, state.longitude)
   axios
     .get("http://127.0.0.1:5000/weather", {
       params: {
         lat: state.latitude,
         lon: state.longitude,
-        // units: "imperial",
-        // format: "json",
     },
     }).then((response) => {
-      // console.log(response)
       realTimeTemp = response["data"]["main"]["temp"];
-      // console.log("success in find realTimeTemp", realTimeTemp);
       // call temp helper function and pass output to state
       state.temp = realTimeTempF(realTimeTemp);
     }).catch((error) => {
@@ -107,14 +120,10 @@ const findTemperature = (query) => {
     });     
   };    
 
-
-console.log("Hello Houston")
-
 // helper function to convert K to F
 const realTimeTempF = function(realTimeTemp) {
-  (realTimeTemp - 273.15) * 9/5 + 32
+  return parseInt((realTimeTemp - 273.15) * 9/5 + 32);
 }
-
 
 const registerEventHandlers = () => {
   const buttonDown = document.getElementById("downbtn");
@@ -124,13 +133,14 @@ const registerEventHandlers = () => {
   buttonUp.addEventListener("click", Up);
 
   const searchButtonTemp = document.querySelector("#tempbtn");
-  searchButtonTemp.addEventListener("click", setUpTemperature);
-
-  const searchButtonCity = document.getElementById("searchbtn");
-  searchButtonCity.addEventListener("click", City);
+  searchButtonTemp.addEventListener("click", findRealTimeTemp);
 
   const buttonReset = document.getElementById("resetbtn");
   buttonReset.addEventListener("click", clearInput)
+
+  // change city name in header as user types city name input
+  const cityInput = document.getElementById("cityname");
+  cityInput.addEventListener("input", City);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
