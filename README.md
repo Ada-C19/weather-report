@@ -2,6 +2,16 @@
 
 ## Skills Assessed
 
+Coworking Agreement:
+- driver/navigator
+- use slack to connect
+- maybe stay on Thursday after evaluating our progress
+- use zoom if need be
+- open to feedback and direct feedback
+- focus on the JS
+
+
+
 - Following directions and reading comprehension
 - Structuring content in HTML
 - Applying styles with CSS
