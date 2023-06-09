@@ -8,12 +8,12 @@ const state = {
     temp: 72,
 };
 
-const convertTempF = (temp) => {
+const degreeConverter = (temp) => {
   return (temp - 273.15) * (9 / 5) + 32;
 };
 
 // find latitude and longitude
-const longitudeAndLatitude = () => {
+const longAndLat = () => {
   axios
   .get('http://127.0.0.1:5000/location',
   {
@@ -25,17 +25,17 @@ const longitudeAndLatitude = () => {
     console.log(response);
     state.lat = response.data[0]['lat'];
     state.long= response.data[0]['lon'];
-    getWeatherTemp();
+    getTempWeather();
     })
   .catch((error) => {
-    console.log("Error!");
+    console.log("Error in finding coordinates! Try Again!");
     console.log(error.response.data)
   });
 };
 
 
 
-const getWeatherTemp = () => {
+const getTempWeather = () => {
   axios
   .get('http://127.0.0.1:5000/weather', {
     params: {
@@ -45,19 +45,13 @@ const getWeatherTemp = () => {
   })
   .then((response) => {
     const weatherReport = response.data;
-    state.temp = Math.round(convertTempF(weatherReport.main.temp));
+    state.temp = Math.round(degreeConverter(weatherReport.main.temp));
     changeTempFontColorAndLandscape();
   })
   .catch((error) => {
-    console.log("ERROR!")
+    console.log("Error in getting temperature!")
   })
 }
-
-// const realtimeButton = document.getElementById('realtime');
-// realtimeButton.addEventListener('click', longitudeAndLatitude);
-
-
-
 
 
 // changing font color
@@ -90,36 +84,30 @@ const changeTempFontColorAndLandscape = () => {
 };
 
 
-
 // increase
-const increaseTemp = () => {
+const incrementTempByOne = () => {
     state.temp += 1;
     changeTempFontColorAndLandscape();
 
 };
-// const increaseButton = document.getElementById("up");
-// increaseButton.addEventListener("click", increaseTemp);
+
 
 // decrease
-const decreaseTemp = () => {
+const decrementTempByOne = () => {
   state.temp -= 1;
   changeTempFontColorAndLandscape();
 };
 
-// const decreaseButton = document.getElementById("down");
-// decreaseButton.addEventListener("click", decreaseTemp);
-
 
 // update the city
 const changeCity = () => {
-    const city = document.getElementById("city");
+    const cityTitle = document.getElementById("city");
     const inputCity = document.getElementById("searchbar").value;
     state.city = inputCity;
-    city.textContent = state.city;
+    cityTitle.textContent = state.city;
     }
     
-// const cityInput = document.getElementById("searchbar");
-// cityInput.addEventListener("input", changeCity);
+
 
 //update sky
 
@@ -145,11 +133,9 @@ const updateSky = () => {
     }
     else if (skyBackground === "haily") {
       garden.style.backgroundColor = "white";
-    }
-    
+    }  
 };
-// const skyOption = document.getElementById("skystatus");
-// skyOption.addEventListener("change", updateSky);
+
 
 // Reset city 
 const resetCity = () => {
@@ -157,26 +143,25 @@ const resetCity = () => {
   const city = document.getElementById("city");
   inputCity.value = "Seattle";
   city.textContent = "Seattle";
+  state.temp = 72;
+  changeCity();
 };
 
-// resetInputButton
-
-// const inputButton = document.getElementById("reset");
-// inputButton.addEventListener('click', resetCity);
 
 
+// event handlers
 const registerEventHandlers = () => {
 
   changeTempFontColorAndLandscape();
 
   const realtimeButton = document.getElementById('realtime');
-  realtimeButton.addEventListener('click', longitudeAndLatitude);
+  realtimeButton.addEventListener('click', longAndLat);
 
   const increaseButton = document.getElementById("up");
-  increaseButton.addEventListener("click", increaseTemp);
+  increaseButton.addEventListener("click", incrementTempByOne);
 
   const decreaseButton = document.getElementById("down");
-  decreaseButton.addEventListener("click", decreaseTemp); 
+  decreaseButton.addEventListener("click", decrementTempByOne); 
 
   changeCity();
   const cityInput = document.getElementById("searchbar");
