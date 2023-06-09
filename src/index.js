@@ -61,6 +61,13 @@ function City() {
   findLatitudeAndLongitude();
 }
 
+function clearInput() {
+  const cityName = document.getElementById("cityname")
+  if (cityName.value != "") {
+    cityName.value = "";
+  }
+}
+
 const findLatitudeAndLongitude = (query) => {
   console.log("Hi, find latitude and longtitude")
   let latitude, longitude;
@@ -126,8 +133,8 @@ const registerEventHandlers = () => {
   searchButtonCity.addEventListener("click", City);
 
   // To do: work on reset button
-  // const buttonReset = document.getElementById("resetbtn");
-  // buttonReset.addEventListener("click", )
+  const buttonReset = document.getElementById("resetbtn");
+  buttonReset.addEventListener("click", clearInput)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
