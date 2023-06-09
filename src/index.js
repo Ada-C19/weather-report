@@ -54,25 +54,20 @@ const updateSky = () => {
     const inputSky = document.getElementById('skySelection').value;
     const skyContainer = document.getElementById('topFloor');
     let topFloor = '';
-    let skyColor = '';
+
     if (inputSky === 'Cloudy') {
         topFloor = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-        skyColor = 'cloudy';
     } else if (inputSky === 'Sunny') {
         topFloor = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
-        skyColor = 'sunny';
     } else if (inputSky === 'Rainy') {
         topFloor = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-        skyColor = 'rainy';
     } else if (inputSky === 'Snowy') {
         topFloor = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-        skyColor = 'snowy';
+        
     }
 
     skyContainer.textContent = topFloor;
-    const gardenLandscape = document.getElementById('gardenLandscape');
-    gardenLandscape.classList = `gardenLandscapeContent ${skyColor}`;
-  };
+};
 
 
 const changeCityName = () => {
