@@ -166,44 +166,6 @@ skySelect.addEventListener("input", (event) => {
 //   sky.innerHTML = skyEmoji;
 // };
 
-// const getSkyClassName = (option) => {
-//   switch (option) {
-//     case "":
-//     case "sunny":
-//       return "sunny";
-//     case "cloudy":
-//       return "cloudy";
-//     case "rainy":
-//       return "rainy";
-//     case "snowy":
-//       return "snowy";
-//     case "apocalyptic":
-//       return "apocalyptic";
-//     default:
-//       return "";
-//   }
-// };
-
-// const getSkyEmoji = (option) => {
-//   switch (option) {
-//     case "":
-//     case "sunny":
-//       document.getElementById("tempValue").style.color = "red";
-//       return "☁️ ☁️  ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️";
-//     case "cloudy":
-//       document.getElementById("tempValue").style.color = "gray";
-//       return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
-//     case "rainy":
-//       return "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧";
-//     case "snowy":
-//       return "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
-//     case "apocalyptic":
-//       return "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🧟‍♀️🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️";
-//     default:
-//       return "";
-//   }
-// };
-
 // Set the initial sky and garden content based on the default selected option
 // const defaultOption = skySelect.value;
 // updateSky(defaultOption);
