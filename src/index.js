@@ -14,10 +14,10 @@ const convertKtoF = (temp) => {
 const findLatAndLong = () => {
     //let lat, long;
     axios
-        .get('', {
+        .get('http://127.0.0.1:5000/location', {
             params: {
             q: state.city,
-            },
+            }
         })
         .then((response) => {
             console.log(response.data);
@@ -33,7 +33,7 @@ const findLatAndLong = () => {
 
 const getWeather = () => {
     axios
-        .get('https://ada-weather-report-proxy-server.onrender.com/weather', {
+        .get('http://127.0.0.1:5000/weather', {
             params: {
             lat: state.lat,
             lon: state.long,
