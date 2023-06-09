@@ -67,14 +67,20 @@ const changeCityInput = (city) => {
     currentCity = city.target.value;
 };
 
+const cityInputField = document.getElementById('city-input');
+cityInputField.value = 'Seattle';
+
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
     const decreaseButton = document.getElementById("decrease-temp");
     increaseButton.addEventListener("click", increaseTemp);
     decreaseButton.addEventListener("click", decreaseTemp);
+
+    const changeCity = document.getElementById('city-input');
+    changeCity.addEventListener('input', changeCityInput);
 };
 
-const cityInputField = document.getElementById('city-input');
-cityInputField.value = 'Seattle';
+
+
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
