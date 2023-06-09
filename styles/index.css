@@ -49,6 +49,7 @@ button {
     background-color:darkblue;
     color: whitesmoke;
     padding: 10px;
+    cursor: pointer;
 }
 
 #weather-garden {
