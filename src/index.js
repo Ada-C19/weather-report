@@ -6,107 +6,12 @@ const state = {
     cityNameInput: null,
     headerCityName: null,
     currentTempButton: null,
-    temp: 32
+    skySelect: null,
+    skyEmojis: null,
+    gardenContent: null,
+    cityNameReset: null,
+    temp: 0
 };
-
-const increaseTemp = () => {
-    state.temp += 1;
-    state.tempValue.textContent = state.temp;
-    changeColor(state.temp);
-    changeLandscape(state.temp);
-}
-
-const decreaseTemp = () => {
-    state.temp -= 1;
-    state.tempValue.textContent = state.temp;
-    changeColor(state.temp);
-    changeLandscape(state.temp);
-}
-
-const changeCityName = () => {
-    state.headerCityName.textContent = state.cityNameInput.value;
-}
-
-const getCurrentCityTemp = async() => {
-    const cityName = state.headerCityName.textContent;
-    const cityData = await getLatLon(cityName);
-    const latitude = cityData['latitude'];
-    const longitude = cityData['longitude'];
-    const ktemp = await getWeather(latitude,longitude);
-    const ftemp = Math.round((ktemp - 273.15) * 9/5 + 32)
-    state.temp = ftemp;
-    state.tempValue.textContent = ftemp;
-}
-
-const changeColor = () => {
-    const temp = state.tempValue.textContent;
-
-    if (temp >= 80) {
-        state.tempValue.style.color = 'red';
-    } else if (temp <= 79 && temp >= 70) {
-        state.tempValue.style.color = "orange";
-    } else if (temp <= 69 && temp >= 60) {
-        state.tempValue.style.color = "yellow";
-    } else if (temp <= 59 && temp >= 50) {
-        state.tempValue.style.color = "green";
-    } else {
-        state.tempValue.style.color = "teal";
-    }
-}
-const changeLandscape = () => {
-    let temp = state.tempValue.textContent;
-
-    if (temp >= 80) {
-        state.landscapeEmojis.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
-    } else if (temp <= 79 && temp >= 70) {
-        state.landscapeEmojis.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
-    } else if (temp <= 69 && temp >= 60) {
-        state.landscapeEmojis.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
-    } else {
-        state.landscapeEmojis.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
-    }
-}
-
-const changeSky = () => {
-    const weatherName = state.skySelect.value;
-
-    if (weatherName === 'sunny') {
-        state.skyEmojis.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
-        state.gardenContent.style.backgroundColor = '#9AC5F4';
-    } else if (weatherName === 'cloudy' ) {
-        state.skyEmojis.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-        state.gardenContent.style.backgroundColor = '#C4DFDF';
-    } else if (weatherName === 'rainy') {
-        state.skyEmojis.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-        state.gardenContent.style.backgroundColor = '#526D82';
-    } else {
-        state.skyEmojis.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-        state.gardenContent.style.backgroundColor = '#E8F6EF';
-    }
-}
-
-const resetCityName = () => {
-    state.headerCityName.textContent = ''
-    state.cityNameInput.value = ''
-}
-
-const getLatLon = async (cityName) => {
-
-    url = `http://127.0.0.1:5000/location?q=${cityName}`;
-
-    const response = await axios.get(url);
-    const lat = response.data[0]['lat'];
-    const lon = response.data[0]['lon'];
-
-    return { latitude: lat, longitude: lon };
-}
-
-const getWeather = async (latitude, longitude) => {
-    url = `http://127.0.0.1:5000/weather?lat=${latitude}&lon=${longitude}`;
-    const response = await axios.get(url);
-    const weather = response.data['main']['temp'];
-    return weather;
-}
 
 const loadControls = () => {
     state.tempValue = document.getElementById("tempValue");
@@ -122,22 +27,136 @@ const loadControls = () => {
     state.cityNameReset = document.getElementById("cityNameReset")
 }
 
-const registerEvents = () => {
-    state.increaseButton.addEventListener("click", increaseTemp);
-    state.decreaseButton.addEventListener("click", decreaseTemp);
-    state.cityNameInput.addEventListener("input", changeCityName);
-    state.currentTempButton.addEventListener("click", getCurrentCityTemp);
-    state.skySelect.addEventListener("change", changeSky);
-    state.cityNameReset.addEventListener("click", resetCityName);
+// #helper functions
+const requestLatLon = async (cityName) => {
+    url = `http://127.0.0.1:5000/location?q=${cityName}`;
+    const response = await axios.get(url);
+    const lat = response.data[0]['lat'];
+    const lon = response.data[0]['lon'];
+
+    return { latitude: lat, longitude: lon };
+}
+
+const requestTemp = async (latitude, longitude) => {
+    url = `http://127.0.0.1:5000/weather?lat=${latitude}&lon=${longitude}`;
+    const response = await axios.get(url);
+    const ktemp = response.data['main']['temp'];
+    const ftemp = Math.round((ktemp - 273.15) * 9 / 5 + 32);
+
+    return ftemp;
+}
+
+const getCurrentCityTemp = async () => {
+    const cityName = state.headerCityName.textContent;
+    const cityData = await requestLatLon(cityName);
+    const latitude = cityData['latitude'];
+    const longitude = cityData['longitude'];
+    const currentTemp = await requestTemp(latitude, longitude);
+    return currentTemp;
+}
+
+const displayColor = (temp) => {
+    if (temp >= 80) {
+        state.tempValue.setAttribute("class", "red");
+    } else if (temp <= 79 && temp >= 70) {
+        state.tempValue.setAttribute("class", "orange");
+    } else if (temp <= 69 && temp >= 60) {
+        state.tempValue.setAttribute("class", "yellow");
+    } else if (temp <= 59 && temp >= 50) {
+        state.tempValue.setAttribute("class", "green");
+    } else {
+        state.tempValue.setAttribute("class", "teal");
+    }
+}
+
+const displayLandscape = (temp) => {
+    if (temp >= 80) {
+        state.landscapeEmojis.textContent = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
+    } else if (temp <= 79 && temp >= 70) {
+        state.landscapeEmojis.textContent = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
+    } else if (temp <= 69 && temp >= 60) {
+        state.landscapeEmojis.textContent = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+    } else {
+        state.landscapeEmojis.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+    }
+}
+
+const displaySky = (weather) => {
+    if (weather === 'sunny') {
+        state.skyEmojis.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+        state.gardenContent.setAttribute("class", "garden__content sunny");
+    } else if (weather === 'cloudy') {
+        state.skyEmojis.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+        state.gardenContent.setAttribute("class", "garden__content cloudy");
+    } else if (weather === 'rainy') {
+        state.skyEmojis.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+        state.gardenContent.setAttribute("class", "garden__content rainy");
+    } else {
+        state.skyEmojis.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+        state.gardenContent.setAttribute("class", "garden__content snowy");
+    }
+}
+
+const displayCityName = (city) => {
+    state.headerCityName.textContent = city;
+}
+
+const displayTemp = (temp) => {
+    state.tempValue.textContent = temp;
+}
+
+const refreshUI = () => {
+    displayTemp(state.temp);
+    displayColor(state.temp);
+    displayLandscape(state.temp);
 }
 
 
+// # event handlers
+const handleClickIncreaseTemp = () => {
+    state.temp += 1;
+    refreshUI();
+}
+
+const handleClickDecreaseTemp = () => {
+    state.temp -= 1;
+    refreshUI();
+}
+
+const handleGetRealTimeTemp = async () => {
+    state.temp = await getCurrentCityTemp();
+    refreshUI();
+}
+
+const handleCityInputChange = () => {
+    const city = state.cityNameInput.value;
+    displayCityName(city);
+}
+
+const handleChangeSky = () => {
+    const weather = state.skySelect.value;
+    displaySky(weather);
+}
+
+const handleResetButton = () => {
+    state.headerCityName.textContent = 'Seattle';
+    state.cityNameInput.value = 'Seattle';
+    handleGetRealTimeTemp();
+}
+
+const registerEvents = () => {
+    state.increaseButton.addEventListener("click", handleClickIncreaseTemp);
+    state.decreaseButton.addEventListener("click", handleClickDecreaseTemp);
+    state.cityNameInput.addEventListener("input", handleCityInputChange);
+    state.currentTempButton.addEventListener("click", handleGetRealTimeTemp);
+    state.skySelect.addEventListener("change", handleChangeSky);
+    state.cityNameReset.addEventListener("click", handleResetButton);
+}
+
 const onLoaded = () => {
     loadControls();
+    handleGetRealTimeTemp();
     registerEvents();
 };
 
 onLoaded();
-getLatLon("Seattle")
-getWeather("47.6038321","-122.330062")
-getCurrentCityTemp()
