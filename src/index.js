@@ -202,3 +202,68 @@ registerEventHandlers();
 // const changeLocation = document.querySelector('cityNameInput');
 // changeLocation.addEventListener('click', searchLocation);
 // });
+
+
+
+// need to fix reset button
+// need to add submit button
+// need to fix the API call 
+
+
+const axios = require('axios');
+
+// const LOCATIONIQ_KEY = process.env['api_key'];
+
+const findLatitudeAndLongitude = (query) => {
+let latitude, longitude;
+
+// Goeun's suggestion to connect FE and BE
+// axios.get('http://127.0.0.1:5000/your_endpoint_here', ...)
+
+axios.get('https://us1.locationiq.com/v1/search.php',
+{
+params: {
+    key: LOCATIONIQ_KEY,
+    q: query,
+    format: 'json'
+}
+})
+.then( (response) => {
+latitude = response.data[0].lat;
+longitude = response.data[0].lon;
+console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+})
+.catch( (error) => {
+console.log('error in findLatitudeAndLongitude!');
+});
+
+return {
+    seattleLat: latitude,
+    seattleLon: longitude
+}
+}
+
+const findLocation = (latitude, longitude) => {
+axios.get('https://us1.locationiq.com/v1/reverse.php',
+{
+params: {
+    key: LOCATIONIQ_KEY,
+    format: 'json',
+    lat: latitude,
+    lon: longitude
+}
+})
+.then( (response) => {
+console.log('success in findLocation!', response.data);
+return response.data;
+})
+.catch( (error) => {
+console.log('error in findLocation!');
+});
+}
+
+const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
+
+const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
+
+console.log(locations);
