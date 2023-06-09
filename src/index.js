@@ -2,6 +2,7 @@ const state = {
     left_arrow: null,
     right_arrow: null,
     degreeCountLabel: null,
+    landscape: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
     degreeCount: 70
 }
 
@@ -11,20 +12,26 @@ const refreshUI = () => {
 
 const change_color = () => {
     if (state.degreeCountLabel.textContent >= 80) 
-    {
+    {   
         state.degreeCountLabel.style.color = 'red';
+        change_landscape("🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂")
     } else if (state.degreeCountLabel.textContent >= 70) {
         state.degreeCountLabel.style.color = 'orange';
+        change_landscape("🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷")
     } else if (state.degreeCountLabel.textContent >= 60) 
     {
-        state.degreeCountLabel.style.color = 'yellow';
+        state.degreeCountLabel.style.color = 'gold';
+        change_landscape("🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃")
     } else if (state.degreeCountLabel.textContent >= 50) {
         state.degreeCountLabel.style.color = 'green';
-        console.log('green')
-    } else if (state.degreeCountLabel.textContent <= 49) {
+        change_landscape("🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲")
+    } else {
         state.degreeCountLabel.style.color = 'teal';
-        console.log('teal')
     }
+}
+
+const change_landscape = (garden) => {
+    state.landscape.textContent = garden;
 }
 
 let decreaseDegree = (event) => {
@@ -39,16 +46,12 @@ let increaseDegree = (event) => {
     refreshUI();
 }
 
-const temperature_color = (event) => {
-    if (state.degreeCount <= 49) {
-        state.degreeCount.style.color = teal;
-    }
-}
 
 const loadControls = () => {
     state.degreeCountLabel = document.getElementById('degrees')
     state.left_arrow = document.querySelector('.fa-chevron-left');
     state.right_arrow = document.querySelector('.fa-chevron-right');
+    state.landscape = document.getElementById('landscape')
 }
 
 const registerEvents = () => {
