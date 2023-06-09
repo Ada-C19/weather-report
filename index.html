@@ -33,6 +33,12 @@
     </section>
     <section class="sky__section">
         <h2>Sky</h2>
+        <select id="skySelect">
+            <option>Sunny</option>
+            <option>Cloudy</option>
+            <option>Rainy</option>
+            <option>Snowy</option>
+        </select>
     </section>
     <section class="city-name__section">
         <h2>City Name</h2>
@@ -43,9 +49,10 @@
     </section>
     <section class="garden__section">
         <h2>Weather Garden</h2>
-        <div id="gardent content" class="garden__content"></div>
+        <div id="gardenContent" class="garden__content sunny">
             <div id="sky"></div>
             <div id="landscape"></div>
+        </div>
     </section>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>

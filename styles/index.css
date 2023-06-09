@@ -1,23 +1,34 @@
-* {
+/* * {
     border: 1px antiquewhite dashed;
-}
+} */
 
 h2 {
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 1rem auto;
 }
 
 body {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, auto);
     grid-gap: 1rem;
     font-family: Rubik,sans-serif;
     font-size: 18px;
-    /* background-color: #7d9fdd; */
     background-image: url("../images/clouds3.jpg");
     background-size: cover;
     background-position: center;
     margin: 2rem;
+}
+
+.temperature__section {
+    grid-column: 1 / span 2;
+}
+
+.sky__section {
+    grid-column: 3;
+}
+
+.city-name__section {
+    grid-column: 4 / -1;
 }
 
 .header__header {
@@ -26,6 +37,12 @@ body {
     display: flex;
     align-items: center;
     margin: 2rem auto 3rem 0;
+    grid-column: 1 / span 6;
+    font-size: 1rem;
+}
+
+.header__header span {
+    font-size: 1.3rem;
 }
 
 .header__header > h1 {
@@ -56,7 +73,8 @@ body {
 }
 
 button:hover {
-    background-color: #dbd7d3;
+    /* background-color: #dbd7d3; */
+    background-color: rgba(54, 73, 75, 0.5);
 }
 
 .temperature__content {
@@ -75,32 +93,26 @@ button:hover {
 
 .garden__section {
     grid-row: 3 / span 4;
-    grid-column: 1 / span 3;
+    grid-column: 2 / span 4;
     text-align: center;
-    align-self: center;
 }
 
 .garden__section > h2 {
     padding: 3rem;
     color: white;
+    font-size: 2rem;
 }
 
 .garden__content {
-    min-height: fit-content;
-    max-width: fit-content;
-    margin: auto;
+    min-height: 200px;
+    /* max-width: fit-content; */
+    margin: 0;
     padding: 2rem;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     border-radius: 8px;
-    font-size: 2em;
-}
-
-#landscape {
-    font-size: 3rem;
+    font-size: 3em;
 }
 
 .city-name__reset-btn {
@@ -113,7 +125,7 @@ button:hover {
 }
 
 input[type=text] {
-    width: 50%;
+    width: 75%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -121,17 +133,28 @@ input[type=text] {
     border-radius: 10px;
 }
 
+select {
+    /* width: 50%; */
+    padding: 12px 20px;
+    margin: 8px 0;
+    /* box-sizing: border-box; */
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: white;
+    background-position: right 50px;
+}
+
 #tempValue {
     font-size: 3rem;
     margin-left: 1.5rem;
 }
 
-.cloudy {
-    background-color: lightgrey;
-}
-
 .sunny {
     background-color: rgb(221, 255, 255);
+}
+
+.cloudy {
+    background-color: lightgrey;
 }
 
 .rainy {
@@ -141,9 +164,3 @@ input[type=text] {
 .snowy {
     background-color: lightsteelblue;
 }
-
-
-/* TODO
-1. make Get Realtime Temp button smaller
-2. Change arrow emoji buttons
-3. Personalize weather garden emojis  */
