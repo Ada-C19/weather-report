@@ -20,16 +20,27 @@ section {
     border-radius: 10px;
 }
 
-/* #live_temp {
-    color: yellow;
-} */
+#sunny{
+    background-color: rgb(221, 255, 255);
+}
+#cloudy {
+    background-color: lightgrey;
+    }
+    
+#rainy {
+    background-color: lightblue;
+}
+    
+#snowy {
+    background-color: rgb(189, 209, 234);
+}
 
  .hot {
-    color: red
+    color: red;
 }
 
  .warm {
-    color: orange
+    color: orange;
 }
 
 .moderate {
@@ -53,6 +64,6 @@ section {
 .garden_box{
     width: 60%;
     padding:25px;
-    background-color: rgb(112, 213, 128);
+    background-color: rgb(221, 255, 255);
     border-radius: 10px;
 }

@@ -96,6 +96,30 @@ const resetCity = () => {
     getWeatherInfo(state.lat, state.lon); 
 }
 
+const selectSky = () => {
+    let skyPref = document.getElementById("sky").value;
+    let skyLine = ''
+    let skyColor = ''
+    if (skyPref === "sunny")  {
+        skyLine = "🕶️☀️ ☁️ ☀️ ☀️ ☁️ ☀️🕶️";
+        skyColor = "sunny";
+    } else if (skyPref === "cloudy") {
+        skyLine = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+        skyColor = "cloudy";
+    } else if (skyPref === "rainy")  {
+        skyLine = "🌧🌈🌧🌧💧🌧🌦🌧💧🌧🌧";
+        skyColor = "rainy";
+    } else if (skyPref === "snowy"){
+        skyLine = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+        skyColor = "snowy";
+    }
+    const paintSky = document.getElementById('sky_line');
+    paintSky.textContent = skyLine;
+    const skyBackground = document.querySelector(".garden_box");
+    console.log(skyBackground)
+    skyBackground.id = skyColor;
+}
+
 const registerEventHandlers = () => {
     const tempIncButton = document.querySelector("#increase_button");
     tempIncButton.addEventListener('click', tempIncrease);
@@ -108,15 +132,18 @@ const registerEventHandlers = () => {
     tempDecButton.addEventListener('click', () => {
         changeTempAndLand()
     })
-
+    
     const cityDisplay = document.querySelector("#city_input");
     cityDisplay.addEventListener("input", displayCityInput);
 
     const searchCityButton = document.querySelector("#set_city");
     searchCityButton.addEventListener('click', getCityLiveWeather);
 
-    const  resetButton = document.getElementById("reset_city");
+    const resetButton = document.getElementById("reset_city");
     resetButton.addEventListener("click", resetCity);
+
+    const skyMenu = document.getElementById("sky");
+    skyMenu.addEventListener('change', selectSky);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
