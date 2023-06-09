@@ -9,14 +9,28 @@ body {
     grid-template-columns: 30% 70%;
     grid-template-rows: 25% 25% 25% 25%;
     grid-gap: 10px;
+    background-image: url(../ada-project-docs/assets/stacked-waves-haikei.svg);
+}
 
+h1 {
+    font-size: 7vw;
+    color: rgba(240, 63, 32, 0.667);
+    -webkit-text-stroke: 0.2vw black;
+}
+
+h2 {
+    font-size: 4vw;
+    color: rgba(240, 63, 32, 0.667);
+    text-align: center;
 }
 
 header {
     grid-area: 1/1/span 1 / span 2;
     background-color: aliceblue;
     text-align: center;
-    
+    background-image: url(../ada-project-docs/assets/misc-14.svg);
+    background-size: 20%;
+    background-color: rgb(254, 254, 160);
 }
 
 #temp {
@@ -30,6 +44,7 @@ header {
     grid-area: 3/1/span 1/ span 1;
     background-color: aliceblue;
 }
+
 #cityName{
     grid-area: 4/1/span 1/span 1;
     background-color: aliceblue;
@@ -47,6 +62,7 @@ footer{
     text-align: center;
     height: 2.5rem;
 }
+
 .red {
     color: red;
 }
@@ -67,8 +83,14 @@ footer{
     color: blue;
 }
 
+div {
+    position: relative;
+    
+}
 .city {
     font-style: oblique;
+    color: rgba(240, 63, 32, 0.667);
+    font-weight: bold;
 }
 .city::before, .city::after {
     content: " 💝 ";
