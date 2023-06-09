@@ -28,7 +28,7 @@ class Weather {
 
 const changeWeather = (weather) => {
   weather.changeTempValueColor();
-  weather.changeTempValueColor();
+  weather.changeBackgroundColor();
   weather.changeSky();
   weather.changeLandscape();
 };
@@ -84,7 +84,14 @@ const apocalyptic = new Weather(
   "rgb(11, 247, 46)"
 );
 
-const weathers = [apocalyptic, snowy, rainy, cloudy, sunny, hot];
+const weatherCollection = {
+  apocalyptic: apocalyptic,
+  snowy: snowy,
+  rainy: rainy,
+  cloudy: cloudy,
+  sunny: sunny,
+  hot: hot,
+};
 
 let temperature = document.getElementById("tempValue");
 
@@ -135,6 +142,14 @@ cityNameInput.addEventListener("input", () => {
 });
 
 // const skySelect = document.getElementById("skySelect");
+
+skySelect.addEventListener("input", (event) => {
+  const selectedSky = skySelect.value;
+  console.log(selectedSky);
+  changeWeather(weatherCollection[selectedSky]);
+});
+
+// changeWeather(weathers[]);
 // const gardenContent = document.getElementById("gardenContent");
 // const sky = document.getElementById("sky");
 
@@ -190,10 +205,10 @@ cityNameInput.addEventListener("input", () => {
 // };
 
 // Set the initial sky and garden content based on the default selected option
-const defaultOption = skySelect.value;
-updateSky(defaultOption);
+// const defaultOption = skySelect.value;
+// updateSky(defaultOption);
 
-changeWeather(sunny);
+// changeWeather(sunny);
 
 /* Optional:
 // add color change to the background if the temperature is at a certain level.
