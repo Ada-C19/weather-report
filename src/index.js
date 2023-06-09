@@ -8,7 +8,14 @@ const state = {
     city: "Seattle",
     lat: "",
     lon: "",
-}
+};
+
+// changes function above to start temperature with info from API call
+// state city name from
+// city: "",
+// temperature: 0,
+// lat: 0,
+// lon: 0,
 
 // assign variable for landscape and sky image icons
 const landscapeEmojis = {
@@ -117,9 +124,18 @@ const resetCityName = () => {
     state.city = "Seattle";
     header.textContent = state.city;
     citySearch.value = state.city;
-    getLocationandTemp();
+    // getLocationandTemp();
 }
 
+// function to submit city for API
+const submitCityName = () => {
+    const header = document.getElementById('headerCityName');
+    const citySearch = document.getElementById('cityNameSubmit')
+    state.city = "Seattle";
+    header.textContent = state.city;
+    citySearch.value = state.city;
+    // getLocationandTemp();
+}
 //function to change header city name based on search input
 const updateCity = () => {
     const inputName = document.getElementById("cityNameInput").value;
@@ -130,18 +146,15 @@ const updateCity = () => {
 
 // function for calling APIs
 // const searchLocation = () => {
-//     const axios = require('axios');
-//     const key = process.env['key'];
-
 //     axios
 //     .get('http://127.0.0.1:5000/location', {
 //         params: {
-//             q: state.cityName,
+//             q: state.city,
 //         },
 //     })
 //     .then((response) => {
-//     console.log('success!' + JSON.stringify(response.data[0]));
-//     state.late = response.data[0].lat;
+//     console.log('success!');
+//     state.lat = response.data[0].lat;
 //     state.lon = response.data[0].lon;
 //     searchTemperature();
 //         })
@@ -160,10 +173,12 @@ const updateCity = () => {
 //         },
 //     })
 //     .then((response) => {
-//         console.log('success!' + JSON.stringify(response.data.current.temp));
-//         state.temp = convertKtoC(response.data.current.temp);
+//         state.temperature = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
+//         // return current temp and assign it to  temp count
+//         const tempCount = document.querySelector("#tempValue");
+//         tempCount.textContent = `${state.temperature}`;
 //         changeLandscapeTemp();
-//     })
+// })
 //     .catch((error) => {
 //         console.log('searchTemperature error: ' + error.response);
 //     });
@@ -188,10 +203,17 @@ const updateCityName = document.getElementById("cityNameInput");
 updateCityName.addEventListener('input', updateCity)
 };
 
+resetCityName();
+const resetCity = document.getElementById("cityNameReset");
+resetCity.addEventListener('change',resetCityName)
+
+submitCityName();
+const submitCity = document.getElementById("cityNameSubmit");
+submitCity.addEventListener('change',submitCityName)
 // previously didn't exist, calls function here to register events
 registerEventHandlers();
 
-
+// console.log(searchLocation())
 
 // registercityName and change location functions
 // inputElement.addEventListener("input", function () {
@@ -208,62 +230,5 @@ registerEventHandlers();
 // need to fix reset button
 // need to add submit button
 // need to fix the API call 
-
-
-const axios = require('axios');
-
-// const LOCATIONIQ_KEY = process.env['api_key'];
-
-const findLatitudeAndLongitude = (query) => {
-let latitude, longitude;
-
 // Goeun's suggestion to connect FE and BE
 // axios.get('http://127.0.0.1:5000/your_endpoint_here', ...)
-
-axios.get('https://us1.locationiq.com/v1/search.php',
-{
-params: {
-    key: LOCATIONIQ_KEY,
-    q: query,
-    format: 'json'
-}
-})
-.then( (response) => {
-latitude = response.data[0].lat;
-longitude = response.data[0].lon;
-console.log('success in findLatitudeAndLongitude!', latitude, longitude);
-})
-.catch( (error) => {
-console.log('error in findLatitudeAndLongitude!');
-});
-
-return {
-    seattleLat: latitude,
-    seattleLon: longitude
-}
-}
-
-const findLocation = (latitude, longitude) => {
-axios.get('https://us1.locationiq.com/v1/reverse.php',
-{
-params: {
-    key: LOCATIONIQ_KEY,
-    format: 'json',
-    lat: latitude,
-    lon: longitude
-}
-})
-.then( (response) => {
-console.log('success in findLocation!', response.data);
-return response.data;
-})
-.catch( (error) => {
-console.log('error in findLocation!');
-});
-}
-
-const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
-
-const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
-
-console.log(locations);
