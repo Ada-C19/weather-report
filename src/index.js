@@ -49,3 +49,4 @@ const resetCity = () => {
     nameInput.value = "";
 }
 resetCityName.addEventListener("click",resetCity)
+
