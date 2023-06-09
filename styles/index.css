@@ -126,3 +126,9 @@ header {
 #header-city::before, #header-city::after {
     content: "✨";
 }
+#temp-text {
+    display: inline-block;
+}
+#converter {
+    background-color:blueviolet;
+}
