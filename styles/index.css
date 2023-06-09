@@ -31,6 +31,10 @@ header {
     background-image: url(../ada-project-docs/assets/misc-14.svg);
     background-size: 20%;
     background-color: rgb(254, 254, 160);
+    align-content: center;
+    font-size: 3vw;
+    display: flex;
+    flex-direction: column;
 }
 
 #temp {
@@ -83,10 +87,6 @@ footer{
     color: blue;
 }
 
-div {
-    position: relative;
-    
-}
 .city {
     font-style: oblique;
     color: rgba(240, 63, 32, 0.667);
