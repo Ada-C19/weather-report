@@ -12,25 +12,35 @@
 <body>
     <main>
         <header>
-        <h1>Weather Report</h1>
-    </header>
+            <h1>Weather Report</h1>
+        </header>
     
         <h3>For the lovely city of</h3>
+        <div id="temp-city">
         <section class="temp_section">
-        <section id="temp_display">Temperature</section>
-            <div class="temp-change-buttons_div"> 
-                <button id="up-arrow">⬆️ </button>
-                <div id="temp-count">0</div>
-                <button id="down-arrow">⬇️</button>
-            </div>
-            <button id="realtime-button-weather" alt="Get Realtime Temperature">Get Realtime Temperature</button>
+                <section id="temp_display">Temperature</section>
+                    <div class="temp-change-buttons_div"> 
+                        <button id="up-arrow" type="button">⬆️ </button>
+                        <div id="temp-count">0</div>
+                        <button id="down-arrow" type="button">⬇️</button>
+                    </div>
+                </section>
+                <section class="city-query">
+                    <label for="city-name">🏙️ City Name: 🏙️</label>
+                    <input type="text" id="city-name" size="20">
+                    <span>
+                        <button id="realtime-button-weather" type="button" alt="Get Realtime Temperature">Get Realtime Temperature</button>
+                        <button id="reset-city-name" alt="Reset Temperature">Reset</button></span>
+                    </input>
+                </section>
         </section>
-            <h2>Weather Garden</h2>
+        </div>
             <section id="landscape_display">
+                <h2>Weather Garden</h2>
                 <div id="sky">🌞</div>
                 <div id="landscape">🌵 </div>
             </section>
-            <section>
+            <section class="sky-section">
                 <label for="sky-select">Sky
                     <select class="sky-select" name="sky-select">
                         <option value="">--Please choose an option--</option>
@@ -41,12 +51,9 @@
                     </select>
                 </label>
             </section>
-            <section class="city-query">
-                <label for="city-name">🏙️ City Name: 🏙️</label>
-                <input type="text" id="city-name" size="20">
-                <button id="reset-city-name" alt="Reset Temperature">Reset</button>
-        </section>
-                
+
+
+
     </main>
 
     <script src="./node_modules/axios/dist/axios.min.js"></script>

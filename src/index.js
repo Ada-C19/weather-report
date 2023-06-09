@@ -32,7 +32,10 @@ const decreaseTemp = (event) => {
 const resetLocation = (event) => {
     const locationInput = document.getElementById("city-name");
     locationInput.value = "";
-    getCityName();
+    getCityName(); //call getCityName to reset h3
+    const tempCount = document.getElementById("temp-count");
+    tempCount.textContent = 0;
+
 };
 
 const changeSky = (event) => {
