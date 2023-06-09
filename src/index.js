@@ -48,30 +48,21 @@ const getLandscape = () => {
     }
 }
 
-// const skyDropdown = document.getElementById("sky_dropdown");
-
-// add click event listeners for each sky option
-// skyDropdown.addEventListener("click", (event) => {
-//     if (event.target.tagName === 'A') {
-//         sky = event.target.id;
-//         getSky();
-//     }
-// });
 
 const getSky = () => {
     const skyElement = document.getElementById('sky');
     const skyChoice = document.getElementById('sky-select').value
     switch (sky) {
-        case skyChoice === 'sunny':
+        case 'sunny':
             skyElement.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
             break;
-        case skyChoice === 'cloudy':
+        case 'cloudy':
             skyElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
             break;
-        case skyChoice === 'rainy':
+        case 'rainy':
             skyElement.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
             break;
-        case skyChoice === 'snowy':
+        case 'snowy':
             skyElement.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
             break;
         default:
@@ -79,6 +70,7 @@ const getSky = () => {
             break;
     }
 }
+
 
 // const skyButton = document.getElementById("sky-select");
 
@@ -113,6 +105,11 @@ if (document.readyState !== "loading") {
     document.addEventListener("DOMContentLoaded", getLandscape);
     document.addEventListener("DOMContentLoaded", getSky);
 }
+
+document.getElementById('sky-select').addEventListener('change', function() {
+    sky = this.value; // this line will set the sky value to the selected option
+    getSky(); 
+});
 
 
 
