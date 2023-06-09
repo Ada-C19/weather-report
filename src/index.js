@@ -40,7 +40,6 @@ const getWeather = (lat, lon) =>{
 
 const getLocationWeather = () =>{
     let tempVal = document.getElementById("tempValue");
-    let tempbutton = document.getElementById("currentTempButton")
     return getLocation()
     .then( result =>{
              getWeather(result.latitude, result.longitude)
@@ -49,6 +48,7 @@ const getLocationWeather = () =>{
                   
                     let farenheit = Math.floor(((response) - 273.15) * 9/5 + 32 )
                     console.log(farenheit);
+                    tempVal.textContent = farenheit;
                     return farenheit
 
                 }
@@ -62,7 +62,6 @@ const getLocationWeather = () =>{
 }
 
 
-getLocationWeather()
 
 
 
@@ -85,7 +84,7 @@ const reset = document.getElementById("cityNameReset");
 const skyImage = document.getElementById("sky");
 const sky = document.getElementById("skySelect");
 const weatherGarden = document.getElementById("gardenContent")
-
+const tempbutton = document.getElementById("currentTempButton")
 
 // helper functions
 const changeColor = () =>{
@@ -167,7 +166,7 @@ cityInput.addEventListener('input', function(){
 })
 sky.addEventListener('change', changeSky)
 reset.addEventListener("click", resetCity)
-
+tempbutton.addEventListener('click',getLocationWeather)
 
 
 
