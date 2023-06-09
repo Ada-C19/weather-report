@@ -87,32 +87,66 @@ const updateCity = (value) => {
 // };
 // updatedCityName();
 
-const getLocation = () => {
-    const location = document.getElementById("city-input").value;
-    axios
-      .get("http://127.0.0.1:5000/location", { params: {q: location} })
-      .then((result) => {
-       const lat = result.data[0].lat;
-       const lon = result.data[0].lon;
-       getWeather(lat, lon);
-      });
-};
+// const getLocation = () => {
+//     const location = document.getElementById("city-input").value;
+//     axios
+//     .get("http://127.0.0.1:5000/location", { params: { q: location } })
+//     .then((result) => {
+//         axios
+//         .get("http://127.0.0.1:5000/weather", {
+//             params: {
+//             lat: result.data[0].lat,
+//             lon: result.data[0].lon,
+//             },
+//         })
+//         .then((result) => {
+//             document.getElementById("temp-display").textContent = Math.round(result.data.main.temp - 273.15);
+//         })
+//         .catch((error) => {
+//             console.error("Error retrieving weather:", error);
+//             // Handle error and provide user feedback
+//         });
+//     })
+//     .catch((error) => {
+//         console.error("Error retrieving location:", error);
+//         // Handle error and provide user feedback
+//     });
+// };
 
-const getWeather = (lat_query, lon_query) => {
-    axios
-    .get("http://127.0.0.1:5000/weather", { params: {lat: lat_query, lon: lon_query} })
-    .then((result) => {
-        const kelvin = result.data.main.temp;
-        const celsius = Math.round(kelvin - 273.15);
-        document.getElementById("temp-display").textContent = celsius;
-    })
+// const tempButton = document.getElementById("temp-button");
+// tempButton.addEventListener("click", () => {
+//     getLocation();
+// });
+
+const getLocationAndWeather = async () => {
+    const location = document.getElementById("city-input").value;
+
+    try {
+    const locationResult = await axios.get("http://127.0.0.1:5000/location", { params: { q: location } });
+
+    const weatherResult = await axios.get("http://127.0.0.1:5000/weather", {
+        params: {
+        lat: locationResult.data[0].lat,
+        lon: locationResult.data[0].lon,
+        },
+    });
+
+    const celsius = Math.round(weatherResult.data.main.temp - 273.15);
+
+    document.getElementById("temp-display").textContent = celsius;
+    } catch (error) {
+    console.error("Error:", error);
+    
+    }
 };
 
 const tempButton = document.getElementById("temp-button");
 tempButton.addEventListener("click", () => {
-    getLocation();
-    }
-);
+    getLocationAndWeather();
+});
+
+
+
 
 
 
