@@ -46,25 +46,28 @@ const checkTempColor = (tempNumber) => {
     return className
 }
 
-const checkTempPicture = (tempNumber) => {
-    let textContent = `"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"`;
-    if (tempNumber >= 80) {
-        textContent = `"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"`;
-    } else if (tempNumber >= 70) {
-        textContent = `"🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"`;
-    } else if (tempNumber >= 60) {
-        textContent = `"🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"`;
-    } else if (tempNumber <= 59) {
-        textContent = `"🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"`;
+const getLandscape = (temperature) => {
+    if (temperature >= 80) {
+        return "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    } else if (temperature >= 70) {
+        return "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+    } else if (temperature >= 60) {
+        return "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    } else {
+        return "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }
-    return textContent
 };
 
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = ++state.tempNumber;
-        state.tempNumberContainer.className = checkTempColor(state.tempNumber);
-        state.landEmojiContainer.innerText = checkTempPicture(state.tempNumber);
+        state.tempNumberContainer.className = checkTemp(state.tempNumberContainer.innerText);
+        const landscape = getLandscape(state.tempNumber);
+        // const skyEmojis = getSkyEmojis(state.tempNumber);
+        document.getElementById("land-emoji-section").innerText = landscape;
+        // document.getElementById("sky-emoji-div").innerText = skyEmojis;
+        console.log(state.tempNumberContainer.className);
+        console.log(state.tempNumber)
     });
     state.decreaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = --state.tempNumber;
