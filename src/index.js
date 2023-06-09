@@ -4,6 +4,8 @@ const state = {
 	decreaseTempControl: null,
 	gardenLandscape: null,
 	tempValueEl: null,
+	cityNameEl: null,
+  	cityInputEl: null,
 };
 
 const loadControls = () => {
@@ -13,6 +15,8 @@ const loadControls = () => {
 	state.tempValue = parseInt(state.tempValueEl.textContent);
 	state.gardenLandscape = document.getElementById('landscape');
 	state.gardenLandscapeValue = state.gardenLandscape.textContent;
+	state.cityNameEl = document.getElementById('headerCityName');
+  	state.cityInputEl = document.getElementById('cityNameInput');
 
 	console.log(state);
 };
@@ -53,6 +57,10 @@ const changeColorAndLandscape = () => {
 	}
 };
 
+const updateCityName = () => {
+	state.cityNameEl.textContent = state.cityInputEl.value;
+};
+
 const setUp = () => {
 	loadControls();
 	registerEvents();
@@ -62,6 +70,7 @@ const setUp = () => {
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener('click', increaseTemp);
 	state.decreaseTempControl.addEventListener('click', decreaseTemp);
+	state.cityInputEl.addEventListener('input', updateCityName);
 };
 
 document.addEventListener('DOMContentLoaded', setUp);
