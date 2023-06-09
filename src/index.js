@@ -63,12 +63,31 @@ const changeLandscape = () => {
 
 const changeCityInput = (city) => {
     const currentCityName = document.getElementById('current-city');
-    currentCityName.innerHTML = `For the lovely city of ${city.target.value}!`;
-    currentCity = city.target.value;
+    currentCityName.innerHTML = `For the lovely city of ✨${city.target.value}✨`;
 };
 
 const cityInputField = document.getElementById('city-input');
 cityInputField.value = 'Seattle';
+
+const getCityLocation = (city) => {
+    let latitude, longitude;
+    return axios
+        .get('http://127.0.0.1:5000/location', {
+            params: {
+                q: city
+            }
+        })
+        .then((response) => {
+            latitude = response.data[0].lat;
+            longitude = response.data[0].lon;
+            console.log('success in getCityLocation', latitude, longitude);
+            return placeholder({ lat: latitude, lon: longitude });
+        })
+        .catch((error) => {
+            console.log(`This city does not exist`);
+            return state.currentTemp;
+        });
+};
 
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
