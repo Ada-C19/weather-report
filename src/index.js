@@ -1,5 +1,5 @@
 
-
+// proxy request. UI fuctionality event listeners section
 const getLocation = () => {
     let location = document.getElementById("cityNameInput").value
     const url ='http://127.0.0.1:5000/location';
@@ -21,7 +21,6 @@ const getLocation = () => {
     
  }
 
-// getLocation()
 const getWeather = (lat, lon) =>{
     return axios
     .get('http://127.0.0.1:5000/weather', {params:{lat:lat,lon:lon}})
