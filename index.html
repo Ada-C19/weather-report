@@ -11,7 +11,12 @@
 </head>
 <body>
     <main>
-        <h1>Weather Report</h1><h3>For the lovely city of</h3>
+        <header>
+        <h1>Weather Report</h1>
+    </header>
+    
+        <h3>For the lovely city of</h3>
+        <section class="temp_section">
         <section id="temp_display">Temperature</section>
             <div class="temp-change-buttons_div"> 
                 <button id="up-arrow">⬆️ </button>
@@ -19,7 +24,8 @@
                 <button id="down-arrow">⬇️</button>
             </div>
             <button id="realtime-button-weather" alt="Get Realtime Temperature">Get Realtime Temperature</button>
-        <h2>Weather Garden</h2>
+        </section>
+            <h2>Weather Garden</h2>
             <section id="landscape_display">
                 <div id="sky">🌞</div>
                 <div id="landscape">🌵 </div>
@@ -35,7 +41,7 @@
                     </select>
                 </label>
             </section>
-            <section>
+            <section class="city-query">
                 <label for="city-name">🏙️ City Name: 🏙️</label>
                 <input type="text" id="city-name" size="20">
                 <button id="reset-city-name" alt="Reset Temperature">Reset</button>

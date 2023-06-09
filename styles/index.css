@@ -18,16 +18,45 @@ input, label {
     margin: 0.4rem 0;
 }
 
-#header {
-    color: white;
-    background-color: rgb(34, 136, 0);
-    font-weight: bold;
+html{
+    font-family: 'Roboto Slab', sans-serif;
+  }
+
+header {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(24, 25, 26);
+}
+
+h1 {
+    color: rgb(242, 232, 207);
+    text-align: center;
+}
+
+.temp_section {
+    grid-row: 2;
+    background-color:rgb(247, 247, 251);
+    border: none;
+    color: #131111;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px
+}
+
+body {
+    background-color: #44aadd ;
+    display: grid;
+}
+
+.city-query {
+    grid-row: 3;
+    min-height: 50px;
+    max-width: fit-content;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.75rem;
-    position: fixed;
-    top: 0;
-    box-shadow: 0px 10px 10px #BBB;
-    width: 100%;
+    flex-direction: column;
 }
