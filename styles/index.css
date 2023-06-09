@@ -1,15 +1,15 @@
-/* * {
+* {
     border: 1px dashed antiquewhite;
-} */
+}
 
 body {
     background-color: darkblue;
     color: whitesmoke;
-    display: grid;
+    font-family: 'Roboto', sans-serif;
 }
 
-h1, h2 {
-    font-family: cursive;
+header, h1, h2 {
+    font-family: 'Playfair Display', serif;
 }
 
 #flex-container {
@@ -17,12 +17,10 @@ h1, h2 {
     justify-content: space-between;
 }
 
-
 #sidebar {
     width: 30%;
     justify-content: space-between;
-    flex-direction: column;
-    
+    padding: 10px;
 }
 
 #temperature, #sky, #city {
@@ -30,9 +28,7 @@ h1, h2 {
     background-color:rgb(225, 248, 248);
     margin-top: 15px;
     padding: 15px;
-    border-radius: 15%;
-    display: block;
-    
+    border-radius: 25px;
 }
 
 #alignment {
@@ -58,7 +54,6 @@ button {
     height: 60%;
     color: wheat;
     font-size: xx-large;
-    
 }
 
 #temp-display {
@@ -92,17 +87,17 @@ button {
     background-color:rgb(225, 248, 248);
     margin-top: 55px;
     padding: 15px;
-    border-radius: 15%;
+    border-radius: 25px;
     height: auto;
     width: 35rem;
     font-size: 1.5rem;
-    
 }
 
 header {
     display: flex;
     align-items: center;
-    font-family: cursive;
+    justify-content: left;
+    padding-left: 20px;
 }
 
 #title {
@@ -111,16 +106,14 @@ header {
 }
 
 #city-heading {
-    margin-right: 2rem;
     font-size: 1.5rem; 
+    font-style: italic;
 }
 
 #header-city {
     display: inline-block;
     position: relative;
     font-size: 3rem;
-    font-family: cursive;
-    /* margin-right: 2rem; */
 }
 
 #header-city::before, #header-city::after {
