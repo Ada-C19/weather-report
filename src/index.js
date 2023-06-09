@@ -8,22 +8,20 @@ const state = {
 // Wave 2
 const increaseTemp = (event) => {
     state.degrees += 1;
-    const degreeCount = document.getElementById('degrees');
-    degreeCount.textContent = state.degrees;
+    document.getElementById('degrees').textContent = state.degrees;
     tempColorLandscape();
 };
 
 const decreaseTemp = (event) => {
     state.degrees -= 1;
-    const degreeCount = document.getElementById('degrees');
-    degreeCount.textContent = state.degrees;
+    document.getElementById('degrees').textContent = state.degrees;
     tempColorLandscape();
 };
 
 const tempColorLandscape = () => {
     let temp = state.degrees;
     let color = 'yellow';
-    let landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+    let landscape = "";
     if (temp >= 80) {
         color = 'red';
         landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
@@ -41,19 +39,14 @@ const tempColorLandscape = () => {
         landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }
 
-    const tempNum = document.getElementById('degrees');
-    tempNum.style.color = color;
-
-    const newLandscape = document.getElementById('landscape-emojis');
-    newLandscape.textContent = landscape;
-
+    document.getElementById('degrees').style.color = color;
+    document.getElementById('landscape-emojis').textContent = landscape;
 };
 
 // Wave 3
 const changecityName = (event) => {
     state.cityName = document.getElementById("name").value;
-    const city = document.getElementById("city");
-    city.textContent = state.cityName;
+    document.getElementById("city").textContent = state.cityName;
 }
 
 // Wave 4
@@ -70,8 +63,7 @@ const getWeather = async () => {
             .then((result) => {
                 const temp = ((result.data["main"]["temp"])-273) * 1.8 + 32;
                 state.degrees = Math.round(temp);
-                const degreeCount = document.getElementById('degrees');
-                degreeCount.textContent = state.degrees;
+                document.getElementById('degrees').textContent = state.degrees;
                 tempColorLandscape();
             })
     }
@@ -110,8 +102,7 @@ const changeLandscape = (event) => {
 //Wave 6
 const resetCity = () => {
     state.cityName = "Seattle"
-    const city = document.getElementById("city");
-    city.textContent = state.cityName;
+    document.getElementById("city").textContent = state.cityName;
     document.getElementById("name").value = "";
     getWeather();
 }

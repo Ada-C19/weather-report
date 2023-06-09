@@ -7,17 +7,21 @@
     <title>Weather Report</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
     <header>
         <h1>Weather Report</h1>
-        <h3>For the lovely city of ✨<div id="city">Seattle</div>✨</h3>
+        <section id="small-header">
+            <h3>For the lovely city of ✨</h3>
+            <div id="city">Seattle</div>
+            <h3>✨</h3>
+        </section>
     </header>
     <section class ="main">
         <section class="info">
                 <div class="data" id="temp-data">
-                    <h3>Temperature</h3>
+                    Temperature
                     <div id="temp">
                         <button id="up">🔼</button>
                         <h4 id="degrees">62</h4>
@@ -26,7 +30,7 @@
                     <button id="realTimeButton">Get Real-Time Temperature-</button>
                 </div>
                 <div class="data">
-                    <label for="skySelect"><h3>Sky</h3></label>
+                    <label for="skySelect">Sky</label>
                     <select name="skies" id = "skySelect">
                         <option value = "Sunny">Sunny</option>
                         <option value = "Cloudy">Cloudy</option>
@@ -34,19 +38,20 @@
                         <option value = "Snowy">Snowy</option>
                     </select>
                 </div>
-                <div class="data"><label for="name"><h3>City Name</h3></label>
+                <div class="data"><label for="name">City Name</label>
                     <input placeholder="Seattle" type="text" id="name" name="name" required>
                     <button id="reset">Reset</button>
                 </div>
         </section>
-        <section class="garden">
+        <aside class="garden">
             <h2>Weather Garden</h2>
             <section id="weather-box">
                 <div id="sky-emojis">☁️☁️☁️☁️☁️☁️🌤️☁️☁️☁️</div>
                 <div id="landscape-emojis">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
             </section>
-        </section>
+        </aside>
     </section>
+    <footer>© Ana and Kira</footer>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>

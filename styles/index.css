@@ -31,6 +31,13 @@ h3 {
     font-size: 25px;
 }
 
+#small-header {
+    display: flex;
+    align-items: center;
+    text-shadow: 2px 4px 4px rgba(46,91,173,0.6);
+    font-size: 25px;
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -59,6 +66,7 @@ h3 {
     width: 400px;
     height: 250px;
     border-radius: 25px;
+    font-size: 30px;
 }
 
 #temp-data {
@@ -126,4 +134,9 @@ button {
 button:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    padding: 10px 10px 10px 10px;
+    text-align: center;
 }
