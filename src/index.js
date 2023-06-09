@@ -60,7 +60,7 @@ const getLandscape = () => {
 
 const getSky = () => {
     const skyElement = document.getElementById('sky');
-    const skyChoice = document.getElementById('sky-select')
+    const skyChoice = document.getElementById('sky-select').value
     switch (sky) {
         case skyChoice === 'sunny':
             skyElement.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
