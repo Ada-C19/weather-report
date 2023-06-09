@@ -5,7 +5,7 @@ let currentLandscape = document.getElementById('seasonal-landscape');
 // Function that takes the value of Input box
 // // Function that takes the value of Input box
 const displayCityText = () => {
-    txtOutput.innerHTML = txtBox.value;
+    txtOutput.innerHTML = `✨ ${txtBox.value} ✨`;
     // Reset text from input box
     txtBox.value = "";
 }
