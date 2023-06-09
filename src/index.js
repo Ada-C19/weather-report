@@ -3,9 +3,12 @@ const API = "http://127.0.0.1:5000";
 const locationURL = "/location";
 const weatherURL = "/weather";
 
-
+//look more into State 
 const state = {
-    liveTemp : 68
+    city: 'Seattle',
+    liveTemp : 68,
+    lon: -122.3300624,
+    lat: 47.6038321
 };
 
 const changeTempAndLand = () => {
@@ -36,14 +39,13 @@ const changeTempAndLand = () => {
 };
 
 const tempIncrease = () => {
-    //temp behavior
     state.liveTemp += 1;
 };
 
 const tempDecrease = () => {
-    //temp behavior
     state.liveTemp -= 1;
 };
+changeTempAndLand();
 
 const displayCityInput = () => {
     let cityInput = document.getElementById("city_input").value;
@@ -55,14 +57,14 @@ const getCityInput = () => {
     let cityInput = document.getElementById("city_input").value;
     return cityInput;
 }
+const tempConverter = (kelvin) => {
+    return (kelvin - 273.15) * 1.8 + 32;
 
-const getCityCoord = () => {
+}
+const getCityLiveWeather = () => {
     const cityName = document.getElementById("city_input").value;
-    console.log(cityName);
-    console.log("here!")
     const locationRoute = API + locationURL;
     const weatherRoute = API + weatherURL;
-    // let cityCoords = {"lat": 0, "lon": 0 };
     let tempInKel = 0;
     axios
         .get(locationRoute, { params: { q : `${cityName}`, format: "json"} })
@@ -70,14 +72,36 @@ const getCityCoord = () => {
             let coorLat = result.data[0]["lat"];
             let coorLon = result.data[0]["lon"];
             axios
-                .get(weatherRoute, { params: { lat : `${coorLat}`, lon : `${coorLon}`, format: "json"} })
+                .get(weatherRoute, { params: { lat : `${coorLat}`, lon : `${coorLon}`, format: "json", units: "imperial"} })
                 .then((result) => {
                     tempInKel = result.data["main"]["temp"];
-                    console.log(tempInKel);
+                    let resultFahr = Math.round(tempConverter(tempInKel));
+                    let cityTemp = document.getElementById("live_temp");
+                    cityTemp.innerHTML = resultFahr;
+                    state.liveTemp = resultFahr;
+                    changeTempAndLand();
+
+                    
         })
         })
 }
 
+const resetCity = () => {
+    let cityDisplay = document.querySelector("h2");
+    cityDisplay.textContent = `For the city of  ${state.city}`;
+
+    let cityInput = document.getElementById("city_input");
+    cityInput.value = state.city;
+    //getCityLiveWeather();
+    state.liveTemp = 68;
+    changeTempAndLand();
+    //REFACTOR to have API calls in deparate functions. Call that function with Seattle coords. 
+
+
+}
+// const clearSearchBar = () => {
+
+// }
 
 const registerEventHandlers = () => {
     const tempIncButton = document.querySelector("#increase_button");
@@ -96,7 +120,10 @@ const registerEventHandlers = () => {
     cityDisplay.addEventListener("input", displayCityInput);
 
     const searchCityButton = document.querySelector("#set_city");
-    searchCityButton.addEventListener('click', getCityCoord);
+    searchCityButton.addEventListener('click', getCityLiveWeather);
+
+    const  resetButton = document.getElementById("reset_city");
+    resetButton.addEventListener("click", resetCity);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
