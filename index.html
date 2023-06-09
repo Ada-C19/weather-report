@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <h1 class="header" > Today's Weather Report </h1>
+        <h3 class="header" > For the lovely city of </h3>
+    <h4>Temperature</h4>
+        <button id="up">&#11014;</button>
+        <p id="temperature-now">70</p>
+        <button id="down">&#11015;</button>
+        <button>Get Real TIme Temperature</button>
+    <h4>Sky</h4>
+        <select> 
+            <option value="Sunny">Sunny</option>
+            <option value="Cloudy">Cloudy</option>
+            <option value="Snowy">Snowy</option>
+            <option value="Rainey">Rainey</option>
+        </select>
+    <h4>City name</h4>
+        <form>
+            City: 
+            <input type="text" placeholder="Enter a city"/>  
+        </form>
+        <button>Reset</button>
+    <h4 id="garden"> Weather Garden </h4>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
