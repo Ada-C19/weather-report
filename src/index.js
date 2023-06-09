@@ -25,14 +25,15 @@ const increaseTemp = (event) => {
 
 const decreaseTemp = (event) => {
     state.temperature -= 1;
-    const tempCount = document.querySelector("#temp-count");
+    const tempCount = document.getElementById("temp-count");
     tempCount.textContent = `${state.temperature}`;  
 };
 
 const resetLocation = (event) => {
     const locationInput = document.getElementById("city-name");
-    locationInput.value = state.city;
-}
+    locationInput.value = "";
+    getCityName();
+};
 
 const changeSky = (event) => {
     const selectElement = document.querySelector(".sky-select");
@@ -132,6 +133,9 @@ const registerEventHandlers = (event) => {
 
     const selectElement = document.querySelector(".sky-select")
     selectElement.addEventListener("change", changeSky)
+
+    const resetCity = document.querySelector("#reset-city-name");
+    resetCity.addEventListener("click", resetLocation);
     
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
