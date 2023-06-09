@@ -1,5 +1,9 @@
 * {
     border: .5px red solid;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+#temp {
+    
 }
 
 .above80Temp {
@@ -8,7 +12,7 @@
 
 .above80Bk {
     background-color: salmon;
-    opacity: 50%;
+    /* opacity: 50%; */
 }
 
 .temp69To80 {
@@ -16,7 +20,7 @@
 }
 
 .temp69To80Bk {
-    background-color: lightsalmon;
+    background-color: lightblue;
 }
 
 .temp59To70 {
@@ -85,3 +89,10 @@ main {
     display: flex;
     flex-direction: column;
 }
+
+img {
+    max-width: 100%;
+}
+/* #landscape {
+    background-image: url("../assets/landscapes/");
+} */
