@@ -30,7 +30,7 @@ const loadControls = () => {
     state.cityInput = document.getElementById('cityInput');
 };
 
-const checkTempColor = (tempNumber) => {
+const getTempColor = (tempNumber) => {
     let className = 'redTemp';
     if (tempNumber >= 80) {
         className = 'redTemp';
@@ -61,18 +61,13 @@ const getLandscape = (temperature) => {
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = ++state.tempNumber;
-        state.tempNumberContainer.className = checkTemp(state.tempNumberContainer.innerText);
-        const landscape = getLandscape(state.tempNumber);
-        // const skyEmojis = getSkyEmojis(state.tempNumber);
-        document.getElementById("land-emoji-section").innerText = landscape;
-        // document.getElementById("sky-emoji-div").innerText = skyEmojis;
-        console.log(state.tempNumberContainer.className);
-        console.log(state.tempNumber)
+        state.tempNumberContainer.className = getTempColor(state.tempNumberContainer.innerText);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.decreaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = --state.tempNumber;
-        state.tempNumberContainer.className = checkTempColor(state.tempNumber);
-        state.landEmojiContainer.innerText = checkTempPicture(state.tempNumber);
+        state.tempNumberContainer.className = getTempColor(state.tempNumber);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.cityInput.addEventListener('input', () => {
         state.cityNameContainer.innerText = state.cityInput.value;
