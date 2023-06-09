@@ -1,6 +1,5 @@
 const state = {
     degrees: 67,
-    degreesCelsius: 0,
     city: 'Seattle'
 }
 
@@ -102,26 +101,24 @@ const displaySky = () => {
     }
 }
 
-const increaseTemp = (event) => {
+const increaseTemp = () => {
     state.degrees += 1;
     const degrees = document.querySelector('#degrees');
     degrees.textContent = state.degrees;
     displayLandscape(state.degrees);
 };
 
-const decreaseTemp = (event) => {
+const decreaseTemp = () => {
     state.degrees -= 1;
     const degrees = document.querySelector('#degrees');
     degrees.textContent = state.degrees;
     displayLandscape(state.degrees);
 };
 
-const displayCelsius = (event) => {
-    const degrees = document.querySelector('#degrees');
+const displayCelsius = () => {
+    const degrees = document.querySelector('#celsiusValue');
     const degreeCelsius = Math.floor((state.degrees - 32) * 5 / 9);
-    state.degreesCelsius = degreeCelsius;
-    degrees.textContent = state.degreesCelsius;
-
+    degrees.textContent = degreeCelsius;
 }
 
 const displayNewCity = () => {
