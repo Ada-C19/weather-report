@@ -70,6 +70,39 @@ const resetCityName = () => {
     updateCityName();
 };
 
+
+const skyscapes = {
+    sunny:"☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    cloudy:"☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    rainy:"🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    snowy:"🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+}
+
+const updateSky = () => {
+    const inputSky = document.getElementById('skyscapesButton').value;
+    const skyContainer = document.getElementById('sky');
+    let sky = skyscapes.sunny;
+    let skyColor = "";
+
+    if (inputSky === 'cloudy') {
+        sky = skyscapes.cloudy;
+        skyColor = 'cloudy';
+    } else if (inputSky === 'sunny') {
+        sky = skyscapes.sunny;
+        skyColor = 'sunny';
+    } else if (inputSky === 'rainy') {
+        sky = skyscapes.rainy;
+        skyColor = 'rainy';
+    } else if (inputSky === 'snowy') {
+        sky = skyscapes.snowy;
+        skyColor = 'snowy';
+    }
+    
+    skyContainer.textContent = sky;
+    const skycontent = document.getElementById('skyscapes');
+    skycontent.classList = `skyscapes__ ${skyColor}`;
+};
+
 const landscapeType = {
     summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
     spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
@@ -138,5 +171,10 @@ const registerEventHandlers = () => {
 
     const cityNameResetBtn = document.getElementById('cityNameReset');
     cityNameResetBtn.addEventListener('click', resetCityName);
+
+    updateSky();
+    const skySelect = document.getElementById('skyscapesButton');
+    skySelect.addEventListener('change', updateSky);
+
 };
     document.addEventListener("DOMContentLoaded", registerEventHandlers);
