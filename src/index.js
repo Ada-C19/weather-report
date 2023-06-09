@@ -7,6 +7,7 @@
 
 const state = {
   temp: 90,
+  cityName: "Seattle"
 };
 
 const setUpTemperature = () => {
@@ -52,6 +53,7 @@ function Down() {
   setUpTemperature();
 }
 
+//search button function
 function City() {
   const cityName = document.getElementById("cityname").value;
   const cityHeader = document.querySelector("h2");
@@ -60,7 +62,6 @@ function City() {
   findLatitudeAndLongitude();
 }
 
-// make location call to proxy server
 const findLatitudeAndLongitude = (query) => {
   console.log("Hi, find latitude and longtitude")
   let latitude, longitude;
@@ -128,9 +129,8 @@ const registerEventHandlers = () => {
   const searchButtonCity = document.getElementById("searchbtn");
   searchButtonCity.addEventListener("click", City);
 
-  // To do: work on reset button
-  // const buttonReset = document.getElementById("resetbtn");
-  // buttonReset.addEventListener("click", )
+  const buttonReset = document.getElementById("resetbtn");
+  buttonReset.addEventListener("click", clearInput)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);

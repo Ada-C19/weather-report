@@ -1,11 +1,23 @@
 /* To Do: Change default background image/color */
 body{
-  background-color: rgb(57, 57, 217);
+  /* background-color: rgb(57, 57, 217); */
+  background-image: url("../assets/oregon.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 20px;
   font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  color: rgb(17, 16, 16);
 }
-
+footer{
+  height: 5%;
+  background-color: black;
+  margin-bottom: 0%;
+  color: aliceblue;
+  padding: 1%;
+  padding-left: 5%;
+}
 .div_temp{
   color: black;
   width: 50%;
