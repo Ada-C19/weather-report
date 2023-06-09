@@ -61,20 +61,24 @@ const changeLandscape = () => {
     landscape.textContent = emoji;
 };
 
-// const changeCity = (i) => {
-//     const currentCityName = document.getElementById('current-city');
-//     currentCityName.innerHTML = `This is the weather for ${i.target.value}!`;
-//     state.defaultCity = i.target.value;
-// };
+const changeCityInput = (city) => {
+    const currentCityName = document.getElementById('current-city');
+    currentCityName.innerHTML = `For the lovely city of ${city.target.value}!`;
+    currentCity = city.target.value;
+};
 
-// const cityInputField = document.getElementById('city-input');
-// cityInputField.value = '';
+const cityInputField = document.getElementById('city-input');
+cityInputField.value = 'Seattle';
 
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
     const decreaseButton = document.getElementById("decrease-temp");
     increaseButton.addEventListener("click", increaseTemp);
     decreaseButton.addEventListener("click", decreaseTemp);
+
+    const changeCity = document.getElementById('city-input');
+    changeCity.addEventListener('input', changeCityInput);
+    changeCity.addEventListener('propertychange', changeCityInput);
 
 };
 
