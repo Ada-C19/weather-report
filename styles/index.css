@@ -1,0 +1,149 @@
+/* * * {
+    border: 1px black dashed;
+} */
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: lightblue;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 10px;
+    background-image: url(../ada-project-docs/assets/stacked-waves-haikei.svg);
+}
+
+h1 {
+    font-size: 7vw;
+    color: rgba(240, 63, 32, 0.667);
+    -webkit-text-stroke: 0.2vw black;
+}
+
+h2 {
+    font-size: 4vw;
+    color: rgba(240, 63, 32, 0.667);
+    text-align: center;
+}
+
+header {
+    grid-area: 1/1/span 1 / span 2;
+    text-align: center;
+    background-image: url(../ada-project-docs/assets/misc-14.svg);
+    background-size: 20%;
+    background-color: rgb(254, 254, 160);
+    align-content: center;
+    font-size: 3vw;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 25px;
+}
+
+#temp.temp {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: aliceblue;
+    text-align: center;
+    border-radius: 25px;
+} 
+
+#sky {
+    grid-row-start: 3;
+    grid-row-end: auto;
+    background-color: aliceblue;
+    text-align: center;
+    border-radius: 25px;
+}
+
+#cityName{
+    grid-row-start: 4;
+    grid-row-end: auto;
+    background-color: aliceblue;
+    text-align: center;
+    border-radius: 25px;
+}
+
+
+.weather_garden {
+    grid-row: 2 / 5;
+    grid-column-start: 2;
+    text-align: center;
+    align-self: center;
+}
+
+.weather_garden h2{
+    background-color: rgb(254, 254, 160);
+    border-radius: 25px;
+}
+
+.weather_box {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    max-width: 100rem;
+    border-radius: 25px;
+    font-size: 2em;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    height: 2.5rem;
+}
+
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+.purple {
+    color: rgb(152, 33, 237);
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+.city {
+    font-style: oblique;
+    color: rgba(240, 63, 32, 0.667);
+    font-weight: bold;
+}
+.city::before, .city::after {
+    content: " 💝 ";
+}
+
+#reset, #citySearch, #siteSearch, #weatherChoice {
+    background-color: rgb(254, 254, 160);
+    color: #010101;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px;
+    border-color: black;
+    margin-bottom: 0.5rem;
+}
+
+.temp_control_section {
+    display: flex;
+    flex-direction: row;
+    font-size: 3rem;
+    justify-content: space-around;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
+}
