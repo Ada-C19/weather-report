@@ -1,12 +1,15 @@
 
 const state = {
+    tempDeg: 0,
+    defaultLandscape: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+    defaultColor: "teal",
+    cityName : "Seattle",
     increaseTempButton: null,
     decreaseTempButton: null,
-    tempDeg: 0,
-    landscape: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+    tempValue: null, 
+    landscape: null,
     cityNameOutput : null,
     cityNameInput: null,
-    cityName : "Seattle",
     currentWeatherButton : null,
 
 };
@@ -14,6 +17,8 @@ const state = {
 const setDefaultValues = () => {
     state.cityNameInput.value = `${state.cityName}`;
     state.cityNameOutput.textContent = `${state.cityName}`;
+    state.landscape.textContent = `${state.defaultLandscape}`;
+    tempValue.style.color = state.defaultColor;
 };
 
 const registerEventHandlers = () => {
@@ -29,28 +34,25 @@ const loadControls = () => {
     state.cityNameInput = document.getElementById("cityNameInput");
     state.cityNameOutput = document.getElementById("headerCityName");
     state.currentWeatherButton = document.getElementById("currentTempButton");
+    state.tempValue = document.getElementById("tempValue"); 
+    state.landscape = document.getElementById("landscape");
 };
-
-
 
 const increaseTemp = () => {
     state.tempDeg += 1;
-    const tempValue = document.getElementById("tempValue");
     tempValue.textContent = `${state.tempDeg}`
-    changeColor(tempValue);
-    changeLandscape(tempValue);
+    changeColor();
+    changeLandscape();
 };
 
 const decreaseTemp = () => {
     state.tempDeg -= 1;
-    const tempValue = document.getElementById("tempValue");
     tempValue.textContent = `${state.tempDeg}`;
-    changeColor(tempValue);
-    changeLandscape(tempValue);
+    changeColor();
+    changeLandscape();
 };
 
 const changeColor = () => {
-    const tempValue = document.getElementById("tempValue");
     let currentTemp = tempValue.textContent;
     if (currentTemp >= 80) {
         tempValue.style.color = "red";
@@ -66,38 +68,29 @@ const changeColor = () => {
 };
 
 const changeLandscape = () => {
-    const tempValue = document.getElementById("tempValue");
     let currentTemp = tempValue.textContent;
-    const landscapeElement = document.getElementById("landscape");
-    // let currentLandscape = landscape.textContent;
     if (currentTemp >= 80) {
         state.landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-        landscapeElement.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.landscape}`;
     } else if (currentTemp >= 70) {
         state.landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
-        landscapeElement.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.landscape}`;
     } else if (currentTemp >= 60) {
         state.landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
-        landscapeElement.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.landscape}`;
     } else {
         state.landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-        landscapeElement.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.landscape}`;
     }
 };
 
-
 const displayCityName = (event) => {
-    const cityInput = event.target.value; //text value
+    const cityInput = event.target.value; 
     state.cityNameOutput.textContent = cityInput;
 };
 
 const displayCurrentWeather = () => {
-    const weather = findLatAndLon();
-    // console.log(currentTemp)
-    // const convertedTemp = (currentTemp - 273.15);
-    // // const conv = (currentTemp - 273.15) * 9/5 + 32;
-    // tempValue.textContent = `${convertedTemp}`;
-    
+    findLatAndLon();
 }
 
 const findLatAndLon= (query) => {
@@ -134,17 +127,14 @@ const findWeather = (latitude, longitude) => {
     
     console.log('success in findWeather!', response.data.main.temp);
     state.tempDeg = Math.round((response.data.main.temp - 273.15) * 9/5 + 32);
-    const tempValue = document.getElementById("tempValue");
     tempValue.textContent = `${state.tempDeg}`
-
-        
+    changeColor();
+    changeLandscape();
     })
     .catch( (error) => {
         console.log('error in findWeather!');
     });
 }
-
-
 
 const onLoaded = () => {
     loadControls();
