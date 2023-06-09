@@ -14,27 +14,27 @@ const changeTempAndLandscape = () => {
     if (state.tempValue >= 80) {
         document.getElementById("tempValue").className = "red";
         const landscapeDisplay = document.getElementById("landscape");
-        landscapeDisplay.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+        landscapeDisplay.textContent = "🌵🐍🌶️🦂🌵🌶️🌵🐍🏜🌶️🦂";
     }
     else if (state.tempValue >= 70 && state.tempValue <= 79) {
         document.getElementById("tempValue").className = "orange";
         const landscapeDisplay = document.getElementById("landscape");
-        landscapeDisplay.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+        landscapeDisplay.textContent = "🌸🌿🌼🌷🌻🌿☘️🌱🌻🌷";
     }
     else if (state.tempValue >= 60 && state.tempValue <= 69) {
         document.getElementById("tempValue").className = "yellow";
         const landscapeDisplay = document.getElementById("landscape");
-        landscapeDisplay.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+        landscapeDisplay.textContent = "🌱🌿🌾🍃🛤🌾🌿🌱🌿🌾🍃";
     }
     else if (state.tempValue >= 50 && state.tempValue <= 59) {
         document.getElementById("tempValue").className = "green";
         const landscapeDisplay = document.getElementById("landscape");
-        landscapeDisplay.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        landscapeDisplay.textContent = "🌲🍁🍄🌲🍄🍂🌲🍁🌲🍂🍄🌲🍂🌲";
     }
     else if (state.tempValue >= 40 && state.tempValue <= 49) {
         document.getElementById("tempValue").className = "teal";
         const landscapeDisplay = document.getElementById("landscape");
-        landscapeDisplay.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        landscapeDisplay.textContent = "🌲❄️🌲⛄️🌲⛄️❄️🌲❄️🌲🌲⛄️🌲";
     }
 }
 

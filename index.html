@@ -16,16 +16,16 @@
         <section class="temperatureSection">
             <h2>Temperature</h2>
             <section class="temperatureControls">
-                <button id="increaseTempButton">⬆️</button>
+                <button id="increaseTempButton" class="btn">⬆</button>
                 <span id="tempValue" class="orange">75</span>
-                <button id="decreaseTempButton">⬇️</button>
+                <button id="decreaseTempButton" class="btn">⬇</button>
             </section>
-            <button id="currentTemp">Current Temperature</button>
+            <button id="currentTemp" class="btn">Current Temperature</button>
         </section>
         <section class ="picSection">
-            <h2>Picture</h2>
+            <h2>Landscape</h2>
             <p id="sky">☁️  ☀️ ☁️  ☀️ ☁️ ☀️ ☁️  ☀️ ☁️</p>
-            <p id="landscape">🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂</p>
+            <p id="landscape">🌸🌿🌼🌷🌻🌿☘️🌱🌻🌷</p>
         </section>
         <section id ="sky">
             <h2>Sky</h2>
@@ -39,9 +39,12 @@
         <section class="citySection">
             <h2>City Name</h2>
             <input id="cityName" type="text" value="Seattle">
-            <button id="cityChange" class="cityNameResetButton">Reset</button>
+            <button id="cityChange" class="cityNameResetButton btn">Reset</button>
         </section>
     </main>
+    <footer>
+        <p>&copy 2023 by Divya Naidoo and Ariel Higuera</p>
+    </footer>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
