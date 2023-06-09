@@ -1,12 +1,19 @@
-.inline {
-    display: inline
+.header {
+    color: white;
 }
 
-header {
-    display: flex;
-    background-color: rgb(69, 157, 212);
-    color: white;
-    flex-wrap: nowrap;
+.header span {
+    display: inline-block;
+}
+
+.header h1, .header h2, .header h3 {
+    display: inline;
+    margin: 0;
+    padding: 0 14px;
+}
+
+#cityname {
+    font-size: xx-large;
 }
 
 #tempsection {
