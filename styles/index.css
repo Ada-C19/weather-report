@@ -46,8 +46,6 @@ header {
     border-radius: 25px;
 } 
 
-
-
 #sky {
     grid-row-start: 3;
     grid-row-end: auto;
@@ -89,7 +87,7 @@ header {
 }
 
 footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
