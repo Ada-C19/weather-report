@@ -14,9 +14,9 @@ body {
     color: pink;
 }
 
-#temperature-id:hover {
+/* #temperature-id:hover {
     color: red
-}
+} */
 
 #sky-id:hover {
     color: skyblue
@@ -30,3 +30,23 @@ body {
     color: forestgreen
 }
 
+
+.teal {
+    color: teal;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}

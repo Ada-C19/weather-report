@@ -51,38 +51,79 @@ const decreaseTemperature = () => {
 
 // function to set ranges for temperature and change colors
 // of the temperature number & print emojis for landscape
+// const tempRange = () => {
+//     if (state.tempCount <= 49){
+//         const temp = document.getElementById("temperature-id")
+//         temp.className="teal";
+//         const landscape = document.getElementById("landscape")
+//         landscape.textContent = landscapeEmojis["5"];
+//     }
+//     else if (state.tempCount <= 59 && state.tempCount >= 50){
+//         const temp = document.getElementById("temperature-id")
+//         temp.className="green";
+//         const landscape = document.getElementById("landscape")
+//         landscape.textContent = landscapeEmojis["4"];
+//     }
+//     else if (state.tempCount <= 69 && state.tempCount >= 60){
+//         const temp = document.getElementById("temperature-id")
+//         temp.className="yellow";
+//         const landscape = document.getElementById("landscape")
+//         landscape.textContent = landscapeEmojis["3"];
+//     }
+//     else if (state.tempCount >=70 && state.tempCount <= 79){
+//         const temp = document.getElementById("temperature-id")
+//         temp.className="orange";
+//         const landscape = document.getElementById("landscape")
+//         landscape.textContent = landscapeEmojis["2"];
+//     }
+//     else if (state.tempCount >= 80){
+//         const temp = document.getElementById("temperature-id")
+//         temp.className ="red";
+//         const landscape = document.getElementById("landscape")
+//         landscape.textContent = landscapeEmojis["1"];
+//     }
+// }
+
+
+// Ariel's changes
+// declared const temp and const landscape outside of if checks 
+// reduces repetition, makes it more dry, improves readability 
+
+// class reassignment does not work
+// need a differnet value, need to switch className to classList, classList has an API to add, use, replace
+// classList has the ability to run functions on it
+// classList is JUST a string and we cannot do those things ^
+// check this out: https://stackoverflow.com/questions/69361432/difference-between-classname-and-classlist#:~:text=Using%20%22classList%22%2C%20you%20can,wipe%20out%20all%20of%20them).
 const tempRange = () => {
+
+    const temp = document.getElementById("tempValue")
+    const landscape = document.getElementById("landscape")
+
+    console.log( {temp} );
+
     if (state.tempCount <= 49){
-        const temp = document.getElementById("temperature-id")
+        
         temp.className="teal";
-        const landscape = document.getElementById("landscape")
         landscape.textContent = landscapeEmojis["5"];
     }
     else if (state.tempCount <= 59 && state.tempCount >= 50){
-        const temp = document.getElementById("temperature-id")
         temp.className="green";
-        const landscape = document.getElementById("landscape")
         landscape.textContent = landscapeEmojis["4"];
     }
     else if (state.tempCount <= 69 && state.tempCount >= 60){
-        const temp = document.getElementById("temperature-id")
         temp.className="yellow";
-        const landscape = document.getElementById("landscape")
         landscape.textContent = landscapeEmojis["3"];
     }
     else if (state.tempCount >=70 && state.tempCount <= 79){
-        const temp = document.getElementById("temperature-id")
         temp.className="orange";
-        const landscape = document.getElementById("landscape")
         landscape.textContent = landscapeEmojis["2"];
     }
     else if (state.tempCount >= 80){
-        const temp = document.getElementById("temperature-id")
         temp.className ="red";
-        const landscape = document.getElementById("landscape")
         landscape.textContent = landscapeEmojis["1"];
     }
 }
+
 
 // updates sky according to drop down menu selection
 const updateSky = () => {
