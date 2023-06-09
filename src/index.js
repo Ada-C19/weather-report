@@ -49,42 +49,6 @@ const decreaseTemperature = () => {
     // changeTemperature()
 };
 
-// function to set ranges for temperature and change colors
-// of the temperature number & print emojis for landscape
-// const tempRange = () => {
-//     if (state.tempCount <= 49){
-//         const temp = document.getElementById("temperature-id")
-//         temp.className="teal";
-//         const landscape = document.getElementById("landscape")
-//         landscape.textContent = landscapeEmojis["5"];
-//     }
-//     else if (state.tempCount <= 59 && state.tempCount >= 50){
-//         const temp = document.getElementById("temperature-id")
-//         temp.className="green";
-//         const landscape = document.getElementById("landscape")
-//         landscape.textContent = landscapeEmojis["4"];
-//     }
-//     else if (state.tempCount <= 69 && state.tempCount >= 60){
-//         const temp = document.getElementById("temperature-id")
-//         temp.className="yellow";
-//         const landscape = document.getElementById("landscape")
-//         landscape.textContent = landscapeEmojis["3"];
-//     }
-//     else if (state.tempCount >=70 && state.tempCount <= 79){
-//         const temp = document.getElementById("temperature-id")
-//         temp.className="orange";
-//         const landscape = document.getElementById("landscape")
-//         landscape.textContent = landscapeEmojis["2"];
-//     }
-//     else if (state.tempCount >= 80){
-//         const temp = document.getElementById("temperature-id")
-//         temp.className ="red";
-//         const landscape = document.getElementById("landscape")
-//         landscape.textContent = landscapeEmojis["1"];
-//     }
-// }
-
-
 // Ariel's changes
 // declared const temp and const landscape outside of if checks 
 // reduces repetition, makes it more dry, improves readability 
@@ -149,7 +113,7 @@ const updateSky = () => {
 // function to get reset city name
 const resetCityName = () => {
     const header = document.getElementById('headerCityName');
-    const citySearch = document.getElementById('cityNameInput')
+    const citySearch = document.getElementById('cityNameReset')
     state.city = "Seattle";
     header.textContent = state.city;
     citySearch.value = state.city;
