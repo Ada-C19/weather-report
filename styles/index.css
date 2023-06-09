@@ -43,6 +43,7 @@ header {
     background-color: aliceblue;
     background-color: aliceblue;
     text-align: center;
+    border-radius: 25px;
 } 
 
 
@@ -50,18 +51,21 @@ header {
     grid-area: 3/1/span 1/ span 1;
     background-color: aliceblue;
     text-align: center;
+    border-radius: 25px;
 }
 
 #cityName{
     grid-area: 4/1/span 1/span 1;
     background-color: aliceblue;
     text-align: center;
+    border-radius: 25px;
 }
 
 .weather_garden{
     grid-area: 3/2/span 1/span 2;
     background-color: aliceblue;
     text-align: center;
+    border-radius: 25px;
 }
 
 footer{
