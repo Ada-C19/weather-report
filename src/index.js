@@ -11,7 +11,6 @@ const state = {
 }
 
 // assign variable for landscape and sky image icons
-
 const landscapeEmojis = {
     "1" : "🌞🌵___🐍🦂__🌵🌞",
     "2" : "🌸🌿__🌷🌻🌷__🌿🌸",
@@ -85,6 +84,7 @@ const tempRange = () => {
     }
 }
 
+// updates sky according to drop down menu selection
 const updateSky = () => {
     const inputSky = document.getElementById('skySelect').value;
     const skyContainer = document.getElementById('sky');
@@ -105,8 +105,23 @@ const updateSky = () => {
     }
     skyContainer.textContent = sky;
 };
-// function to get city name
-// const inputElement = document.getElementById("cityNameInput")
+// function to get reset city name
+const resetCityName = () => {
+    const header = document.getElementById('headerCityName');
+    const citySearch = document.getElementById('cityNameInput')
+    state.city = "Seattle";
+    header.textContent = state.city;
+    citySearch.value = state.city;
+    getLocationandTemp();
+}
+
+//function to change header city name based on search input
+const updateCity = () => {
+    const inputName = document.getElementById("cityNameInput").value;
+    const header = document.getElementById("headerCityName");
+    state.city = inputName;
+    header.textContent = state.city;
+}
 
 // function for calling APIs
 // const searchLocation = () => {
@@ -162,9 +177,10 @@ upTempArrow.addEventListener("click", increaseTemperature);
 
 const skySelector = document.getElementById("skySelect");
 skySelector.addEventListener("change",updateSky);
-    // updateCityHeader();
-    // const updateCity = document.getElementById("cityNameInput");
-    // updateCity.addEventListener('input', updateCityHeader)
+
+updateCity();
+const updateCityName = document.getElementById("cityNameInput");
+updateCityName.addEventListener('input', updateCity)
 };
 
 // previously didn't exist, calls function here to register events
