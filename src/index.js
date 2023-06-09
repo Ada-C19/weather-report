@@ -16,45 +16,43 @@ const temperatureState = {
     degrees: 67
 }
 
-const getRealTimeTemp = () => {
+const apiCallLocation = () => {
     const endpointLocation = "http://127.0.0.1:5000/location"
     const endpointWeather = "http://127.0.0.1:5000/weather"
-    // const axios = require('axios')
+    let latitude, longitude;
 
-    const apiCallLocation = () => {
-        let latitude, longitude;
-        // console.log(txtOutput.innerHTML)
-        axios.get(endpointLocation, {
-            params: {
-                q: txtOutput.innerHTML,
-                format: 'json'
-            }
-        })
-            .then((response) => {
-                latitude = response.data[0].lat;
-                longitude = response.data[0].lon;
-                axios.get(endpointWeather, {
-                    params: {
-                        lat: latitude,
-                        lon: longitude
-                    }
-                })
-                    .then((response) => {
-                        const degreesKelvin = response.data.main.temp
-                        const degreesFahrenheit = Math.floor(((degreesKelvin - 273.15) * (9 / 5) + 32));
-                        temperatureState.degrees = degreesFahrenheit
-                        document.querySelector('#degrees').textContent = temperatureState.degrees;
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                    })
+    // console.log(txtOutput.innerHTML)
+    axios.get(endpointLocation, {
+        params: {
+            q: txtOutput.innerHTML,
+            format: 'json'
+        }
+    })
+        .then((response) => {
+            console.log(response)
+            latitude = response.data[0].lat;
+            longitude = response.data[0].lon;
+            axios.get(endpointWeather, {
+                params: {
+                    lat: latitude,
+                    lon: longitude
+                }
             })
-            .catch((error) => {
-                console.log(error)
-            });
-    }
-    apiCallLocation();
+                .then((response) => {
+                    const degreesKelvin = response.data.main.temp
+                    const degreesFahrenheit = Math.floor(((degreesKelvin - 273.15) * (9 / 5) + 32));
+                    temperatureState.degrees = degreesFahrenheit
+                    document.querySelector('#degrees').textContent = temperatureState.degrees;
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        })
+        .catch((error) => {
+            console.log(error)
+        });
 }
+
 
 const changeColorTemp = () => {
     const num = temperatureState.degrees
@@ -116,7 +114,7 @@ const registerEventHandlers = (event) => {
     buttonCity.addEventListener('click', displayCityText)
 
     const realTimeButton = document.querySelector('#realTimeTemp');
-    realTimeButton.addEventListener('click', getRealTimeTemp);
+    realTimeButton.addEventListener('click', apiCallLocation);
 
 
     const upButton = document.querySelector('#up');
