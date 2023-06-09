@@ -30,8 +30,17 @@ header {
 }
 
 #temp {
-    color: rgb(200, 91, 51);
+    color: yellow;
     font-size: xx-large;
+}
+
+#whole_garden {
+    display: flex;
+    background-color: rgb(170, 162, 162);
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 5rem;
+    width: 15rem
 }
 
 body {
