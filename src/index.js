@@ -1,9 +1,14 @@
 
 const state = {
     city: 'Seattle',
-    lat: 47.6038321,
-    long: -122.3300624,
+    // lat: 47.6038321,
+    // long: -122.3300624,
     temp: 72,
+    cityNameTypeBox: null,
+};
+
+const loadInput = () => {
+    state.cityNameTypeBox.document.getElementById('cityNameTypeBox');
 };
 
 const convertKtoF = (temp) => {
@@ -12,31 +17,33 @@ const convertKtoF = (temp) => {
 
 
 const findLatAndLong = () => {
-    //let lat, long;
+    let latitude, longitude;
+
     axios
         .get('http://127.0.0.1:5000/location', {
             params: {
-            q: state.city,
+            q: `${state.cityNameTypeBox}`,
             }
         })
         .then((response) => {
             console.log(response.data);
-            state.lat = response.data[0].lat;
-            state.long = response.data[0].lon;
-            getWeather();
+            latitude = response.data[0].lat;
+            longitude = response.data[0].lon;
+            getWeather(latitude, longitude);
         })
         .catch((error) => {
             console.log('Error finding the latitude and longitude:', error.response);
         });
+        console.log(latitude, longitude)
 };
 
 
-const getWeather = () => {
+const getWeather = (latitude, longitude) => {
     axios
         .get('http://127.0.0.1:5000/weather', {
             params: {
-            lat: state.lat,
-            lon: state.long,
+            lat:latitude,
+            lon: longitude,
             },
         })
         .then((response) => {
@@ -47,6 +54,7 @@ const getWeather = () => {
         .catch((error) => {
             console.log('Error getting the weather:', error);
         });
+        console.log(city.cityNameTypeBox)
 };
 
 const updateCityName = () => {
