@@ -19,7 +19,7 @@
     <div id="flex-container">
         <div id="sidebar">
             <section id="temperature">
-                <h2>Temperature</h2>
+                <h2>Temperature (°C)</h2>
                 <div id="alignment">
                     <div id="temperature-controls">
                         <button id="raise-temp">⬆️</button>
@@ -33,7 +33,7 @@
             </section>
             <section id="sky">
                 <h2>Sky</h2>
-                <label>Precipitation Menu</label>
+                <label for="sky-select">Precipitation Menu</label>
                 <select id="sky-select" onchange="updateSkyEmoji(this.value)">
                     <option value="sunny">Sunny</option>
                     <option value="cloudy">Cloudy</option>
