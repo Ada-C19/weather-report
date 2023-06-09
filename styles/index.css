@@ -48,6 +48,7 @@ content: "✨";
 .temperature__section,
 .sky__section,
 .city-name__section {
+text-align: center;
 border-radius: 8px;
 padding: 2rem;
 background-color: white;
@@ -57,24 +58,9 @@ background-color: white;
 grid-row: 2;
 }
 
-.temperature__section button {
-    background-color: #1b69f9;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 10px
-}
 
 .sky__section {
 grid-row: 3;
-}
-
-.city-name__section {
-grid-row: 4;
 }
 
 .garden__section {
@@ -92,8 +78,8 @@ justify-content: space-around;
 }
 
 #tempValue {
+text-align: center;
 font-size: 3rem;
-margin-left: 1.5rem;
 /* padding-right: 1rem; */
 /* margin-right: 1.5rem; */
 }
@@ -122,13 +108,38 @@ border-radius: 8px;
 font-size: 2em;
 }
 
+.city-name__section {
+    grid-row: 4;
+    text-align: center;
+}
+    
+
 .city-name__reset-btn {
 border: 0;
 background-color: #1655cc;
 color: white;
 border-radius: 8px;
+margin: 10px;
 padding: 1rem;
 font-family: "Rubik", sans-serif;
+width: 200px;
+}
+
+#currentTempButton {
+    background-color: #1b69f9;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px
+}
+
+#cityNameInput {
+    margin: 1rem;
+    border-radius: 4px;
 }
 
 .red {

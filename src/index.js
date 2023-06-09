@@ -102,6 +102,8 @@ const applyColorAndGarden = (element, temperature) => {
 // const applySky = (selector) => {}
 
 
+// wave 4 get realtime temp
+
 //WAVE 5 FUNCTION //////////////////////
 // const skyView = () => {
 //   const skySelector = document.getElementById('skySelect').value;
@@ -119,6 +121,7 @@ const resetCity = () => {
     const cityHeader = document.getElementById('headerCityName')
     cityContainer.value = '';
     cityHeader.textContent = '';
+    //what kind of method is this called? effects html elements differently
 };
 
 
@@ -148,3 +151,13 @@ const resetCity = () => {
   };
   document.addEventListener("DOMContentLoaded", registerEventHandlers);
   
+
+
+
+//extra functions
+
+//move realtime temp down into city name 
+//add current city name to realtime button connect to update city name
+//sky to change with real time 
+//change graphics on sky and garden 
+//temperature guage 
