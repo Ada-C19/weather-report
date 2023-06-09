@@ -70,9 +70,21 @@ const updateSky = () => {
     }
 
     skyContainer.textContent = topFloor;
-    const gardenLandscape = document.getElementById('gardenLandscape');
-    gardenLandscape.classList = `gardenLandscapeContent ${skyColor}`;
-  };
+
+
+    const bodyElement = document.body;
+    if (inputSky === 'Cloudy') {
+        bodyElement.style.backgroundImage = 'url(https://media0.giphy.com/media/l0HlQdk8kI9KIOjBe/giphy.gif?cid=ecf05e47tdvaqul8z4avun6incmh2v34qjuorye20130a0vy&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+    } else if (inputSky === 'Sunny') {
+        bodyElement.style.backgroundImage = 'url(https://media4.giphy.com/media/xT0Gqz4x4eLd5gDtaU/giphy.gif?cid=ecf05e475z9rbrmtvyoou4ffri87qsowg8c2y2quecifglu7&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+    } else if (inputSky === 'Rainy') {
+        bodyElement.style.backgroundImage = 'url(https://media3.giphy.com/media/vu6iWBm9OJGQE/giphy.gif?cid=ecf05e476e1lqf8yvjrh6fvhqa4fxhl3e6pft0xxag0f5x4o&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+    } else if (inputSky === 'Snowy') {
+        bodyElement.style.backgroundImage = 'url(https://media2.giphy.com/media/retvoxFEjdK40dNg0n/giphy.gif?cid=ecf05e47jelf40lmq0yqvc25xi6dzp569i0iosv8x61h5wm6&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+    } else {
+        bodyElement.style.backgroundImage = 'url(https://media4.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47yhcnmd9q0u17z1qmfr6oc94lexikkbc9ofcs6vyg&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+    }   
+};
 
 
 const changeCityName = () => {
@@ -102,6 +114,9 @@ const registerEventHandlers = (event) => {
     updateSky();
     const skySelection = document.getElementById('skySelection');
     skySelection.addEventListener('change', updateSky);
+
+    const dropdown = document.getElementById("skySelection");
+    dropdown.addEventListener("change", updateSky);
 
     changeCityName();
     const nameInput = document.getElementById('nameInput');
