@@ -46,7 +46,6 @@ const changeColorTemp = () => {
     const num = state.degrees
 
     if (num <= 49) {
-        document.getElementById('degrees').style.color = 'darkturquoise';
     } else if (num > 49 && num <= 59) {
         document.getElementById('degrees').style.color = 'green';
     } else if (num > 59 && num <= 69) {
@@ -68,10 +67,8 @@ const landscape = {
 function displayLandscape(degrees) {
     if (degrees <= 59) {
         currentLandscape.textContent = landscape.winter;
-        document.getElementById("whole-landscape").style.backgroundColor = "#66FFFF";
     } else if (degrees <= 69) {
         currentLandscape.textContent = landscape.autumn;
-        document.getElementById("whole-landscape").style.backgroundColor = "#A1ABB5";
     } else if (degrees <= 79) {
         currentLandscape.textContent = landscape.spring;
         document.getElementById("whole-landscape").style.backgroundColor = "#60ABF6";
@@ -117,6 +114,8 @@ const registerEventHandlers = (event) => {
     const realTimeButton = document.querySelector('#realTimeTemp');
     realTimeButton.addEventListener('click', apiCallLocation);
 
+    // Event handler for dropDown button
+    dropDownOutput.addEventListener('change', displaySky);
 
     const upButton = document.querySelector('#up');
     upButton.addEventListener('click', increaseTemp);
