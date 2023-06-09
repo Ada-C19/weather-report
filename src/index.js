@@ -71,24 +71,6 @@ const getSky = () => {
     }
 }
 
-
-// const skyButton = document.getElementById("sky-select");
-
-// skyButton.addEventListener("click", () => {
-//     if (skyDropdown.classList.contains('show')) {
-//         skyDropdown.classList.remove('show');
-//     } else {
-//         skyDropdown.classList.add('show');
-//     }
-// });
-
-// skyDropdown.addEventListener("click", (event) => {
-//     if (event.target.tagName === 'A') {
-//         sky = event.target.id;
-//         getSky();
-//         skyDropdown.classList.remove('show'); 
-//     }
-// });
 const cityInput = document.getElementById("city-input");
 const cityName = document.getElementById("city-name");
 
@@ -111,7 +93,47 @@ document.getElementById('sky-select').addEventListener('change', function() {
     getSky(); 
 });
 
+const button3 = document.getElementById("get_real_temp");
+button2.addEventListener("click", () => {
+    getLocation()
+});
 
+const axios = require("axios");
+const locationAPI = "http://127.0.0.1:5000/location";
+const weatherAPI = "http://127.0.0.1:5000/weather";
+
+const getLocation = (query) => {
+    let lat, lon; axios.get(locationAPI,
+        {
+            params: {
+                q: query
+            }
+        })
+        .then((response) => {
+            lat = response.data[0]["lat"]
+            lon = response.data[0]["lon"]
+            getWeather(lat, lon)
+        })
+        .catch((error) => {
+            console.log('cannot find city')
+        })
+}
+
+const getWeather = (lat, lon) => {
+    axios.get(weatherAPI, {
+        params: {
+            lat: lat,
+            lon: lon
+        }
+    })
+    .then ((response) => {
+        current_temp = response.data[current][temp]
+        getTemp()
+    })
+    . catch((error) => {
+        console.log('error finding weather')
+    })
+}
 
 
 
