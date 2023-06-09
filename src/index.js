@@ -38,12 +38,12 @@ lowerTemp.addEventListener("click", () => {
 //initial temp display
 updateTemperature();
 
-const skys = {
-    "27+":	"🌞☀️🌞☀️🌞☀️🌞☀️🌞☀️🌞☀️🌞☀️🌞",
-	"15": "🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️",
-	"6": "🌦️⛅️⛅️⛅️☔️☔️⛈️⛈️⛈️⛈️☔️☔️⛅️⛅️⛅️🌦️",
-    "5 or below": "🌨️🌨️🌨️🌨️🌨️❄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️🌨️"
-}
+// const skys = {
+//     "27+":	"🌞☀️🌞☀️🌞☀️🌞☀️🌞☀️🌞☀️🌞☀️🌞",
+// 	"15": "🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️☀️🌤️",
+// 	"6": "🌦️⛅️⛅️⛅️☔️☔️⛈️⛈️⛈️⛈️☔️☔️⛅️⛅️⛅️🌦️",
+//     "5 or below": "🌨️🌨️🌨️🌨️🌨️❄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️🌨️"
+// }
 
 const landscapes = {
     "27+":	"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
@@ -54,23 +54,23 @@ const landscapes = {
 
 const updateLandscape = () => {
     let landscape  = "";
-    let sky_i = "";
+    // let sky_i = "";
     if (temperature >= 27) {
         landscape = landscapes["27+"];
-        sky_i = skys["27+"];
+        // sky_i = skys["27+"];
     } else if (temperature >= 15) {
         landscape = landscapes["15"];
-        sky_i = skys["15"];
+        // sky_i = skys["15"];
     } else if (temperature >= 6) {
         landscape = landscapes["6"];
-        sky_i = skys["6"];
+        // sky_i = skys["6"];
     } else {
         landscape = landscapes["5 or below"];
-        sky_i = skys["5 or below"];
+        // sky_i = skys["5 or below"];
     } 
     
     document.getElementById("garden-emoji").textContent = landscape;
-    document.getElementById("sky-emoji").textContent = sky_i;
+    // document.getElementById("sky-emoji").textContent = sky_i;
 }
 updateLandscape()
 
@@ -176,6 +176,22 @@ tempButton.addEventListener("click", () => {
 
 
 
+// Sky options and corresponding emojis
+const skyOptions = {
+    sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
+};
+
+// Update sky emoji based on selected option
+const skySelect = document.getElementById("sky-select");
+const skyEmoji = document.getElementById("sky-emoji");
+
+skySelect.addEventListener("change", () => {
+    const selectedOption = skySelect.value;
+    skyEmoji.textContent = skyOptions[selectedOption];
+});
 
 
 // if (document.readyState !== "loading") {
