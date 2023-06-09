@@ -1,5 +1,7 @@
 
-const getLocation = (location) => {
+
+const getLocation = () => {
+    let location = document.getElementById("cityNameInput").value
     const url ='http://127.0.0.1:5000/location';
 
     return axios.get(url, {params:{q:location}})
@@ -7,7 +9,7 @@ const getLocation = (location) => {
 
     let latitude = response.data[0].lat;
     let longitude = response.data[0].lon
-    console.log("working")
+    console.log(longitude)
     console.log(latitude)
     return {latitude:latitude, longitude: longitude};
 
@@ -18,9 +20,49 @@ const getLocation = (location) => {
       });
     
  }
- getLocation("Seattle")
+
+// getLocation()
+const getWeather = (lat, lon) =>{
+    return axios
+    .get('http://127.0.0.1:5000/weather', {params:{lat:lat,lon:lon}})
+    .then((response)=>{
+       
+        let result = response.data['main']['temp'];
+        return result
+       
+    })
+    .catch((error)=>{
+        console.log(error);
+    }
+
+    )
+}
+
+const getLocationWeather = () =>{
+    let tempVal = document.getElementById("tempValue");
+    let tempbutton = document.getElementById("currentTempButton")
+    return getLocation()
+    .then( result =>{
+             getWeather(result.latitude, result.longitude)
+            .then(
+                (response)=>{
+                  
+                    let farenheit = Math.floor(((response) - 273.15) * 9/5 + 32 )
+                    console.log(farenheit);
+                    return farenheit
+
+                }
+            )
+          
+          
+            
+        }
+    )
+   
+}
 
 
+getLocationWeather()
 
 
 
