@@ -6,7 +6,7 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: lightblue;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto auto auto;
     grid-gap: 10px;
     background-image: url(../ada-project-docs/assets/stacked-waves-haikei.svg);
@@ -65,10 +65,8 @@ header {
 }
 
 .weather_garden {
-    grid-row-start: 2;
-    grid-row-end: 4;
+    grid-row: 2 / 5;
     grid-column-start: 2;
-    grid-row-end: auto;
     text-align: center;
     align-self: center;
 }
