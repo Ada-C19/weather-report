@@ -20,12 +20,23 @@
             </div>
             <button id="realtime-button-weather" alt="Get Realtime Temperature">Get Realtime Temperature</button>
         <h2>Weather Garden</h2>
-            <section id="landscape_display"></section>
+            <section id="landscape_display">
                 <div id="sky">🌞</div>
                 <div id="landscape">🌵 </div>
-        <section>
-            <label>🏙️ City Name: 🏙️</label>
-            <input type="text" id="city-name" size="20">
+            </section>
+            <section>
+                <label for="sky-select">Sky</label>
+                <select id="sky-select">
+                    <option value="">--Please choose an option--</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+            </section>
+            <section>
+                <label for="city-name">🏙️ City Name: 🏙️</label>
+                <input type="text" id="city-name" size="20">
         </section>
                 
     </main>
