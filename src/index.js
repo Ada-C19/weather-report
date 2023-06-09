@@ -1,3 +1,5 @@
+// require('dotenv').config();
+// console.log(process.env.LOCATION_IQ_TOKEN);
 
 const state = {
     city: 'Seattle',
@@ -10,15 +12,13 @@ const convertKtoF = (temp) => {
     return (temp - 273.15) * (9 / 5) + 32;
 };
 
-const temptemp = () => {
-    temp = state.temp;
-}
 
 const findLatAndLong = () => {
     //let lat, long;
     axios
-        .get('https://ada-weather-report-proxy-server.onrender.com/location', {
+        .get('https://eu1.locationiq.com/v1/search.php', {
             params: {
+            "key": process.env.LOCATION_IQ_TOKEN,
             q: state.city,
             },
         })
@@ -52,6 +52,18 @@ const getWeather = () => {
         });
 };
 
+const updateCityName = () => {
+    const inputName = document.getElementById('cityNameTypeBox').value;
+    const headerCityName = document.getElementById('city');
+    state.city = inputName;
+    headerCityName.textContent = state.city;
+};
+
+const resetCityName = () => {
+    const cityNameInput = document.getElementById('cityNameTypeBox');
+    cityNameInput.value = 'Seattle';
+    updateCityName();
+};
 
 const landscapeType = {
     summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
@@ -106,7 +118,7 @@ const registerEventHandlers = () => {
     formatTempAndGarden();
 
     const realTimeTemp = document.getElementById('real-time-temp');
-    realTimeTemp.addEventListener('click', temptemp);
+    realTimeTemp.addEventListener('click', findLatAndLong);
 
     const changeTempUp = document.getElementById("temp-button-up");
     changeTempUp.addEventListener("click", handleTempUp);
@@ -114,5 +126,12 @@ const registerEventHandlers = () => {
     const changeTempDown = document.getElementById("temp-button-down");
     changeTempDown.addEventListener("click", handleTempDown);
     console.log("handler initiated");
+
+    updateCityName();
+    const cityNameInput = document.getElementById('cityNameTypeBox');
+    cityNameInput.addEventListener('input', updateCityName);
+
+    const cityNameResetBtn = document.getElementById('cityNameReset');
+    cityNameResetBtn.addEventListener('click', resetCityName);
 };
     document.addEventListener("DOMContentLoaded", registerEventHandlers);
