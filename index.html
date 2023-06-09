@@ -10,7 +10,59 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <main>
+        <header>
+            <h1 class="weather-text">Weather Report</h1>
+            <h2 class="city">For the lovely city of ✨✨✨✨<span id ="city">Seattle</span></>
+        </header>
+<!-- temperature block -->
+        <section class="temperature">
+            <section>
+            <h2>Temperature</h2>
+            </section>
+            <section id="temperature">
+            <button id="up">Up</button>
+            <span id="tempnumber">72</span>
+            <button id="down">Down</button>
+            <button id="realtime">Get Realtime Temperature</button>
+            </section>
+        </section>
+<!--Sky Block  -->
+        <section class="sky-garden">
+            <section class="sky">
+            <h2>Sky</h2>
+            <select id ="skystatus">
+                <option id="cloudy" value=	"☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️">Cloudy</option>
+                <option id="sunny" value="☀️ ☀️ ☀️ ☀️ ☀️ ☀️">Sunny</option>
+                <option id="rainy" value="🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧">Rainy</option>
+                <option id="haily" value="🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨">Haily</option>
+            </select>
+        </section>
+
+        <!-- Weather Garden Block -->
+        <section class="garden">
+            <h1>Weather Garden</h1>
+            <section id="skyemoji">☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️</section>
+            <section id="groundemoji">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</section>
+        </section>
+    </section>
+
+        
+<!-- City Block -->
+        <section id="city" class="city_name">
+            <h2 class="h2-city">City Name</h2>
+            <input type="text" name="" id="searchbar" value="Seattle">
+            <button id="reset">Reset</button>
+        </section>
+
+    </main>
+    <section>
+    </section>
+
+
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
-</html>
+</html> 
+
+
