@@ -7,7 +7,7 @@ const state = {
 	landscapeContainer: null,
 	cityInput: null,
 	cityHeader: null,
-    currentTempButton: null,
+	currentTempButton: null,
 };
 
 const increaseTemp = (event) => {
@@ -54,38 +54,43 @@ const handleTextInput = () => {
 };
 
 const getCityLatAndLon = () => {
-    axios
-        .get(`http://localhost:5000/location?q=${state.cityInput.value}`)
-        .then((response) => {
-            console.log(response.data)
-            let lat = response.data[0]["lat"];
-            let lon = response.data[0]["lon"];
-            return {lat: `${lat}`, 
-                    lon: `${lon}`
-                    }
-        })
-        .catch(()=>{
-            console.log('error');
-        });
+	return axios
+		.get(`http://localhost:5000/location?q=${state.cityInput.value}`)
+		.then((response) => {
+			let lat = response.data[0]["lat"];
+			let lon = response.data[0]["lon"];
+			return [lat, lon];
+		})
+		.catch(() => {
+			console.log("error");
+		});
+};
+const convertKtoF = (k) => {
+	result = Math.floor((k - 273.15) * (9 / 5) + 32);
+	return result;
 };
 
 const getRealTemp = () => {
-    let coordinates = getCityLatAndLon()
-    axios
-        .get(`http://localhost:5000/weather?lon=${coordinates[lon]}lat=${coordiate[lat]}`)
-        .then((response) => {
-            console.log(response)
-        })
-        .catch(()=>{
-            console.log('error');
-        });
+	getCityLatAndLon().then(([lat, lon]) => {
+		return axios
+			.get(`http://localhost:5000/weather?lon=${lon}&lat=${lat}`)
+			.then((response) => {
+				temp =  response.data.main["temp"];
+				state.tempValueCount = convertKtoF(temp);
+				state.tempValue.textContent = state.tempValueCount;
+				console.log(state.tempValueCount)
+			})
+			.catch(() => {
+				console.log("error");
+			});
+	});
 };
 
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener("click", increaseTemp);
 	state.decreaseTempControl.addEventListener("click", decreaseTemp);
 	state.cityInput.addEventListener("beforeinput", handleTextInput);
-    state.currentTempButton.addEventListener("click", getCityLatAndLon);
+	state.currentTempButton.addEventListener("click", getRealTemp);
 };
 
 const loadControls = () => {
@@ -96,7 +101,7 @@ const loadControls = () => {
 	state.landscapeContainer = document.getElementById("landscape");
 	state.cityInput = document.getElementById("cityNameInput");
 	state.cityHeader = document.getElementById("headerCityName");
-    state.currentTempButton = document.getElementById("currentTempButton");
+	state.currentTempButton = document.getElementById("currentTempButton");
 };
 
 const onLoaded = () => {
