@@ -1,5 +1,3 @@
-// import 'regenerator-runtime/runtime';
-// import axios from 'axios';
 
 const state = {
     city: 'Seattle',
@@ -8,27 +6,67 @@ const state = {
     temp: 70,
 };
 
-const landscapes = { 
-    hot: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",  
-    warm: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷", 
-    cool: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃", 
-    cold: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+const convertKToF = (temp) => {
+    return (temp - 273.15) * (9 / 5) + 32;
+};
+
+const getWeather = () => {
+    axios
+        .get('http://127.0.0.1:5000/weather', {
+            params: {
+                lat: state.lat,
+                lon: state.long,
+            },
+        })
+        .then((response) => {
+            const weather = response.data;
+            state.temp = Math.round(convertKToF(weather.main.temp));
+            formatTempAndGarden();
+        })
+        .catch((error) => {
+            console.log('Could not retrieve the weather:')
+        });
+};
+
+const getCoordinates = async () => {
+    axios
+        .get('http://127.0.0.1:5000/location', {
+            params: {
+                q: state.city,
+            },
+        })
+        .then((response) => {
+            console.log(response.data);
+            state.lat = response.data[0].lat;
+            state.long = response.data[0].lon;
+            getWeather();
+        })
+        .catch((error) => {
+            console.log('Could not find latitute and longitude:', error.response);
+        });
 };
 
 const updateCityName = () => {
-    const inputName = document.getElementById("cityNameInput").value; 
-    const headerCityName = document.getElementById("headerCityName"); 
+    const inputName = document.getElementById("cityNameInput").value;
+    const headerCityName = document.getElementById("headerCityName");
     state.city = inputName;
     headerCityName.textContent = state.city;
 };
 
 const resetCityName = () => {
-    const cityNameInput = document.getElementById("cityNameInput"); 
+    const cityNameInput = document.getElementById("cityNameInput");
     cityNameInput.value = 'Seattle';
-    updateCityName(); 
+    updateCityName();
 };
 
+
 const formatTempAndGarden = () => {
+    const landscapes = {
+        hot: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
+        warm: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+        cool: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+        cold: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+    };
     let temp = state.temp;
     let color = 'green';
     let landscape = landscapes.warm;
@@ -94,8 +132,8 @@ const decreaseTemp = () => {
 const registerEventHandlers = () => {
     formatTempAndGarden();
 
-    // const currentTempBtn = document.querySelector('currentTempBtn');
-    // currentTempButton.addEventListener('click', findCoordinates);
+    const currentTempBtn = document.getElementById('currentTempBtn');
+    currentTempBtn.addEventListener('click', getCoordinates);
 
     const increaseTempBtn = document.getElementById('increaseTempBtn');
     increaseTempBtn.addEventListener('click', increaseTemp);
@@ -105,11 +143,11 @@ const registerEventHandlers = () => {
 
     updateCityName();
 
-    const cityNameInput = document.getElementById('cityNameInput'); 
+    const cityNameInput = document.getElementById('cityNameInput');
     cityNameInput.addEventListener('input', updateCityName);
 
     const cityNameResetBtn = document.getElementById('cityNameReset');
-    cityNameResetBtn.addEventListener('click', resetCityName); 
+    cityNameResetBtn.addEventListener('click', resetCityName);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
