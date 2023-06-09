@@ -76,9 +76,6 @@ const getCityCoord = () => {
                     console.log(tempInKel);
         })
         })
-
-    
-
 }
 
 
