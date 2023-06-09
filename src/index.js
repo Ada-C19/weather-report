@@ -1,9 +1,8 @@
-// const { default: axios } = require("axios");
-
 // TASK LIST:
 // AH: create helper function to convert into F
 // AH: call helper function and pass its output into state 
-// LP: change logic of both buttons so Reset button has a default city name (e.g., Seattle) (Wave 5)
+// LP: change logic of both buttons so Reset button has a 
+// default city name (e.g., Seattle) (Wave 5)
 // AH + LP: do the sky (Wave 6)
 
 const state = {
@@ -61,6 +60,7 @@ function City() {
   findLatitudeAndLongitude();
 }
 
+// make location call to proxy server
 const findLatitudeAndLongitude = (query) => {
   console.log("Hi, find latitude and longtitude")
   let latitude, longitude;
@@ -83,33 +83,36 @@ const findLatitudeAndLongitude = (query) => {
     }); 
   };    
 
-      // make the next API call here!
+// make weather call to proxy server
 const findTemperature = (query) => {
-    console.log("find inside temp")
-    console.log(state.latitude, state.longitude)
-    axios
-      .get("http://127.0.0.1:5000/weather", {
-        params: {
-          lat: state.latitude,
-          lon: state.longitude,
-          // units: "imperial",
-          // format: "json",
-      },
-      }).then((response) => {
-        console.log(response)
-        realTimeTemp = response["data"]["main"]["temp"];
-        console.log("success in find realTimeTemp", realTimeTemp);
-        state.temp = realTimeTemp;
-      }).catch((error) => {
-          console.log("error in find realTimeTemp");
-      });     
-    };    
-
+  console.log("find inside temp")
+  console.log(state.latitude, state.longitude)
+  axios
+    .get("http://127.0.0.1:5000/weather", {
+      params: {
+        lat: state.latitude,
+        lon: state.longitude,
+        // units: "imperial",
+        // format: "json",
+    },
+    }).then((response) => {
+      // console.log(response)
+      realTimeTemp = response["data"]["main"]["temp"];
+      // console.log("success in find realTimeTemp", realTimeTemp);
+      // call temp helper function and pass output to state
+      state.temp = realTimeTempF(realTimeTemp);
+    }).catch((error) => {
+        console.log("error in find realTimeTemp");
+    });     
+  };    
 
 
 console.log("Hello Houston")
 
-
+// helper function to convert K to F
+const realTimeTempF = function(realTimeTemp) {
+  (realTimeTemp - 273.15) * 9/5 + 32
+}
 
 
 const registerEventHandlers = () => {
