@@ -4,10 +4,6 @@
 
 const tempDisplay = document.getElementById("temp-display");
 let temperature = parseInt(tempDisplay.textContent);
-// previous version:
-// const tempDisplay = document.getElementById("temp-display");
-// const tempString = tempDisplay.textContent;
-// let temperature = parseInt(tempString);
 
 const updateTemperature = () => {
     tempDisplay.textContent  = temperature;
@@ -23,10 +19,6 @@ const updateTemperature = () => {
         tempDisplay.style.color = "teal"
     }
 };
-// this code isn't necessary anymore:  
-//initial temp display
-// updateTemperature();
-
 
 /***********************************************************
             Landscape variables and controls
@@ -48,31 +40,6 @@ const updateLandscape = () => {
     document.getElementById("garden-emoji").textContent = landscape;
 };
 
-// previous version:
-// const landscapes = {
-//     "27+":	"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
-// 	"15": "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-// 	"6": "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-//     "5 or below": "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-// }
-
-// const updateLandscape = () => {
-//     let landscape  = "";
-//     if (temperature >= 27) {
-//         landscape = landscapes["27+"];
-//     } else if (temperature >= 15) {
-//         landscape = landscapes["15"];
-//     } else if (temperature >= 6) {
-//         landscape = landscapes["6"];
-//     } else {
-//         landscape = landscapes["5 or below"];
-//     } 
-    
-//     document.getElementById("garden-emoji").textContent = landscape;
-// }
-// updateLandscape();
-
-
 /***********************************************************
             City variables and controls
 
@@ -87,23 +54,6 @@ const resetCity = () => {
     document.getElementById("city-input").value = "Seattle";
     updateCity("Seattle");
 };
-// Here's how we'd do it the other way:
-// const updatedCityName = () => {
-//     cityInput.addEventListener("input", (e) => {
-//         cityName.textContent = e.target.value;
-//     })
-// };
-// updatedCityName();
-
-// const resetButton = document.getElementById("reset-button")
-// resetButton.addEventListener("click", () => {
-//     const cityInput = document.getElementById("city-input");
-//     const defaultCityName = "Seattle"; 
-    
-//     cityInput.value = defaultCityName;
-//     updateCity(defaultCityName); 
-// });
-
 
 /***********************************************************
             Sky variables and controls
@@ -123,15 +73,6 @@ const updateSkyEmoji = (selectedOption) => {
     const skyEmoji = document.getElementById("sky-emoji");
     skyEmoji.textContent = skyOptions[selectedOption];
 };
-// Here's how we'd do it the other way:
-// const skySelect = document.getElementById("sky-select");
-// const skyEmoji = document.getElementById("sky-emoji");
-
-// skySelect.addEventListener("change", () => {
-//     const selectedOption = skySelect.value;
-//     skyEmoji.textContent = skyOptions[selectedOption];
-// });
-
 
 /***********************************************************
             All EventHandler Registrations
@@ -161,120 +102,41 @@ document.addEventListener("DOMContentLoaded", registerEventHandlers);
             Location and Weather API calls
 ***********************************************************/
 
-// Bella's version 1.0:
-// const getLocation = () => {
-//     const location = document.getElementById("city-input").value;
-//     axios
-//     .get("http://127.0.0.1:5000/location", { params: { q: location } })
-//     .then((result) => {
-//         axios
-//         .get("http://127.0.0.1:5000/weather", {
-//             params: {
-//             lat: result.data[0].lat,
-//             lon: result.data[0].lon,
-//             },
-//         })
-//         .then((result) => {
-//             document.getElementById("temp-display").textContent = Math.round(result.data.main.temp - 273.15);
-//         })
-//         .catch((error) => {
-//             console.error("Error retrieving weather:", error);
-//             // Handle error and provide user feedback
-//         });
-//     })
-//     .catch((error) => {
-//         console.error("Error retrieving location:", error);
-//         // Handle error and provide user feedback
-//     });
-// };
+const getLatAndLon = () => {
+    const location = document.getElementById("city-input").value;
+    axios
+    .get("http://127.0.0.1:5000/location", { params: {q: location} })
+    .then((result) => {
+    const lat = result.data[0].lat;
+    const lon = result.data[0].lon;
+    getWeather(lat, lon);
+    });
+};
 
-// const tempButton = document.getElementById("temp-button");
-// tempButton.addEventListener("click", () => {
-//     getLocation();
-// });
+const getWeather = (lat_query, lon_query) => {
+    axios
+    .get("http://127.0.0.1:5000/weather", { params: {lat: lat_query, lon: lon_query} })
+    .then((result) => {
+        const kelvin = result.data.main.temp;
+        if (convertButton.textContent === "°C") {
+            temperature = Math.round(kelvin - 273.15);
+        } else {
+            temperature = Math.round((kelvin - 273.15) * (9/5) + 32);
+        }
+        
+        updateTemperature();
+    })
+};
 
-// Bella's version 2.0:
-// const getLocationAndWeather = async () => {
-//     const location = document.getElementById("city-input").value;
-
-//     try {
-//     const locationResult = await axios.get("http://127.0.0.1:5000/location", { params: { q: location } });
-
-//     const weatherResult = await axios.get("http://127.0.0.1:5000/weather", {
-//         params: {
-//         lat: locationResult.data[0].lat,
-//         lon: locationResult.data[0].lon,
-//         },
-//     });
-
-//     const celsius = Math.round(weatherResult.data.main.temp - 273.15);
-
-//     document.getElementById("temp-display").textContent = celsius;
-//     } catch (error) {
-//     console.error("Error:", error);
-    
-//     }
-// };
-
-// const tempButton = document.getElementById("temp-button");
-// tempButton.addEventListener("click", () => {
-//     getLocationAndWeather();
-// });
-
-//Jasmine's version:
-// const getLatAndLon = () => {
-//     const location = document.getElementById("city-input").value;
-//     axios
-//     .get("http://127.0.0.1:5000/location", { params: {q: location} })
-//     .then((result) => {
-//     const lat = result.data[0].lat;
-//     const lon = result.data[0].lon;
-//     getWeather(lat, lon);
-//     });
-// };
-
-// const getWeather = (lat_query, lon_query) => {
-//     axios
-//     .get("http://127.0.0.1:5000/weather", { params: {lat: lat_query, lon: lon_query} })
-//     .then((result) => {
-//         const kelvin = result.data.main.temp;
-//         temperature = kelvinToCelsius(kelvin);
-//         updateTemperature();
-//     })
-// };
-
-// const tempButton = document.getElementById("temp-button");
-// tempButton.addEventListener("click", () => {
-//     getLatAndLon();
-// });
+const tempButton = document.getElementById("temp-button");
+tempButton.addEventListener("click", () => {
+    getLatAndLon();
+});
 
 /***********************************************************
-            Temperature Conversions (WIP)
+            Celsius to Fahrenheit Conversions
 ***********************************************************/
 
-const kelvinToCelsius = (kelvin) => {
-    return Math.round(kelvin - 273.15);
-};
-
-const kelvinToFahrenheit = (kelvin) => {
-    let fahrenheit = (kelvin - 273.15) * (9/5) + 32;
-    return Math.round(fahrenheit);
-};
-
-// const convertTemp = (value) => {
-//     var tempDisplay = document.getElementById("temp-display");
-//     var converter = document.getElementById("converter");
-
-//     if (converter.textContent === "°C") {
-//         temperature = Math.round((temperature * 9/5) + 32);
-//         tempDisplay.textContent = temperature;
-//         converter.textContent = "°F";
-//     } else {
-//         temperature = Math.round(fahrenheit - 32) * 5/9;
-//         tempDisplay.textContent = temperature;
-//         converter.textContent = "°C";
-//     }
-// }
 const convertButton = document.getElementById("converter");
 convertButton.addEventListener("click", () => {
     if (convertButton.textContent === "°C") {
@@ -284,5 +146,5 @@ convertButton.addEventListener("click", () => {
         convertButton.textContent = "°C";
         temperature = Math.round((temperature - 32) * 5/9);
     }
-    updateTemperature()
+    updateTemperature();
 });
