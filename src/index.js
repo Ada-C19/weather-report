@@ -1,5 +1,6 @@
-
 let currentLandscape = document.getElementById('seasonal-landscape');
+const skyLandscape = document.getElementById('sky-landscape');
+const dropDownOutput = document.getElementById("skies");
 
 // Default state
 const state = {
@@ -71,10 +72,34 @@ function displayLandscape(degrees) {
         currentLandscape.textContent = landscape.autumn;
     } else if (degrees <= 79) {
         currentLandscape.textContent = landscape.spring;
-        document.getElementById("whole-landscape").style.backgroundColor = "#60ABF6";
     } else {
         currentLandscape.textContent = landscape.summer;
-        document.getElementById("whole-landscape").style.backgroundColor = "#0E76DE";
+    }
+}
+
+const sky = {
+    sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+    rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+    snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+}
+
+const displaySky = () => {
+    
+    const selectedVal = dropDownOutput.value
+    
+    if (selectedVal in sky) {
+        skyLandscape.textContent = sky[selectedVal]
+    }
+
+    if (selectedVal === 'snowy') {
+        document.getElementById("whole-landscape").style.backgroundColor = "#366492";
+    } else if (selectedVal === 'cloudy') {
+        document.getElementById("whole-landscape").style.backgroundColor = "#A1ABB5";
+    } else if (selectedVal === 'rainy') {
+        document.getElementById("whole-landscape").style.backgroundColor = "#60ABF6";
+    } else {
+        document.getElementById("whole-landscape").style.backgroundColor = "#adeded";
     }
 }
 
