@@ -34,7 +34,7 @@
             <section id="sky">
                 <h2>Sky</h2>
                 <label>Precipitation Menu</label>
-                <select id="sky-select">
+                <select id="sky-select" onchange="updateSkyEmoji(this.value)">
                     <option value="sunny">Sunny</option>
                     <option value="cloudy">Cloudy</option>
                     <option value="rainy">Rainy</option>
@@ -44,7 +44,7 @@
             <section id="city">
                 <h2>City Name</h2>
                 <input type="text" value="Seattle" id="city-input" onkeyup="updateCity(this.value)">
-                <button>Reset</button>
+                <button id="reset-button" onclick="resetCity()">Reset</button>
             </section>
         </div>
         <section id="weather-garden">

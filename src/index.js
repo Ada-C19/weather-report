@@ -67,6 +67,19 @@ updateLandscape()
 const updateCity = (value) => {
     document.getElementById("header-city").textContent = value;
 }
+function resetCity() {
+    document.getElementById("city-input").value = "Seattle";
+    updateCity("Seattle");
+}
+//traditional way
+// const resetButton = document.getElementById("reset-button")
+// resetButton.addEventListener("click", () => {
+//     const cityInput = document.getElementById("city-input");
+//     const defaultCityName = "Seattle"; 
+    
+//     cityInput.value = defaultCityName;
+//     updateCity(defaultCityName); 
+// });
 // Here's a solution that uses addEventListener
 // const updatedCityName = () => {
 //     cityInput.addEventListener("input", (e) => {
@@ -161,9 +174,6 @@ tempButton.addEventListener("click", () => {
 // );
 
 
-
-
-
 // Sky options and corresponding emojis
 const skyOptions = {
     sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
@@ -171,15 +181,19 @@ const skyOptions = {
     rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
     snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
 };
-
-// Update sky emoji based on selected option
-const skySelect = document.getElementById("sky-select");
-const skyEmoji = document.getElementById("sky-emoji");
-
-skySelect.addEventListener("change", () => {
-    const selectedOption = skySelect.value;
+function updateSkyEmoji(selectedOption) {
+    const skyEmoji = document.getElementById("sky-emoji");
     skyEmoji.textContent = skyOptions[selectedOption];
-});
+}
+
+// // Update sky emoji based on selected option
+// const skySelect = document.getElementById("sky-select");
+// const skyEmoji = document.getElementById("sky-emoji");
+
+// skySelect.addEventListener("change", () => {
+//     const selectedOption = skySelect.value;
+//     skyEmoji.textContent = skyOptions[selectedOption];
+// });
 
 
 // if (document.readyState !== "loading") {
