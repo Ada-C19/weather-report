@@ -11,7 +11,9 @@ const state = {
     cityNameOutput : null,
     cityNameInput: null,
     currentWeatherButton : null,
-
+    resetButton : null,
+    skySelect : null,
+    sky : null,
 };
 
 const setDefaultValues = () => {
@@ -19,6 +21,7 @@ const setDefaultValues = () => {
     state.cityNameOutput.textContent = `${state.cityName}`;
     state.landscape.textContent = `${state.defaultLandscape}`;
     tempValue.style.color = state.defaultColor;
+    tempValue.textContent = 0;
 };
 
 const registerEventHandlers = () => {
@@ -26,6 +29,8 @@ const registerEventHandlers = () => {
     state.decreaseTempButton.addEventListener("click", decreaseTemp, changeColor, changeLandscape);
     state.currentWeatherButton.addEventListener("click", displayCurrentWeather);
     state.cityNameInput.addEventListener("input", displayCityName); 
+    state.resetButton.addEventListener("click", setDefaultValues);
+    state.skySelect.addEventListener("change", changeSky);
 };
 
 const loadControls = () => {
@@ -36,6 +41,9 @@ const loadControls = () => {
     state.currentWeatherButton = document.getElementById("currentTempButton");
     state.tempValue = document.getElementById("tempValue"); 
     state.landscape = document.getElementById("landscape");
+    state.resetButton = document.getElementById("cityNameReset");
+    state.skySelect = document.getElementById("skySelect");
+    state.sky = document.getElementById("sky");
 };
 
 const increaseTemp = () => {
@@ -88,6 +96,10 @@ const displayCityName = (event) => {
     const cityInput = event.target.value; 
     state.cityNameOutput.textContent = cityInput;
 };
+
+const changeSky = () => {
+    sky.textContent = `${skySelect.options[skySelect.selectedIndex].text}`;
+}
 
 const displayCurrentWeather = () => {
     findLatAndLon();
