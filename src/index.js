@@ -1,5 +1,63 @@
 // 👩🏻‍💻 Abby's section on 2023.6.7
 
+class Weather {
+  constructor(name, landscape, tempRange, textColor, bgColor) {
+    this.name = name;
+    this.landscampe = landscape;
+    this.tempRange = tempRange;
+    this.textColor = textColor;
+    this.bgColor = bgColor;
+  }
+
+  changeTempValueColor() {
+    document.getElementById("tempValue").style.color = `${this.textColor}`;
+  }
+}
+
+// weathers
+const hot = new Weather(
+  "Hot",
+  "☀️☀️☀️🌵🌞🌾🌞🌵💀🌞🌞☀️🌵☀️☀️🌵🌵☀️",
+  [80, 100000],
+  "red",
+  "red"
+);
+const sunny = new Weather(
+  "Sunny",
+  "☁️ ☁️ ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️",
+  [70, 79],
+  "yellow",
+  "rgb(221, 255, 255)"
+);
+const cloudy = new Weather(
+  "Cloudy",
+  "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+  [60, 69],
+  "gray",
+  "lightgrey"
+);
+const rainy = new Weather(
+  "Rainy",
+  "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧",
+  [50, 59],
+  "blue",
+  "lightblue"
+);
+const snowy = new Weather(
+  "Snowy",
+  "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
+  "lightblue",
+  "lightsteelblue"
+);
+const apocalyptic = new Weather(
+  "Apocalyptic",
+  "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🧟‍♀️🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️",
+  "black",
+  "rgb(11, 247, 46)"
+);
+
+// Weather.helloWorld();
+
 let temperature = document.getElementById("tempValue");
 
 const increaseTempButton = document.getElementById("increaseTempControl");
@@ -89,8 +147,10 @@ const getSkyEmoji = (option) => {
   switch (option) {
     case "":
     case "sunny":
+      document.getElementById("tempValue").style.color = "red";
       return "☁️ ☁️  ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️";
     case "cloudy":
+      document.getElementById("tempValue").style.color = "gray";
       return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
     case "rainy":
       return "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧";
