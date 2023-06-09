@@ -1,5 +1,3 @@
-// 👩🏻‍💻 Abby's section on 2023.6.8
-
 class Weather {
   constructor(name, sky, landscape, tempRange, textColor, bgColor) {
     this.name = name;
@@ -88,8 +86,6 @@ const apocalyptic = new Weather(
 
 const weathers = [apocalyptic, snowy, rainy, cloudy, sunny, hot];
 
-cloudy.changeWeather();
-
 let temperature = document.getElementById("tempValue");
 
 const increaseTempButton = document.getElementById("increaseTempControl");
@@ -125,10 +121,6 @@ decreaseTempButton.addEventListener("click", () => {
   tempNumber = decrementValue(tempNumber);
   temperature.textContent = `${tempNumber}° F`;
 });
-
-const selectWeather = (weather) => {};
-
-// 👩🏻‍💻 end of Abby's section on 2023.6.8
 
 const cityNameInput = document.getElementById("cityNameInput");
 const headerCityName = document.getElementById("headerCityName");
