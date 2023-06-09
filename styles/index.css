@@ -37,6 +37,26 @@ section div {
     padding-top: 10px;
 }
 
+.temp-buttons {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+#realTimeTemp {
+    border: none;
+    margin-top: 30px;
+}
+
+#realTimeButton {
+    padding: 30px;
+    background-color: blue;
+    color: white;
+    border-radius: 5%;
+}
+
 #output1 {
     font-size: xx-large;
 }
@@ -48,6 +68,7 @@ section div {
 .temperature {
     padding-top: 30px;
     border: none;
+    padding-left: 30px;
 }
 
 #degrees {
