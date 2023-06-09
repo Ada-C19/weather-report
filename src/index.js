@@ -158,5 +158,3 @@ document.addEventListener("DOMContentLoaded", registerEventHandlers);
 //HTML "change" for select option in wave 5
 //working in skySelect
 //state.skySelect.addEventListener("change", handleSkySelectOption)
-
-// this is a comment
