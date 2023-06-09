@@ -112,7 +112,11 @@ const registerEventHandlers = () => {
     decreaseButton.addEventListener("click", decreaseTemp);
 
     const changeCity = document.getElementById('city-input');
-    changeCity.addEventListener('input', changeCityInput);
+    changeCity.addEventListener("input", changeCityInput);
+    changeCity.addEventListener("propertychange", getCityLocation);
+
+    const changeTemp = document.getElementById('temp-button');
+    changeTemp.addEventListener("click", getWeather);
 };
 
 
