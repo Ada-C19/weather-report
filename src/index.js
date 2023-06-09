@@ -1,5 +1,6 @@
 const state = {
     degrees: 67,
+    degreesCelsius: 0,
     city: 'Seattle'
 }
 
@@ -26,7 +27,7 @@ const apiCallLocation = () => {
                 .then((response) => {
                     const degreesKelvin = response.data.main.temp
                     const degreesFahrenheit = Math.floor(((degreesKelvin - 273.15) * (9 / 5) + 32));
-                    state.degrees = degreesFahrenheit
+                    state.degrees = degreesFahrenheit;
                     document.querySelector('#degrees').textContent = state.degrees;
                 })
                 .catch((error) => {
@@ -115,6 +116,14 @@ const decreaseTemp = (event) => {
     displayLandscape(state.degrees);
 };
 
+const displayCelsius = (event) => {
+    const degrees = document.querySelector('#degrees');
+    const degreeCelsius = Math.floor((state.degrees - 32) * 5 / 9);
+    state.degreesCelsius = degreeCelsius;
+    degrees.textContent = state.degreesCelsius;
+
+}
+
 const displayNewCity = () => {
     const newCity = document.getElementById('cityNameInput').value;
     const defaultCity = document.getElementById('defaultCity')
@@ -143,6 +152,9 @@ const registerEventHandlers = (event) => {
     const downButton = document.querySelector('#down');
     downButton.addEventListener('click', decreaseTemp);
     downButton.addEventListener('click', changeColorTemp);
+
+    const convertButton = document.querySelector('#changeUnit');
+    convertButton.addEventListener('click', displayCelsius);
 
     const newCityInput = document.getElementById('cityNameInput');
     newCityInput.addEventListener('input', displayNewCity);
