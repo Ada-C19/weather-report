@@ -21,7 +21,7 @@ background-color: #1b69f9;
 margin:2rem
 } */
 
-body {
+/* body {
     background-image: url(https://media4.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47yhcnmd9q0u17z1qmfr6oc94lexikkbc9ofcs6vyg&ep=v1_gifs_search&rid=giphy.gif&ct=g);
     background-repeat: repeat;
 };
@@ -45,7 +45,7 @@ body.rainy {
 body.snowy {
     background-image: url(https://media2.giphy.com/media/retvoxFEjdK40dNg0n/giphy.gif?cid=ecf05e47jelf40lmq0yqvc25xi6dzp569i0iosv8x61h5wm6&ep=v1_gifs_search&rid=giphy.gif&ct=g);
     background-repeat: repeat;
-}
+} */
 
 
 /* .header__header {
