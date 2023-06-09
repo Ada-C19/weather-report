@@ -152,8 +152,8 @@ const registerEventHandlers = () => {
         updateTemperature();
         updateLandscape();
     });
-  };
-  
+};
+
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
 
@@ -260,3 +260,29 @@ const kelvinToFahrenheit = (kelvin) => {
     let fahrenheit = (kelvin - 273.15) * (9/5) + 32;
     return Math.round(fahrenheit);
 };
+
+// const convertTemp = (value) => {
+//     var tempDisplay = document.getElementById("temp-display");
+//     var converter = document.getElementById("converter");
+
+//     if (converter.textContent === "°C") {
+//         temperature = Math.round((temperature * 9/5) + 32);
+//         tempDisplay.textContent = temperature;
+//         converter.textContent = "°F";
+//     } else {
+//         temperature = Math.round(fahrenheit - 32) * 5/9;
+//         tempDisplay.textContent = temperature;
+//         converter.textContent = "°C";
+//     }
+// }
+const convertButton = document.getElementById("converter");
+convertButton.addEventListener("click", () => {
+    if (convertButton.textContent === "°C") {
+        convertButton.textContent = "°F";
+        temperature = Math.round((temperature * 9/5) + 32);
+    } else {
+        convertButton.textContent = "°C";
+        temperature = Math.round((temperature - 32) * 5/9);
+    }
+    updateTemperature()
+});
