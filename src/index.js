@@ -5,6 +5,26 @@ const increaseTemp = document.getElementById('increaseTempControl');
 const decreaseTemp = document.getElementById('decreaseTempControl');
 const tempValue = document.getElementById('tempValue');
 const landscape = document.getElementById('landscape');
+// --- Wave 5 ----
+
+
+const changeSky = () => {
+        const selectedSky = document.getElementById('skySelect').value;
+        const theSky = document.getElementById('sky');
+        let sky = '🌞😎🌞';
+        if (selectedSky === 'sunny') {
+            sky = '🌞😎🌞';
+        } else if (selectedSky === 'cloudy') {
+            sky = '🌥️🌥️🌥️';
+        } else if (selectedSky === 'rainy') {
+            sky = '🌧️🌧️🌧️';
+        } else if (selectedSky === 'snowy') {
+            sky = '🌨️🌨️';
+        }
+    theSky.textContent = sky;
+};
+
+
 // -- Event Handling---
 const incTempButton = () => {
     temp++;
@@ -20,6 +40,7 @@ const registerEvents = () => {
     decreaseTemp.addEventListener('click', decTempButton);
     increaseTemp.addEventListener('click', changeTemp);
     decreaseTemp.addEventListener('click', changeTemp);
+    skySelect.addEventListener('change', changeSky);
     
 };
 const onLoad = () => {
@@ -63,8 +84,6 @@ cityNameReset.addEventListener('click', () => {
     cityNameInput.value = headerCityName.textContent = ''; 
 }); 
 
-// --- Wave 5 ----
-const sky = document.getElementById('sky');
-const skySelect = document.getElementById('SkySelect');
+
 
 onLoad();
