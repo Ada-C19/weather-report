@@ -10,6 +10,44 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <header class="title_banner">
+        <h1>Weather Report</h1>
+    </header>
+    <section class="tag_line">
+        <h2>For the city of Seattle</h2>
+    </section>
+    <section class="city_box">
+        <p>City Name</p>
+        <input type="text" id="city_input" name = "name" placeholder="Search City Name..">
+        <button id="set_city">Search</button>
+        <button id="reset_city">Reset</button>
+    </section>
+    <section class="sky_box">
+        <label for="sky">Paint Your Sky!</label>
+        <select name="sky" id="sky">
+            <option id="sunny" value="sunny">Sunny</option>
+            <option id="rainy" value="rainy">Rainy</option>
+            <option id="cloudy" value="cloudy">Cloudy</option>
+            <option id="snowy" value="snowy">Snowy</option>
+        </select>
+    </section>
+    <section class="temp_box">
+        <section class="temp_content">
+            <p>Live Temperature</p>
+            <section class="temp_controls">
+                <button id="increase_button">⬆️</button>
+                <h3 id="live_temp"></h3>
+                <button id="decrease_button">⬇️</button>
+            </section>
+        </section>
+    </section>
+    <section class="garden_box">
+        <section class="garden_content">
+            <p>Weather Garden</p>
+            <p id="sky_line">🕶️☀️ ☁️ ☀️ ☀️ ☁️ ☀️🕶️</p>
+            <div id="garden_land">🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃</div>
+        </section>
+    </section>  
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
