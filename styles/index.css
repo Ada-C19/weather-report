@@ -1,0 +1,12 @@
+html body {
+    /* makes the features display across */
+    display: flex;
+    flex-direction: row;
+    /* margin above features by % of viewport */
+    margin-top: 5vh;
+
+    
+    background-color: rgb(48,48,48);
+    color: whitesmoke;
+    text-align: center;
+}
