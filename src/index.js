@@ -1,9 +1,10 @@
-// 👩🏻‍💻 Abby's section on 2023.6.7
+// 👩🏻‍💻 Abby's section on 2023.6.8
 
 class Weather {
-  constructor(name, landscape, tempRange, textColor, bgColor) {
+  constructor(name, sky, landscape, tempRange, textColor, bgColor) {
     this.name = name;
-    this.landscampe = landscape;
+    this.sky = sky;
+    this.landscape = landscape;
     this.tempRange = tempRange;
     this.textColor = textColor;
     this.bgColor = bgColor;
@@ -15,9 +16,11 @@ class Weather {
 }
 
 // weathers
+// these could maybe be separated into another file? along with the class definition
 const hot = new Weather(
   "Hot",
-  "☀️☀️☀️🌵🌞🌾🌞🌵💀🌞🌞☀️🌵☀️☀️🌵🌵☀️",
+  "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
+  "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
   [80, 100000],
   "red",
   "red"
@@ -25,6 +28,7 @@ const hot = new Weather(
 const sunny = new Weather(
   "Sunny",
   "☁️ ☁️ ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️",
+  "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
   [70, 79],
   "yellow",
   "rgb(221, 255, 255)"
@@ -39,6 +43,7 @@ const cloudy = new Weather(
 const rainy = new Weather(
   "Rainy",
   "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧",
+  "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
   [50, 59],
   "blue",
   "lightblue"
@@ -46,17 +51,38 @@ const rainy = new Weather(
 const snowy = new Weather(
   "Snowy",
   "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
+  "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+  [0, 49],
   "lightblue",
   "lightsteelblue"
 );
 const apocalyptic = new Weather(
   "Apocalyptic",
-  "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🧟‍♀️🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️",
+  "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🌅🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️",
+  "⛰️⛰️⛰️⛰️🛣️🛣️🛣️⛰️⛰️⛰️⛰️",
+  [-10000000, -1],
   "black",
   "rgb(11, 247, 46)"
 );
 
-// Weather.helloWorld();
+const weathers = [apocalyptic, snowy, rainy, cloudy, sunny, hot];
+
+const changeWeather = (weather) => {
+  // set the temp value color
+  document.getElementById("tempValue").style.color = `${weather.textColor}`;
+
+  // set the garden content background color
+  document.getElementById("gardenContent").style.backgroundColor =
+    weather.bgColor;
+
+  //set the sky content
+  document.getElementById("sky").textContent = weather.sky;
+
+  // set the landscape content
+  document.getElementById("landscape").textContent = weather.landscape;
+};
+
+changeWeather(snowy);
 
 let temperature = document.getElementById("tempValue");
 
@@ -94,7 +120,7 @@ decreaseTempButton.addEventListener("click", () => {
   temperature.textContent = `${tempNumber}° F`;
 });
 
-// 👩🏻‍💻 end of Abby's section on 2023.6.7
+// 👩🏻‍💻 end of Abby's section on 2023.6.8
 
 const cityNameInput = document.getElementById("cityNameInput");
 const headerCityName = document.getElementById("headerCityName");
