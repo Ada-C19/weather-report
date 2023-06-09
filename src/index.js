@@ -13,7 +13,27 @@ class Weather {
   changeTempValueColor() {
     document.getElementById("tempValue").style.color = `${this.textColor}`;
   }
+
+  changeBackgroundColor() {
+    document.getElementById("gardenContent").style.backgroundColor =
+      this.bgColor;
+  }
+
+  changeSky() {
+    document.getElementById("sky").textContent = this.sky;
+  }
+
+  changeLandscape() {
+    document.getElementById("landscape").textContent = this.landscape;
+  }
 }
+
+const changeWeather = (weather) => {
+  weather.changeTempValueColor();
+  weather.changeTempValueColor();
+  weather.changeSky();
+  weather.changeLandscape();
+};
 
 // weathers
 // these could maybe be separated into another file? along with the class definition
@@ -30,12 +50,13 @@ const sunny = new Weather(
   "☁️ ☁️ ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️",
   "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
   [70, 79],
-  "yellow",
+  "orange",
   "rgb(221, 255, 255)"
 );
 const cloudy = new Weather(
   "Cloudy",
   "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+  "🗻🗻🗻🗻🗻🗻🗻🗻🗻",
   [60, 69],
   "gray",
   "lightgrey"
@@ -67,22 +88,7 @@ const apocalyptic = new Weather(
 
 const weathers = [apocalyptic, snowy, rainy, cloudy, sunny, hot];
 
-const changeWeather = (weather) => {
-  // set the temp value color
-  document.getElementById("tempValue").style.color = `${weather.textColor}`;
-
-  // set the garden content background color
-  document.getElementById("gardenContent").style.backgroundColor =
-    weather.bgColor;
-
-  //set the sky content
-  document.getElementById("sky").textContent = weather.sky;
-
-  // set the landscape content
-  document.getElementById("landscape").textContent = weather.landscape;
-};
-
-changeWeather(snowy);
+cloudy.changeWeather();
 
 let temperature = document.getElementById("tempValue");
 
@@ -119,6 +125,8 @@ decreaseTempButton.addEventListener("click", () => {
   tempNumber = decrementValue(tempNumber);
   temperature.textContent = `${tempNumber}° F`;
 });
+
+const selectWeather = (weather) => {};
 
 // 👩🏻‍💻 end of Abby's section on 2023.6.8
 
@@ -192,6 +200,8 @@ const getSkyEmoji = (option) => {
 // Set the initial sky and garden content based on the default selected option
 const defaultOption = skySelect.value;
 updateSky(defaultOption);
+
+changeWeather(sunny);
 
 /* Optional:
 // add color change to the background if the temperature is at a certain level.
