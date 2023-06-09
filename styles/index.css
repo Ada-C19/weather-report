@@ -36,7 +36,7 @@ header {
 
 #whole_garden {
     display: flex;
-    background-color: rgb(170, 162, 162);
+    background-color: #699bab;
     flex-direction: column;
     justify-content: space-evenly;
     height: 5rem;
