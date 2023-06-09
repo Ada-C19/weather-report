@@ -3,14 +3,11 @@
 const state = {
     degrees: 62,
     cityName: "Seattle",
-    cityLat: 0,
-    cityLon: 0
 };
 
 // Wave 2
 const increaseTemp = (event) => {
     state.degrees += 1;
-    // const degreeCount = document.querySelector('#degrees');
     const degreeCount = document.getElementById('degrees');
     degreeCount.textContent = state.degrees;
     tempColorLandscape();
@@ -18,13 +15,10 @@ const increaseTemp = (event) => {
 
 const decreaseTemp = (event) => {
     state.degrees -= 1;
-    // const degreeCount = document.querySelector('#degrees');
     const degreeCount = document.getElementById('degrees');
     degreeCount.textContent = state.degrees;
     tempColorLandscape();
 };
-
-
 
 const tempColorLandscape = () => {
     let temp = state.degrees;
@@ -57,30 +51,30 @@ const tempColorLandscape = () => {
 
 // Wave 3
 const changecityName = (event) => {
-    let cityNameHTML = document.getElementById("name").value;
-    state.cityName = cityNameHTML;
+    state.cityName = document.getElementById("name").value;
     const city = document.getElementById("city");
     city.textContent = state.cityName;
 }
 
 // Wave 4
-const getLocation = () => {
-    axios.get('http://127.0.0.1:5000/location', { params: {q: state.cityName, format: 'json'}})
+const getWeather = async () => {
+    let cityLat = 0
+    let cityLon = 0
+    await axios.get('http://127.0.0.1:5000/location', { params: {q: state.cityName, format: 'json'}})
         .then((result)=> {
-            state.cityLat = result.data[0]['lat'];
-            state.cityLon = result.data[0]['lon'];
+            cityLat = result.data[0]['lat'];
+            cityLon = result.data[0]['lon'];
         })
-}
-
-const getWeather = () => {
-    getLocation(state.cityName)
-    axios.get('http://127.0.0.1:5000/weather', { params: {lat: state.cityLat, lon: state.cityLon, format: 'json', units: 'imperial'}})
-        .then((result) => {
-            state.degrees = result.data["main"]["temp"];
-            const degreeCount = document.getElementById('degrees');
-            degreeCount.textContent = state.degrees;
-            console.log("OK");
-        })
+    const getTemp = async () => {
+        await axios.get('http://127.0.0.1:5000/weather', { params: {lat: cityLat, lon: cityLon, format: 'json'}})
+            .then((result) => {
+                const temp = ((result.data["main"]["temp"])-273) * 1.8 + 32;
+                state.degrees = Math.round(temp);
+                const degreeCount = document.getElementById('degrees');
+                degreeCount.textContent = state.degrees;
+            })
+    }
+    getTemp();
 }
 
 // Wave 5
@@ -90,41 +84,54 @@ const changeLandscape = (event) => {
     const backgroundColor = document.getElementById('weather-box');
     if (weatherState === "Sunny") {
         skyEmojis.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
-        backgroundColor.style.backgroundColor = 'red';
+        backgroundColor.style.backgroundColor = 'DeepSkyBlue';
     }
     else if (weatherState === "Cloudy") {
         skyEmojis.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
-        backgroundColor.style.backgroundColor = 'green';
+        backgroundColor.style.backgroundColor = 'LightGray';
     }
     else if (weatherState === "Rainy") {
         skyEmojis.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
-        backgroundColor.style.backgroundColor = 'blue';
+        backgroundColor.style.backgroundColor = 'DarkGray';
     }
-    else if (weatherState === "Sunny") {
+    else if (weatherState === "Snowy") {
         skyEmojis.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
-        backgroundColor.style.backgroundColor = 'purple';
+        backgroundColor.style.backgroundColor = 'AliceBlue';
     }
 }
 
+//Wave 6
+const resetCity = () => {
+    state.cityName = "Seattle"
+    const city = document.getElementById("city");
+    city.textContent = state.cityName;
+    document.getElementById("name").value = "";
+}
 
 
 const registerEventHandlers = (event) => {
-    tempColorLandscape();
-
+    // Wave 2
     const upButton = document.getElementById('up');
     upButton.addEventListener("click", increaseTemp);
 
     const downButton = document.getElementById('down');
     downButton.addEventListener("click", decreaseTemp);
 
-    const resetButton = document.getElementById('reset');
-    resetButton.addEventListener("click", changecityName);
+    // Wave 3
+    const changeCity = document.getElementById('name');
+    changeCity.addEventListener("input", changecityName);
 
+    // Wave 4
     const realTimeButton = document.getElementById('realTimeButton');
     realTimeButton.addEventListener("click", getWeather);
 
+    // Wave 5
     const weatherSelect = document.getElementById('skySelect');
     weatherSelect.addEventListener("change", changeLandscape);
+
+    // Wave 6
+    const resetButton = document.getElementById('reset');
+    resetButton.addEventListener("click", resetCity)
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
