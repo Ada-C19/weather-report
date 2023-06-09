@@ -1,8 +1,3 @@
-let currentLandscape = document.getElementById('seasonal-landscape');
-const skyLandscape = document.getElementById('sky-landscape');
-const dropDownOutput = document.getElementById("skies");
-
-// Default state
 const state = {
     degrees: 67,
     city: 'Seattle'
@@ -66,6 +61,7 @@ const landscape = {
 }
 
 function displayLandscape(degrees) {
+    let currentLandscape = document.getElementById('seasonal-landscape');
     if (degrees <= 59) {
         currentLandscape.textContent = landscape.winter;
     } else if (degrees <= 69) {
@@ -84,11 +80,13 @@ const sky = {
     snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 }
 
-const displaySky = () => {
+const dropDownOutput = document.getElementById("skies");
 
-    const selectedVal = dropDownOutput.value
+const displaySky = () => {
+    const selectedVal = dropDownOutput.value;
 
     if (selectedVal in sky) {
+        const skyLandscape = document.getElementById('sky-landscape');
         skyLandscape.textContent = sky[selectedVal]
     }
 
@@ -132,8 +130,6 @@ const resetCity = () => {
 
 // Function for all Event Handlers
 const registerEventHandlers = (event) => {
-    // Display city text from input box
-
     const realTimeButton = document.querySelector('#realTimeTemp');
     realTimeButton.addEventListener('click', apiCallLocation);
 
