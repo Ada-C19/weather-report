@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <header>
+    <header class="sub_header">
         <span>
             <h1>Weather Report</h1>
             <h2>For the city of
@@ -19,7 +19,7 @@
         </span>
     </header>
 
-    <section>
+    <section class="temperature_section">
         <h2>Temperature</h2>
         <div id="tempsection">
             <div id="changeTemp">
@@ -31,9 +31,17 @@
         </div>
     </section>
 
-    <section>
+    <section class="garden_section">
+        <h2>Garden</h2>
+        <div id="whole_garden">
+            <div id="sky">☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️</div>
+            <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+        </div>
+    </section>
+
+    <section class="sky_section">
         <h2>Sky</h2>
-        <select>
+        <select id="changeSky">
             <option value="Sunny">Sunny</option>
             <option value="Cloudy">Cloudy</option>
             <option value="Rainy">Rainy</option>
@@ -41,7 +49,7 @@
         </select>
     </section>
 
-    <section>
+    <section class="city_section">
         <h2>City Name</h2>
         <label>Please enter a city name:</label>
         <input id="citynameinput" type="text">
