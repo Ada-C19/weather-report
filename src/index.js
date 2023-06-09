@@ -3,7 +3,11 @@
 const state = {
     city: 'Seattle',
     temp: 75,
+    latitude: 0,
+    longitude: 0,
 };
+
+
 
 const tempChange = () => {
     let temp = state.temp;
