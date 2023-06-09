@@ -1,5 +1,3 @@
-// require('dotenv').config();
-// console.log(process.env.LOCATION_IQ_TOKEN);
 
 const state = {
     city: 'Seattle',
@@ -16,9 +14,8 @@ const convertKtoF = (temp) => {
 const findLatAndLong = () => {
     //let lat, long;
     axios
-        .get('https://eu1.locationiq.com/v1/search.php', {
+        .get('', {
             params: {
-            "key": process.env.LOCATION_IQ_TOKEN,
             q: state.city,
             },
         })
