@@ -118,3 +118,19 @@ currentTempButton.addEventListener("click", () => {
     let tempValue = document.getElementById("tempValue");
     tempValue = state.tempValue;
 })
+
+
+const skySelector = document.getElementById("skySection");
+skySelector.addEventListener("change", () => {
+    const skyImage = document.getElementById("sky");
+    const skyChoice = skySelector.value;
+    if (skyChoice === "Sunny") {
+        skyImage.textContent = "☁️  ☀️ ☁️  ☀️ ☁️ ☀️ ☁️  ☀️ ☁️";
+    } else if (skyChoice === "Cloudy") {
+        skyImage.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+    } else if (skyChoice === "Rainy") {
+        skyImage.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+    } else if (skyChoice === "Snowy") {
+        skyImage.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+    }
+})
