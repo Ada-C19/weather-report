@@ -50,6 +50,7 @@ const getWeather = () => {
         .catch((error) => {
             console.log('Error getting the weather:', error);
         });
+        console.log('IS THIS WORKING??')
 };
 
 const updateCityName = () => {
