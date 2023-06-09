@@ -36,7 +36,6 @@ const getCoordinates = async () => {
             },
         })
         .then((response) => {
-            console.log(response.data);
             state.lat = response.data[0].lat;
             state.long = response.data[0].lon;
             getWeather();
@@ -59,6 +58,36 @@ const resetCityName = () => {
     updateCityName();
 };
 
+const formatSky = () => {
+    const skies = {
+        sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+        cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+        rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+        snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+    };
+    const inputSky = document.getElementById('skySelect').value;
+    const skyBox = document.getElementById('sky');
+    let sky = '';
+    let skyColor = '';
+
+    if (inputSky === 'Sunny') {
+        sky = skies.sunny;
+        skyColor = 'sunny';
+    } else if (inputSky === 'Cloudy') {
+        sky = skies.cloudy;
+        skyColor = 'cloudy';
+    } else if (inputSky === 'Rainy') {
+        sky = skies.rainy;
+        skyColor = 'rainy';
+    } else if (inputSky === 'Snowy') {
+        sky = skies.snowy;
+        skyColor = 'snowy';
+    }
+
+    skyBox.textContent = sky;
+    const gardenContent = document.getElementById('gardenContent');
+    gardenContent.classList = `garden__content ${skyColor}`;
+}
 
 const formatTempAndGarden = () => {
     const landscapes = {
@@ -131,7 +160,6 @@ const decreaseTemp = () => {
 
 const registerEventHandlers = () => {
     formatTempAndGarden();
-
     const currentTempBtn = document.getElementById('currentTempBtn');
     currentTempBtn.addEventListener('click', getCoordinates);
 
@@ -142,12 +170,16 @@ const registerEventHandlers = () => {
     decreaseTempBtn.addEventListener('click', decreaseTemp);
 
     updateCityName();
-
     const cityNameInput = document.getElementById('cityNameInput');
     cityNameInput.addEventListener('input', updateCityName);
 
     const cityNameResetBtn = document.getElementById('cityNameReset');
     cityNameResetBtn.addEventListener('click', resetCityName);
+    cityNameResetBtn.addEventListener('click', getCoordinates);
+
+    formatSky();
+    const skySelect = document.getElementById('skySelect');
+    skySelect.addEventListener('change', formatSky);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
