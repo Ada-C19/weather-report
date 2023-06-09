@@ -48,29 +48,30 @@ const getLandscape = () => {
     }
 }
 
-const skyDropdown = document.getElementById("sky_dropdown");
+// const skyDropdown = document.getElementById("sky_dropdown");
 
 // add click event listeners for each sky option
-skyDropdown.addEventListener("click", (event) => {
-    if (event.target.tagName === 'A') {
-        sky = event.target.id;
-        getSky();
-    }
-});
+// skyDropdown.addEventListener("click", (event) => {
+//     if (event.target.tagName === 'A') {
+//         sky = event.target.id;
+//         getSky();
+//     }
+// });
 
 const getSky = () => {
     const skyElement = document.getElementById('sky');
+    const skyChoice = document.getElementById('sky-select')
     switch (sky) {
-        case 'sunny':
+        case skyChoice === 'sunny':
             skyElement.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
             break;
-        case 'cloudy':
+        case skyChoice === 'cloudy':
             skyElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
             break;
-        case 'rainy':
+        case skyChoice === 'rainy':
             skyElement.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
             break;
-        case 'snowy':
+        case skyChoice === 'snowy':
             skyElement.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
             break;
         default:
@@ -79,23 +80,23 @@ const getSky = () => {
     }
 }
 
-const skyButton = document.getElementById("sky_button");
+// const skyButton = document.getElementById("sky-select");
 
-skyButton.addEventListener("click", () => {
-    if (skyDropdown.classList.contains('show')) {
-        skyDropdown.classList.remove('show');
-    } else {
-        skyDropdown.classList.add('show');
-    }
-});
+// skyButton.addEventListener("click", () => {
+//     if (skyDropdown.classList.contains('show')) {
+//         skyDropdown.classList.remove('show');
+//     } else {
+//         skyDropdown.classList.add('show');
+//     }
+// });
 
-skyDropdown.addEventListener("click", (event) => {
-    if (event.target.tagName === 'A') {
-        sky = event.target.id;
-        getSky();
-        skyDropdown.classList.remove('show'); 
-    }
-});
+// skyDropdown.addEventListener("click", (event) => {
+//     if (event.target.tagName === 'A') {
+//         sky = event.target.id;
+//         getSky();
+//         skyDropdown.classList.remove('show'); 
+//     }
+// });
 const cityInput = document.getElementById("city-input");
 const cityName = document.getElementById("city-name");
 

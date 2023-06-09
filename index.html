@@ -23,19 +23,28 @@
         <div>
             <section class="Container2">
                 <h3>Sky</h3>
-                <button class="sky_button" id="sky_button">Sky</button>
+                <label for="sky-select">Choose Sky Type</label>
+                <select name="sky" id="sky-select">
+                    <option value="">Choose a Sky Option</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+                <!-- <button class="sky_button" id="sky_button">Sky</button>
                 <div class="sky_dropdown" id="sky_dropdown">
                     <a id="sunny">Sunny</a>
                     <a id="cloudy">Cloudy</a>
                     <a id="rainy">Rainy</a>
                     <a id="snowy">Snowy</a>
-                </div>
+                </div> -->
             </section>
         </div>
 
         <div>
             <section class="Container3">
-            <h3 id="city-name">City Name</h3>
+            <h3>Welcome to: </h3>
+            <h3 id="city-name"></h3>
 						<input type="text" id="city-input" placeholder="Enter a city">
             </section>
         </div>
