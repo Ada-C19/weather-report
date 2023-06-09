@@ -18,8 +18,8 @@ const getCityName = (event) => {
 }
 
 const increaseTemp = (event) => {
-    state.temperature += 1;
-    const tempCount = document.querySelector("#temp-count");
+    state.temperature ++;
+    const tempCount = document.getElementById("temp-count");
     tempCount.textContent = `${state.temperature}`;  
 };
 
