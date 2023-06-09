@@ -61,28 +61,29 @@ const tempConverter = (kelvin) => {
     return (kelvin - 273.15) * 1.8 + 32;
 
 }
+const getWeatherInfo = (lat, lon) => {
+    const weatherRoute = API + weatherURL;
+    axios
+        .get(weatherRoute, { params: { lat : `${lat}`, lon : `${lon}`, format: "json", units: "imperial"} })
+        .then((result) => {
+            tempInKel = result.data["main"]["temp"];
+            let resultFahr = Math.round(tempConverter(tempInKel));
+            let cityTemp = document.getElementById("live_temp");
+            cityTemp.innerHTML = resultFahr;
+            state.liveTemp = resultFahr;
+            changeTempAndLand();
+        })
+};
 const getCityLiveWeather = () => {
     const cityName = document.getElementById("city_input").value;
     const locationRoute = API + locationURL;
-    const weatherRoute = API + weatherURL;
     let tempInKel = 0;
     axios
         .get(locationRoute, { params: { q : `${cityName}`, format: "json"} })
         .then((result) => {
             let coorLat = result.data[0]["lat"];
             let coorLon = result.data[0]["lon"];
-            axios
-                .get(weatherRoute, { params: { lat : `${coorLat}`, lon : `${coorLon}`, format: "json", units: "imperial"} })
-                .then((result) => {
-                    tempInKel = result.data["main"]["temp"];
-                    let resultFahr = Math.round(tempConverter(tempInKel));
-                    let cityTemp = document.getElementById("live_temp");
-                    cityTemp.innerHTML = resultFahr;
-                    state.liveTemp = resultFahr;
-                    changeTempAndLand();
-
-                    
-        })
+            getWeatherInfo(coorLat, coorLon);
         })
 }
 
@@ -92,16 +93,8 @@ const resetCity = () => {
 
     let cityInput = document.getElementById("city_input");
     cityInput.value = state.city;
-    //getCityLiveWeather();
-    state.liveTemp = 68;
-    changeTempAndLand();
-    //REFACTOR to have API calls in deparate functions. Call that function with Seattle coords. 
-
-
+    getWeatherInfo(state.lat, state.lon); 
 }
-// const clearSearchBar = () => {
-
-// }
 
 const registerEventHandlers = () => {
     const tempIncButton = document.querySelector("#increase_button");
