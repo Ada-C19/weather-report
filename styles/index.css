@@ -2,13 +2,21 @@ html {
     height: 100%
 }
 
+body {
+    display: block;
+    padding: 10px 30px
+}
+
 .grad {
     background-image: linear-gradient(skyblue, white);
     background-repeat: no-repeat;
 }
 
 header {
+    position: relative;
     text-align: center;
+    width: 100%;
+    padding-bottom: 40px;
 }
 
 #Temperature {
