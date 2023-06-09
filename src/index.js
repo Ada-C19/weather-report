@@ -17,13 +17,12 @@ const landscapes = {
   hotLandscape: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
 };
 
-//wave 5
 const skyOptions = {
   sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
   cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
   rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
-  snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
-}
+  snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
+};
 
 const landscapeUpdate = () => {
   let newLandscape;
@@ -43,18 +42,18 @@ const landscapeUpdate = () => {
 //--- wave 5
 const skyOptionsUpdate = () => {
   let skyValue = state.skyOptions.value;
-  if (skyValue === '2') {
+  if (skyValue === "2") {
     state.skyField.textContent = skyOptions.sunny;
-  } else if (skyValue === '3') {
+  } else if (skyValue === "3") {
     state.skyField.textContent = skyOptions.cloudy;
-  } else if (skyValue === '4') {
+  } else if (skyValue === "4") {
     state.skyField.textContent = skyOptions.rainy;
-  } else if (skyValue === '5') {
+  } else if (skyValue === "5") {
     state.skyField.textContent = skyOptions.snowy;
   } else {
     state.skyField.textContent = "";
   }
-}
+};
 
 const state = {
   cityTextField: null,
@@ -62,7 +61,6 @@ const state = {
   cityResetButton: null,
   landscapeField: null,
   skyField: null,
-  //
   skyOptions: null,
   currTempButton: null,
   temperatureValue: null,
@@ -134,15 +132,14 @@ const getTempFromLocation = () => {
 const allGraphicsUpdate = () => {
   tempColorUpdate();
   landscapeUpdate();
+  skyOptionsUpdate();
 };
 
 const loadData = () => {
-  //Assign selected HTML elements to attributes of state
   state.cityTextField = document.querySelector("#cityNameInput");
   state.headerCity = document.querySelector("#headerCityName");
   state.cityResetButton = document.querySelector("#cityNameReset");
   state.landscapeField = document.querySelector("#landscape");
-  //wave 5
   state.skyField = document.querySelector("#sky");
   state.skyOptions = document.querySelector("#skySelect");
   state.currTempButton = document.querySelector("#currentTempButton");
@@ -156,7 +153,6 @@ const loadData = () => {
 };
 
 const registerEventHandlers = (event) => {
-  //All event handlers will be defined here
   loadData();
   allGraphicsUpdate();
   state.cityTextField.addEventListener("input", cityUpdate);
