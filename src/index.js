@@ -11,7 +11,7 @@ const checkTemp = function(tempValue) {
         tempValue.className = "green";
         landscapeEmoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     } else if (temp >= 60 && temp <= 69) {
-        tempValue.className = "yellow";
+        tempValue.className = "purple";
         landscapeEmoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
     } else if (temp >= 70 && temp <= 79) {
         tempValue.className = "orange";
