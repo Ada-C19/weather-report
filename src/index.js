@@ -1,19 +1,10 @@
-const txtBox = document.getElementById('city-name');
-const buttonCity = document.getElementById('buttonCity');
-const txtOutput = document.getElementById('output1');
-let currentLandscape = document.getElementById('seasonal-landscape');
-// Function that takes the value of Input box
-// // Function that takes the value of Input box
-const displayCityText = () => {
-    txtOutput.innerHTML = `✨ ${txtBox.value} ✨`;
-    // Reset text from input box
-    txtBox.value = "";
-}
 
+let currentLandscape = document.getElementById('seasonal-landscape');
 
 // Default state
-const temperatureState = {
-    degrees: 67
+const state = {
+    degrees: 67,
+    city: 'Seattle'
 }
 
 const apiCallLocation = () => {
@@ -21,15 +12,13 @@ const apiCallLocation = () => {
     const endpointWeather = "http://127.0.0.1:5000/weather"
     let latitude, longitude;
 
-    // console.log(txtOutput.innerHTML)
     axios.get(endpointLocation, {
         params: {
-            q: txtOutput.innerHTML,
+            q: state.city,
             format: 'json'
         }
     })
         .then((response) => {
-            console.log(response)
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
             axios.get(endpointWeather, {
@@ -41,8 +30,8 @@ const apiCallLocation = () => {
                 .then((response) => {
                     const degreesKelvin = response.data.main.temp
                     const degreesFahrenheit = Math.floor(((degreesKelvin - 273.15) * (9 / 5) + 32));
-                    temperatureState.degrees = degreesFahrenheit
-                    document.querySelector('#degrees').textContent = temperatureState.degrees;
+                    state.degrees = degreesFahrenheit
+                    document.querySelector('#degrees').textContent = state.degrees;
                 })
                 .catch((error) => {
                     console.log(error)
@@ -53,9 +42,8 @@ const apiCallLocation = () => {
         });
 }
 
-
 const changeColorTemp = () => {
-    const num = temperatureState.degrees
+    const num = state.degrees
 
     if (num <= 49) {
         document.getElementById('degrees').style.color = 'darkturquoise';
@@ -93,25 +81,38 @@ function displayLandscape(degrees) {
     }
 }
 
-
 const increaseTemp = (event) => {
-    temperatureState.degrees += 1;
+    state.degrees += 1;
     const degrees = document.querySelector('#degrees');
-    degrees.textContent = temperatureState.degrees;
-    displayLandscape(temperatureState.degrees);
+    degrees.textContent = state.degrees;
+    displayLandscape(state.degrees);
 };
 
 const decreaseTemp = (event) => {
-    temperatureState.degrees -= 1;
+    state.degrees -= 1;
     const degrees = document.querySelector('#degrees');
-    degrees.textContent = temperatureState.degrees;
-    displayLandscape(temperatureState.degrees);
+    degrees.textContent = state.degrees;
+    displayLandscape(state.degrees);
 };
+
+
+
+const displayNewCity = () => {
+    const newCity = document.getElementById('cityName').value;
+    const defaultCity = document.getElementById('defaultCity')
+    state.city = newCity;
+    defaultCity.innerHTML = state.city;
+}
+
+const resetCity = () => {
+    const newCity = document.getElementById('cityName');
+    newCity.value = 'Seattle'
+    displayNewCity();
+}
 
 // Function for all Event Handlers
 const registerEventHandlers = (event) => {
     // Display city text from input box
-    buttonCity.addEventListener('click', displayCityText)
 
     const realTimeButton = document.querySelector('#realTimeTemp');
     realTimeButton.addEventListener('click', apiCallLocation);
@@ -124,6 +125,12 @@ const registerEventHandlers = (event) => {
     const downButton = document.querySelector('#down');
     downButton.addEventListener('click', decreaseTemp);
     downButton.addEventListener('click', changeColorTemp);
+
+    const newCity = document.getElementById('cityName');
+    newCity.addEventListener('input', displayNewCity);
+
+    const reset = document.getElementById('resetCity')
+    reset.addEventListener('click', resetCity);
 }
 
 // Triggers Event Handlers:
