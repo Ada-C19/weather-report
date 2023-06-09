@@ -125,3 +125,27 @@ footer{
     content: " 💝 ";
 }
 
+#reset, #citySearch, #siteSearch, #weatherChoice {
+    background-color: rgb(254, 254, 160);
+    color: #010101;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px;
+    border-color: black;
+    margin-bottom: 0.5rem;
+}
+
+.temp_control_section {
+    display: flex;
+    flex-direction: row;
+    font-size: 3rem;
+    justify-content: space-around;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 0.5rem;
+}
