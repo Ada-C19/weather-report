@@ -47,7 +47,7 @@ header {
 
 
 #sky {
-    grid-area: 3/1/span 1/ span 1;
+    grid-area: 3/1/span 1/span 1;
     background-color: aliceblue;
     text-align: center;
 }
@@ -62,6 +62,14 @@ header {
     grid-area: 3/2/span 1/span 2;
     background-color: aliceblue;
     text-align: center;
+    align-self: center;
+}
+
+.weather_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: fit-content;
 }
 
 footer{
