@@ -4,6 +4,36 @@ const state = {
     temp: 72,
 };
 
+//WAVE 4 AXIOS CALLING APIS ////////////////////
+
+// axios
+//   .get ('https://linkhere', {
+//   params: {
+//     key: process.env['SECRET_KEY'],
+//    
+//   },
+// })
+//   //then the .THEN
+//   .then((response) => {
+//     console.log('success!', response.data[1].display_name);
+//   })
+//   //then the .CATCH
+//   .catch((error) => {
+//     console.log('error!', error.response.data);
+//   });
+
+
+// axios
+//   .post ('https://linkhere', {
+//     query param
+//   })
+//   .then((response) => {
+//     console.log('success!', response.data);
+//   })
+//   .catch((error) => {
+//     console.log('error', error.response.data);
+//   });
+
 
 // WAVE 2 HELPER FUNCTION //////////////////////
 
@@ -12,8 +42,11 @@ const applyColorAndGarden = (element, temperature) => {
     element.classList.remove('red', 'orange', 'yellow', 'green', 'teal', 'ice');
   
     let landscape = '';
-  
-    if (temperature >= 80) {
+      if (temperature < 0 || temperature > 120) {
+      element.classList.add('red');
+      element.textContent = 'DANGER'
+      landscape = '🚫🚫🚫🚫🚫🚫'; 
+    } else if (temperature >= 80) {
       element.classList.add('red');
       landscape = '🌵🏜️🌵🐍🦂🌋👹🌋🦂🐍🌵🏜️🌵';
     } else if (temperature >= 70) {
@@ -30,8 +63,9 @@ const applyColorAndGarden = (element, temperature) => {
       landscape = '🌲🌳🌨️🪵🌲🌳🧤🌳🌲🪵🌨️🌳🌲';
     } else if (temperature < 40) {
       element.classList.add('ice');
-      landscape = '🎄❄️🌨️🌲⛄️🌨️❄️🌨️⛄️🌲🌨️❄️🎄';
+      landscape = '🎄❄️🌨️🌲⛄️🌨️❄️🌨️⛄️🌲🌨️❄️🎄'; 
     }
+
     const landscapeElement = document.querySelector("#landscape");
     landscapeElement.textContent = landscape;
   };
@@ -80,6 +114,9 @@ const applyColorAndGarden = (element, temperature) => {
 
 
 
+// wave 4 get realtime temp
+
+
 //WAVE 5  need to change a select element//////////////////////
 
 //THIS IS THE DROPDOWN SELECTOR 
@@ -98,18 +135,29 @@ const applyColorAndGarden = (element, temperature) => {
 // Snowy 	"🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 // snow effect https://codepen.io/yaelsilvermanpeet/pen/KKrwZgJ
 
-//WAVE 5 SKY HELPER FUNCTION? //////////////////////
-// const applySky = (selector) => {}
-
-
-// wave 4 get realtime temp
-
 //WAVE 5 FUNCTION //////////////////////
-// const skyView = () => {
-//   const skySelector = document.getElementById('skySelect').value;
-//   const skyContainer = document.getElementById('sky');
-//   applySky()
-// };
+const skyView = () => {
+  const inputSky = document.getElementById('skySelect').value;
+  const skyContainer = document.getElementById('sky');
+  let sky = '';
+  let skyColor = '';
+  if (inputSky === 'Cloudy') {
+    sky = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+    skyColor = 'cloudy';
+  } else if (inputSky === 'Sunny') {
+    sky = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
+    skyColor = 'sunny';
+  } else if (inputSky === 'Rainy') {
+    sky = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+    skyColor = 'rainy';
+  } else if (inputSky === 'Snowy') {
+    sky = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+    skyColor = 'snowy';
+  }
+  skyContainer.textContent = sky;
+  const gardenContent = document.getElementById('gardenContent');
+  gardenContent.classList = `garden__content ${skyColor}`;
+};
 
 
 // WAVE 6 reset city name ////////////////////////
@@ -139,8 +187,8 @@ const resetCity = () => {
     cityNameInput.addEventListener('input', updateCity);
 
     // WAVE 5 event is 'change' listening to skyView handler ///////
-    //const skyUpdate = document.getElementById('skySelect');
-    // SkyUpdate.addeventListenere('change', skyView)
+    const skyUpdate = document.getElementById('skySelect');
+    skyUpdate.addEventListener('change', skyView)
 
 
     //WAVE 6 event is 'click' listening to 'resetCount' handler /////
@@ -156,8 +204,10 @@ const resetCity = () => {
 
 //extra functions
 
-//move realtime temp down into city name 
+//move realtime temp down into city name  DONE
+//restricted temperature DONE 
 //add current city name to realtime button connect to update city name
-//sky to change with real time 
+//sky to change with real time  <select id="skySelect">
 //change graphics on sky and garden 
 //temperature guage 
+//dont let temp button go below -40 or above 120
