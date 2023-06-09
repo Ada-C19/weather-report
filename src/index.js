@@ -6,6 +6,8 @@ const state = {
 
 
 // WAVE 2 HELPER FUNCTION //////////////////////
+
+//  grass for color and garden https://codepen.io/graphilla/pen/ExQqyXq
 const applyColorAndGarden = (element, temperature) => {
     element.classList.remove('red', 'orange', 'yellow', 'green', 'teal', 'ice');
   
@@ -88,9 +90,13 @@ const applyColorAndGarden = (element, temperature) => {
 
 //sky emojis ref, make this prettier its hideous
 // Sunny 	"☁️ ☁️ ☁️ ☀️ ☁️ ☁️"
+// sunny effect https://codepen.io/DanielleOwens/pen/rYGeMz
 // Cloudy 	"☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️"
+//cloud effect https://codepen.io/iamrohan/pen/ezzaMq
 // Rainy 	"🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
+// rain effect https://codepen.io/arickle/pen/XKjMZY
 // Snowy 	"🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+// snow effect https://codepen.io/yaelsilvermanpeet/pen/KKrwZgJ
 
 //WAVE 5 SKY HELPER FUNCTION? //////////////////////
 // const applySky = (selector) => {}
@@ -108,13 +114,12 @@ const applyColorAndGarden = (element, temperature) => {
 
 //WAVE 6 FUNCTION /////////////////////
 
-// const resetCount = () => {
-//     state.cityNameInput = 'Seattle';
-//     console.log(state.cityNameInput);
-
-//     cityButton.textContent = state.cityNameInput;
-//     cityContainer.textContent = state.cityNameInput;
-// };
+const resetCity = () => {
+    const cityContainer = document.getElementById('cityNameInput');
+    const cityHeader = document.getElementById('headerCityName')
+    cityContainer.value = '';
+    cityHeader.textContent = '';
+};
 
 
   // EVENT HANDLERS FOR ALL WAVES LIVE HERE ! //////////////
@@ -136,8 +141,9 @@ const applyColorAndGarden = (element, temperature) => {
 
 
     //WAVE 6 event is 'click' listening to 'resetCount' handler /////
-    //const resetButton = document.querySelector("#cityNameReset");
-    //resetButton.addEventListener("click", resetCount);
+    const resetButton = document.querySelector("#cityNameReset");
+    resetButton.addEventListener("click", resetCity);
+
 
   };
   document.addEventListener("DOMContentLoaded", registerEventHandlers);
