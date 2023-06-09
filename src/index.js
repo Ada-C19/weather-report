@@ -108,6 +108,7 @@ axios
 })
 .catch((error) => {
     // Code that executes with an unsuccessful response goes here
+    console.log('Error!');
 });
 // END OF API CALL //
 
