@@ -30,10 +30,27 @@ const checkTemp = (tempNumber) => {
     }
     return className
 }
+
+const getLandscape = (temperature) => {
+    if (temperature >= 80) {
+        return "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    } else if (temperature >= 70) {
+        return "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+    } else if (temperature >= 60) {
+        return "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    } else {
+        return "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+    }
+};
+
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = ++state.tempNumber;
         state.tempNumberContainer.className = checkTemp(state.tempNumberContainer.innerText);
+        const landscape = getLandscape(state.tempNumber);
+        // const skyEmojis = getSkyEmojis(state.tempNumber);
+        document.getElementById("land-emoji-section").innerText = landscape;
+        // document.getElementById("sky-emoji-div").innerText = skyEmojis;
         console.log(state.tempNumberContainer.className);
         console.log(state.tempNumber)
     });
