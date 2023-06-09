@@ -55,20 +55,31 @@ const changeSky = function(event) {
     skyElementSelector.classList.remove("cloudy", "sunny", "rainy", "snowy")
     if (value === "Cloudy") {
         skyElementSelector.classList.add("cloudy");
-        skyElementWithEmojis.innerText = "☁️☁️☁️☁️☁️☁️☁️"
+        skyElementWithEmojis.innerText = "☁️☁️☁️☁️☁️"
+    } 
+    else if (value === "Sunny") {
+        skyElementSelector.classList.add("sunny");
+        skyElementWithEmojis.innerText = "☀️☀️☀️☀️☀️"
+    } 
+    else if (value === "Rainy") {
+        skyElementSelector.classList.add("rainy");
+        skyElementWithEmojis.innerText = "🌧️🌧️🌧️🌧️🌧️"
+    } 
+    else if (value === "Snowy") {
+        skyElementSelector.classList.add("snowy");
+        skyElementWithEmojis.innerText = "❄️❄️❄️❄️❄️"
     } 
 }
 document.getElementById('skySelect').addEventListener('change', changeSky);
+
+
+
 
 // function changeSky() {
 //     var x = document.getElementById("skySelect").value;
 //     document.getElementById("skySelect").innerHTML = "You selected: " + x;
 // }
 
-
-/* < id="gardenContent" class="garden-content sunny">
-<div id="sky"> ☀️☀️☀️☀️☀️</div>
-<div id="landscape">🌼🌼🌼🌼🌼</div>*/
 
 
 // END OF SKY CHANGE FUNCTION //
