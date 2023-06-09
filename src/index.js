@@ -23,13 +23,13 @@ const changeTempAndLand = () => {
         land = "🌸🌿🌼🌱_🌷🌻🌿_🌱🌻🌷";
     } else if (temp >= 60) {
         color = 'moderate';
-        land = "🌾🌾_🍃_🪨_🛤_🌾🌾_🍃";
+        land = "🌾🌾_🍃_🪨_🛤_🌾🌾_🍃🌳";
     } else if (temp >= 50) {
         color = 'cool';
-        land = "🌲⛄️🌲⛄️🍂🌲🍁🌲⛄️🍂🌲";
+        land = "🌲🍃🌲🍂🌲🍁🌳🍃🌲🍂🌲🍃";
     } else {
         color = 'cold';
-        land = "🌲⛄️🌲⛄️🍂🌲🍁🌲⛄️🍂🌲";
+        land = "🏔️⛄️🎄☃️❄️🏔️❄️☃️❄️🎄🏔️";
     }
     const temperature = document.getElementById('live_temp');
     temperature.textContent = state.liveTemp;

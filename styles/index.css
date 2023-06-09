@@ -1,6 +1,11 @@
 body {
     background-color: lightskyblue;
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148, 187, 233, 1) 100%);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 1rem;
+    
 }
 section {
     display:block;
@@ -13,11 +18,25 @@ section {
     border-radius: 10px;
 }
 
+.temp_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temperature__controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .temp_box{
-    width: 30%;
-    padding:25px;
+    width: 50%;
+    padding:20px;
     background-color: white;
     border-radius: 10px;
+    grid-row: 4;
+    grid-column: 1;
 }
 
 #sunny{
@@ -60,10 +79,30 @@ section {
     padding:25px;
     background-color: white;
     border-radius: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+/* positioning within the whole webpage */
+    grid-row: 2;
+    grid-column: 2;
 }
 .garden_box{
-    width: 60%;
-    padding:25px;
+    width: 70%;
+    height: 80%;
     background-color: rgb(221, 255, 255);
     border-radius: 10px;
+    grid-row: 3 / span 4;
+    grid-column: 2;
+    text-align: center;
+    align-self: center;
+
+}
+.garden_content{
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+}
+
+#garden_land {
+    grid-row: 4;
 }
