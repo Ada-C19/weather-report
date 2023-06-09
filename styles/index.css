@@ -51,7 +51,7 @@ background-color: white;
 
 
 .temperature__section {
-grid-row: 2;
+grid-row: ;
 }
 
 
@@ -59,11 +59,11 @@ grid-row: 2;
 background-color: #1b69f9;
 border: none;
 color: white;
-padding: 15px 32px;
+padding: 15px 50px;
 text-align: center;
 text-decoration: none;
 display: inline-block;
-font-size: 16px;
+font-size: 18px;
 border-radius: 10px
 }
 
@@ -87,8 +87,8 @@ justify-content: space-around;
     
     
 #tempValue {
-font-size: 3rem;
-margin-left: 1.5rem;
+font-size: 2rem;
+margin-left: 1rem;
 /* padding-right: 1rem; */
 /* margin-right: 1.5rem; */
 }
@@ -98,6 +98,10 @@ margin-left: 1.5rem;
 display: flex;
 flex-direction: column;
 align-items: center;
+}
+
+.temperature__controls:hover {
+    cursor: pointer;
 }
 
 

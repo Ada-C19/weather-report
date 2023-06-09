@@ -1,4 +1,4 @@
-  // 👩🏻‍💻 Abby's section on 2023.6.7
+// 👩🏻‍💻 Abby's section on 2023.6.7
 
 let temperature = document.getElementById("tempValue");
 
@@ -6,7 +6,9 @@ const increaseTempButton = document.getElementById("increaseTempControl");
 
 const decreaseTempButton = document.getElementById("decreaseTempControl");
 
-temperature.textContent = 0;
+let tempNumber = 0;
+
+temperature.textContent = `${tempNumber}° F`;
 
 // the two helper functions below can maybe get condensed into one by using callback functions
 
@@ -25,87 +27,85 @@ const decrementValue = (numberString) => {
 };
 
 increaseTempButton.addEventListener("click", () => {
-  temperature.textContent = incrementValue(temperature.textContent);
+  tempNumber = incrementValue(tempNumber);
+  temperature.textContent = `${tempNumber}° F`;
 });
 
 decreaseTempButton.addEventListener("click", () => {
-  temperature.textContent = decrementValue(temperature.textContent);
+  tempNumber = decrementValue(tempNumber);
+  temperature.textContent = `${tempNumber}° F`;
 });
 
 // 👩🏻‍💻 end of Abby's section on 2023.6.7
 
-console.log("what's up world");
+const cityNameInput = document.getElementById("cityNameInput");
+const headerCityName = document.getElementById("headerCityName");
 
-const cityNameInput = document.getElementById('cityNameInput');
-const headerCityName = document.getElementById('headerCityName');
-
-cityNameInput.addEventListener('input', () => {
+cityNameInput.addEventListener("input", () => {
   headerCityName.textContent = cityNameInput.value;
 
-cityNameReset.addEventListener("click", () => {
-  cityNameInput.value = ""; 
-  headerCityName.textContent = "";
+  cityNameReset.addEventListener("click", () => {
+    cityNameInput.value = "";
+    headerCityName.textContent = "";
   });
-
 });
 
-  const skySelect = document.getElementById("skySelect");
-  const gardenContent = document.getElementById("gardenContent");
-  const sky = document.getElementById("sky");
+const skySelect = document.getElementById("skySelect");
+const gardenContent = document.getElementById("gardenContent");
+const sky = document.getElementById("sky");
 
-  skySelect.addEventListener("change", () => {
-    const selectedOption = skySelect.value;
-    updateSky(selectedOption);
-  });
+skySelect.addEventListener("change", () => {
+  const selectedOption = skySelect.value;
+  updateSky(selectedOption);
+});
 
-  const updateSky = (option) => {
-    const skyClassName = getSkyClassName(option);
-    const skyEmoji = getSkyEmoji(option);
+const updateSky = (option) => {
+  const skyClassName = getSkyClassName(option);
+  const skyEmoji = getSkyEmoji(option);
 
-    gardenContent.className = `garden__content ${skyClassName}`;
-    sky.innerHTML = skyEmoji;
-  };
+  gardenContent.className = `garden__content ${skyClassName}`;
+  sky.innerHTML = skyEmoji;
+};
 
-  const getSkyClassName = (option) => {
-    switch (option) {
-      case "":
-      case "sunny":
-        return "sunny";
-      case "cloudy":
-        return "cloudy";
-      case "rainy":
-        return "rainy";
-      case "snowy":
-        return "snowy";
-      case "apocalyptic":
-        return "apocalyptic";
-      default:
-        return "";
-    }
-  };
-  
-  const getSkyEmoji = (option) => {
-    switch (option) {
-      case "":
-      case "sunny":
-        return "☁️ ☁️  ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️";
-      case "cloudy":
-        return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
-      case "rainy":
-        return "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧";
-      case "snowy":
-        return "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
-      case "apocalyptic":
-        return "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🧟‍♀️🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️"
-      default:
-        return "";
-    }
-  };
+const getSkyClassName = (option) => {
+  switch (option) {
+    case "":
+    case "sunny":
+      return "sunny";
+    case "cloudy":
+      return "cloudy";
+    case "rainy":
+      return "rainy";
+    case "snowy":
+      return "snowy";
+    case "apocalyptic":
+      return "apocalyptic";
+    default:
+      return "";
+  }
+};
 
+const getSkyEmoji = (option) => {
+  switch (option) {
+    case "":
+    case "sunny":
+      return "☁️ ☁️  ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️";
+    case "cloudy":
+      return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+    case "rainy":
+      return "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧";
+    case "snowy":
+      return "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+    case "apocalyptic":
+      return "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🧟‍♀️🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️";
+    default:
+      return "";
+  }
+};
 
-  // Set the initial sky and garden content based on the default selected option
-  const defaultOption = skySelect.value;
-  updateSky(defaultOption);
+// Set the initial sky and garden content based on the default selected option
+const defaultOption = skySelect.value;
+updateSky(defaultOption);
 
 /* Optional:
 // add color change to the background if the temperature is at a certain level.
@@ -159,4 +159,3 @@ tempConversionButton.addEventListener('click', () => {
     temperatureUnit = "K";
   }
 }); */
-
