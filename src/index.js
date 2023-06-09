@@ -17,6 +17,14 @@ const landscapes = {
   hotLandscape: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
 };
 
+//wave 5
+const skyOptions = {
+  sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+  cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+  rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
+  snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+}
+
 const landscapeUpdate = () => {
   let newLandscape;
   if (state.currentTemperature >= 80) {
@@ -32,11 +40,30 @@ const landscapeUpdate = () => {
   state.landscapeField.textContent = newLandscape;
 };
 
+//--- wave 5
+const skyOptionsUpdate = () => {
+  let skyValue = state.skyOptions.value;
+  if (skyValue === '2') {
+    state.skyField.textContent = skyOptions.sunny;
+  } else if (skyValue === '3') {
+    state.skyField.textContent = skyOptions.cloudy;
+  } else if (skyValue === '4') {
+    state.skyField.textContent = skyOptions.rainy;
+  } else if (skyValue === '5') {
+    state.skyField.textContent = skyOptions.snowy;
+  } else {
+    state.skyField.textContent = "";
+  }
+}
+
 const state = {
   cityTextField: null,
   headerCity: null,
   cityResetButton: null,
   landscapeField: null,
+  skyField: null,
+  //
+  skyOptions: null,
   currTempButton: null,
   temperatureValue: null,
   currentTemperature: 50,
@@ -115,6 +142,9 @@ const loadData = () => {
   state.headerCity = document.querySelector("#headerCityName");
   state.cityResetButton = document.querySelector("#cityNameReset");
   state.landscapeField = document.querySelector("#landscape");
+  //wave 5
+  state.skyField = document.querySelector("#sky");
+  state.skyOptions = document.querySelector("#skySelect");
   state.currTempButton = document.querySelector("#currentTempButton");
   state.temperatureValue = document.querySelector("#tempValue");
   state.temperatureIncreaseButton = document.querySelector(
@@ -142,6 +172,8 @@ const registerEventHandlers = (event) => {
   );
 
   state.currTempButton.addEventListener("click", getTempFromLocation);
+  //wave 5
+  state.skyOptions.addEventListener("change", skyOptionsUpdate);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
