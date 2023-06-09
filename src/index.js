@@ -72,6 +72,7 @@ const getWeather = async () => {
                 state.degrees = Math.round(temp);
                 const degreeCount = document.getElementById('degrees');
                 degreeCount.textContent = state.degrees;
+                tempColorLandscape();
             })
     }
     getTemp();
@@ -82,21 +83,27 @@ const changeLandscape = (event) => {
     let weatherState = document.getElementById("skySelect").value;
     const skyEmojis = document.getElementById("sky-emojis");
     const backgroundColor = document.getElementById('weather-box');
+    const pageBackground = document.body
     if (weatherState === "Sunny") {
         skyEmojis.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
         backgroundColor.style.backgroundColor = 'DeepSkyBlue';
+        pageBackground.style.backgroundImage = 'url("../assets/sunny-sky.jpeg")'
+
     }
     else if (weatherState === "Cloudy") {
         skyEmojis.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
         backgroundColor.style.backgroundColor = 'LightGray';
+        pageBackground.style.backgroundImage = 'url("../assets/cloudy-sky.jpeg")'
     }
     else if (weatherState === "Rainy") {
         skyEmojis.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
         backgroundColor.style.backgroundColor = 'DarkGray';
+        pageBackground.style.backgroundImage = 'url("../assets/rainy-sky.jpeg")'
     }
     else if (weatherState === "Snowy") {
         skyEmojis.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
         backgroundColor.style.backgroundColor = 'AliceBlue';
+        pageBackground.style.backgroundImage = 'url("../assets/snow-sky.jpeg")'
     }
 }
 
@@ -106,6 +113,7 @@ const resetCity = () => {
     const city = document.getElementById("city");
     city.textContent = state.cityName;
     document.getElementById("name").value = "";
+    getWeather();
 }
 
 
