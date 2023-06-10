@@ -71,9 +71,7 @@ const clearCityName = () => {
     displayCityName();
 }
 
-//
-
-// function to call proxy server to get
+// function to call proxy server to get latitude and longitude
 const findLatitudeAndLongitude = (query) => {
     axios.get('http://127.0.0.1:5000/location', 
     {
@@ -92,6 +90,24 @@ const findLatitudeAndLongitude = (query) => {
     })
 }
 
+// function to call proxy server to get weather temp in Kelvin
+const findWeather = (lat, lon) => {
+    axios.get('http://127.0.0.1:5000/weather', 
+    {
+        params: {
+            "lat": lat,
+            "lon": lon,
+        }
+    })
+    .then((response) => {
+        let currentTemp = response.data.main.temp;
+        console.log('sucess!', currentTemp)
+    })
+    .catch((error) => {
+        console.log('error!', error)
+    })
+}
+
 const registerEventHandlers = (event) => {
     const increaseTempButton = document.querySelector("#increaseTempControl");
     const decreaseTempButton = document.querySelector("#decreaseTempControl");
@@ -104,6 +120,7 @@ const registerEventHandlers = (event) => {
     cityNameResetButton.addEventListener("click", clearCityName);
 
     findLatitudeAndLongitude('Seattle');
+    findWeather(47.6038321, -122.330062);
     displayTemp();
     displayLandscape();
 }
