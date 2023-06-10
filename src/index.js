@@ -101,14 +101,9 @@ const currentTemp = document.getElementById('currentTempButton');
 getLocationInfo().then((getWeatherInfo)).then((temp) => {state.tempValueEl.textContent = `${state.tempValue}`})
 };
 
-const refreshButtonEl = document.getElementById("cityNameReset");
-const onClickRefreshButton = () => {
-  state.cityLocation = {lat: 41.8755616, lon: 87.6244212}
 
-    let event2 = new Event('change');
-    refreshButtonEl.dispatchEvent(event2);
-};
-refreshButtonEl.onclick = onClickRefreshButton;
+const resetCity = () => {  
+  document.getElementById('cityNameReset').reset()}; 
 
 
 const setUp = () => {
