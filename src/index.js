@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 let currentTemp = 72;
 let sky = "";
-let defaultCityName = "What city are you searching for?";
+// let defaultCityName = "What city are you searching for?";
+let defaultCityName = "";
 
 
 function getTemp() {
@@ -51,7 +52,6 @@ const getLandscape = () => {
         landscape.textContent = "⛄️⛄️🎁🎿🎿⛄️🦌🎿🎁⛄️⛄️🦌🦌⛄️🎁"
     }
 }
-
 
 const getSky = () => {
     const skyElement = document.getElementById('sky');
