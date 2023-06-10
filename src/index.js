@@ -6,12 +6,23 @@ const state = {
     cityValue: null,
     currentTempButton: null,
     currentTemp: null,
-    skyVibe:null
+    skySelector: null,
+    skyVibeEmoji:  null
 };
-const selectSky = () => {
-    skyVibe.options[skyVibe.selectedIndex].text;
-    consolelog(skyVibe.options[skyVibe.selectedIndex].text);
-}
+
+const selectSky = (event) => {
+    const sky = event.target.value;
+
+    if (sky == "Sunny") {
+        state.skyVibeEmoji.textContent = "☁️ ☁️ ☁️ ☀️ ☀️ ☀️ ☁️ ☁️ ☁️";
+    } else if (sky == "Cloudy") {
+        state.skyVibeEmoji.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+    } else if (sky == "Rainy") {
+        state.skyVibeEmoji.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+    } else {
+        state.skyVibeEmoji.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";   
+    }
+};
 
 const updateUI = () =>  {
     state.tempLabel.textContent = state.tempValue;
@@ -137,7 +148,8 @@ const loadControls = () => {
     state.cityLabel = document.getElementById("headerCityName");
     state.cityValue = document.getElementById("cityNameInput").value;
     state.currentTempButton = document.getElementById("currentTempButton");
-    state.skyVibe =document.getElementById("skySelect");
+    state.skySelector = document.getElementById("skySelect");
+    state.skyVibeEmoji = document.getElementById("sky");
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
