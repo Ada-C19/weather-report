@@ -6,6 +6,7 @@ let current_temp = 72;
 let sky = "";
 let defaultCityName = "What city are you searching for?";
 
+
 function getTemp() {
     const temperature = document.getElementById("temp");
     temperature.textContent = current_temp;
@@ -105,26 +106,31 @@ button3.addEventListener("click", () => {
 });
 
 
-// const axios = require("axios");    for some reason this line kept the default city button from working 
 const locationAPI = "http://127.0.0.1:5000/location";
 const weatherAPI = "http://127.0.0.1:5000/weather";
 
 const getLocation = (query) => {
-    let lat, lon; axios.get(locationAPI,
-        {
+    axios.get(locationAPI, {
             params: {
                 q: query
             }
         })
         .then((response) => {
-            lat = response.data[0]["lat"]
-            lon = response.data[0]["lon"]
-            getWeather(lat, lon)
+            lat = response.data[0]["lat"];
+            lon = response.data[0]["lon"];
+            getWeather(lat, lon);
         })
         .catch((error) => {
-            console.log('cannot find city')
-        })
-}
+            console.log('cannot find city');
+        });
+};
+
+
+
+
+
+
+
 
 const getWeather = (lat, lon) => {
     axios.get(weatherAPI, {
@@ -134,13 +140,14 @@ const getWeather = (lat, lon) => {
         }
     })
     .then ((response) => {
-        current_temp = response.data[current][temp]
+        current_temp = response.data["current"]["temp"]
         getTemp()
     })
     . catch((error) => {
         console.log('error finding weather')
     })
 }
+
 
 const resetButton = document.getElementById("reset_city");
 resetButton.addEventListener("click", () => {
