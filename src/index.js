@@ -42,8 +42,6 @@ const tempValueElement = document.getElementById('tempValue');
 
 
 // CHANGE SKY FUNCTION //
-
-
 const skyElementSelector = document.getElementById('skySelect');
 const skyElementWithEmojis = document.getElementById('sky');
 
@@ -74,42 +72,43 @@ document.getElementById('skySelect').addEventListener('change', changeSky);
 // END OF SKY CHANGE FUNCTION //
 
 
-// Changing the city name in the header to input city name
-
+// CHANGE THE HEADER CITY NAME //
 const inputName = document.getElementById('cityNameInput');
 const headerCityName = document.getElementById('headerCityName');
     
 
 const updateCityName = function(event) {
-    headerCityName.textContent = event.target.value 
-    
-    // state.city = inputName;
-    // headerCityName.textContent = state.city;
+    headerCityName.textContent = event.target.value
 };
+
 document.getElementById('cityNameInput').addEventListener('input', updateCityName)
 // END OF CHANGING CITY IN HEADER //
 
+// RESET THE HEADER TO SEATTLE //
+
+
+// END OF RESETTING HEADER TO SEATTLE //
+
+
 
 // API CALLS :) ////
-// id="cityNameInput" --> 
-// id="cityNameReset" >
-document.getElementById('cityNameInput').addEventListener('change', changeSky);
-document.getElementById('cityNameReset').addEventListener('click', changeSky);
-const ...
-const ...
+// document.getElementById('cityNameInput').addEventListener('change', changeSky);
+// document.getElementById('cityNameReset').addEventListener('click', changeSky);
+// const ...
+// const ...
 
-axios
-.get('127.0.0.1:5000')
-// add parameters for city info
-.then((response) => {
-    console.log('Success!', response.data);
-    return response.data
-    // Code that executes with a successful response goes here
-})
-.catch((error) => {
-    // Code that executes with an unsuccessful response goes here
-    console.log('Error!');
-});
+// axios
+// .get('127.0.0.1:5000')
+// // add parameters for city info
+// .then((response) => {
+//     console.log('Success!', response.data);
+//     return response.data
+//     // Code that executes with a successful response goes here
+// })
+// .catch((error) => {
+//     // Code that executes with an unsuccessful response goes here
+//     console.log('Error!');
+// });
 // END OF API CALL //
 
 
