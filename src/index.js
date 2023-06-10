@@ -183,6 +183,9 @@ const registerEventHandlers = () => {
 
     const changeTemp = document.getElementById('temp-button');
     changeTemp.addEventListener("click", changeLocationTemp);
+
+    const selectSky = document.getElementById('sky-drop-down');
+    selectSky.addEventListener("change", changeSky);
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
