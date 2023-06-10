@@ -1,18 +1,18 @@
 "use strict";
 
-let current_temp = 72;
+let currentTemp = 72;
 let sky = "";
 
 const getTemp = () => {
     const temperature = document.getElementById("temp");
-    temperature.textContent = current_temp;
-    if (current_temp >= 80) {
+    temperature.textContent = currentTemp;
+    if (currentTemp >= 80) {
         temperature.className = "hot"
-    } else if (current_temp >= 70) {
+    } else if (currentTemp >= 70) {
         temperature.className = "warm"
-    } else if (current_temp >= 60) {
+    } else if (currentTemp >= 60) {
         temperature.className = "medium"
-    } else if (current_temp >= 50) {
+    } else if (currentTemp >= 50) {
         temperature.className = "cool"
     } else {
         temperature.className = "cold"
@@ -21,27 +21,27 @@ const getTemp = () => {
 
 const button1 = document.getElementById("increase_temperature");
 button1.addEventListener("click", () => {
-    current_temp = current_temp + 1;
+    currentTemp = currentTemp + 1;
     getTemp();
     getLandscape();
 });
 
 const button2 = document.getElementById("decrease_temperature");
 button2.addEventListener("click", () => {
-    current_temp = current_temp - 1;
+    currentTemp = currentTemp - 1;
     getTemp();
     getLandscape();
 });
 
 const getLandscape = () => {
     const landscape = document.getElementById("landscape");
-    if (current_temp >= 80) {
+    if (currentTemp >= 80) {
         landscape.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"
-    } else if (current_temp >= 70) {
+    } else if (currentTemp >= 70) {
         landscape.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
-    } else if (current_temp >= 60) {
+    } else if (currentTemp >= 60) {
         landscape.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
-    } else if (current_temp >= 50) {
+    } else if (currentTemp >= 50) {
         landscape.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
     } else {
         landscape.textContent = "⛄️⛄️🎁🎿🎿⛄️🦌🎿🎁⛄️⛄️🦌🦌⛄️🎁"
@@ -103,15 +103,17 @@ const locationAPI = "http://127.0.0.1:5000/location";
 const weatherAPI = "http://127.0.0.1:5000/weather";
 
 const getLocation = (query) => {
-    let lat, lon; axios.get(locationAPI,
+    axios.get(locationAPI,
         {
             params: {
                 q: query
             }
         })
         .then((response) => {
-            lat = response.data[0]["lat"]
-            lon = response.data[0]["lon"]
+            const lat = response.data[0]["lat"]
+            const lon = response.data[0]["lon"]
+            console.log(lat)
+            console.log(lon)
             getWeather(lat, lon)
         })
         .catch((error) => {
@@ -127,7 +129,7 @@ const getWeather = (lat, lon) => {
         }
     })
     .then ((response) => {
-        current_temp = response.data[current][temp]
+        currentTemp = response.data[main][temp]
         getTemp()
     })
     . catch((error) => {
