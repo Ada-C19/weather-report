@@ -84,10 +84,15 @@ const updateCityName = function(event) {
 document.getElementById('cityNameInput').addEventListener('input', updateCityName)
 // END OF CHANGING CITY IN HEADER //
 
-// RESET THE HEADER TO SEATTLE //
+//RESET THE HEADER BACK TO SEATTLE //
+const cityNameInput = document.getElementById('cityNameInput');
+const cityNameResetBtn = document.getElementById('cityNameReset'); 
 
-
-// END OF RESETTING HEADER TO SEATTLE //
+const resetCityName = function (event) {
+    headerCityName.textContent = "Seattle";
+};
+document.getElementById('cityNameReset').addEventListener('click', resetCityName);
+// END OF HEADER RESET //
 
 
 
