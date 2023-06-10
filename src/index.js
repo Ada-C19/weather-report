@@ -93,12 +93,13 @@ const getWeatherInfo = (location) => {
 			},
 		})
 		.then((response) => {
+			console.log('retrieve location');
 			const cityTemp = convertKToF(response.data.main.temp);
 			state.tempValue = Math.round(cityTemp);
 			return state.tempValue;
 		})
 		.catch((error) => {
-			console.log('weather error');
+			console.log('Location fatch fail error');
 			console.error(error);
 		});
 };
@@ -129,6 +130,8 @@ const registerEvents = () => {
 	cityNameReset.addEventListener('click', () => {
 		cityNameInput.value = headerCityName.textContent = '';
 	});
+
+	loadControls();
 
 	const updateTemp = document.querySelector('#currentTempButton');
 	updateTemp.addEventListener('click', updateCurrentTemp);
