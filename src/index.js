@@ -1,9 +1,12 @@
 
 const state = {
     tempDeg: 0,
-    defaultLandscape: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
     defaultColor: "teal",
     cityName : "Seattle",
+    defaultLandscape: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+    hotLandscape: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
+    niceLandscape: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+    midLandscape: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
     increaseTempButton: null,
     decreaseTempButton: null,
     tempValue: null, 
@@ -22,6 +25,7 @@ const setDefaultValues = () => {
     state.landscape.textContent = `${state.defaultLandscape}`;
     tempValue.style.color = state.defaultColor;
     tempValue.textContent = 0;
+    sky.textContent = "";
 };
 
 const registerEventHandlers = () => {
@@ -78,17 +82,13 @@ const changeColor = () => {
 const changeLandscape = () => {
     let currentTemp = tempValue.textContent;
     if (currentTemp >= 80) {
-        state.landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-        landscape.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.hotLandscape}`;
     } else if (currentTemp >= 70) {
-        state.landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
-        landscape.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.niceLandscape}`;
     } else if (currentTemp >= 60) {
-        state.landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
-        landscape.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.midLandscape}`;
     } else {
-        state.landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-        landscape.textContent = `${state.landscape}`;
+        landscape.textContent = `${state.defaultLandscape}`;
     }
 };
 
