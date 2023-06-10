@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 const state = {
     tempValue: 70,
     tempLabel: null,
@@ -12,6 +10,7 @@ const state = {
 
 const updateUI = () =>  {
     state.tempLabel.textContent = state.tempValue;
+    console.log(state.tempValue)
 }; 
 
 const updateCity = (event) => {
@@ -19,11 +18,39 @@ const updateCity = (event) => {
     state.cityLabel.textContent = state.cityValue;
 }
 
-const updateRealtimeWeather = () => {
-}
+const updateRealtimeWeather = (location) => {
+    console.log(state.cityValue)
+    return axios
+    .get('http://localhost:5000/location', {
+        params: {
+            q: location,
+            format: 'json',
+        },
+    })
+
+    .then(response => {
+        const { lat, lon } = response.data[0];
+        return console.log({ lat, lon});
+    })
+    
+
+//     const weatherData = axios
+//     .get('http://localhost:5000/weather', {
+//         params: {
+//             lat: locationData.latitude,
+//             lon: locationData.longitude,
+//         },
+//     })
+//     .then(response => {
+//         const { temp } = response.data["current"]["temp"];
+//         return console.log(temp)
+// }) 
+};
+
+
 // Create an event handler & register an event
 // Event handler - makes axios call (.then & .catch - proper logging)
-// Save values returned form location IQ api - save to state to make another call to Weather endpoint
+// Save values returned from location IQ api - save to state to make another call to Weather endpoint
 // "http://localhost:5000/endpoint"
 
 
@@ -31,6 +58,8 @@ const updateRealtimeWeather = () => {
 const increaseTemp = () => {
     ++state.tempValue;
     updateUI();
+
+    console.log("increasing temp")
 
     if (state.tempValue >= 80) {
         state.tempLabel.style.color = 'red';
@@ -53,7 +82,7 @@ const increaseTemp = () => {
 const decreaseTemp = () => {
     --state.tempValue;
     updateUI();
-
+    console.log("decreasing temp")
     if (state.tempValue >= 80) {
         state.tempLabel.style.color = 'red';
         state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
@@ -78,9 +107,9 @@ topButton.addEventListener("click", increaseTemp);
     const bottomButton = document.querySelector("#decreaseTempControl");
 bottomButton.addEventListener("click", decreaseTemp);
     const cityButton = document.querySelector("#cityNameInput");
-cityButton.addEventListener("keyup", updateCity);
-    const realTempButton = document.querySelector("#currentTempButton");
-realTempButton.addEventListener("click", updateRealtimeWeather);
+cityButton.addEventListener("input", updateCity);
+//     const realTempButton = document.querySelector("#currentTempButton");
+// realTempButton.addEventListener("click", updateRealtimeWeather);
 }
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
