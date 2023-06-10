@@ -7,52 +7,43 @@ const state = {
     longitude: 0,
 };
 
-const getCoordinates = (city) => {
-    console.log(city)
-    console.log('hahaha')
-    axios.get('http://127.0.0.1:5000/location', {
+const getCityWeather = async (city) => {
+    await axios.get('http://127.0.0.1:5000/location', {
         params: {
             q: state.city,
             format: 'json'
         },
     })
     .then((response) => {
-        console.log(response.data[0])
         state.latitude = response.data[0]['lat'];
         state.longitude = response.data[0]['lon'];
         
     })
     .catch((error) => {
-        console.log(error)
         console.log('Oh haiil no, this does not exist.');
         console.log(error.response);
     });
+
+    getWeather();
+
 };
 
-const getWeather = () => {
+const getWeather = async () => {
 
-    axios.get('http://127.0.0.1:5000/weather', {
+    await axios.get('http://127.0.0.1:5000/weather', {
         params: { 
             lat: state.latitude,
             lon: state.longitude,
         }
-    })
-
-    .then((response) => {
-        console.log(response)
+    }).then((response) => {
         let realTemp = response.data.main.temp;
         state.temp = Math.round((realTemp - 273) * 1.8 + 32);
-        const tempCount = document.querySelector('#tempValue');
+        document.querySelector('#tempValue');
         tempChange();
     })
 
 }
 
-const getCityWeather = () => {
-    getCoordinates(state.city);
-    getWeather();
-    
-}
 
 const tempChange = () => {
     let temp = state.temp;
