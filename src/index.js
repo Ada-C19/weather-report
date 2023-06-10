@@ -65,6 +65,7 @@ const getCityLatAndLon = () => {
 			console.log("error");
 		});
 };
+
 const convertKtoF = (k) => {
 	result = Math.floor((k - 273.15) * (9 / 5) + 32);
 	return result;
@@ -75,10 +76,9 @@ const getRealTemp = () => {
 		return axios
 			.get(`http://localhost:5000/weather?lon=${lon}&lat=${lat}`)
 			.then((response) => {
-				temp =  response.data.main["temp"];
+				temp = response.data.main["temp"];
 				state.tempValueCount = convertKtoF(temp);
 				state.tempValue.textContent = state.tempValueCount;
-				console.log(state.tempValueCount)
 			})
 			.catch(() => {
 				console.log("error");
@@ -89,7 +89,7 @@ const getRealTemp = () => {
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener("click", increaseTemp);
 	state.decreaseTempControl.addEventListener("click", decreaseTemp);
-	state.cityInput.addEventListener("beforeinput", handleTextInput);
+	state.cityInput.addEventListener("keyup", handleTextInput);
 	state.currentTempButton.addEventListener("click", getRealTemp);
 };
 
