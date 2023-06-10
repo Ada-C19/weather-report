@@ -1,16 +1,13 @@
 "use strict";
 
-// Select the HTML elements the event will occur on
 const increaseTempControl = document.getElementById("increaseTempControl");
 const decreaseTempControl = document.getElementById("decreaseTempControl");
 const tempValue = document.getElementById("tempValue");
 
-
-// Make functions to run when it occurs
 let temperature = 80;
 updateTemperature();
 
-const increaseTemperature = () => {
+function increaseTemperature() {
     temperature++;
     updateTemperature();
 }
@@ -39,10 +36,21 @@ function updateTemperature() {
         tempValue.className = "teal";
         landscape.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
     }
+
+    headerCityName.textContent = cityNameInput.value;
 }
 
-// someElement.addEventListener("some event name", reactToEvent);
+
+cityNameInput.addEventListener("input", updateTemperature);
+
 increaseTempControl.addEventListener("click", increaseTemperature);
 decreaseTempControl.addEventListener("click", decreaseTemperature);
 
 
+cityNameReset.addEventListener("click", function() {
+    cityNameInput.value = "";
+    temperature = 0;
+    updateTemperature();
+});
+
+updateTemperature();
