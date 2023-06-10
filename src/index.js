@@ -1,9 +1,8 @@
 "use strict";
 
-let currentTemp = 72;
 document.addEventListener("DOMContentLoaded", function() {
 
-let current_temp = 72;
+let currentTemp = 72;
 let sky = "";
 let defaultCityName = "What city are you searching for?";
 
@@ -111,8 +110,7 @@ const locationAPI = "http://127.0.0.1:5000/location";
 const weatherAPI = "http://127.0.0.1:5000/weather";
 
 const getLocation = (query) => {
-    axios.get(locationAPI,
-        {
+    axios.get(locationAPI, {
             params: {
                 q: query
             }
@@ -120,21 +118,14 @@ const getLocation = (query) => {
         .then((response) => {
             const lat = response.data[0]["lat"];
             const lon = response.data[0]["lon"];
-            console.log(lat)
-            console.log(lon)
+            console.log(lat);
+            console.log(lon);
             getWeather(lat, lon);
         })
         .catch((error) => {
             console.log('cannot find city');
         });
 };
-
-
-
-
-
-
-
 
 const getWeather = (lat, lon) => {
     axios.get(weatherAPI, {
@@ -144,18 +135,25 @@ const getWeather = (lat, lon) => {
         }
     })
     .then ((response) => {
-        current_temp = response.data[current][temp]
+        const tempKelvin = response.data["main"]["temp"]
+        currentTemp = calculateTemp(tempKelvin)
+        console.log(currentTemp)
         getTemp()
+        getLandscape()
     })
     . catch((error) => {
         console.log('error finding weather')
     })
 }
 
+const calculateTemp = (temp) => {
+    return Math.round((temp - 273.15) * 9/5 + 32)
+}
 
 const resetButton = document.getElementById("reset_city");
 resetButton.addEventListener("click", () => {
     console.log('Reset city clicked!'); // add this line
     cityName.textContent = defaultCityName;
     cityInput.value = defaultCityName;
+});
 });
