@@ -5,12 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <header> 
+        <h1 id="title"> Weather Report &nbsp</h1>
+        <span id="city-heading"> for the lovely city of <span id="header-city">Seattle</span></span>
+    </header>
+    <div id="flex-container">
+        <div id="sidebar">
+            <section id="temperature">
+                <h2 id="temp-text">Temperature</h2>
+                <button id="converter">°C</button>
+                <div id="alignment">
+                    <div id="temperature-controls">
+                        <button id="raise-temp">⬆️</button>
+                        <div id="temp-display">26</div>
+                        <button id="lower-temp">⬇️</button>
+                    </div>
+                    <div id="temp-button">
+                        <button>Get Realtime Temperature</button>
+                    </div>
+                </div>
+            </section>
+            <section id="sky">
+                <h2>Sky</h2>
+                <label for="sky-select">Precipitation Menu</label>
+                <select id="sky-select" onchange="updateSkyEmoji(this.value)">
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+            </section>
+            <section id="city">
+                <h2>City Name</h2>
+                <input type="text" value="Seattle" id="city-input" onkeyup="updateCity(this.value)">
+                <button id="reset-button" onclick="resetCity()">Reset</button>
+            </section>
+        </div>
+        <section id="weather-garden">
+            <h2>Weather Garden</h2>
+            <section id="garden-sky">
+                <div id="sky-emoji">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
+                <div id="garden-emoji">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+            </section>
+        </section>
+    </div>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>

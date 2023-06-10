@@ -1,0 +1,151 @@
+/* * {
+    border: 1px dashed antiquewhite;
+} */
+
+html{
+  min-height: 100%;
+  position:relative;
+}
+
+body {
+    background-color: darkblue;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
+    height: 100%;
+    background: rgb(82,173,196);
+    background: linear-gradient(0deg, 
+    rgba(82,173,196,1) 0%, 
+    rgba(208,158,205,1) 50%, 
+    rgba(255,209,113,1) 100%); 
+}
+
+header, h1, h2 {
+    font-family: 'Playfair Display', serif;
+    text-shadow: 1px 1px 1px #999;
+}
+
+#flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#sidebar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+#temperature, #sky, #city {
+    background-color:whitesmoke;
+    color: rgba(82,173,196,1);
+    margin-top: 15px;
+    padding: 30px;
+    border-radius: 25px;
+    opacity: 0.9;
+}
+
+#alignment {
+    display: flex;
+    justify-content: center;
+}
+
+#temp-button {
+    align-self: center;
+    margin-left: 10px;
+}
+
+button {
+    background: rgba(255,209,113,1);
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 1px 1px 4px #999;
+    box-shadow: 1px 1px 4px #999;
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#weather-garden {
+    width: 30%;
+    margin-right: 20%;
+    height: 60%;
+    font-size: xx-large;
+}
+
+#temp-display {
+    color: orange;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#sky-emoji {
+    height: auto; 
+    font-size: xx-large;
+    margin-top: 15px;
+    margin-bottom: 100px;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+#garden-emoji {
+    font-size: 2.5rem;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    white-space: nowrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#garden-sky {
+    background-color: ivory;
+    opacity: 0.9;
+    margin-top: 55px;
+    padding: 15px;
+    border-radius: 25px;
+    height: auto;
+    width: 35rem;
+    font-size: 1.5rem;
+    background-color: l;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 50px;
+}
+
+#title {
+    font-size: 3rem;
+    margin-right: 2rem;
+}
+
+#city-heading {
+    font-size: 1.5rem; 
+    font-style: italic;
+}
+
+#header-city {
+    display: inline-block;
+    position: relative;
+    font-size: 3rem;
+}
+
+#header-city::before, #header-city::after {
+    content: "✨";
+}
+#temp-text {
+    display: inline-block;
+}
+#converter {
+    background-color:rgba(255,209,113,1);
+}
