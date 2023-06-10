@@ -11,6 +11,10 @@ h2 {
     border:solid 5px thistle;
     width: 50%;
     margin-left: 25%
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 #temperature{
@@ -24,13 +28,18 @@ h2 {
 
 }
 
-/* .weather-box {
-    margin: 5%;
-    display: grid;
-    grid-gap:5px;
-    grid-template-columns: repeat(4, 2, 3);
-} */
+.view-container {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
+.temp-controls {
+    padding: 1rem;
+    flex-grow: 1;
+}
     
 .red {
 color: red;
