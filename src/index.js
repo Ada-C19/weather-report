@@ -1,21 +1,26 @@
 "use strict";
 
 let currentTemp = 72;
-let sky = "";
+document.addEventListener("DOMContentLoaded", function() {
 
-const getTemp = () => {
+let current_temp = 72;
+let sky = "";
+let defaultCityName = "What city are you searching for?";
+
+
+function getTemp() {
     const temperature = document.getElementById("temp");
     temperature.textContent = currentTemp;
     if (currentTemp >= 80) {
-        temperature.className = "hot"
+        temperature.className = "hot";
     } else if (currentTemp >= 70) {
-        temperature.className = "warm"
+        temperature.className = "warm";
     } else if (currentTemp >= 60) {
-        temperature.className = "medium"
+        temperature.className = "medium";
     } else if (currentTemp >= 50) {
-        temperature.className = "cool"
+        temperature.className = "cool";
     } else {
-        temperature.className = "cold"
+        temperature.className = "cold";
     }
 }
 
@@ -82,10 +87,13 @@ if (document.readyState !== "loading") {
     getTemp();
     getLandscape();
     getSky();
+    cityName.textContent = defaultCityName; 
+
 } else {
     document.addEventListener("DOMContentLoaded", getTemp);
     document.addEventListener("DOMContentLoaded", getLandscape);
     document.addEventListener("DOMContentLoaded", getSky);
+    cityName.textContent = defaultCityName;
 }
 
 document.getElementById('sky-select').addEventListener('change', function() {
@@ -94,11 +102,11 @@ document.getElementById('sky-select').addEventListener('change', function() {
 });
 
 const button3 = document.getElementById("get_real_temp");
-button2.addEventListener("click", () => {
-    getLocation()
+button3.addEventListener("click", () => {
+    getLocation(cityInput.value);
 });
 
-const axios = require("axios");
+
 const locationAPI = "http://127.0.0.1:5000/location";
 const weatherAPI = "http://127.0.0.1:5000/weather";
 
@@ -110,16 +118,23 @@ const getLocation = (query) => {
             }
         })
         .then((response) => {
-            const lat = response.data[0]["lat"]
-            const lon = response.data[0]["lon"]
+            const lat = response.data[0]["lat"];
+            const lon = response.data[0]["lon"];
             console.log(lat)
             console.log(lon)
-            getWeather(lat, lon)
+            getWeather(lat, lon);
         })
         .catch((error) => {
-            console.log('cannot find city')
-        })
-}
+            console.log('cannot find city');
+        });
+};
+
+
+
+
+
+
+
 
 const getWeather = (lat, lon) => {
     axios.get(weatherAPI, {
@@ -129,7 +144,7 @@ const getWeather = (lat, lon) => {
         }
     })
     .then ((response) => {
-        currentTemp = response.data[main][temp]
+        current_temp = response.data[current][temp]
         getTemp()
     })
     . catch((error) => {
@@ -138,5 +153,9 @@ const getWeather = (lat, lon) => {
 }
 
 
-
-
+const resetButton = document.getElementById("reset_city");
+resetButton.addEventListener("click", () => {
+    console.log('Reset city clicked!'); // add this line
+    cityName.textContent = defaultCityName;
+    cityInput.value = defaultCityName;
+});

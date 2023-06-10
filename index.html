@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
+    <script src="./src/index.js" defer></script>
+    <script src="./node_modules/axios/dist/axios.min.js" defer></script>
 </head>
 <body>
     <main>
@@ -36,10 +38,12 @@
 
         <div>
             <section class="Container3">
-            <h3>Welcome to: </h3>
+            <!-- <h3>Welcome to: </h3> -->
             <h3 id="city-name"></h3>
 						<input type="text" id="city-input" placeholder="Enter a city">
                 <button id="get_real_temp">Get Weather</button>
+                <button id="reset_city">Reset City</button>
+
             </section>
         </div>
 
@@ -60,7 +64,7 @@
             Students: Moyo and Carolyn
         </p>
     </footer>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- <script src="./src/index.js"></script>
+    <script src="./node_modules/axios/dist/axios.min.js"></script> -->
 </body>
 </html>
