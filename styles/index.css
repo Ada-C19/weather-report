@@ -1,14 +1,14 @@
 * {
     background-color: white;
-    display: block;
 }
+
 
 h2 {
     margin: o auto 2rem auto;
 }
 
-.temperature_section button{
-    
+#currentTempButton{
+    background-color: lavenderblush;
 }
 .temperature_content {
     display: flex;
