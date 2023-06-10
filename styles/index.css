@@ -38,6 +38,28 @@ h2 {
 
 }
 
+input {
+    border: none;
+    background-color: red;
+    font-size: 100px;
+    color: #E595C5;
+    width: 50%;
+    height: 100%;
+}
+
+
+#cityNameReset {
+    background-color: transparent;
+    color: pink;
+    border:none;
+    border-radius: 50%;
+    font-family:bubbles;
+}
+
+#cityNameReset:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .view-container {
     display: flex;
     gap: 20px;
