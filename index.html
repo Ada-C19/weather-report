@@ -10,7 +10,54 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <header class="header">
+        <span>
+            <h1>Weather Report</h1>
+            <h2>For the city of
+                <h3 id="cityname">Seattle</h3>
+            </h2>
+        </span>
+    </header>
+
+    <section class="temperature_section">
+        <h2>Temperature</h2>
+        <div id="tempsection">
+            <div id="changeTemp">
+                <span id="upTempControl">⬆️</span>
+                <span id="temp">69</span>
+                <span id="downTempControl">⬇️</span>
+            </div>
+            <button id="realTimeTemp">Get Realtime Temperature</button>
+        </div>
+    </section>
+
+    <section class="garden_section">
+        <h2>Garden</h2>
+        <div id="whole_garden">
+            <div id="sky">☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️</div>
+            <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+        </div>
+    </section>
+
+    <section class="sky_section">
+        <h2>Sky</h2>
+        <select id="changeSky">
+            <option value="Sunny">Sunny</option>
+            <option value="Cloudy">Cloudy</option>
+            <option value="Rainy">Rainy</option>
+            <option value="Snowy">Snowy</option>
+        </select>
+    </section>
+
+    <section class="city_section">
+        <h2>City Name</h2>
+        <label>Please enter a city name:</label>
+        <input id="citynameinput" type="text">
+        <button id="enter">Enter</button>
+        <button id="reset">Reset</button>
+    </section>
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>

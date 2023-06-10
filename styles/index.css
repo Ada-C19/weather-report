@@ -1,0 +1,59 @@
+.header {
+    color: white;
+}
+
+.header span {
+    display: inline-block;
+}
+
+.header h1, .header h2, .header h3 {
+    display: inline;
+    margin: 0;
+    padding: 0 14px;
+}
+
+#cityname {
+    font-size: xx-large;
+}
+
+#tempsection {
+    display: flex;
+}
+
+#changeTemp {
+    display:flex;
+    text-align:center;
+    background-color: white;
+    flex-direction: column;
+    height: auto;
+    width: 3rem;
+}
+
+#realTimeTemp {
+    background-color: rgb(69, 157, 212);
+    font-size: medium;
+    color:white;
+    margin: 1em;
+}
+
+#temp {
+    color: yellow;
+    font-size: xx-large;
+}
+
+#whole_garden {
+    display: flex;
+    background-color: #699bab;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 5rem;
+    width: 15rem
+}
+
+body {
+    background-color: rgb(69, 157, 212);
+}
+
+h2,h3,label {
+    color: white;
+}
