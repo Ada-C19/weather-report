@@ -32,18 +32,23 @@ const updateLandscape = () => {
         landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
         updateSkyEmoji("sunny");
         weatherGardenBackground("sunny");
+        bodyBackground("sunny");
     } else if (temperature >= 15) {
         landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
         updateSkyEmoji("cloudy");
-        weatherGardenBackground("cloudy");    
+        weatherGardenBackground("cloudy");
+        bodyBackground("cloudy");    
     } else if (temperature >= 6) {
         landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
         updateSkyEmoji("rainy");
-        weatherGardenBackground("rainy");    
+        weatherGardenBackground("rainy"); 
+        bodyBackground("rainy");    
     } else {
         landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
         updateSkyEmoji("snowy");
-        weatherGardenBackground("snowy");    
+        weatherGardenBackground("snowy");
+        bodyBackground("snowy");    
+    
     } 
     document.getElementById("garden-emoji").textContent = landscape;
 };
@@ -81,6 +86,7 @@ const updateSkyEmoji = (selectedOption) => {
     const skyEmoji = document.getElementById("sky-emoji");
     skyEmoji.textContent = skyOptions[selectedOption];
     weatherGardenBackground(selectedOption)
+    bodyBackground(selectedOption)
 };
 
 /***********************************************************
@@ -159,7 +165,7 @@ convertButton.addEventListener("click", () => {
 });
 
 /***********************************************************
-            Background changes with sky
+Weather Garden Background changes with sky and temperature
 ***********************************************************/
 
 const gardenColors = {
@@ -172,3 +178,20 @@ const weatherGardenBackground = (selectedOption) => {
         const weatherGarden = document.getElementById("garden-sky");
         weatherGarden.style.background = gardenColors[selectedOption];
     };
+
+/***********************************************************
+            Body Background changes with sky&&temp
+***********************************************************/
+
+const bodyColors = {
+    sunny: "linear-gradient(0deg, rgba(82,173,196,1) 0%, rgba(208,158,205,1) 50%, rgba(255,209,113,1) 100%)",
+    cloudy: "linear-gradient(0deg, rgba(158, 166, 173, 1) 0%, rgba(192, 199, 206, 1) 50%, rgba(213, 221, 227, 1) 100%)",
+    rainy: "linear-gradient(0deg, rgba(89, 139, 169, 1) 0%, rgba(122, 169, 197, 1) 50%, rgba(163, 201, 223, 1) 100%)",
+    snowy: "linear-gradient(0deg, rgba(188, 229, 246, 1) 0%, rgba(174, 214, 235, 1) 50%, rgba(160, 199, 224, 1) 100%)",
+};
+
+
+const bodyBackground = (selectedOption) => {
+    const body = document.body;
+    body.style.background = bodyColors[selectedOption];
+};
