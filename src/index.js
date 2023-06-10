@@ -23,7 +23,7 @@ const updateRealtimeWeather = (location) => {
     return axios
     .get('http://localhost:5000/location', {
         params: {
-            q: location,
+            q: 'new york',
             format: 'json',
         },
     })
