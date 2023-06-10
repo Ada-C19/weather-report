@@ -15,8 +15,6 @@ const loadControls = () => {
 	state.gardenLandscape = document.getElementById('landscape');
 	state.gardenLandscapeValue = state.gardenLandscape.textContent;
 	state.cityLocation = document.getElementById('cityNameInput');
-
-	console.log(state);
 };
 
 const increaseTemp = () => {
@@ -84,22 +82,27 @@ const getLocationInfo = () => {
 };
 
 const getWeatherInfo = (location) => {
+	const { lat, lon } = state.cityLocation;
+
+	console.log('Latitude:', lat);
+	console.log('Longitude:', lon);
+
 	return axios
 		.get('http://127.0.0.1:5000/weather', {
-			//http://localhost:5000/weather
 			params: {
-				lat: state.cityLocation['lat'],
-				lon: state.cityLocation['lon'],
+				lat: lat,
+				lon: lon,
 			},
 		})
 		.then((response) => {
-			console.log('retrieve location');
+			console.log('Retrieve location');
 			const cityTemp = convertKToF(response.data.main.temp);
 			state.tempValue = Math.round(cityTemp);
+			changeColorAndLandscape();
 			return state.tempValue;
 		})
 		.catch((error) => {
-			console.log('Location fatch fail error');
+			console.log('Location fetch failed');
 			console.error(error);
 		});
 };
@@ -111,6 +114,7 @@ const updateCurrentTemp = () => {
 		.then((temp) => {
 			state.tempValueEl.textContent = `${state.tempValue}`;
 		});
+	changeColorAndLandscape();
 };
 
 const setUp = () => {
