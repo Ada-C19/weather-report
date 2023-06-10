@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
+
 <body>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <header>
+        <h1>Weather Report</h1>
+        <h2>For the lovely city of </h2>
+        <h2>✨<span id="defaultCity">Seattle</span>✨</h2>
+    </header>
+    <section class="outer-grid">
+        <section class="leftColumn">
+            <div class="section-title" id="temperature-section">
+                Temperature
+                <div class="temp-buttons">
+                    <div class="temperature">
+                        <button id="up">🔼</button>
+                        <h3 id="degrees">67</h3>
+                        <button id="down">🔽</button>
+                    </div>
+                    <div id="realTimeTemp">
+                        <button id="realTimeButton">Get RealTime Temperature (°F)</button>
+                        <div class="celsius">
+                            <button id="changeUnit"> Degrees in Celsius (°C): </button>
+                            <div id="celsiusValue"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-title" id="sky-section">
+                Sky
+                <label for="skies"></label>
+                <select name="skies" id="skies">
+                    <option value="sunny">Sunny</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                    <option value="cloudy">Cloudy</option>
+                </select>
+            </div>
+            <div class="section-title" id="city-name-section">
+                <form>
+                    <label for="city-name">City Name
+                    </label>
+                    <input type="text" id="cityNameInput" value="Seattle">
+                    <button id="resetCity"> Reset </button>
+                </form>
+            </div>
+        </section>
+        <section class="garden-section">
+            <div class="section-title" id="garden-title">
+                Weather Garden
+            </div>
+            <div class="garden-display" id="whole-landscape">
+                <div id="sky-landscape">
+                    ☁️☁️☁️☁️☀️☁️☁️
+                </div>
+                <div id="seasonal-landscape">
+                    🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃
+                </div>
+            </div>
+
+        </section>
+        <script src="./node_modules/axios/dist/axios.min.js"></script>
+        <script src="./src/index.js"></script>
+    </section>
 </body>
+
 </html>
