@@ -136,3 +136,4 @@ const loadControls = () => {
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
 loadControls()
+
