@@ -3,7 +3,8 @@ const state = {
     upButton: null,
     downButton: null,
     tempDisplay: 10,
-    // city: null
+    city: null,
+    headerCity: null
     // tempColor: null
 };
 
@@ -14,6 +15,8 @@ const loadControls = () => {
     state.downButton = document.getElementById("down")
     state.tempDisplay = document.getElementById("temperature-now")
     state.temperature = parseInt(document.getElementById("temperature-now").innerText)
+    state.city = document.getElementById("city").innerText
+    state.headerCity = document.getElementById("header-city")
     // state.tempColor = changeTempColor
 };
 
@@ -28,6 +31,13 @@ const registerEvents = () => {
         state.tempDisplay.innerText = --state.temperature
         changeTempColor();
     });
+
+    state.city.addEventListener("keypress", function(e){
+        if (e.key === "Enter"){
+            console.log("Enter");
+            state.headerCity.textContent = state.city.value
+        }
+    })
 };
 
 const changeTempColor = () => {

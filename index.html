@@ -11,7 +11,7 @@
 </head>
 <body>
     <h1 class="header" > Today's Weather Report </h1>
-        <h3 class="header" > For the lovely city of </h3>
+        <h3 class="header"> For the lovely city of </h3> <span id = "header-city"></span>
     <h4>Temperature</h4>
         <button id="up">&#11014;</button>
         <p id="temperature-now">70</p>
@@ -27,7 +27,7 @@
     <h4>City name</h4>
         <form>
             City: 
-            <input type="text" placeholder="Enter a city"/>  
+            <input id ="city" type="text" placeholder="Enter a city" onkeypress= "registerEvents()"/>  
         </form>
         <button>Reset</button>
     <h4 id="garden"> Weather Garden </h4>
