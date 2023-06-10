@@ -17,6 +17,12 @@
     background-color: aqua;
 }
 
+#weather-garden {
+    display: grid;
+    justify-content: center;
+}
+
+
 /* #temperature-now {
     color: red;
 } */
