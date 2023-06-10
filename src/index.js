@@ -1,15 +1,18 @@
-// constants
-
-//ask in office hours abt this
+// Constants
+const BASE_URL = 'http://127.0.0.1:5000';
+const DEFAULT_CITY = 'Los Angeles';
 const increaseTemp = document.getElementById('increaseTempControl');
 const decreaseTemp = document.getElementById('decreaseTempControl');
 const tempValue = document.getElementById('tempValue');
 const landscape = document.getElementById('landscape');
+const cityNameInput = document.getElementById('cityNameInput');
+const cityNameReset = document.getElementById('cityNameReset'); 
+const headerCityName = document.getElementById('headerCityName');
+const currentTempButton = document.getElementById('currentTempButton');
 
-
-// Wave 2
-//changes color + landscape
-const changeTemp = (temp = 60) => {
+// Changes color + landscape by Temperature
+let temp = 60;
+const changeTemp = () => {
     let landscapeEmojis = '';
     if (temp >= 80) {
         tempValue.style.color = 'red';
@@ -30,62 +33,45 @@ const changeTemp = (temp = 60) => {
     landscape.textContent = landscapeEmojis;
 };
 
-// Function to handle temp increase
-const incTempButton = () => {
-    temp++;
-    tempValue.textContent = `${temp}`;
+// Changes sky by selection
+const changeSky = () => {
+    const selectedSky = document.getElementById('skySelect').value;
+    const theSky = document.getElementById('sky');
+    let sky = '🌞😎🌞';
+    if (selectedSky === 'sunny') {
+        sky = '🌞😎🌞';
+    } else if (selectedSky === 'cloudy') {
+        sky = '🌥️🌥️🌥️';
+    } else if (selectedSky === 'rainy') {
+        sky = '🌧️🌧️🌧️';
+    } else if (selectedSky === 'snowy') {
+        sky = '🌨️🌨️🌨️';
+    }
+    theSky.textContent = sky;
 };
 
-// Function to handle temp decrease
+// Event Handler Functions
+const kelvintoFahrenheit = (temp) => Math.floor((temp - 273.15) * 1.8 + 32);
+
+const incTempButton = () => {
+   temp++;
+   tempValue.textContent = `${temp}`; 
+};
+
 const decTempButton = () => {
     temp--;
     tempValue.textContent = `${temp}`;
 };
 
-// Register events for buttons
-const registerEvents = () => {
-    increaseTemp.addEventListener('click', incTempButton);
-    decreaseTemp.addEventListener('click', decTempButton);
-    increaseTemp.addEventListener('click', changeTemp);
-    decreaseTemp.addEventListener('click', changeTemp);
-    
-};
-
-// On page load
-const onLoad = () => {
-    registerEvents();
-    
-};
-onLoad();
-
-// --- Wave 3 --- 
-
-const cityNameInput = document.getElementById('cityNameInput');
-const cityNameReset = document.getElementById('cityNameReset'); 
-const headerCityName = document.getElementById('headerCityName');
-
-cityNameInput.addEventListener('input', () => {
+const updateHeaderCityName = () => {
     headerCityName.textContent = cityNameInput.value;
-});
+};
 
-cityNameReset.addEventListener('click', () => {
-    cityNameInput.value = headerCityName.textContent = ''; 
-}); 
+const resetCityName = () => {
+    startUI();
+};
 
-
-
-// --- Wave 4 --- 
-
-const BASE_URL = 'http://127.0.0.1:5000'
-
-// Get button element for retrieving temp
-const currentTempButton = document.getElementById('currentTempButton');
-
-// Define function to convert temp from Kelvin to Fahrenheit
-const kelvintoFahrenheit = (temp) => Math.floor((temp - 273.15) * 1.8 + 32); 
-
-// Event listener for button click
-currentTempButton.addEventListener('click', () => {
+const getTemp = () => {
     // Get city name from input field
     const cityName = cityNameInput.value;
 
@@ -99,14 +85,13 @@ currentTempButton.addEventListener('click', () => {
             // Make API call to fetch weather information
             axios.get(`${BASE_URL}/weather?lat=${lat}&lon=${lon}`)
                 .then(tempResponse => {
-                    // Retreive temp from weather response
-                    const temp = tempResponse.data['main']['temp'];
-                    // Convert temp from Kelvin to Fahrenheit
-                    const fahrenheitTemp = kelvintoFahrenheit(temp);
+                    // Extract Kelvin temp and convert to Fahrenheit
+                    const fahrenheitTemp = kelvintoFahrenheit(tempResponse.data['main']['temp']);
                     // Display converted temp in UI 
                     tempValue.textContent = fahrenheitTemp;
                     // Change the temp color and display landscape
-                    changeTemp(fahrenheitTemp);
+                    temp = fahrenheitTemp;
+                    changeTemp();
                 })
 
                 .catch(tempError => {
@@ -116,7 +101,30 @@ currentTempButton.addEventListener('click', () => {
         .catch(locationError => {
             console.log('Error retrieving location:', locationError);
         });
+};
 
-        }); 
-    
-    
+const registerEvents = () => {
+    increaseTemp.addEventListener('click', incTempButton);
+    decreaseTemp.addEventListener('click', decTempButton);
+    increaseTemp.addEventListener('click', changeTemp);
+    decreaseTemp.addEventListener('click', changeTemp);
+    skySelect.addEventListener('change', changeSky);
+    cityNameInput.addEventListener('input', updateHeaderCityName);
+    cityNameReset.addEventListener('click', resetCityName);
+    currentTempButton.addEventListener('click', getTemp);
+};
+
+// Set the default UI for webpage
+const startUI = () => {
+    cityNameInput.value = DEFAULT_CITY;
+    updateHeaderCityName();
+    getTemp();
+    changeSky();
+}
+
+const onLoad = () => {
+    registerEvents();
+    startUI();
+};
+
+onLoad();
