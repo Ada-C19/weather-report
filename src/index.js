@@ -104,11 +104,19 @@ const updateSky = () => {
     skycontent.classList = `skyscapes__ ${skyColor}`;
 };
 
+//object for strings
+// const landscapeType = {
+//     summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
+//     spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+//     autumn: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+//     winter: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+// }
+
 const landscapeType = {
-    summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
-    spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-    autumn: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-    winter: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+    summer:"/assets/summer.gif",
+    spring:"/assets/spring.gif",
+    autumn:"/assets/fall.gif",
+    winter:"/assets/winter.gif"
 }
 
 const formatTempAndGarden = () => {
@@ -133,9 +141,11 @@ const formatTempAndGarden = () => {
         landscape = landscapeType.summer;
         color = 'red';
     }
-
+    // code for strings
+    // const newLandscape = document.getElementById('landscape');
+    // newLandscape.textContent = landscape;
     const newLandscape = document.getElementById('landscape');
-    newLandscape.textContent = landscape;
+    newLandscape.src = landscape;
     const temperature = document.getElementById('real-time-temp');
     temperature.className = color;
     temperature.textContent = String(state.temp);
