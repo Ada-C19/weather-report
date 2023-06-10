@@ -92,6 +92,10 @@ section div {
     height: 200px;
 }
 
+#sky-landscape {
+    padding-top: 30px;
+}
+
 #city-name-section {
     height: 200px;
 }
@@ -126,7 +130,7 @@ section div {
 }
 
 #seasonal-landscape {
-    padding-top: 150px;
+    padding-top: 180px;
 }
 
 #buttonCity {
