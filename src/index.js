@@ -4,14 +4,15 @@ const state = {
     emoji: null,
     cityLabel: null,
     cityValue: null,
-    currentTempButton: null
+    currentTempButton: null,
+    currentTemp: null
 };
 
 
 const updateUI = () =>  {
     state.tempLabel.textContent = state.tempValue;
-    console.log(state.tempValue)
 }; 
+
 
 const updateCity = (event) => {
     state.cityValue = event.target.value
@@ -19,7 +20,7 @@ const updateCity = (event) => {
 }
 
 
-const getLocationInformation = () => {
+const getLocationData = () => {
     let location = state.cityValue;
     return axios
     .get('http://localhost:5000/location', {
@@ -28,51 +29,48 @@ const getLocationInformation = () => {
         },
     })
     .then((response) => {
-        let lat = response.data[0].lat;
-        let lon=response.data[0].lon;
-        return {latitude:lat,longitude:lon}
+            const {lat, lon} = response.data[0];
+        getWeatherData({lat, lon});
     })
     .catch((error)=> {
         console.log('location fetch failed')
     });
 };
-// updateRealtimeWeather('Las Vegas')
-// .then(response => {
-//     console.log('does this work');
-// });
-
-
-    //     const { lat, lon } = response.data[0];
-    //     return console.log({ lat, lon});
-    // })
     
 
-//     const weatherData = axios
-//     .get('http://localhost:5000/weather', {
-//         params: {
-//             lat: locationData.latitude,
-//             lon: locationData.longitude,
-//         },
-//     })
-//     .then(response => {
-//         const { temp } = response.data["current"]["temp"];
-//         return console.log(temp)
-// }) 
+const getWeatherData = (location) => {
+    let locationData = location
+        axios
+        .get('http://localhost:5000/weather', {
+            params: {
+                lat: locationData.lat,
+                lon: locationData.lon,
+            },
+        })
+        .then(response => {
+            const temp  = response.data.main.temp;
+            state.tempValue = kelvinToFahrenheit(temp);
+            updateUI()
+        }) 
+        .catch((error)=> {
+            console.log('weather fetch failed')
+        });
+};
 
+const kelvinToFahrenheit = (k) => {
+    const temp = Math.floor((k - 273.15) * 9/5 + 32); 
+    return temp
+} 
 
-
-// Create an event handler & register an event
-// Event handler - makes axios call (.then & .catch - proper logging)
-// Save values returned from location IQ api - save to state to make another call to Weather endpoint
-// "http://localhost:5000/endpoint"
-
-
+const handleRealTimeButtonClick = () => {
+    console.log('real time click');
+    getLocationData();
+}
 
 const increaseTemp = () => {
     ++state.tempValue;
     updateUI();
 
-    console.log("increasing temp")
 
     if (state.tempValue >= 80) {
         state.tempLabel.style.color = 'red';
@@ -95,7 +93,8 @@ const increaseTemp = () => {
 const decreaseTemp = () => {
     --state.tempValue;
     updateUI();
-    console.log("decreasing temp")
+
+
     if (state.tempValue >= 80) {
         state.tempLabel.style.color = 'red';
         state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
@@ -115,7 +114,6 @@ const decreaseTemp = () => {
 
 
 const registerEventHandlers = () => {
-loadControls()
     const topButton = document.querySelector("#increaseTempControl");
 topButton.addEventListener("click", increaseTemp);
     const bottomButton = document.querySelector("#decreaseTempControl");
@@ -123,14 +121,9 @@ bottomButton.addEventListener("click", decreaseTemp);
     const cityButton = document.querySelector("#cityNameInput");
 cityButton.addEventListener("input", updateCity);
     const realTempButton = document.querySelector("#currentTempButton");
-realTempButton.addEventListener("click", handleRealTimeButtonClick);
-    
+realTempButton.addEventListener("click", handleRealTimeButtonClick);   
 }
 
-const handleRealTimeButtonClick = () => {
-    console.log('real time click');
-    getLocationInformation();
-}
 
 const loadControls = () => {
     state.tempLabel = document.getElementById("tempLabel");
@@ -141,3 +134,5 @@ const loadControls = () => {
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+loadControls()
