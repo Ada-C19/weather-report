@@ -10,7 +10,65 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <header> 
+        <h1>
+            Weather Report
+        </h1>
+        <h2>
+        </h2>
+    </header>
+
+    <main> 
+        <section>
+            <div class="div_temp">
+                <h2>
+                    Temperature
+                </h2>
+                <button id="upbtn" type="button">⬆️</button>
+                <div id ="temp"></div>
+                <button id="downbtn" type="button">⬇️</button>
+                <button id="tempbtn" type="button">Get Realtime Temperature</button> 
+            </div>
+        </section>
+
+        <section>
+            <div id="garden">Weather Garden</div>
+        </section>
+
+        <section>
+            <div class="div_sky">
+                <h2>
+                    Sky
+                </h2>
+                    <form action="/action_page.php">
+                    <label for="sky">Sky Condition:</label>
+                    <select name="sky" id="sky">
+                    <option value="rainy">Rainy</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="snowy">Snowy</option>
+                    <option value="cloudy">Cloudy</option>
+                    </select>
+                <p id="sky-emoji"></p>
+            </div>
+        </section>
+        <section>
+            <div class="div_city">
+                <h2>
+                    City Name
+                </h2>
+                <input type="text" id="cityname" name="cityname"
+                minlength="4" maxlength="100" size="30" placeholder="Enter city name here">
+                <button id="resetbtn" type="button">Reset</button>         
+            </div>           
+        </section>
+    </main>
+
+    <footer> 
+        <p>&copy; Anh & Laura</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>

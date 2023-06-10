@@ -1,4 +1,20 @@
 # Weather Report
+1. Access needs:
+- N/A
+- Laura: may take a bit more time or rush things depending. Prefer to slow and steady
+- Anh: may send messages in Slack outside of business hours
+2. Your learning style:
+- Laura: may use pen and paper to visualize things. May struggle with coding line-by-line with someone else
+- Anh: learn by examples. May ask follow-up or same questions. Also struggle with pair programming. May need more prep beforehand. Prefer divide and conquer approach
+3. How you prefer to receive feedback:
+- Laura: prefer straightforward feedback
+- Anh: prefer honest, constructive feedback. Explanations would be helpful. I may ask questions. Prefer positive and encouraging feedback as well. 
+4. One team communication skill you want to improve with this experience
+- We should timebox when working together and ask for help 
+5. Other topics:
+- Laura: other obligations. Not available after 9 pm. Can be flexible if needed
+- OK with Slack and Zoom 
+
 
 ## Skills Assessed
 
