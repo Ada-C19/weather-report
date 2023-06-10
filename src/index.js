@@ -18,20 +18,33 @@ const updateCity = (event) => {
     state.cityLabel.textContent = state.cityValue;
 }
 
-const updateRealtimeWeather = (location) => {
-    console.log(state.cityValue)
+
+const getLocationInformation = () => {
+    let location = state.cityValue;
     return axios
     .get('http://localhost:5000/location', {
         params: {
-            q: 'new york',
-            format: 'json',
+            q: location,
         },
     })
-
-    .then(response => {
-        const { lat, lon } = response.data[0];
-        return console.log({ lat, lon});
+    .then((response) => {
+        let lat = response.data[0].lat;
+        let lon=response.data[0].lon;
+        return {latitude:lat,longitude:lon}
     })
+    .catch((error)=> {
+        console.log('location fetch failed')
+    });
+};
+// updateRealtimeWeather('Las Vegas')
+// .then(response => {
+//     console.log('does this work');
+// });
+
+
+    //     const { lat, lon } = response.data[0];
+    //     return console.log({ lat, lon});
+    // })
     
 
 //     const weatherData = axios
@@ -45,7 +58,7 @@ const updateRealtimeWeather = (location) => {
 //         const { temp } = response.data["current"]["temp"];
 //         return console.log(temp)
 // }) 
-};
+
 
 
 // Create an event handler & register an event
@@ -102,17 +115,22 @@ const decreaseTemp = () => {
 
 
 const registerEventHandlers = () => {
+loadControls()
     const topButton = document.querySelector("#increaseTempControl");
 topButton.addEventListener("click", increaseTemp);
     const bottomButton = document.querySelector("#decreaseTempControl");
 bottomButton.addEventListener("click", decreaseTemp);
     const cityButton = document.querySelector("#cityNameInput");
 cityButton.addEventListener("input", updateCity);
-//     const realTempButton = document.querySelector("#currentTempButton");
-// realTempButton.addEventListener("click", updateRealtimeWeather);
+    const realTempButton = document.querySelector("#currentTempButton");
+realTempButton.addEventListener("click", handleRealTimeButtonClick);
+    
 }
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
+const handleRealTimeButtonClick = () => {
+    console.log('real time click');
+    getLocationInformation();
+}
 
 const loadControls = () => {
     state.tempLabel = document.getElementById("tempLabel");
@@ -122,8 +140,4 @@ const loadControls = () => {
     state.currentTempButton = document.getElementById("currentTempButton");
 };
 
-const onLoaded = () => {
-    loadControls();
-  };
-
-onLoaded();
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
