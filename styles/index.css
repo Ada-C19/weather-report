@@ -4,7 +4,7 @@
 }
 
 @font-face {
-    font-family: maru;  
+    font-family: maru;
     src: url(/fonts/Hachi_Maru_Pop/HachiMaruPop-Regular.ttf);
 }
 
@@ -39,9 +39,8 @@ h2 {
 
 #city {
     float: right;   
-    clear: both;
-    font-family: maru;
-    font-weight: bolder;
+    clear:both;
+
 }
 
 input {
