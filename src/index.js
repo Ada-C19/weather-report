@@ -1,21 +1,24 @@
 "use strict";
 
+document.addEventListener("DOMContentLoaded", function() {
+
 let current_temp = 72;
 let sky = "";
+let defaultCityName = "What city are you searching for?";
 
-const getTemp = () => {
+function getTemp() {
     const temperature = document.getElementById("temp");
     temperature.textContent = current_temp;
     if (current_temp >= 80) {
-        temperature.className = "hot"
+        temperature.className = "hot";
     } else if (current_temp >= 70) {
-        temperature.className = "warm"
+        temperature.className = "warm";
     } else if (current_temp >= 60) {
-        temperature.className = "medium"
+        temperature.className = "medium";
     } else if (current_temp >= 50) {
-        temperature.className = "cool"
+        temperature.className = "cool";
     } else {
-        temperature.className = "cold"
+        temperature.className = "cold";
     }
 }
 
@@ -82,10 +85,13 @@ if (document.readyState !== "loading") {
     getTemp();
     getLandscape();
     getSky();
+    cityName.textContent = defaultCityName; 
+
 } else {
     document.addEventListener("DOMContentLoaded", getTemp);
     document.addEventListener("DOMContentLoaded", getLandscape);
     document.addEventListener("DOMContentLoaded", getSky);
+    cityName.textContent = defaultCityName;
 }
 
 document.getElementById('sky-select').addEventListener('change', function() {
@@ -94,11 +100,12 @@ document.getElementById('sky-select').addEventListener('change', function() {
 });
 
 const button3 = document.getElementById("get_real_temp");
-button2.addEventListener("click", () => {
-    getLocation()
+button3.addEventListener("click", () => {
+    getLocation(cityInput.value);
 });
 
-const axios = require("axios");
+
+// const axios = require("axios");    for some reason this line kept the default city button from working 
 const locationAPI = "http://127.0.0.1:5000/location";
 const weatherAPI = "http://127.0.0.1:5000/weather";
 
@@ -135,6 +142,10 @@ const getWeather = (lat, lon) => {
     })
 }
 
-
-
-
+const resetButton = document.getElementById("reset_city");
+resetButton.addEventListener("click", () => {
+    console.log('Reset city clicked!'); // add this line
+    cityName.textContent = defaultCityName;
+    cityInput.value = defaultCityName;
+});
+});
