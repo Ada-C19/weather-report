@@ -74,7 +74,7 @@ document.getElementById('skySelect').addEventListener('change', changeSky);
 // END OF SKY CHANGE FUNCTION //
 
 
-// Changing the city name in the header to input city name
+// CHANGE THE HEADER CITY NAME //  
 
 const inputName = document.getElementById('cityNameInput');
 const headerCityName = document.getElementById('headerCityName');
@@ -82,36 +82,43 @@ const headerCityName = document.getElementById('headerCityName');
 
 const updateCityName = function(event) {
     headerCityName.textContent = event.target.value 
-    
-    // state.city = inputName;
-    // headerCityName.textContent = state.city;
 };
 document.getElementById('cityNameInput').addEventListener('input', updateCityName)
 // END OF CHANGING CITY IN HEADER //
 
+//RESET THE HEADER BACK TO SEATTLE //
+const cityNameInput = document.getElementById('cityNameInput');
+const cityNameResetBtn = document.getElementById('cityNameReset'); 
 
-// API CALLS :) ////
-// id="cityNameInput" --> 
-// id="cityNameReset" >
-document.getElementById('cityNameInput').addEventListener('change', changeSky);
-document.getElementById('cityNameReset').addEventListener('click', changeSky);
-const ...
-const ...
+const resetCityName = function (event) {
+    cityNameInput.textContent = event.target.value = "Seattle";
+    // updateCityName();
+};
+document.getElementById('cityNameResetBtn').addEventListener('click', resetCityName);
+// END OF HEADER RESET //
 
-axios
-.get('127.0.0.1:5000')
-// add parameters for city info
-.then((response) => {
-    console.log('Success!', response.data);
-    return response.data
-    // Code that executes with a successful response goes here
-})
-.catch((error) => {
-    // Code that executes with an unsuccessful response goes here
-    console.log('Error!');
-});
-// END OF API CALL //
+// // API CALLS :) ////
+// // id="cityNameInput" --> 
+// // id="cityNameReset" >
+// document.getElementById('cityNameInput').addEventListener('change', changeSky);
+// document.getElementById('cityNameReset').addEventListener('click', changeSky);
+// const ...
+// const ...
+
+// axios
+// .get('127.0.0.1:5000')
+// // add parameters for city info
+// .then((response) => {
+//     console.log('Success!', response.data);
+//     return response.data
+//     // Code that executes with a successful response goes here
+// })
+// .catch((error) => {
+//     // Code that executes with an unsuccessful response goes here
+//     console.log('Error!');
+// });
+// // END OF API CALL //
 
 
-// making an api call
-// .get to 127.0.0.1:5000
+// // making an api call
+// // .get to 127.0.0.1:5000
