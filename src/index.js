@@ -72,6 +72,7 @@ document.getElementById('skySelect').addEventListener('change', changeSky);
 // END OF SKY CHANGE FUNCTION //
 
 
+
 // CHANGE THE HEADER CITY NAME //
 const inputName = document.getElementById('cityNameInput');
 const headerCityName = document.getElementById('headerCityName');
@@ -80,11 +81,12 @@ const headerCityName = document.getElementById('headerCityName');
 const updateCityName = function(event) {
     headerCityName.textContent = event.target.value
 };
-
 document.getElementById('cityNameInput').addEventListener('input', updateCityName)
 // END OF CHANGING CITY IN HEADER //
 
-//RESET THE HEADER BACK TO SEATTLE //
+
+
+// RESET THE HEADER BACK TO SEATTLE //
 const cityNameInput = document.getElementById('cityNameInput');
 const cityNameResetBtn = document.getElementById('cityNameReset'); 
 
@@ -96,7 +98,9 @@ document.getElementById('cityNameReset').addEventListener('click', resetCityName
 
 
 
-// API CALLS :) ////
+
+
+// // API CALLS : //
 // document.getElementById('cityNameInput').addEventListener('change', changeSky);
 // document.getElementById('cityNameReset').addEventListener('click', changeSky);
 // const ...
