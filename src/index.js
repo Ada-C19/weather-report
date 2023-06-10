@@ -71,6 +71,12 @@ const clearCityName = () => {
     displayCityName();
 }
 
+// function to get realtime temp
+const getRealtimeTemp = () => {
+    const cityInput = document.getElementById("cityNameInput").value;
+    findLatitudeAndLongitudeThenWeather(cityInput);
+}
+
 // function to call proxy server to get latitude and longitude
 const findLatitudeAndLongitudeThenWeather = (query) => {
     axios.get('http://127.0.0.1:5000/location', 
@@ -83,7 +89,6 @@ const findLatitudeAndLongitudeThenWeather = (query) => {
         let latitude = response.data[0].lat;
         let longitude = response.data[0].lon;
         console.log('sucess!', query, latitude, longitude);
-        // return {"lat": latitude, "lon": longitude};
         findWeather(latitude, longitude);
     })
     .catch((error) => {
@@ -101,8 +106,12 @@ const findWeather = (lat, lon) => {
         }
     })
     .then((response) => {
-        let currentTemp = response.data.main.temp;
-        console.log('sucess!', currentTemp)
+        let currentTempKelvin = response.data.main.temp;
+        let currentTempF = Math.ceil((currentTempKelvin-273.15) * 1.8 + 32);
+        console.log('sucess!', currentTempF)
+        state.tempNum = currentTempF;
+        displayTemp();
+        displayLandscape();
     })
     .catch((error) => {
         console.log('error!', error)
@@ -114,13 +123,14 @@ const registerEventHandlers = (event) => {
     const decreaseTempButton = document.querySelector("#decreaseTempControl");
     const cityNameInputted = document.querySelector("#cityNameInput");
     const cityNameResetButton = document.querySelector("#cityNameReset");
+    const getRealtimeTempButton = document.querySelector("#currentTempButton");
 
     increaseTempButton.addEventListener("click", increaseTemp);
     decreaseTempButton.addEventListener("click", decreaseTemp);
     cityNameInputted.addEventListener("input", displayCityName);
     cityNameResetButton.addEventListener("click", clearCityName);
+    getRealtimeTempButton.addEventListener("click", getRealtimeTemp);
 
-    findLatitudeAndLongitudeThenWeather('Seattle');
     displayTemp();
     displayLandscape();
 }
