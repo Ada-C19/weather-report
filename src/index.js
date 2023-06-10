@@ -72,45 +72,45 @@ document.getElementById('skySelect').addEventListener('change', changeSky);
 // END OF SKY CHANGE FUNCTION //
 
 
-// CHANGE THE HEADER CITY NAME //
+// Changing the city name in the header to input city name
+
 const inputName = document.getElementById('cityNameInput');
 const headerCityName = document.getElementById('headerCityName');
     
 
 const updateCityName = function(event) {
-    headerCityName.textContent = event.target.value
+    headerCityName.textContent = event.target.value 
+    
+    // state.city = inputName;
+    // headerCityName.textContent = state.city;
 };
 
 document.getElementById('cityNameInput').addEventListener('input', updateCityName)
 // END OF CHANGING CITY IN HEADER //
 
-// RESET THE HEADER TO SEATTLE //
-
-
-// END OF RESETTING HEADER TO SEATTLE //
-
-
 
 // API CALLS :) ////
-// document.getElementById('cityNameInput').addEventListener('change', changeSky);
-// document.getElementById('cityNameReset').addEventListener('click', changeSky);
-// const ...
-// const ...
+// id="cityNameInput" --> 
+// id="cityNameReset" >
+document.getElementById('cityNameInput').addEventListener('change', changeSky);
+document.getElementById('cityNameReset').addEventListener('click', changeSky);
+const ...
+const ...
 
-// axios
-// .get('127.0.0.1:5000')
-// // add parameters for city info
-// .then((response) => {
-//     console.log('Success!', response.data);
-//     return response.data
-//     // Code that executes with a successful response goes here
-// })
-// .catch((error) => {
-//     // Code that executes with an unsuccessful response goes here
-//     console.log('Error!');
-// });
+axios
+.get('127.0.0.1:5000')
+// add parameters for city info
+.then((response) => {
+    console.log('Success!', response.data);
+    return response.data
+    // Code that executes with a successful response goes here
+})
+.catch((error) => {
+    // Code that executes with an unsuccessful response goes here
+    console.log('Error!');
+});
 // END OF API CALL //
 
 
-// making an api call
-// .get to 127.0.0.1:5000
+// // making an api call
+// // .get to 127.0.0.1:5000
