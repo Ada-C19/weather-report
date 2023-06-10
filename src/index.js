@@ -53,6 +53,8 @@ const changeSky = (event) => {
     }
 }
 
+ 
+
 const changeColorByTemp = (event) => {
     // make js to change color using state temperature variable
     const tempCount = document.querySelector('#temp-count');
@@ -143,7 +145,7 @@ const registerEventHandlers = (event) => {
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
 
-console.log('testing!')
-console.log(searchLocation())
-console.log(getCityName())
+// console.log('testing!')
+// console.log(searchLocation())
+// console.log(getCityName())
 
