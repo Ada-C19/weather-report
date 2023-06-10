@@ -118,18 +118,36 @@ const findWeather = (lat, lon) => {
     })
 }
 
+// function to change sky
+const changeSky = (event) => {
+    skyContainer = document.getElementById("sky");
+    // skyContainer.textContent = `${event.target.value}`
+
+    if (event.target.value === "sunny") {
+        skyContainer.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️"
+    } else if (event.target.value === "cloudy") {
+        skyContainer.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️"
+    } else if (event.target.value === "rainy") {
+        skyContainer.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
+    } else if (event.target.value === "snowy") {
+        skyContainer.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+    }
+}
+
 const registerEventHandlers = (event) => {
     const increaseTempButton = document.querySelector("#increaseTempControl");
     const decreaseTempButton = document.querySelector("#decreaseTempControl");
     const cityNameInputted = document.querySelector("#cityNameInput");
     const cityNameResetButton = document.querySelector("#cityNameReset");
     const getRealtimeTempButton = document.querySelector("#currentTempButton");
+    const selectSkyOption = document.querySelector("#skySelect");
 
     increaseTempButton.addEventListener("click", increaseTemp);
     decreaseTempButton.addEventListener("click", decreaseTemp);
     cityNameInputted.addEventListener("input", displayCityName);
     cityNameResetButton.addEventListener("click", clearCityName);
     getRealtimeTempButton.addEventListener("click", getRealtimeTemp);
+    selectSkyOption.addEventListener("change", changeSky);
 
     displayTemp();
     displayLandscape();
