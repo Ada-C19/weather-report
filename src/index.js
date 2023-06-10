@@ -185,9 +185,9 @@ const weatherGardenBackground = (selectedOption) => {
 
 const bodyColors = {
     sunny: "linear-gradient(0deg, rgba(82,173,196,1) 0%, rgba(208,158,205,1) 50%, rgba(255,209,113,1) 100%)",
-    cloudy: "linear-gradient(0deg, rgba(158, 166, 173, 1) 0%, rgba(192, 199, 206, 1) 50%, rgba(213, 221, 227, 1) 100%)",
-    rainy: "linear-gradient(0deg, rgba(89, 139, 169, 1) 0%, rgba(122, 169, 197, 1) 50%, rgba(163, 201, 223, 1) 100%)",
-    snowy: "linear-gradient(0deg, rgba(188, 229, 246, 1) 0%, rgba(174, 214, 235, 1) 50%, rgba(160, 199, 224, 1) 100%)",
+    cloudy: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+    rainy: "linear-gradient(45deg, #8baaaa 0%, #ae8b9c 100%)",
+    snowy: "linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)",
 };
 
 

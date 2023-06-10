@@ -17,7 +17,7 @@ body {
     background: linear-gradient(0deg, 
     rgba(82,173,196,1) 0%, 
     rgba(208,158,205,1) 50%, 
-    rgba(255,209,113,1) 100%);
+    rgba(255,209,113,1) 100%); 
 }
 
 header, h1, h2 {
@@ -147,5 +147,5 @@ header {
     display: inline-block;
 }
 #converter {
-    background-color:blueviolet;
+    background-color:rgba(255,209,113,1);
 }
