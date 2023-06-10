@@ -60,7 +60,7 @@ const headerCityName = document.getElementById('headerCityName');
 }
 
 const getLocationInfo = () => {
-return axios.get('http://localhost:5000/location',
+return axios.get('https://genesis-weather-report-proxy-server.onrender.com/location',
 {
   params: {
     q: state.cityLocation.value
@@ -78,7 +78,7 @@ return axios.get('http://localhost:5000/location',
 
 const convertKToF = k => (k-273.15) * (9/5) + 32
 const getWeatherInfo = (location) => {
-return axios.get('http://localhost:5000/weather',
+return axios.get('https://genesis-weather-report-proxy-server.onrender.com/weather',
 {
   params: {
     lat: state.cityLocation['lat'], 
