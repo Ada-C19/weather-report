@@ -30,12 +30,20 @@ let landscape = gardenEmoji.textContent;
 const updateLandscape = () => {
     if (temperature >= 27) {
         landscape = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+        updateSkyEmoji("sunny");
+        weatherGardenBackground("sunny");
     } else if (temperature >= 15) {
         landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+        updateSkyEmoji("cloudy");
+        weatherGardenBackground("cloudy");    
     } else if (temperature >= 6) {
         landscape = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+        updateSkyEmoji("rainy");
+        weatherGardenBackground("rainy");    
     } else {
         landscape = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        updateSkyEmoji("snowy");
+        weatherGardenBackground("snowy");    
     } 
     document.getElementById("garden-emoji").textContent = landscape;
 };
@@ -72,6 +80,7 @@ const skyOptions = {
 const updateSkyEmoji = (selectedOption) => {
     const skyEmoji = document.getElementById("sky-emoji");
     skyEmoji.textContent = skyOptions[selectedOption];
+    weatherGardenBackground(selectedOption)
 };
 
 /***********************************************************
@@ -148,3 +157,18 @@ convertButton.addEventListener("click", () => {
     }
     updateTemperature();
 });
+
+/***********************************************************
+            Background changes with sky
+***********************************************************/
+
+const gardenColors = {
+        sunny: "ivory",
+        cloudy: "lavender",
+        rainy: "lightsteelblue",
+        snowy: "lightcyan",
+};
+const weatherGardenBackground = (selectedOption) => {
+        const weatherGarden = document.getElementById("garden-sky");
+        weatherGarden.style.background = gardenColors[selectedOption];
+    };

@@ -106,7 +106,7 @@ button {
     display: flex;
 }
 #garden-sky {
-    background-color:whitesmoke;
+    background-color: ivory;
     opacity: 0.9;
     margin-top: 55px;
     padding: 15px;
@@ -114,6 +114,7 @@ button {
     height: auto;
     width: 35rem;
     font-size: 1.5rem;
+    background-color: l;
 }
 
 header {
