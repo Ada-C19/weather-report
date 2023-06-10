@@ -131,7 +131,7 @@ const resetCityName = () => {
 const submitCityName = () => {
     const header = document.getElementById('headerCityName');
     const citySearch = document.getElementById('cityNameSubmit')
-    state.city = "Seattle";
+    state.city = "";
     header.textContent = state.city;
     citySearch.value = state.city;
     // getLocationandTemp();
@@ -145,44 +145,46 @@ const updateCity = () => {
 }
 
 // function for calling APIs
-// const searchLocation = () => {
-//     axios
-//     .get('http://127.0.0.1:5000/location', {
-//         params: {
-//             q: state.city,
-//         },
-//     })
-//     .then((response) => {
-//     console.log('success!');
-//     state.lat = response.data[0].lat;
-//     state.lon = response.data[0].lon;
-//     searchTemperature();
-//         })
-//     .catch((error) => {
-//         console.log('searchLocation error: ' +
-//         error.response);
-//     });
-// };
+const searchLocation = () => {
+    axios
+    .get('http://127.0.0.1:5000/location', {
+        params: {
+            q: state.city,
+        },
+    })
+    .then((response) => {
+        console.log('search location success!');
+        state.lat = response.data[0].lat;
+        state.lon = response.data[0].lon;
+        searchTemperature();
+    })
+    .catch((error) => {
+        console.log('searchLocation error: ' +
+        error.response);
+    });
+};
 
-// const searchTemperature = () => {
-//     axios
-//     .get('http://localhost:5000/weather', {
-//         params: {
-//         lat: state.lat,
-//         lon: state.lon,
-//         },
-//     })
-//     .then((response) => {
-//         state.temperature = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
-//         // return current temp and assign it to  temp count
-//         const tempCount = document.querySelector("#tempValue");
-//         tempCount.textContent = `${state.temperature}`;
-//         changeLandscapeTemp();
-// })
-//     .catch((error) => {
-//         console.log('searchTemperature error: ' + error.response);
-//     });
-// };
+const searchTemperature = () => {
+    axios
+    .get('http://localhost:5000/weather', {
+        params: {
+            lat: state.lat,
+            lon: state.lon,
+        },
+    })
+    .then((response) => {
+        console.log('searchTemperature success!');
+        state.tempCount = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
+        // return current temp and assign it to  temp count
+        const tempCount = document.querySelector("tempValue");
+        tempCount.textContent = `${state.tempCount}`;
+        changeLandscapeTemp();
+})
+    .catch((error) => {
+        console.log('searchTemperature failing here!');
+        console.log('searchTemperature error: ' + error.response);
+    });
+};
 
 const registerEventHandlers = () => {
 
@@ -214,7 +216,7 @@ submitCity.addEventListener('change',submitCityName)
 registerEventHandlers();
 
 // console.log(searchLocation())
-
+console.log(searchTemperature())
 // registercityName and change location functions
 // inputElement.addEventListener("input", function () {
 //     const cityName = inputElement.tempValue;
@@ -230,5 +232,3 @@ registerEventHandlers();
 // need to fix reset button
 // need to add submit button
 // need to fix the API call 
-// Goeun's suggestion to connect FE and BE
-// axios.get('http://127.0.0.1:5000/your_endpoint_here', ...)
