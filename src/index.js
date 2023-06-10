@@ -79,6 +79,7 @@ const getRealTemp = () => {
 				temp = response.data.main["temp"];
 				state.tempValueCount = convertKtoF(temp);
 				state.tempValue.textContent = state.tempValueCount;
+				handleLandscapePics();
 			})
 			.catch(() => {
 				console.log("error");
