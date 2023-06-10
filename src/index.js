@@ -176,7 +176,7 @@ const searchTemperature = () => {
         console.log('searchTemperature success!');
         state.tempCount = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
         // return current temp and assign it to  temp count
-        const tempCount = document.querySelector("tempValue");
+        const tempCount = document.getElementById("tempValue");
         tempCount.textContent = `${state.tempCount}`;
         changeLandscapeTemp();
 })
@@ -207,7 +207,7 @@ updateCityName.addEventListener('input', updateCity)
 
 resetCityName();
 const resetCity = document.getElementById("cityNameReset");
-resetCity.addEventListener('change',resetCityName)
+resetCity.addEventListener('click',resetCityName)
 
 submitCityName();
 const submitCity = document.getElementById("cityNameSubmit");
@@ -228,7 +228,7 @@ console.log(searchTemperature())
 // });
 
 
-
+ 
 // need to fix reset button
 // need to add submit button
 // need to fix the API call 
