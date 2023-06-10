@@ -144,4 +144,18 @@ button {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+.cloudy {
+    background-color: #d3d3d3
+}
 
+.sunny {
+    background-color: #dff
+}
+
+.rainy {
+    background-color: #add8e6
+}
+
+.snowy {
+    background-color: #b0c4de
+}
