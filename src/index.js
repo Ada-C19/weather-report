@@ -72,7 +72,7 @@ const clearCityName = () => {
 }
 
 // function to call proxy server to get latitude and longitude
-const findLatitudeAndLongitude = (query) => {
+const findLatitudeAndLongitudeThenWeather = (query) => {
     axios.get('http://127.0.0.1:5000/location', 
     {
         params: {
@@ -83,7 +83,8 @@ const findLatitudeAndLongitude = (query) => {
         let latitude = response.data[0].lat;
         let longitude = response.data[0].lon;
         console.log('sucess!', query, latitude, longitude);
-        // return {lat: latitude, lon: longitude};
+        // return {"lat": latitude, "lon": longitude};
+        findWeather(latitude, longitude);
     })
     .catch((error) => {
         console.log('error!', error)
@@ -119,8 +120,7 @@ const registerEventHandlers = (event) => {
     cityNameInputted.addEventListener("input", displayCityName);
     cityNameResetButton.addEventListener("click", clearCityName);
 
-    findLatitudeAndLongitude('Seattle');
-    findWeather(47.6038321, -122.330062);
+    findLatitudeAndLongitudeThenWeather('Seattle');
     displayTemp();
     displayLandscape();
 }
