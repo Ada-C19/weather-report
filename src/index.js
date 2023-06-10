@@ -5,7 +5,7 @@ const state = {
 const setUpTemperature = () => {
   let classType;
   let gardenType;
-  let temperature = state.temp
+  // let temperature = state.temp
 
   if (state.temp >= 80) {
     classType = "red";
@@ -53,8 +53,6 @@ function City() {
   const cityHeader = document.querySelector("h2");
   cityHeader.textContent = cityName;
   state.cityName = cityName;
-  console.log("cityname")
-  console.log(state.cityName)
 }
 
 function clearInput() {
@@ -83,7 +81,6 @@ mySelect.onchange = function selectSky() {
 
 function findRealTimeTemp() {
   findLatitudeAndLongitude();
-  
 }
 
 const findLatitudeAndLongitude = (query) => {
@@ -118,11 +115,7 @@ const findTemperature = (query) => {
     }).then((response) => {
       realTimeTemp = response["data"]["main"]["temp"];
       // call temp helper function and pass output to state
-      console.log("real time temp")
-      console.log(realTimeTemp)
       state.temp = realTimeTempF(realTimeTemp);
-      console.log("real time tempFFFFF");
-      console.log(state.temp);
       setUpTemperature();
     }).catch((error) => {
         console.log("error in find realTimeTemp");
