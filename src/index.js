@@ -1,3 +1,5 @@
+// const axios = require("axios");
+
 // state which displays the temperature number and background of temperature number
 const state = {
     tempNum: 75
@@ -69,6 +71,27 @@ const clearCityName = () => {
     displayCityName();
 }
 
+//
+
+// function to call proxy server to get
+const findLatitudeAndLongitude = (query) => {
+    axios.get('http://127.0.0.1:5000/location', 
+    {
+        params: {
+            "q": query
+        }
+    })
+    .then((response) => {
+        let latitude = response.data[0].lat;
+        let longitude = response.data[0].lon;
+        console.log('sucess!', query, latitude, longitude);
+        // return {lat: latitude, lon: longitude};
+    })
+    .catch((error) => {
+        console.log('error!', error)
+    })
+}
+
 const registerEventHandlers = (event) => {
     const increaseTempButton = document.querySelector("#increaseTempControl");
     const decreaseTempButton = document.querySelector("#decreaseTempControl");
@@ -80,6 +103,7 @@ const registerEventHandlers = (event) => {
     cityNameInputted.addEventListener("input", displayCityName);
     cityNameResetButton.addEventListener("click", clearCityName);
 
+    findLatitudeAndLongitude('Seattle');
     displayTemp();
     displayLandscape();
 }
