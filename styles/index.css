@@ -5,7 +5,7 @@ html {
 }
 
 h1 {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 header {
@@ -51,9 +51,11 @@ section div {
 
 #realTimeButton {
     padding: 8px;
-    background-color: blue;
+    background-color: rgb(79, 112, 156);
     color: white;
     border-radius: 5%;
+    height:30px;
+    width:210px;
 }
 
 .celsius {
@@ -67,6 +69,9 @@ section div {
 
 #celsiusValue {
     border: none;
+    padding-left: 20px;
+    color: rgb(92, 137, 132);
+    font-size: larger;
 }
 
 #output1 {
@@ -129,9 +134,24 @@ section div {
     padding-top: 150px;
 }
 
-#buttonCity {
-    background-color: blue;
-    color: aliceblue;
-    border-radius: 10;
-    text-align: center;
+#changeUnit {
+    border-radius: 35;
+    background-color: rgb(242, 216, 216);
+    font-family: monospace;
+    height:30px;
+    width:210px;
+}
+
+#defaultCity {
+    font-size: xx-large;
+    width: 70%;
+}
+
+#resetCity {
+    padding: 8px;
+    background-color: rgb(79, 112, 156);
+    color: white;
+    border-radius: 5%;
+    height:30px;
+    width:145px
 }

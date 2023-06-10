@@ -135,7 +135,7 @@ const resetCity = () => {
 }
 
 // Function for all Event Handlers
-const registerEventHandlers = (event) => {
+const registerEventHandlers = () => {
     const realTimeButton = document.querySelector('#realTimeTemp');
     realTimeButton.addEventListener('click', apiCallLocation);
 
