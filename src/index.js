@@ -2,31 +2,56 @@
 
 const state = {
     city: 'Seattle',
-    temp: 75,
+    temp: 0,
     latitude: 0,
     longitude: 0,
 };
 
 const getCoordinates = (city) => {
-    axios.get('https://us1.locationiq.com/v1/location', {
+    console.log(city)
+    console.log('hahaha')
+    axios.get('http://127.0.0.1:5000/location', {
         params: {
             q: state.city,
+            format: 'json'
         },
     })
     .then((response) => {
-        console.log(response)
-        state.lat = response.data[0].lat;
-        state.lon = response.data[0].lon;
-        getRealtimeTemp();
+        console.log(response.data[0])
+        state.latitude = response.data[0]['lat'];
+        state.longitude = response.data[0]['lon'];
+        
     })
     .catch((error) => {
+        console.log(error)
         console.log('Oh haiil no, this does not exist.');
         console.log(error.response);
     });
 };
 
+const getWeather = () => {
+
+    axios.get('http://127.0.0.1:5000/weather', {
+        params: { 
+            lat: state.latitude,
+            lon: state.longitude,
+        }
+    })
+
+    .then((response) => {
+        console.log(response)
+        let realTemp = response.data.main.temp;
+        state.temp = Math.round((realTemp - 273) * 1.8 + 32);
+        const tempCount = document.querySelector('#tempValue');
+        tempChange();
+    })
+
+}
+
 const getCityWeather = () => {
     getCoordinates(state.city);
+    getWeather();
+    
 }
 
 const tempChange = () => {
@@ -147,7 +172,6 @@ const registerEventHandlers = (event) => {
     resetBtn.addEventListener('click', resetCityBtn);
 
     const realTimeBtn = document.getElementById('realTimeTemp');
-    // TODO
     realTimeBtn.addEventListener('click', getCityWeather);
 };
 
