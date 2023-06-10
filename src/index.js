@@ -5,9 +5,13 @@ const state = {
     cityLabel: null,
     cityValue: null,
     currentTempButton: null,
-    currentTemp: null
+    currentTemp: null,
+    skyVibe:null
 };
-
+const selectSky = () => {
+    skyVibe.options[skyVibe.selectedIndex].text;
+    consolelog(skyVibe.options[skyVibe.selectedIndex].text);
+}
 
 const updateUI = () =>  {
     state.tempLabel.textContent = state.tempValue;
@@ -121,7 +125,9 @@ bottomButton.addEventListener("click", decreaseTemp);
     const cityButton = document.querySelector("#cityNameInput");
 cityButton.addEventListener("input", updateCity);
     const realTempButton = document.querySelector("#currentTempButton");
-realTempButton.addEventListener("click", handleRealTimeButtonClick);   
+realTempButton.addEventListener("click", handleRealTimeButtonClick); 
+    const skyButton = document.querySelector("#skySelect");
+skyButton.addEventListener("change", selectSky);
 }
 
 
@@ -131,6 +137,7 @@ const loadControls = () => {
     state.cityLabel = document.getElementById("headerCityName");
     state.cityValue = document.getElementById("cityNameInput").value;
     state.currentTempButton = document.getElementById("currentTempButton");
+    state.skyVibe =document.getElementById("skySelect");
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
