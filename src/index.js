@@ -8,12 +8,13 @@ const state = {
 };
 
 const getCoordinates = (city) => {
-    axios.get('http://127.0.0.1:5000/location', {
+    axios.get('https://us1.locationiq.com/v1/location', {
         params: {
             q: state.city,
         },
     })
     .then((response) => {
+        console.log(response)
         state.lat = response.data[0].lat;
         state.lon = response.data[0].lon;
         getRealtimeTemp();
@@ -23,6 +24,10 @@ const getCoordinates = (city) => {
         console.log(error.response);
     });
 };
+
+const getCityWeather = () => {
+    getCoordinates(state.city);
+}
 
 const tempChange = () => {
     let temp = state.temp;
@@ -117,6 +122,7 @@ const resetCityBtn = () => {
 
 
 
+
 const registerEventHandlers = (event) => {
     tempChange();
 
@@ -139,6 +145,10 @@ const registerEventHandlers = (event) => {
 
     const resetBtn = document.getElementById('nameReset');
     resetBtn.addEventListener('click', resetCityBtn);
+
+    const realTimeBtn = document.getElementById('realTimeTemp');
+    // TODO
+    realTimeBtn.addEventListener('click', getCityWeather);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
