@@ -13,13 +13,6 @@ const decreaseTemp = () => {
     setTempAndLandscape();
 };
 
-// const setTempAndLandscape = () => {
-//     const currentTemp = document.querySelector('#display-temperature');
-//     currentTemp.textContent = `${state.currentTemp}`;
-//     changeTempColor();
-//     changeLandscape();
-// }
-
 const setTempAndLandscape = () => {
     const temp = state.currentTemp;
 
@@ -72,58 +65,19 @@ const changeSky = () => {
     skySection.textContent = skyEmojis;
 };
 
-// const changeTempColor = () => {
-//     const tempCurrent = document.getElementById('display-temperature');
-//     let color;
-//     switch (true) {
-//         case state.currentTemp >= 80:
-//             color = 'red';
-//             break;
-//         case state.currentTemp >= 70:
-//             color = 'orange';
-//             break;
-//         case state.currentTemp >= 60:
-//             color = 'yellow';
-//             break; 
-//         case state.currentTemp >= 50:
-//             color = 'green';
-//             break;
-//         default:
-//             color = 'teal';
-//     }
-//     tempCurrent.className = color;
-// };
-
-// const changeLandscape = () => {
-//     const landscape = document.getElementById('landscape');
-//     let emoji;
-//     switch (true) {
-//         case state.currentTemp >= 80:
-//             emoji = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
-//             break;
-//         case state.currentTemp >= 70:
-//             emoji = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
-//             break;
-//         case state.currentTemp >= 60:
-//             emoji = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
-//             break;
-//         default:
-//             emoji = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
-//     }
-//     landscape.textContent = emoji;
-// };
-
-const changeCityInput = (city) => {
+const changeCityInput = () => {
     const currentCityName = document.getElementById('current-city');
-    currentCityName.innerHTML = `For the lovely city of ✨${city.target.value}✨`;
-    currentCityInput = city.target.value;
+    const input = document.getElementById('city-input').value;
+    currentCityName.textContent = `For the lovely city of ✨${input}✨`;
 };
 
 const cityInputField = document.getElementById('city-input');
-cityInputField.value = 'Seattle';
+cityInputField.value = state.defaultCity;
 
 const getCityLocation = (city) => {
     let latitude, longitude;
+    console.log('inside getCityLocation');
+    console.log('this is my city', city);
     return axios
         .get('http://127.0.0.1:5000/location', {
             params: {
@@ -134,8 +88,7 @@ const getCityLocation = (city) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
             console.log('Success: getCityLocation works', latitude, longitude);
-            // return getWeather({ lat: latitude, lon: longitude });
-            return getWeather(lat, lon);
+            return getWeather({ lat: latitude, lon: longitude });
         })
         .catch((error) => {
             console.log(`This city does not exist`);
@@ -143,19 +96,16 @@ const getCityLocation = (city) => {
         });
 };
 
-// const getWeather = (query) => {
-const getWeather = (lat, lon) => { 
+const getWeather = (query) => {
     return axios
         .get('http://127.0.0.1:5000/weather', {
             params: {
-                // lat: query.lat,
-                // lon: query.lon,
-                lat: lat,
-                lon: lon,
-                format: 'json',
-            },
+                lat: query.lat,
+                lon: query.lon
+            }
         })
         .then((response) => {
+            console.log('getWeather is successful');
             return Math.floor((response.data.main.temp - 273.15) * 1.8 +32);
         })
         .catch((error) => {
@@ -164,11 +114,10 @@ const getWeather = (lat, lon) => {
 };
 
 const resetCity = () => {
-    // changeCityInput({ target: {value: defaultCity} });
-    document.getElementById('city-input').textContent = state.defaultCity;
-    changeCityInput(state.defaultCity);
+    const cityName = document.getElementById('city-input');
+    cityName.value = "Seattle";
+    changeCityInput();
 };
-
 
 const registerEventHandlers = () => {
     const increaseButton = document.getElementById("increase-temp");
@@ -182,7 +131,7 @@ const registerEventHandlers = () => {
     changeCity.addEventListener("propertychange", changeCityInput);
 
     const changeTemp = document.getElementById('temp-button');
-    changeTemp.addEventListener("click", changeLocationTemp);
+    changeTemp.addEventListener("click", getCityLocation);
 
     const selectSky = document.getElementById('sky-drop-down');
     selectSky.addEventListener("change", changeSky);
