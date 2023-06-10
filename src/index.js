@@ -15,7 +15,7 @@ const loadControls = () => {
     state.downButton = document.getElementById("down")
     state.tempDisplay = document.getElementById("temperature-now")
     state.temperature = parseInt(document.getElementById("temperature-now").innerText)
-    state.city = document.getElementById("city").innerText
+    state.city = document.getElementById("city")
     state.headerCity = document.getElementById("header-city")
     // state.tempColor = changeTempColor
 };
@@ -34,8 +34,13 @@ const registerEvents = () => {
 
     state.city.addEventListener("keypress", function(e){
         if (e.key === "Enter"){
-            console.log("Enter");
-            state.headerCity.textContent = state.city.value
+            e.preventDefault();  // Prevent form submission
+
+            let cityValue = state.city.value;
+            state.headerCity.textContent = cityValue;
+            
+            // Clear the input field after updating the header
+            state.city.value = "";
         }
     })
 };
