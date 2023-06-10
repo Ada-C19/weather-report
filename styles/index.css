@@ -6,11 +6,17 @@ html {
 
 h1 {
     font-size: 40px;
+    margin-right: 30px;
+}
+
+#defaultCity {
+    font-weight: bolder;
 }
 
 header {
-    display: inline-block;
-    margin-left: 25px
+    display: flex;
+    margin-left: 25px;
+    align-items: center;
 }
 
 section div {
