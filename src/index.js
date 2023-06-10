@@ -72,6 +72,7 @@ document.getElementById('skySelect').addEventListener('change', changeSky);
 // END OF SKY CHANGE FUNCTION //
 
 
+
 // Changing the city name in the header to input city name
 
 const inputName = document.getElementById('cityNameInput');
@@ -84,14 +85,26 @@ const updateCityName = function(event) {
     // state.city = inputName;
     // headerCityName.textContent = state.city;
 };
-
 document.getElementById('cityNameInput').addEventListener('input', updateCityName)
 // END OF CHANGING CITY IN HEADER //
 
 
-// API CALLS :) ////
-// id="cityNameInput" --> 
-// id="cityNameReset" >
+
+// RESET THE HEADER BACK TO SEATTLE //
+const cityNameInput = document.getElementById('cityNameInput');
+const cityNameResetBtn = document.getElementById('cityNameReset'); 
+
+const resetCityName = function (event) {
+    headerCityName.textContent = "Seattle";
+};
+document.getElementById('cityNameReset').addEventListener('click', resetCityName);
+// END OF HEADER RESET //
+
+
+
+
+
+// // API CALLS : //
 document.getElementById('cityNameInput').addEventListener('change', changeSky);
 document.getElementById('cityNameReset').addEventListener('click', changeSky);
 const ...
@@ -109,8 +122,8 @@ axios
     // Code that executes with an unsuccessful response goes here
     console.log('Error!');
 });
-// END OF API CALL //
+// // END OF API CALL //
 
 
-// // making an api call
-// // .get to 127.0.0.1:5000
+// // // making an api call
+// // // .get to 127.0.0.1:5000
