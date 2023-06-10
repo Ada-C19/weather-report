@@ -105,24 +105,24 @@ document.getElementById('cityNameReset').addEventListener('click', resetCityName
 
 
 // // API CALLS : //
-document.getElementById('cityNameInput').addEventListener('change', changeSky);
-document.getElementById('cityNameReset').addEventListener('click', changeSky);
-const ...
-const ...
+// document.getElementById('cityNameInput').addEventListener('change', changeSky);
+// document.getElementById('cityNameReset').addEventListener('click', changeSky);
+// const ...
+// const ...
 
-axios
-.get('127.0.0.1:5000')
-// add parameters for city info
-.then((response) => {
-    console.log('Success!', response.data);
-    return response.data
-    // Code that executes with a successful response goes here
-})
-.catch((error) => {
-    // Code that executes with an unsuccessful response goes here
-    console.log('Error!');
-});
-// // END OF API CALL //
+// axios
+// .get('127.0.0.1:5000')
+// // add parameters for city info
+// .then((response) => {
+//     console.log('Success!', response.data);
+//     return response.data
+//     // Code that executes with a successful response goes here
+// })
+// .catch((error) => {
+//     // Code that executes with an unsuccessful response goes here
+//     console.log('Error!');
+// });
+// END OF API CALL //
 
 
 // // // making an api call
