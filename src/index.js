@@ -4,8 +4,6 @@ const state = {
 	decreaseTempControl: null,
 	gardenLandscape: null,
 	tempValueEl: null,
-	cityNameEl: null,
-	cityInputEl: null,
 	cityLocation: { lat: 28.5421109, lon: -81.3790304 },
 };
 
@@ -16,8 +14,7 @@ const loadControls = () => {
 	state.tempValue = parseInt(state.tempValueEl.textContent);
 	state.gardenLandscape = document.getElementById('landscape');
 	state.gardenLandscapeValue = state.gardenLandscape.textContent;
-	state.cityNameEl = document.getElementById('headerCityName');
-	state.cityInputEl = document.getElementById('cityNameInput');
+	state.cityLocation = document.getElementById('cityNameInput');
 
 	console.log(state);
 };
@@ -38,6 +35,7 @@ const decreaseTemp = () => {
 	changeColorAndLandscape();
 };
 
+// WAVE 2
 const changeColorAndLandscape = () => {
 	let temp = state.tempValue;
 	if (temp >= 80) {
@@ -57,16 +55,20 @@ const changeColorAndLandscape = () => {
 		state.gardenLandscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
 	}
 };
-
-const updateCityName = () => {
-	state.cityNameEl.textContent = state.cityInputEl.value;
+// WAVE 3
+const updateCity = () => {
+	const cityNameInput = document.getElementById('cityNameInput');
+	const cityNameReset = document.getElementById('cityNameReset');
+	const headerCityName = document.getElementById('headerCityName');
 };
 
+// WAVE 4
 const convertKToF = (k) => (k - 273.15) * (9 / 5) + 32;
 
 const getLocationInfo = () => {
 	return axios
-		.get('http://localhost:5000/location', {
+		.get('http://127.0.0.1:5000/location', {
+			//http://localhost:5000/location
 			params: {
 				q: state.cityLocation.value,
 			},
@@ -77,6 +79,26 @@ const getLocationInfo = () => {
 			return state.cityLocation;
 		})
 		.catch((error) => {
+			console.error(error);
+		});
+};
+
+const getWeatherInfo = (location) => {
+	return axios
+		.get('http://127.0.0.1:5000/weather', {
+			//http://localhost:5000/weather
+			params: {
+				lat: state.cityLocation['lat'],
+				lon: state.cityLocation['lon'],
+			},
+		})
+		.then((response) => {
+			const cityTemp = convertKToF(response.data.main.temp);
+			state.tempValue = Math.round(cityTemp);
+			return state.tempValue;
+		})
+		.catch((error) => {
+			console.log('weather error');
 			console.error(error);
 		});
 };
@@ -99,7 +121,15 @@ const setUp = () => {
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener('click', increaseTemp);
 	state.decreaseTempControl.addEventListener('click', decreaseTemp);
-	state.cityInputEl.addEventListener('input', updateCityName);
+
+	cityNameInput.addEventListener('input', () => {
+		headerCityName.textContent = cityNameInput.value;
+	});
+
+	cityNameReset.addEventListener('click', () => {
+		cityNameInput.value = headerCityName.textContent = '';
+	});
+
 	const updateTemp = document.querySelector('#currentTempButton');
 	updateTemp.addEventListener('click', updateCurrentTemp);
 };
