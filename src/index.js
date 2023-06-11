@@ -7,12 +7,12 @@ const state = {
 	cityInput: null,
 	cityHeader: null,
 	currentTempButton: null,
-    gardenContainer: null,
+	gardenContainer: null,
 	skyContainer: null,
-    skySelect: null,
+	skySelect: null,
 	cityNameResetButton: null,
 	cityNameInput: null,
-	cityNameInputDefault: "Oakland",
+	cityNameInputDefault: null,
 };
 
 const increaseTemp = (event) => {
@@ -59,7 +59,7 @@ const handleTextInput = () => {
 };
 
 const resetCityName = (event) => {
-	state.cityInput.value = state.cityNameInputDefault;
+	state.cityInput.value = "Houston"
 	getRealTemp();
 	handleTextInput();
 	handleTempColors();
@@ -102,21 +102,21 @@ const getRealTemp = () => {
 };
 
 const handleSkyPics = (event) => {
-    state.skyContainer.innerHTML = `☁️ ☁️ ☁️ ☀️ ☁️ ☁️`;
-    state.gardenContainer.style.backgroundColor = "lightskyblue";
+	state.skyContainer.innerHTML = `☁️ ☁️ ☁️ ☀️ ☁️ ☁️`;
+	state.gardenContainer.style.backgroundColor = "lightskyblue";
 
-    if (event.target.value === "sunny") {
+	if (event.target.value === "sunny") {
 		state.skyContainer.innerHTML = `☁️ ☁️ ☁️ ☀️ ☁️ ☁️`;
-        state.gardenContainer.style.backgroundColor = "lightskyblue";
+		state.gardenContainer.style.backgroundColor = "lightskyblue";
 	} else if (event.target.value === "cloudy") {
 		state.skyContainer.innerHTML = `☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️`;
-        state.gardenContainer.style.backgroundColor = "lightcyan";
+		state.gardenContainer.style.backgroundColor = "lightcyan";
 	} else if (event.target.value === "rainy") {
 		state.skyContainer.innerHTML = `🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧`;
-        state.gardenContainer.style.backgroundColor = "lightgray";
+		state.gardenContainer.style.backgroundColor = "lightgray";
 	} else if (event.target.value === "snowy") {
 		state.skyContainer.innerHTML = `🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨`;
-        state.gardenContainer.style.backgroundColor = "aliceblue";
+		state.gardenContainer.style.backgroundColor = "aliceblue";
 	}
 };
 
@@ -125,7 +125,7 @@ const registerEvents = () => {
 	state.decreaseTempControl.addEventListener("click", decreaseTemp);
 	state.cityInput.addEventListener("keyup", handleTextInput);
 	state.currentTempButton.addEventListener("click", getRealTemp);
-    state.skySelect.addEventListener("change", handleSkyPics)
+	state.skySelect.addEventListener("change", handleSkyPics);
 	state.cityNameResetButton.addEventListener("click", resetCityName);
 };
 
@@ -137,9 +137,9 @@ const loadControls = () => {
 	state.cityInput = document.getElementById("cityNameInput");
 	state.cityHeader = document.getElementById("headerCityName");
 	state.currentTempButton = document.getElementById("currentTempButton");
-    state.gardenContainer = document.getElementById("gardenContent");
+	state.gardenContainer = document.getElementById("gardenContent");
 	state.skyContainer = document.getElementById("sky");
-    state.skySelect = document.getElementById("skySelect");
+	state.skySelect = document.getElementById("skySelect");
 	state.cityNameResetButton = document.getElementById("cityNameReset");
 };
 
@@ -148,7 +148,10 @@ const onLoaded = () => {
 	registerEvents();
 	handleTempColors();
 	handleLandscapePics();
-    handleSkyPics();
+	handleSkyPics();
+	handleTextInput();
+	
+	
 };
 
 onLoaded();
