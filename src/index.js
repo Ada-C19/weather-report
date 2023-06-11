@@ -7,7 +7,7 @@ const state = {
     currentTempButton: null,
     currentTemp: null,
     skySelector: null,
-    skyVibeEmoji:  null
+    skyVibeEmoji:  null,
 };
 
 const selectSky = (event) => {
@@ -32,8 +32,14 @@ const updateUI = () =>  {
 const updateCity = (event) => {
     state.cityValue = event.target.value
     state.cityLabel.textContent = state.cityValue;
-}
+    return state.cityValue;
+};
 
+const resetCity = () => {
+    state.cityLabel.textContent = "Las Vegas";
+    state.cityValue = document.getElementById("cityNameInput");
+    state.cityValue.value = state.cityValue.defaultValue;
+};
 
 const getLocationData = () => {
     let location = state.cityValue;
@@ -75,12 +81,12 @@ const getWeatherData = (location) => {
 const kelvinToFahrenheit = (k) => {
     const temp = Math.floor((k - 273.15) * 9/5 + 32); 
     return temp
-} 
+}; 
 
 const handleRealTimeButtonClick = () => {
     console.log('real time click');
     getLocationData();
-}
+};
 
 const increaseTemp = () => {
     ++state.tempValue;
@@ -139,7 +145,9 @@ cityButton.addEventListener("input", updateCity);
 realTempButton.addEventListener("click", handleRealTimeButtonClick); 
     const skyButton = document.querySelector("#skySelect");
 skyButton.addEventListener("change", selectSky);
-}
+const resetButton = document.querySelector("#cityNameReset");
+resetButton.addEventListener("click", resetCity);
+};
 
 
 const loadControls = () => {
@@ -150,9 +158,10 @@ const loadControls = () => {
     state.currentTempButton = document.getElementById("currentTempButton");
     state.skySelector = document.getElementById("skySelect");
     state.skyVibeEmoji = document.getElementById("sky");
+    state.cityResetButton = document.getElementById("cityNameReset");
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
-loadControls()
+loadControls();
 
