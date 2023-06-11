@@ -6,8 +6,8 @@ const tempValue = document.getElementById('tempValue');
 const state = {
     tempCount : tempValue.innerText, 
     city: "Seattle",
-    lat: "",
-    lon: "",
+    lat: 0,
+    lon: 0,
 };
 
 // changes function above to start temperature with info from API call
@@ -174,14 +174,16 @@ const searchTemperature = () => {
     })
     .then((response) => {
         console.log('searchTemperature success!');
+        console.log(response.data)
         state.tempCount = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
         // return current temp and assign it to  temp count
         const tempCount = document.getElementById("tempValue");
         tempCount.textContent = `${state.tempCount}`;
-        changeLandscapeTemp();
+        tempRange();
 })
     .catch((error) => {
         console.log('searchTemperature failing here!');
+        console.log(error)
         console.log('searchTemperature error: ' + error.response);
     });
 };
