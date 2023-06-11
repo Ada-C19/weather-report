@@ -8,18 +8,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
+    <style>
+        .section-boxes {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-box {
+            border-radius: 8px;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+/* 
+        .garden_section {
+        } */
+    </style>
 </head>
 <body>
     <main>
         <header>
             <h1>Oh Hail No!</h1>
-            <span>
+            <span class="weather-heading">
                 Current Weather for
                 <span id="cityHeader" class="cityHeaderName">
                     "Seattle"
                 </span>
             </span>
         </header>
+
+        <div class="section-boxes">
         <section class="temp_section">
             <h2>Temperature</h2>
             <section class="temp_data">
@@ -31,7 +50,8 @@
         </section>
 
         <section class="skyClass">
-            <label for="sky">Sky</label>
+            <label for="sky"></label>
+            <h2>Sky</h2>
             <select id="skySelection">
                 <option value=""></option>
                 <option value="Cloudy">Cloudy</option>
@@ -46,6 +66,7 @@
             <input type="text" id="nameInput" value="Seattle">
             <button id="nameReset" class="nameResetButton">Reset</button>
         </section>
+        </div>
         
         
         <section class="landscape">

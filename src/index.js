@@ -8,8 +8,6 @@ const state = {
 };
 
 const getCoordinates = (city) => {
-    console.log(city)
-    console.log('hahaha')
     axios.get('http://127.0.0.1:5000/location', {
         params: {
             q: state.city,
@@ -17,10 +15,9 @@ const getCoordinates = (city) => {
         },
     })
     .then((response) => {
-        console.log(response.data[0])
-        state.latitude = response.data[0]['lat'];
-        state.longitude = response.data[0]['lon'];
-        
+        state.lat = response.data[0].lat;
+        state.lon = response.data[0].lon;
+        getRealtimeTemp();
     })
     .catch((error) => {
         console.log(error)
@@ -28,31 +25,6 @@ const getCoordinates = (city) => {
         console.log(error.response);
     });
 };
-
-const getWeather = () => {
-
-    axios.get('http://127.0.0.1:5000/weather', {
-        params: { 
-            lat: state.latitude,
-            lon: state.longitude,
-        }
-    })
-
-    .then((response) => {
-        console.log(response)
-        let realTemp = response.data.main.temp;
-        state.temp = Math.round((realTemp - 273) * 1.8 + 32);
-        const tempCount = document.querySelector('#tempValue');
-        tempChange();
-    })
-
-}
-
-const getCityWeather = () => {
-    getCoordinates(state.city);
-    getWeather();
-    
-}
 
 const tempChange = () => {
     let temp = state.temp;
@@ -117,18 +89,18 @@ const updateSky = () => {
 
     skyContainer.textContent = topFloor;
 
-    const bodyElement = document.body;
-    if (inputSky === 'Cloudy') {
-        bodyElement.style.backgroundImage = 'url(https://media0.giphy.com/media/l0HlQdk8kI9KIOjBe/giphy.gif?cid=ecf05e47tdvaqul8z4avun6incmh2v34qjuorye20130a0vy&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
-    } else if (inputSky === 'Sunny') {
-        bodyElement.style.backgroundImage = 'url(https://media4.giphy.com/media/xT0Gqz4x4eLd5gDtaU/giphy.gif?cid=ecf05e475z9rbrmtvyoou4ffri87qsowg8c2y2quecifglu7&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
-    } else if (inputSky === 'Rainy') {
-        bodyElement.style.backgroundImage = 'url(https://media3.giphy.com/media/vu6iWBm9OJGQE/giphy.gif?cid=ecf05e476e1lqf8yvjrh6fvhqa4fxhl3e6pft0xxag0f5x4o&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
-    } else if (inputSky === 'Snowy') {
-        bodyElement.style.backgroundImage = 'url(https://media2.giphy.com/media/retvoxFEjdK40dNg0n/giphy.gif?cid=ecf05e47jelf40lmq0yqvc25xi6dzp569i0iosv8x61h5wm6&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
-    } else {
-        bodyElement.style.backgroundImage = 'url(https://media4.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47yhcnmd9q0u17z1qmfr6oc94lexikkbc9ofcs6vyg&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
-    }   
+const bodyElement = document.body;
+if (inputSky === 'Cloudy') {
+    bodyElement.style.backgroundImage = 'url(https://media0.giphy.com/media/l0HlQdk8kI9KIOjBe/giphy.gif?cid=ecf05e47tdvaqul8z4avun6incmh2v34qjuorye20130a0vy&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+} else if (inputSky === 'Sunny') {
+    bodyElement.style.backgroundImage = 'url(https://media4.giphy.com/media/xT0Gqz4x4eLd5gDtaU/giphy.gif?cid=ecf05e475z9rbrmtvyoou4ffri87qsowg8c2y2quecifglu7&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+} else if (inputSky === 'Rainy') {
+    bodyElement.style.backgroundImage = 'url(https://media3.giphy.com/media/vu6iWBm9OJGQE/giphy.gif?cid=ecf05e476e1lqf8yvjrh6fvhqa4fxhl3e6pft0xxag0f5x4o&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+} else if (inputSky === 'Snowy') {
+    bodyElement.style.backgroundImage = 'url(https://media2.giphy.com/media/retvoxFEjdK40dNg0n/giphy.gif?cid=ecf05e47jelf40lmq0yqvc25xi6dzp569i0iosv8x61h5wm6&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+} else {
+    bodyElement.style.backgroundImage = 'url(https://media4.giphy.com/media/3oEduEcLBYfkoEi2TS/giphy.gif?cid=ecf05e47yhcnmd9q0u17z1qmfr6oc94lexikkbc9ofcs6vyg&ep=v1_gifs_search&rid=giphy.gif&ct=g)';
+}   
 };
 
 
@@ -144,7 +116,6 @@ const resetCityBtn = () => {
     cityName.value = 'Seattle';
     changeCityName();
 }
-
 
 
 
@@ -170,9 +141,6 @@ const registerEventHandlers = (event) => {
 
     const resetBtn = document.getElementById('nameReset');
     resetBtn.addEventListener('click', resetCityBtn);
-
-    const realTimeBtn = document.getElementById('realTimeTemp');
-    realTimeBtn.addEventListener('click', getCityWeather);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
