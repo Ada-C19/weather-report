@@ -1,3 +1,11 @@
+html{
+    background-color: rgb(99, 163, 208);
+    color: white;
+    font-family: Comic sans ms;
+    text-align: center;
+    word-wrap: break-word;
+}
+
 .directional-arrow {
     width: 20px;
     height:20px;
