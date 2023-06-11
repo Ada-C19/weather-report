@@ -59,7 +59,7 @@ const handleTextInput = () => {
 };
 
 const resetCityName = (event) => {
-	state.cityInput.value = "Houston"
+	state.cityInput.value = "France"
 	getRealTemp();
 	handleTextInput();
 	handleTempColors();
