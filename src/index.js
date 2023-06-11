@@ -29,7 +29,7 @@ const getCityWeather = async (city) => {
 };
 
 const getWeather = async () => {
-
+    console.log(getWeather)
     await axios.get('http://127.0.0.1:5000/weather', {
         params: { 
             lat: state.latitude,
@@ -42,7 +42,7 @@ const getWeather = async () => {
         tempChange();
     })
 
-}
+};
 
 
 const tempChange = () => {
@@ -160,6 +160,9 @@ const registerEventHandlers = (event) => {
 
     const resetBtn = document.getElementById('nameReset');
     resetBtn.addEventListener('click', resetCityBtn);
+
+    const realTimeBtn = document.getElementById('realTimeTemp');
+    realTimeBtn.addEventListener('click', getCityWeather);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
