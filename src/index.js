@@ -112,24 +112,24 @@ const resetCity = () => {
 };
 
 const registerEventHandlers = () => {
-    const increaseButton = document.getElementById("increase-temp");
-    increaseButton.addEventListener("click", increaseTemp);
+    const increaseButton = document.getElementById('increase-temp');
+    increaseButton.addEventListener('click', increaseTemp);
 
-    const decreaseButton = document.getElementById("decrease-temp");
+    const decreaseButton = document.getElementById('decrease-temp');
     decreaseButton.addEventListener("click", decreaseTemp);
 
     const changeCity = document.getElementById('city-input');
-    changeCity.addEventListener("input", changeCityInput);
-    changeCity.addEventListener("propertychange", changeCityInput);
+    changeCity.addEventListener('input', changeCityInput);
+    changeCity.addEventListener('propertychange', changeCityInput);
 
     const changeTemp = document.getElementById('temp-button');
-    changeTemp.addEventListener("click", getCityLocation);
+    changeTemp.addEventListener('click', getCityLocation);
 
     const selectSky = document.getElementById('sky-drop-down');
-    selectSky.addEventListener("change", changeSky);
+    selectSky.addEventListener('change', changeSky);
 
     const resetButton = document.getElementById('city-reset');
-    resetButton.addEventListener("click", resetCity);
+    resetButton.addEventListener('click', resetCity);
 };
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
+document.addEventListener('DOMContentLoaded', registerEventHandlers);
