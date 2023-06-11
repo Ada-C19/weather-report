@@ -123,6 +123,30 @@ const setUp = () => {
 	changeColorAndLandscape();
 };
 
+// Wave 5
+const changeSky = () => {
+	const skyDisplay = document.getElementById('sky');
+	const skySelect = document.getElementById('skySelect');
+	const selectedSky = skySelect.value;
+
+	switch (selectedSky) {
+		case 'sunny':
+			skyDisplay.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+			break;
+		case 'cloudy':
+			skyDisplay.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+			break;
+		case 'rainy':
+			skyDisplay.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+			break;
+		case 'snowy':
+			skyDisplay.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+			break;
+		default:
+			skyDisplay.textContent = '';
+	}
+};
+
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener('click', increaseTemp);
 	state.decreaseTempControl.addEventListener('click', decreaseTemp);
@@ -142,29 +166,6 @@ const registerEvents = () => {
 
 	const skySelect = document.getElementById('skySelect');
 	skySelect.addEventListener('change', changeSky);
+};
 
 document.addEventListener('DOMContentLoaded', setUp);
-
-// Wave 5
-const changeSky = () => {
-	const skySelect = document.getElementById('skySelect');
-	const selectedSky = skySelect.value;
-  
-	switch (selectedSky) {
-	  case 'sunny':
-		state.gardenLandscape.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
-		break;
-	  case 'cloudy':
-		state.gardenLandscape.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-		break;
-	  case 'rainy':
-		state.gardenLandscape.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-		break;
-	  case 'snowy':
-		state.gardenLandscape.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-		break;
-	  default:
-		state.gardenLandscape.textContent = '';
-	}
-  };
-  
