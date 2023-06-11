@@ -1,5 +1,14 @@
+h1 {
+    padding-left: 5rem;
+}
+
+h1 + span {
+    margin-left: 2rem;
+}
+
 h2 {
     margin: 0 auto 2rem auto;
+    text-align: center;
 }
   
 body {
@@ -9,16 +18,18 @@ grid-template-rows: auto auto auto auto;
 grid-gap: 1rem;
 
 font-family: "Rubik", sans-serif;
-font-size: 18px;
-background-color: #1b69f9;
-margin: 2rem;
+font-size: 24px;
+background-image: url('../assets/pastel-clouds-bg.jpeg');
+/* background-color: #1b69f9; */
+margin: 0.5rem;
 }
 
 .header__header {
-color: white;
+color: black;
 grid-column: span 3;
 display: flex;
 align-items: center;
+align-content: center;
 margin: 2rem auto 3rem 0;
 }
 
@@ -42,7 +53,7 @@ grid-row: 2;
 grid-column: 1;
 border-radius: 8px;
 padding: 2rem;
-background-color: white;
+background-color: rgba(255, 255, 255, 0.453);
 }
 
 .sky__section {
@@ -50,24 +61,28 @@ grid-row: 2;
 grid-column: 2;
 border-radius: 8px;
 padding: 2rem;
-background-color: white;
+background-color: rgba(255, 255, 255, 0.453);
 text-align: center;
 
 }
 
 #skySelect {
 font-size: 1.5rem;
+padding: 10px;
 }
+
 .city-name__section {
 grid-row: 2;
 grid-column: 3;
 border-radius: 8px;
 padding: 2rem;
-background-color: white;
+background-color: rgba(255, 255, 255, 0.453);
 }
 
 #cityNameInput {
 font-size: 1.5rem;
+padding: 10px;
+margin: 0.6rem;
 }
 
 .temperature__section {
@@ -85,6 +100,7 @@ height: 4em;
 width: 8em;
 display: inline-block;
 font-size: 16px;
+font-weight: bold;
 border-radius: 10px
 }
 
@@ -105,21 +121,19 @@ text-align: center;
 align-self: center;
 border-radius: 8px;
 padding: 2rem;
-background-color: white;
+background-color: rgba(255, 255, 255, 0.453);
 }
 
 .temperature__content {
 display: flex;
 flex-direction: row;
-justify-content: space-around;
+justify-content: space-evenly;
 /* justify-content: center; */
 }
 
 #tempValue {
 font-size: 3rem;
-margin-left: 1.5rem;
-/* padding-right: 1rem; */
-/* margin-right: 1.5rem; */
+margin-left: 1rem;
 }
 
 .temperature__controls {
@@ -155,6 +169,7 @@ font-family: "Rubik", sans-serif;
 height: 3em;
 width: 6em;
 font-size: 16px;
+font-weight: bold;
 text-align: center;
 }
 
