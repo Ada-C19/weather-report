@@ -8,6 +8,9 @@ const state = {
 	cityInput: null,
 	cityHeader: null,
 	currentTempButton: null,
+	cityNameResetButton: null,
+	cityNameInput: null,
+	cityNameInputDefault: "Oakland",
 };
 
 const increaseTemp = (event) => {
@@ -53,6 +56,14 @@ const handleTextInput = () => {
 	state.cityHeader.textContent = state.cityInput.value;
 };
 
+const resetCityName = (event) => {
+	state.cityInput.value = state.cityNameInputDefault;
+	getRealTemp();
+	handleTextInput();
+	handleTempColors();
+	handleLandscapePics();
+};
+
 const getCityLatAndLon = () => {
 	return axios
 		.get(`http://localhost:5000/location?q=${state.cityInput.value}`)
@@ -80,6 +91,7 @@ const getRealTemp = () => {
 				state.tempValueCount = convertKtoF(temp);
 				state.tempValue.textContent = state.tempValueCount;
 				handleLandscapePics();
+				handleTempColors();
 			})
 			.catch(() => {
 				console.log("error");
@@ -92,6 +104,7 @@ const registerEvents = () => {
 	state.decreaseTempControl.addEventListener("click", decreaseTemp);
 	state.cityInput.addEventListener("keyup", handleTextInput);
 	state.currentTempButton.addEventListener("click", getRealTemp);
+	state.cityNameResetButton.addEventListener("click", resetCityName);
 };
 
 const loadControls = () => {
@@ -103,6 +116,7 @@ const loadControls = () => {
 	state.cityInput = document.getElementById("cityNameInput");
 	state.cityHeader = document.getElementById("headerCityName");
 	state.currentTempButton = document.getElementById("currentTempButton");
+	state.cityNameResetButton = document.getElementById("cityNameReset");
 };
 
 const onLoaded = () => {
