@@ -177,8 +177,11 @@ const searchTemperature = () => {
 };
 
 // confirmed this is working with console.log statement
-const handleCityNameSubmit = () => {
-  console.log("we are here");
+const handleCityNameSubmit = (event) => {
+  // this prevents the default event response / action from happening, enabling us to manage this independently
+  event.preventDefault();
+  const cityInputValue = event.target[0].value;
+  console.log({ event }, cityInputValue);
 };
 
 const registerEventHandlers = () => {
@@ -202,8 +205,11 @@ const registerEventHandlers = () => {
   const resetCity = document.getElementById("cityNameReset");
   resetCity.addEventListener("click", resetCityName);
 
-  const cityNameSubmit = document.getElementById("cityNameSubmit");
-  cityNameSubmit.addEventListener("click", handleCityNameSubmit);
+  // submit events communicates all form elements
+  // vs a click event only grabs the element that was clicked on
+  // NEED submit event for communication across input field and submit button
+  const cityForm = document.getElementById("cityForm");
+  cityForm.addEventListener("submit", (event) => handleCityNameSubmit(event));
 };
 
 // resetCityName();
