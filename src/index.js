@@ -35,7 +35,7 @@ const resetLocation = (event) => {
     getCityName(); //call getCityName to reset h3
     const tempCount = document.getElementById("temp-count");
     tempCount.textContent = 0;
-
+    state.temperature = 0;
 };
 
 const changeSky = (event) => {
