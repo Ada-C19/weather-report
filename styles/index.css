@@ -6,16 +6,6 @@ html{
     word-wrap: break-word;
 }
 
-.directional-arrow {
-    width: 20px;
-    height:20px;
-    background-color:#000;
-    border:none;
-    color:#fff;
-    font-size:20px;
-    cursor:pointer;
-    align-items: center;
-    }
 
 .content_container{
     width: 100%;
@@ -24,6 +14,7 @@ html{
     grid-template-columns: 25% 75%;
     grid-template-rows: 200 100 100 100 50;
     row-gap: 1em;
+    column-gap: 1em;
 }
 
 #temperature_section{
@@ -64,4 +55,5 @@ html{
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
+
 }
