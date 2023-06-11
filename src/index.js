@@ -53,8 +53,6 @@ const changeSky = (event) => {
     }
 }
 
- 
-
 const changeColorByTemp = (event) => {
     // make js to change color using state temperature variable
     const tempCount = document.querySelector('#temp-count');
@@ -110,7 +108,7 @@ const searchTemperature = () => {
       })
     .then((response) => {
         state.temperature = ((response.data.main.temp - 273.15) * 1.8 + 32).toFixed(0);
- 
+
         // return current temp and assign to #temp count
         const tempCount = document.querySelector("#temp-count");
         tempCount.textContent = `${state.temperature}`; 
@@ -135,17 +133,12 @@ const registerEventHandlers = (event) => {
         
     const changeLocation = document.querySelector('#realtime-button-weather');
     changeLocation.addEventListener('click', searchLocation);
+    changeLocation.addEventListener('click', changeColorByTemp); //to change color of temperature display when location is entered
 
     const selectElement = document.querySelector(".sky-select")
     selectElement.addEventListener("change", changeSky)
 
     const resetCity = document.querySelector("#reset-city-name");
     resetCity.addEventListener("click", resetLocation);
-    
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers)
-
-// console.log('testing!')
-// console.log(searchLocation())
-// console.log(getCityName())
-
