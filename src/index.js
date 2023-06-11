@@ -77,9 +77,9 @@ const updateSky = () => {
     let topFloor = '';
 
     if (inputSky === 'Cloudy') {
-        topFloor = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+        topFloor = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️';
     } else if (inputSky === 'Sunny') {
-        topFloor = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
+        topFloor = '😎☁️ 🌅☁️ ☀️ ☁️ ☀️ ☁️ 🌅☁️ 😎';
     } else if (inputSky === 'Rainy') {
         topFloor = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
     } else if (inputSky === 'Snowy') {
