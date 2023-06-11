@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function decreaseTemperature() {
-        decreaseTemp--;
+        temperature--;
         updateTemp();
     }  
     increaseTemp.addEventListener("click", increaseTemperature);
