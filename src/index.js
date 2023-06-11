@@ -8,6 +8,7 @@ const state = {
     temperature: 0, 
     lat: 0,
     lon: 0,
+    original_landscape: "🌵🌼🌸🍁🌵🌼🌸🍁"
 };
 
 const getCityName = (event) => {
@@ -32,10 +33,14 @@ const decreaseTemp = (event) => {
 const resetLocation = (event) => {
     const locationInput = document.getElementById("city-name");
     locationInput.value = "";
+    state.city = "";
     getCityName(); //call getCityName to reset h3
-    const tempCount = document.getElementById("temp-count");
-    tempCount.textContent = 0;
     state.temperature = 0;
+    const tempCount = document.getElementById("temp-count");
+    tempCount.textContent = state.temperature;
+    
+    const emojiLandscape = document.querySelector('#landscape');
+    emojiLandscape.textContent = state.original_landscape;
 };
 
 const changeSky = (event) => {

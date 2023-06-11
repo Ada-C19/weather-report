@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bentham&family=Indie+Flower&family=Space+Grotesk&display=swap');
+* {
+    font-family: 'Bentham', serif;
+    font-family: 'Indie Flower', cursive;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color:rgb(9, 124, 255);
+    
+    opacity: 0.8;
+}
 #temp-count {
     color: pink;
     font-size: 2em;
@@ -11,24 +23,26 @@
 
 label {
     display: block;
-    font: 1rem 'Fira Sans', sans-serif;
+    font-size: 20px;
+    /* font: 1rem 'Fira Sans', sans-serif; */
 }
 
 input, label {
     margin: 0.4rem 0;
 }
 
-html{
+/* html{
     font-family: 'Roboto Slab', sans-serif;
     font-size: large;
-}
+} */
 
 header {
     list-style-type: none;
     margin: 0px;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(24, 25, 26);
+    background-color: #9191d9;
+    font-size: 30px;
 }
 
 h1 {
@@ -38,15 +52,18 @@ h1 {
 
 h3 {
     font-family: inherit;
-    font-size: x-large;
+    font-size: 30px;
+    text-align: center;
+    color: chartreuse;
+    -webkit-text-stroke: 0.2px black;
 }
 
 #temp_display {
-    font-family: unset;
+    font-size: 20px;
 }
 
 body {
-    background-color: #44aadd ;
+    /* background-color: #44aadd ; */
     display: grid;
     grid-template-columns: 1 fr 2fr;
     grid-template-rows: auto auto auto;
@@ -144,7 +161,7 @@ button {
     font-size: 16px;
 }
 #up-arrow, #down-arrow {
-    background-color: whitesmoke;
+    background-color: rgb(245, 233, 233);
 }
 #reset-city-name:hover {
     background-color: rgb(190, 40, 40);
