@@ -1,0 +1,27 @@
+- [ ] Temperature count
+    - [ ] Text Color Change
+        - [ ] Red: >= 80
+        - [ ] Orange: >= 70 && <= 79
+        - [ ] Yellow: >= 60 && <= 69
+        - [ ] Green: >= 50 && <= 59
+        - [ ] Teal: <= 49
+    - [ ] Lanscape Change (Sky and Ground)
+        - [ ] >= 80
+        - [ ] >= 70 && <= 79
+        - [ ] >= 60 && <= 69
+        - [ ] <= 59
+- [ ] Up Arrow
+    - [ ] Click increase count
+- [ ] Down Arrow
+    - [ ] Click decrease count
+
+- [ ] Sky Changes container
+    - [ ] drop down ---> changes temp too
+        - [ ] Sunny
+        - [ ] Cloudy
+        - [ ] Rainy
+        - [ ] Sunny
+- [ ] City Name 
+    - [ ] Default City
+    - [ ] Search Input linked to header
+    - [ ] Reset City Name ---- Atlanta or blank?
