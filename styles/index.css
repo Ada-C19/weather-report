@@ -1,0 +1,90 @@
+h1 {
+    text-align: center; 
+    background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+
+h2 {
+    margin: 0 auto 2rem auto;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+span {
+    font-size: 2em;
+    color: white
+};
+
+.header__city-name {
+font-style: oblique;
+font-size: 2rem;
+}
+
+
+.temp_section , .skyClass, .city_section {
+border-radius: 8px;
+padding: 2rem;
+background-color: rgba(255, 255, 255, 0.5);
+text-align: center;
+} 
+
+
+.temp_section button {
+    background-color: yellowgreen;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px
+}
+
+
+
+#tempValue {
+    font-size: 3rem;
+    align-items:center
+}
+
+.temperature__controls {
+    display: flex;
+    flex-direction: column;
+    align-items:center
+}
+
+.landscape > h2 {
+    color:antiquewhite;
+    background: radial-gradient(circle, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    font-weight: bold;
+}
+
+.landscape {
+    min-height: 200px;
+    max-width: fit-content;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    font-size:2em;
+    margin-bottom: 2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+};
+
+
+
+.section-boxes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+
