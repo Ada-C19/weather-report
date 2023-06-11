@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     let temperature = 65;
     // sky
     const sky = document.querySelector("#sky")
-    let skies = ""
+    let skies = "                  "
 
     // air
-    const air = document.querySelector("#air")
-    let space = ""
+    // const air = document.querySelector("#air")
+    // let space = "                        "
 
     // landscape
     const landscape = document.querySelector("#landscape")
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const updateTemp = () =>  {
         displayTemp.textContent = temperature;
-        air.textContent = space;
+        // air.textContent = space;
         landscape.textContent = lands;
 
         updateTempColor();

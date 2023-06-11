@@ -142,3 +142,11 @@ html body {
 #display-temp {
     font-size: 30px;
 }
+
+/* WEATHER GARDEN */
+/* air */
+#air {
+    line-height: 300%;
+    /* margin-inline-start: 50px;
+    margin-inline-end: 50px; */
+}
