@@ -1,18 +1,33 @@
+* {
+    /* background-color: rgb(50 1 50 / 0.05) !important; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #temperature {
     display: flex;
     border: rgb(4, 40, 57) solid 3px;
     border-radius:10px;
-    background-color:blue;
+    background-color:#89CFF0;
     padding: 20px;
     margin: 40px;
     
 }
+#count {
+    color: #d9dddc;
+    font-size: 3rem;
+}
+
+/* #id {
+    color: aqua;
+    font-size: medium;
+} */
 
 #realtime {
     display: flex;
-    background-color:rgb(202, 50, 50);
+    background-color:cadetblue;
     /* border: transparent; */
-    border-radius:10px;
+    /* border-radius:10px; */
+    border-radius:  100px / 120px;
     padding: 20px;
     margin: 40px;
 }
@@ -37,7 +52,7 @@
     display: flex;
     border: rgb(4, 40, 57) solid 3px;
     border-radius:10px;
-    background-color:purple;
+    background-color:#f1ffc4;
     padding: 20px;
     margin: 40px;
     
@@ -48,12 +63,13 @@
     border-color:black solid;
     border-radius: 5px;
     margin: 45px;
+    text-align: center;
 }
 #reset {
     display: flex;
-    background-color:rgb(202, 50, 50);
-    /* border: transparent; */
-    border-radius:10px;
+    background-color:cadetblue;
+    /* border-radius:10px; */
+    border-radius:  100px / 120px;
     padding: 10px;
     margin: 40px;
     width: 10%;
@@ -64,9 +80,9 @@
     display: flex;
     border: rgb(4, 40, 57) solid 3px;
     border-radius:10px;
-    background-color:greenyellow;
+    background-color:#e0bbe4 ;
     padding: 20px;
-    margin: 40px;
+    margin: 40px;  
     
 }
 

@@ -11,29 +11,16 @@
 </head>
 <body>
     <header class = "site">
-        Weather Report<span> For the city of</span>
-        
-        <output type="text" id="search-output" />
-        <!-- <script type="text/javascript">
-            function myChangeFunction(input) {
-                var output = document.getElementById('search-output');
-                output.value = input.value;
-            }
-        </script> -->
+        <h1>Weather Report<span> For the city of</span></h1>
+        <output type="text" id="search-output"> </output>
     </header>
     <main>
         <section id = "temperature">
             <h2>Temperature</h2>
-            <button 
-            type = "button-up"> &#8593;
-            </button>
-            <button 
-            type = "button-down"> &#8595;
-            </button>
-            <button id = "realtime">
-                Get Realtime Temperature
-            </button>
-            
+            <button id="button-up"> &#8593;</button>
+            <span id = "count">0</span>
+            <button id = "button-down"> &#8595;</button>
+            <button id = "realtime">Get Realtime Temperature</button>   
         </section>
         <section id = "sky">
             <h2>Sky</h2>
