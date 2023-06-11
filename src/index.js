@@ -139,6 +139,33 @@ const registerEvents = () => {
 
 	const updateTemp = document.querySelector('#currentTempButton');
 	updateTemp.addEventListener('click', updateCurrentTemp);
+
+	const skySelect = document.getElementById('skySelect');
+	skySelect.addEventListener('change', changeSky);
 };
 
 document.addEventListener('DOMContentLoaded', setUp);
+
+// Wave 5
+const changeSky = () => {
+	const skySelect = document.getElementById('skySelect');
+	const selectedSky = skySelect.value;
+  
+	switch (selectedSky) {
+	  case 'sunny':
+		state.gardenLandscape.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+		break;
+	  case 'cloudy':
+		state.gardenLandscape.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+		break;
+	  case 'rainy':
+		state.gardenLandscape.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+		break;
+	  case 'snowy':
+		state.gardenLandscape.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+		break;
+	  default:
+		state.gardenLandscape.textContent = '';
+	}
+  };
+  
