@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchButton = document.getElementById("search-button");
     const searchInput = document.getElementById("search-input");
     searchButton.addEventListener("click", () => {
-    const inputValue = searchInput.value;
-    alert(inputValue);
+      const inputValue = searchInput.value;
+      alert(inputValue);
     });
 
     // TEMPERATURE - Change Temperature
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // air
     const air = document.querySelector("#air")
     let space = ""
-    
+
     // landscape
     const landscape = document.querySelector("#landscape")
     let lands = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";

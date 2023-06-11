@@ -1,19 +1,19 @@
-- [ ] Temperature count
-    - [ ] Text Color Change
+- [x ] Temperature count
+    - [x ] Text Color Change
         - [ ] Red: >= 80
         - [ ] Orange: >= 70 && <= 79
         - [ ] Yellow: >= 60 && <= 69
         - [ ] Green: >= 50 && <= 59
         - [ ] Teal: <= 49
-    - [ ] Lanscape Change (Sky and Ground)
+    - [x] Lanscape Change (Sky and Ground)
         - [ ] >= 80
         - [ ] >= 70 && <= 79
         - [ ] >= 60 && <= 69
         - [ ] <= 59
-- [ ] Up Arrow
-    - [ ] Click increase count
-- [ ] Down Arrow
-    - [ ] Click decrease count
+- [X ] Up Arrow
+    - [X ] Click increase count
+- [X] Down Arrow
+    - [ X] Click decrease count
 
 - [ ] Sky Changes container
     - [X] drop down 
