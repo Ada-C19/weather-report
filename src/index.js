@@ -12,13 +12,14 @@ const totalTemp = document.querySelector("#display-temp");
 //count temp
 let tempCount = 0;
 //initial temp
-newTemp = totalTemp.innerHTML = tempCount;
+totalTemp.innerHTML = tempCount;
 
 // function to increase temp
-const increaseTemp = () => {
-  tempCount++;
-  totalTemp.innerHTML = tempCount
+const increaseTemp = (newTemp) => {
+    tempCount++;
+    totalTemp.innerHTML = tempCount;
 };
+
 
 //select increase click button
 const increaseCount = document.getElementById("increase-temp")
