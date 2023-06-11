@@ -1,13 +1,14 @@
 //City name search bar updates city name in header
 function myChangeFunction(input) {
-    var output = document.getElementById('search-output');
-    output.value = input.value;
+    const output = document.getElementById('search-output');
+    output.value = input.value.toUpperCase();
 }
-// count up 
+ 
+// use state methode and addEvenlistener to call click button
+// anable change of color and garden emoji based on temperature changing
 const state = {
     tempCount: 0
 };
-
 function updateColor() {
     if (state.tempCount > 100) {
         alert("Overheat! Fine safe shelter.")
