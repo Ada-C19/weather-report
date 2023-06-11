@@ -7,7 +7,6 @@ searchButton.addEventListener("click", () => {
 });
 
 // TEMPERATURE - Change Temperature
-// increase temperature 
 // selects count from html
 const totalTemp = document.querySelector("#display-temp");
 //count temp
@@ -23,7 +22,6 @@ const increaseTemp = () => {
 
 //select increase click button
 const increaseCount = document.getElementById("increase-temp")
-
 // register increase click button
 increaseCount.addEventListener("click", increaseTemp)
 
