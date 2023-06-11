@@ -17,10 +17,6 @@ const changeTextColor = function(tempValue) {
     }
 }
 
-document.getElementById('increaseTempButton').addEventListener('click', increaseTemperature);
-document.getElementById('decreaseTempButton').addEventListener('click', decreaseTemperature);
-
-
 function increaseTemperature() {
     const tempElement = document.getElementById('tempValue');
     const currentTemp = parseInt(tempElement.textContent);
@@ -34,17 +30,7 @@ function decreaseTemperature() {
     tempElement.textContent = currentTemp - 1;
     changeTextColor(currentTemp)
 }
-
-
-document.getElementById('tempValue').addEventListener('click', changeTextColor);
-
-const tempValueElement = document.getElementById('tempValue');
-
-
 // CHANGE SKY FUNCTION //
-const skyElementSelector = document.getElementById('skySelect');
-const skyElementWithEmojis = document.getElementById('sky');
-
 
 const changeSky = function(event) {
     const value = event.target.value;
@@ -67,119 +53,32 @@ const changeSky = function(event) {
         skyElementWithEmojis.innerText = "❄️❄️❄️❄️❄️"
     } 
 }
-document.getElementById('skySelect').addEventListener('change', changeSky);
 // END OF SKY CHANGE FUNCTION //
 
 
-
-// Changing the city name in the header to input city name
-
-const inputName = document.getElementById('cityNameInput');
-const headerCityName = document.getElementById('headerCityName');
-    
+// CHANGE THE CITY NAME IN HEADER // 
 
 const updateCityName = function(event) {
     headerCityName.textContent = event.target.value 
-    
-    // state.city = inputName;
-    // headerCityName.textContent = state.city;
 };
-document.getElementById('cityNameInput').addEventListener('input', updateCityName)
-// END OF CHANGING CITY IN HEADER //
-
+// END OF CHANGING CITY NAME IN HEADER //
 
 
 // RESET THE HEADER BACK TO SEATTLE //
-const cityNameInput = document.getElementById('cityNameInput');
-const cityNameResetBtn = document.getElementById('cityNameReset'); 
 
 const resetCityName = function (event) {
     headerCityName.textContent = "Seattle";
 };
-document.getElementById('cityNameReset').addEventListener('click', resetCityName);
 // END OF HEADER RESET //
 
 
-
-
-
 // // API CALLS : //
-document.getElementById('cityNameInput').addEventListener('change', changeSky);
-document.getElementById('cityNameReset').addEventListener('click', changeSky);
-
-
-// const LOCATION_KEY = process.env['api_key']
-// const WEATHER_KEY = process.env['api_key']
-
-
-// const findLatitudeAndLongitude = (cityNameInput) => {
-//     let latitude, longitude;
-//     axios.get('127.0.0.1:5000',
-//     {
-//         params: {
-//             key: LOCATION_KEY,
-//             q: cityNameInput,
-//             format: 'json'
-//         }
-//     })
-//     .then((response) => {
-//         latitude = response.data[0].lat;
-//         longitude = response.data[0].lon;
-//         console.log('success in findLatitudeAndLongitude!', latitude, longitude)
-//         return response.data
-
-//     })
-//     .catch((error) => {
-//         console.log('error in findLatitudeAndLongitude!');
-//     });
-//     return {
-//         seattleLat: latitude,
-//         seattleLon: longitude
-//     }
-//     };
-
-// const findLocation = (latitude, longitude) => {
-//     axios.get('127.0.0.1:5000',
-//     {
-//         params: {
-//             key: LOCATION_KEY,
-//             format: 'json',
-//             lat: latitude,
-//             lon: longitude
-//         }
-//     })
-//     .then( (response) => {
-//     console.log('success in findLocation!', response.data);
-//     return response.data;
-//     })
-//     .catch( (error) => {
-//     console.log('error in findLocation!');
-//     });
-//     }
-// const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
-    
-// const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
-    
-// console.log(locations);
-
-
-// // END OF API CALL //
-
-
-// FROM HOMEWORK
-document.getElementById('cityNameInput').addEventListener('change', changeSky);
-document.getElementById('cityNameReset').addEventListener('click', changeSky);
-// const axios = require('axios');
-
-const LOCATION_KEY = process.env['LOCATION_API_KEY'];
-const WEATHER_KEY = process.env['WEATHER_API_KEY'];
 
 const findLatitudeAndLongitude = (query) => {
 let latitude, longitude;
-axios.get('127.0.0.1:5000',
+axios.get('/127.0.0.1:5000/location',
 {
     params: {
-    key: LOCATION_KEY,
     q: query,
     format: 'json'
     }
@@ -200,10 +99,9 @@ return {
 }
 
 const findTemperature = (latitude, longitude) => {
-axios.get('127.0.0.1:5000',
+axios.get('/127.0.0.1:5000/weather',
 {
     params: {
-    key: 'LOCATION_KEY',
     format: 'json',
     lat: 'latitude',
     lon: 'longitude'
@@ -226,53 +124,26 @@ console.log(locations);
 
 // // // making an api call
 // // // .get to 127.0.0.1:5000
+// // // check endpoints 
 
+// const inputName = document.getElementById('cityNameInput');
+const headerCityName = document.getElementById('headerCityName');
+const cityNameInput = document.getElementById('cityNameInput');
+const cityNameResetBtn = document.getElementById('cityNameReset'); 
+const skyElementSelector = document.getElementById('skySelect');
+const skyElementWithEmojis = document.getElementById('sky');
+const tempValueElement = document.getElementById('tempValue');
 
-// FROM HW MANAGING ASYN CALLS
-const axios = require('axios');
-
-const LOCATIONIQ_KEY = process.env['api_key'];
-
-const findLatitudeAndLongitude = (query) => {
-let latitude, longitude;
-axios.get('https://us1.locationiq.com/v1/search.php',
-{
-    params: {
-    key: LOCATIONIQ_KEY,
-    q: 'Seattle, Washington, USA',
-    format: 'json'
-    }
-})
-.then( (response) => {
-    latitude = response.data[0].lat;
-    longitude = response.data[0].lon;
-    console.log('success in findLatitudeAndLongitude!', latitude, longitude);
-
-    // make the next API call here!
-    findLocation(latitude, longitude);
-})
-.catch( (error) => {
-    console.log('error in findLatitudeAndLongitude!');
-});
+// EVENT LISTENERS //
+const registerEventHandlers = () => {
+    cityNameInput.addEventListener('change', changeSky);
+    cityNameResetBtn.addEventListener('click', changeSky);
+    cityNameResetBtn.addEventListener('click', resetCityName);
+    cityNameInput.addEventListener('input', updateCityName);
+    skyElementSelector.addEventListener('change', changeSky);
+    tempValueElement.addEventListener('click', changeTextColor);
+    document.getElementById('increaseTempButton').addEventListener('click', increaseTemperature);
+    document.getElementById('decreaseTempButton').addEventListener('click', decreaseTemperature);
 }
-
-const findLocation = (latitude, longitude) => {
-axios.get('https://us1.locationiq.com/v1/reverse.php',
-{
-    params: {
-    key: LOCATIONIQ_KEY,
-    format: 'json',
-    lat: latitude,
-    lon: longitude
-    }
-})
-.then( (response) => {
-    console.log('success in findLocation!', response.data);
-})
-.catch( (error) => {
-    console.log('error in findLocation!');
-});
-}
-
-findLatitudeAndLongitude('Seattle, Washington, USA');
-// END OF HW EXAMPLE
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
+// END OF EVENT LISTENERS //
