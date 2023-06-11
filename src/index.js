@@ -131,16 +131,6 @@ const updateCity = () => {
   header.textContent = state.city;
 };
 
-//
-// currentTempButton id exists in HTML but does not have func or event listener
-// adding function here
-const currentTempButton = () => {
-  pass;
-};
-
-//
-//
-
 // function for calling APIs
 const searchLocation = () => {
   axios
@@ -186,6 +176,11 @@ const searchTemperature = () => {
     });
 };
 
+// confirmed this is working with console.log statement
+const handleCityNameSubmit = () => {
+  console.log("we are here");
+};
+
 const registerEventHandlers = () => {
   // assigns upTempArrow to that specific button. Document keyword grabs everything in index.html
   // then you run func on document called querySelector. Then you are grabbing the id of increaseTempControl
@@ -200,17 +195,22 @@ const registerEventHandlers = () => {
   skySelector.addEventListener("change", updateSky);
 
   updateCity();
+
   const updateCityName = document.getElementById("cityNameInput");
   updateCityName.addEventListener("input", updateCity);
+
+  const resetCity = document.getElementById("cityNameReset");
+  resetCity.addEventListener("click", resetCityName);
+
+  const cityNameSubmit = document.getElementById("cityNameSubmit");
+  cityNameSubmit.addEventListener("click", handleCityNameSubmit);
 };
 
-resetCityName();
-const resetCity = document.getElementById("cityNameReset");
-resetCity.addEventListener("click", resetCityName);
+// resetCityName();
 
-submitCityName();
-const submitCity = document.getElementById("cityNameSubmit");
-submitCity.addEventListener("change", submitCityName);
+// submitCityName();
+// const submitCity = document.getElementById("cityNameSubmit");
+// submitCity.addEventListener("change", submitCityName);
 // previously didn't exist, calls function here to register events
 registerEventHandlers();
 
