@@ -17,6 +17,8 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
+    <!-- drop down attempt 2 link -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
   </head>
   <body>
     <section class="temp-container" id="overall-temp">
@@ -29,20 +31,29 @@
       <h1>Sky</h1>
       <div class="dropdown">
         <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
-        <button class="dropdown-button" id="sky-dropdown">
-          <i class="bx" class = "arrow">
+        <div class="dropdown-button click-dropdown" id="sky-dropdown">
+        <!-- <div class="dropdown-button" id="sky-dropdown"> -->
+          <!-- <i class="bx" class = "arrow"> -->
             Dropdown Button
-          </i>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="sunny">Sunny</a>
-            <i class ="bx"></i>
-          <a class="dropdown-item" href="cloudy">Cloudy</a>
-            <i class ="bx"></i>
-          <a class="dropdown-item" href="rainy">Rainy</a>
-            <i class ="bx"></i>
-          <a class="dropdown-item" href="snowy">Snowy</a>
-            <i class ="bx"></i>
+          <!-- </i> -->
+        </div>
+        <!-- </button> -->
+        <div class="dropdown-menu" >
+        <!-- aria-labelledby="dropdownMenuButton"> -->
+          <ul>
+            <li>
+              <a class="dropdown-item" href="sunny">Sunny</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="cloudy">Cloudy</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="rainy">Rainy</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="snowy">Snowy</a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

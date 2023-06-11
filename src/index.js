@@ -12,27 +12,74 @@ searchButton.addEventListener("click", () => {
 //   return new mdb.Dropdown(dropdownToggleEl);
 // });
 
-// 
-// Sky DROPDOWN BUTTON
-const dropdownBtn = document.getElementsByClassName("dropdown-button");
-const dropdownMenu = document.getElementsByClassName("dropdown-menu");
-const toggleArrow = document.getElementById("arrow");
+// SKY DROPDOWN ATTEMPT 2
+// get all dropdown from document
+document.querySelectorAll('.dropdown-button').forEach(dropDownFunc);
 
-// Toggle dropdown function
-const toggleDropdown = function () {
-  dropdownMenu.classList.toggle("show");
-  toggleArrow.classList.toggle("arrow");
+// drop down open and close
+function dropDownFunc(dropDown) {
+    console.log(dropDown.classList.contains('click-dropdown'));
+
+    if(dropDown.classList.contains('click-dropdown')=== true){
+      dropDown.addEventListener('click', function (e) {
+        e.preventDefault();      
+
+        if (this.nextElementSibling.classList.contains('dropdown-active') === true) {
+          // Close the clicked dropdown
+          this.parentElement.classList.remove('dropdown-open');
+          this.nextElementSibling.classList.remove('dropdown-active');
+        } else {
+          // Close the opend dropdown
+          closeDropdown();
+            
+          // add the open and active class(Opening the DropDown)
+          this.parentElement.classList.add('dropdown-open');
+          this.nextElementSibling.classList.add('dropdown-active');
+        }
+      });
+    }
+
+    if(dropDown.classList.contains('hover-dropdown') === true){
+    
+    dropDown.onmouseover  =  dropDown.onmouseout = dropdownHover;
+
+    function dropdownHover(e){
+      if(e.type == 'mouseover'){
+        // Close the opend dropdown
+        closeDropdown();
+
+        // add the open and active class(Opening the DropDown)
+        this.parentElement.classList.add('dropdown-open');
+        this.nextElementSibling.classList.add('dropdown-active');
+      }
+    }
+  }
 };
 
-// Toggle dropdown open/close when dropdown button is clicked
-dropdownBtn.addEventListener("click", function (e) {
-  e.stopPropagation();
-  toggleDropdown();
+window.addEventListener('click', function(e) {
+  //close the menu if click happen outside of menu
+  if (e.target.closest('.dropdown') === null) {
+    //close the opend dropdown
+    closeDropdown();
+  }
 });
 
-// Close dropdown when dom element is clicked
-document.documentElement.addEventListener("click", function () {
-  if (dropdownMenu.classList.contains("show")) {
-    toggleDropdown();
-  }
+// Close the openend Dropdowns
+function closeDropdown() { 
+  console.log('closed');
+  
+  // remove the open and active class from other opened Dropdown (Closing the opend DropDown)
+  document.querySelectorAll('.dropdown').forEach(function (container) { 
+      container.classList.remove('dropdown-open')
+  });
+
+  document.querySelectorAll('.dropdown-menu').forEach(function (menu) { 
+      menu.classList.remove('dropdown-active');
+  });
+}
+
+// close the dropdown on mouse out from the dropdown list
+document.querySelectorAll('.dropdown-menu').forEach(function (dropDownList) { 
+  // close the dropdown after user leave the list
+  dropDownList.onmouseleave = closeDropdown;
 });
