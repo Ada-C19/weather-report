@@ -48,7 +48,6 @@ const skyElementWithEmojis = document.getElementById('sky');
 
 const changeSky = function(event) {
     const value = event.target.value;
-    console.log("hello", value)
 
     skyElementSelector.classList.remove("cloudy", "sunny", "rainy", "snowy")
     if (value === "Cloudy") {
@@ -105,25 +104,175 @@ document.getElementById('cityNameReset').addEventListener('click', resetCityName
 
 
 // // API CALLS : //
-// document.getElementById('cityNameInput').addEventListener('change', changeSky);
-// document.getElementById('cityNameReset').addEventListener('click', changeSky);
-// const ...
-// const ...
+document.getElementById('cityNameInput').addEventListener('change', changeSky);
+document.getElementById('cityNameReset').addEventListener('click', changeSky);
 
-// // axios
-// // .get('127.0.0.1:5000')
-// // // add parameters for city info
-// // .then((response) => {
-// //     console.log('Success!', response.data);
-// //     return response.data
-// //     // Code that executes with a successful response goes here
-// // })
-// // .catch((error) => {
-// //     // Code that executes with an unsuccessful response goes here
-// //     console.log('Error!');
-// // });
+
+// const LOCATION_KEY = process.env['api_key']
+// const WEATHER_KEY = process.env['api_key']
+
+
+// const findLatitudeAndLongitude = (cityNameInput) => {
+//     let latitude, longitude;
+//     axios.get('127.0.0.1:5000',
+//     {
+//         params: {
+//             key: LOCATION_KEY,
+//             q: cityNameInput,
+//             format: 'json'
+//         }
+//     })
+//     .then((response) => {
+//         latitude = response.data[0].lat;
+//         longitude = response.data[0].lon;
+//         console.log('success in findLatitudeAndLongitude!', latitude, longitude)
+//         return response.data
+
+//     })
+//     .catch((error) => {
+//         console.log('error in findLatitudeAndLongitude!');
+//     });
+//     return {
+//         seattleLat: latitude,
+//         seattleLon: longitude
+//     }
+//     };
+
+// const findLocation = (latitude, longitude) => {
+//     axios.get('127.0.0.1:5000',
+//     {
+//         params: {
+//             key: LOCATION_KEY,
+//             format: 'json',
+//             lat: latitude,
+//             lon: longitude
+//         }
+//     })
+//     .then( (response) => {
+//     console.log('success in findLocation!', response.data);
+//     return response.data;
+//     })
+//     .catch( (error) => {
+//     console.log('error in findLocation!');
+//     });
+//     }
+// const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
+    
+// const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
+    
+// console.log(locations);
+
+
 // // END OF API CALL //
 
 
+// FROM HOMEWORK
+document.getElementById('cityNameInput').addEventListener('change', changeSky);
+document.getElementById('cityNameReset').addEventListener('click', changeSky);
+// const axios = require('axios');
+
+const LOCATION_KEY = process.env['LOCATION_API_KEY'];
+const WEATHER_KEY = process.env['WEATHER_API_KEY'];
+
+const findLatitudeAndLongitude = (query) => {
+let latitude, longitude;
+axios.get('127.0.0.1:5000',
+{
+    params: {
+    key: LOCATION_KEY,
+    q: query,
+    format: 'json'
+    }
+})
+.then( (response) => {
+    latitude = response.data[0].lat;
+    longitude = response.data[0].lon;
+    console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+})
+.catch( (error) => {
+    console.log('error in findLatitudeAndLongitude!');
+});
+
+return {
+    cityLat: latitude,
+    cityLon: longitude
+}
+}
+
+const findTemperature = (latitude, longitude) => {
+axios.get('127.0.0.1:5000',
+{
+    params: {
+    key: 'LOCATION_KEY',
+    format: 'json',
+    lat: 'latitude',
+    lon: 'longitude'
+    }
+})
+.then( (response) => {
+    console.log('success in findTemperature!', response.data);
+    return response.data;
+})
+.catch( (error) => {
+    console.log('error in findTemperature!');
+});
+}
+
+const cityCoordinates = findLatitudeAndLongitude('cityNameInput.textContent');
+
+const locations = findTemperature(cityCoordinates.cityLat, cityCoordinates.cityLon);
+
+console.log(locations);
+
 // // // making an api call
 // // // .get to 127.0.0.1:5000
+
+
+// FROM HW MANAGING ASYN CALLS
+const axios = require('axios');
+
+const LOCATIONIQ_KEY = process.env['api_key'];
+
+const findLatitudeAndLongitude = (query) => {
+let latitude, longitude;
+axios.get('https://us1.locationiq.com/v1/search.php',
+{
+    params: {
+    key: LOCATIONIQ_KEY,
+    q: 'Seattle, Washington, USA',
+    format: 'json'
+    }
+})
+.then( (response) => {
+    latitude = response.data[0].lat;
+    longitude = response.data[0].lon;
+    console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+
+    // make the next API call here!
+    findLocation(latitude, longitude);
+})
+.catch( (error) => {
+    console.log('error in findLatitudeAndLongitude!');
+});
+}
+
+const findLocation = (latitude, longitude) => {
+axios.get('https://us1.locationiq.com/v1/reverse.php',
+{
+    params: {
+    key: LOCATIONIQ_KEY,
+    format: 'json',
+    lat: latitude,
+    lon: longitude
+    }
+})
+.then( (response) => {
+    console.log('success in findLocation!', response.data);
+})
+.catch( (error) => {
+    console.log('error in findLocation!');
+});
+}
+
+findLatitudeAndLongitude('Seattle, Washington, USA');
+// END OF HW EXAMPLE
