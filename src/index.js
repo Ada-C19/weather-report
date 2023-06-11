@@ -8,11 +8,24 @@ searchButton.addEventListener("click", () => {
 
 // TEMPERATURE - Change Temperature
 // increase temperature 
-const increaseTemp = document.querySelector("#increase-temp");
+// selects count from html
+const totalTemp = document.querySelector("#display-temp");
+//count temp
+let tempCount = 0;
+//initial temp
+newTemp = totalTemp.innerHTML = tempCount;
 
-increaseTemp.addEventListener("click", function() {
-  increaseTemp.textContent += 1;
-});
+// function to increase temp
+const increaseTemp = () => {
+  tempCount++;
+  totalTemp.innerHTML = tempCount
+};
+
+//select increase click button
+const increaseCount = document.getElementById("increase-temp")
+
+// register increase click button
+increaseCount.addEventListener("click", increaseTemp)
 
 // SKY DROPDOWN ATTEMPT 2
 //https://alvarotrigo.com/blog/drop-down-menu-javascript/
