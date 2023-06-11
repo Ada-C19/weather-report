@@ -19,23 +19,30 @@
     />
   </head>
   <body>
-    <section class="Temp-container" id="overall-temp">
+    <section class="temp-container" id="overall-temp">
       <h1>Temperature</h1>
       <p>⬆️</p>
       <p id="displayTemp">?!!!!?</p>
       <p>⬇️</p>
     </section>
-    <section class="Sky-container" id="sky">
+    <section class="sky-container" id="sky">
       <h1>Sky</h1>
-      <div class="dropdown-toggle">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
+      <div class="dropdown">
+        <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+        <button class="dropdown-button" id="sky-dropdown">
+          <i class="bx" class = "arrow">
+            Dropdown Button
+          </i>
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Sunny</a>
-          <a class="dropdown-item" href="#">Cloudy</a>
-          <a class="dropdown-item" href="#">Rainy</a>
-          <a class="dropdown-item" href="#">Snowy</a>
+          <a class="dropdown-item" href="sunny">Sunny</a>
+            <i class ="bx"></i>
+          <a class="dropdown-item" href="cloudy">Cloudy</a>
+            <i class ="bx"></i>
+          <a class="dropdown-item" href="rainy">Rainy</a>
+            <i class ="bx"></i>
+          <a class="dropdown-item" href="snowy">Snowy</a>
+            <i class ="bx"></i>
         </div>
       </div>
     </section>
