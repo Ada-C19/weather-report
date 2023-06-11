@@ -11,7 +11,7 @@ body {
 }
 
 #weather-report-id:hover {
-    color: pink;
+    color: rgb(34, 86, 228);
 }
 
 /* #temperature-id:hover {
@@ -23,11 +23,11 @@ body {
 }
 
 #city-name-id:hover {
-    color: blueviolet
+    color: rgb(244, 188, 4)
 }
 
 #weather-garden-id:hover {
-    color: forestgreen
+    color: rgb(221, 205, 187)
 }
 
 

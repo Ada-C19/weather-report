@@ -230,7 +230,7 @@ console.log(searchTemperature())
 // });
 
 
- 
+
 // need to fix reset button
 // need to add submit button
 // need to fix the API call 
