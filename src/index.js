@@ -25,6 +25,12 @@ const cityNameResetButton = document.getElementById("cityNameReset");
 cityNameResetButton.addEventListener("click", function () {
   cityNameInput.value = "";
   updateCityName();
+  selectedSkyCondition.value = "";
+  temperature = 70;
+  updateTemperature();
+  updateSky();
+  updateLandscape();
+  
 });
 
 // end of wave 3
