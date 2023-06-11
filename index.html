@@ -8,9 +8,61 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
+    <script src="./src/index.js" defer></script>
+    <script src="./node_modules/axios/dist/axios.min.js" defer></script>
 </head>
 <body>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <main>
+        <div>
+            <section class="Container1">
+                <h3>Temperature</h3>
+                <button id="increase_temperature">⬆️</button>
+                <h5 id="temp">Temperature</h5>
+                <button id="decrease_temperature">⬇️</button>
+            </section>
+        </div>
+
+        <div>
+            <section class="Container2">
+                <h3>Sky</h3>
+                <label for="sky-select">Choose Sky Type</label>
+                <select name="sky" id="sky-select">
+                    <option value="">Choose a Sky Option</option>
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+            </section>
+        </div>
+
+        <div>
+            <section class="Container3">
+                <h3>Get Real Temp for: </h3>
+            <h3 id="city-name"></h3>
+						<input type="text" id="city-input" placeholder="Enter a city">
+                <button id="get_real_temp">Get Weather</button>
+                <button id="reset_city">Reset City</button>
+
+            </section>
+        </div>
+
+        <div>
+            <section class="Container4">
+                <h3>Weather Garden</h3>
+                <h5 id="sky">Sky</h5>
+                <h5 id="landscape">Landscape</h5>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <h4>&copy; 2023</h4>
+        <p>
+            While the information contained within the site is periodically updated,
+            no guarantee is given that the information provided in this web site is
+            correct, complete, or up-to-date. This website was created by Ada Developers
+            Students: Moyo and Carolyn
+        </p>
+    </footer>
 </body>
 </html>

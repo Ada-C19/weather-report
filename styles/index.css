@@ -1,0 +1,32 @@
+.hot {
+    color: red
+}
+
+.warm {
+    color: orange
+}
+
+.medium {
+    color: rgb(194, 194, 10)
+}
+
+.cool {
+    color: green
+}
+
+.cold {
+    color: rgb(80, 161, 161)
+}
+
+/* #reset_city {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+    border: none;
+    box-shadow: var(--shadow);
+    position: relative;
+} */
