@@ -132,17 +132,21 @@ const updateCity = () => {
 };
 
 // function for calling APIs
-const searchLocation = () => {
+// updated value of q to be cityInputValue, which is returned from handleCityNameSubmit
+// reset state.city with cityInputValue
+// call searchTemperature function to use lat, long, and city name to get temp
+const searchLocation = (cityInputValue) => {
   axios
     .get("http://127.0.0.1:5000/location", {
       params: {
-        q: state.city,
+        q: cityInputValue,
       },
     })
     .then((response) => {
       console.log("search location success!");
       state.lat = response.data[0].lat;
       state.lon = response.data[0].lon;
+      state.city = cityInputValue;
       searchTemperature();
     })
     .catch((error) => {
@@ -152,7 +156,7 @@ const searchLocation = () => {
 
 const searchTemperature = () => {
   axios
-    .get("http://localhost:5000/weather", {
+    .get("http://127.0.0.1:5000/weather", {
       params: {
         lat: state.lat,
         lon: state.lon,
@@ -181,7 +185,8 @@ const handleCityNameSubmit = (event) => {
   // this prevents the default event response / action from happening, enabling us to manage this independently
   event.preventDefault();
   const cityInputValue = event.target[0].value;
-  console.log({ event }, cityInputValue);
+  // call searchLocation function and passed cityInputValue as param
+  searchLocation(cityInputValue);
 };
 
 const registerEventHandlers = () => {
