@@ -6,6 +6,13 @@ searchButton.addEventListener("click", () => {
   alert(inputValue);
 });
 
+// TEMPERATURE - Change Temperature
+// increase temperature 
+const increaseTemp = document.querySelector("#increase-temp");
+
+increaseTemp.addEventListener("click", function() {
+  increaseTemp.textContent += 1;
+});
 
 // SKY DROPDOWN ATTEMPT 2
 //https://alvarotrigo.com/blog/drop-down-menu-javascript/
