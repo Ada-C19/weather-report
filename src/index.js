@@ -5,8 +5,8 @@ const temperatureDisplay = document.getElementById("tempValue");
 const increaseButton = document.getElementById("increaseTempControl");
 const decreaseButton = document.getElementById("decreaseTempControl");
 const body = document.body;
-
-const realTimeButton = document.getElementById("currentTempButton")
+const realTimeButton = document.getElementById("currentTempButton");
+const selectedSkyCondition = document.getElementById("skySelect");
 // wave 3
 // Selecting elements
 const cityNameInput = document.getElementById("cityNameInput");
@@ -32,6 +32,7 @@ cityNameResetButton.addEventListener("click", function () {
 // Initial temperature and landscape
 let temperature = 70;
 let landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+let sky = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
 
 // Function to update the temperature display and color
 function updateTemperature() {
@@ -72,15 +73,58 @@ function updateLandscape() {
   landscapeElement.textContent = landscape;
 }
 
+// Function to update the sky
+function validateSky(skyCondition) {
+  // console.log(skyCondition);
+  // console.log(sky);
+  if (skyCondition == "Clear") {
+    selectedSkyCondition.value = "sunny";
+  } else if (skyCondition == "Clouds") {
+    selectedSkyCondition.value = "cloudy";
+  } else if (
+    skyCondition == "Thunderstorm" ||
+    skyCondition == "Rain" ||
+    skyCondition == "Drizzle"
+  ) {
+    selectedSkyCondition.value = "rainy";
+  } else if (skyCondition == "Snow") {
+    selectedSkyCondition.value = "snowy";
+  }
+  // console.log(sky);
+
+  updateSky();
+}
+
+function updateSky() {
+  if (selectedSkyCondition.value == "sunny") {
+    sky = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+  } else if (selectedSkyCondition.value == "cloudy") {
+    sky = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+  } else if (selectedSkyCondition.value == "rainy") {
+    sky = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+  } else if (selectedSkyCondition.value == "snowy") {
+    sky = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+  } else {
+    sky = "☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ";
+  }
+  // Display the updated sky
+  const skyElement = document.getElementById("sky");
+  skyElement.textContent = sky;
+}
+
 // Initial setup
 updateTemperature();
 updateLandscape();
-
+// validateSky();
 
 //listener
 realTimeButton.addEventListener("click", function () {
   getLatLon();
-})
+});
+
+selectedSkyCondition.addEventListener("click", function () {
+  updateSky();
+});
 
 const getLatLon = () => {
   axios
@@ -95,20 +139,21 @@ const getLatLon = () => {
       let latitude = response.data[0].lat;
       // console.log(response.data[0].lon);
       let longtitude = response.data[0].lon;
-      getWeather(longtitude, latitude)
+      getWeather(longtitude, latitude);
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error);
     });
 };
 
 const convertKelToFahren = (kelvin) => {
   // console.log(temperature)
-  temperature = Math.floor((kelvin - 273.15) * 9/5 + 32)
+  temperature = Math.floor(((kelvin - 273.15) * 9) / 5 + 32);
   // console.log(temperature)
-  updateTemperature()
-  updateLandscape()
-}
+  updateTemperature();
+  updateLandscape();
+  // validateSky();
+};
 
 const getWeather = (long, lati) => {
   axios
@@ -120,15 +165,18 @@ const getWeather = (long, lati) => {
     })
     .then((response) => {
       // console.log(response);
-      kelvin = response.data.main.temp
-      convertKelToFahren(kelvin)
-      // console.log(response.data.main.temp)
+      kelvin = response.data.main.temp;
+      convertKelToFahren(kelvin);
+      // console.log(response.data.weather[0].main);
+      skyCondition = response.data.weather[0].main;
+    })
+    .then(() => {
+      validateSky(skyCondition);
     })
     .catch((error) => {
       console.log(error);
     });
 };
-
 
 // Event listeners for temperature controls
 increaseButton.addEventListener("click", function () {
