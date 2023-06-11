@@ -46,12 +46,24 @@ const decrementTemp = () => {
     formatTempAndGarden();
 };
 
+const updateCityName = () => {
+    const inputName = document.getElementById('city-name-input').value;
+    const headerName = document.getElementById('header-city-name');
+    state.city = inputName;
+    headerName.textContent = state.city;
+}
+
 const registerEventHandlers = () => {
     formatTempAndGarden();
+    
     const increaseTempButton = document.getElementById('up-arrow');
     increaseTempButton.addEventListener("click", incrementTemp);
+    
     const decreaseTempButton = document.getElementById('down-arrow');
     decreaseTempButton.addEventListener("click", decrementTemp);
+
+    const cityNameInput = document.getElementById('city-name-input');
+    cityNameInput.addEventListener("input", updateCityName);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
