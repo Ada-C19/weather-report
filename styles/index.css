@@ -50,7 +50,7 @@ h1 {
     text-align: center; 
 }
 
-h3 {
+h2, h3 {
     font-family: inherit;
     font-size: 30px;
     text-align: center;

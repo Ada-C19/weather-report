@@ -138,7 +138,6 @@ const registerEventHandlers = (event) => {
         
     const changeLocation = document.querySelector('#realtime-button-weather');
     changeLocation.addEventListener('click', searchLocation);
-    changeLocation.addEventListener('click', changeColorByTemp); //to change color of temperature display when location is entered
 
     const selectElement = document.querySelector(".sky-select")
     selectElement.addEventListener("change", changeSky)
