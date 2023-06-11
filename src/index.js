@@ -74,21 +74,18 @@ const changeCityInput = () => {
 const cityInputField = document.getElementById('city-input');
 cityInputField.value = state.defaultCity;
 
-const getCityLocation = (city) => {
+const getCityLocation = () => {
     let latitude, longitude;
-    console.log('inside getCityLocation');
-    console.log('this is my city', city);
     return axios
         .get('http://127.0.0.1:5000/location', {
             params: {
-                q: city,
-            },
+                q: cityInputField.value
+            }
         })
         .then((response) => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
-            console.log('Success: getCityLocation works', latitude, longitude);
-            return getWeather({ lat: latitude, lon: longitude });
+            getWeather({ lat: latitude, lon: longitude });
         })
         .catch((error) => {
             console.log(`This city does not exist`);
@@ -105,8 +102,8 @@ const getWeather = (query) => {
             }
         })
         .then((response) => {
-            console.log('getWeather is successful');
-            return Math.floor((response.data.main.temp - 273.15) * 1.8 +32);
+            state.currentTemp = Math.floor((response.data.main.temp - 273.15) * 1.8 +32);
+            setTempAndLandscape();
         })
         .catch((error) => {
             console.log('Error: weather API not working properly');
