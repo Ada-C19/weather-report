@@ -3,8 +3,18 @@ function myChangeFunction(input) {
     const output = document.getElementById('search-output');
     output.value = input.value.toUpperCase();
 }
- 
-// use state methode and addEvenlistener to call click button
+// select dom elemnt from html and addEventListerner
+const selectReset = document.querySelector("#reset");
+selectReset.addEventListener("click", resetCity) //clickReset )
+console.log(selectReset)
+// create function clickReset that return a defualt city in output
+function resetCity () { 
+    // alert("you have reset your city!")
+    document.querySelector("#search-output").innerHTML ="Atlanta";
+    document.querySelector("#search").value = "Atlanta";
+}
+// use state methode and addEvenlistener
+//  to call click button
 // anable change of color and garden emoji based on temperature changing
 const state = {
     tempCount: 0
