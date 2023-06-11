@@ -117,7 +117,7 @@ const searchTemperature = () => {
         // return current temp and assign to #temp count
         const tempCount = document.querySelector("#temp-count");
         tempCount.textContent = `${state.temperature}`; 
-        changeLandscapeTemp();
+        changeColorByTemp();
       })
     .catch((error) => {
         console.log('searchTemperature error: ' + error.response);
