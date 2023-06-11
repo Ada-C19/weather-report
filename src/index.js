@@ -14,12 +14,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const decreaseTemp = document.querySelector("#decrease-temp")
     const displayTemp = document.querySelector("#display-temp");
     let temperature = 65;
+    // sky
+    const sky = document.querySelector("#sky")
+    let skies = ""
+
+    // air
+    const air = document.querySelector("#air")
+    let space = ""
+    
+    // landscape
     const landscape = document.querySelector("#landscape")
     let lands = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
 
     const updateTemp = () =>  {
         displayTemp.textContent = temperature;
+        air.textContent = space;
         landscape.textContent = lands;
+
         updateTempColor();
         updateLandscape();
     }
