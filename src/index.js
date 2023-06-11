@@ -18,7 +18,8 @@ function updateColor() {
     }
     else if (state.tempCount >= 70) {
         state.color = "orange";
-        gardenIcon = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
+        gardenIcon
+         = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
     }
     else if (state.tempCount >= 60) {
         state.color = "yellow";
@@ -59,4 +60,32 @@ function downFunction() {
     document.querySelector("#count").innerHTML = state.tempCount;
     updateColor()
 }
+
+// add eventlistener to the select tag called select mood
+// add change fuction to the dropdown list to print cloud mood 
+
+const selectMood = document.querySelector("#moods");
+const result = document.querySelector("#clouds");
+
+selectMood.addEventListener("change", (event) => {
+    console.log(selectMood.value)
+    if (selectMood.value == "sunny") {
+        // alert("You selected sunny")
+        cloudIcon =  "☁️ ☁️ ☁️ ☀️ ☁️ ☁️"
+    }
+    else if (selectMood.value == "cloudy") {
+        // alert("You selected cloudy")
+        cloudIcon = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+    }
+    else if (selectMood.value == "rainy") {
+        // alert("You selected rainy")
+        cloudIcon =  "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧"
+    }
+    else {
+        // alert("You selected snowy")
+        cloudIcon =  "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+    }
+result.textContent = `You like ${event.target.value}`;
+document.querySelector("#clouds").innerHTML = cloudIcon
+});
 

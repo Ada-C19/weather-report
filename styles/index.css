@@ -12,6 +12,14 @@
     margin: 40px;
     
 }
+#button-up {
+    max-width: 50px;
+    max-height: 50px;
+}
+#button-down {
+    max-width: 50px;
+    max-height: 50px;
+}
 #count {
     color: #d9dddc;
     font-size: 3rem;
@@ -42,7 +50,9 @@
     
 }
 
-#mood {
+#moods {
+    width: 150px;
+    height: 35px;
     display: block;
     margin: 0 auto;
     border-radius: 5px;
@@ -72,17 +82,24 @@
     border-radius:  100px / 120px;
     padding: 10px;
     margin: 40px;
-    width: 10%;
+    width: 150px;
     justify-content: center;
 }
 
 #garden {
-    display: flex;
     border: rgb(4, 40, 57) solid 3px;
     border-radius:10px;
     background-color:#e0bbe4 ;
-    padding: 20px;
+    padding: 40px;
     margin: 40px;  
     
+}
+#flowers {
+    display: flex;
+    float: left;
+}
+#clouds {
+    display: flex;
+    float: right;
 }
 
