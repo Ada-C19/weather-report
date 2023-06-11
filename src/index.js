@@ -19,7 +19,6 @@ const loadControls = () => {
 	state.skyDisplayValue = state.skyDisplay.textContent;
 };
 
-
 const increaseTemp = () => {
 	const increaseTempControl = state.increaseTempControl;
 	const currentTemp = document.getElementById('currentTempButton');
@@ -173,5 +172,4 @@ const registerEvents = () => {
 
 document.addEventListener('DOMContentLoaded', setUp);
 
-
-  
+// testing testing
