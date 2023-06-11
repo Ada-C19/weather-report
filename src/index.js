@@ -131,24 +131,24 @@ const changeSky = () => {
 	const skyDisplay = document.getElementById('sky');
 	const skySelect = document.getElementById('skySelect');
 	const selectedSky = skySelect.value;
-  
+
 	switch (selectedSky) {
-	  case 'sunny':
-		skyDisplay.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
-		break;
-	  case 'cloudy':
-		skyDisplay.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-		break;
-	  case 'rainy':
-		skyDisplay.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-		break;
-	  case 'snowy':
-		skyDisplay.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-		break;
-	  default:
-		skyDisplay.textContent = '';
+		case 'sunny':
+			skyDisplay.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+			break;
+		case 'cloudy':
+			skyDisplay.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+			break;
+		case 'rainy':
+			skyDisplay.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+			break;
+		case 'snowy':
+			skyDisplay.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+			break;
+		default:
+			skyDisplay.textContent = '';
 	}
-  };
+};
 
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener('click', increaseTemp);
