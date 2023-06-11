@@ -4,24 +4,32 @@ const state = {
     temperature: 68,
     lat: 37.7790262,
     lon: -122.419906,
-  };
+};
 
 const skyState = {
     sunny: '🌞🌞🌞🌞🌞🌞🌞🌞🌞',
     cloudy: '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️',
     rainy: '🌧🌈🌧🌧💧🌧🌦🌧💧🌧🌧',
     snowy: '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨'
-}
+};
 
 const landState = {
-    sunny: '🌵🌵🌵🌵🌵🌵🌵🌵🌵',
-    cloudy: '🌳🌳🌳🌳🌳🌳🌳🌳🌳',
-    rainy: '🌴🌴🌴🌴🌴🌴🌴🌴🌴',
-    snowy: '🏔️🏔️🏔️🏔️🏔️🏔️🏔️🏔️🏔️'
-}
+    '80+': '🌵🌵🌵🌵🌵🌵🌵🌵🌵',
+    '70+': '🌴🌴🌴🌴🌴🌴🌴🌴🌴',
+    '60+': '🌳🌳🌳🌳🌳🌳🌳🌳🌳',
+    '59-': '🏔️☃️🏔️🏔️🥶🏔️🏔️🏔️☃️'
+};
+
+const tempState = {
+    '80+': 'red',
+    '70+': 'orange',
+    '60+': 'gold',
+    '50+': 'green',
+    '49-': 'teal'
+};
 
 const locationUrl = 'http://127.0.0.1:5000/location';
-const weatherUrl= 'http://127.0.0.1:5000/weather';
+const weatherUrl = 'http://127.0.0.1:5000/weather';
 
 const increaseTemp = () => {
     const tempContainer = document.querySelector('#tempValue');
@@ -60,19 +68,17 @@ const getLatAndLon = () => {
             format: "json",
         }
     })
-    .then((res) => {
-        state.lat = res.data[0].lat;
-        state.lon = res.data[0].lon;
-    })
-    .then(getCurrentWeather())
-    .catch((err) => {
-        console.log("Failed to load latitude and longitude")
-    })
+        .then((res) => {
+            state.lat = res.data[0].lat;
+            state.lon = res.data[0].lon;
+        })
+        .then(getCurrentWeather())
+        .catch((err) => {
+            console.log("Failed to load latitude and longitude")
+        })
 };
 
-const tempConvertKtoF = (temp) => {
-    return (temp - 273.15) * (9 / 5) + 32; 
-};
+const tempConvertKtoF = (temp) => (temp - 273.15) * (9 / 5) + 32;
 
 const setTempToRealTimeTemp = () => {
     const tempContainer = document.querySelector('#tempValue');
@@ -88,56 +94,46 @@ const getCurrentWeather = () => {
             lon: state.lon,
         }
     })
-    .then((res) => {
-        state.temperature = res.data.main.temp;
-        state.temperature = Math.round(tempConvertKtoF(state.temperature));
-    })
-    .then(setTempToRealTimeTemp)
-    .catch((err) => {
-        console.log("Unable to get real time temperature.")
-    })
+        .then((res) => {
+            state.temperature = res.data.main.temp;
+            state.temperature = Math.round(tempConvertKtoF(state.temperature));
+        })
+        .then(setTempToRealTimeTemp)
+        .catch((err) => {
+            console.log("Unable to get real time temperature.")
+        })
 };
 
 const changeSky = () => {
     const skyContainer = document.querySelector('#sky');
     const skySelectInput = document.querySelector('#skySelect')
-    if (skySelectInput.value === 'sunny') {
-        skyContainer.innerText = skyState.sunny;
-    } else if (skySelectInput.value === 'cloudy') {
-        skyContainer.innerText = skyState.cloudy;
-    } else if (skySelectInput.value === 'rainy') {
-        skyContainer.innerText = skyState.rainy;
-    } else if (skySelectInput.value === 'snowy') {
-        skyContainer.innerText = skyState.snowy;
+    const skyInputValue = skySelectInput.value;
+    if (skyInputValue in skyState) {
+        skyContainer.innerText = skyState[skyInputValue];
     }
 };
 
 const changeLandscape = () => {
     const landscapeContainer = document.querySelector('#landscape');
-    if (state.temperature >= 80) {
-        landscapeContainer.innerText = landState.sunny;
-    } else if (state.temperature >= 70) {
-        landscapeContainer.innerText = landState.cloudy;
-    } else if (state.temperature >= 60) {
-        landscapeContainer.innerText = landState.rainy;
-    } else if (state.temperature <= 59) {
-        landscapeContainer.innerText = landState.snowy;
-    }
+
+    landscapeContainer.innerText = landState[
+        state.temperature >= 80 ? "80+" : 
+        state.temperature >= 70 ? "70+" : 
+        state.temperature >= 60 ? "60+" : 
+        "59-"
+    ];
 };
 
 const changeTempColor = () => {
     const tempContainer = document.querySelector('#tempValue');
-    if (state.temperature >= 80) {
-        tempContainer.style.color = "red";
-    } else if (state.temperature >= 70) {
-        tempContainer.style.color = "orange";
-    } else if (state.temperature >= 60) {
-        tempContainer.style.color = "gold";
-    } else if (state.temperature >= 50) {
-        tempContainer.style.color = "green";
-    } else if (state.temperature <= 49) {
-        tempContainer.style.color = "teal";
-    }
+    
+    tempContainer.style.color = tempState[
+        state.temperature >= 80 ? "80+" : 
+        state.temperature >= 70 ? "70+" : 
+        state.temperature >= 60 ? "60+" : 
+        state.temperature >= 50 ? "50+" : 
+        "49-"
+    ];
 };
 
 const registerEventHandlers = () => {
