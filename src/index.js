@@ -7,12 +7,8 @@ searchButton.addEventListener("click", () => {
 });
 
 
-// const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'));
-// const dropdownList = dropdownElementList.map((dropdownToggleEl) => {
-//   return new mdb.Dropdown(dropdownToggleEl);
-// });
-
 // SKY DROPDOWN ATTEMPT 2
+//https://alvarotrigo.com/blog/drop-down-menu-javascript/
 // get all dropdown from document
 document.querySelectorAll('.dropdown-button').forEach(dropDownFunc);
 
@@ -29,7 +25,7 @@ function dropDownFunc(dropDown) {
           this.parentElement.classList.remove('dropdown-open');
           this.nextElementSibling.classList.remove('dropdown-active');
         } else {
-          // Close the opend dropdown
+          // Close the opened dropdown
           closeDropdown();
             
           // add the open and active class(Opening the DropDown)
@@ -45,7 +41,7 @@ function dropDownFunc(dropDown) {
 
     function dropdownHover(e){
       if(e.type == 'mouseover'){
-        // Close the opend dropdown
+        // Close the opened dropdown
         closeDropdown();
 
         // add the open and active class(Opening the DropDown)
@@ -56,7 +52,9 @@ function dropDownFunc(dropDown) {
   }
 };
 
+//listen to the doc click
 window.addEventListener('click', function(e) {
+
   //close the menu if click happen outside of menu
   if (e.target.closest('.dropdown') === null) {
     //close the opend dropdown
@@ -64,7 +62,7 @@ window.addEventListener('click', function(e) {
   }
 });
 
-// Close the openend Dropdowns
+// Close the opened Dropdowns
 function closeDropdown() { 
   console.log('closed');
   

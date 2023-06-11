@@ -16,7 +16,8 @@
     - [ ] Click decrease count
 
 - [ ] Sky Changes container
-    - [ ] drop down ---> changes temp too
+    - [X] drop down 
+        ---> changes temp too
         - [ ] Sunny
         - [ ] Cloudy
         - [ ] Rainy
