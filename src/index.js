@@ -3,11 +3,13 @@ const state = {
 	tempValue: null,
 	increaseTempControl: null,
 	decreaseTempControl: null,
-	skyContainer: null,
 	landscapeContainer: null,
 	cityInput: null,
 	cityHeader: null,
 	currentTempButton: null,
+    gardenContainer: null,
+	skyContainer: null,
+    skySelect: null,
 	cityNameResetButton: null,
 	cityNameInput: null,
 	cityNameInputDefault: "Oakland",
@@ -42,13 +44,13 @@ const handleTempColors = () => {
 
 const handleLandscapePics = () => {
 	if (state.tempValueCount >= 80) {
-		state.landscapeContainer.innerHTML = `"🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"`;
+		state.landscapeContainer.innerHTML = `🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂`;
 	} else if (state.tempValueCount >= 70 && state.tempValueCount <= 79) {
-		state.landscapeContainer.innerHTML = `"🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"`;
+		state.landscapeContainer.innerHTML = `🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷`;
 	} else if (state.tempValueCount >= 60 && state.tempValueCount <= 69) {
-		state.landscapeContainer.innerHTML = `"🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"`;
+		state.landscapeContainer.innerHTML = `🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃`;
 	} else if (state.tempValueCount <= 59) {
-		state.landscapeContainer.innerHTML = `"🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"`;
+		state.landscapeContainer.innerHTML = `🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲`;
 	}
 };
 
@@ -99,11 +101,31 @@ const getRealTemp = () => {
 	});
 };
 
+const handleSkyPics = (event) => {
+    state.skyContainer.innerHTML = `☁️ ☁️ ☁️ ☀️ ☁️ ☁️`;
+    state.gardenContainer.style.backgroundColor = "lightskyblue";
+
+    if (event.target.value === "sunny") {
+		state.skyContainer.innerHTML = `☁️ ☁️ ☁️ ☀️ ☁️ ☁️`;
+        state.gardenContainer.style.backgroundColor = "lightskyblue";
+	} else if (event.target.value === "cloudy") {
+		state.skyContainer.innerHTML = `☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️`;
+        state.gardenContainer.style.backgroundColor = "lightcyan";
+	} else if (event.target.value === "rainy") {
+		state.skyContainer.innerHTML = `🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧`;
+        state.gardenContainer.style.backgroundColor = "lightgray";
+	} else if (event.target.value === "snowy") {
+		state.skyContainer.innerHTML = `🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨`;
+        state.gardenContainer.style.backgroundColor = "aliceblue";
+	}
+};
+
 const registerEvents = () => {
 	state.increaseTempControl.addEventListener("click", increaseTemp);
 	state.decreaseTempControl.addEventListener("click", decreaseTemp);
 	state.cityInput.addEventListener("keyup", handleTextInput);
 	state.currentTempButton.addEventListener("click", getRealTemp);
+    state.skySelect.addEventListener("change", handleSkyPics)
 	state.cityNameResetButton.addEventListener("click", resetCityName);
 };
 
@@ -111,11 +133,13 @@ const loadControls = () => {
 	state.tempValue = document.getElementById("tempValue");
 	state.increaseTempControl = document.getElementById("increaseTempControl");
 	state.decreaseTempControl = document.getElementById("decreaseTempControl");
-	state.skyContainer = document.getElementById("sky");
 	state.landscapeContainer = document.getElementById("landscape");
 	state.cityInput = document.getElementById("cityNameInput");
 	state.cityHeader = document.getElementById("headerCityName");
 	state.currentTempButton = document.getElementById("currentTempButton");
+    state.gardenContainer = document.getElementById("gardenContent");
+	state.skyContainer = document.getElementById("sky");
+    state.skySelect = document.getElementById("skySelect");
 	state.cityNameResetButton = document.getElementById("cityNameReset");
 };
 
@@ -124,6 +148,7 @@ const onLoaded = () => {
 	registerEvents();
 	handleTempColors();
 	handleLandscapePics();
+    handleSkyPics();
 };
 
 onLoaded();
