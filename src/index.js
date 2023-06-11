@@ -9,23 +9,32 @@ const state = {
 };
 
 function updateColor() {
-    if (state.tempCount >= 80) {
+    if (state.tempCount > 100) {
+        alert("Overheat! Fine safe shelter.")
+    }
+    else if (state.tempCount >= 80) {
         state.color = "red";
+        gardenIcon =  "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"
     }
     else if (state.tempCount >= 70) {
         state.color = "orange";
+        gardenIcon = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
     }
     else if (state.tempCount >= 60) {
         state.color = "yellow";
+        gardenIcon =  "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
     }
     else if (state.tempCount >= 50) {
         state.color = "green";
+        gardenIcon =  "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
     }
     else {
-        state.color= "black";
+        state.color= "teal";
     }
     document.querySelector("#count").style.color = state.color
     console.log("Updated color " + state.color)
+    document.querySelector("#flowers").innerHTML = gardenIcon
+    console.log("Updated garden " + gardenIcon)
 }
 
 
