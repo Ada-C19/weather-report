@@ -217,26 +217,7 @@ const registerEventHandlers = () => {
   cityForm.addEventListener("submit", (event) => handleCityNameSubmit(event));
 };
 
-// resetCityName();
-
-// submitCityName();
-// const submitCity = document.getElementById("cityNameSubmit");
-// submitCity.addEventListener("change", submitCityName);
-// previously didn't exist, calls function here to register events
+// calls function here to register events
 registerEventHandlers();
 
-// console.log(searchLocation())
-// console.log(searchTemperature())
-// registercityName and change location functions
-// inputElement.addEventListener("input", function () {
-//     const cityName = inputElement.tempValue;
-//     const cityNameInput = document.querySelector("h3");
-//     cityName.textContent = "For the lovely city of " + cityName;
 
-// const changeLocation = document.querySelector('cityNameInput');
-// changeLocation.addEventListener('click', searchLocation);
-// });
-
-// need to fix reset button
-// need to add submit button
-// need to fix the API call

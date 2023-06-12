@@ -1,22 +1,15 @@
-/* have not added any css yet */
-/* 
-h1:hover {
-    color: pink;
-} */
+
 body {
     background-color: rgb(29, 151, 211);
     background-image: url(../assets/weather_imagejpg.webp);
     background-repeat: repeat-x;
     color: rgb(9, 8, 8);
+    font-family: 'Trebuchet MS', sans-serif;
 }
 
 #weather-report-id:hover {
     color: rgb(34, 86, 228);
 }
-
-/* #temperature-id:hover {
-    color: red
-} */
 
 #sky-id:hover {
     color: skyblue
@@ -50,3 +43,4 @@ body {
 .red {
     color: red;
 }
+
