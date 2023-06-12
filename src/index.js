@@ -88,7 +88,7 @@ const handleSkyUpdate = (icon=`01${state.timePeriod}`, desc='Clear Sky') => {
   state.weather.icon = icon;
   state.weather.description = desc;
 
-  state.sky.src = `./icons/${state.weather.icon}.svg`;
+  state.sky.src = `./src/icons/${state.weather.icon}.svg`;
   state.sky.alt = state.weather.description;
   state.descriptionValue.innerText = state.weather.description;
 }
@@ -102,7 +102,7 @@ const handleOptionsReset = () => {
 
   // reset sky
   state.descriptionValue.innerText = 'Clear Sky';
-  state.sky.src =`./icons/01${state.timePeriod}.svg`;
+  state.sky.src =`./src/icons/01${state.timePeriod}.svg`;
   state.sky.alt = 'Clear Sky';
 }
 
@@ -140,7 +140,7 @@ const setTimePeriod = () => {
       setProperty('--bgImage', `var(--${state.timePeriod}BgImage)`);
   document.documentElement.style.
       setProperty('--bgColor', `var(--${state.timePeriod}BgColor)`);
-  state.sky.src = `./icons/01${state.timePeriod}.svg`;
+  state.sky.src = `./src/icons/01${state.timePeriod}.svg`;
 };
 
 const updateColorLandscape = () => {
