@@ -30,14 +30,12 @@ const loadControls = () => {
 };
 
 const handleIncreaseTempClicked = () => {
-    ++state.temperature;
-    state.tempValue.textContent = state.temperature;
+    state.tempValue.textContent = ++state.temperature;
     setTempDisplay();
 };
 
 const handleDecreaseTempClicked = () => {
-    --state.temperature;
-    state.tempValue.textContent = state.temperature;
+    state.tempValue.textContent = --state.temperature;
     setTempDisplay();
 }; 
 
@@ -59,8 +57,7 @@ const setTempDisplay = () => {
 }
 
 const handleCityNameInput = () => {
-    let cityInput = state.cityNameInput.value;
-    state.headerCityName.textContent = cityInput;
+    state.headerCityName.textContent = state.cityNameInput.value;
 };
 
 const getLocationData = () => {
@@ -101,8 +98,8 @@ const handleRealtimeTemperatureClicked = () => {
         .then( (cityTemperature) => {
             state.tempValue.textContent = cityTemperature;
             state.temperature = cityTemperature;
-        })
-        .then( () => setTempDisplay());
+            setTempDisplay();
+        });
 }
 
 const handleSkySelectOption = () => {
