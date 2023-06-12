@@ -4,9 +4,9 @@ h2 {
   
 body {
 display: grid;
-grid-template-columns: 1fr 1fr 1fr;
+grid-template-columns: 2fr 2fr 2fr;
 grid-template-rows: auto auto auto auto;
-grid-gap: 1rem;
+grid-gap: 3rem;
 
 font-family: "Rubik", sans-serif;
 font-size: 18px;
@@ -58,7 +58,8 @@ grid-row: 2;
     background-color: #ca66d5ee;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 20px;
+    margin: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -77,10 +78,9 @@ grid-column: 2;
 }
 
 .garden__section {
-/* grid-row: 2 / span 3;
-grid-column: 2; */
-grid-row: 3;
-grid-column: 2;
+grid-row: 3 / span 4;
+grid-column: span 4;
+
 text-align: center;
 align-self: center;
 }
@@ -92,7 +92,7 @@ justify-content: space-around;
 /* justify-content: center; */
 }
 
-#tempValue {
+#tempLabel {
 font-size: 3rem;
 margin-left: 1.5rem;
 /* padding-right: 1rem; */
@@ -121,6 +121,7 @@ justify-content: space-between;
 
 border-radius: 8px;
 font-size: 2em;
+background-color:  rgba(221, 255, 255, 0.852);
 }
 
 .city-name__reset-btn {
@@ -179,7 +180,7 @@ background-color: lightsteelblue;
 }
 
 .weatherWidgetSection {
-    grid-row: 3;
+    grid-row: 2 / span 3;
 }
 
 .weatherWidgetSection h2 {

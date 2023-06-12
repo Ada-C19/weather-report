@@ -8,8 +8,9 @@ const state = {
     currentTemp: null,
     skySelector: null,
     skyVibeEmoji:  null,
-    weatherWidget: null
+    weatherWidget: null,
 };
+
 
 const updateWeatherWidget = (location) => {
     const lat = location.lat;
@@ -18,17 +19,23 @@ const updateWeatherWidget = (location) => {
     state.weatherWidget.src = url;
 };
 
+
 const selectSky = (event) => {
     const sky = event.target.value;
+    let body = document.getElementById("body")
 
     if (sky == "Sunny") {
         state.skyVibeEmoji.textContent = "☁️ ☁️ ☁️ ☀️ ☀️ ☀️ ☁️ ☁️ ☁️";
+        body.style.backgroundImage = "url(assets/fon-nebo-oblaka-pejzazh-trava-12954.jpeg)";
     } else if (sky == "Cloudy") {
         state.skyVibeEmoji.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+        body.style.backgroundImage = "url(assets/new-york-4725115-scaled.jpg";
     } else if (sky == "Rainy") {
         state.skyVibeEmoji.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+        body.style.backgroundImage = "url(assets/daisy-flowers-most-beautiful-rain-ec30kjmayewks2pj.jpg)";
     } else {
-        state.skyVibeEmoji.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";   
+        state.skyVibeEmoji.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+        body.style.backgroundImage = "url(assets/Snow_at_Wollman_Rink.0.jpeg)";   
     }
 };
 

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="styles/index.css" />
   </head>
 
-  <body>
+  <body id="body">
     <header class="header__header">
       <h1>Weather Report</h1>
       <span
@@ -49,14 +49,14 @@
     <section class="city-name__section">
       <form autocomplete="off">
         <h2>City Name</h2>
-        <input type="text" id="cityNameInput" value="Las Vegas" />
+        <input type="text" id="cityNameInput" value="Las Vegas" size="15" />
         <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
       </form>
     </section>
 
     <section class="garden__section">
       <h2>Weather Garden</h2>
-      <div id="gardenContent" class="garden__content sunny">
+      <div id="gardenContent" class="garden__content">
         <div id="sky">☁️ ☁️ ☁️ ☀️ ☀️ ☀️ ☁️ ☁️ ☁️</div>
         <div id="landscape">🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷</div>
       </div>
