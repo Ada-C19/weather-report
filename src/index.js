@@ -138,7 +138,7 @@ const getWeather = (location) => {
       state.sky.textContent = '☁️   🌞☀️  🌤️  ☁️ ☀️ ☁️  ☁️';
       state.gardenSection.classList.add('sunny');
       }else if (skyColor === 'Rainy') {
-      state.sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+      state.sky.textContent = '🌧🌈☔️🌧🌧💧🌧🌦🌧💧☔️🌧🌧';
       state.gardenSection.classList.add('rainy');
       }else if (skyColor === 'Snowy') {
       state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
