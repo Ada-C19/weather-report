@@ -1,4 +1,8 @@
 "use strict";
+// const axios = require('axios');
+// require('dotenv').config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 const state = {
 city: 'Seattle',
@@ -11,23 +15,18 @@ const convertKtoF = (temp) => {
   return (temp - 273.15) * (9 / 5) + 32;
 };
 
-const LOCATION_KEY = process.env.LOCATION_KEY;
-const WEATHER_KEY = process.env.WEATHER_KEY;
-
-
 const findLatAndLong = () => {
-  //let lat, long;
+// Could not figure out how to access my .env file without breaking my city name code. If you inspect my code in the browser, the api call is correct. It will error because there's no authorization. 
 axios
 .get('https://us1.locationiq.com/v1/search.php', {
     params: {
-    key: LOCATION_KEY,
-    q: state.city,
+        q: state.city,
     },
     })
     .then((response) => {
         console.log(response.data);
-        state.lat = response.data.lat;
-        state.long = response.data.long;
+        state.lat = response.data[0].latitude;
+        state.long = response.data[0].longitude;
         getWeather();
     })
     .catch((error) => {
@@ -36,11 +35,9 @@ axios
 };
 
 const getWeather = () => {
-    const WEATHER_KEY = process.env.WEATHER_KEY;
 axios
     .get('https://api.openweathermap.org/data/2.5/weather', {
     params: {
-        key: WEATHER_KEY,
         lat: state.lat,
         lon: state.long,
 },
@@ -68,9 +65,12 @@ const resetCityName = () => {
     updateCityName();
 };
 
-function formatTempAndLandscape() {
-    const temperatureElement = document.getElementById('tempValue');
-    temperatureElement.textContent = state.temp + '°F';
+const formatTempAndLandscape = () => {
+    let temp = state.temp;
+    // const temperatureElement = document.getElementById('tempValue');
+    // temperatureElement.textContent = state.temp + '°F';
+    const temperature = document.getElementById('tempValue');
+    temperature.textContent = `${state.temp}°F`;
 };
 
 const increaseTemp = () => {
@@ -81,6 +81,9 @@ const decreaseTemp = () => {
 };
 
 const registerEventHandlers = () => {
+    formatTempAndLandscape;
+    const currentTempButton = document.getElementById('currentTempButton');
+    currentTempButton.addEventListener('click', findLatAndLong);
 
     updateCityName();
     const cityNameInput = document.getElementById('cityNameInput');
@@ -88,13 +91,15 @@ const registerEventHandlers = () => {
 
     const cityNameResetBtn = document.getElementById('cityNameReset');
     cityNameResetBtn.addEventListener('click', resetCityName);
+
+    
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
 
-document.addEventListener('DOMContentLoaded', function () {
-    const button = document.getElementById('currentTempButton');
-    button.addEventListener('click', function () {
-        findLatAndLong();
-    });
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     const button = document.getElementById('currentTempButton');
+//     button.addEventListener('click', function () {
+//         findLatAndLong();
+//     });
+// });
