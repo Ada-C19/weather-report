@@ -61,7 +61,6 @@ const updateCity = (event) => {
 
 const resetCity = () => {
     state.cityLabel.textContent = "Las Vegas";
-    state.cityValue = document.getElementById("cityNameInput");
     state.cityValue.value = state.cityValue.defaultValue;
 };
 
@@ -117,46 +116,12 @@ const handleRealTimeButtonClick = () => {
 const increaseTemp = () => {
     ++state.tempValue;
     updateUI();
-
-
-    // if (state.tempValue >= 80) {
-    //     state.tempLabel.style.color = 'red';
-    //     state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-    // } else if (state.tempValue >= 70) {
-    //     state.tempLabel.style.color = 'orange';
-    //     state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
-    // } else if (state.tempValue >= 60) {
-    //     state.tempLabel.style.color = 'yellow';
-    //     state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
-    // } else if (state.tempValue >= 50) {
-    //     state.tempLabel.style.color = 'green';
-    //     state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-    // } else {
-    //     state.tempLabel.style.color = 'teal';   
-    // }
 };
 
 
 const decreaseTemp = () => {
     --state.tempValue;
     updateUI();
-
-
-    // if (state.tempValue >= 80) {
-    //     state.tempLabel.style.color = 'red';
-    //     state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-    // } else if (state.tempValue >= 70) {
-    //     state.tempLabel.style.color = 'orange';
-    //     state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
-    // } else if (state.tempValue >= 60) {
-    //     state.tempLabel.style.color = 'yellow';
-    //     state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
-    // } else if (state.tempValue >= 50) {
-    //     state.tempLabel.style.color = 'green';
-    //     state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-    // } else {
-    //     state.tempLabel.style.color = 'teal';   
-    // }
 }; 
 
 
