@@ -1,5 +1,4 @@
 "use strict";
-
 const state = {
   tempEl: document.getElementById("temp"),
   tempConEl: document.getElementById("temp-container"),
@@ -71,3 +70,40 @@ state.inputField.addEventListener('keyup', (event) => {
 })
 
 //Wave 4
+let lat;
+let lon;
+const getLocation = () => {
+  console.log(state.mainTitle);
+  const url = `http://127.0.0.1:5000/location`;
+  axios.get(url, {
+    params: {
+      q: state.mainTitle,
+    }})
+    .then((response) => {
+      getWeather(response.data[0].lat, response.data[0].lon);
+      }
+    )
+    .catch((error) => {
+      console.log(error.response.data);
+    })
+};
+
+const getWeather = (lat, lon) => {
+  return (axios.get('http://127.0.0.1:5000/weather', {
+    params: {
+      lat: lat,
+      lon: lon,
+    }})
+    .then((response) => {
+      const tempInF = (response.data.main.temp - 273.15) * (9/5) + 32;
+      state.tempVal = parseInt(tempInF);
+      state.tempEl.textContent = state.tempVal;
+      changeTempColor();
+      changeLandscape();
+    })
+    .catch((error)=> {
+      console.log(error.response.data);
+    })
+  )
+}
+state.getTempButton.addEventListener('click', getLocation);
