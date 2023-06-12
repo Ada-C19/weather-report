@@ -68,13 +68,12 @@ const handleCityNameInput = () => {
 
 const getLocationData = () => {
     let cityInput = state.cityNameInput.value;
-    let latitude, longitude;
     return axios
         .get('http://127.0.0.1:5000/location', {params: {q:cityInput}})
         .then((response) => {
-            latitude = response.data[0].lat;
-            longitude = response.data[0].lon;
-            return {latitude: latitude, longitude: longitude};
+            let lat = response.data[0].lat;
+            let lon = response.data[0].lon;
+            return {latitude: lat, longitude: lon};
         })
         .catch( (error) => {
             console.log('error in finding location data');
@@ -82,8 +81,7 @@ const getLocationData = () => {
 }
 
 const getWeatherDataFromLocation = (location) => {
-    // console.log(`${state.cityNameInput.value} is located at`, location.latitude, location.longitude);
-    const changeKelvinToFaren = (temperature) => { 
+    const changeKelvinToFahren = (temperature) => { 
         return Math.floor((temperature - 273.15) * 9/5 + 32)
     }
     
@@ -95,19 +93,22 @@ const getWeatherDataFromLocation = (location) => {
                 }
             })
             .then( (response) => {
-                let cityTemperature = changeKelvinToFaren(response.data.main.temp);
-                state.tempValue.textContent = state.temperature = cityTemperature;
+                let cityTemperature = changeKelvinToFahren(response.data.main.temp);
+                return cityTemperature
             })
 }
 
 const handleRealtimeTemperatureClicked = () => {
     getLocationData()
         .then( (location) => getWeatherDataFromLocation(location))
+        .then( (cityTemperature) => {
+            state.tempValue.textContent = cityTemperature;
+            state.temperature = cityTemperature;
+        })
         .then( () => setTempDisplay());
 }
 
 const handleSkySelectOption = () => {
-    console.log("hey the sky is falling");
     const weatherPatterns = {
         pride: ['🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈', 'sunny'],  
         sunny: ['☁️ ☁️ ☁️ ☀️ ☁️ ☁️', 'sunny'],
@@ -121,7 +122,8 @@ const handleSkySelectOption = () => {
 }
 
 const handleResetButtonClicked = () => {
-    state.cityNameInput.value = state.headerCityName.textContent = 'Los Angeles';
+    state.cityNameInput.value = 'Los Angeles';
+    state.headerCityName.textContent = 'Los Angeles';
     handleRealtimeTemperatureClicked();
 }
 
