@@ -59,7 +59,7 @@ const handleTextInput = () => {
 };
 
 const resetCityName = (event) => {
-	state.cityInput.value = "France"
+	state.cityInput.value = "Paris";
 	getRealTemp();
 	handleTextInput();
 	handleTempColors();
@@ -150,8 +150,6 @@ const onLoaded = () => {
 	handleLandscapePics();
 	handleSkyPics();
 	handleTextInput();
-	
-	
 };
 
 onLoaded();
