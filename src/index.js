@@ -39,26 +39,45 @@ const changeSky = (weather) => {
   // weather.changeLandscape();
 };
 
-const changeTempDisplay = (temperature) => {
-  temperature.changeTempValueColor();
-  temperature.changeLandscape();
+const changeTempDisplay = (temp) => {
+  temp.changeTempValueColor();
+  temp.changeLandscape();
 };
 
 // temperature ranges
 // const
 
-const superhot = new Temperature(
-  "Super Hot",
+const hot = new Temperature(
+  "Hot",
   [80, 100000],
   "red",
   "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵"
 );
+const warm = new Temperature(
+  "Warm",
+  [70, 79],
+  "orange",
+  "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
+);
+const mild = new Temperature("Mild", [60, 69], "gray", "🗻🗻🗻🗻🗻🗻🗻🗻🗻");
+const chilly = new Temperature(
+  "Chilly",
+  [50, 59],
+  "blue",
+  "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
+);
+// const cold = new Temperature(
+//   "Cold",
+//   "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+//   [0, 49],
+//   "lightblue"
+// );
 
-changeTempDisplay(superhot);
+changeTempDisplay(hot);
 // weathers
 // these could maybe be separated into another file? along with the class definition
-const hot = new Weather(
-  "Very",
+const fullSunny = new Weather(
+  "Full Sunny",
   "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
   // "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
   // [80, 100000],
@@ -112,7 +131,7 @@ const skyCollection = {
   rainy: rainy,
   cloudy: cloudy,
   sunny: sunny,
-  hot: hot,
+  fullSunny: fullSunny,
 };
 
 let temperature = document.getElementById("tempValue");
