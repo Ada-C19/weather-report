@@ -9,6 +9,7 @@ const state = {
     skySelector: null,
     skyVibeEmoji:  null,
     weatherWidget: null,
+    background: null,
 };
 
 
@@ -63,7 +64,6 @@ const updateUI = () =>  {
 const updateCity = (event) => {
     state.cityValue = event.target.value
     state.cityLabel.textContent = state.cityValue;
-    return state.cityValue;
 };
 
 const resetCity = () => {
@@ -116,7 +116,6 @@ const kelvinToFahrenheit = (k) => {
 }; 
 
 const handleRealTimeButtonClick = () => {
-    console.log('real time click');
     getLocationData();
 };
 
@@ -130,7 +129,6 @@ const decreaseTemp = () => {
     --state.tempValue;
     updateUI();
 }; 
-
 
 
 const registerEventHandlers = () => {
