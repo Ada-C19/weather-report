@@ -7,6 +7,9 @@ const state = {
   tempDecrease: document.getElementById("temp-decrease"),
   tempVal: parseInt(document.getElementById("temp").textContent),
   landscapeEl: document.getElementById("landscape"),
+  mainTitle: document.getElementById("city"),
+  inputField: document.getElementById("city-choice"),
+  getTempButton: document.getElementById("get-current-temp")
 }
 
 // Wave2
@@ -61,3 +64,10 @@ state.tempDecrease.addEventListener('click', (event) => {
   changeTempColor();
   changeLandscape();
 })
+
+//Wave 3
+state.inputField.addEventListener('keyup', (event) => {
+  state.mainTitle.textContent = state.inputField.value
+})
+
+//Wave 4
