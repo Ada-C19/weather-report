@@ -117,16 +117,24 @@ text-align: center;
 }
 
 .garden__content {
-height: 200px; 
-width: 400px;
-margin: auto;
-padding: 2rem;
-display: flex;
-flex-direction: column;
-justify-content: flex-start;
-align-items: center;
-border-radius: 8px;
-overflow: hidden;
+    height: 200px;
+    width: 400px;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Updated: Space between content */
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.sky {
+    margin-bottom: auto; 
+}
+
+.landscape {
+    margin-top: auto;
 }
 
 .cloudy {

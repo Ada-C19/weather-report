@@ -7,7 +7,7 @@ class Temperature {
   }
 
   changeLandscape() {
-    document.getElementById("landscape").textContent = this.landscape;
+    document.getElementById("landscape").innerHTML = this.landscape;
   }
 
   changeTempValueColor() {
@@ -33,19 +33,14 @@ class Weather {
 }
 
 const changeSky = (weather) => {
-  // weather.changeTempValueColor();
   weather.changeBackgroundColor();
   weather.changeSky();
-  // weather.changeLandscape();
 };
 
 const changeTempDisplay = (temp) => {
   temp.changeTempValueColor();
   temp.changeLandscape();
 };
-
-// temperature ranges
-// const
 
 const hot = new Temperature(
   "Hot",
@@ -73,55 +68,44 @@ const cold = new Temperature(
   "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
 );
 
+const temperatureCollection = {
+  hot: hot,
+  warm: warm,
+  mild: mild,
+  chilly: chilly,
+  cold: cold,
+};
+
 changeTempDisplay(cold);
-// weathers
-// these could maybe be separated into another file? along with the class definition
+
 const fullSunny = new Weather(
   "Full Sunny",
   "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
-  // "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
-  // [80, 100000],
-  // "red",
   "red"
 );
 const sunny = new Weather(
   "Sunny",
   "☁️ ☁️ ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️",
-  // "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-  // [70, 79],
-  // "orange",
   "rgb(221, 255, 255)"
 );
 const cloudy = new Weather(
   "Cloudy",
   "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
-  // "🗻🗻🗻🗻🗻🗻🗻🗻🗻",
-  // [60, 69],
-  // "gray",
   "lightgrey"
 );
 const rainy = new Weather(
   "Rainy",
   "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧",
-  // "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-  // [50, 59],
-  // "blue",
   "lightblue"
 );
 const snowy = new Weather(
   "Snowy",
   "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
-  // "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
-  // [0, 49],
-  // "lightblue",
   "lightsteelblue"
 );
 const apocalyptic = new Weather(
   "Apocalyptic",
   "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🌅🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️",
-  // "⛰️⛰️⛰️⛰️🛣️🛣️🛣️⛰️⛰️⛰️⛰️",
-  // [-10000000, -1],
-  // "black",
   "rgb(11, 247, 46)"
 );
 
@@ -134,40 +118,31 @@ const skyCollection = {
   fullSunny: fullSunny,
 };
 
-let temperature = document.getElementById("tempValue");
-
-const increaseTempButton = document.getElementById("increaseTempControl");
-
-const decreaseTempButton = document.getElementById("decreaseTempControl");
+const landscapeCollection = {
+  apocalyptic: apocalyptic,
+  snowy: snowy,
+  rainy: rainy,
+  cloudy: cloudy,
+  sunny: sunny,
+  fullSunny: fullSunny,
+};
 
 let tempNumber = 0;
-
+const temperature = document.getElementById("tempValue");
 temperature.textContent = `${tempNumber}° F`;
 
-// the two helper functions below can maybe get condensed into one by using callback functions
-
-const incrementValue = (numberString) => {
-  // cast numberString from string to int
-  number = parseInt(numberString);
-
-  // return incremented value
-  return number + 1;
-};
-
-const decrementValue = (numberString) => {
-  number = parseInt(numberString);
-
-  return number - 1;
-};
-
+const increaseTempButton = document.getElementById("increaseTempControl");
 increaseTempButton.addEventListener("click", () => {
-  tempNumber = incrementValue(tempNumber);
+  tempNumber++;
   temperature.textContent = `${tempNumber}° F`;
+  updateWeatherBasedOnTemperature();
 });
 
+const decreaseTempButton = document.getElementById("decreaseTempControl");
 decreaseTempButton.addEventListener("click", () => {
-  tempNumber = decrementValue(tempNumber);
+  tempNumber--;
   temperature.textContent = `${tempNumber}° F`;
+  updateWeatherBasedOnTemperature();
 });
 
 const cityNameInput = document.getElementById("cityNameInput");
@@ -175,97 +150,77 @@ const headerCityName = document.getElementById("headerCityName");
 
 cityNameInput.addEventListener("input", () => {
   headerCityName.textContent = cityNameInput.value;
-
-  cityNameReset.addEventListener("click", () => {
-    cityNameInput.value = "";
-    headerCityName.textContent = "";
-  });
 });
 
-// const skySelect = document.getElementById("skySelect");
-
+const skySelect = document.getElementById("skySelect");
 skySelect.addEventListener("input", (event) => {
   const selectedSky = skySelect.value;
-  console.log(selectedSky);
   changeSky(skyCollection[selectedSky]);
 });
 
-// so...
-// if the selected temperature is less than or equal to temperature[1] and greater than or equal to temperature[0], then display that temperature
-// otherwise, loop through temperatures until one is found that fits
-
-// changeWeather(weathers[]);
-// const gardenContent = document.getElementById("gardenContent");
-// const sky = document.getElementById("sky");
-
-// skySelect.addEventListener("change", () => {
-//   const selectedOption = skySelect.value;
-//   updateSky(selectedOption);
-// });
-
-// const updateSky = (option) => {
-//   const skyClassName = getSkyClassName(option);
-//   const skyEmoji = getSkyEmoji(option);
-
-//   gardenContent.className = `garden__content ${skyClassName}`;
-//   sky.innerHTML = skyEmoji;
-// };
-
-// Set the initial sky and garden content based on the default selected option
-// const defaultOption = skySelect.value;
-// updateSky(defaultOption);
-
-// changeWeather(sunny);
-
-/* Optional:
-// add color change to the background if the temperature is at a certain level.
-
-const tempValue = document.getElementById('tempValue');
-const body = document.body;
-
-tempValue.addEventListener('input', () => {
-  const temperature = parseInt(tempValue.textContent);
-
-  if (temperature >= 80) {
-    body.style.backgroundColor = 'red';
-  } else if (temperature >= 60 && temperature < 40) {
-    body.style.backgroundColor = 'orange';
-  } else if (temperature >= 40 && temperature < 32) {
-    body.style.backgroundColor = 'yellow';
-  } else if (temperature >= 32 && temperature < 0) {
-    body.style.backgroundColor = 'green';
-  } else {
-    body.style.backgroundColor = 'blue';
+const updateWeatherBasedOnTemperature = async () => {
+  for (const temperatureKey in temperatureCollection) {
+    const temperature = temperatureCollection[temperatureKey];
+    if (
+      tempNumber >= temperature.tempRange[0] &&
+      tempNumber <= temperature.tempRange[1]
+    ) {
+      changeTempDisplay(temperature);
+      break;
+    }
   }
+};
+
+const resetButton = document.getElementById("cityNameReset");
+resetButton.addEventListener("click", () => {
+  cityNameInput.value = "Austin;
+  headerCityName.textContent = "Austin";
 });
 
-const tempValue = document.getElementById('tempValue');
-const tempConversionButton = document.getElementById('tempConversionButton');
+const axiosGetCoordinates = async (placeName) => {
+  try {
+    const response = await axios.get("http://127.0.0.1:5000/location", {
+      params: {
+        q: placeName,
+      },
+    });
 
-let temperatureUnit = "K"; // Variable to track the current temperature unit
-
-
-tempConversionButton.addEventListener('click', () => {
-  const currentTemp = parseFloat(tempValue.textContent);
-  let convertedTemp;
-
-  if (temperatureUnit === "K") {
-    // Convert from Kelvin to Fahrenheit 
-    convertedTemp = (currentTemp - 273.15) * (9/5) + 32;
-    tempValue.textContent = convertedTemp.toFixed(2) + "°F";
-    tempConversionButton.textContent = "Convert to Celsius";
-    temperatureUnit = "F";
-  } else if (temperatureUnit === "F") {
-    // Convert from Fahrenheit to Celsius 
-    convertedTemp = (currentTemp - 32) * (5/9);
-    tempValue.textContent = convertedTemp.toFixed(2) + "°C";
-    tempConversionButton.textContent = "Convert to Kelvin";
-    temperatureUnit = "C";
-  } else {
-    // Convert from Celsius  to Kelvin 
-    convertedTemp = currentTemp + 273.15;
-    tempValue.textContent = convertedTemp.toFixed(2) + "K";
-    tempConversionButton.textContent = "Convert to Fahrenheit";
-    temperatureUnit = "K";
+    const { lat: latitude, lon: longitude } = response.data[0].coord;
+    return { latitude, longitude };
+  } catch (error) {
+    console.error("Error fetching coordinates:", error);
   }
-}); */
+};
+
+const axiosGetWeather = async (coordinates) => {
+  try {
+    const response = await axios.get("http://127.0.0.1:5000/weather", {
+      params: {
+        lat: coordinates.latitude,
+        lon: coordinates.longitude,
+      },
+    });
+
+    return response.data.main.temp;
+  } catch (error) {
+    console.error("Error fetching weather:", error);
+  }
+};
+
+const handleGetRealtimeTemperatureButtonClick = async () => {
+  try {
+    const coordinates = await axiosGetCoordinates(cityNameInput.value);
+    const temperatureValue = await axiosGetWeather(coordinates);
+    tempNumber = Math.floor((temperatureValue - 273.15) * (9 / 5) + 32);
+    temperature.textContent = `${tempNumber}° F`;
+    updateWeatherBasedOnTemperature();
+  } catch (error) {
+    console.error("Error getting realtime temperature:", error);
+  }
+};
+
+const getRealtimeTemperatureButton = document.getElementById("currentTempButton");
+getRealtimeTemperatureButton.addEventListener(
+  "click",
+  handleGetRealtimeTemperatureButtonClick
+);
