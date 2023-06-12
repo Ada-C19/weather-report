@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     
     // -------- wave 6 reset button event listener ---------
-    const resetButton = document.querySelector("#search-button"); 
+    const resetButton = document.querySelector("#reset-button"); 
     const defaultCity = "Seattle"
 
     resetButton.addEventListener("click", function () {
@@ -105,6 +105,19 @@ document.addEventListener("DOMContentLoaded", function () {
         cityName.value = defaultCity;
     } )
     
+
+    // search button 
+    const searchButton = document.querySelector("#search-button");
+
+    // attempt to add event listener for search button 
+    searchButton.addEventListener('keypress', checkIfEnter);
+
+    function checkIfEnter(event){
+        if (event.keyCode === 13) {
+            getResults(searchButton.value);
+        }
+    }
+
 });
 
 
