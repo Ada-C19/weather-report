@@ -50,7 +50,7 @@ const convertKToF = (k) => (k - 273.15) * (9 / 5) + 32;
 
 const getLocationInfo = () => {
 	return axios
-		.get('http://127.0.0.1:5000/location', {
+		.get('http://localhost:5000/location', {
 			params: {
 				q: state.cityLocationEl.value,
 			},
@@ -58,6 +58,8 @@ const getLocationInfo = () => {
 		.then((response) => {
 			state.cityLocation['lat'] = response.data[0].lat;
 			state.cityLocation['lon'] = response.data[0].lon;
+			console.log('Latitude:', state.cityLocation.lat);
+			console.log('Longitude:', state.cityLocation.lon);
 			return state.cityLocation;
 		})
 		.catch((error) => {
@@ -68,7 +70,7 @@ const getLocationInfo = () => {
 const getWeatherInfo = () => {
 	const { lat, lon } = state.cityLocation;
 	return axios
-		.get('http://127.0.0.1:5000/weather', {
+		.get('http://localhost:5000/weather', {
 			params: {
 				lat: lat,
 				lon: lon,
@@ -91,8 +93,10 @@ const updateCurrentTemp = () => {
 		.then(getWeatherInfo)
 		.then(() => {
 			state.tempValueEl.textContent = `${state.tempValue}`;
+		})
+		.catch((error) => {
+			console.error(error);
 		});
-	changeColorAndLandscape();
 };
 
 const changeSky = () => {
@@ -122,7 +126,8 @@ const registerEvents = () => {
 	state.decreaseTempControl.addEventListener('click', decreaseTemp);
 
 	state.cityLocationEl.addEventListener('input', () => {
-		document.getElementById('headerCityName').textContent = state.cityLocationEl.value;
+		document.getElementById('headerCityName').textContent =
+			state.cityLocationEl.value;
 	});
 
 	document.getElementById('cityNameReset').addEventListener('click', () => {
@@ -130,7 +135,9 @@ const registerEvents = () => {
 		document.getElementById('headerCityName').textContent = 'Orlando';
 	});
 
-	document.querySelector('#currentTempButton').addEventListener('click', updateCurrentTemp);
+	document
+		.getElementById('currentTempButton')
+		.addEventListener('click', updateCurrentTemp);
 
 	document.getElementById('skySelect').addEventListener('change', changeSky);
 };
