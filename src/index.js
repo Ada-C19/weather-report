@@ -8,8 +8,9 @@
 };
 
 const displayCity = function(){
-    const input = document.querySelector('#input')
-    state.city = input
+    const inputNow = document.querySelector("input").value
+    console.log(inputNow)
+    state.city = inputNow
     const tempCityContainer = document.querySelector('#city')
     tempCityContainer.textContent = `For the lovely city of ${state.city}`
 }
@@ -32,7 +33,7 @@ const registerEventHandlers = () => {
     const DownArrow = document.querySelector("#down_arrow");
     DownArrow.addEventListener('click', decrementTemp);
     
-    const cityInput = document.querySelector('#inputCity')
+    const cityInput = document.getElementById("inputCity")
     cityInput.addEventListener('input', displayCity)
 };
 
