@@ -10,7 +10,8 @@ html body {
     gap: 1em;
 
     
-    background-color: rgb(48,48,48);
+    /* background-color: rgb(48,48,48); */
+    background-image: url(https://img.freepik.com/free-vector/collection-cartoon-weather-signs_79603-1806.jpg?w=1480&t=st=1686613424~exp=1686614024~hmac=f5c3d41b4f447e1222f0657a34d1113e3955dd48670ece8f38c54edc8f7b740d) ;
     color: rgb(48,48,48);
     text-align: center;
 }
