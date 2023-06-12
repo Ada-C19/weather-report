@@ -1,8 +1,8 @@
 // actions for search/reset button for city input
 document.addEventListener("DOMContentLoaded", function () {
-    const searchButton = document.getElementById("search-button");
+    const resetButton = document.getElementById("reset-button");
     const searchInput = document.getElementById("search-input");
-    searchButton.addEventListener("click", () => {
+    resetButton.addEventListener("click", () => {
       const inputValue = searchInput.value;
       alert(inputValue);
     });

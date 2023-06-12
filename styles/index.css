@@ -11,10 +11,15 @@ html body {
 
     
     background-color: rgb(48,48,48);
-    color: whitesmoke;
+    color: rgb(48,48,48);
     text-align: center;
 }
 
+.feature-container {
+    border-radius: 25px;
+    background-color: rgb(161, 137, 160);
+    padding: 30px 40px;
+}
 /* SKY ---- Dropdown Menu */
 .dropdown {
     position: relative;
@@ -143,10 +148,8 @@ html body {
     font-size: 30px;
 }
 
-/* WEATHER GARDEN */
-/* air */
-#air {
-    line-height: 300%;
-    /* margin-inline-start: 50px;
-    margin-inline-end: 50px; */
+/* CITY NAME */
+/* reset button */
+reset.btn {
+    display.flex
 }
