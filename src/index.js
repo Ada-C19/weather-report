@@ -5,6 +5,14 @@ class Temperature {
     this.textColor = textColor;
     this.landscape = landscape;
   }
+
+  changeLandscape() {
+    document.getElementById("landscape").textContent = this.landscape;
+  }
+
+  changeTempValueColor() {
+    document.getElementById("tempValue").style.color = `${this.textColor}`;
+  }
 }
 
 //   changeTempValueColor() {
@@ -39,9 +47,9 @@ class Weather {
     document.getElementById("sky").textContent = this.sky;
   }
 
-  changeLandscape() {
-    document.getElementById("landscape").textContent = this.landscape;
-  }
+  // changeLandscape() {
+  //   document.getElementById("landscape").textContent = this.landscape;
+  // }
 }
 
 const changeSky = (weather) => {
