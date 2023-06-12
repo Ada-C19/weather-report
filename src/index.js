@@ -4,7 +4,7 @@
 const state = {
     // start temparture with info from API call
     // state city name from
-    city: "",
+    city: "Seattle",
     temperature: 0, 
     lat: 0,
     lon: 0,
@@ -22,12 +22,14 @@ const increaseTemp = (event) => {
     state.temperature ++;
     const tempCount = document.getElementById("temp-count");
     tempCount.textContent = `${state.temperature}`;  
+    changeColorByTemp();
 };
 
 const decreaseTemp = (event) => {
     state.temperature -= 1;
     const tempCount = document.getElementById("temp-count");
     tempCount.textContent = `${state.temperature}`;  
+    changeColorByTemp();
 };
 
 const resetLocation = (event) => {
@@ -38,9 +40,10 @@ const resetLocation = (event) => {
     state.temperature = 0;
     const tempCount = document.getElementById("temp-count");
     tempCount.textContent = state.temperature;
-    
+    changeColorByTemp();
     const emojiLandscape = document.querySelector('#landscape');
     emojiLandscape.textContent = state.original_landscape;
+    
 };
 
 const changeSky = (event) => {
@@ -128,7 +131,7 @@ const searchTemperature = () => {
 const registerEventHandlers = (event) => {
     const tempUpButton = document.querySelector("#up-arrow");
     tempUpButton.addEventListener("click", increaseTemp);
-    tempUpButton.addEventListener("click", changeColorByTemp);
+    // tempUpButton.addEventListener("click", changeColorByTemp); 
 
     const tempDownButton = document.querySelector("#down-arrow");
     tempDownButton.addEventListener("click", decreaseTemp);
