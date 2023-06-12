@@ -5,8 +5,11 @@ const state = {
     temp: 72,
 };
 
+const convertKtoF = (temp) => {
+    return (temp - 273.15) * (9 / 5) + 32;
+};
+
 const findLatitudeAndLongitude = () => {
-    let latitude, longitude;
     let location = state.city;
     axios.get('http://localhost:5000/location',
     {
@@ -16,64 +19,37 @@ const findLatitudeAndLongitude = () => {
     })
     .then( (response) => {
         console.log(response);
-        latitude = response.data[0].lat;
-        longitude = response.data[0].lon;
+        state.lat = response.data[0].lat;
+        state.long = response.data[0].lon;
         console.log(`response: ${state.city}`);
-        console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+        console.log('success in findLatitudeAndLongitude!', state.lat, state.long);
         
-        // make the next API call here!
-        //   findLocation(latitude, longitude);
+        getWeather();
     })
     .catch( (error) => {
     console.log(`error: ${state.city}`);
     console.log('error in findLatitudeAndLongitude!');
     console.log(error);
-});
-}
+    });
+};
 
-
-// const convertKtoF = (temp) => {
-//     return (temp - 273.15) * (9 / 5) + 32;
-//   };
-  
-//   const findLatAndLong = () => {
-//     axios
-//       .get('http://localhost:5000/location', {
-//         params: {
-//           q: state.city,
-//         },
-//       })
-//       .then((response) => {
-//         console.log(response.data);
-//         state.lat = response.data[0].lat;
-//         console.log(state.lat);
-//         state.long = response.data[0].lon;
-//         getWeather();
-//       })
-//       .catch((error) => {
-//         console.log('Error finding the latitude and longitude:', error.response);
-//       });
-//   };
-  
-//   const getWeather = () => {
-//     axios
-//       .get('http://localhost:5000/weather', {
-//         params: {
-//           lat: state.lat,
-//           lon: state.long,
-//         },
-//       })
-//       .then((response) => {
-//         const weather = response.data;
-//         state.temp = Math.round(convertKtoF(weather.main.temp));
-//         formatTempAndGarden();
-//       })
-//       .catch((error) => {
-//         console.log('Error getting the weather:', error);
-//       });
-//   };
-
-
+const getWeather = () => {
+    axios
+      .get('http://localhost:5000/weather', {
+        params: {
+          lat: state.lat,
+          lon: state.long,
+        },
+      })
+      .then((response) => {
+        const weather = response.data;
+        state.temp = Math.round(convertKtoF(weather.main.temp));
+        formatTempAndGarden();
+      })
+      .catch((error) => {
+        console.log('Error getting the weather:', error);
+      });
+};
 
 // --------------------------------------------------------------------------------------
 
@@ -131,16 +107,22 @@ const decrementTemp = () => {
 };
 
 const updateCityName = () => {
-    const inputName = document.getElementById('city-name-input').value;
+    const inputCityName = document.getElementById('city-name-input').value;
     const headerName = document.getElementById('header-city-name');
-    state.city = inputName;
+    state.city = inputCityName;
     headerName.textContent = state.city;
-}
+};
+
+const resetCityName = () => {
+    let inputCityName = document.getElementById('city-name-input');
+    inputCityName.value = 'Honolulu'
+    updateCityName();
+    findLatitudeAndLongitude();
+};
 
 const registerEventHandlers = () => {
     formatTempAndGarden();
     findLatitudeAndLongitude();
-    // findLatAndLong();
     
     const increaseTempButton = document.getElementById('up-arrow');
     increaseTempButton.addEventListener("click", incrementTemp);
@@ -151,13 +133,14 @@ const registerEventHandlers = () => {
     const cityNameInput = document.getElementById('city-name-input');
     cityNameInput.addEventListener("input", updateCityName);
 
-    // const  getRealTimeTemperatureBtn = document.getElementById('realtime-temp-button');
-    // getRealTimeTemperatureBtn.addEventListener("click", findLatAndLong);
     const  getRealTimeTemperatureBtn = document.getElementById('realtime-temp-button');
     getRealTimeTemperatureBtn.addEventListener("click", findLatitudeAndLongitude);
 
     const selectSkyOption = document.getElementById('sky-select');
     selectSkyOption.addEventListener("change", updateSky);
+
+    const resetCityNameBtn = document.getElementById('city-name-reset');
+    resetCityNameBtn.addEventListener("click", resetCityName);
 };
 
 document.addEventListener('DOMContentLoaded', registerEventHandlers);
