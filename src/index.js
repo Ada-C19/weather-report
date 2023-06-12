@@ -6,9 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const decreaseTemp = document.querySelector("#decrease-temp");
     const displayTemp = document.querySelector("#display-temp");
     let temperature = 65;
-    // sky
-    const sky = document.querySelector("#sky");
-    let skies = "";
+  
 
     // landscape
     const landscape = document.querySelector("#landscape");
@@ -98,7 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
     
-    
+    // -------- wave 6 reset button event listener ---------
+    const resetButton = document.querySelector("#search-button"); 
+    const defaultCity = "Seattle"
+
+    resetButton.addEventListener("click", function () {
+        cityInput.value = defaultCity; 
+        cityName.value = defaultCity;
+    } )
     
 });
 
