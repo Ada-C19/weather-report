@@ -8,6 +8,14 @@ const state = {
     currentTemp: null,
     skySelector: null,
     skyVibeEmoji:  null,
+    weatherWidget: null
+};
+
+const updateWeatherWidget = (location) => {
+    const lat = location.lat;
+    const lon = location.lon;
+    const url = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&detailLat=36.169&detailLon=-115.116&width=650&height=450&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1`;
+    state.weatherWidget.src = url;
 };
 
 const selectSky = (event) => {
@@ -26,6 +34,22 @@ const selectSky = (event) => {
 
 const updateUI = () =>  {
     state.tempLabel.textContent = state.tempValue;
+
+    if (state.tempValue >= 80) {
+        state.tempLabel.style.color = 'red';
+        state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    } else if (state.tempValue >= 70) {
+        state.tempLabel.style.color = 'orange';
+        state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
+    } else if (state.tempValue >= 60) {
+        state.tempLabel.style.color = 'yellow';
+        state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    } else if (state.tempValue >= 50) {
+        state.tempLabel.style.color = 'green';
+        state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+    } else {
+        state.tempLabel.style.color = 'teal';   
+    }
 }; 
 
 
@@ -51,9 +75,11 @@ const getLocationData = () => {
     })
     .then((response) => {
             const {lat, lon} = response.data[0];
+        updateWeatherWidget({lat, lon});
         getWeatherData({lat, lon});
     })
     .catch((error)=> {
+        console.log(error)
         console.log('location fetch failed')
     });
 };
@@ -71,7 +97,7 @@ const getWeatherData = (location) => {
         .then(response => {
             const temp  = response.data.main.temp;
             state.tempValue = kelvinToFahrenheit(temp);
-            updateUI()
+            updateUI();
         }) 
         .catch((error)=> {
             console.log('weather fetch failed')
@@ -93,21 +119,21 @@ const increaseTemp = () => {
     updateUI();
 
 
-    if (state.tempValue >= 80) {
-        state.tempLabel.style.color = 'red';
-        state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-    } else if (state.tempValue >= 70) {
-        state.tempLabel.style.color = 'orange';
-        state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
-    } else if (state.tempValue >= 60) {
-        state.tempLabel.style.color = 'yellow';
-        state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
-    } else if (state.tempValue >= 50) {
-        state.tempLabel.style.color = 'green';
-        state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-    } else {
-        state.tempLabel.style.color = 'teal';   
-    }
+    // if (state.tempValue >= 80) {
+    //     state.tempLabel.style.color = 'red';
+    //     state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    // } else if (state.tempValue >= 70) {
+    //     state.tempLabel.style.color = 'orange';
+    //     state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
+    // } else if (state.tempValue >= 60) {
+    //     state.tempLabel.style.color = 'yellow';
+    //     state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    // } else if (state.tempValue >= 50) {
+    //     state.tempLabel.style.color = 'green';
+    //     state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+    // } else {
+    //     state.tempLabel.style.color = 'teal';   
+    // }
 };
 
 
@@ -116,22 +142,23 @@ const decreaseTemp = () => {
     updateUI();
 
 
-    if (state.tempValue >= 80) {
-        state.tempLabel.style.color = 'red';
-        state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
-    } else if (state.tempValue >= 70) {
-        state.tempLabel.style.color = 'orange';
-        state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
-    } else if (state.tempValue >= 60) {
-        state.tempLabel.style.color = 'yellow';
-        state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
-    } else if (state.tempValue >= 50) {
-        state.tempLabel.style.color = 'green';
-        state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-    } else {
-        state.tempLabel.style.color = 'teal';   
-    }
+    // if (state.tempValue >= 80) {
+    //     state.tempLabel.style.color = 'red';
+    //     state.emoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+    // } else if (state.tempValue >= 70) {
+    //     state.tempLabel.style.color = 'orange';
+    //     state.emoji.textContent = "🌸🌿🌼__🌷🌻🌿_🌱_🌻🌷";
+    // } else if (state.tempValue >= 60) {
+    //     state.tempLabel.style.color = 'yellow';
+    //     state.emoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    // } else if (state.tempValue >= 50) {
+    //     state.tempLabel.style.color = 'green';
+    //     state.emoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+    // } else {
+    //     state.tempLabel.style.color = 'teal';   
+    // }
 }; 
+
 
 
 const registerEventHandlers = () => {
@@ -159,6 +186,7 @@ const loadControls = () => {
     state.skySelector = document.getElementById("skySelect");
     state.skyVibeEmoji = document.getElementById("sky");
     state.cityResetButton = document.getElementById("cityNameReset");
+    state.weatherWidget = document.getElementById("weatherWidget");
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
