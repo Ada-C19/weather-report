@@ -10,7 +10,9 @@ grid-gap: 1rem;
 
 font-family: "Rubik", sans-serif;
 font-size: 18px;
-background-color: #1b69f9;
+/* background-color: #1b69f9; */
+background-image: url("../assets/fon-nebo-oblaka-pejzazh-trava-12954.jpeg");
+background-attachment: fixed;
 margin: 2rem;
 }
 
