@@ -1,0 +1,143 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: block;
+    padding: 10px 50px    
+}
+
+.grad {
+    background-image: linear-gradient(skyblue, rgb(49, 44, 206));
+    background-repeat: no-repeat;
+} 
+
+header {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+#webpage-title {
+    font-family: cursive;
+    font-size: 50px;
+    color: darkblue
+}
+
+#current-city {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.content-title {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10;
+    vertical-align: top;
+    font-size: 24px;
+}
+
+.content {
+    margin: 20px 0;
+    display: flex;
+}
+
+#temperature-box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 10px 5px 5px;
+    width: 35%;
+    margin:  30px
+}
+
+#temp-divider {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
+}
+
+#increase-temp, #decrease-temp {
+    font-size: 24px;
+    background-color: rgb(70, 138, 161);
+    box-shadow: 5px 5px 5px;
+    border-radius: 20px;
+}
+
+#display-temperature {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 0 10px;
+}
+
+#temp-button {
+    grid-column: 2;
+    box-shadow: 5px 5px 5px;
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+#temp-button:hover {
+    background-color: rgb(17, 144, 190);
+    transition: 0.7s
+}
+
+#sky-box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 10px 5px 5px;
+    width: 35%;
+    margin: 30px
+}
+
+#sky-drop-down {
+    font-size: 16px;
+    vertical-align: middle;
+    height: 1 rem;
+}
+
+#city-box {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 10px 5px 5px;
+    width: 35%;
+    margin: 30px
+}
+
+#city-input{
+    font-size: 15px;
+}
+
+#city-reset{
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+#city-reset:hover {
+    background-color: rgb(17, 144, 190);
+    transition: 0.7s
+}
+
+#weather-garden {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 10px 5px 5px;
+    width: 35%;
+    margin: 30px
+}
+
+#sky {
+    padding: 2rem;
+    font-size: 24px;
+}
+
+#landscape {
+    padding: 2rem;
+    font-size: 24px;
+}

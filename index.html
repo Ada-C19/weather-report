@@ -9,8 +9,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
-<body>
-    <script src="./src/index.js"></script>
+<body class="grad">
+    <header>
+        <h1 id="webpage-title">Weather Report</h1>
+        <h5 id="current-city">For the lovely city of ✨Seattle✨</h5>
+    </header>
+    <main>
+        <section id="temperature-box">
+            <h3 class="content-title">Temperature</h3>
+            <div class="content">
+                <div id="temp-divider">
+                    <button id="increase-temp">⬆️</button>
+                    <div id="display-temperature">72</div>
+                    <button id="decrease-temp">⬇️</button>
+                </div>
+            <button id="temp-button">Get Realtime Temperature</button>
+            </div>
+        </section>
+        <section id="sky-box">
+            <h3 class="content-title">Sky</h3>
+            <select id="sky-drop-down">
+                <option value="Sunny">Sunny</option>
+                <option value="Cloudy">Cloudy</option>
+                <option value="Rainy">Rainy</option>
+                <option value="Snowy">Snowy</option>
+            </select>
+        </section>
+        <section id="city-box">
+            <h3 class="content-title">City Name</h3>
+            <div id="search-bar">
+                <input id="city-input" type="text"></input>
+                <button id="city-reset">Reset</button>
+            </div>
+        </section>
+        <section id="weather-garden">
+            <h3 class="content-title">Weather Garden</h3>
+            <div id="sky">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
+            <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+        </section>
+    </main>
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
