@@ -2,7 +2,7 @@
 // make function to run when it occurs
 //register function in event list
 
- state = {
+state = {
     temp: 50,
     city: "Atlanta",
 };
@@ -43,8 +43,7 @@ PATH = "http://127.0.0.1:5000/"
 
 const findLatitudeAndLongitude = () => {
     let latitude, longitude;
-    
-    axios.get(PATH,
+    return axios.get(PATH,
         {
             params: {
                 "q": state.city
@@ -54,7 +53,7 @@ const findLatitudeAndLongitude = () => {
             latitude = response.data[0].lat;
             longitude = response.data[0].lon;
             console.log('success', state.city, latitude, longitude);
-            return latitude, longitude
+            return {latitude, longitude};
         })
         // .then((response) => {
 
