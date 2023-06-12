@@ -1,42 +1,48 @@
-header {
-
+body {
+    
 }
 
-main {
+header {}
 
+main {}
+
+div {
+    padding: 5px;
 }
 
 /* SEARCH */
-#search-container{
+#search-container {
     display: inline-block;
 }
 
 /* CITY */
-#city-container{
-
-}
+#city-container {}
 
 /* TEMPERATURE */
-#temperature-container{
-
-}
+#temperature-container {}
 
 /* SKY */
-#sky-container{
-
-}
+#sky-container {}
 
 /* TEMP ADJUSTMENT BUTTONS */
-#temp-adustment-container{
+/* #temp-adustment-container{
 
+} */
+
+.flex-parent {
+    display: flex;
+}
+
+.temp-adustment-container {
+    margin: 20px;
+}
+
+button {
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 /* WEATHER GARDEN */
-weather-garden-container{
+weather-garden-container {}
 
-}
-
-footer{
-    
-}
-
+footer {}
