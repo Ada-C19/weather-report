@@ -1,24 +1,38 @@
 // actions for search/reset button for city input
 document.addEventListener("DOMContentLoaded", function () {
-    const searchButton = document.getElementById("search-button");
+    const resetButton = document.getElementById("reset-button");
     const searchInput = document.getElementById("search-input");
-    searchButton.addEventListener("click", () => {
-    const inputValue = searchInput.value;
-    alert(inputValue);
+    resetButton.addEventListener("click", () => {
+      const inputValue = searchInput.value;
+      alert(inputValue);
     });
 
     // TEMPERATURE - Change Temperature
     // increase temperature 
 
-        
     const increaseTemp = document.querySelector("#increase-temp");
     const decreaseTemp = document.querySelector("#decrease-temp")
-    const displayTemp = document.getElementById("display-temp");
+    const displayTemp = document.querySelector("#display-temp");
     let temperature = 65;
+    // sky
+    const sky = document.querySelector("#sky")
+    let skies = "                  "
+
+    // air
+    // const air = document.querySelector("#air")
+    // let space = "                        "
+
+    // landscape
+    const landscape = document.querySelector("#landscape")
+    let lands = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
 
     const updateTemp = () =>  {
         displayTemp.textContent = temperature;
+        // air.textContent = space;
+        landscape.textContent = lands;
+
         updateTempColor();
+        updateLandscape();
     }
 
     function updateTempColor() {
@@ -35,10 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // increaseTemp.addEventListener("click", function() {
-    //     increaseTemp.textContent += 1;
-    // });
-
+    function updateLandscape() {
+      if (temperature >= 80) {
+        lands = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+        } else if (temperature >= 70 && temperature <= 79) {
+        lands = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+        } else if (temperature >= 60 && temperature <= 69) {
+        lands = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+        } else if (temperature <= 59) {
+        lands = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        } else {
+        lands = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
+        }
+    }
 
     function increaseTemperature() {
         temperature++;
@@ -49,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         temperature--;
         updateTemp();
     }  
+
     increaseTemp.addEventListener("click", increaseTemperature);
     decreaseTemp.addEventListener("click", decreaseTemperature);
 

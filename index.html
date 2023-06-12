@@ -21,13 +21,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
   </head>
   <body>
-    <section class="temp-container" id="overall-temp">
+    <section class="feature-container" id="temp-container">
       <h1>Temperature</h1>
       <p id="increase-temp">⬆️</p>
       <p id="display-temp">0</p>
       <p id="decrease-temp">⬇️</p>
     </section>
-    <section class="sky-container" id="sky">
+    <section class="feature-container" id="sky-container">
       <h1>Sky</h1>
       <div class="dropdown">
         <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
@@ -57,7 +57,7 @@
         </div>
       </div>
     </section>
-    <section class="City-name-container" id="city">
+    <section class="feature-container" id="city-name-container">
       <h1>City Name</h1>
       <h2 id="city-name">Realtime Text City</h2>
       <input type="text" id="city-input" id="form1" class="form-control" placeholder="Enter city name"/>
@@ -67,11 +67,13 @@
         </button>
       </div>
     </section>
-    <section class="Weather-garden">
+    <section class="feature-container" id="weather-garden">
       <h1>Weather Garden</h1>
-      <p id="Sky">Sky emojis</p>
-      <p id="Air">Air</p>
-      <p id="Landscape">Landscape emojis</p>
+      <p id="sky">Sky emojis</p>
+      <br>
+      <p id="air"> </p>
+      <br>
+      <p id="landscape">Landscape emojis</p>
     </section>
 
     <script src="./node_modules/axios/dist/axios.min.js"></script>
