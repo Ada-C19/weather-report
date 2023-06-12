@@ -20,9 +20,9 @@ class Weather {
   constructor(name, sky, landscape, tempRange, textColor, bgColor) {
     this.name = name;
     this.sky = sky;
-    this.landscape = landscape;
-    this.tempRange = tempRange;
-    this.textColor = textColor;
+    // this.landscape = landscape;
+    // this.tempRange = tempRange;
+    // this.textColor = textColor;
     this.bgColor = bgColor;
   }
 
