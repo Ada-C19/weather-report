@@ -19,11 +19,17 @@ header {
     padding-bottom: 40px;
 }
 
+#webpage-title {
+    font-family: cursive;
+    font-size: 50px;
+    color: darkblue
+}
+
 .content-title {
     font-family: Arial, Helvetica, sans-serif;
     margin: 10;
     vertical-align: top;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .content {
