@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resetButton.addEventListener("click", function () {
         cityInput.value = defaultCity; 
-        // cityName.value = defaultCity;
+        cityName.textContent = defaultCity;
     } )
     
 
