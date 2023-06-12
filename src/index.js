@@ -190,6 +190,10 @@ skySelect.addEventListener("input", (event) => {
   changeSky(skyCollection[selectedSky]);
 });
 
+// so...
+// if the selected temperature is less than or equal to temperature[1] and greater than or equal to temperature[0], then display that temperature
+// otherwise, loop through temperatures until one is found that fits
+
 // changeWeather(weathers[]);
 // const gardenContent = document.getElementById("gardenContent");
 // const sky = document.getElementById("sky");
