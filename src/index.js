@@ -7,6 +7,15 @@ class Temperature {
   }
 }
 
+//   changeTempValueColor() {
+//     document.getElementById("tempValue").style.color = `${this.textColor}`;
+//   }
+
+//   changeLandscape() {
+//     document.getElementById("landscape").textContent = this.landscape;
+//   }
+// }
+
 class Weather {
   constructor(name, sky, landscape, tempRange, textColor, bgColor) {
     this.name = name;
@@ -35,7 +44,7 @@ class Weather {
   }
 }
 
-const changeWeather = (weather) => {
+const changeSky = (weather) => {
   weather.changeTempValueColor();
   weather.changeBackgroundColor();
   weather.changeSky();
@@ -47,7 +56,7 @@ const changeWeather = (weather) => {
 
 // weathers
 // these could maybe be separated into another file? along with the class definition
-const verySunny = new Weather(
+const hot = new Weather(
   "Very",
   "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
   "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
@@ -158,7 +167,7 @@ cityNameInput.addEventListener("input", () => {
 skySelect.addEventListener("input", (event) => {
   const selectedSky = skySelect.value;
   console.log(selectedSky);
-  changeWeather(weatherCollection[selectedSky]);
+  changeSky(weatherCollection[selectedSky]);
 });
 
 // changeWeather(weathers[]);
