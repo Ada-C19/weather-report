@@ -4,7 +4,7 @@ const state = {
     increaseTempButton: null,
     decreaseTempButton: null,
     tempNumberContainer: null,
-    tempNumberClass: null,
+    tempNumberClass: '',
     tempNumber: 55,
     skyEmojiContainer: null,
     skyEmoji: '',
