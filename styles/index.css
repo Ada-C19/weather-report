@@ -4,11 +4,11 @@ html {
 
 body {
     display: block;
-    padding: 10px 30px
+    padding: 10px 30px    
 }
 
 .grad {
-    background-image: linear-gradient(skyblue, white);
+    background-image: linear-gradient(skyblue, rgb(49, 44, 206));
     background-repeat: no-repeat;
 }
 
@@ -26,27 +26,50 @@ header {
     font-size: 20px;
 }
 
-#Temperature {
-    color: blue;
+.content {
+    margin: 20px 0;
+    display: flex;
+    /* align-items: center; */
+    /* flex-direction: column;
+    justify-content: center;
+    height: 100%; */
+}
+
+#temperature-box {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    box-shadow: 10px 5px 5px;
+}
+
+#temp-divider {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 15px;
 }
 
 /* Classes for temp color */
-.red {
+/* .red {
     color: red
-}
+} */
 
-.orange {
+/* .orange {
     color: orange
-}
+} */
 
-.yellow {
+/* .yellow {
     color: yellow
-}
+} */
 
-.green {
+/* .green {
     color: green
-}
+} */
 
-.teal {
+/* .teal {
     color: teal
-}
+}  */
