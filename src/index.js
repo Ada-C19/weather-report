@@ -1,5 +1,4 @@
 // `"use strict";`
-const axios = require('axios');
 
 const state = {
     increaseTempButton: null,
@@ -16,6 +15,8 @@ const state = {
     cityInput: '',
     cityResetButton: null,    
     SkyDropdown: null,
+    lat: null,
+    lon: null,
 };
 
 
@@ -81,6 +82,35 @@ const getSky = (skyType) => {
     }
 };
 
+const getLocation = (locationName) => {
+    axios
+        .get('http://localhost:5000/location',{
+            params: {
+                q: state.cityNameContainer.innerText
+            },
+        })
+        .then((response) => {
+            state.lat = response.data[0]['lat']
+            state.lon = response.data[0]['lon']
+            console.log(getWeather(state.lat,state.lon))
+        });
+}
+
+
+const getWeather = (lat,lon) => {
+    axios
+        .get('http://localhost:5000/weather',{
+            params: {
+                lat: lat,
+                lon: lon,
+                units: 'imperial',
+            },
+        })
+        .then((response) => {
+            console.log(response.data['main']['temp'])
+        })
+};
+
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = ++state.tempNumber;
@@ -94,21 +124,15 @@ const registerEventHandlers = () => {
     });
     state.cityInput.addEventListener('input', () => {
         state.cityNameContainer.innerText = state.cityInput.value;
-        axios
-        .get('http://localhost:5000/location',{
-            params: {
-                q: state.cityNameContainer.innerText
-            },
-        })
-        .then((response) => {
-            console.log(response)
-        })
     });
     state.cityResetButton.addEventListener('click', () => {
+        getLocation(state.cityNameContainer.innerText);
+        console.log(state.lat)
+        console.log(state.lon)
+        // getWeather(state.lat,state.lon);
         state.tempNumberContainer.innerText = 'temp value from weather api';
         state.tempNumberContainer.className = getTempColor(state.tempNumber);
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
-
     });
     state.skyDropdown.addEventListener('change', () => {
         state.skyEmojiContainer.innerText = getSky(state.skyDropdown.value);
