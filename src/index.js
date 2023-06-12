@@ -38,3 +38,29 @@ const registerEventHandlers = () => {
 };
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
+const axios = require('axios');
+
+const PATH = 'https://us1.locationiq.com/v1/search.php'
+
+const findLatitudeAndLongitude = (query) => {
+    let latitude, longitude;
+    
+    axios.get(PATH,
+        {
+            params: {
+                key: LOCATION_KEY,
+                q: state.city,
+                format: 'json'
+            }
+        })
+        .then((response) => {
+            latitude = response.data[0].lat;
+            longitude = response.data[0].lon;
+            console.log('success', state.city, latitude, longitude);
+            return latitude, longitude
+        })
+        .catch((error) => {
+            console.log('error in findLatitudeAndLongitude for', state.city);
+        })
+    }
