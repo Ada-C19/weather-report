@@ -1,0 +1,166 @@
+/* * {
+    border: 1px antiquewhite dashed;
+} */
+
+h2 {
+    margin: 0 auto 1rem auto;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-gap: 1rem;
+    font-family: Rubik,sans-serif;
+    font-size: 18px;
+    background-image: url("../images/clouds3.jpg");
+    background-size: cover;
+    background-position: center;
+    margin: 2rem;
+}
+
+.temperature__section {
+    grid-column: 1 / span 2;
+}
+
+.sky__section {
+    grid-column: 3;
+}
+
+.city-name__section {
+    grid-column: 4 / -1;
+}
+
+.header__header {
+    color: white;
+    grid-column: span 3;
+    display: flex;
+    align-items: center;
+    margin: 2rem auto 3rem 0;
+    grid-column: 1 / span 6;
+    font-size: 1rem;
+}
+
+.header__header span {
+    font-size: 1.3rem;
+}
+
+.header__header > h1 {
+    margin-right: 2rem;
+    font-size: 3em;
+}
+
+.header__city-name::before,
+.header__city-name::after {
+    content: "✨";
+}
+
+.current__control {
+    display: flex;
+    align-self: center;
+    text-align: justify;
+}
+
+.temperature__section button {
+    display: flex;
+    background-color: #e7b434;
+    justify-content: center;
+    border: none;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+button:hover {
+    /* background-color: #dbd7d3; */
+    background-color: rgba(54, 73, 75, 0.5);
+}
+
+.temperature__content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.temperature__section,
+.sky__section,
+.city-name__section {
+    border-radius: 8px;
+    padding: 2rem;
+    background-color: whitesmoke;
+    grid-row: 2;
+}
+
+.garden__section {
+    grid-row: 3 / span 4;
+    grid-column: 2 / span 4;
+    text-align: center;
+}
+
+.garden__section > h2 {
+    padding: 3rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.garden__content {
+    min-height: 200px;
+    /* max-width: fit-content; */
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 8px;
+    font-size: 3em;
+}
+
+.city-name__reset-btn {
+    background-color: #ee6eac;
+    border: none;
+    color: #fff;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+input[type=text] {
+    width: 75%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+select {
+    /* width: 50%; */
+    padding: 12px 20px;
+    margin: 8px 0;
+    /* box-sizing: border-box; */
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: white;
+    background-position: right 50px;
+}
+
+#tempValue {
+    font-size: 3rem;
+    margin-left: 1.5rem;
+}
+
+.sunny {
+    background-color: rgb(221, 255, 255);
+}
+
+.cloudy {
+    background-color: lightgrey;
+}
+
+.rainy {
+    background-color: lightblue;
+}
+
+.snowy {
+    background-color: lightsteelblue;
+}
