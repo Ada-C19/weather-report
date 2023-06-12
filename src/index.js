@@ -1,4 +1,6 @@
 // `"use strict";`
+const axios = require('axios');
+
 const state = {
     increaseTempButton: null,
     decreaseTempButton: null,
@@ -12,8 +14,11 @@ const state = {
     cityNameContainer: null,
     cityName: '',
     cityInput: '',
-
+    cityResetButton: null,
 };
+
+
+
 
 const loadControls = () => {
     state.increaseTempButton = document.getElementById('increaseTempButton');
@@ -28,6 +33,7 @@ const loadControls = () => {
     state.cityNameContainer = document.getElementById('cityNameContainer');
     state.cityName = document.getElementById('cityNameContainer').innerText;
     state.cityInput = document.getElementById('cityInput');
+    state.cityResetButton = document.getElementById('cityResetButton');
 };
 
 const getTempColor = (tempNumber) => {
@@ -71,6 +77,21 @@ const registerEventHandlers = () => {
     });
     state.cityInput.addEventListener('input', () => {
         state.cityNameContainer.innerText = state.cityInput.value;
+        axios
+        .get('http://localhost:5000/location',{
+            params: {
+                q: state.cityNameContainer.innerText
+            },
+        })
+        .then((response) => {
+            console.log(response)
+        })
+    });
+    state.cityResetButton.addEventListener('click', () => {
+        state.tempNumberContainer.innerText = 'temp value from weather api';
+        state.tempNumberContainer.className = getTempColor(state.tempNumber);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
+
     });
 };
 
