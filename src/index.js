@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ------------- wave 5 selecting sky ------------------
     const selectSky = document.querySelector("#sky-dropdown");
     const result = document.querySelector("#sky");
+    result.textContent = "🌦 🌈  ☁️☁️☁️  ❄️ 🌨 ☁️"
     
     selectSky.addEventListener("change", (event) => {
         let newSky = event.target.value
