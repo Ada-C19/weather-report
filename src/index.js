@@ -37,8 +37,7 @@ const updateCity = (event) => {
 
 const resetCity = () => {
     state.cityLabel.textContent = "Las Vegas";
-    state.cityValue = document.getElementById("cityNameInput");
-    state.cityValue.value = state.cityValue.defaultValue;
+    state.cityValue = state.cityValue.defaultValue;
 };
 
 const getLocationData = () => {
