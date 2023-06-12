@@ -107,7 +107,7 @@ const getWeather = (query) => {
 
 const resetCity = () => {
     const cityName = document.getElementById('city-input');
-    cityName.value = "Seattle";
+    cityName.value = 'Seattle';
     changeCityInput();
 };
 
@@ -116,7 +116,7 @@ const registerEventHandlers = () => {
     increaseButton.addEventListener('click', increaseTemp);
 
     const decreaseButton = document.getElementById('decrease-temp');
-    decreaseButton.addEventListener("click", decreaseTemp);
+    decreaseButton.addEventListener('click', decreaseTemp);
 
     const changeCity = document.getElementById('city-input');
     changeCity.addEventListener('input', changeCityInput);
