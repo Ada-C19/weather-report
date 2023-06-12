@@ -34,9 +34,9 @@ class Weather {
     this.bgColor = bgColor;
   }
 
-  changeTempValueColor() {
-    document.getElementById("tempValue").style.color = `${this.textColor}`;
-  }
+  // changeTempValueColor() {
+  //   document.getElementById("tempValue").style.color = `${this.textColor}`;
+  // }
 
   changeBackgroundColor() {
     document.getElementById("gardenContent").style.backgroundColor =
@@ -53,10 +53,10 @@ class Weather {
 }
 
 const changeSky = (weather) => {
-  weather.changeTempValueColor();
+  // weather.changeTempValueColor();
   weather.changeBackgroundColor();
   weather.changeSky();
-  weather.changeLandscape();
+  // weather.changeLandscape();
 };
 
 // temperature ranges
