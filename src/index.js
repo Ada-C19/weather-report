@@ -12,6 +12,7 @@ const state = {
     cityHeader: null,
     tempValue: null,
     tempInt : 70,
+    gardenSection: null,
   
 };
 
@@ -23,6 +24,7 @@ const loadControls = () => {
   state.increaseTempControl = document.getElementById('increaseTempControl');
   state.cityHeader = document.getElementById('headerCityName')
   state.gardenContent = document.getElementById('gardenContent');
+  state.gardenSection = document.getElementById('gardenSection');
   state.sky = document.getElementById('sky');
   state.tempValue = document.getElementById("tempValue");
   state.landscapeElement = document.getElementById("landscape");
@@ -39,7 +41,7 @@ const findLatAndLon = () => {
   return axios
     .get('http://localhost:5000/location', {
       params: {
-        q: 'seattle',
+        q: state.cityNameInput.value,
       },
     })
     .then((response) => {
@@ -67,7 +69,6 @@ const getWeather = (location) => {
     .then((response) => {
       let targetTemp = response.data.main.temp
       return Math.round(convertKtoF(targetTemp));
-      // applyColorAndGarden();
     })
     .catch((error) => {
       console.log('Error getting the weather:', error);
@@ -89,7 +90,7 @@ const getWeather = (location) => {
       state.tempValue.style.color = 'orange';
       landscape = '🌞🌞🌻🌻🏖️🏝️👙🏝️🏖️🌻🌻🌞🌞';
     } else if (state.tempInt>= 60) {
-      state.tempValue.style.color = 'yellow';
+      state.tempValue.style.color = 'gold';
       landscape = '🌹🌸🎋🌹🌸🌱🪺🌱🌸🌹🎋🌸🌹';
     } else if (state.tempInt>= 50) {
       state.tempValue.style.color = 'green';
@@ -129,16 +130,16 @@ const getWeather = (location) => {
     // let skyColor = '';
     if (skyColor === 'Cloudy') {
       state.sky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-      state.gardenContent.classList.add('cloudy')
+      state.gardenSection.classList.add('cloudy')
     } else if (skyColor === 'Sunny') {
       state.sky.textContent = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
-      state.gardenContent.classList.add('sunny');
+      state.gardenSection.classList.add('sunny');
     } else if (skyColor === 'Rainy') {
       state.sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-      state.gardenContent.classList.add('rainy');
+      state.gardenSection.classList.add('rainy');
     } else if (skyColor === 'Snowy') {
       state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-      state.gardenContent.classList.add('snowy');
+      state.gardenSection.classList.add('snowy');
     }
   };
   
@@ -169,8 +170,6 @@ const getWeather = (location) => {
     state.cityNameInput.addEventListener('input', updateCity);
     
     state.skySelect.addEventListener('change', skyView);
-
-    // state.gardenContent.addEventListener('change', skyView)
     
     state.resetButton.addEventListener("click", resetCity);
 

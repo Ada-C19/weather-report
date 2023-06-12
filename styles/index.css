@@ -94,7 +94,7 @@ align-items: center;
 color: white;
 }
 
-.garden__content {
+.garden__section {
 min-height: px;
 max-width: fit-content;
 margin: auto;
@@ -142,6 +142,8 @@ width: 200px;
     border-radius: 4px;
 }
 
+/* these color css arent actually interacting with my javascript */
+
 .red {
 color: red;
 }
@@ -184,4 +186,4 @@ background-color: lightblue;
 
 .snowy {
 background-color: lightsteelblue;
-}
+} 
