@@ -30,7 +30,6 @@ const addLandscape = () => {
     };
 }
 
-
 colorTemp();
 addLandscape();
 
@@ -58,9 +57,27 @@ const decreaseTempHandler = () => {
     decreaseTempButton.addEventListener('click', decreaseTemp);
 }
 
-
-
-
-
 document.addEventListener('DOMContentLoaded', increaseTempHandler);
 document.addEventListener('DOMContentLoaded', decreaseTempHandler);
+
+
+const cityNameElement = document.getElementById('headerCityName');
+const cityNameInput = document.getElementById('cityNameInput');
+
+const updateCityName = () => {
+    cityNameElement.textContent = cityNameInput.value;
+}
+
+cityNameInput.addEventListener('input', updateCityName);
+
+const resetCityName = () => {
+    cityNameElement.textContent = 'Houston';
+    cityNameInput.value = '';
+}
+
+const cityResetButton = document.getElementById('cityNameReset');
+
+cityResetButton.addEventListener('click', resetCityName);
+
+
+
