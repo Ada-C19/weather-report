@@ -3,32 +3,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const resetButton = document.getElementById("reset-button");
     const searchInput = document.getElementById("search-input");
     resetButton.addEventListener("click", () => {
-      const inputValue = searchInput.value;
-      alert(inputValue);
+        const inputValue = searchInput.value;
+        alert(inputValue);
     });
+});
 
     // TEMPERATURE - Change Temperature
     // increase temperature 
-
     const increaseTemp = document.querySelector("#increase-temp");
-    const decreaseTemp = document.querySelector("#decrease-temp")
+    const decreaseTemp = document.querySelector("#decrease-temp");
     const displayTemp = document.querySelector("#display-temp");
     let temperature = 65;
     // sky
-    const sky = document.querySelector("#sky")
-    let skies = ""
-
-    // air
-    // const air = document.querySelector("#air")
-    // let space = "                        "
+    const sky = document.querySelector("#sky");
+    let skies = "";
 
     // landscape
-    const landscape = document.querySelector("#landscape")
+    const landscape = document.querySelector("#landscape");
     let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
 
     const updateTemp = () =>  {
         displayTemp.textContent = temperature;
-        // air.textContent = space;
         landscape.textContent = lands;
 
         updateTempColor();
@@ -50,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateLandscape() {
-      if (temperature >= 80) {
+        if (temperature >= 80) {
         lands = "🌵   🐍 🦂 🌵🌵  🐍 🏜 🦂";
         } else if (temperature >= 70 && temperature <= 79) {
         lands = "🌸🌿🌼  🌷🌻🌿 ☘️🌱 🌻🌷";
@@ -86,9 +81,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // drop down open and close
     function dropDownFunc(dropDown) {
-    // console.log(dropDown.classList.contains('click-dropdown'));
+    console.log(dropDown.classList.contains('.dropdown-button'));
 
-    if(dropDown.classList.contains('click-dropdown')=== true){
+    if(dropDown.classList.contains('.dropdown-button')=== true){
         dropDown.addEventListener('click', function (e) {
         e.preventDefault();      
 
@@ -164,4 +159,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // event listener to listen for input
     cityInput.addEventListener("input", updateCityName);
-    });
+
