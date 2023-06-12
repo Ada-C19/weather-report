@@ -113,7 +113,7 @@ const apocalyptic = new Weather(
   "rgb(11, 247, 46)"
 );
 
-const weatherCollection = {
+const skyCollection = {
   apocalyptic: apocalyptic,
   snowy: snowy,
   rainy: rainy,
@@ -175,7 +175,7 @@ cityNameInput.addEventListener("input", () => {
 skySelect.addEventListener("input", (event) => {
   const selectedSky = skySelect.value;
   console.log(selectedSky);
-  changeSky(weatherCollection[selectedSky]);
+  changeSky(skyCollection[selectedSky]);
 });
 
 // changeWeather(weathers[]);
