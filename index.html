@@ -1,16 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/index.css">
 </head>
+
 <body>
-    <script src="./src/index.js"></script>
+    <section class="main_content">
+        <section class="grid_space_one">
+            <section class="search">
+                <input type="text" placeholder="enter city name">
+                <button><img src="assets/icons/search_icon.png"></button>
+            </section>
+        </section>
+
+        <section class="grid_space_two">
+                <button id="increase_temp">Increase Temp</button>
+                <h1 id="temp" class="temp_style">
+                    <span id="temp_no">65</span> ° F
+                </h1>
+                <h2 id="city_name">London</h2>
+                <button id="decrease_temp">Decrease Temp</button>
+        </section>
+        
+
+        <section class="grid_space_three">
+            <section id="landscape">
+                    <img id="fashion_landscape" src="assets/80_degree_outfit.jpeg">
+            </section>
+
+        </section>
+
+        <section class="grid_space_four">
+            <select id="sky_selector"> Choose Your Sky
+                <option value="skySunny">Sunny</option>
+                <option value="skyCloudy">Cloudy</option>
+                <option value="skyRainy">Rainy</option>
+                <option value="skySnowy">Snowy</option>
+                <option value="skyStarry">Starry</option>
+            </select>
+            <section class="sky">
+                <img id="pinterest-sky" src="assets/skies/sunny_sky.jpeg">
+             </section>
+        </section>
+
+
+
+    
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>

@@ -1,0 +1,92 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.main_content {
+    width: 100vw; 
+    height: 100%; 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    row-gap: 100px;
+    column-gap: 100px;
+    background-color: lavender;
+    padding: 20px; /* adjust as needed */
+    box-sizing: border-box;
+
+
+}
+
+.grid_space_one{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+    border-radius: 50px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.grid_space_two{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+    border-radius: 50px;
+    padding: 20px; /* adjust as needed */
+    box-sizing: border-box;
+}
+
+.grid_space_three{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+    border-radius: 50px;
+    padding: 20px; /* adjust as needed */
+    box-sizing: border-box;
+}
+
+.grid_space_four{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: floralwhite;
+    border-radius: 50px;
+    padding: 20px; /* adjust as needed */
+    box-sizing: border-box;
+}
+
+.search{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 50px;
+
+}
+
+.search button img{
+    width: 100px;
+}
+
+.cold{
+    color:darkturquoise;
+}
+
+.mild{
+    color:darkslategrey;
+
+}
+
+.hot{
+    color: darkred;
+}
