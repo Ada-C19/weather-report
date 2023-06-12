@@ -55,14 +55,6 @@ axios
     });
 };
 
-// Does the same as below but wasn't working, so I tried this. Keep this till later in case we need it. 
-// document.addEventListener('DOMContentLoaded', function () {
-//     const button = document.getElementById('getWeatherButton');
-//     button.addEventListener('click', function () {
-//         findLatAndLong();
-//     });
-// });
-
 const updateCityName = () => {
     const inputName = document.getElementById('cityNameInput').value;
     const cityName = document.getElementById('cityName');
