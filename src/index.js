@@ -11,6 +11,7 @@ const state = {
   getTempButton: document.getElementById("get-current-temp"),
   skyDropdown: document.getElementById("sky-dropdown"),
   skyEl: document.getElementById("sky"),
+  resetCityButton: document.getElementById("reset-city"),
 }
 
 // Wave2
@@ -75,18 +76,19 @@ state.inputField.addEventListener('keyup', (event) => {
 let lat;
 let lon;
 const getLocation = () => {
-  console.log(state.mainTitle);
+  // console.log(state.mainTitle);
   const url = `http://127.0.0.1:5000/location`;
   axios.get(url, {
     params: {
-      q: state.mainTitle,
+      q: state.mainTitle.textContent,
     }})
     .then((response) => {
+      console.log(response.data[0].lat, response.data[0].lon)
       getWeather(response.data[0].lat, response.data[0].lon);
       }
     )
     .catch((error) => {
-      console.log(error.response.data);
+      console.log(error);
     })
 };
 
@@ -97,14 +99,17 @@ const getWeather = (lat, lon) => {
       lon: lon,
     }})
     .then((response) => {
+
+      console.log(response.data.main.temp)
       const tempInF = (response.data.main.temp - 273.15) * (9/5) + 32;
       state.tempVal = parseInt(tempInF);
+      // console.log(state.tempVal)
       state.tempEl.textContent = state.tempVal;
       changeTempColor();
       changeLandscape();
     })
     .catch((error)=> {
-      console.log(error.response.data);
+      console.log(error);
     })
   )
 }
@@ -126,3 +131,9 @@ const changeSky = () => {
 };
 
 state.skyDropdown.addEventListener('change', changeSky)
+
+// WAVE 6
+state.resetCityButton.addEventListener('click', () => {
+  state.mainTitle.textContent = 'Anamosa';
+  state.inputField.value = 'Anamosa';
+})

@@ -1,9 +1,8 @@
 * {
-    border: .5px red solid;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
-#temp {
-
+#city {
+    color:black
 }
 
 .above80Temp {
@@ -16,7 +15,7 @@
 }
 
 .temp69To80 {
-    color: orange;
+    color: teal;
 }
 
 .temp69To80Bk {
@@ -24,10 +23,10 @@
 }
 
 .temp59To70 {
-    color: yellow;
+    color: chocolate;
 }
 
-.temp59To70bk {
+.temp59To70Bk {
     background-color: bisque;
 }
 
@@ -53,20 +52,25 @@
     justify-content: space-between;
 }
 
-#city {
-    color: blue
-}
-
 main {
     height: 100vh;
     flex:auto;
     /* width: 50%; */
 }
 
+#sky-dropdown {
+    height: 1.5rem;
+}
+
+#city-container {
+    align-items: center;
+    padding:1rem;
+}
 #content-container {
     display: flex;
     /* flex-direction: row; */
     justify-content: space-between;
+    padding: 1rem;
 }
 
 #temp-container {
