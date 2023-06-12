@@ -1,5 +1,5 @@
 'use strict';
-const baseURL = 'http://127.0.0.1:5000/'
+const baseURL = 'https://weather-report-proxy-server-zc1j.onrender.com/'
 const state = {
   city: 'las vegas', //default city
   weather: {},
@@ -88,7 +88,7 @@ const handleSkyUpdate = (icon=`01${state.timePeriod}`, desc='Clear Sky') => {
   state.weather.icon = icon;
   state.weather.description = desc;
 
-  state.sky.src = `./src/icons/${state.weather.icon}.svg`;
+  state.sky.src = `./icons/${state.weather.icon}.svg`;
   state.sky.alt = state.weather.description;
   state.descriptionValue.innerText = state.weather.description;
 }
@@ -102,7 +102,7 @@ const handleOptionsReset = () => {
 
   // reset sky
   state.descriptionValue.innerText = 'Clear Sky';
-  state.sky.src =`./src/icons/01${state.timePeriod}.svg`;
+  state.sky.src =`./icons/01${state.timePeriod}.svg`;
   state.sky.alt = 'Clear Sky';
 }
 
@@ -128,7 +128,7 @@ const setTimePeriod = () => {
   const hour = date.getHours();
 
   // 6am - 6pm is day, 6pm - 6am is night
-  state.timePeriod = hour <=6 || hour >= 18 ? 'n' : 'd';
+  state.timePeriod = hour < 6 || hour >= 18 ? 'n' : 'd';
 
   // set current date
   state.date = date.toLocaleString('en-US', 
@@ -140,7 +140,7 @@ const setTimePeriod = () => {
       setProperty('--bgImage', `var(--${state.timePeriod}BgImage)`);
   document.documentElement.style.
       setProperty('--bgColor', `var(--${state.timePeriod}BgColor)`);
-  state.sky.src = `./src/icons/01${state.timePeriod}.svg`;
+  state.sky.src = `./icons/01${state.timePeriod}.svg`;
 };
 
 const updateColorLandscape = () => {
