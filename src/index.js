@@ -39,19 +39,15 @@ const registerEventHandlers = () => {
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
-const axios = require('axios');
+PATH = "http://127.0.0.1:5000/"
 
-const PATH = 'https://us1.locationiq.com/v1/search.php'
-
-const findLatitudeAndLongitude = (query) => {
+const findLatitudeAndLongitude = () => {
     let latitude, longitude;
     
     axios.get(PATH,
         {
             params: {
-                key: LOCATION_KEY,
-                q: state.city,
-                format: 'json'
+                "q": state.city
             }
         })
         .then((response) => {
@@ -60,7 +56,12 @@ const findLatitudeAndLongitude = (query) => {
             console.log('success', state.city, latitude, longitude);
             return latitude, longitude
         })
+        // .then((response) => {
+
+        // })
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
         })
     }
+
+console.log(findLatitudeAndLongitude())
