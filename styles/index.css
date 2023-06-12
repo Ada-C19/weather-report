@@ -93,3 +93,7 @@ header {
     width: 35%;
     margin: 30px
  }
+
+ #city-input{
+    font-size: 16px;
+}
