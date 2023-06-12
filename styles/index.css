@@ -13,7 +13,9 @@ font-size: 18px;
 /* background-color: #1b69f9; */
 background-image: url("../assets/fon-nebo-oblaka-pejzazh-trava-12954.jpeg");
 background-attachment: fixed;
+background-size: 100% 100%;
 margin: 2rem;
+color: white;
 }
 
 .header__header {
@@ -46,7 +48,7 @@ content: "✨";
 .city-name__section {
 border-radius: 8px;
 padding: 2rem;
-background-color: white;
+background-color: hwb(240 6% 42% / 0.415);
 }
 
 .temperature__section {
@@ -54,7 +56,7 @@ grid-row: 2;
 }
 
 .temperature__section button {
-    background-color: #1b69f9;
+    background-color: #ca66d5ee;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -120,7 +122,7 @@ font-size: 2em;
 
 .city-name__reset-btn {
 border: 0;
-background-color: #1655cc;
+background-color: #ca66d5ee;
 color: white;
 border-radius: 8px;
 padding: 1rem;
@@ -165,4 +167,10 @@ background-color: lightblue;
 
 .snowy {
 background-color: lightsteelblue;
+}
+
+#skySelect {
+    background-color: #ca66d5ee;
+    border: 0;
+    color: white;
 }
