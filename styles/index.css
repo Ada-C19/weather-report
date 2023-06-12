@@ -21,6 +21,33 @@ h2 {
     font-size: 100px;
 }
 
+#city {  
+    clear:both;
+}
+
+#title {
+    text-align: center;
+}
+
+#city {
+    font-family: bubbles;
+    font-size: 50px;
+    color: blue;
+}
+
+#arrowleft, #arrowright{
+    width: 25%;
+    text-align: center;
+}
+
+.temp-controls{
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+}
+
 .weather-box {
     border:solid 5px thistle;
     width: 50%;
@@ -30,6 +57,7 @@ h2 {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 10%;
 }
 
 #temperature{
@@ -37,21 +65,33 @@ h2 {
     text-align: left;
 }
 
-#city {
-    float: right;   
-    clear:both;
+#real-time-temp {
+    font-family: maru;
+    background-color: transparent;
+    font-size: 100px;
+    border: none;
+}
 
+#skyscapes {
+    font-family: bubbles;
+    font-size: 50px;
+    color: blue;
 }
 
 input {
     border: none;
-    background-color: red;
+    background-color:transparent;
     font-size: 100px;
     color: #E595C5;
-    width: 50%;
+    width: 100%;
     height: 100%;
+    font-family: maru;
 }
 
+input#cityNameTypeBox {
+    text-align: right;
+    font-size: 200%;
+}
 
 #cityNameReset {
     background-color: transparent;
@@ -59,10 +99,24 @@ input {
     border:none;
     border-radius: 50%;
     font-family:bubbles;
+    float: right;
+}
+
+#cityNameReset:focus {
+    outline:none;
 }
 
 #cityNameReset:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#skyscapesButton {
+    font-family: maru;
+    background-color: transparent;
+    border: none;
+    color: pink;
+    text-align: center;
+
 }
 
 .view-container {
@@ -77,27 +131,29 @@ input {
     padding: 1rem;
     flex-grow: 1;
 }
-    
+
+/* summmer */
 .red {
-color: red;
+color:#c4f1ea;
 }
 
+/* spring */
 .orange {
-color: orange;
+color: #dfacc4;
 }
 
 .yellow {
-color: gold;
+color: #e84005;
 }
 
 .yellow-green {
 color: yellowgreen;
 }
-
+/* winter */
 .green {
-color: green;
+color: #8868b8;
 }
-
+/* freezing */
 .teal {
-color: teal;
+color: white;
 }

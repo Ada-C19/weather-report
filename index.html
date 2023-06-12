@@ -12,18 +12,20 @@
 <body>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
-    <h2>Weather</h2>
+    <div id="title">
+    <h2>✤ ✨Weather in✨✤  <div id="city">Name</div></h2>
+    </div>
     <section class="weather-box">
         <div class="temp-controls">
-        <span id="temp-button-up">🌈</span> <button id="real-time-temp">72</button><span id="temp-button-down">🌈</span> 
+        <span id="temp-button-up"><img id="arrowleft" src="assets/leftarrow.jpeg"></span> <button id="real-time-temp">72</button><span id="temp-button-down"><img id="arrowright" src="assets/rightarrow.jpeg"></span> 
         <form>
-            <div id="city">Name</div>
+            
             <input type="text" id="cityNameTypeBox" value="Seattle">
             <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
         </form>
         </div> 
         <div class="view-container">
-        <div id="skyscapes" class = "skyscapes__ sunny">Our Sky</div>
+        <div id="skyscapes" class = "skyscapes__ sunny">Forecast</div>
         <div id="sky">THE SKY</div>
         <select id="skyscapesButton">
             <option>sunny</option>
