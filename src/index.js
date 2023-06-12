@@ -15,22 +15,10 @@ class Temperature {
   }
 }
 
-//   changeTempValueColor() {
-//     document.getElementById("tempValue").style.color = `${this.textColor}`;
-//   }
-
-//   changeLandscape() {
-//     document.getElementById("landscape").textContent = this.landscape;
-//   }
-// }
-
 class Weather {
   constructor(name, sky, landscape, tempRange, textColor, bgColor) {
     this.name = name;
     this.sky = sky;
-    // this.landscape = landscape;
-    // this.tempRange = tempRange;
-    // this.textColor = textColor;
     this.bgColor = bgColor;
   }
 
