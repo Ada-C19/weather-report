@@ -1,4 +1,14 @@
 
+const city = document.getElementById('city_name')
+let inputCity = document.getElementById('city_input')
+
+function changeCity(event) {
+    if (event.key === 'Enter') {
+        city.textContent = inputCity.value;
+    }
+}
+
+inputCity.addEventListener('keydown', changeCity)
 
 const increaseTempButton = document.getElementById('increase_temp')
 const decreaseTempButton = document.getElementById('decrease_temp')

@@ -1,9 +1,10 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     height: 100vh;
     margin: 0;
+    background-color: lavender;
 }
 
 .main_content {
@@ -12,10 +13,10 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    row-gap: 100px;
-    column-gap: 100px;
+    row-gap: 70px;
+    column-gap: 20px;
     background-color: lavender;
-    padding: 20px; /* adjust as needed */
+    padding: 10px 10px;
     box-sizing: border-box;
 
 
@@ -35,6 +36,7 @@ body {
 .grid_space_two{
     width: 40vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: floralwhite;
@@ -57,6 +59,7 @@ body {
 .grid_space_four{
     width: 40vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: floralwhite;
