@@ -54,14 +54,22 @@ header {
 }
 
 #increase-temp, #decrease-temp {
-    color: black;
-    width: 50%;
+    font-size: 24px;
+    background-color: rgb(70, 138, 161);
+    box-shadow: 5px 5px 5px;
+    border-radius: 20px;
 }
 
 #display-temperature {
     font-size: 30px;
     font-weight: 700;
     padding: 0 10px;
+}
+
+#temp-button {
+    grid-column: 2;
+    box-shadow: 5px 5px 5px;
+    border-radius: 10px;
 }
 
 /* Classes for temp color */
