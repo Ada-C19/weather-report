@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let temperature = 65;
     // sky
     const sky = document.querySelector("#sky")
-    let skies = "                  "
+    let skies = ""
 
     // air
     // const air = document.querySelector("#air")
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // landscape
     const landscape = document.querySelector("#landscape")
-    let lands = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+    let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
 
     const updateTemp = () =>  {
         displayTemp.textContent = temperature;
@@ -51,11 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateLandscape() {
       if (temperature >= 80) {
-        lands = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+        lands = "🌵   🐍 🦂 🌵🌵  🐍 🏜 🦂";
         } else if (temperature >= 70 && temperature <= 79) {
-        lands = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+        lands = "🌸🌿🌼  🌷🌻🌿 ☘️🌱 🌻🌷";
         } else if (temperature >= 60 && temperature <= 69) {
-        lands = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+        lands = "🌾🌾   🍃 🪨 🛤 🌾🌾🌾 🍃";
         } else if (temperature <= 59) {
         lands = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
         } else {
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // drop down open and close
     function dropDownFunc(dropDown) {
-    console.log(dropDown.classList.contains('click-dropdown'));
+    // console.log(dropDown.classList.contains('click-dropdown'));
 
     if(dropDown.classList.contains('click-dropdown')=== true){
         dropDown.addEventListener('click', function (e) {
@@ -107,10 +107,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     }
 
+    //hand
     if(dropDown.classList.contains('hover-dropdown') === true){
-
     dropDown.onmouseover  =  dropDown.onmouseout = dropdownHover;
-
     function dropdownHover(e){
         if(e.type == 'mouseover'){
         // Close the opened dropdown
