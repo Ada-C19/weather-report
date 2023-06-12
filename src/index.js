@@ -1,4 +1,3 @@
-// elements
 let temperatureLabel = null;
 let temperatureIncreaseButton = null;
 let temperatureDecreaseButton = null;
@@ -12,7 +11,6 @@ let gardenBackground = null;
 let temperatureValue = null;
 let defaultCityName = null;
 
-// helper functions
 const showTemp = () => {
     temperatureLabel.textContent = temperatureValue;
 }; 
