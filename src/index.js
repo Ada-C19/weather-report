@@ -1,8 +1,8 @@
 "use strict";
 
 const state = {
-    temperature: 80,
-    city: 'Austin'
+    temperature: 68,
+    city: 'Montreal'
 };
 
 const increaseTemperature = () => {
@@ -16,6 +16,8 @@ const decreaseTemperature = () => {
 }
 
 function updateColorLandscape() {
+    const landscape = document.getElementById("landscape");
+    const tempValue = document.getElementById("tempValue");
     tempValue.textContent = state.temperature;
 
     if (state.temperature >= 80) {
@@ -37,6 +39,7 @@ function updateColorLandscape() {
     headerCityName.textContent = cityNameInput.value;
 }
 
+
 increaseTempControl.addEventListener("click", increaseTemperature);
 decreaseTempControl.addEventListener("click", decreaseTemperature);
 
@@ -47,10 +50,11 @@ currentTempButton.addEventListener("click", function() {
 });
 
 cityNameReset.addEventListener("click", function() {
-    cityNameInput.value = "";
-    state.temperature = 80;
+    cityNameInput.value = "Montreal";
+    state.temperature = 68;
     updateColorLandscape();
 });
+
 
 //dropdown
 const skySelect = document.getElementById("skySelect");
@@ -118,8 +122,7 @@ const getTemperature = (latitude, longitude) => {
 
 const updateTemperature = function(far) {
     state.temperature = far;
-    const updatedTemp = document.getElementById('tempValue');
-    updatedTemp.textContent = `${state.temperature}`;
+    updateColorLandscape();
 }
 
 const updateCity = () => {
