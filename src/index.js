@@ -1,5 +1,5 @@
 class Temperature {
-  constructor(name, tempRange, textColor) {
+  constructor(name, tempRange, textColor, landscape) {
     this.name = name;
     this.tempRange = tempRange;
     this.textColor = textColor;
@@ -16,15 +16,11 @@ class Temperature {
 }
 
 class Weather {
-  constructor(name, sky, landscape, tempRange, textColor, bgColor) {
+  constructor(name, sky, bgColor) {
     this.name = name;
     this.sky = sky;
     this.bgColor = bgColor;
   }
-
-  // changeTempValueColor() {
-  //   document.getElementById("tempValue").style.color = `${this.textColor}`;
-  // }
 
   changeBackgroundColor() {
     document.getElementById("gardenContent").style.backgroundColor =
@@ -34,10 +30,6 @@ class Weather {
   changeSky() {
     document.getElementById("sky").textContent = this.sky;
   }
-
-  // changeLandscape() {
-  //   document.getElementById("landscape").textContent = this.landscape;
-  // }
 }
 
 const changeSky = (weather) => {
@@ -47,57 +39,70 @@ const changeSky = (weather) => {
   // weather.changeLandscape();
 };
 
+const changeTempDisplay = (temperature) => {
+  temperature.changeTempValueColor();
+  temperature.changeLandscape();
+};
+
 // temperature ranges
 // const
 
+const superhot = new Temperature(
+  "Super Hot",
+  [80, 100000],
+  "red",
+  "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵"
+);
+
+changeTempDisplay(superhot);
 // weathers
 // these could maybe be separated into another file? along with the class definition
 const hot = new Weather(
   "Very",
   "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
-  "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
-  [80, 100000],
-  "red",
+  // "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
+  // [80, 100000],
+  // "red",
   "red"
 );
 const sunny = new Weather(
   "Sunny",
   "☁️ ☁️ ☀️☀️☀️☀️☀️☀️☀️ ☁️ ☁️",
-  "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-  [70, 79],
-  "orange",
+  // "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
+  // [70, 79],
+  // "orange",
   "rgb(221, 255, 255)"
 );
 const cloudy = new Weather(
   "Cloudy",
   "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
-  "🗻🗻🗻🗻🗻🗻🗻🗻🗻",
-  [60, 69],
-  "gray",
+  // "🗻🗻🗻🗻🗻🗻🗻🗻🗻",
+  // [60, 69],
+  // "gray",
   "lightgrey"
 );
 const rainy = new Weather(
   "Rainy",
   "🌧🌈⛈🌧💧⛈🌧🌦🌧💧🌧🌧",
-  "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-  [50, 59],
-  "blue",
+  // "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
+  // [50, 59],
+  // "blue",
   "lightblue"
 );
 const snowy = new Weather(
   "Snowy",
   "🌨❄️🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
-  "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
-  [0, 49],
-  "lightblue",
+  // "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
+  // [0, 49],
+  // "lightblue",
   "lightsteelblue"
 );
 const apocalyptic = new Weather(
   "Apocalyptic",
   "🧟‍♀️🧟‍♂️🧟‍♀️🌫🧟‍♂️🌅🧟‍♂️🌫🧟‍♀️🧟‍♂️🧟‍♀️",
-  "⛰️⛰️⛰️⛰️🛣️🛣️🛣️⛰️⛰️⛰️⛰️",
-  [-10000000, -1],
-  "black",
+  // "⛰️⛰️⛰️⛰️🛣️🛣️🛣️⛰️⛰️⛰️⛰️",
+  // [-10000000, -1],
+  // "black",
   "rgb(11, 247, 46)"
 );
 
