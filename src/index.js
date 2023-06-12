@@ -1,9 +1,4 @@
 const state = {
-	tempValue: null,
-	increaseTempControl: null,
-	decreaseTempControl: null,
-	gardenLandscape: null,
-	tempValueEl: null,
 	cityLocation: { lat: 28.5421109, lon: -81.3790304 },
 };
 
@@ -14,28 +9,23 @@ const loadControls = () => {
 	state.tempValue = parseInt(state.tempValueEl.textContent);
 	state.gardenLandscape = document.getElementById('landscape');
 	state.gardenLandscapeValue = state.gardenLandscape.textContent;
-	state.cityLocation = document.getElementById('cityNameInput');
+	state.cityLocationEl = document.getElementById('cityNameInput');
 	state.skyDisplay = document.getElementById('sky');
 	state.skyDisplayValue = state.skyDisplay.textContent;
 };
 
 const increaseTemp = () => {
-	const increaseTempControl = state.increaseTempControl;
-	const currentTemp = document.getElementById('currentTempButton');
 	state.tempValue += 1;
 	state.tempValueEl.textContent = `${state.tempValue}`;
 	changeColorAndLandscape();
 };
 
 const decreaseTemp = () => {
-	const decreaseTempControl = state.decreaseTempControl;
-	const currentTemp = document.getElementById('currentTempButton');
 	state.tempValue -= 1;
 	state.tempValueEl.textContent = `${state.tempValue}`;
 	changeColorAndLandscape();
 };
 
-// WAVE 2
 const changeColorAndLandscape = () => {
 	let temp = state.tempValue;
 	if (temp >= 80) {
@@ -55,22 +45,14 @@ const changeColorAndLandscape = () => {
 		state.gardenLandscape.textContent = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
 	}
 };
-// WAVE 3
-const updateCity = () => {
-	const cityNameInput = document.getElementById('cityNameInput');
-	const cityNameReset = document.getElementById('cityNameReset');
-	const headerCityName = document.getElementById('headerCityName');
-};
 
-// WAVE 4
 const convertKToF = (k) => (k - 273.15) * (9 / 5) + 32;
 
 const getLocationInfo = () => {
 	return axios
 		.get('http://127.0.0.1:5000/location', {
-			//http://localhost:5000/location
 			params: {
-				q: state.cityLocation.value,
+				q: state.cityLocationEl.value,
 			},
 		})
 		.then((response) => {
@@ -83,12 +65,8 @@ const getLocationInfo = () => {
 		});
 };
 
-const getWeatherInfo = (location) => {
+const getWeatherInfo = () => {
 	const { lat, lon } = state.cityLocation;
-
-	console.log('Latitude:', lat);
-	console.log('Longitude:', lon);
-
 	return axios
 		.get('http://127.0.0.1:5000/weather', {
 			params: {
@@ -97,7 +75,6 @@ const getWeatherInfo = (location) => {
 			},
 		})
 		.then((response) => {
-			console.log('Retrieve location');
 			const cityTemp = convertKToF(response.data.main.temp);
 			state.tempValue = Math.round(cityTemp);
 			changeColorAndLandscape();
@@ -110,13 +87,52 @@ const getWeatherInfo = (location) => {
 };
 
 const updateCurrentTemp = () => {
-	const currentTemp = document.getElementById('currentTempButton');
 	getLocationInfo()
 		.then(getWeatherInfo)
-		.then((temp) => {
+		.then(() => {
 			state.tempValueEl.textContent = `${state.tempValue}`;
 		});
 	changeColorAndLandscape();
+};
+
+const changeSky = () => {
+	const skySelect = document.getElementById('skySelect');
+	const selectedSky = skySelect.value;
+
+	switch (selectedSky) {
+		case 'sunny':
+			state.skyDisplay.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+			break;
+		case 'cloudy':
+			state.skyDisplay.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+			break;
+		case 'rainy':
+			state.skyDisplay.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+			break;
+		case 'snowy':
+			state.skyDisplay.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+			break;
+		default:
+			state.skyDisplay.textContent = '';
+	}
+};
+
+const registerEvents = () => {
+	state.increaseTempControl.addEventListener('click', increaseTemp);
+	state.decreaseTempControl.addEventListener('click', decreaseTemp);
+
+	state.cityLocationEl.addEventListener('input', () => {
+		document.getElementById('headerCityName').textContent = state.cityLocationEl.value;
+	});
+
+	document.getElementById('cityNameReset').addEventListener('click', () => {
+		state.cityLocationEl.value = '';
+		document.getElementById('headerCityName').textContent = 'Orlando';
+	});
+
+	document.querySelector('#currentTempButton').addEventListener('click', updateCurrentTemp);
+
+	document.getElementById('skySelect').addEventListener('change', changeSky);
 };
 
 const setUp = () => {
@@ -125,52 +141,4 @@ const setUp = () => {
 	changeColorAndLandscape();
 };
 
-// Wave 5
-const changeSky = () => {
-	const skyDisplay = document.getElementById('sky');
-	const skySelect = document.getElementById('skySelect');
-	const selectedSky = skySelect.value;
-
-	switch (selectedSky) {
-		case 'sunny':
-			skyDisplay.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
-			break;
-		case 'cloudy':
-			skyDisplay.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-			break;
-		case 'rainy':
-			skyDisplay.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-			break;
-		case 'snowy':
-			skyDisplay.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-			break;
-		default:
-			skyDisplay.textContent = '';
-	}
-};
-
-const registerEvents = () => {
-	state.increaseTempControl.addEventListener('click', increaseTemp);
-	state.decreaseTempControl.addEventListener('click', decreaseTemp);
-
-	cityNameInput.addEventListener('input', () => {
-		headerCityName.textContent = cityNameInput.value;
-	});
-
-	cityNameReset.addEventListener('click', () => {
-		cityNameInput.value = '';
-		headerCityName.textContent = 'Orlando';
-	});
-
-	loadControls();
-
-	const updateTemp = document.querySelector('#currentTempButton');
-	updateTemp.addEventListener('click', updateCurrentTemp);
-
-	const skySelect = document.getElementById('skySelect');
-	skySelect.addEventListener('change', changeSky);
-};
-
 document.addEventListener('DOMContentLoaded', setUp);
-
-// testing testing
