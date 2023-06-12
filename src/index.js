@@ -46,26 +46,26 @@ const hot = new Temperature(
   "Hot",
   [80, 100000],
   "red",
-  "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵"
+  "🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵"
 );
 const warm = new Temperature(
   "Warm",
   [70, 79],
   "orange",
-  "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"
+  "🌸🌿🌼🌷🌻🌿_☘️🌱_🌻🌷"
 );
-const mild = new Temperature("Mild", [60, 69], "gray", "🗻🗻🗻🗻🗻🗻🗻🗻🗻");
+const mild = new Temperature("Mild", [60, 69], "gray", "🗻🗻🗻🗻🗻🗻🗻🗻🗻🗻🗻🗻");
 const chilly = new Temperature(
   "Chilly",
   [50, 59],
   "blue",
-  "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
+  "🌾🌾_🍃_🪨__🛤_🌾🌾_🍃"
 );
 const cold = new Temperature(
   "Cold",
   [0, 49],
   "lightblue",
-  "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+  "🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
 );
 
 const temperatureCollection = {
@@ -80,7 +80,7 @@ changeTempDisplay(cold);
 
 const fullSunny = new Weather(
   "Full Sunny",
-  "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
+  "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
   "red"
 );
 const sunny = new Weather(
@@ -173,39 +173,33 @@ const updateWeatherBasedOnTemperature = async () => {
 
 const resetButton = document.getElementById("cityNameReset");
 resetButton.addEventListener("click", () => {
-  cityNameInput.value = "Austin;
+  cityNameInput.value = "Austin";
   headerCityName.textContent = "Austin";
 });
 
-const axiosGetCoordinates = async (placeName) => {
+const axiosGetWeather = async (cityName) => {
   try {
     const response = await axios.get("http://127.0.0.1:5000/location", {
       params: {
-        q: placeName,
+        q: cityName,
       },
     });
 
     const { lat: latitude, lon: longitude } = response.data[0].coord;
-    return { latitude, longitude };
-  } catch (error) {
-    console.error("Error fetching coordinates:", error);
-  }
-};
 
-const axiosGetWeather = async (coordinates) => {
-  try {
-    const response = await axios.get("http://127.0.0.1:5000/weather", {
+    const weatherResponse = await axios.get("http://localhost:5000/weather", {
       params: {
-        lat: coordinates.latitude,
-        lon: coordinates.longitude,
+        lat: latitude,
+        lon: longitude,
       },
     });
 
-    return response.data.main.temp;
+    return weatherResponse.data.main.temp;
   } catch (error) {
     console.error("Error fetching weather:", error);
   }
 };
+
 
 const handleGetRealtimeTemperatureButtonClick = async () => {
   try {
@@ -223,4 +217,16 @@ const getRealtimeTemperatureButton = document.getElementById("currentTempButton"
 getRealtimeTemperatureButton.addEventListener(
   "click",
   handleGetRealtimeTemperatureButtonClick
+
 );
+window.addEventListener("DOMContentLoaded", () => {
+  tempNumber = 72;
+  temperature.textContent = `${tempNumber}° F`;
+  updateWeatherBasedOnTemperature();
+});
+window.addEventListener("DOMContentLoaded", async () => {
+  cityNameInput.value = "Austin";
+  headerCityName.textContent = "Austin";
+  
+  
+});

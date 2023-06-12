@@ -111,7 +111,7 @@ color: white;
 text-align: center;
 }
 
-.garden__content #sky {
+.garden__content #sky, #landscape{
     font-size: 2rem;
     content: center;
 }
@@ -123,7 +123,7 @@ text-align: center;
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Updated: Space between content */
+    justify-content: space-between; 
     align-items: center;
     border-radius: 8px;
     overflow: hidden;
