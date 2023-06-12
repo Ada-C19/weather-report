@@ -42,23 +42,20 @@ const handleDecreaseTempClicked = () => {
 }; 
 
 const setTempDisplay = () => {
-    let displayIdentifier = Math.floor(state.temperature / 10) 
-    state.tempValue.classList.toggle('teal', displayIdentifier <= 4);
-    state.tempValue.classList.toggle('green', displayIdentifier === 5);
-    state.tempValue.classList.toggle('yellow', displayIdentifier === 6);
-    state.tempValue.classList.toggle('orange', displayIdentifier === 7);
-    state.tempValue.classList.toggle('red', displayIdentifier >= 8);
-    
-    const landscapeTexts = [
-        '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲',
-        '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃',
-        '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷',
-        '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂'
+    let displayIdentifier = Math.floor(state.temperature / 10); 
+    let displayIndex = displayIdentifier < 4 ? 0: displayIdentifier > 8 ? 4: displayIdentifier - 4;
+
+    const displayLibrary = [
+        ['teal', '❄️☃️❄️☃️❄️☃️❄️☃️❄️'], // 49 and below
+        ['green', '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲'], // 50 to 59
+        ['yellow', '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃'], // 60 to 69
+        ['orange', '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷'], // 70 to 79
+        ['red', '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂'] // 80 and above
     ];
 
-    let displayIndex = displayIdentifier < 6 ? 0 : displayIdentifier <= 8 ? displayIdentifier - 5 : 3;
-    
-    state.landscape.textContent = landscapeTexts[displayIndex];
+    state.tempValue.classList = '';
+    state.tempValue.classList.add(displayLibrary[displayIndex][0]);
+    state.landscape.textContent = displayLibrary[displayIndex][1];
 }
 
 const handleCityNameInput = () => {
