@@ -25,7 +25,7 @@
                 <span id="tempValue">69</span>
                 <span id="decreaseTempControl">⬇️</span>
             </div>
-            <button id="currentTempButton">Get Realtime Temperature</button>
+            <!-- <button id="currentTempButton">Get Realtime Temperature</button> -->
         </div>
     </section>
     <section class="sky__section">
@@ -44,11 +44,14 @@
         <h2>City Name</h2>
         <input type="text" id="cityNameInput">
         <button id="cityNameReset" class="city-name__reset-btn">Reset</button>
+        <sectionA>
+            <button id="currentTempButton">Get Realtime Temperature</button>
+        </sectionA>
     </section>
 
-    <section class="garden__section">
+    <section id="gardenContent" class="garden__section">
         <h2>Weather Garden</h2>
-        <div id="gardenContent" class="garden__content">
+        <div class="garden__content">
             <div id="sky"></div>
             <div id="landscape"></div>
         </div>

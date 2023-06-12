@@ -107,16 +107,21 @@ const handleRealtimeTemperatureClicked = () => {
 
 const handleSkySelectOption = () => {
     const weatherPatterns = {
-        pride: ['🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈', 'sunny'],  
-        sunny: ['☁️ ☁️ ☁️ ☀️ ☁️ ☁️', 'sunny'],
-        cloudy: ['☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️', 'cloudy'],
-        rainy: ['🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧', 'rainy'],
-        snowy: ['🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨', 'snowy']
+        pride: ['🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈', 'lightpink'],  
+        sunny: ['☁️ ☁️ ☁️ ☀️ ☁️ ☁️', 'rgb(221, 255, 255)'],
+        cloudy: ['☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️', 'lightgrey'],
+        rainy: ['🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧', 'lightblue'],
+        snowy: ['🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨', 'lightsteelblue']
     };
     state.sky.textContent = weatherPatterns[state.skySelect.value][0];
+    state.gardenContent.style.backgroundColor = weatherPatterns[state.skySelect.value][1];
+
+    //rainbow gradient graveyard RIP
+    // state.gardenContent.classList = '';
     // state.gardenContent.classList.toggle(state.gardenContent.classList, weatherPatterns[state.skySelect.value][1]);
-    // state.gardenContent.style = weatherPatterns[state.skySelect.value][1];
-}
+    // if (state.skySelect.value === pride) {
+    //     state.gardenContent.backgroundImage = 'linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet)';
+    }
 
 const handleResetButtonClicked = () => {
     state.cityNameInput.value = 'Los Angeles';
