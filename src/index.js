@@ -6,7 +6,7 @@ const state = {
     resetButton: null,
     skyUpdate: null,
     gardenContent: null,
-    skyContainer: null,
+    sky: null,
     landscapeElement: null,
     currentTempButton: null,
     cityHeader: null,
@@ -23,7 +23,7 @@ const loadControls = () => {
   state.increaseTempControl = document.getElementById('increaseTempControl');
   state.cityHeader = document.getElementById('headerCityName')
   state.gardenContent = document.getElementById('gardenContent');
-  state.skyContainer = document.getElementById('sky');
+  state.sky = document.getElementById('sky');
   state.tempValue = document.getElementById("tempValue");
   state.landscapeElement = document.getElementById("landscape");
   state.currentTempButton = document.getElementById("currentTempButton");
@@ -83,8 +83,8 @@ const getWeather = (location) => {
     let landscape = '';
     if (state.tempInt < 0 || state.tempInt > 120) {
       state.tempValue.style.color = 'red';
-      state.tempInt.textContent = 'DANGER'
-      landscape = '🚫🚫🚫🚫🚫🚫'; 
+      state.tempValue.textContent = 'DANGER'
+      landscape = '🚫🚫🚫TOO MUCH WEATHER🚫🚫🚫'; 
     } else if (state.tempInt>= 80) {
       state.tempValue.style.color = 'red';
       landscape = '🌵🏜️🌵🐍🦂🌋👹🌋🦂🐍🌵🏜️🌵';
@@ -105,69 +105,43 @@ const getWeather = (location) => {
       landscape = '🎄❄️🌨️🌲⛄️🌨️❄️🌨️⛄️🌲🌨️❄️🎄'; 
     }
     
-    
     state.landscapeElement.textContent = landscape;
   };
   
-  
-  // WAVE 2 increase and decrease temp buttons change number///////
-  
-  // line 24  <span id="increaseTempControl">⬆️</span>
-  // line 25  <span id="tempValue"></span>
-  // line 26  <span id="decreaseTempControl">⬇️</span>
-  
   const increaseTemp = () => {
-    state.tempValue++;
+    state.tempInt++;
     applyColorAndGarden();
   };
   
   const decreaseTemp = () => {
-    state.tempValue--;
+    state.tempInt--;
     applyColorAndGarden();
   };
   
-  
-  //WAVE 3 grab the value of the text input elemen.//////////////////////
-  
-  // THIS IS THE NAME INPUT BOX   
-  //input: line 40 "cityNameInput"
-  
-  //THIS IS THE HEADER WITH THE STARS CSS
-  //output: line 18 id="headerCityName"
-  
-  // WAVE 3 FUNCTION ////////////////////////////
   const updateCity = () => {
-    //get element by id is our document method
     state.city = state.cityNameInput.value;
     state.cityHeader.textContent = state.city;
   }
-  
-  
-  
-  // wave 4 get realtime temp
-  
 
   
   //WAVE 5 FUNCTION //////////////////////
   const skyView = (event) => {
-    event.target.value
-    let sky = '';
-    let skyColor = '';
-    if (state.inputSky === 'Cloudy') {
-      sky = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-      skyColor = 'cloudy';
-    } else if (state.inputSky === 'Sunny') {
-      sky = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
-      skyColor = 'sunny';
-    } else if (state.inputSky === 'Rainy') {
-      sky = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-      skyColor = 'rainy';
-    } else if (state.inputSky === 'Snowy') {
-      sky = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-      skyColor = 'snowy';
+    let skyColor = event.target.value;
+    console.log(event)
+    // let skyColor = '';
+    if (skyColor === 'Cloudy') {
+      state.sky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+      // skyColor = 'cloudy';
+    } else if (skyColor === 'Sunny') {
+      state.sky.textContent = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
+      // skyColor = 'sunny';
+    } else if (skyColor === 'Rainy') {
+      state.sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+      // skyColor = 'rainy';
+    } else if (skyColor === 'Snowy') {
+      state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+      // skyColor = 'snowy';
     }
-    state.skyContainer.textContent = sky;
-    state.gardenContent.classList = `garden__content ${skyColor}`;
   };
   
   
@@ -178,7 +152,6 @@ const getWeather = (location) => {
   const resetCity = () => {
     state.cityNameInput.value = '';
     state.cityHeader.textContent = '';
-    //what kind of method is this called? effects html elements differently
   };
 
   const handleCurrentTempButtonClicked = () => {
@@ -186,8 +159,8 @@ const getWeather = (location) => {
       .then((location) => getWeather(location))
       .then((targetTemp) => {
         console.log(targetTemp)
-        state.tempValue = targetTemp;
-        // state.tempValue.textContent = targetTemp;
+        state.tempInt = targetTemp;
+        applyColorAndGarden();
       })
   }
   
@@ -195,6 +168,7 @@ const getWeather = (location) => {
   // EVENT HANDLERS FOR ALL WAVES LIVE HERE ! //////////////
   const registerEventHandlers = () => {
     loadControls();
+
     // WAVE 2 event is 'click listening to increase decrease Temp handler///////
     state.increaseTempControl.addEventListener('click', increaseTemp);
     
