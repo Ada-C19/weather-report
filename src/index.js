@@ -177,27 +177,30 @@ resetButton.addEventListener("click", () => {
   headerCityName.textContent = "Austin";
 });
 
-const axiosGetWeather = async (cityName) => {
-  try {
-    const response = await axios.get("http://127.0.0.1:5000/location", {
-      params: {
-        q: cityName,
-      },
+const axiosGetWeather = (cityName) => {
+  axios.get("http://127.0.0.1:5000/location", {
+    params: {
+      q: cityName,
+    },
+  })
+    .then((response) => {
+      const { lat: latitude, lon: longitude } = response.data[0].coord;
+
+      return axios.get("http://localhost:5000/weather", {
+        params: {
+          lat: latitude,
+          lon: longitude,
+        },
+      });
+    })
+    .then((weatherResponse) => {
+    
+      console.log(weatherResponse);
+    })
+    .catch((error) => {
+      
+      console.error(error);
     });
-
-    const { lat: latitude, lon: longitude } = response.data[0].coord;
-
-    const weatherResponse = await axios.get("http://localhost:5000/weather", {
-      params: {
-        lat: latitude,
-        lon: longitude,
-      },
-    });
-
-    return weatherResponse.data.main.temp;
-  } catch (error) {
-    console.error("Error fetching weather:", error);
-  }
 };
 
 
