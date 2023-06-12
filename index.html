@@ -1,16 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css" />
-</head>
-<body>
-    <script src="./src/index.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/index.css" />
+    <!-- 
+      moved script tags to head and included defer attribute
+      solves issue bc the html for button didn't exist yet
+      an html element that does not exist can't experience an event
+    -->
+    <script src="./src/index.js" defer></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
-</body>
+  </head>
+
+  <body>
+    <header class="header__header">
+      <h1 id="weather-report-id">Weather Report</h1>
+      <span
+        >For the lovely city of <span id="headerCityName">Seattle</span></span
+      >
+    </header>
+
+    <section id="temperature-id">
+      <h2>Temperature</h2>
+      <div class="temperature__content">
+        <div class="temperature__controls">
+          <button id="increaseTempControl">⬆️</button>
+          <span id="tempValue" class="orange">72</span>
+          <button type="button" id="decreaseTempControl">⬇️</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sky__section">
+      <h2 id="sky-id">Sky</h2>
+      <select id="skySelect">
+        <option>Sunny</option>
+        <option>Cloudy</option>
+        <option>Rainy</option>
+        <option>Snowy</option>
+      </select>
+    </section>
+    <section id="city-name-id">
+      <h2>City Name</h2>
+      <form id="cityForm">
+        <input type="text" id="cityNameInput" size="20" value="Seattle" />
+        <button type="submit" id="cityNameSubmit">Submit</button>
+        <button type="submit" id="cityNameReset">Reset</button>
+      </form>
+    </section>
+
+    <section id="weather-garden-id">
+      <h2>Weather Garden</h2>
+      <div id="gardenContent" class="garden__content sunny">
+        <div id="sky">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
+        <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+      </div>
+    </section>
+  </body>
 </html>

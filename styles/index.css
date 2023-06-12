@@ -1,0 +1,46 @@
+
+body {
+    background-color: rgb(29, 151, 211);
+    background-image: url(../assets/weather_imagejpg.webp);
+    background-repeat: repeat-x;
+    color: rgb(9, 8, 8);
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+#weather-report-id:hover {
+    color: rgb(34, 86, 228);
+}
+
+#sky-id:hover {
+    color: skyblue
+}
+
+#city-name-id:hover {
+    color: rgb(244, 188, 4)
+}
+
+#weather-garden-id:hover {
+    color: rgb(221, 205, 187)
+}
+
+
+.teal {
+    color: teal;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}
+

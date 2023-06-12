@@ -1,5 +1,20 @@
 # Weather Report
-
+Coworking Agreements
+- Access needs
+  - Communication is important. Flexible on when work gets done
+  - We can hop online together
+  - Work best in the evenings
+  - Individual processing time
+- Learning styles
+  - Time to process
+  - Take time on our own to read/understand/get on the same page about asks
+  - Work on misconceptions together
+- Preference for feedback
+  - Communicate
+  - Proactive
+- Team communication skill to improve
+  - Talking about code knowing what's going on with each piece of code
+  
 ## Skills Assessed
 
 - Following directions and reading comprehension
