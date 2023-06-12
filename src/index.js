@@ -18,7 +18,7 @@ const landscapes = {
 };
 
 const skyOptions = {
-  sunny: "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+  sunny: "☁️ ☀️ ☁️ ☀️ ☀️  ☁️",
   cloudy: "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
   rainy: "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
   snowy: "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨",
@@ -53,6 +53,17 @@ const skyOptionsUpdate = () => {
   } else {
     state.skyField.textContent = "";
   }
+};
+
+const weatherOptions = {
+  Clouds: "3",
+  Haze: "3",
+  Mist: "3",
+  Clear: "2",
+  Rain: "4",
+  Drizzle: "4",
+  Thunderstorm: "4",
+  Snow: "5",
 };
 
 const state = {
@@ -118,6 +129,15 @@ const getTempFromLocation = () => {
           const newTemp = Math.floor(tempCelsius * (9 / 5) + 32);
           state.currentTemperature = newTemp;
           state.temperatureValue.textContent = state.currentTemperature;
+          const mainWeather = weatherResponse.data.weather[0].main;
+          console.log(mainWeather);
+          if (mainWeather in weatherOptions) {
+            state.skyOptions.value = weatherOptions[mainWeather];
+            console.log(weatherOptions[mainWeather]);
+          } else {
+            state.skyOptions.value = 1;
+          }
+
           allGraphicsUpdate();
         })
         .catch((error) => {
