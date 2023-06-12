@@ -1,4 +1,4 @@
-@font-face {
+font-face {
     font-family: bubbles;
     src: url(/fonts/Moirai_One/MoiraiOne-Regular.ttf);
 }
@@ -21,12 +21,13 @@ h2 {
     font-size: 100px;
 }
 
-#city {  
+/* #city {  
     clear:both;
-}
+} */
 
 #title {
     text-align: center;
+    font-family: bubbles;
 }
 
 #city {
@@ -48,6 +49,10 @@ h2 {
     margin-top: 10%;
 }
 
+#sky {
+    width: 100px;
+    height: 100px;
+}
 .weather-box {
     border:solid 5px thistle;
     width: 50%;
@@ -116,8 +121,8 @@ input#cityNameTypeBox {
     border: none;
     color: pink;
     text-align: center;
-
 }
+
 
 .view-container {
     display: flex;

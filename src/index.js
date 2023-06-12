@@ -1,8 +1,6 @@
 
 const state = {
     city: 'Seattle',
-    // lat: 47.6038321,
-    // long: -122.3300624,
     temp: 72,
     cityNameTypeBox: null,
 };
@@ -73,10 +71,10 @@ const resetCityName = () => {
 
 
 const skyscapes = {
-    sunny:"☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
-    cloudy:"☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
-    rainy:"🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧",
-    snowy:"🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+    sunny:"/assets/sunny.gif",
+    cloudy:"/assets/cloudy.gif",
+    rainy:"/assets/rainy.gif",
+    snowy:"/assets/snow.gif"
 }
 
 const updateSky = () => {
@@ -99,18 +97,11 @@ const updateSky = () => {
         skyColor = 'snowy';
     }
     
-    skyContainer.textContent = sky;
+    skyContainer.src = sky;
     const skycontent = document.getElementById('skyscapes');
     skycontent.classList = `skyscapes__ ${skyColor}`;
 };
 
-//object for strings
-// const landscapeType = {
-//     summer: "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂",
-//     spring: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-//     autumn: "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃",
-//     winter: "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
-// }
 
 const landscapeType = {
     summer:"/assets/summer.gif",
@@ -141,9 +132,7 @@ const formatTempAndGarden = () => {
         landscape = landscapeType.summer;
         color = 'red';
     }
-    // code for strings
-    // const newLandscape = document.getElementById('landscape');
-    // newLandscape.textContent = landscape;
+
     const newLandscape = document.getElementById('landscape');
     newLandscape.src = landscape;
     const temperature = document.getElementById('real-time-temp');
