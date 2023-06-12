@@ -38,10 +38,10 @@
       <form autocomplete="off">
         <h2>Sky</h2>
         <select id="skySelect">
-          <option value="Sunny">Sunny</option>
-          <option value="Cloudy">Cloudy</option>
-          <option value="Rainy">Rainy</option>
-          <option value="Snowy">Snowy</option>
+          <option value="Sunny" class="sunny">Sunny</option>
+          <option value="Cloudy" class="cloudy">Cloudy</option>
+          <option value="Rainy" class="rainy">Rainy</option>
+          <option value="Snowy" class="snowy">Snowy</option>
         </select>
       </form>
     </section>
@@ -62,7 +62,8 @@
       </div>
     </section>
 
-    <section>
+    <section class="weatherWidgetSection">
+      <h2>Local Weather Map</h2>
       <iframe
         id="weatherWidget"
         width="550"
