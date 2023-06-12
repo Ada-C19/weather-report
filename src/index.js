@@ -124,20 +124,23 @@ const getWeather = (location) => {
   
   const skyView = (event) => {
     let skyColor = event.target.value;
-    
-    state.gardenContent.className = '';
 
-    // let skyColor = '';
+    const skyColorClasses = ['cloudy', 'sunny', 'rainy', 'snowy'];
+    skyColorClasses.forEach(color => {
+      state.gardenSection.classList.remove(color);
+    });
+
+  
     if (skyColor === 'Cloudy') {
       state.sky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-      state.gardenSection.classList.add('cloudy')
-    } else if (skyColor === 'Sunny') {
-      state.sky.textContent = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
+      state.gardenSection.classList.add('cloudy') 
+      }else if (skyColor === 'Sunny') {
+      state.sky.textContent = '☁️   🌞☀️  🌤️  ☁️ ☀️ ☁️  ☁️';
       state.gardenSection.classList.add('sunny');
-    } else if (skyColor === 'Rainy') {
+      }else if (skyColor === 'Rainy') {
       state.sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
       state.gardenSection.classList.add('rainy');
-    } else if (skyColor === 'Snowy') {
+      }else if (skyColor === 'Snowy') {
       state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
       state.gardenSection.classList.add('snowy');
     }
