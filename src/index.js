@@ -1,9 +1,6 @@
 //STATES
 const state = {
-    city: 'Seattle',
-    lat: 47.6038321,
-    long: -122.3300624,
-    temp: 72,
+    cityNameInput: null,
     increaseTempControl: null,
     decreaseTempControl: null,
     resetButton: null,
@@ -11,6 +8,10 @@ const state = {
     gardenContent: null,
     skyContainer: null,
     landscapeElement: null,
+    currentTempButton: null,
+    cityHeader: null,
+    tempValue: null,
+    tempInt : 70,
   
 };
 
@@ -23,11 +24,9 @@ const loadControls = () => {
   state.cityHeader = document.getElementById('headerCityName')
   state.gardenContent = document.getElementById('gardenContent');
   state.skyContainer = document.getElementById('sky');
-  state.inputSky = document.getElementById('skySelect').value;
-  state.cityHeader = document.getElementById('headerCityName');
-  state.cityBox = document.getElementById('cityNameInput').value;
-  state.tempContainer = document.querySelector("#tempValue");
-  state.landscapeElement = document.querySelector("#landscape");
+  state.tempValue = document.getElementById("tempValue");
+  state.landscapeElement = document.getElementById("landscape");
+  state.currentTempButton = document.getElementById("currentTempButton");
 
 };
 
@@ -37,69 +36,72 @@ const convertKtoF = (temp) => {
 
 //WAVE 4 AXIOS CALLING APIS ////////////////////
 
-// const findLatAndLong = () => {
-//   //let lat, long;
-//   axios
-//     .get('localhost:5000/location', {
-//       params: {
-//         q: state.city,
-//       },
-//     })
-//     .then((response) => {
-//       console.log(response.data);
-//       state.lat = response.data[0].lat;
-//       state.long = response.data[0].lon;
-//       getWeather();
-//     })
-//     .catch((error) => {
-//       console.log('Unknown latitude and longitude:', error.response);
-//     });
-// };
+const findLatAndLon = () => {
+  //let lat, long;
+  return axios
+    .get('http://localhost:5000/location', {
+      params: {
+        q: 'seattle',
+      },
+    })
+    .then((response) => {
+      let lat = response.data[0].lat;
+      let lon = response.data[0].lon;
 
-// const getWeather = () => {
-//   axios
-//     .get('localhost:5000/weather', {
-//       params: {
-//         lat: state.lat,
-//         lon: state.long,
-//       },
-//     })
-//     .then((response) => {
-//       const weather = response.data;
-//       state.temp = Math.round(convertKtoF(weather.main.temp));
-//       formatTempAndGarden();
-//     })
-//     .catch((error) => {
-//       console.log('Error getting the weather:', error);
-//     });
-//   };
+      return {
+        latitude: lat,
+        longitude: lon,
+      }
+    })
+    .catch((error) => {
+      console.log('Unknown latitude and longitude:', error.response);
+    });
+};
+
+const getWeather = (location) => {
+  return axios
+    .get('http://localhost:5000/weather', {
+      params: {
+        lat: location.latitude,
+        lon: location.longitude,
+      },
+    })
+    .then((response) => {
+      let targetTemp = response.data.main.temp
+      return Math.round(convertKtoF(targetTemp));
+      // applyColorAndGarden();
+    })
+    .catch((error) => {
+      console.log('Error getting the weather:', error);
+    });
+  };
   
   // WAVE 2 HELPER FUNCTION //////////////////////
-  const applyColorAndGarden = (element, temperature) => {
-    element.classList.remove('red', 'orange', 'yellow', 'green', 'teal', 'ice');
+  const applyColorAndGarden = () => {
+    state.tempValue.textContent = state.tempInt;
     
     let landscape = '';
-    if (temperature < 0 || temperature > 120) {
-      element.classList.add('red');
-      element.textContent = 'DANGER'
+    if (state.tempInt < 0 || state.tempInt > 120) {
+      state.tempValue.style.color = 'red';
+      state.tempInt.textContent = 'DANGER'
       landscape = '🚫🚫🚫🚫🚫🚫'; 
-    } else if (temperature >= 80) {
-      element.classList.add('red');
+    } else if (state.tempInt>= 80) {
+      state.tempValue.style.color = 'red';
       landscape = '🌵🏜️🌵🐍🦂🌋👹🌋🦂🐍🌵🏜️🌵';
-    } else if (temperature >= 70) {
-      element.classList.add('orange');
+    } else if (state.tempInt>= 70) {
+      state.tempValue.style.color = 'orange';
       landscape = '🌞🌞🌻🌻🏖️🏝️👙🏝️🏖️🌻🌻🌞🌞';
-    } else if (temperature >= 60) {
-      element.classList.add('yellow');
+    } else if (state.tempInt>= 60) {
+      state.tempValue.style.color = 'yellow';
       landscape = '🌹🌸🎋🌹🌸🌱🪺🌱🌸🌹🎋🌸🌹';
-    } else if (temperature >= 50) {
-      element.classList.add('green');
+    } else if (state.tempInt>= 50) {
+      state.tempValue.style.color = 'green';
       landscape = '🌳🌾🍂🪵🌳🐿️🧣🐿️🌳🪵🍂🌾🌳';
-    } else if (temperature >= 40) {
-      element.classList.add('teal');
+    } else if (state.tempInt>= 40) {
+      state.tempValue.style.color = 'teal';
       landscape = '🌲🌳🌨️🪵🌲🌳🧤🌳🌲🪵🌨️🌳🌲';
-    } else if (temperature < 40) {
-      element.classList.add('ice');
+    } else if (state.tempInt< 40) {
+      state.tempValue.style.color = 'aqua';
       landscape = '🎄❄️🌨️🌲⛄️🌨️❄️🌨️⛄️🌲🌨️❄️🎄'; 
     }
     
@@ -115,18 +117,13 @@ const convertKtoF = (temp) => {
   // line 26  <span id="decreaseTempControl">⬇️</span>
   
   const increaseTemp = () => {
-    state.temp++;
-    console.log(state.temp);
-    tempContainer.textContent = state.temp;
-    applyColorAndGarden(tempContainer, state.temp);
+    state.tempValue++;
+    applyColorAndGarden();
   };
   
   const decreaseTemp = () => {
-    // query selector is our document method
-    state.temp--;
-    console.log(state.temp);
-    state.tempContainer.textContent = state.temp;
-    applyColorAndGarden(tempContainer, state.temp);
+    state.tempValue--;
+    applyColorAndGarden();
   };
   
   
@@ -141,8 +138,8 @@ const convertKtoF = (temp) => {
   // WAVE 3 FUNCTION ////////////////////////////
   const updateCity = () => {
     //get element by id is our document method
-    state.city = state.cityBox;
-    cityHeader.textContent = state.city;
+    state.city = state.cityNameInput.value;
+    state.cityHeader.textContent = state.city;
   }
   
   
@@ -152,19 +149,20 @@ const convertKtoF = (temp) => {
 
   
   //WAVE 5 FUNCTION //////////////////////
-  const skyView = () => {
+  const skyView = (event) => {
+    event.target.value
     let sky = '';
     let skyColor = '';
-    if (inputSky === 'Cloudy') {
+    if (state.inputSky === 'Cloudy') {
       sky = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
       skyColor = 'cloudy';
-    } else if (inputSky === 'Sunny') {
+    } else if (state.inputSky === 'Sunny') {
       sky = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
       skyColor = 'sunny';
-    } else if (inputSky === 'Rainy') {
+    } else if (state.inputSky === 'Rainy') {
       sky = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
       skyColor = 'rainy';
-    } else if (inputSky === 'Snowy') {
+    } else if (state.inputSky === 'Snowy') {
       sky = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
       skyColor = 'snowy';
     }
@@ -179,9 +177,19 @@ const convertKtoF = (temp) => {
   
   const resetCity = () => {
     state.cityNameInput.value = '';
-    cityHeader.textContent = '';
+    state.cityHeader.textContent = '';
     //what kind of method is this called? effects html elements differently
   };
+
+  const handleCurrentTempButtonClicked = () => {
+    findLatAndLon()
+      .then((location) => getWeather(location))
+      .then((targetTemp) => {
+        console.log(targetTemp)
+        state.tempValue = targetTemp;
+        // state.tempValue.textContent = targetTemp;
+      })
+  }
   
   
   // EVENT HANDLERS FOR ALL WAVES LIVE HERE ! //////////////
@@ -201,6 +209,8 @@ const convertKtoF = (temp) => {
     
     //WAVE 6 event is 'click' listening to 'resetCount' handler /////
     state.resetButton.addEventListener("click", resetCity);
+
+    state.currentTempButton.addEventListener("click", handleCurrentTempButtonClicked)
 
 
   };
