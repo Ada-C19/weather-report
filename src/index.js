@@ -99,10 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // -------- wave 6 reset button event listener ---------
     const resetButton = document.querySelector("#reset-button"); 
     const defaultCity = "Seattle"
+    cityName.textContent = defaultCity
 
     resetButton.addEventListener("click", function () {
         cityInput.value = defaultCity; 
-        cityName.value = defaultCity;
+        // cityName.value = defaultCity;
     } )
     
 
