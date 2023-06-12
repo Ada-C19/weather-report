@@ -1,13 +1,5 @@
 // actions for search/reset button for city input
 document.addEventListener("DOMContentLoaded", function () {
-    const resetButton = document.getElementById("reset-button");
-    const searchInput = document.getElementById("search-input");
-    resetButton.addEventListener("click", () => {
-        const inputValue = searchInput.value;
-        alert(inputValue);
-    });
-});
-
     // TEMPERATURE - Change Temperature
     // increase temperature 
     const increaseTemp = document.querySelector("#increase-temp");
@@ -81,9 +73,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // drop down open and close
     function dropDownFunc(dropDown) {
-    console.log(dropDown.classList.contains('.dropdown-button'));
+    console.log(dropDown.classList.contains('click-dropdown'));
 
-    if(dropDown.classList.contains('.dropdown-button')=== true){
+    if(dropDown.classList.contains('click-dropdown')=== true){
         dropDown.addEventListener('click', function (e) {
         e.preventDefault();      
 
@@ -113,8 +105,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // add the open and active class(Opening the DropDown)
         this.parentElement.classList.add('dropdown-open');
         this.nextElementSibling.classList.add('dropdown-active');
-            }
         }
+    }
     }
     };
 
@@ -130,11 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Close the opened Dropdowns
     function closeDropdown() { 
-    console.log('closed');
+    // console.log('closed');
 
-    // remove the open and active class from other opened Dropdown (Closing the opend DropDown)
+    // remove the open and active class from other opened Dropdown (Closing the opened DropDown)
     document.querySelectorAll('.dropdown').forEach(function (container) { 
-        container.classList.remove('dropdown-open')
+        container.classList.remove('dropdown-open');
     });
 
     document.querySelectorAll('.dropdown-menu').forEach(function (menu) { 
@@ -146,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('.dropdown-menu').forEach(function (dropDownList) { 
     // close the dropdown after user leave the list
     dropDownList.onmouseleave = closeDropdown;
-    })
-
+    });
+    
     // ------------- wave 3 ------------------
     const cityName = document.getElementById("city-name");
     const cityInput = document.getElementById("city-input");
@@ -159,4 +151,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // event listener to listen for input
     cityInput.addEventListener("input", updateCityName);
-
+});
