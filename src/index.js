@@ -1,10 +1,5 @@
 "use strict";
 
-const state = {
-    temperature: 68,
-    city: 'Montreal'
-};
-
 const increaseTemperature = () => {
     state.temperature += 1;
     updateColorLandscape();
@@ -14,6 +9,13 @@ const decreaseTemperature = () => {
     state.temperature -= 1;
     updateColorLandscape();
 }
+
+
+const state = {
+    temperature: 68,
+    city: 'Montreal'
+};
+
 
 function updateColorLandscape() {
     const landscape = document.getElementById("landscape");
@@ -42,12 +44,11 @@ function updateColorLandscape() {
 
 increaseTempControl.addEventListener("click", increaseTemperature);
 decreaseTempControl.addEventListener("click", decreaseTemperature);
-
 cityNameInput.addEventListener("input", updateColorLandscape);
-
 currentTempButton.addEventListener("click", function() {
     findLatitudeLongitude()
 });
+
 
 cityNameReset.addEventListener("click", function() {
     cityNameInput.value = "Montreal";
@@ -56,10 +57,12 @@ cityNameReset.addEventListener("click", function() {
 });
 
 
+
 //dropdown
 const skySelect = document.getElementById("skySelect");
 skySelect.addEventListener("change", function() {
     const selectedSky = skySelect.value;
+
     if (selectedSky === "sunny") {
         gardenContent.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
         gardenContent.className = "sunny"
@@ -78,6 +81,7 @@ skySelect.addEventListener("change", function() {
         console.log("🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨");
     }
 });
+
 
 
 // Axios Calls
@@ -101,6 +105,7 @@ const findLatitudeLongitude = () => {
     });
 };
 
+
 const getTemperature = (latitude, longitude) => {
     axios.get('http://localhost:5000/weather',
     {
@@ -120,6 +125,8 @@ const getTemperature = (latitude, longitude) => {
     });
 }
 
+
+
 const updateTemperature = function(far) {
     state.temperature = far;
     updateColorLandscape();
@@ -128,9 +135,9 @@ const updateTemperature = function(far) {
 const updateCity = () => {
     const cityName = document.querySelector('#cityNameInput');
     cityName.addEventListener('change', getWeather);
+};
 
-    const getWeather = (inputVal) => {
-        state.city = inputVal;
-        findLatitudeLongitude(state.city);
-    }
+const getWeather = (inputVal) => {
+    state.city = inputVal;
+    findLatitudeLongitude(state.city);
 };
