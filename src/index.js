@@ -66,14 +66,14 @@ const chilly = new Temperature(
   "blue",
   "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃"
 );
-// const cold = new Temperature(
-//   "Cold",
-//   "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲",
-//   [0, 49],
-//   "lightblue"
-// );
+const cold = new Temperature(
+  "Cold",
+  [0, 49],
+  "lightblue",
+  "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲"
+);
 
-changeTempDisplay(hot);
+changeTempDisplay(cold);
 // weathers
 // these could maybe be separated into another file? along with the class definition
 const fullSunny = new Weather(
