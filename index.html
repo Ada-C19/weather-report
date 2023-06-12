@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css" />
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather Report</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./src/styles/index.css">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">	
+	<link rel="shortcut icon" href="./src/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
-    <script src="./src/index.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+	<header class="header__header">
+		<h1 class="screen-reader-only">Weather Report</h1>
+		<img src="./src/WeatherReport.svg" alt="Weather Report Titme Image">
+	</header>
+	<section class="temperature__section">
+		<span id="dateValue"></span>
+		<div class="location__content">
+			<img src="./src/icons/location.svg" alt="location icon">
+			<h2 id="headerCityName" class="header__city-name">Las Vegas</h2>
+		</div>
+		<span>Weather Last Updated: <span id="lastUpdatedValue">N/A</span></span>
+		<div class="temperature__content">
+			<img id="sky" src="./src/icons/01d.svg" alt="Clear Sky Icon">
+			<div class="temperature__controls">
+				<img id="decreaseTempControl" src="./src/icons/minus.svg" alt="decrease temperature">
+				<div class="temp_value_section">
+					<span id="descriptionValue">Clear Sky</span>
+					<span id="tempValue">70</span>
+					<span id="feelsLike">Feels like <span id="feelsLikeValue">70</span></span>
+				</div>
+				<img id="increaseTempControl" src="./src/icons/plus.svg" alt="increase temperature">
+			</div>
+		</div>
+		<div id="landscape">Enjoy the pleasantly warm weather!</div>
+		<div class="details__content">
+			<div>
+				<img src="./src/icons/humidity.svg" alt="humidity icon">
+				<span id="humidityValue">50</span>%
+			</div>
+			<div>
+				<img src="./src/icons/wind.svg" alt="wind icon">
+				<span id="windValue">10</span> mph
+			</div>
+			<div>
+				<img src="./src/icons/barometer.svg" alt="pressure icon">
+				<span id="pressureValue">1000 </span>hPa
+			</div>
+		</div>
+		<div class="sun__content">
+			<div>
+				<img src="./src/icons/sunrise.svg" alt="sunrise icon">
+				<span id="sunriseValue">6:00 AM</span>
+			</div>
+			<div>
+				<img src="./src/icons/sunset.svg" alt="sunset icon">
+				<span id="sunsetValue">6:00 PM</span>
+			</div>
+		</div>
+		<button id="currentTempButton">Get Realtime Weather</button>
+	</section>
+	<section class="options__section">
+		<h2>Options</h2>
+		<div>
+			<span>Select Sky: </span>
+			<select id="skySelect">
+				<option value="default" disabled selected>Select a sky</option>
+				<option value="01">Clear Sky</option>
+				<option value="02">Few Clouds</option>
+				<option value="03">Scattered Clouds</option>
+				<option value="09">Shower Rain</option>
+				<option value="10">Rain</option>
+				<option value="11">Thunderstorm</option>
+				<option value="13">Snow</option>
+				<option value="50">Mist</option>
+			</select>
+		</div>
+		<div>
+			<span>City Name: </span>
+			<input type="text" id="cityNameInput">
+		</div>
+		<button id="cityNameReset" class="city-name__reset-btn">Reset</button>
+	</section>
+	<section class="footer__content">
+		<span>Created by 
+			<a href="https://liztrejo.dev/" target="_blank">Liz Trejo</a> and 
+			<a href="https://github.com/bashmu33" target="_blank">Muniba Kimes</a>
+		</span>
+	</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"></script>
+	<script src="./src/index.js"></script>
 </body>
 </html>
