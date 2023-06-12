@@ -4,6 +4,7 @@
 
  state = {
     temp: 50,
+    city: "Atlanta",
 };
 
 const incrementTemp = function() {
