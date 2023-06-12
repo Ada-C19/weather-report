@@ -1,0 +1,202 @@
+body {
+  background-color: skyblue;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: black;
+  padding: 25px
+}
+
+
+h1 {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 3rem;
+  text-shadow: 3px 3px rgb(209, 210, 216);
+}
+
+h2 {
+  text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 30px;
+  text-shadow: 3px 3px rgb(209, 210, 216);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* display: inline-block; */
+}
+
+#temp,
+#sky,
+#city {
+  margin-top: 15px;
+  background-color: rgb(218, 238, 255);
+  border-radius: 10px;
+  box-shadow: 5px 5px rgb(39, 142, 183);
+  /* margin: auto; */
+  text-align: center;
+  width: 250px;
+  padding: 20px;
+  transition: all .2s ease-in-out;
+
+}
+
+#temp:hover {
+  transform: translateY(-10px);
+  box-shadow: 10px 10px rgb(86, 170, 196);
+}
+
+#sky:hover {
+  transform: translateY(-10px);
+  box-shadow: 10px 10px rgb(86, 170, 196);
+}
+
+#city:hover {
+  transform: translateY(-10px);
+  box-shadow: 10px 10px rgb(86, 170, 196);
+}
+
+#temp {
+  grid-row: 2;
+}
+
+#sky {
+  grid-row: 3;
+}
+
+#city {
+  grid-row: 4;
+}
+
+
+.garden:hover {
+  transform: translateY(-10px);
+  box-shadow: 10px 10px rgb(86, 170, 196B0AA);
+}
+
+.garden {
+  background-color: mistyrose;
+  border-radius: 10px;
+  box-shadow: 5px 5px rgb(86, 170, 196);
+  text-align: center;
+  width: 400px;
+  padding: 15px;
+  transition: all .2s ease-in-out;
+  grid-row: 2/span 3;
+  grid-column: 2;
+  text-align: center;
+  align-self: center;
+  position: relative;
+
+}
+
+#garden_content {
+  min-height: 200px;
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-between;
+
+  border-radius: 8px;
+  font-size: 2em;
+}
+
+#text_weather {
+  float: left;
+  padding-left: -35px;
+  /* padding-bottom: -40px; */
+}
+
+#for_city h3 {
+  font-style: italic;
+  font-family: fantasy;
+  margin-bottom: -50px;
+  padding-left: -15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  position: relative;
+}
+
+#output:after {
+  margin: 3rem;
+  content: "🌈☀️🌧❄️🍃⛈⛅️☃️☀️"; 
+  position: absolute;
+  transform: rotate(deg);
+  -webkit-transform: rotate(deg);
+  color: rgb(134, 194, 245);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+#output {
+  font-family: cursive;
+  padding-left: 200px;
+  font-size: 40px;
+  color: navy;
+  /* padding-right: 10px; */
+}
+
+
+#defaultTemp {
+  font-size: 4rem;
+  margin-right: 1rem;
+}
+
+#garden_content {
+  min-height: 270px;
+  max-width: fit-content;
+  margin: auto;
+  padding: 2rem;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  border-radius: 10px;
+  font-size: 2rem;
+  }
+
+.orange {
+  color: orange;
+}
+.red {
+  color: red;
+}
+.yellow {
+  color: yellow
+}
+.yellow-green {
+  color:yellowgreen
+}
+
+.blue {
+  color: blue
+}
+.charcoal {
+  background-color:#f4a196cc
+}
+.cloudy {
+  background-color: lightgrey;
+}
+
+.sunny {
+  background-color: rgb(221, 255, 255);
+}
+
+.rainy {
+  background-color: lightblue;
+}
+
+.snowy {
+  background-color: lightsteelblue;
+}
+
+.frosted {
+  background-color: lightcyan
+}

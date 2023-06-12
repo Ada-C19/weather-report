@@ -10,7 +10,68 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+
+<section>
+    <header>
+    <span id="text_weather">
+    <h1 > Weather Report</h1>
+        <span id="for_city"> <h3>For the city of</h3>
+            <div id="output">Seattle</div>
+        </span>
+        
+    </span>
+    </header>
+
+    <section>
+        <h2>Garden</h2>
+    <div class="garden" id="garden_content">
+        <div id="sky-emotes">☁☼☁☼☁☼☁☼☁☼☁☼☁</div>
+        <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+
+    </div>
+    </section>
+</section>
+
+
+    <section class="container">
+        <section id="temp">
+        <h2>Temperature</h2>
+        <div class="tempControls"></div>
+            <button id="increaseTempButton">🔼</button>
+            <span id="defaultTemp" class="orange">72</span>
+            <button id="decreaseTempButton">🔽</button>
+        <div>
+            <button id="realTimeTempButton">Real Time Temperature</button>
+        </div>
+        </section>
+
+        <section id="sky" onclick="resetSky()">
+        <h2>Sky</h2>
+            <select id="skySelect">
+                <option value="Charcoal">Charcoal</option>
+                <option value="Sunny" selected="selected">Sunny</option>
+                <option value="Cloudy">Cloudy</option>
+                <option value="Rain">Rain</option>
+                <option value="Snow">Snow</option>
+                <option value="Frosted">Frosted</option>
+            </select>
+        </section>
+
+            <section id="city">
+                <h2>City Name</h2>
+                <input type="text" id="textInput" value="Seattle">
+                
+                <button id="reset" onclick="resetInput()">Reset</button>
+                
+
+    
+            </section>
+
+    </section>
+    
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
+    <script src="./src/city.js"></script>
+    <script src="./src/sky.js"></script>
 </body>
 </html>

@@ -1,5 +1,33 @@
 # Weather Report
 
+# PAIR PLAN OF ACTION
+-Access Needs (Try to do most of the work during coworking)
+- Write code together
+- Edith
+    - free whenever except tuesdays, open to zoom if needed
+    -
+
+-Janice
+    - free whenever, open to zoom if needed
+
+-Your learning style
+    -Edith
+      - like to play around with project on her own
+      - guess culture
+
+    -Janice
+      -guess culture
+      - talk through problem to fully understand
+- How your prefer to receive feedback
+    -Edith
+       -straightforward 
+    -Janice
+      - tell me nicely
+
+-One team communication skill you need to improve with this experience
+  - explaining code out loud
+
+
 ## Skills Assessed
 
 - Following directions and reading comprehension
