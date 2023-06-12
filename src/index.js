@@ -2,7 +2,7 @@
 
 const state = {
     temperature: 80,
-    city: 'New York'
+    city: 'Austin'
 };
 
 const increaseTemperature = () => {
@@ -52,6 +52,29 @@ cityNameReset.addEventListener("click", function() {
     updateColorLandscape();
 });
 
+//dropdown
+const skySelect = document.getElementById("skySelect");
+skySelect.addEventListener("change", function() {
+    const selectedSky = skySelect.value;
+    if (selectedSky === "sunny") {
+        gardenContent.textContent = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+        gardenContent.className = "sunny"
+        console.log("☁️ ☁️ ☁️ ☀️ ☁️ ☁️");
+    } else if (selectedSky === "cloudy") {
+        gardenContent.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+        gardenContent.className = "cloudy"
+        console.log("☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️");
+    } else if (selectedSky === "rainy") {
+        gardenContent.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+        gardenContent.className = "rainy"
+        console.log("🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧");
+    } else if (selectedSky === "snowy") {
+        gardenContent.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+        gardenContent.className = "snowy"
+        console.log("🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨");
+    }
+});
+
 
 // Axios Calls
 const findLatitudeLongitude = () => {
@@ -60,8 +83,8 @@ const findLatitudeLongitude = () => {
 
     axios.get('http://localhost:5000/location', {
     params: {
-        q: state.city,
-    format: 'json',
+        q: cityNameInput.value,
+        format: 'json',
 }})
     .then((response) => {
         latitude = response.data[0].lat;
@@ -97,7 +120,6 @@ const updateTemperature = function(far) {
     state.temperature = far;
     const updatedTemp = document.getElementById('tempValue');
     updatedTemp.textContent = `${state.temperature}`;
-    updateLandscape();
 }
 
 const updateCity = () => {
@@ -105,7 +127,6 @@ const updateCity = () => {
     cityName.addEventListener('change', getWeather);
 
     const getWeather = (inputVal) => {
-        city = inputVal;
         state.city = inputVal;
         findLatitudeLongitude(state.city);
     }
