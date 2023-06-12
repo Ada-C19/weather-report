@@ -3,7 +3,7 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 #temp {
-    
+
 }
 
 .above80Temp {
@@ -93,6 +93,16 @@ main {
 img {
     max-width: 100%;
 }
-/* #landscape {
-    background-image: url("../assets/landscapes/");
-} */
+
+.puffy-clouds {
+    background-image: url("../assets/clouds/puffyclouds.jpg");
+}
+.storm-cloud {
+    background-image: url("../assets/clouds/rainclouds.jpg");
+}
+.sunny {
+    background-image: url("../assets/clouds/sunny.jpg");
+}
+.cloudy {
+    background-image: url("../assets/clouds/clouds.jpg");
+}

@@ -8,7 +8,9 @@ const state = {
   landscapeEl: document.getElementById("landscape"),
   mainTitle: document.getElementById("city"),
   inputField: document.getElementById("city-choice"),
-  getTempButton: document.getElementById("get-current-temp")
+  getTempButton: document.getElementById("get-current-temp"),
+  skyDropdown: document.getElementById("sky-dropdown"),
+  skyEl: document.getElementById("sky"),
 }
 
 // Wave2
@@ -107,3 +109,20 @@ const getWeather = (lat, lon) => {
   )
 }
 state.getTempButton.addEventListener('click', getLocation);
+
+// WAVE 55555
+const changeSky = () => {
+  const skyValue = state.skyDropdown.value;
+  console.log(skyValue);
+  if (skyValue === 'puffy-cloud') {
+    state.skyEl.className = 'puffy-clouds';
+  } else if (skyValue === 'cloudy') {
+    state.skyEl.className = 'cloudy';
+  } else if (skyValue === 'storm-cloud') {
+    state.skyEl.className = 'storm-cloud';
+  } else if (skyValue === 'sunny') {
+    state.skyEl.className = 'sunny';
+  }
+};
+
+state.skyDropdown.addEventListener('change', changeSky)
