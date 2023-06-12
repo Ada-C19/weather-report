@@ -12,7 +12,7 @@ const state = {
     cityNameContainer: null,
     cityName: '',
     cityInput: '',
-
+    SkyDropdown: null,
 };
 
 const loadControls = () => {
@@ -28,6 +28,7 @@ const loadControls = () => {
     state.cityNameContainer = document.getElementById('cityNameContainer');
     state.cityName = document.getElementById('cityNameContainer').innerText;
     state.cityInput = document.getElementById('cityInput');
+    state.skyDropdown = document.getElementById('skyDropdown');
 };
 
 const getTempColor = (tempNumber) => {
@@ -58,6 +59,21 @@ const getLandscape = (temperature) => {
     }
 };
 
+const getSky = (skyType) => {
+    switch(skyType) {
+        case 'sunny':
+            return "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+        case 'cloudy':
+            return "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+        case 'rainy':
+            return "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+        case 'snowy':
+            return "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+        default:
+            return '';
+    }
+};
+
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = ++state.tempNumber;
@@ -72,6 +88,10 @@ const registerEventHandlers = () => {
     state.cityInput.addEventListener('input', () => {
         state.cityNameContainer.innerText = state.cityInput.value;
     });
+    state.skyDropdown.addEventListener('change', () => {
+        state.skyEmojiContainer.innerText = getSky(state.skyDropdown.value);
+    });
+    
 };
 
 const onLoaded = () => {
