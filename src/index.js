@@ -1,3 +1,12 @@
+class Temperature {
+  constructor(name, tempRange, textColor) {
+    this.name = name;
+    this.tempRange = tempRange;
+    this.textColor = textColor;
+    this.landscape = landscape;
+  }
+}
+
 class Weather {
   constructor(name, sky, landscape, tempRange, textColor, bgColor) {
     this.name = name;
@@ -33,10 +42,13 @@ const changeWeather = (weather) => {
   weather.changeLandscape();
 };
 
+// temperature ranges
+// const
+
 // weathers
 // these could maybe be separated into another file? along with the class definition
-const hot = new Weather(
-  "Hot",
+const verySunny = new Weather(
+  "Very",
   "🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞🌞",
   "🌵🌵🌵🌾🌾🌾🌵💀🌾🌾🌵🌵🌵💀🌵",
   [80, 100000],
