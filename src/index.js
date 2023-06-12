@@ -158,7 +158,8 @@ const registerEvents = () => {
 	});
 
 	cityNameReset.addEventListener('click', () => {
-		cityNameInput.value = headerCityName.textContent = '';
+		cityNameInput.value = '';
+		headerCityName.textContent = 'Orlando';
 	});
 
 	loadControls();
