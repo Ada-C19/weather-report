@@ -153,4 +153,15 @@ document.addEventListener("DOMContentLoaded", function () {
     dropDownList.onmouseleave = closeDropdown;
     })
 
+    // ------------- wave 3 ------------------
+    const cityName = document.getElementById("city-name");
+    const cityInput = document.getElementById("city-input");
+
+    // Realtime Text City info will come from input value of cityInput
+    function updateCityName() {
+        cityName.textContent = cityInput.value;
+    }
+
+    // event listener to listen for input
+    cityInput.addEventListener("input", updateCityName);
     });
