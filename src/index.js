@@ -79,5 +79,17 @@ const cityResetButton = document.getElementById('cityNameReset');
 
 cityResetButton.addEventListener('click', resetCityName);
 
+const skyElement = document.getElementById('sky');
+const skyOptions = document.getElementById('skySelect');
+const selectedSky = skyOptions.options[skyOptions.selectedIndex].textContent
+
+const changeSky = () => {
+    skyElement.textContent = skyOptions.value;
+}
+
+// add event listener for the select sky 
+changeSky();
+skyOptions.addEventListener('change', changeSky);
+
 
 
