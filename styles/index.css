@@ -171,11 +171,11 @@ color: teal;
     }
 
 .cloudy {
-background-color: rgb(211, 211, 211);
+background-color: silver;
 }
 
 .sunny {
-background-color: rgb(221, 255, 255);
+background-color: goldenrod;
 }
 
 .rainy {

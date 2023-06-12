@@ -1,10 +1,10 @@
-//STATES
+
 const state = {
     cityNameInput: null,
     increaseTempControl: null,
     decreaseTempControl: null,
     resetButton: null,
-    skyUpdate: null,
+    skySelect: null,
     gardenContent: null,
     sky: null,
     landscapeElement: null,
@@ -17,7 +17,7 @@ const state = {
 
 const loadControls = () => {
   state.resetButton = document.querySelector("#cityNameReset");
-  state.skyUpdate = document.getElementById('skySelect');
+  state.skySelect = document.getElementById('skySelect');
   state.cityNameInput = document.getElementById('cityNameInput');
   state.decreaseTempControl = document.getElementById('decreaseTempControl');
   state.increaseTempControl = document.getElementById('increaseTempControl');
@@ -34,10 +34,8 @@ const convertKtoF = (temp) => {
   return (temp - 273.15) * (9 / 5) + 32;
 };
 
-//WAVE 4 AXIOS CALLING APIS ////////////////////
 
 const findLatAndLon = () => {
-  //let lat, long;
   return axios
     .get('http://localhost:5000/location', {
       params: {
@@ -76,7 +74,6 @@ const getWeather = (location) => {
     });
   };
   
-  // WAVE 2 HELPER FUNCTION //////////////////////
   const applyColorAndGarden = () => {
     state.tempValue.textContent = state.tempInt;
     
@@ -124,30 +121,28 @@ const getWeather = (location) => {
   }
 
   
-  //WAVE 5 FUNCTION //////////////////////
   const skyView = (event) => {
     let skyColor = event.target.value;
-    console.log(event)
+    
+    state.gardenContent.className = '';
+
     // let skyColor = '';
     if (skyColor === 'Cloudy') {
       state.sky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
-      // skyColor = 'cloudy';
+      state.gardenContent.classList.add('cloudy')
     } else if (skyColor === 'Sunny') {
       state.sky.textContent = '☁️     ☁️   ☁️ ☀️ ☁️  ☁️';
-      // skyColor = 'sunny';
+      state.gardenContent.classList.add('sunny');
     } else if (skyColor === 'Rainy') {
       state.sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
-      // skyColor = 'rainy';
+      state.gardenContent.classList.add('rainy');
     } else if (skyColor === 'Snowy') {
       state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
-      // skyColor = 'snowy';
+      state.gardenContent.classList.add('snowy');
     }
   };
   
-  
-  // WAVE 6 reset city name ////////////////////////
-  
-  //WAVE 6 FUNCTION /////////////////////
+
   
   const resetCity = () => {
     state.cityNameInput.value = '';
@@ -164,24 +159,19 @@ const getWeather = (location) => {
       })
   }
   
-  
-  // EVENT HANDLERS FOR ALL WAVES LIVE HERE ! //////////////
   const registerEventHandlers = () => {
     loadControls();
 
-    // WAVE 2 event is 'click listening to increase decrease Temp handler///////
     state.increaseTempControl.addEventListener('click', increaseTemp);
     
     state.decreaseTempControl.addEventListener('click', decreaseTemp);
     
-    // WAVE 3 event is 'input' listening to updateCity handler //////////// 
     state.cityNameInput.addEventListener('input', updateCity);
     
-    // WAVE 5 event is 'change' listening to skyView handler ///////
-    state.skyUpdate.addEventListener('change', skyView)
+    state.skySelect.addEventListener('change', skyView);
+
+    // state.gardenContent.addEventListener('change', skyView)
     
-    
-    //WAVE 6 event is 'click' listening to 'resetCount' handler /////
     state.resetButton.addEventListener("click", resetCity);
 
     state.currentTempButton.addEventListener("click", handleCurrentTempButtonClicked)
