@@ -12,22 +12,27 @@ const state = {
     tempDisplay: null
 }
 
-const findCityLocation = (cityName) => {
-    axios.get('http://localhost:5000/location', {
+const convertKelvintoFahrenheight = (kelv_degree) => {
+    state.degreeCountLabel.textContent = Math.floor((kelv_degree - 273.15) * 9/5 + 32)
+}
+
+const findCityLocation = async (cityName) => {
+    await axios.get('http://localhost:5000/location', {
         params: {
-<<<<<<< HEAD
             q: cityName
         }
     })
-    .then((resp) => {
+    .then(response => {
         axios.get('http://localhost:5000/weather', {
             params: {
-                lat: resp.data[0].lat,
-                lon: resp.data[0].lon
+                lat: response.data[0].lat,
+                lon: response.data[0].lon
             }
         }).then(response => {
-            console.log('response',response)
-
+            state.temp = response.data.main.temp
+            state.degreeCount = state.temp
+            console.log(state.degreeCount)
+            convertKelvintoFahrenheight(state.degreeCount)
         })
     })
     .catch((error) => {
@@ -35,17 +40,7 @@ const findCityLocation = (cityName) => {
     })
 }
 
-// findCityLocation()
-=======
-            q: 'Atlanta'
-        },
-    })
-    .then((resp) => {
-        console.log(resp.data)
-    )}
-}
-findCityLocationn()
->>>>>>> f5425e6fe1c52a3a91fb8d96be7e76274a11fab3
+findCityLocation()
 // city, name, latitude, longitude, temp (state - global variables)
 
 const refreshUI = () => {
