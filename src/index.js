@@ -7,11 +7,27 @@ function myChangeFunction(input) {
 const selectReset = document.querySelector("#reset");
 selectReset.addEventListener("click", resetCity) //clickReset )
 console.log(selectReset)
+
+//const axios = require('axios');
+// import axios, {isCancel, AxiosError} from 'axios';
 // create function clickReset that return a defualt city in output
 function resetCity () { 
     // alert("you have reset your city!")
     document.querySelector("#search-output").innerHTML ="Atlanta";
     document.querySelector("#search").value = "Atlanta";
+
+
+    axios
+        .get('http://127.0.0.1:5000/location?q=Atlanta')
+        .then((response) => {
+            // Code that executes with a successful response goes here
+            console.log('success!' + JSON.stringify(response));
+        })
+        .catch((error) => {
+            // Code that executes with an unsuccessful response goes here
+            console.log('error!' + JSON.stringify(response));
+        });
+
 }
 // use state methode and addEvenlistener
 //  to call click button
@@ -96,7 +112,22 @@ selectMood.addEventListener("change", (event) => {
         // alert("You selected snowy")
         cloudIcon =  "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
     }
-result.textContent = `You like ${event.target.value}`;
+// result.textContent = `You like ${event.target.value}`;
 document.querySelector("#clouds").innerHTML = cloudIcon
 });
+
+// make get api request with axios
+
+// const axios = require('axios');
+
+// axios
+//   .get('http://127.0.0.1:5000/location?q=Atlanta')
+//   .then((response) => {
+//     // Code that executes with a successful response goes here
+//     console.log('success!');
+//   })
+//   .catch((error) => {
+//     // Code that executes with an unsuccessful response goes here
+//     console.log('error!');
+//   });
 

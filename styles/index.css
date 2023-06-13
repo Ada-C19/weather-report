@@ -1,5 +1,4 @@
 * {
-    /* background-color: rgb(50 1 50 / 0.05) !important; */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -24,11 +23,6 @@
     color: #d9dddc;
     font-size: 3rem;
 }
-
-/* #id {
-    color: aqua;
-    font-size: medium;
-} */
 
 #realtime {
     display: flex;
