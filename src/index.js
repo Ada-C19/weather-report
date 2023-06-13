@@ -113,147 +113,140 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // attempt to add event listener for search button 
     searchButton.addEventListener("click", (event) => {
-        console.log(event.target.value);
-        if (event.keyCode === 13) {
-            alert("I am an alert box!");
-            getResults(searchButton.value);
-    }});
-
-    // const checkIfEnter = () => {
-    //     console.log("hello");
-    //     if (event.keyCode === 13) {
-    //         alert("I am an alert box!");
-    //         getResults(searchButton.value);
-    //     }
-    // }
+        // console.log(cityName);
+        alert("I am an alert box!");
+        findWeather() 
+        // getResults(searchButton.value);
+    });
+    
 
 });
 
 // -------- wave 4: calling api  ---------
-const LOCATIONIQ_KEY = process.env['api_key'];
+// const LOCATIONIQ_KEY = process.env['api_key'];
 
-const findLatitudeAndLongitude = (query) => {
-let latitude, longitude;
-axios.get('https://us1.locationiq.com/v1/search.php',
-{
-    params: {
-    key: LOCATIONIQ_KEY,
-    q: 'Seattle, Washington, USA',
-    format: 'json'
-    }
-})
-.then( (response) => {
-    latitude = response.data[0].lat;
-    longitude = response.data[0].lon;
-    console.log('success in findLatitudeAndLongitude!', latitude, longitude);
-})
-.catch( (error) => {
-    console.log('error in findLatitudeAndLongitude!');
-});
+// const findLatitudeAndLongitude = (query) => {
+// let latitude, longitude;
+// axios.get('https://us1.locationiq.com/v1/search.php',
+// {
+//     params: {
+//     key: LOCATIONIQ_KEY,
+//     q: 'Seattle, Washington, USA',
+//     format: 'json'
+//     }
+// })
+// .then( (response) => {
+//     latitude = response.data[0].lat;
+//     longitude = response.data[0].lon;
+//     console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+// })
+// .catch( (error) => {
+//     console.log('error in findLatitudeAndLongitude!');
+// });
 
-return {
-    seattleLat: latitude,
-    seattleLon: longitude
-}
-}
+// return {
+//     seattleLat: latitude,
+//     seattleLon: longitude
+// }
+// }
 
-const findLocation = (latitude, longitude) => {
-axios.get('https://us1.locationiq.com/v1/reverse.php',
-{
-    params: {
-    key: LOCATIONIQ_KEY,
-    format: 'json',
-    lat: latitude,
-    lon: longitude
-    }
-})
-.then( (response) => {
-    console.log('success in findLocation!', response.data);
-    return response.data;
-})
-.catch( (error) => {
-    console.log('error in findLocation!');
-});
-}
+// const findLocation = (latitude, longitude) => {
+// axios.get('https://us1.locationiq.com/v1/reverse.php',
+// {
+//     params: {
+//     key: LOCATIONIQ_KEY,
+//     format: 'json',
+//     lat: latitude,
+//     lon: longitude
+//     }
+// })
+// .then( (response) => {
+//     console.log('success in findLocation!', response.data);
+//     return response.data;
+// })
+// .catch( (error) => {
+//     console.log('error in findLocation!');
+// });
+// }
 
-const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
+// const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
 
-const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
+// const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
 
-console.log(locations);
+// console.log(locations);
 
 
 
-//     // SKY DROPDOWN ATTEMPT 2
-//     //https://alvarotrigo.com/blog/drop-down-menu-javascript/
-//     // get all dropdown from document
-//     document.querySelectorAll('.dropdown-button').forEach(dropDownFunc);
+// //     // SKY DROPDOWN ATTEMPT 2
+// //     //https://alvarotrigo.com/blog/drop-down-menu-javascript/
+// //     // get all dropdown from document
+// //     document.querySelectorAll('.dropdown-button').forEach(dropDownFunc);
 
-// // drop down open and close
-//     function dropDownFunc(dropDown) {
-//     console.log(dropDown.classList.contains('click-dropdown'));
+// // // drop down open and close
+// //     function dropDownFunc(dropDown) {
+// //     console.log(dropDown.classList.contains('click-dropdown'));
 
-//     if(dropDown.classList.contains('click-dropdown')=== true){
-//         dropDown.addEventListener('click', function (e) {
-//         e.preventDefault();      
+// //     if(dropDown.classList.contains('click-dropdown')=== true){
+// //         dropDown.addEventListener('click', function (e) {
+// //         e.preventDefault();      
 
-//     if (this.nextElementSibling.classList.contains('dropdown-active') === true) {
-//         // Close the clicked dropdown
-//         this.parentElement.classList.remove('dropdown-open');
-//         this.nextElementSibling.classList.remove('dropdown-active');
-//     } else {
-//         // Close the opened dropdown
-//         closeDropdown();
+// //     if (this.nextElementSibling.classList.contains('dropdown-active') === true) {
+// //         // Close the clicked dropdown
+// //         this.parentElement.classList.remove('dropdown-open');
+// //         this.nextElementSibling.classList.remove('dropdown-active');
+// //     } else {
+// //         // Close the opened dropdown
+// //         closeDropdown();
         
-//         // add the open and active class(Opening the DropDown)
-//         this.parentElement.classList.add('dropdown-open');
-//         this.nextElementSibling.classList.add('dropdown-active');
-//     }
-//     });
-//     }
+// //         // add the open and active class(Opening the DropDown)
+// //         this.parentElement.classList.add('dropdown-open');
+// //         this.nextElementSibling.classList.add('dropdown-active');
+// //     }
+// //     });
+// //     }
 
-//     //hand
-//     if(dropDown.classList.contains('hover-dropdown') === true){
-//     dropDown.onmouseover  =  dropDown.onmouseout = dropdownHover;
-//     function dropdownHover(e){
-//         if(e.type == 'mouseover'){
-//         // Close the opened dropdown
-//         closeDropdown();
+// //     //hand
+// //     if(dropDown.classList.contains('hover-dropdown') === true){
+// //     dropDown.onmouseover  =  dropDown.onmouseout = dropdownHover;
+// //     function dropdownHover(e){
+// //         if(e.type == 'mouseover'){
+// //         // Close the opened dropdown
+// //         closeDropdown();
 
-//         // add the open and active class(Opening the DropDown)
-//         this.parentElement.classList.add('dropdown-open');
-//         this.nextElementSibling.classList.add('dropdown-active');
-//         }
-//     }
-//     }
-//     };
+// //         // add the open and active class(Opening the DropDown)
+// //         this.parentElement.classList.add('dropdown-open');
+// //         this.nextElementSibling.classList.add('dropdown-active');
+// //         }
+// //     }
+// //     }
+// //     };
 
-//     //listen to the doc click
-//     window.addEventListener('click', function(e) {
+// //     //listen to the doc click
+// //     window.addEventListener('click', function(e) {
 
-//     //close the menu if click happen outside of menu
-//     if (e.target.closest('.dropdown') === null) {
-//     //close the opend dropdown
-//     closeDropdown();
-//     }
-//     });
+// //     //close the menu if click happen outside of menu
+// //     if (e.target.closest('.dropdown') === null) {
+// //     //close the opend dropdown
+// //     closeDropdown();
+// //     }
+// //     });
 
-//     // Close the opened Dropdowns
-//     function closeDropdown() { 
-//     // console.log('closed');
+// //     // Close the opened Dropdowns
+// //     function closeDropdown() { 
+// //     // console.log('closed');
 
-//     // remove the open and active class from other opened Dropdown (Closing the opened DropDown)
-//     document.querySelectorAll('.dropdown').forEach(function (container) { 
-//         container.classList.remove('dropdown-open');
-//     });
+// //     // remove the open and active class from other opened Dropdown (Closing the opened DropDown)
+// //     document.querySelectorAll('.dropdown').forEach(function (container) { 
+// //         container.classList.remove('dropdown-open');
+// //     });
 
-//     document.querySelectorAll('.dropdown-menu').forEach(function (menu) { 
-//         menu.classList.remove('dropdown-active');
-//     });
-//     }
+// //     document.querySelectorAll('.dropdown-menu').forEach(function (menu) { 
+// //         menu.classList.remove('dropdown-active');
+// //     });
+// //     }
 
-//     // close the dropdown on mouse out from the dropdown list
-//     document.querySelectorAll('.dropdown-menu').forEach(function (dropDownList) { 
-//     // close the dropdown after user leave the list
-//     dropDownList.onmouseleave = closeDropdown;
-//     });
+// //     // close the dropdown on mouse out from the dropdown list
+// //     document.querySelectorAll('.dropdown-menu').forEach(function (dropDownList) { 
+// //     // close the dropdown after user leave the list
+// //     dropDownList.onmouseleave = closeDropdown;
+// //     });
