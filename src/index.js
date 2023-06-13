@@ -10,6 +10,20 @@ const state = {
     sky_options: null
 }
 
+const findCityLocation = () => {
+    axios.get('http://localhost:5000/location', {
+        params: {
+            q: 'Seattle'
+        },
+    })
+    .then((resp) => {
+        console.log(resp.data)
+    })
+}
+
+findCityLocation()
+// city, name, latitude, longitude, temp (state - global variables)
+
 const refreshUI = () => {
     state.degreeCountLabel.textContent = state.degreeCount;
 }
@@ -72,7 +86,8 @@ let changeSky = (event) => {
         state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨'
     }
 }
-
+ // Updatecity name - takes location and updates city 
+    // city and state object 
 const loadControls = () => {
     state.degreeCountLabel = document.getElementById('degrees')
     state.left_arrow = document.querySelector('.fa-chevron-left');
