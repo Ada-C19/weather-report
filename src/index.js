@@ -7,21 +7,34 @@ const state = {
     textBox: null,
     sky:  "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
     degreeCount: 70,
-    sky_options: null
+    sky_options: null,
+    temp: 0,
+    tempDisplay: null
 }
 
-const findCityLocation = () => {
+const findCityLocation = (cityName) => {
     axios.get('http://localhost:5000/location', {
         params: {
-            q: 'Seattle'
-        },
+            q: cityName
+        }
     })
     .then((resp) => {
-        console.log(resp.data)
+        axios.get('http://localhost:5000/weather', {
+            params: {
+                lat: resp.data[0].lat,
+                lon: resp.data[0].lon
+            }
+        }).then(response => {
+            console.log('response',response)
+
+        })
+    })
+    .catch((error) => {
+        console.log(error);
     })
 }
 
-findCityLocation()
+// findCityLocation()
 // city, name, latitude, longitude, temp (state - global variables)
 
 const refreshUI = () => {
@@ -72,6 +85,7 @@ function updateCityName(event) {
     
         const cityElement = document.getElementById('city');
         cityElement.textContent = cityName;
+        findCityLocation(cityName)
     }
   }
 let changeSky = (event) => {
