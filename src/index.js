@@ -88,8 +88,7 @@ const refreshUI = () => {
 };
 
 const loadControls = () => {
-    state.citySearchButton = document.getElementById("search-button");
-    // state.tempValue = document.getElementById("temp-value"); 
+    state.citySearchButton = document.getElementById("search-button"); 
     state.upbutton = document.getElementById("up-button");
     state.downbutton = document.getElementById("down-button");
 };
@@ -144,39 +143,6 @@ onLoad();
 //     }
 // });
 
-
-let citytemp = 72
-
-// Increase button
-
-const upbutton = document.getElementById("up-button");
-
-upbutton.addEventListener(
-    "click", (event) => {
-        // console.log("Yay it works!")
-        citytemp += 1
-        console.log(citytemp)
-
-        document.getElementById("temp-number").innerHTML = citytemp;
-    }
-);
-
-// Decrease button
-const downbutton = document.getElementById("down-button");
-
-downbutton.addEventListener(
-    "click", (event) => {
-        // console.log("Yay this also works!")
-        citytemp -= 1
-        console.log(citytemp)
-        document.getElementById("temp-number").innerHTML = citytemp;
-
-    }
-);
-
-
-
-
 // Sky Condition Weather Icon Garden
 const skyicon = document.getElementById("weather-conditions");
 
@@ -226,33 +192,3 @@ skyicon.addEventListener(
 
     }
 )
-
-
-// let citytemp = 72
-
-// Increase button
-
-// const upbutton = document.getElementById("up-button");
-
-// upbutton.addEventListener(
-//     "click", (event) => {
-//         // console.log("Yay it works!")
-//         citytemp += 1
-//         console.log(citytemp)
-
-//         document.getElementById("temp-number").innerHTML = citytemp;
-//     }
-// );
-
-// // Decrease button
-// const downbutton = document.getElementById("down-button");
-
-// downbutton.addEventListener(
-//     "click", (event) => {
-//         // console.log("Yay this also works!")
-//         citytemp -= 1
-//         console.log(citytemp)
-//         document.getElementById("temp-number").innerHTML = citytemp;
-
-//     }
-// );
