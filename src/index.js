@@ -1,3 +1,15 @@
+const state = {
+    tempCount: 0,
+    searchBox: null,
+    lat: 0,
+    lon: 0,
+    tempDisplay: null
+};
+
+const onLoad = () => {
+    state.searchBox = document.getElementById('search')
+    state.tempDisplay = document.getElementById('count')
+}
 //City name search bar updates city name in header
 function myChangeFunction(input) {
     const output = document.getElementById('search-output');
@@ -7,44 +19,49 @@ function myChangeFunction(input) {
 function kelvinToFahrenheit(kelvin) {
 
 }
-function findLatitudeAndLongitude(input) {
-    let latitude, longitude;
-    axios.get('http://127.0.0.1:5000/location',
+// 
+// const LOCATIONIQ_KEY = process.env['api_key'];
+const findLatitudeAndLongitude = async (input) => {
+        let latitude, longitude;
+            await axios.get('http://127.0.0.1:5000/location',
     {
       params: {
-        key: LOCATION_KEY,
+        // key: LOCATION_KEY,
         q: input,
         format: 'json'
       }
     })
     .then( (response) => {
-      latitude = response.data[0].lat;
-      longitude = response.data[0].lon;
-      console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+      state.lat = response.data[0].lat;
+      state.lon = response.data[0].lon;
+      console.log('success in findLatitudeAndLongitude!', state.lat, state.lon);
   
       // make the next API call here!
-      findWeather(latitude, longitude);
+    //   findWeather(latitude, longitude);
     })
     .catch( (error) => {
       console.log('error in findLatitudeAndLongitude!');
     });
   }
   
-  const findWeather = (latitude, longitude) => {
+  const findWeather = async (latitude, longitude) => {
     axios.get('http://127.0.0.1:5000/weather',
     {
       params: {
-        key: WEATHER_KEY,
+        // key: WEATHER_KEY,
         format: 'json',
         lat: latitude,
         lon: longitude
       }
     })
     .then( (response) => {
-      console.log('success in findLocation!', response.data);
+        console.log('success in findWeather!', response.data);
+        state.tempCount = response.data.main.temp
+        state.tempDisplay.innerText = state.tempCount
+        updateColor()
     })
     .catch( (error) => {
-      console.log('error in findLocation!');
+      console.log('error in findWeather!', error);
     });
   }
 
@@ -61,10 +78,14 @@ console.log(selectRealtime)
 
 
 // function for Realtime Temperature
-function resetRealtime() { 
+async function resetRealtime() { 
     // alert("you have reset your temperature!")
-    state.tempCount = 75
-    updateColor()
+    // state.tempCount = 75
+
+    await findLatitudeAndLongitude(state.searchBox.value)
+    await findWeather(state.lat, state.lon)
+    // console.log(state)
+    
 }
 
 //const axios = require('axios');
@@ -76,29 +97,29 @@ function resetCity () {
     document.querySelector("#search").value = "Atlanta";
 
 
-    axios
-        .get('http://127.0.0.1:5000/location?q=Atlanta')
-        .then((response) => {
-            // Code that executes with a successful response goes here
-            console.log('success!' + JSON.stringify(response));
-        })
-        .catch((error) => {
-            // Code that executes with an unsuccessful response goes here
-            console.log('error!' + JSON.stringify(response));
-        });
+    // axios
+    //     .get('http://127.0.0.1:5000/location?q=Atlanta')
+    //     .then((response) => {
+    //         // Code that executes with a successful response goes here
+    //         console.log('success!' + JSON.stringify(response));
+    //     })
+    //     .catch((error) => {
+    //         // Code that executes with an unsuccessful response goes here
+    //         console.log('error!' + JSON.stringify(response));
+    //     });
 
 }
 // use state methode and addEvenlistener
 //  to call click button
 // anable change of color and garden emoji based on temperature changing
-const state = {
-    tempCount: 0
-};
+let gardenIcon;
+
 function updateColor(tempCount) {
-    if (state.tempCount > 100) {
-        alert("Overheat! Fine safe shelter.")
-    }
-    else if (state.tempCount >= 80) {
+    // if (state.tempCount > 100) {
+    //     // alert("Overheat! Fine safe shelter.")
+    //     console.log('hellooooooo')
+    // }
+    if (state.tempCount >= 80) {
         state.color = "red";
         gardenIcon =  "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂"
     }
@@ -176,6 +197,7 @@ selectMood.addEventListener("change", (event) => {
 document.querySelector("#clouds").innerHTML = cloudIcon
 });
 
+onLoad()
 // make get api request with axios
 
 // const axios = require('axios');
