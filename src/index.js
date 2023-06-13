@@ -1,4 +1,3 @@
-
 const city = document.getElementById('city_name')
 let inputCity = document.getElementById('city_input')
 
@@ -90,3 +89,46 @@ function changeSkyImage() {
             skyImage.src= 'assets/skies/starry_purple_sky.jpeg';
 }
 }
+
+async function getCoordinates(city) {
+    try{
+        const response = await axios.get('http://127.0.0.1:5000/location', {
+            params: {"q": city}
+    });
+
+    latitude = response.data[0].lat;
+    longitude = response.data[0].lon;
+    return {latitude, longitude};
+
+    }catch (error){
+        console.error(error);
+    }
+}
+
+async function getWeather(lat, lon) {
+    try{
+        const response = await axios.get('http://127.0.0.1:5000/weather', {
+            params: {"lat": lat, "lon": lon}
+        });
+
+        const temp = Math.round(1.8 * (response.data.main.temp - 273) + 32)
+
+        return temp;
+
+    }catch (error){
+        console.error(error);
+    }
+}
+
+async function updateWeather() {
+    const city = inputCity.value;
+    const { latitude, longitude } = await getCoordinates(city);
+    const temperature = await getWeather(latitude, longitude);
+    document.getElementById('temp_no').textContent = temperature;
+}
+
+const weather_button = document.getElementById('moon_weather')
+weather_button.addEventListener('click', updateWeather);
+
+
+
