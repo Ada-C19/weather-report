@@ -18,21 +18,9 @@
     color: teal;
 }
 
-#landscapeEmojiDiv {
+#landscape-emoji-div {
     font-size: 24px;
     line-height: 1.5;
     margin-top: 20px;
     white-space: pre-wrap;
-}
-
-.cityDisplay {
-    background-color: red;
-    /* padding; */
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-}
-
-.weatherCity {
-
 }

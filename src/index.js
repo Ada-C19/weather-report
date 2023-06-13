@@ -5,7 +5,7 @@ const state = {
     decreaseTempButton: null,
     tempNumberContainer: null,
     tempNumberClass: '',
-    tempNumber: '',
+    tempNumber: 55,
     skyEmojiContainer: null,
     skyEmoji: '',
     landEmojiContainer: '',
@@ -20,6 +20,9 @@ const state = {
     lat: null,
     lon: null,
 };
+
+
+
 
 const loadControls = () => {
     state.increaseTempButton = document.getElementById('increaseTempButton');
@@ -38,7 +41,6 @@ const loadControls = () => {
     state.cityInput = document.getElementById('cityInput');
     state.realTempButton = document.getElementById('realTempButton');
     state.skyDropdown = document.getElementById('skyDropdown');
-    state.weatherCity = document.getElementById('weatherCity');
 };
 
 const getTempColor = (tempNumber) => {
@@ -92,13 +94,13 @@ const getRealTemp = (locationName) => {
             },
         })
     const dataPromise = promise.then((response) => {
-            console.log("hey", response)
             state.lat = response.data[0]['lat']
             state.lon = response.data[0]['lon']
             getWeather(state.lat,state.lon)
         });
     return dataPromise
 }
+
 
 const getWeather = (lat,lon) => {
     const promise = axios
@@ -110,7 +112,6 @@ const getWeather = (lat,lon) => {
             },
         })
     const dataPromise = promise.then((response) => {
-            console.log(response)
             state.tempNumber = response.data['main']['temp']
         })
     return dataPromise;
@@ -118,30 +119,28 @@ const getWeather = (lat,lon) => {
 
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
-        state.tempNumberContainer.innerText = ++state.temp-number;
-        state.tempNumberContainer.className = getTempColor(state.temp-number-container.innerText);
-        state.landEmojiContainer.innerText = getLandscape(state.temp-number);
+        state.tempNumberContainer.innerText = ++state.tempNumber;
+        state.tempNumberContainer.className = getTempColor(state.tempNumberContainer.innerText);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.decreaseTempButton.addEventListener('click', () => {
-        state.tempNumberContainer.innerText = --state.temp-number;
-        state.tempNumberContainer.className = getTempColor(state.temp-number);
-        state.landEmojiContainer.innerText = getLandscape(state.temp-number);
+        state.tempNumberContainer.innerText = --state.tempNumber;
+        state.tempNumberContainer.className = getTempColor(state.tempNumber);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.cityInput.addEventListener('input', () => {
         state.cityNameContainer.innerText = state.cityInput.value;
-        state.weatherCity.innerText = state.cityInput.value;
     });
     state.realTempButton.addEventListener('click', () => {
-        getRealTemp(state.cityNameContainer.innerText).then (temperature => {
-            console.log(temperature)
-        })
+        getRealTemp(state.cityNameContainer.innerText);
         state.tempNumberContainer.innerText = state.tempNumber;
-        state.tempNumberContainer.className = getTempColor(state.temp-number);
-        state.landEmojiContainer.innerText = getLandscape(state.temp-number);
+        state.tempNumberContainer.className = getTempColor(state.tempNumber);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.skyDropdown.addEventListener('change', () => {
         state.skyEmojiContainer.innerText = getSky(state.skyDropdown.value);
     });
+    
 };
 
 const onLoaded = () => {
