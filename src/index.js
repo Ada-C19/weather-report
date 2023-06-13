@@ -111,6 +111,57 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchButton = document.querySelector("#search-button");
     console.log(searchButton);
 
+    
+    const findLatitudeAndLongitude = async (query) => {
+        let latitude, longitude;
+        await axios.get('http://127.0.0.1:5000/location',
+        {
+            params: {
+                q: cityInput,
+                format: 'json'
+            }
+        })
+        .then( (response) => {
+            latitude = response.data[0].lat;
+            longitude = response.data[0].lon;
+            console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+        })
+        .catch( (error) => {
+            console.log('error in findLatitudeAndLongitude!');
+        });
+        
+        return {
+            cityLat: latitude,
+            cityLon: longitude
+        }
+    }
+    
+    const findTemp = async (latitude, longitude) => {
+        await axios.get('http://127.0.0.1:5000/weather',
+        {
+            params: {
+                format: 'json',
+                lat: latitude,
+                lon: longitude
+            }
+        })
+        .then( (response) => {
+            console.log('success in findLocation!', response.data);
+            return response.data;
+        })
+        .catch( (error) => {
+            console.log('error in findLocation!');
+        });
+    }
+    
+    const findWeather = () => {
+        const cityCoordinates = findLatitudeAndLongitude(cityInput);
+        
+        const temp = findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
+        
+        console.log(temp);
+    }
+
     // attempt to add event listener for search button 
     searchButton.addEventListener("click", (event) => {
         // console.log(cityName);
@@ -118,58 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
         findWeather();
         // getResults(searchButton.value);
     });
-
-    const LOCATIONIQ_KEY = process.env['api_key'];
-    
-    const findLatitudeAndLongitude = async (query) => {
-    let latitude, longitude;
-    await axios.get('https://us1.locationiq.com/v1/search.php',
-    {
-        params: {
-        key: LOCATIONIQ_KEY,
-        q: 'Seattle, Washington, USA',
-        format: 'json'
-        }
-    })
-    .then( (response) => {
-        latitude = response.data[0].lat;
-        longitude = response.data[0].lon;
-        console.log('success in findLatitudeAndLongitude!', latitude, longitude);
-    })
-    .catch( (error) => {
-        console.log('error in findLatitudeAndLongitude!');
-    });
-    
-    return {
-        seattleLat: latitude,
-        seattleLon: longitude
-    }
-    }
-    
-    const findLocation = (latitude, longitude) => {
-    axios.get('https://us1.locationiq.com/v1/reverse.php',
-    {
-        params: {
-        key: LOCATIONIQ_KEY,
-        format: 'json',
-        lat: latitude,
-        lon: longitude
-        }
-    })
-    .then( (response) => {
-        console.log('success in findLocation!', response.data);
-        return response.data;
-    })
-    .catch( (error) => {
-        console.log('error in findLocation!');
-    });
-    }
-    
-    const seattleCoordinates = findLatitudeAndLongitude('Seattle, Washington, USA');
-    
-    const locations = findLocation(seattleCoordinates.seattleLat, seattleCoordinates.seattleLon);
-    
-    console.log(locations);
 
 });
 
