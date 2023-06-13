@@ -11,6 +11,8 @@ const state = {
     landEmojiContainer: '',
     landEmoji: '',
     cityNameContainer: null,
+    weatherCityName: '',
+    weatherCityContainer: null,
     cityName: '',
     cityInput: '',
     realTempButton: null,    
@@ -34,6 +36,8 @@ const loadControls = () => {
     state.landEmoji = document.getElementById('landEmojiContainer').innerText;
     state.cityNameContainer = document.getElementById('cityNameContainer');
     state.cityName = document.getElementById('cityNameContainer').innerText;
+    state.weatherCityContainer = document.getElementById('weatherContainer');
+    state.weatherCityName = document.getElementById('weatherCityContainer').innerText;
     state.cityInput = document.getElementById('cityInput');
     state.realTempButton = document.getElementById('realTempButton');
     state.skyDropdown = document.getElementById('skyDropdown');
@@ -132,11 +136,14 @@ const registerEventHandlers = () => {
         state.tempNumberContainer.innerText = state.tempNumber;
         state.tempNumberContainer.className = getTempColor(state.tempNumber);
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
+        console.log(state.cityNameContainer.innerText);
+        state.weatherCity = state.cityInput.value;
+        console.log(weatherCity)
     });
     state.skyDropdown.addEventListener('change', () => {
         state.skyEmojiContainer.innerText = getSky(state.skyDropdown.value);
     });
-    
+
 };
 
 const onLoaded = () => {
