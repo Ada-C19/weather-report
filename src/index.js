@@ -62,7 +62,7 @@ console.log(selectRealtime)
 // function for Realtime Temperature
 function resetRealtime() { 
     // alert("you have reset your temperature!")
-    document.querySelector("#count").innerHTML = "75";
+    state.tempCount = 75
     updateColor()
 }
 
@@ -121,6 +121,7 @@ function updateColor() {
     console.log("Updated color " + state.color)
     document.querySelector("#flowers").innerHTML = gardenIcon
     console.log("Updated garden " + gardenIcon)
+    
 }
 
 
