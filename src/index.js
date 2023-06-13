@@ -28,18 +28,12 @@ const decrementTemp = function() {
     
 };
 
-const registerEventHandlers = () => {
-    const upArrow = document.querySelector("#up_arrow");
-    upArrow.addEventListener('click', incrementTemp);
+const getRealTimeTemp = function (){
+    findLatitudeAndLongitude()
+}
 
-    const DownArrow = document.querySelector("#down_arrow");
-    DownArrow.addEventListener('click', decrementTemp);
-    
-    const cityInput = document.getElementById("inputCity")
-    cityInput.addEventListener('input', displayCity)
-};
 
-document.addEventListener("DOMContentLoaded", registerEventHandlers);
+
 
 PATH = "http://127.0.0.1:5000/location"
 const findLatitudeAndLongitude = () => {
@@ -54,15 +48,17 @@ const findLatitudeAndLongitude = () => {
             state.latitude = response.data[0].lat;
             state.longitude = response.data[0].lon;
             console.log('success', state.city, state.latitude, state.longitude);
-                })
+            findWeather();   
+         })
+    
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
             throw error;
         })
     }
 
-findLatitudeAndLongitude()
-console.log(state.latitude, state.longitude)
+// findLatitudeAndLongitude()
+// console.log(state.latitude, state.longitude)
 
 PATH = "http://127.0.0.1:5000/weather"
 const findWeather = () => {
@@ -75,8 +71,12 @@ const findWeather = () => {
             }
         })
         .then((response) => {
-            state.temp = response.data.main.temp
+            let tempK = response.data.main.temp
+            state.temp = Math.round(((tempK-273.15)*1.8) + 32)
             console.log(response.data.main.temp)
+            const tempNumContainer = document.querySelector("#currentTemp")
+
+            tempNumContainer.textContent = `${state.temp}°`;
             })
         .catch((error) => {
             console.log('error in findWeather for', state.city);
@@ -84,4 +84,17 @@ const findWeather = () => {
         })
     }
 
-findWeather()
+const registerEventHandlers = () => {
+    const upArrow = document.querySelector("#up_arrow");
+    upArrow.addEventListener('click', incrementTemp);
+
+    const DownArrow = document.querySelector("#down_arrow");
+    DownArrow.addEventListener('click', decrementTemp);
+    
+    const cityInput = document.getElementById("inputCity")
+    cityInput.addEventListener('input', displayCity)
+
+    const calculateTemp = document.querySelector("#getTemp");
+    calculateTemp.addEventListener('click', findLatitudeAndLongitude)
+};
+document.addEventListener("DOMContentLoaded", registerEventHandlers);
