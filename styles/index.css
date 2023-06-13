@@ -6,9 +6,9 @@ body {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    margin: 0;
+    margin: 20px;
     padding: 0;
-    background-color: lavender;
+    background-color:aliceblue;
     box-sizing: border-box;
 }
 
@@ -18,7 +18,7 @@ header {
     text-align: center;
     padding: 20px;
     box-sizing: border-box;
-    background-color: lavender;
+    background-color: aliceblue;
 }
 
 main {
@@ -27,11 +27,11 @@ main {
     row-gap: 15px;
     column-gap: 0px;
     width: 90vw;
-    height: 80vh;
+    height: 100%;
     padding: 20px;
-    border: none;
+    border: 30px;
     box-sizing: border-box;
-    background-color: lavender;
+    background-color: aliceblue;
 }
 
 #page-title{
@@ -40,7 +40,7 @@ main {
 
 .grid-item {
     width: 40vw; 
-    height: 35vw;
+    height: 40vw;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -63,7 +63,7 @@ main {
 
 #city-space{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     width: 100%;
@@ -76,6 +76,17 @@ main {
     font-size: 70px;
     margin: none;
     border: none;
+}
+
+#reset-button{
+    width: 100px;
+    height: 30px;
+}
+
+#city_input{
+    width: 400px;
+    height: 30px;
+
 }
 
 
@@ -141,7 +152,7 @@ button{
 }
 .scorching{
     color: darkred;
-    margin: 255px;
+    margin: 25px;
 }
 
 #degrees{
@@ -170,6 +181,11 @@ button{
     overflow: hidden;
 }
 
+#fashion_landscape{
+    height: 90%;
+    width: auto;
+}
+
 
 
 /* grid-space-four */
@@ -178,6 +194,10 @@ button{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+#pinterest-sky{
+    width: 90%;
+    height: 90%;
 }
 
 .sky{

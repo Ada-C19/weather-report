@@ -6,8 +6,9 @@ function changeCity(event) {
         city.textContent = inputCity.value;
     }
 }
-
 inputCity.addEventListener('keydown', changeCity)
+inputCity.addEventListener('keydown', updateWeather)
+
 
 
 const increaseTempButton = document.getElementById('increase_temp')
@@ -137,8 +138,20 @@ async function updateWeather() {
 
 }
 
+function resetCity(){
+    const cityName = document.getElementById('city_name')
+    cityName.textContent = 'Seattle';
+    inputCity.value = 'Seattle';
+    updateWeather()
+
+}
+
 const weather_button = document.getElementById('weather-button')
 weather_button.addEventListener('click', updateWeather);
+
+const reset_button = document.getElementById('reset-button')
+reset_button.addEventListener('click', resetCity)
+
 
 
 
