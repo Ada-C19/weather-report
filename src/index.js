@@ -5,6 +5,8 @@
 state = {
     temp: 50,
     city: "Atlanta",
+    latitude: 0,
+    longitude: 0
 };
 
 const displayCity = function(){
@@ -39,10 +41,9 @@ const registerEventHandlers = () => {
 
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
 
-PATH = "http://127.0.0.1:5000/"
-
+PATH = "http://127.0.0.1:5000/location"
 const findLatitudeAndLongitude = () => {
-    let latitude, longitude;
+    
     axios.get(PATH,
         {
             params: {
@@ -50,24 +51,37 @@ const findLatitudeAndLongitude = () => {
             }
         })
         .then((response) => {
-            latitude = response.data[0].lat;
-            longitude = response.data[0].lon;
-            console.log('success', state.city, latitude, longitude);
-            return {latitude, longitude};
-        })
-        // .then((response) => {
-
-        // })
+            state.latitude = response.data[0].lat;
+            state.longitude = response.data[0].lon;
+            console.log('success', state.city, state.latitude, state.longitude);
+                })
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
             throw error;
         })
     }
 
-//    findLatitudeAndLongitude("Atlanta")
-//     .then((coordinates) => {
-//         console.log(coordinates);
-//     })
-//     .catch((error) => {
-//         console.log(error);
-//     });
+findLatitudeAndLongitude()
+console.log(state.latitude, state.longitude)
+
+PATH = "http://127.0.0.1:5000/weather"
+const findWeather = () => {
+    
+    axios.get(PATH,
+        {
+            params: {
+                "lat": state.latitude,
+                "lon": state.longitude
+            }
+        })
+        .then((response) => {
+            state.temp = response.data.main.temp
+            console.log(response.data.main.temp)
+            })
+        .catch((error) => {
+            console.log('error in findWeather for', state.city);
+            throw error;
+        })
+    }
+
+findWeather()
