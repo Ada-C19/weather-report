@@ -56,10 +56,27 @@ button {
 
 #city-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: left;
+    justify-content: left;
     font-size: 24px;
+    /* position: fixed; */
     margin-top: 20px;
+    /* top: 0;
+    left: 0; */
+    /* width: 100%; */
+    padding: 40px;
+}
+
+#city-container {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    font-size: 24px;
+    /* position: fixed; */
+    margin-top: 20px;
+    /* top: 0;
+    left: 0; */
+    /* width: 100%; */
     padding: 40px;
 }
 
