@@ -4,6 +4,7 @@
 
 const state = {
     citySearchButton: null,
+    resetButton: null,
     tempValue: 0,
     lat: null,
     lon: null,
@@ -63,6 +64,10 @@ const handleSearchButtonClicked = () => {
     getLocation();
 };
 
+const handleResetBtnClicked = () => {
+    location.reload();
+}
+
 const handleUpBtnClicked = () => {
     state.tempValue += 1;
     console.log(state.tempValue);
@@ -79,6 +84,7 @@ const handleDownBtnClicked = () => {
 
 const registerEvents = () => {
     state.citySearchButton.addEventListener("click", handleSearchButtonClicked);
+    state.resetButton.addEventListener("click", handleResetBtnClicked);
     state.downbutton.addEventListener("click", handleDownBtnClicked);
     state.upbutton.addEventListener("click", handleUpBtnClicked);
 };
@@ -89,6 +95,7 @@ const refreshUI = () => {
 
 const loadControls = () => {
     state.citySearchButton = document.getElementById("search-button"); 
+    state.resetButton = document.getElementById("reset-button");
     state.upbutton = document.getElementById("up-button");
     state.downbutton = document.getElementById("down-button");
 };
