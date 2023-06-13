@@ -3,10 +3,68 @@ function myChangeFunction(input) {
     const output = document.getElementById('search-output');
     output.value = input.value.toUpperCase();
 }
+
+// function findLatitudeAndLongitude(input) {
+//     let latitude, longitude;
+//     axios.get('https://us1.locationiq.com/v1/search.php',
+//     {
+//       params: {
+//         key: LOCATION_KEY,
+//         q: 'Seattle, Washington, USA',
+//         format: 'json'
+//       }
+//     })
+//     .then( (response) => {
+//       latitude = response.data[0].lat;
+//       longitude = response.data[0].lon;
+//       console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+  
+//       // make the next API call here!
+//       findLocation(latitude, longitude);
+//     })
+//     .catch( (error) => {
+//       console.log('error in findLatitudeAndLongitude!');
+//     });
+//   }
+  
+//   const findLocation = (latitude, longitude) => {
+//     axios.get('https://us1.locationiq.com/v1/reverse.php',
+//     {
+//       params: {
+//         key: LOCATIONIQ_KEY,
+//         format: 'json',
+//         lat: latitude,
+//         lon: longitude
+//       }
+//     })
+//     .then( (response) => {
+//       console.log('success in findLocation!', response.data);
+//     })
+//     .catch( (error) => {
+//       console.log('error in findLocation!');
+//     });
+//   }
+  
+//   findLatitudeAndLongitude('Seattle, Washington, USA');
+// }
+    
 // select dom elemnt from html and addEventListerner
 const selectReset = document.querySelector("#reset");
 selectReset.addEventListener("click", resetCity) //clickReset )
 console.log(selectReset)
+
+// get realtime temperature event handling
+const selectRealtime = document.querySelector("#realtime");
+selectRealtime.addEventListener("click", resetRealtime)
+console.log(selectRealtime)
+
+
+// function for Realtime Temperature
+function resetRealtime() { 
+    // alert("you have reset your temperature!")
+    document.querySelector("#count").innerHTML = "75";
+    updateColor()
+}
 
 //const axios = require('axios');
 // import axios, {isCancel, AxiosError} from 'axios';
