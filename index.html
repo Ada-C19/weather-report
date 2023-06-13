@@ -13,13 +13,16 @@
     <section class="container" id="mainAppContainer">
         <section class="child" id="weatherReport">
             <h2 id="weatherHeader">Weather Report</h2>
-            <h3 id="weatherCity">For the lovely city of **city goes here**</h3>
+            <div class="cityDisplay">
+                <h3>For the lovely city of...</h3>
+                <h3 id="weatherCity"></h3>
+            </div>
         </section>
         <section class="child" id="temp">
             <h2 id="tempHeader">Temperature</h2>
             <section id="tempChangesSection">
                 <div id="tempNumberLabel">
-                    <h2 id="tempNumberContainer" class="greenTemp">55</h2>
+                    <h2 id="tempNumberContainer" class="greenTemp"></h2>
                 </div>
                 <div>
                     <button id="increaseTempButton">Temp Up</button>
@@ -57,7 +60,7 @@
             </div>
             <div id="landscapeDisplayContainer">
                 <div id="skyEmojiContainer">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
-                <div id="landEmojiContainer">🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃</div>
+                <div id="landEmojiContainer">🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲</div>
             </div>
         </section>
     </section>
