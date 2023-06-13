@@ -1,30 +1,24 @@
-// actions for search/reset button for city input
 const state = {
     lat: 33.7488,
     lon: 84.3877
     };
-
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     // ------------- wave 2: increase and decrease temp ------------------
     // increase temperature 
     const increaseTemp = document.querySelector("#increase-temp");
     const decreaseTemp = document.querySelector("#decrease-temp");
     const displayTemp = document.querySelector("#display-temp");
     let temperature = 65;
-
     // landscape
     const landscape = document.querySelector("#landscape");
     let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
-
     const updateTemp = () =>  {
         
         displayTemp.textContent = temperature;
         landscape.textContent = lands;
-
         updateTempColor();
         updateLandscape();
     }
-
     const updateTempColor = () => {
         if (temperature >= 80) {
         displayTemp.style.color = "red";
@@ -38,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
         displayTemp.style.color = "teal";
         }
     }
-
     const updateLandscape = () => {
         if (temperature >= 80) {
         lands = "🌵   🐍 🦂 🌵🌵  🐍 🏜 🦂";
@@ -52,23 +45,17 @@ document.addEventListener("DOMContentLoaded", function () {
         lands = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
         }
     }
-
     const increaseTemperature = () => {
         temperature++;
         updateTemp();
     }
-
     const decreaseTemperature = () => {
         temperature--;
         updateTemp();
     }  
-
     increaseTemp.addEventListener("click", increaseTemperature);
     decreaseTemp.addEventListener("click", decreaseTemperature);
-
     updateTemp();
-
-
     
     // ------------- wave 3 naming the city ------------------
     const cityName = document.getElementById("city-name");
@@ -106,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const resetButton = document.querySelector("#reset-button"); 
     const defaultCity = "Seattle"
     cityName.textContent = defaultCity
-
     resetButton.addEventListener("click", function () {
         cityInput.value = defaultCity; 
         cityName.textContent = defaultCity;
@@ -116,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchButton = document.querySelector("#search-button");
     console.log(searchButton);
 
-    
     const findLatitudeAndLongitude = async () => {
         // let latitude, longitude;
         await axios.get('http://127.0.0.1:5000/location',
@@ -134,70 +119,61 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch( (error) => {
             console.log('error in findLatitudeAndLongitude!');
         });
-        
+
         return {
             cityLat: state.lat,
             cityLon: state.lon
         }
     }
-    
+
     const findTemp = async (latitude, longitude) => {
-        try {
-            const response = await axios.get('http://127.0.0.1:5000/weather',
-            {
-                params: {
-                    format: 'json',
-                    lat: latitude,
-                    lon: longitude
-                }
-            })
+        await axios.get('http://127.0.0.1:5000/weather',
+        {
+            params: {
+                format: 'json',
+                lat: latitude,
+                lon: longitude
+            }
+        })
+        .then( (response) => {
             console.log('success in findLocation!', response.data);
             temperature = response.data.main.temp;
         })
         .catch( (error) => {
             console.log('error in findLocation!');
-        };
+        });
     }
 
     const findWeather = async () => {
         const cityCoordinates = await findLatitudeAndLongitude();
-        
         const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
-        const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
-        
+
         console.log(temp);
     }
 
     // attempt to add event listener for search button 
     searchButton.addEventListener("click", async (event) => {
         // console.log(cityName);
-        // alert("I am an alert box!");
+         // alert("I am an alert box!");
 
         // const {lat, lon} = await findLatitudeAndLongitude(cityInput.value)
-            await findWeather();
-            updateTemp()
-        // getResults(searchButton.value);
-    });
-
+        await findWeather();
+        updateTemp()
+    // getResults(searchButton.value);
 });
 
+});
 // -------- wave 4: calling api  ---------
-
-
-
 // //     // SKY DROPDOWN ATTEMPT 2
 // //     //https://alvarotrigo.com/blog/drop-down-menu-javascript/
 // //     // get all dropdown from document
 // //     document.querySelectorAll('.dropdown-button').forEach(dropDownFunc);
-
 // // // drop down open and close
 // //     function dropDownFunc(dropDown) {
 // //     console.log(dropDown.classList.contains('click-dropdown'));
-
 // //     if(dropDown.classList.contains('click-dropdown')=== true){
 // //         dropDown.addEventListener('click', function (e) {
 // //         e.preventDefault();      
-
 // //     if (this.nextElementSibling.classList.contains('dropdown-active') === true) {
 // //         // Close the clicked dropdown
 // //         this.parentElement.classList.remove('dropdown-open');
@@ -205,14 +181,13 @@ document.addEventListener("DOMContentLoaded", function () {
 // //     } else {
 // //         // Close the opened dropdown
 // //         closeDropdown();
-        
+    
 // //         // add the open and active class(Opening the DropDown)
 // //         this.parentElement.classList.add('dropdown-open');
 // //         this.nextElementSibling.classList.add('dropdown-active');
 // //     }
 // //     });
 // //     }
-
 // //     //hand
 // //     if(dropDown.classList.contains('hover-dropdown') === true){
 // //     dropDown.onmouseover  =  dropDown.onmouseout = dropdownHover;
@@ -220,7 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
 // //         if(e.type == 'mouseover'){
 // //         // Close the opened dropdown
 // //         closeDropdown();
-
 // //         // add the open and active class(Opening the DropDown)
 // //         this.parentElement.classList.add('dropdown-open');
 // //         this.nextElementSibling.classList.add('dropdown-active');
@@ -228,31 +202,25 @@ document.addEventListener("DOMContentLoaded", function () {
 // //     }
 // //     }
 // //     };
-
 // //     //listen to the doc click
 // //     window.addEventListener('click', function(e) {
-
 // //     //close the menu if click happen outside of menu
 // //     if (e.target.closest('.dropdown') === null) {
 // //     //close the opend dropdown
 // //     closeDropdown();
 // //     }
 // //     });
-
 // //     // Close the opened Dropdowns
 // //     function closeDropdown() { 
 // //     // console.log('closed');
-
 // //     // remove the open and active class from other opened Dropdown (Closing the opened DropDown)
 // //     document.querySelectorAll('.dropdown').forEach(function (container) { 
 // //         container.classList.remove('dropdown-open');
 // //     });
-
 // //     document.querySelectorAll('.dropdown-menu').forEach(function (menu) { 
 // //         menu.classList.remove('dropdown-active');
 // //     });
 // //     }
-
 // //     // close the dropdown on mouse out from the dropdown list
 // //     document.querySelectorAll('.dropdown-menu').forEach(function (dropDownList) { 
 // //     // close the dropdown after user leave the list
