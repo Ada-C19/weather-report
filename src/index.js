@@ -81,7 +81,12 @@ const getRealTimeTemp = function (){
     findLatitudeAndLongitude()
 }
 
-
+const resetCityName = function () {
+    state.city = "Atlanta"
+    const resetNowContainer = document.querySelector("#city")
+    console.log(resetNowContainer)
+    resetNowContainer.textContent = `For the lovely city of ${state.city}`
+}
 
 
 
@@ -98,11 +103,13 @@ const registerEventHandlers = () => {
     const DownArrow = document.querySelector("#down_arrow");
     DownArrow.addEventListener('click', decrementTemp);
     
-    displayCity()
     const cityInput = document.getElementById("inputCity")
     cityInput.addEventListener('input', displayCity)
 
     const calculateTemp = document.querySelector("#getTemp");
     calculateTemp.addEventListener('click', findLatitudeAndLongitude)
+
+    const resetNowButton = document.querySelector("#reset");
+    resetNowButton.addEventListener('click', resetCityName)
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
