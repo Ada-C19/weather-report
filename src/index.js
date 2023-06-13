@@ -3,7 +3,9 @@ const state = {
     right_arrow: null,
     degreeCountLabel: null,
     landscape: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-    degreeCount: 70
+    sky:  "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",
+    degreeCount: 70,
+    sky_options: null
 }
 
 const refreshUI = () => {
@@ -46,17 +48,32 @@ let increaseDegree = (event) => {
     refreshUI();
 }
 
+let changeSky = (event) => {
+    console.log(event.target.value);
+    if (event.target.value == 'sunny') {
+        state.sky.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️'
+    } else if (event.target.value == 'cloudy') {
+        state.sky.textContent = '☁️☁️ ☁️ ☁️ ☁️ 🌤 ☁️ ☁️☁️'
+    } else if ( event.target.value == 'rainy') {
+        state.sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧'
+    } else {
+        state.sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨'
+    }
+}
 
 const loadControls = () => {
     state.degreeCountLabel = document.getElementById('degrees')
     state.left_arrow = document.querySelector('.fa-chevron-left');
     state.right_arrow = document.querySelector('.fa-chevron-right');
-    state.landscape = document.getElementById('landscape')
+    state.landscape = document.getElementById('landscape');
+    state.sky_options = document.querySelector('.select-sky');
+    state.sky = document.getElementById('sky');
 }
 
 const registerEvents = () => {
     state.left_arrow.addEventListener('click', decreaseDegree);
     state.right_arrow.addEventListener('click', increaseDegree);
+    state.sky_options.addEventListener('change', changeSky);
 }
 
 const onLoaded = () => {

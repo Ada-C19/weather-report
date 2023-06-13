@@ -130,19 +130,18 @@ select > option:hover {
     background-color: #005922;
 }
 
-.row.weather-garden {
-    /* display: flex;
-    flex-flow: column nowrap; */
-    background-color: pink;
-}
 
-.row.weather-garden #landscape {
+.row.weather-garden #landscape, 
+.row.weather-garden #sky {
     width: 100%;
     text-align: center;
     letter-spacing: 20px;
     font-size: 3rem;
 }
 
+.row.weather-garden #sky {
+    height: 50%;
+}
 
 .red {
 color: red;
