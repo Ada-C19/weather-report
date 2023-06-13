@@ -32,21 +32,26 @@ function updateTemperatureDisplay() {
         temperatureElement.style.color = 'red';
         landscapeImg.src = 'styles/sunny1.jpeg';
         landscapeImg.alt = 'Sunny';
+        emojiContainer.textContent = '☀️☀️🌤️👙👙🕶️🧴🧴☀️☀️🌞🌞🌻🌻😎🩱🩱🩳☀️☀️😎';
     } else if (temperature >= 70 && temperature <= 79) {
         temperatureElement.style.color = 'grey';
         landscapeImg.src = 'styles/cloudy.jpeg';
         landscapeImg.alt = 'Cloudy';
+        emojiContainer.textContent = '☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☹️☹️☹️☹️⛆⛆⛆⛆⛆☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️';
     } else if (temperature >= 60 && temperature <= 69) {
         temperatureElement.style.color = 'indigo';
         landscapeImg.src = 'styles/rainy.jpeg';
         landscapeImg.alt = 'Rainy';
+        emojiContainer.textContent = '☔️🌧️⛈️⛈️🌦️☔️☔️☔︎⛆⛈🌧️⛈️⛈️💧💧☔️☔️💧💧🌧️🌧️';
     } else if (temperature >= 50 && temperature <= 59) {
         temperatureElement.style.color = 'orange';
         landscapeImg.src = 'styles/autumn.jpeg';
         landscapeImg.alt = 'Snowy';
+        emojiContainer.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️';
     } else {
         temperatureElement.style.color = 'teal';
         landscapeImg.src = 'styles/snowy.jpeg';
         landscapeImg.alt = 'Autumn';
+        emojiContainer.textContent = '🍂🍂🍁🍁🍃🎃🎃🤧🤧☁️☁️🧦🧦🧣🧣🧥🧥🍁🍁';
     }
 }
