@@ -18,14 +18,9 @@ const loadControls = () => {
     // we will need to access
     state.upButton = document.getElementById("up")
     state.downButton = document.getElementById("down")
-    //state.temperature = parseInt(document.getElementById("temperature-now").innerText)
     state.headerCity = document.getElementById("header-city")
-
-
     state.temperature = accessLocation();
     state.tempDisplay = document.getElementById("temperature-now");
-    //state.tempDisplay.innerText= state.temperature;
-
     state.city = document.getElementById("city")
     state.weatherGarden = document.getElementById("weather-garden") 
     state.skyDropDown = document.getElementById("sky-drop-down")
@@ -50,12 +45,11 @@ const registerEvents = () => {
         console.log(state.skyDropDown.value)
     });
     state.defaultCity.addEventListener("click", (e) =>{
-        defaultTemp();
+        state.headerCity.textContent = "Atlanta"
+        accessLocation();
+        changeTemp();
     })
     state.realTimeTemp.addEventListener("click", (e) =>{
-        if (state.city.value === "Atlanta"){
-            defaultTemp();
-        }
         accessLocation();
         changeTemp();
     })
@@ -91,6 +85,7 @@ const accessLocation = () => {
     let lon = resp.data[0]["lon"]
     accessWeather(lat, lon);
     })
+    .catch(error => console.log(error))
 };
 
 const accessWeather = (lat, lon) => {
@@ -102,42 +97,40 @@ const accessWeather = (lat, lon) => {
             changeTemp();
             console.log(state.temperature)
         })
+        .catch(error => console.log(error))
 };
 const kelvinToFarenheit = (temp) =>{
     return Math.round((temp-273.15)*(9/5)+32);
 }
 const changeTemp = () => {
     if (state.temperature >= 80) {
-        state.tempDisplay.style.color = "red";
+        state.tempDisplay.style.color = "rgb(252, 115 , 115)";
         state.weatherGarden.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
+        document.body.style.backgroundColor = "rgb(255, 194 , 185)"
     } else if (state.temperature >= 70) {
-        state.tempDisplay.style.color = "orange";
+        state.tempDisplay.style.color = "rgb(229, 114, 0)";
         state.weatherGarden.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
+        document.body.style.backgroundColor = "rgb(252, 179 , 137)"
     } else if (state.temperature >= 60) {
-        state.tempDisplay.style.color = "yellow";
+        state.tempDisplay.style.color = "rgb(255, 217, 0)";
         state.weatherGarden.textContent = 	"🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
+        document.body.style.backgroundColor = "rgb(255, 253, 179)"
     } else if (state.temperature >= 50) {
         state.tempDisplay.style.color = "green";
         state.weatherGarden.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        document.body.style.backgroundColor = "rgb(204, 250, 192)"
     } else {
         state.tempDisplay.style.color = "teal";
         state.weatherGarden.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
+        document.body.style.backgroundColor = "rgb(192, 246, 250)"
     }
 };
-
-const defaultTemp = () => {
-    state.headerCity.textContent = "Atlanta"
-    state.city.value = "Atlanta"
-    accessLocation();
-    changeTemp();
-}
 
 const onLoaded = () => {
     // steps to carry out when the page is loaded
     loadControls();
     registerEvents();
     changeTemp();
-    defaultTemp();
 };
 
 onLoaded();

@@ -1,75 +1,117 @@
-/* 
-* {
-    background-color: lightgrey;
-    /* outline: 1px solid black !important; */
-    /* background-color: #042d8d0d !important ; */
-
-/*
-body{*/
-    /*display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    grid-auto-rows: minmax(100px, auto);*/
-   /* width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template: auto / auto auto;
-}*/
-
-
-/* .header { */
-   /* border-color: darkgreen;
-    border-style: solid;
-    grid-column: 1 / 2;
-    grid-row: 3; */
-    /* grid-column: 2; */
-
-    /*display: grid;
-    justify-content: center;*/
-
-
-/* #temperature{ */
-    /*grid-column: 1;
-    grid-row: 2 / 5;*/
-    /* grid-row: auto / span 2; */
-
-
-/*
-#garden {
-    display: grid;
-    justify-content: center;
-    grid-row: 1 / span 3;
-    background-color: aqua;
-}
-
-#weather-garden {
-    display: grid;
-    justify-content: center;
-}
-
-#sky {
-    display: grid;
-    justify-content: center;
-}*/
-
-/* #temperature-now {
-    color: red;
-/* } */ 
 
 body{
     display: grid;
-    grid-template: 25% auto/ 50% 50%;
+    height: 100vh;
+    width: 100vw;
+    grid-template: 12.5% 12.5% 9.375% 9.375% 9.375% 9.375% 9.375% 9.375% 9.375% 9.375% / 20% 20% 20% 20% 20%;
+    /* border-radius: 100px; */
+    border-style: solid;
+    padding: 10px;
+    border: 10px;
+    border-width: 10px;
+    border-color: black;
+}
 
+#defaultCity {
+    grid-row-start: 9;
+    grid-row-end: 10;
+    color: black;
+    background-color: lightpink;
 }
-/*.header{
-    display: grid;
-    grid-template-columns: 1/span 2;
-}*/
-#header_id1{
-    grid-template-columns: 1 / 2;
-    grid-template-rows: 1;
+
+#cityinput {
+    grid-row-start: 8;
+    grid-row-end: 9;
 }
-#header_id2{
-    grid-template-columns: 1 / 2;
-    grid-template-rows: 2;
+
+#real-time-temp {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    color: black;
+    background-color: lightpink;
+}
+
+#temp {
+    grid-row-start: 6;
+    grid-row-end: 7;
+    font-size: xx-large;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#up {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    color: black;
+    background-color: rgb(233, 192, 250);
+}
+
+#down {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 9;
+    grid-row-end: 10;
+    color: black;
+    background-color: rgb(233, 192, 250);
+}
+
+#temperature-now {
+    text-align: center;
+    font-size: 400%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+}
+
+#sky {
+    grid-row-start: 6;
+    grid-row-end: 7;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#sky-drop-down {
+    grid-row-start: 5;
+    grid-row-end: 6;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    background-color: lightblue;
+}
+
+#weather-garden {
+    grid-row-start: 9;
+    grid-row-end: 10;
+    grid-column-start: 4;
+    grid-column-end: 5;
+    font-size: xx-large;
+    text-align: center;
+}
+
+#header_id2 {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    font-size: xx-large;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#header_id1 {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 2;
+    grid-column-end: 5;
+    font-size: xx-large;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#city {
+    background-color: lightblue;
 }

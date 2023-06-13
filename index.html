@@ -11,28 +11,28 @@
 </head>
 <body>
     <h1 class="header" id = "header_id1"> Today's Weather Report </h1>
-        <h3 class="header" id = "header_id2"> For the lovely city of <span id = "header-city">Atlanta</span></h3> 
-    <h4>Temperature</h4>
+        <h3 class="header" id = "header_id2"> For The Lovely City of <span id = "header-city">Atlanta</span></h3> 
+    <h4 id="temp">Temperature</h4>
         <button id="up">&#11014;</button>
         <p id="temperature-now"></p>
         <button id="down">&#11015;</button>
-        <button id="real-time-temp">Get Real TIme Temperature</button>
-    <h4>Sky</h4>
-        <select id="sky-drop-down"> 
-            <option value="Sunny">Sunny</option>
-            <option value="Cloudy">Cloudy</option>
-            <option value="Snowy">Snowy</option>
-            <option value="Rainey">Rainey</option>
-        </select>
-    <h4>City name</h4>
-        <form>
+        <button id="real-time-temp">Get Real Time Temperature</button>
+        <form id="cityinput">
             City: 
             <input id ="city" type="text" placeholder="Enter a city"/>  
         </form>
         <button id="defaultCity">Reset</button>
-    <h4 id="garden"> Weather Garden </h4> 
-    <span </span id="sky"></span>
-    <span </span id="weather-garden"></span>
+        <h4 id="garden"></h4> 
+        <!-- <span </span id="sky"></span> -->
+        <span </span id="weather-garden"></span>
+        <h4 id="sky"></h4>
+        <select id="sky-drop-down"> 
+            <option value="Sunny">Choose Your Sky</option>
+            <option value="Sunny">Sunny</option>
+            <option value="Cloudy">Cloudy</option>
+            <option value="Snowy">Snowy</option>
+            <option value="Rainey">Rainy</option>
+        </select>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
