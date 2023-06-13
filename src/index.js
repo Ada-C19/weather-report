@@ -4,49 +4,50 @@ function myChangeFunction(input) {
     output.value = input.value.toUpperCase();
 }
 
-// function findLatitudeAndLongitude(input) {
-//     let latitude, longitude;
-//     axios.get('https://us1.locationiq.com/v1/search.php',
-//     {
-//       params: {
-//         key: LOCATION_KEY,
-//         q: 'Seattle, Washington, USA',
-//         format: 'json'
-//       }
-//     })
-//     .then( (response) => {
-//       latitude = response.data[0].lat;
-//       longitude = response.data[0].lon;
-//       console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+function kelvinToFahrenheit(kelvin) {
+
+}
+function findLatitudeAndLongitude(input) {
+    let latitude, longitude;
+    axios.get('http://127.0.0.1:5000/location',
+    {
+      params: {
+        key: LOCATION_KEY,
+        q: input,
+        format: 'json'
+      }
+    })
+    .then( (response) => {
+      latitude = response.data[0].lat;
+      longitude = response.data[0].lon;
+      console.log('success in findLatitudeAndLongitude!', latitude, longitude);
   
-//       // make the next API call here!
-//       findLocation(latitude, longitude);
-//     })
-//     .catch( (error) => {
-//       console.log('error in findLatitudeAndLongitude!');
-//     });
-//   }
+      // make the next API call here!
+      findWeather(latitude, longitude);
+    })
+    .catch( (error) => {
+      console.log('error in findLatitudeAndLongitude!');
+    });
+  }
   
-//   const findLocation = (latitude, longitude) => {
-//     axios.get('https://us1.locationiq.com/v1/reverse.php',
-//     {
-//       params: {
-//         key: LOCATIONIQ_KEY,
-//         format: 'json',
-//         lat: latitude,
-//         lon: longitude
-//       }
-//     })
-//     .then( (response) => {
-//       console.log('success in findLocation!', response.data);
-//     })
-//     .catch( (error) => {
-//       console.log('error in findLocation!');
-//     });
-//   }
-  
-//   findLatitudeAndLongitude('Seattle, Washington, USA');
-// }
+  const findWeather = (latitude, longitude) => {
+    axios.get('http://127.0.0.1:5000/weather',
+    {
+      params: {
+        key: WEATHER_KEY,
+        format: 'json',
+        lat: latitude,
+        lon: longitude
+      }
+    })
+    .then( (response) => {
+      console.log('success in findLocation!', response.data);
+    })
+    .catch( (error) => {
+      console.log('error in findLocation!');
+    });
+  }
+
     
 // select dom elemnt from html and addEventListerner
 const selectReset = document.querySelector("#reset");
@@ -93,7 +94,7 @@ function resetCity () {
 const state = {
     tempCount: 0
 };
-function updateColor() {
+function updateColor(tempCount) {
     if (state.tempCount > 100) {
         alert("Overheat! Fine safe shelter.")
     }
@@ -121,7 +122,7 @@ function updateColor() {
     console.log("Updated color " + state.color)
     document.querySelector("#flowers").innerHTML = gardenIcon
     console.log("Updated garden " + gardenIcon)
-    
+
 }
 
 
