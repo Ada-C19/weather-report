@@ -41,15 +41,17 @@
                 <h2>Sky</h2>
                 <h3>[sky selector]</h3>
                 <div>
-                    <label for="sky">Choose a sky:</label>
+                    <label for="sky">Choose a sky:
 
-                    <select name="skies" id="sky_selecting">
-                    <option value="sunny">Sunny</option>
-                    <option value="cloudy">Cloudy</option>
-                    <option value="rainy">Rainy</option>
-                    <option value="snowy">Snowy</option>
+                    <select class="sky_selecting" onchange="skyChange">
+                    <option value="☁️ ☁️ ☁️ ☀️ ☁️ ☁️">Sunny</option>
+                    <option value="☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️">Cloudy</option>
+                    <option value="🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧">Rainy</option>
+                    <option value="🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨">Snowy</option>
                     </select>
+                    </label>
                 </div>
+                <div class = "newSky"></div>
                 <br>
             </section>
             <section id="city_section">
@@ -69,7 +71,7 @@
             </section>
             <section id="weather_garden_section">
                 <h2>[weather garden]</h2>
-                <p>hello world</p>
+                <p id="skyChange">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</p>
             </section>
         </section>
     </main>

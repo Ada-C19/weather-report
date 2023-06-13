@@ -88,8 +88,11 @@ const resetCityName = function () {
     resetNowContainer.textContent = `For the lovely city of ${state.city}`
 }
 
-
-
+const newSKySelect = function () {
+    const skyOption = document.querySelector(".sky_selecting").value
+    const newSkyContainer = document.querySelector("#skyChange")
+    newSkyContainer.textContent = skyOption
+}
 
 // findLatitudeAndLongitude()
 // console.log(state.latitude, state.longitude)
@@ -111,5 +114,12 @@ const registerEventHandlers = () => {
 
     const resetNowButton = document.querySelector("#reset");
     resetNowButton.addEventListener('click', resetCityName)
+
+    const newSkyDropDown = document
+    newSkyDropDown.addEventListener("change", newSKySelect)
+
+
+
+   
 };
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
