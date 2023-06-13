@@ -4,28 +4,104 @@
 
 const state = {
     citySearchButton: null,
+    tempValue: 72,
+    lat: null,
+    lon: null,
+    upbutton: null,
+    downbutton: null
 };
 
-const handleSearchButtonClicked = () => {
-    const cityHeader = document.getElementById('city-spotlight');
-    const searchInput = document.getElementById('search-input').value;
-    cityHeader.textContent = `Real-time weather in lovely ${searchInput}`;
+const changeCityHeader = () => {
+    const cityName = document.getElementById("city-spotlight");
+    const searchInput = document.getElementById("search-input").value;
+    cityName.innerHTML = `${searchInput}`;
 };
+
+const getLocation = () => {
+    let lat;
+    let lon;
+    return axios.get("http://127.0.0.1:5000/location", {
+        params: {
+            q: document.getElementById("search-input").value
+        }
+    })
+        .then((response) => {
+            state.lat = response.data[0].lat;
+            state.lon = response.data[0].lon;
+            getRtWeather();
+        })
+        .catch((error) => {
+            console.log("There's an error " + error);
+        });
+};
+
+const getRtWeather = () => {
+    axios.get("http://127.0.0.1:5000/weather",
+    {
+        params: {
+            lat: state.lat,
+            lon: state.lon,
+            units: "imperial"
+        }
+    })
+    .then((response) => {
+        state.tempValue = convertK2F(response.data.main.temp);
+        document.getElementById("temp-value").innerHTML = state.tempValue;
+    })
+
+    .catch((error) => {
+        console.log("There's an error " + error);
+    })
+};
+
+const convertK2F = (temp) => {
+    return Math.trunc((temp - 273.15) * 9 / 5 + 32);
+}
+
+const handleSearchButtonClicked = () => {
+    changeCityHeader();
+    getLocation();
+};
+
+const handleUpBtnClicked = () => {
+    state.tempValue += 1;
+    console.log(state.tempValue);
+
+    document.getElementById("temp-value").innerHTML = state.tempValue;
+}
+
+const handleDownBtnClicked = () => {
+    state.tempValue -= 1;
+    console.log(state.tempValue);
+
+    document.getElementById("temp-value").innerHTML = state.tempValue;
+}
 
 const registerEvents = () => {
     state.citySearchButton.addEventListener("click", handleSearchButtonClicked);
+    state.downbutton.addEventListener("click", handleDownBtnClicked);
+    state.upbutton.addEventListener("click", handleUpBtnClicked);
+};
+
+const refreshUI = () => {
+    document.getElementById("temp-value").innerHTML = 72;
 };
 
 const loadControls = () => {
-    state.citySearchButton = document.getElementById("city-search-btn");
+    state.citySearchButton = document.getElementById("search-button");
+    // state.tempValue = document.getElementById("temp-value"); 
+    state.upbutton = document.getElementById("up-button");
+    state.downbutton = document.getElementById("down-button");
 };
 
 const onLoad = () => {
     loadControls();
     registerEvents();
+    refreshUI();
+    console.log(state.tempValue);
 };
 
-// onLoad();
+onLoad();
 
 // axios
 //     .get('https://us1.locationiq.com/v1/search?key=YOUR_ACCESS_TOKEN&q=SEARCH_STRING&format=json')
@@ -54,19 +130,19 @@ const onLoad = () => {
 
 // random image
 
-let data = 'https://api-ninjas.com';
-let category = 'weather'
-$.ajax({
-    method: 'GET',
-    url: 'https://api.api-ninjas.com/v1/randomimage?category=weather' + category,
-    headers: { 'X-Api-Key': 'API_KEY', 'Accept': 'image/jpg'},
-    success: function(result) {
-        console.log(result);
-    },
-    error: function ajaxError(jqXHR) {
-        console.error('Error: ', jqXHR.responseText);
-    }
-});
+// let data = 'https://api-ninjas.com';
+// let category = 'weather'
+// $.ajax({
+//     method: 'GET',
+//     url: 'https://api.api-ninjas.com/v1/randomimage?category=weather' + category,
+//     headers: { 'X-Api-Key': 'API_KEY', 'Accept': 'image/jpg'},
+//     success: function(result) {
+//         console.log(result);
+//     },
+//     error: function ajaxError(jqXHR) {
+//         console.error('Error: ', jqXHR.responseText);
+//     }
+// });
 
 
 let citytemp = 72
@@ -150,3 +226,33 @@ skyicon.addEventListener(
 
     }
 )
+
+
+// let citytemp = 72
+
+// Increase button
+
+// const upbutton = document.getElementById("up-button");
+
+// upbutton.addEventListener(
+//     "click", (event) => {
+//         // console.log("Yay it works!")
+//         citytemp += 1
+//         console.log(citytemp)
+
+//         document.getElementById("temp-number").innerHTML = citytemp;
+//     }
+// );
+
+// // Decrease button
+// const downbutton = document.getElementById("down-button");
+
+// downbutton.addEventListener(
+//     "click", (event) => {
+//         // console.log("Yay this also works!")
+//         citytemp -= 1
+//         console.log(citytemp)
+//         document.getElementById("temp-number").innerHTML = citytemp;
+
+//     }
+// );

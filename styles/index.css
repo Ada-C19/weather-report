@@ -15,17 +15,32 @@ body {
 
 /* ======================== HEADER ========================*/
 
-header{
-    margin:10px;
-    background-image: url("../assets/images/ameythst.jpeg");
-    color:white;
-    padding:5px;
-    font-size:25px;
+header {
+    /* margin:10px; */
+    /* background-image: url("../assets/images/ameythst.jpeg"); */
+    width: 100vw;
+    /* height: 300px; */
+    /* color:white; */
+    /* background-color: white; */
+    background: url("../assets/images/ameythst.jpeg") 50% 0 no-repeat;
+    background-size: cover;
+    padding: 5px;
 }
 
-/* h1{} */
+h1 {
+    font-size: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 100%;
+    width: 100%; */
+    color: black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    background: white;
+    mix-blend-mode: screen;
+}
 
-main{
+main {
     display: inline-block;
 }
 
@@ -36,85 +51,84 @@ main{
     padding: 8px 10px;
 }
 
-#city-intro{
+#city-intro {
     font-size: 18px;
     margin-top: 5px;
     margin-bottom: 2px;
     margin-left: 40px;
     margin-right: 40px;
 
-    color:black;
+    color: black;
     /* background-color: grey; */
 }
 
-#search-text-box{
+#search-input {
     font-size: 15px;
-    width:60%;
+    width: 60%;
 }
 
-#search-button{
+#search-button {
     float: right;
     display: block;
     color: black;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
-    margin-right:60px;
+    margin-right: 60px;
 }
 
-#search-button:hover{
+#search-button:hover {
     background-color: blue;
     color: white;
 }
 
 /* ======================== CITY NAME DISPLAY ========================*/
 
-#city-container{
+#city-container {
     margin: 5px;
     padding: 5px;
     margin-bottom: 2px;
 }
 
 
-#city-spotlight{
-    color:white;
+#city-spotlight {
+    color: white;
     margin-top: 5px;
     margin-bottom: 2px;
-    font-size:30px;
+    font-size: 30px;
 
 }
-
 
 /* ======================== TEMPERATURE DISPLAY ========================*/
-#temperature-container{
+#temperature-container {
     padding: 5px;
-    margin: 0px;
+    margin: 20px;
 }
 
-#temp-header{
+#temp-header {
     margin: 0px;
     font-size: 20px;
 }
 
-.temp-adustment-container{
-    display:flex;
+.temp-adustment-container {
+    display: flex;
     align-items: center;
     justify-content: center;
     margin: 0px;
 }
 
-#temp-number{
+#temp-value {
     font-size: 60px;
-    margin: 0px;
+    margin: 20px;
 }
 
-#down-button{
+#down-button {
     margin: 20px;
     margin-bottom: -10px;
     font-size: 15px;
 }
 
-#up-button{
+#up-button {
     margin: 20px;
     margin-bottom: -10px;
     font-size: 15px;
@@ -122,47 +136,48 @@ main{
 
 
 /* ======================== TEMPERATURE DISPLAY ========================*/
-#sky-container{
-    display:inline;
-    justify-content:space-around;
+#sky-container {
+    display: inline;
+    justify-content: space-around;
     margin: 0px;
     overflow: hidden;
     /* padding: 8px 10px; */
 }
 
-#label{
-    font-size:20px;
-    margin: 0px;;
+#label {
+    font-size: 20px;
+    margin: 0px;
+    ;
 }
 
 #select-drop-down {
-    padding:25px;
-    width:max-content;
+    padding: 25px;
+    width: max-content;
 }
 
-#weather-conditions{
+#weather-conditions {
     background-color: darkgrey;
-    margin:0px;
-    padding:10px;
+    margin: 0px;
+    padding: 10px;
 }
 
 /* ======================== GARDEN ICON DISPLAY ========================*/
-#weather-garden-container{
-    display:block;
-    margin: 15px;
+#weather-garden-container {
+    display: block;
+    margin-top: 50px;
 }
 
-#weather-garden-header{
+#weather-garden-header {
     font-size: 20px;
-    margin:20px;
+    margin: 20px;
     margin-bottom: 5px;
 }
 
-.weather-icons{
-    display:flex;
+.weather-icons {
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
-    margin:10px;
+    margin: 10px;
     font-size: 30px;
 }
 
@@ -173,7 +188,7 @@ footer {
     font-family: "Helvetica", Sans-Serif;
     text-align: center;
     margin: auto;
-    color:white;
+    color: white;
     display: block;
     position: fixed;
     left: 0;
