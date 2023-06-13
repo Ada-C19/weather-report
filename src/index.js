@@ -3,6 +3,7 @@
 let temperature = 70; // Initial temperature
 let emoji = "";
 let sky = "";
+let reset = "";
 
 // DOM elements
 const temperatureElement = document.getElementById('temperature');
@@ -11,6 +12,7 @@ const decreaseBtn = document.getElementById('decrease-btn');
 const landscapeImg = document.getElementById('landscape-img');
 const emojiElement = document.getElementById('emoji');
 const cityElement = document.getElementById('city');
+const resetElement = document.getElementById('reset');
 const skyElement = document.getElementById('sky');
 
 // Event listeners for the buttons
