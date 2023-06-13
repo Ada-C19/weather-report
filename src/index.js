@@ -4,7 +4,7 @@ const state = {
   decreaseTempControl: null,
   gardenLandscape: null,
   tempValueEl: null,
-  cityLocation: {lat: 41.8755616, lon: 87.6244212}
+  cityLocation: {lat:  39.2776156 , lon: -74.574600}
 };
 
 const loadControls = () => {
@@ -60,7 +60,8 @@ const headerCityName = document.getElementById('headerCityName');
 }
 
 const getLocationInfo = () => {
-return axios.get('https://genesis-weather-report-proxy-server.onrender.com/location',
+// return axios.get('https://genesis-weather-report-proxy-server.onrender.com/location',
+return axios.get('http://localhost:5000/location',
 {
   params: {
     q: state.cityLocation.value
@@ -78,7 +79,8 @@ return axios.get('https://genesis-weather-report-proxy-server.onrender.com/locat
 
 const convertKToF = k => (k-273.15) * (9/5) + 32
 const getWeatherInfo = (location) => {
-return axios.get('https://genesis-weather-report-proxy-server.onrender.com/weather',
+// return axios.get('https://genesis-weather-report-proxy-server.onrender.com/weather',
+return axios.get('http://localhost:5000/weather',
 {
   params: {
     lat: state.cityLocation['lat'], 
@@ -101,6 +103,13 @@ const currentTemp = document.getElementById('currentTempButton');
 getLocationInfo().then((getWeatherInfo)).then((temp) => {state.tempValueEl.textContent = `${state.tempValue}`})
 };
 
+const changeVideo = () => {
+  const video = document.querySelector('#default-video');
+  const select = document.querySelector('select');
+  video.src = select.value;
+  console.log(video.src);
+};
+
 
 const resetCity = () => {  
   document.getElementById('cityNameReset').reset()}; 
@@ -113,21 +122,21 @@ changeColorAndEmoji();
 }
 
 const registerEvents = () => {
-state.increaseTempControl.addEventListener('click', increaseTemp);
-state.decreaseTempControl.addEventListener('click', decreaseTemp);
-cityNameReset.addEventListener('click', () => {
-  cityNameInput.value = headerCityName.textContent = ''
-});
-cityNameInput.addEventListener('input', () => {
-  headerCityName.textContent = cityNameInput.value
-});
-const dropDownOptions = document.querySelector("#Sky_Choices");
-const result = document.querySelector("#sky");
-dropDownOptions.addEventListener("change", (event) => {
-  result.textContent = `${event.target.value}`;
-});
-const updateTemp = document.querySelector("#currentTempButton");
-updateTemp.addEventListener("click", updateCurrentTemp);
-};
-
-document.addEventListener("DOMContentLoaded", setUp)
+  state.increaseTempControl.addEventListener('click', increaseTemp);
+  state.decreaseTempControl.addEventListener('click', decreaseTemp);
+  cityNameReset.addEventListener('click', () => {
+    cityNameInput.value = headerCityName.textContent = ''
+  });
+  cityNameInput.addEventListener('input', () => {
+    headerCityName.textContent = cityNameInput.value
+  });
+  // const dropDownOptions = document.querySelector("#Sky_Choices");
+  // const result = document.querySelector("#sky");
+  // dropDownOptions.addEventListener("change", (event) => {
+  //   result.textContent = `${event.target.value}`;
+  // });
+  const updateTemp = document.querySelector("#currentTempButton");
+  updateTemp.addEventListener("click", updateCurrentTemp);
+  };
+  
+  document.addEventListener("DOMContentLoaded", setUp)

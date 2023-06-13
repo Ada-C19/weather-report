@@ -10,13 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css">
 </head>
-
 <body>
+    <!-- <video autoplay muted loop plays-inline class="myVideo">
+        <source src="images/rainy.mp4" type="video/mp4">
+    </video> -->
+    
+    
     <header class="header__header">
-        <h1>Weather Report</h1>
-        <span>For the lovely city of 
-            <span id="headerCityName" class="header__city-name">Chicago</span></span>
-    </header>
+        <h1>Weather Report for the lovely city of <span id="headerCityName" class="header__city-name">Ocean City</span></h1>
+        </header> 
     <section class="temperature__section">
         <h2>Temperature</h2>
         <div class="temperature__content">
@@ -30,13 +32,16 @@
     </section>
     <section class="sky__section">
         <h2>Sky</h2>
-        <select name="Sky" id="Sky_Choices">
-                <option value="">--Please choose an option--</option>
-            <option value="☁️☁️☁️☀️☁️☁️☁️">Sunny</option>
-            <option value="⛈️🌧️⛈️🌦️⛈️🌧️⛈️">Rainy</option>
-            <option value="☁️☁️☁️🌥️☁️☁️☁️">Cloudy</option>
-            <option value="🌨️🌨️🌨️⛅️🌨️🌨️🌨️ ">Snowy</option>
+        <select id="background-video" onchange="changeVideo()">
+            <option value="">--Please choose an option--</option>
+            <option value="images/sunny.mp4">Sunny</option>
+            <option value="images/rainy.mp4">Rainy</option>
+            <option value="images/cloudy.mp4">Cloudy</option>
+            <option value="images/snowy.mp4">Snowy</option>
         </select>
+        <video autoplay muted loop id="default-video">
+            <source id ="video" src="images/sunny.mp4" type="video/mp4">
+        </video>
     </section>
     <section class="city-name__section">
         <h2>City Name</h2>
@@ -47,10 +52,10 @@
     <section class="garden__section">
         <h2>Weather Garden</h2>
         <div id="gardenContent" class="garden__content">
-            <div id="sky">☁️☁️☁️☀️☁️☁️</div>
             <div id="landscape">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
         </div>
     </section>
+    
     <!-- <script src="./node_modules/axios/dist/axios.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
