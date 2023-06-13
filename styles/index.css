@@ -41,7 +41,7 @@ main{
     /* background-color: grey; */
 }
 
-#search-text-box{
+#search-input{
     font-size: 15px;
     width:60%;
 }
@@ -78,11 +78,10 @@ main{
 
 }
 
-
 /* ======================== TEMPERATURE DISPLAY ========================*/
 #temperature-container{
     padding: 5px;
-    margin: 0px;
+    margin: 20px;
 }
 
 #temp-header{
@@ -97,9 +96,9 @@ main{
     margin: 0px;
 }
 
-#temp-number{
+#temp-value{
     font-size: 60px;
-    margin: 0px;
+    margin: 20px;
 }
 
 #down-button{
@@ -143,7 +142,7 @@ main{
 /* ======================== GARDEN ICON DISPLAY ========================*/
 #weather-garden-container{
     display:block;
-    margin: 15px;
+    margin-top: 50px;
 }
 
 #weather-garden-header{
