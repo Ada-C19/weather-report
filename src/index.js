@@ -11,6 +11,11 @@ const state = {
     landEmojiContainer: '',
     landEmoji: '',
     cityNameContainer: null,
+<<<<<<< HEAD
+=======
+    // weatherCityName: '',
+    // weatherCityContainer: null,
+>>>>>>> 35b0f6deefd198375a369512ceccf4c533e5647f
     cityName: '',
     cityInput: '',
     realTempButton: null,    
@@ -31,6 +36,11 @@ const loadControls = () => {
     state.landEmoji = document.getElementById('landEmojiContainer').innerText;
     state.cityNameContainer = document.getElementById('cityNameContainer');
     state.cityName = document.getElementById('cityNameContainer').innerText;
+<<<<<<< HEAD
+=======
+    // state.weatherCityContainer = document.getElementById('weatherContainer');
+    // state.weatherCityName = document.getElementById('weatherCityContainer').innerText;
+>>>>>>> 35b0f6deefd198375a369512ceccf4c533e5647f
     state.cityInput = document.getElementById('cityInput');
     state.realTempButton = document.getElementById('realTempButton');
     state.skyDropdown = document.getElementById('skyDropdown');
@@ -80,6 +90,7 @@ const getSky = (skyType) => {
     }
 };
 
+<<<<<<< HEAD
 const getRealTemp = (locationName) => {
     const promise = axios
     .get('http://localhost:5000/location',{
@@ -93,9 +104,26 @@ const getRealTemp = (locationName) => {
             getWeather(state.lat,state.lon)
         });
     return dataPromise
+=======
+const getRealTemp = async (locationName) => {
+    const locationResp = await axios.get('http://localhost:5000/location',{ params: {q: locationName } })
+
+    // console.log(Resp.data)
+
+
+
+    const coords = [locationResp.data[0]['lat'], locationResp.data[0]['lon']]
+
+    const weatherResponse = await getWeather(coords[0],coords[1])
+
+    return weatherResponse.data
+
+
+    // return dataPromise
+>>>>>>> 35b0f6deefd198375a369512ceccf4c533e5647f
 }
 
-const getWeather = (lat,lon) => {
+const getWeather = async (lat,lon) => {
     const promise = axios
         .get('http://localhost:5000/weather',{
             params: {
@@ -105,7 +133,7 @@ const getWeather = (lat,lon) => {
             },
         })
     const dataPromise = promise.then((response) => {
-            console.log(response)
+            // console.log(response)
             state.tempNumber = response.data['main']['temp']
         })
     return dataPromise;
@@ -122,12 +150,25 @@ const registerEventHandlers = () => {
         state.tempNumberContainer.className = getTempColor(state.tempNumber);
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
+
     state.cityInput.addEventListener('input', () => {
+        // console.log(state)
         state.cityNameContainer.innerText = state.cityInput.value;
         state.weatherCity.innerText = state.cityInput.value;
+        // console.log('after',state)
     });
+<<<<<<< HEAD
     state.realTempButton.addEventListener('click', () => {
         getRealTemp(state.cityNameContainer.innerText)
+=======
+
+    state.realTempButton.addEventListener('click', async () => {
+       const resp = await getRealTemp(state.cityNameContainer.innerText)
+       console.log('pleaseeee', resp)
+       state.tempNumber = resp.main.temp
+        // console.log(temperature)
+        // console.log("Its proof")
+>>>>>>> 35b0f6deefd198375a369512ceccf4c533e5647f
         state.tempNumberContainer.innerText = state.tempNumber;
         state.tempNumberContainer.className = getTempColor(state.tempNumber);
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
