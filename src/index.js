@@ -11,8 +11,6 @@ const state = {
     landEmojiContainer: '',
     landEmoji: '',
     cityNameContainer: null,
-    weatherCityName: '',
-    weatherCityContainer: null,
     cityName: '',
     cityInput: '',
     realTempButton: null,    
@@ -90,7 +88,6 @@ const getRealTemp = (locationName) => {
             },
         })
     const dataPromise = promise.then((response) => {
-            console.log("hey", response)
             state.lat = response.data[0]['lat']
             state.lon = response.data[0]['lon']
             getWeather(state.lat,state.lon)
@@ -121,7 +118,7 @@ const registerEventHandlers = () => {
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.decreaseTempButton.addEventListener('click', () => {
-        state.tempNumberContainer.innerText = --state.temp-number;
+        state.tempNumberContainer.innerText = --state.tempNumber;
         state.tempNumberContainer.className = getTempColor(state.tempNumber);
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
@@ -130,9 +127,7 @@ const registerEventHandlers = () => {
         state.weatherCity.innerText = state.cityInput.value;
     });
     state.realTempButton.addEventListener('click', () => {
-        getRealTemp(state.cityNameContainer.innerText).then (temperature => {
-            console.log(temperature)
-        })
+        getRealTemp(state.cityNameContainer.innerText)
         state.tempNumberContainer.innerText = state.tempNumber;
         state.tempNumberContainer.className = getTempColor(state.tempNumber);
         state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
