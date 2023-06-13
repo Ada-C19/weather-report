@@ -18,15 +18,15 @@ const convertKtoF = (temp) => {
 const findLatAndLong = () => {
 // Could not figure out how to access my .env file without breaking my city name code. If you inspect my code in the browser, the api call is correct. It will error because there's no authorization. 
 axios
-.get('https://us1.locationiq.com/v1/search.php', {
+.get('http://127.0.0.1:5000/location', {
     params: {
         q: state.city,
     },
     })
     .then((response) => {
-        console.log(response.data);
-        state.lat = response.data[0].latitude;
-        state.long = response.data[0].longitude;
+        console.log("find lat and long",response.data);
+        state.lat = response.data[0].lat;
+        state.long = response.data[0].lon;
         getWeather();
     })
     .catch((error) => {
@@ -36,16 +36,18 @@ axios
 
 const getWeather = () => {
 axios
-    .get('https://api.openweathermap.org/data/2.5/weather', {
+    .get('http://127.0.0.1:5000/weather', {
     params: {
         lat: state.lat,
         lon: state.long,
 },
     })
     .then((response) => {
-    const weather = response.data;
-    state.temp = Math.round(convertKtoF(weather.main.temp));
-    formatTempAndLandscape();
+        console.log("the state", state)
+        console.log("this is the weather", response.data);
+        const weather = response.data;
+        state.temp = Math.round(convertKtoF(weather.main.temp));
+        formatTempAndLandscape();
     })
     .catch((error) => {
     console.log('Error getting the weather:', error);
