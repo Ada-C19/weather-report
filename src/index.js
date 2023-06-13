@@ -7,18 +7,18 @@ const state = {
 };
 
 const onLoad = () => {
-    state.searchBox = document.getElementById('search')
-    state.tempDisplay = document.getElementById('count')
-}
+    state.searchBox = document.getElementById('search');
+    state.tempDisplay = document.getElementById('count');
+};
 //City name search bar updates city name in header
-function myChangeFunction(input) {
+const myChangeFunction = (input) => {
     const output = document.getElementById('search-output');
     output.value = input.value.toUpperCase();
-}
+};
 
-function kelvinToFahrenheit(kelvin) {
-
-}
+const kelvinToFahrenheit = (kelvin) => {
+    return ((kelvin - 273.15)* 9/5 + 32);
+};
 // 
 // const LOCATIONIQ_KEY = process.env['api_key'];
 const findLatitudeAndLongitude = async (input) => {
@@ -56,9 +56,12 @@ const findLatitudeAndLongitude = async (input) => {
     })
     .then( (response) => {
         console.log('success in findWeather!', response.data);
-        state.tempCount = response.data.main.temp
-        state.tempDisplay.innerText = state.tempCount
-        updateColor()
+        state.tempCount = response.data.main.temp;
+        state.tempDisplay.innerText = state.tempCount;
+        const fahrenheitTemp = kelvinToFahrenheit(state.tempCount);
+        state.tempCount = Math.floor(fahrenheitTemp);
+        state.tempDisplay.innerText = Math.floor(fahrenheitTemp);
+        updateColor();
     })
     .catch( (error) => {
       console.log('error in findWeather!', error);
@@ -84,6 +87,7 @@ async function resetRealtime() {
 
     await findLatitudeAndLongitude(state.searchBox.value)
     await findWeather(state.lat, state.lon)
+    kelvinToFahrenheit(state.tempCount)
     // console.log(state)
     
 }
@@ -143,6 +147,7 @@ function updateColor(tempCount) {
     console.log("Updated color " + state.color)
     document.querySelector("#flowers").innerHTML = gardenIcon
     console.log("Updated garden " + gardenIcon)
+    
 
 }
 
