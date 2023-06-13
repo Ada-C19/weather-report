@@ -10,7 +10,45 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <main>
+        <header id="sky" class="sunny">
+            <section id="city-container">
+                <h1 id="city">Anamosa</h1>
+                <select name="" id="sky-dropdown">
+                    <option value="">Please Choose An Option for the Sky</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="puffy-cloud">Puffy Clouds</option>
+                    <option value="storm-cloud">Storm Clouds</option>
+                    <option value="sunny">Sunny</option>
+                </select>
+            </section>
+            <section id="content-container">
+                <section class="temp69To80Bk" id="temp-container">
+                    <aside>
+                        <p class="temp69To80" id="temp">72</p>
+                    </aside>
+                    <section id="temp-buttons">
+                        <button id="temp-increase" type="button">▲</button>
+                        <button id="temp-decrease" type="button">▼</button>
+                    </section>
+                </section>
+                <section id="change-content-container">
+                    <section id="city-choice-container">
+                        <label for="city-choice">Input a City</label>
+                        <input type="text" name="city-choice" id="city-choice">
+                    </section>
+                    <section id="button-container">
+                        <button type="button" id="get-current-temp">Get Current Temp</button>
+                        <button type="button" id="reset-city">Reset City</button>
+                    </section>
+                </section>
+            </section>
+            <section id="landscape">
+                <img id='landscape-img' src="assets/landscapes/grass.jpg" alt="Happy cow in lush grassy green hills landscape">
+            </section>
+        </header>
+    </main>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
