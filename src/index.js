@@ -23,7 +23,7 @@ decreaseBtn.addEventListener('click', decreaseTemperature);
 function increaseTemperature() {
     temperature++;
     updateTemperatureDisplay();
-} 
+}
 
 // Function to decrease the temperature
 function decreaseTemperature() {
@@ -64,9 +64,9 @@ function updateTemperatureDisplay() {
 }
 
 function updateSkyDisplay() {
-    // skyElement.textContent = sky;
+    // let sky = skyElement.options[skyElement.selectedIndex].text
 
-    if (sky = "Sunny") {
+    if (sky === 'sunny') {
         skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
 
     } else if (sky === "cloudy") {
