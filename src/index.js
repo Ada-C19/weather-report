@@ -112,12 +112,12 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(searchButton);
 
     
-    const findLatitudeAndLongitude = async () => {
+    const findLatitudeAndLongitude = async (query) => {
         let latitude, longitude;
         await axios.get('http://127.0.0.1:5000/location',
         {
             params: {
-                q: state.cityName,
+                q:cityName,
                 format: 'json'
             }
         })
