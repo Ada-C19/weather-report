@@ -18,38 +18,40 @@
             ✨
         </div>
     </header>
-    <section class="temperature-section">
-        <h2>Temperature</h2>
-        <div class="temp-controls">
-            <button id="realtime-temp-button">Get Realtime Temperature</button>
-            <div class="temp-contents">
-                <button id="up-arrow">⬆️</button>
-                <span id="temp">72</span>
-                <button id="down-arrow">⬇️</button>
+    <div class="sections">
+        <section class="temperature-section">
+            <h2>Temperature</h2>
+            <div class="temp-controls">
+                <button id="realtime-temp-button">Get Realtime Temperature</button>
+                <div class="temp-contents">
+                    <button id="up-arrow">⬆️</button>
+                    <span id="temp">72</span>
+                    <button id="down-arrow">⬇️</button>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="sky-section">
-        <h2>Sky</h2>
-        <select name="sky" id="sky-select">
-            <option>Sunny</option>
-            <option>Cloudy</option>
-            <option>Rainy</option>
-            <option>Snowy</option>
-        </select>
-    </section>
-    <section class="city-name-section">
-        <h2>City Name</h2>
-        <input type="text" id="city-name-input" value="Honolulu">
-        <button id="city-name-reset">Reset</button>
-    </section>
-    <section class="weather-garden-section">
-        <h2>Weather Garden</h2>
-        <div id="weather-garden-content">
-            <div id="sky">☁️☁️✨🌚☁️🌝☁️✨☁️</div>
-            <div id="garden">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
-        </div>
-    </section>
+        </section>
+        <section class="sky-section">
+            <h2>Sky</h2>
+            <select name="sky" id="sky-select">
+                <option>Sunny</option>
+                <option>Cloudy</option>
+                <option>Rainy</option>
+                <option>Snowy</option>
+            </select>
+        </section>
+        <section class="city-name-section">
+            <h2>City Name</h2>
+            <input type="text" id="city-name-input" value="Honolulu">
+            <button id="city-name-reset">Reset</button>
+        </section>
+        <section class="weather-garden-section">
+            <h2>Weather Garden</h2>
+            <div id="weather-garden-content">
+                <div id="sky">☁️☁️✨🌚☁️🌝☁️✨☁️</div>
+                <div id="garden">🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷</div>
+            </div>
+        </section>
+    </div>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
