@@ -33,8 +33,6 @@ const loadControls = () => {
     state.landEmoji = document.getElementById('landEmojiContainer').innerText;
     state.cityNameContainer = document.getElementById('cityNameContainer');
     state.cityName = document.getElementById('cityNameContainer').innerText;
-    state.weatherCityContainer = document.getElementById('weatherContainer');
-    state.weatherCityName = document.getElementById('weatherCityContainer').innerText;
     state.cityInput = document.getElementById('cityInput');
     state.realTempButton = document.getElementById('realTempButton');
     state.skyDropdown = document.getElementById('skyDropdown');
@@ -118,14 +116,14 @@ const getWeather = (lat,lon) => {
 
 const registerEventHandlers = () => {
     state.increaseTempButton.addEventListener('click', () => {
-        state.tempNumberContainer.innerText = ++state.temp-number;
-        state.tempNumberContainer.className = getTempColor(state.temp-number-container.innerText);
-        state.landEmojiContainer.innerText = getLandscape(state.temp-number);
+        state.tempNumberContainer.innerText = ++state.tempNumber;
+        state.tempNumberContainer.className = getTempColor(state.tempNumberContainer.innerText);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.decreaseTempButton.addEventListener('click', () => {
         state.tempNumberContainer.innerText = --state.temp-number;
-        state.tempNumberContainer.className = getTempColor(state.temp-number);
-        state.landEmojiContainer.innerText = getLandscape(state.temp-number);
+        state.tempNumberContainer.className = getTempColor(state.tempNumber);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.cityInput.addEventListener('input', () => {
         state.cityNameContainer.innerText = state.cityInput.value;
@@ -136,8 +134,8 @@ const registerEventHandlers = () => {
             console.log(temperature)
         })
         state.tempNumberContainer.innerText = state.tempNumber;
-        state.tempNumberContainer.className = getTempColor(state.temp-number);
-        state.landEmojiContainer.innerText = getLandscape(state.temp-number);
+        state.tempNumberContainer.className = getTempColor(state.tempNumber);
+        state.landEmojiContainer.innerText = getLandscape(state.tempNumber);
     });
     state.skyDropdown.addEventListener('change', () => {
         state.skyEmojiContainer.innerText = getSky(state.skyDropdown.value);
