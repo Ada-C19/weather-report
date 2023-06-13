@@ -4,7 +4,7 @@
 
 const state = {
     citySearchButton: null,
-    tempValue: 72,
+    tempValue: 0,
     lat: null,
     lon: null,
     upbutton: null,
@@ -84,7 +84,7 @@ const registerEvents = () => {
 };
 
 const refreshUI = () => {
-    document.getElementById("temp-value").innerHTML = 72;
+    document.getElementById("temp-value").innerHTML = state.tempValue;
 };
 
 const loadControls = () => {
