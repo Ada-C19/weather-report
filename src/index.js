@@ -37,19 +37,16 @@ function updateTemperatureDisplay() {
         emojiElement.textContent = '☀️🏝️🥵🌞☀️☀️🏝️🥵🌞☀️☀️🏝️🥵🌞☀️☀️🏝️🥵🌞☀️☀️🏝️🥵🌞☀️☀️🏝️🥵🌞☀️🏝️🥵🌞';
         landscapeImg.src = 'styles/sunny1.jpeg';
         landscapeImg.alt = 'Sunny';
-        emojiContainer.textContent = '☀️☀️🌤️👙👙🕶️🧴🧴☀️☀️🌞🌞🌻🌻😎🩱🩱🩳☀️☀️😎';
     } else if (temperature >= 70 && temperature <= 79) {
         temperatureElement.style.color = 'grey';
         emojiElement.textContent = '🌞😶‍🌫️🌼🌷😎🍂🌤️🌞😶‍🌫️🌼🌷😎🍂🌤️🌞😶‍🌫️🌼🌷😎🍂🌤️🌞😶‍🌫️🌼🌷😎🍂🌤️';
         landscapeImg.src = 'styles/cloudy.jpeg';
         landscapeImg.alt = 'Cloudy';
-        emojiContainer.textContent = '☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☹️☹️☹️☹️⛆⛆⛆⛆⛆☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️';
     } else if (temperature >= 60 && temperature <= 69) {
         temperatureElement.style.color = 'indigo';
         emojiElement.textContent = '☁️🫥🌦️🌧️🌤️🌧️☔️🌈☁️🫥🌦️🌧️🌤️🌧️☔️🌈☁️🫥🌦️🌧️🌤️🌧️☔️🌈☁️🫥🌦️🌧️🌤️🌧️☔️🌈';
         landscapeImg.src = 'styles/rainy.jpeg';
         landscapeImg.alt = 'Rainy';
-        emojiContainer.textContent = '☔️🌧️⛈️⛈️🌦️☔️☔️☔︎⛆⛈🌧️⛈️⛈️💧💧☔️☔️💧💧🌧️🌧️';
     } else if (temperature >= 50 && temperature <= 59) {
         temperatureElement.style.color = 'orange';
         emojiElement.textContent = '🌤️🍁🥮⛅️🍂😎🍃🌤️🍁🥮⛅️🍂😎🍃🌤️🍁🥮⛅️🍂😎🍃🌤️🍁🥮⛅️🍂😎🍃🌤️';
