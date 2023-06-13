@@ -15,6 +15,7 @@ const state = {
 const findCityLocation = (cityName) => {
     axios.get('http://localhost:5000/location', {
         params: {
+<<<<<<< HEAD
             q: cityName
         }
     })
@@ -35,6 +36,16 @@ const findCityLocation = (cityName) => {
 }
 
 // findCityLocation()
+=======
+            q: 'Atlanta'
+        },
+    })
+    .then((resp) => {
+        console.log(resp.data)
+    )}
+}
+findCityLocationn()
+>>>>>>> f5425e6fe1c52a3a91fb8d96be7e76274a11fab3
 // city, name, latitude, longitude, temp (state - global variables)
 
 const refreshUI = () => {
