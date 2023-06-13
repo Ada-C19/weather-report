@@ -109,15 +109,23 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // search button 
     const searchButton = document.querySelector("#search-button");
+    console.log(searchButton);
 
     // attempt to add event listener for search button 
-    searchButton.addEventListener('keypress', checkIfEnter);
-
-    const checkIfEnter = (event) => {
+    searchButton.addEventListener("click", (event) => {
+        console.log(event.target.value);
         if (event.keyCode === 13) {
+            alert("I am an alert box!");
             getResults(searchButton.value);
-        }
-    }
+    }});
+
+    // const checkIfEnter = () => {
+    //     console.log("hello");
+    //     if (event.keyCode === 13) {
+    //         alert("I am an alert box!");
+    //         getResults(searchButton.value);
+    //     }
+    // }
 
 });
 
