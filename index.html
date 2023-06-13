@@ -1,16 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
+
 <body>
-    <script src="./src/index.js"></script>
+
+    <header>
+        <h1 id="page-title">Your Weather ✨Fashion✨ Report</h1>
+    </header>
+
+    <main>
+        <section id="grid_space_one" class="grid-item">
+            <section id="city-space">
+                    <section id="city-name-section">
+                        <h2 id="city_name">Seattle</h2>
+                    </section>
+
+                    <section class="search">
+                        <input id="city_input" type="text" placeholder="enter city name" spellcheck="true">
+                    </section>
+
+                    <section>
+                        <button id="reset-button"> Reset City</button>
+                    </section>
+            
+            </section>
+        </section>
+
+        <section id="grid_space_two" class="grid-item">
+                <section id="weather-and-buttons">
+                <button id="decrease_temp"><img id="arrow" src="assets/icons/arrow_point_left.png"></button>
+                <h1 id="temp" class="temp_style">
+                    <span id="temp_no">65</span> ° F
+                </h1>
+                <button id="increase_temp"><img id="arrow" src="assets/icons/arrow_point_right.png"></button>
+                </section>
+
+                <section>
+                    <button id="weather-button">Get Realtime Weather</button>
+                </section>
+
+                
+        </section>
+        
+
+        <section id="grid_space_three" class="grid-item">
+            <section id="landscape">
+                    <h2>Fashion Landscape</h2>
+                    <h1> ✨Look Inspiration✨</h1>
+
+                    <section class="fashion-image-container">
+                    <img id="fashion_landscape" src="assets/80_degree_outfit.jpeg">
+                    </section>
+            </section>
+        </section>
+
+        <section id="grid_space_four" class="grid-item">
+            <section>
+                <h2> The Sky Today</h2>
+            </section\>
+
+            <select id="sky_selector"> 
+                <option selected disabled>Choose the Sky</option>
+                <option value="skySunny">Sunny</option>
+                <option value="skyCloudy">Cloudy</option>
+                <option value="skyRainy">Rainy</option>
+                <option value="skySnowy">Snowy</option>
+                <option value="skyStarry">Starry</option>
+            </select>
+            <section class="sky">
+                <img id="pinterest-sky" src="assets/skies/sunny_sky.jpeg">
+             </section>
+        </section>
+
+</main>
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
