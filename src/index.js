@@ -3,6 +3,7 @@
 let temperature = 70; // Initial temperature
 let emoji = "";
 let sky = "";
+let skyEmoji = "";
 
 // DOM elements
 const temperatureElement = document.getElementById('temperature');
@@ -12,6 +13,7 @@ const landscapeImg = document.getElementById('landscape-img');
 const emojiElement = document.getElementById('emoji');
 const cityElement = document.getElementById('city');
 const skyElement = document.getElementById('sky');
+const skyEmojiElement = document.getElementById('skyEmoji');
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
@@ -62,28 +64,18 @@ function updateTemperatureDisplay() {
 }
 
 function updateSkyDisplay() {
-    skyElement.textContent = `${sky}`;
+    // skyElement.textContent = sky;
 
-    if (sky === "sunny") {
-        emojiElement.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️☁️ ☁️ ☁️ ☀️ ☁️ ☁️☁️ ☁️ ☁️ ☀️ ☁️ ☁️☁️ ☁️ ☁️ ☀️ ☁️ ☁️☁️ ☁️';
+    if (sky = "Sunny") {
+        skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
 
     } else if (sky === "cloudy") {
-        emojiElement.textContent = '🌞😶‍🌫️🌼🌷😎🍂🌤️🌞😶‍🌫️🌼🌷😎🍂🌤️🌞😶‍🌫️🌼🌷😎🍂🌤️🌞😶‍🌫️🌼🌷😎🍂🌤️';
+        skyEmojiElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
+
+    } else if (sky === "rainy") {
+        skyEmojiElement.textContent = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
         
-    } else if (temperature >= 60 && temperature <= 69) {
-        temperatureElement.style.color = 'indigo';
-        emojiElement.textContent = '☁️🫥🌦️🌧️🌤️🌧️☔️🌈☁️🫥🌦️🌧️🌤️🌧️☔️🌈☁️🫥🌦️🌧️🌤️🌧️☔️🌈☁️🫥🌦️🌧️🌤️🌧️☔️🌈';
-        landscapeImg.src = 'styles/rainy.jpeg';
-        landscapeImg.alt = 'Rainy';
-    } else if (temperature >= 50 && temperature <= 59) {
-        temperatureElement.style.color = 'orange';
-        emojiElement.textContent = '🌤️🍁🥮⛅️🍂😎🍃🌤️🍁🥮⛅️🍂😎🍃🌤️🍁🥮⛅️🍂😎🍃🌤️🍁🥮⛅️🍂😎🍃🌤️';
-        landscapeImg.src = 'styles/autumn.jpeg';
-        landscapeImg.alt = 'Autumn';
-    } else {
-        temperatureElement.style.color = 'teal';
-        emojiElement.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️';
-        landscapeImg.src = 'styles/snowy.jpeg';
-        landscapeImg.alt = 'Snowy';
+    } else if (sky === "snowy") {
+        skyEmojiElement.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
     }
 }
