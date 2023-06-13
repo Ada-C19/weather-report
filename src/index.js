@@ -1,4 +1,9 @@
 // actions for search/reset button for city input
+const state = {
+    lat: 33.7488,
+    lon: 84.3877
+    };
+
 document.addEventListener("DOMContentLoaded", function () {
     // ------------- wave 2: increase and decrease temp ------------------
     // increase temperature 
@@ -112,27 +117,27 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(searchButton);
 
     
-    const findLatitudeAndLongitude = async (query) => {
-        let latitude, longitude;
+    const findLatitudeAndLongitude = async () => {
+        // let latitude, longitude;
         await axios.get('http://127.0.0.1:5000/location',
         {
             params: {
-                q:cityName,
+                q:cityInput.value,
                 format: 'json'
             }
         })
         .then( (response) => {
-            state.latitude = response.data[0].lat;
-            longitude = response.data[0].lon;
-            console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+            state.lat= response.data[0].lat;
+            state.lon= response.data[0].lon;
+            console.log('success in findLatitudeAndLongitude!', state);
         })
         .catch( (error) => {
             console.log('error in findLatitudeAndLongitude!');
         });
         
         return {
-            cityLat: latitude,
-            cityLon: longitude
+            cityLat: state.lat,
+            cityLon: state.lon
         }
     }
     
@@ -147,26 +152,29 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then( (response) => {
             console.log('success in findLocation!', response.data);
-            return response.data;
+            temperature = response.data.main.temp;
         })
         .catch( (error) => {
             console.log('error in findLocation!');
         });
     }
 
-    const findWeather = () => {
-        const cityCoordinates = findLatitudeAndLongitude();
+    const findWeather = async () => {
+        const cityCoordinates = await findLatitudeAndLongitude();
         
-        const temp = findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
+        const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
         
         console.log(temp);
     }
 
     // attempt to add event listener for search button 
-    searchButton.addEventListener("click", (event) => {
+    searchButton.addEventListener("click", async (event) => {
         // console.log(cityName);
-        alert("I am an alert box!");
-        findWeather();
+        // alert("I am an alert box!");
+
+        // const {lat, lon} = await findLatitudeAndLongitude(cityInput.value)
+            await findWeather();
+            updateTemp()
         // getResults(searchButton.value);
     });
 
