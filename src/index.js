@@ -23,7 +23,7 @@ decreaseBtn.addEventListener('click', decreaseTemperature);
 function increaseTemperature() {
     temperature++;
     updateTemperatureDisplay();
-}
+} 
 
 // Function to decrease the temperature
 function decreaseTemperature() {
