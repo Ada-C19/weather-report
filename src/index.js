@@ -13,15 +13,14 @@ const state = {
 const findCityLocation = () => {
     axios.get('http://localhost:5000/location', {
         params: {
-            q: 'Seattle'
+            q: 'Atlanta'
         },
     })
     .then((resp) => {
         console.log(resp.data)
-    })
+    )}
 }
-
-findCityLocation()
+findCityLocationn()
 // city, name, latitude, longitude, temp (state - global variables)
 
 const refreshUI = () => {
