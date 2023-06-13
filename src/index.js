@@ -112,52 +112,50 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(searchButton);
 
     
-    const findLatitudeAndLongitude = async (query) => {
+    const findLatitudeAndLongitude = async (cityInput) => {
         let latitude, longitude;
-        await axios.get('http://127.0.0.1:5000/location',
-        {
-            params: {
-                q:cityName,
-                format: 'json'
-            }
-        })
-        .then( (response) => {
-            state.latitude = response.data[0].lat;
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/location',
+            {
+                params: {
+                    q:cityInput,
+                    format: 'json'
+                }
+            })
+            latitude = response.data[0].lat;
             longitude = response.data[0].lon;
             console.log('success in findLatitudeAndLongitude!', latitude, longitude);
-        })
-        .catch( (error) => {
+            return {
+                cityLat: latitude,
+                cityLon: longitude
+            }
+        } catch (error) {
             console.log('error in findLatitudeAndLongitude!');
-        });
+        };
         
-        return {
-            cityLat: latitude,
-            cityLon: longitude
-        }
     }
     
     const findTemp = async (latitude, longitude) => {
-        await axios.get('http://127.0.0.1:5000/weather',
-        {
-            params: {
-                format: 'json',
-                lat: latitude,
-                lon: longitude
-            }
-        })
-        .then( (response) => {
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/weather',
+            {
+                params: {
+                    format: 'json',
+                    lat: latitude,
+                    lon: longitude
+                }
+            })
             console.log('success in findLocation!', response.data);
             return response.data;
-        })
-        .catch( (error) => {
+        } catch (error) {
             console.log('error in findLocation!');
-        });
+        };
     }
 
-    const findWeather = () => {
-        const cityCoordinates = findLatitudeAndLongitude();
+    const findWeather = async () => {
+        const cityCoordinates = await findLatitudeAndLongitude(cityInput);
         
-        const temp = findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
+        const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
         
         console.log(temp);
     }
@@ -165,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // attempt to add event listener for search button 
     searchButton.addEventListener("click", (event) => {
         // console.log(cityName);
-        alert("I am an alert box!");
+        console.log("I am an alert box!");
         findWeather();
         // getResults(searchButton.value);
     });
