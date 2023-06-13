@@ -3,7 +3,8 @@ const state = {
     right_arrow: null,
     degreeCountLabel: null,
     landscape: "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷",
-    degreeCount: 70
+    degreeCount: 70,
+    textBox: null
 }
 
 const refreshUI = () => {
@@ -46,17 +47,30 @@ let increaseDegree = (event) => {
     refreshUI();
 }
 
+function updateCityName(event) {
+    if (event.key === "Enter") {
+
+        const cityNameInput = document.getElementById('textbox');
+        const cityName = cityNameInput.value.trim(); 
+    
+        const cityElement = document.getElementById('city');
+        cityElement.textContent = cityName;
+    }
+  }
 
 const loadControls = () => {
     state.degreeCountLabel = document.getElementById('degrees')
     state.left_arrow = document.querySelector('.fa-chevron-left');
     state.right_arrow = document.querySelector('.fa-chevron-right');
     state.landscape = document.getElementById('landscape')
+    state.textBox = document.getElementById('textbox')
+    console.log(state)
 }
 
 const registerEvents = () => {
     state.left_arrow.addEventListener('click', decreaseDegree);
     state.right_arrow.addEventListener('click', increaseDegree);
+    state.textBox.addEventListener('keypress',updateCityName)
 }
 
 const onLoaded = () => {
