@@ -57,3 +57,23 @@ html{
     grid-row-end: 3;
 
 }
+
+.red {
+    color: 'red'
+}
+
+.orange {
+    color: 'orange'
+}
+
+.yellow {
+    color: 'yellow'
+}
+
+.green {
+    color: 'green'
+}
+
+.teal {
+    color: 'teal'
+}

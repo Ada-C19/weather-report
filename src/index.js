@@ -57,6 +57,26 @@ const findLatitudeAndLongitude = () => {
 
 
 
+// const colorChanging = function () {
+//     if (state.temp <= 49) {
+//         document.querySelector("#currentTemp").className = 'teal'
+//     }
+//     else if (state.temp >= 50 || state.temp <= 59) {
+//         color = green
+//     }
+
+//     else if (state.temp >= 60 || state.temp <= 69){
+//         color = yellow
+//     }
+
+//     else if (state.temp >= 70 || state.temp <= 79){
+//         color = orange
+//     }
+
+//     else if (state.temp >= 80){
+//         color = red 
+//     }
+// }
 
 const displayCity = function(){
     const inputNow = document.querySelector("input").value
@@ -118,7 +138,8 @@ const registerEventHandlers = () => {
     const newSkyDropDown = document
     newSkyDropDown.addEventListener("change", newSKySelect)
 
-
+    // const colorChangeEffect = document.querySelector("currentTemp")
+    // colorChangeEffect.addEventListener("click", colorChangeEffect)
 
    
 };
