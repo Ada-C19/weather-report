@@ -1,48 +1,105 @@
+
 body {
-    
+    font-family: "Helvetica", Sans-Serif;
+    text-align: center;
+    margin: auto;
 }
 
-header {}
+/* ======================== HEADER ========================*/
 
-main {}
-
-div {
-    padding: 5px;
+header{
+    margin: 20px;
 }
 
-/* SEARCH */
-#search-container {
+/* h1{} */
+
+
+main{
     display: inline-block;
 }
 
+/* ======================== SEARCH ========================*/
+#search-container {
+    margin: 30px;
+    overflow: hidden;
+    background-color: black;
+    padding: 8px 10px;
+}
+
+#search-text-box{
+    font-size: 20px;
+    width:
+}
+
+#search-button{
+    float: right;
+    display: block;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#search-button:hover{
+    background-color: blue;
+    color: white;
+}
+
+
+footer {
+    font-family: "Helvetica", Sans-Serif;
+    text-align: center;
+    margin: auto;
+}
+
+
+
+/* .temp-adustment-container {
+    margin: 20px;
+} */
+
+
+
+
+
+
+
+
 /* CITY */
-#city-container {}
+/* #city-container {} */
+
 
 /* TEMPERATURE */
-#temperature-container {}
+/* #temperature-container {} */
+
 
 /* SKY */
-#sky-container {}
+/* #sky-container {} */
 
 /* TEMP ADJUSTMENT BUTTONS */
 /* #temp-adustment-container{
 
 } */
 
-.flex-parent {
+/* .flex-parent {
     display: flex;
-}
+} */
 
-.temp-adustment-container {
-    margin: 20px;
-}
-
-button {
+down-button {
     margin-right: 20px;
     margin-left: 20px;
 }
 
-/* WEATHER GARDEN */
-weather-garden-container {}
+up-button {
+    margin-right: 20px;
+    margin-left: 20px;
+}
 
-footer {}
+temp-number {
+    margin-right: 20px;
+    margin-left: 20px; 
+} */
+/* WEATHER GARDEN */
+/* weather-garden-container {}
+
+footer {} */

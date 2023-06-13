@@ -15,37 +15,38 @@
     <!-- Header -->
     <header>
         <h1>AnS Weather Report</h1>
-
     </header>
+
     <main>
         <!-- Search section -->
         <div id="search-container">
-            <input id="search-text-box" type="text" placeholder="Please enter City">
-            <button>Search</button>
+            <input id="search-text-box" type="text" placeholder="Please enter a city">
+            <button id="search-button">Search</button>
         </div>
 
         <!-- City Header -->
         <div id="city-container">
-            <span></span>
+            <span>CITY NAME</span>
         </div>
 
         <!-- Temperature -->
         <div id="temperature-container">
             <section id="temp-header">Temperature</section>
 
-            <section id="temp-display">
                 <!-- Temperature Buttons -->
-                <div class="flex-parent temp-adustment-container">
-                    <button id="down">&#8595;</button>
+                <div class="temp-adustment-container">
+                    <button id="down-button">Decrease &#8595;</button>
+
                     <span id="temp-number">72</span>
-                    <button id="up">&#8593;</button>
+
+                    <button id="up-button">Increase &#8593;</button>
                 </div>
-            </section>
         </div>
 
         <!-- Sky conditions -->
         <div id="sky-container">
             <label for="weather-conditions">Sky Conditions</label>
+
             <select name="weather-conditions" id="weather-conditions">
                 <option value="sunny" selected>Sunny</option>
                 <option value="cloudy">Cloudy</option>
@@ -58,44 +59,34 @@
         <!-- Weather Garden -->
         <div id="weather-garden-container">
             <h3>Weather Garden</h3>
+            
             <div id="sunny-garden-image-container">
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
+                <div id="sun-garden-icon">☀️</div>
             </div>
 
             <div id="rainy-garden-image-container">
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
+                <div id="rain-garden-icon">💧</div>
             </div>
+
 
             <div id="cloudy-garden-image-container">
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
+                <div id="cloud-garden-icon">☁️</div>
             </div>
+
 
             <div id="snowy-garden-image-container">
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
-                <div id="garden-icon"></div>
+                <div id="snow-garden-icon">❄️</div>
             </div>
-
-
-
 
         </div>
     </main>
+
 
     <!-- Footer -->
     <footer>
         <p>© Proudly designed by Anba & Stacey</p>
     </footer>
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
 </body>
