@@ -9,6 +9,7 @@ function changeCity(event) {
 
 inputCity.addEventListener('keydown', changeCity)
 
+
 const increaseTempButton = document.getElementById('increase_temp')
 const decreaseTempButton = document.getElementById('decrease_temp')
 
@@ -38,8 +39,10 @@ function changeLandscape(temp) {
     let landscape = document.getElementById('fashion_landscape');
     if (temp < 60) {
         landscape.src = "assets/cold_outfit.jpeg"
-    } else if (temp > 60 && temp < 75) {
+    } else if (temp >= 60 && temp < 70) {
         landscape.src = "assets/60_degree_outfit.jpeg"
+    } else if (temp >= 70 && temp < 80) {
+        landscape.src = "assets/cardigan_and_jeans.jpeg"
     } else {
         landscape.src = "assets/80_degree_outfit.jpeg"
     }
@@ -48,12 +51,16 @@ function changeLandscape(temp) {
 
 function tempColor(temp) {
     let temperature = document.getElementById('temp');
-    if (temp < 60) {
+    if (temp <= 49) {
+        temperature.className = 'freezing';
+    } else if (temp > 49 && temp < 60) {
         temperature.className = 'cold';
-    } else if (temp > 60 && temp < 75) {
-        temperature.className = 'mild';
-    } else {
+    } else if (temp >= 60 && temp < 70) {
+        temperature.className = 'chilly';
+    } else if (temp >= 70 && temp < 80) {
         temperature.className = 'hot';
+    } else {
+        temperature.className = 'scorching';
     }
 }
 
@@ -125,9 +132,12 @@ async function updateWeather() {
     const { latitude, longitude } = await getCoordinates(city);
     const temperature = await getWeather(latitude, longitude);
     document.getElementById('temp_no').textContent = temperature;
+    tempColor(temperature)
+    changeLandscape(temperature)
+
 }
 
-const weather_button = document.getElementById('moon_weather')
+const weather_button = document.getElementById('weather-button')
 weather_button.addEventListener('click', updateWeather);
 
 

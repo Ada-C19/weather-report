@@ -13,19 +13,25 @@
 <body>
 
     <header>
-        <h1>Weather ✨Fashion✨ Report</h1>
+        <h1 id="page-title">Your Weather ✨Fashion✨ Report</h1>
     </header>
 
     <main>
         <section id="grid_space_one" class="grid-item">
-            <section class="search">
-                <input id="city_input" type="text" placeholder="enter city name">
-            </section>
+            <section id="city-space">
+                    <section id="city-name-section">
+                        <h2 id="city_name">Seattle</h2>
+                    </section>
 
-            <section>
-                <button><img id="moon_weather" src="assets/icons/moon_icon_two.png"></button>
-                <h1>get weather ^</h1>
-            </section>
+                    <section class="search">
+                        <input id="city_input" type="text" placeholder="enter city name" spellcheck="true">
+                    </section>
+                    
+                    <section>
+                        <button>Reset City</button>
+                    </section>
+             </section>
+            
         </section>
 
         <section id="grid_space_two" class="grid-item">
@@ -37,8 +43,8 @@
                 <button id="increase_temp"><img id="arrow" src="assets/icons/arrow_point_right.png"></button>
                 </section>
 
-                <section id="city-name-section">
-                <h2 id="city_name">London</h2>
+                <section>
+                    <button id="weather-button">Get Realtime Weather</button>
                 </section>
         </section>
         

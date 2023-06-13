@@ -23,7 +23,7 @@ header {
 
 main {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto auto;
     row-gap: 15px;
     column-gap: 0px;
     width: 90vw;
@@ -34,9 +34,13 @@ main {
     background-color: lavender;
 }
 
+#page-title{
+    font-style: italic;
+}
+
 .grid-item {
     width: 40vw; 
-    height: 40vw;
+    height: 35vw;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -47,6 +51,33 @@ main {
     box-sizing: border-box;
     overflow: hidden;
 }
+/* grid-space-one */
+#grid_space_one{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 60px;
+}
+
+#city-space{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5px; 
+    margin-bottom: 0px;
+}
+
+#city-name-section{
+    text-align: center;
+    font-size: 70px;
+    margin: none;
+    border: none;
+}
+
 
 /* grid-space-two */
 
@@ -55,7 +86,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     padding: 60px;
 }
 
@@ -68,16 +99,7 @@ main {
     padding: 0 5px; 
     margin-bottom: 0px;
 }
-#city_name{
-    margin: 0;
 
-}
-#city-name-section{
-    text-align: center;
-    font-size: 70px;
-    margin: none;
-    border: none;
-}
 .temp_style{
     margin: 10px;
 }
@@ -93,24 +115,34 @@ main {
 button{
     width: 50px;
     height: 50px;
+    background-color: white;
 }
 
+#weather-button{
+    width: 200px;
+}
+
+.freezing{
+    color:rgba(0, 206, 209, 0.399);
+    margin: 25px;
+}
 .cold{
-    color:darkturquoise;
-    margin: 10px;
+    color:lightsteelblue;
+    margin: 25px;
 }
-
-.mild{
-    color:darkslategrey;
-    margin: 10px;
-
+.chilly{
+    color:rgb(182, 223, 193);
+    margin: 25px;
 }
 
 .hot{
-    color: darkred;
-    margin: 10px;
+    color:darksalmon;
+    margin: 25px;
 }
-
+.scorching{
+    color: darkred;
+    margin: 255px;
+}
 
 #degrees{
     font-size: 50px;
