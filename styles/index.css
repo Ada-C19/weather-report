@@ -41,6 +41,13 @@ button {
     padding: 20px;
 }
 
+#sky-emoji-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
 #landscape-container {
     display: flex;
     justify-content: center;
