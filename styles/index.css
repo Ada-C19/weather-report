@@ -2,7 +2,7 @@ body {
     font-family: 'Rubik', sans-serif;
     margin: 0;
     padding: 0;
-    background-color:  rgba(232, 221, 194, 0.892);
+    background-color: rgba(194, 227, 232, 0.892);
 }
 
 header {
@@ -67,18 +67,6 @@ button {
     padding: 40px;
 }
 
-#city-container {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    font-size: 24px;
-    /* position: fixed; */
-    margin-top: 20px;
-    /* top: 0;
-    left: 0; */
-    /* width: 100%; */
-    padding: 40px;
-}
 
 footer {
     background-color: rgb(40, 12, 181);
