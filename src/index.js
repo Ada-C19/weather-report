@@ -18,10 +18,15 @@ const loadControls = () => {
     // we will need to access
     state.upButton = document.getElementById("up")
     state.downButton = document.getElementById("down")
-    state.tempDisplay = document.getElementById("temperature-now")
-    state.temperature = parseInt(document.getElementById("temperature-now").innerText)
-    state.city = document.getElementById("city")
+    //state.temperature = parseInt(document.getElementById("temperature-now").innerText)
     state.headerCity = document.getElementById("header-city")
+
+
+    state.temperature = accessLocation();
+    state.tempDisplay = document.getElementById("temperature-now");
+    //state.tempDisplay.innerText= state.temperature;
+
+    state.city = document.getElementById("city")
     state.weatherGarden = document.getElementById("weather-garden") 
     state.skyDropDown = document.getElementById("sky-drop-down")
     state.sky = document.getElementById("sky")
@@ -58,10 +63,10 @@ const registerEvents = () => {
         if (e.key === "Enter"){
             e.preventDefault();  // Prevent form submission
             console.log(state.city.value)
-            accessLocation();
             let cityValue = state.city.value;
             state.headerCity.textContent = cityValue;
-            
+            accessLocation();
+
             // Clear the input field after updating the header
             //state.city.value = "";
         }
@@ -81,7 +86,7 @@ const changeSky = () => {
 }
 
 const accessLocation = () => {
-    axios.get(`http://127.0.0.1:5000/location?q=${state.city.value}`).then(resp => {
+    axios.get(`http://127.0.0.1:5000/location?q=${state.headerCity.textContent}`).then(resp => {
     let lat = resp.data[0]["lat"]
     let lon = resp.data[0]["lon"]
     accessWeather(lat, lon);
