@@ -45,7 +45,7 @@ const getRtWeather = () => {
         }
     })
     .then((response) => {
-        state.tempValue = response.data.main.temp;
+        state.tempValue = convertK2F(response.data.main.temp);
         document.getElementById("temp-value").innerHTML = state.tempValue;
     })
 
@@ -53,6 +53,10 @@ const getRtWeather = () => {
         console.log("There's an error " + error);
     })
 };
+
+const convertK2F = (temp) => {
+    return Math.trunc((temp - 273.15) * 9 / 5 + 32);
+}
 
 const handleSearchButtonClicked = () => {
     changeCityHeader();
