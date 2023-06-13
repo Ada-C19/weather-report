@@ -136,24 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     
-    const findTemp = async (latitude, longitude) => {
-        await axios.get('http://127.0.0.1:5000/weather',
-        {
-            params: {
-                format: 'json',
-                lat: latitude,
-                lon: longitude
-            }
-        })
-        .then( (response) => {
-            console.log('success in findLocation!', response.data);
-            return response.data;
-        })
-        .catch( (error) => {
-            console.log('error in findLocation!');
-        });
-    }
-    
     const findWeather = () => {
         const cityCoordinates = findLatitudeAndLongitude(cityInput);
         
