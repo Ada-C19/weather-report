@@ -18,11 +18,11 @@
 - [ ] Sky Changes container
     - [X] drop down 
         ---> changes temp too
-        - [ ] Sunny
-        - [ ] Cloudy
-        - [ ] Rainy
-        - [ ] Sunny
+        - [X] Sunny
+        - [X] Cloudy
+        - [X] Rainy
+        - [X] Sunny
 - [ ] City Name 
-    - [ ] Default City
+    - [x ] Default City
     - [ ] Search Input linked to header
-    - [ ] Reset City Name ---- Atlanta or blank?
+    - [x] Reset City Name ---- Atlanta or blank?

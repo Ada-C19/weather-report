@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const decreaseTemp = document.querySelector("#decrease-temp");
     const displayTemp = document.querySelector("#display-temp");
     let temperature = 65;
-  
 
     // landscape
     const landscape = document.querySelector("#landscape");
     let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
 
     const updateTemp = () =>  {
+        
         displayTemp.textContent = temperature;
         landscape.textContent = lands;
 
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         updateLandscape();
     }
 
-    function updateTempColor() {
+    const updateTempColor = () => {
         if (temperature >= 80) {
         displayTemp.style.color = "red";
         } else if (temperature >= 70 && temperature <= 79) {
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function updateLandscape() {
+    const updateLandscape = () => {
         if (temperature >= 80) {
         lands = "🌵   🐍 🦂 🌵🌵  🐍 🏜 🦂";
         } else if (temperature >= 70 && temperature <= 79) {
@@ -48,12 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function increaseTemperature() {
+    const increaseTemperature = () => {
         temperature++;
         updateTemp();
     }
 
-    function decreaseTemperature() {
+    const decreaseTemperature = () => {
         temperature--;
         updateTemp();
     }  
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cityInput = document.getElementById("city-input");
     
     // Realtime Text City info will come from input value of cityInput
-    function updateCityName() {
+    const updateCityName = () => {
         cityName.textContent = cityInput.value;
     }
     
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // attempt to add event listener for search button 
     searchButton.addEventListener('keypress', checkIfEnter);
 
-    function checkIfEnter(event){
+    const checkIfEnter = (event) => {
         if (event.keyCode === 13) {
             getResults(searchButton.value);
         }
