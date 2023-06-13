@@ -142,26 +142,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     const findTemp = async (latitude, longitude) => {
-        await axios.get('http://127.0.0.1:5000/weather',
-        {
-            params: {
-                format: 'json',
-                lat: latitude,
-                lon: longitude
-            }
-        })
-        .then( (response) => {
+        try {
+            const response = await axios.get('http://127.0.0.1:5000/weather',
+            {
+                params: {
+                    format: 'json',
+                    lat: latitude,
+                    lon: longitude
+                }
+            })
             console.log('success in findLocation!', response.data);
             temperature = response.data.main.temp;
         })
         .catch( (error) => {
             console.log('error in findLocation!');
-        });
+        };
     }
 
     const findWeather = async () => {
         const cityCoordinates = await findLatitudeAndLongitude();
         
+        const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
         const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
         
         console.log(temp);
