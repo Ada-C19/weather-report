@@ -1,3 +1,4 @@
+
 const state = {
     temperature: 1,
     upButton: null,
@@ -5,7 +6,10 @@ const state = {
     tempDisplay: 10,
     city: null,
     headerCity: null,
-    weatherGarden: null
+    weatherGarden: null,
+    skyDropDown: null,
+    sky: null,
+    defaultCity: null
 };
 
 const loadControls = () => {
@@ -18,6 +22,9 @@ const loadControls = () => {
     state.city = document.getElementById("city")
     state.headerCity = document.getElementById("header-city")
     state.weatherGarden = document.getElementById("weather-garden") 
+    state.skyDropDown = document.getElementById("sky-drop-down")
+    state.sky = document.getElementById("sky")
+    state.defaultCity = document.getElementById("defaultCity")
 };
 
 const registerEvents = () => {
@@ -31,11 +38,22 @@ const registerEvents = () => {
         state.tempDisplay.innerText = --state.temperature
         changeTemp();
     });
+    state.skyDropDown.addEventListener("change", (e) => {
+        changeSky()
+        console.log(state.skyDropDown.value)
+    });
+    state.defaultCity.addEventListener("click", (e) =>{
+        state.headerCity.textContent = "Atlanta"
+        state.city.value = "Atlanta"
+        accessLocation();
+        changeTemp();
+    })
 
     state.city.addEventListener("keypress", function(e){
         if (e.key === "Enter"){
             e.preventDefault();  // Prevent form submission
-
+            console.log(state.city.value)
+            accessLocation();
             let cityValue = state.city.value;
             state.headerCity.textContent = cityValue;
             
@@ -45,8 +63,39 @@ const registerEvents = () => {
     })
 };
 
+const changeSky = () => {
+    if (state.skyDropDown.value === "Sunny") {
+        state.sky.textContent =  "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
+    }else if(state.skyDropDown.value === "Cloudy"){
+        state.sky.textContent = "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️";
+    }else if(state.skyDropDown.value === "Rainey"){
+        state.sky.textContent = "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧";
+    }else if(state.skyDropDown.value === "Snowy"){
+        state.sky.textContent = "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨";
+    }
+}
 
+const accessLocation = () => {
+    axios.get(`http://127.0.0.1:5000/location?q=${state.city.value}`).then(resp => {
+    let lat = resp.data[0]["lat"]
+    let lon = resp.data[0]["lon"]
+    accessWeather(lat, lon);
+    })
+};
 
+const accessWeather = (lat, lon) => {
+    console.log(lat, lon)
+    axios.get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}&units=imperial`).then(resp => {
+            console.log(resp.data["main"]["temp"])
+            state.temperature = kelvinToFarenheit(resp.data["main"]["temp"])
+            state.tempDisplay.innerText = state.temperature
+            changeTemp();
+            console.log(state.temperature)
+        })
+};
+const kelvinToFarenheit = (temp) =>{
+    return Math.round((temp-273.15)*(9/5)+32);
+}
 const changeTemp = () => {
     if (state.temperature >= 80) {
         state.tempDisplay.style.color = "red";
@@ -75,16 +124,3 @@ const onLoaded = () => {
 };
 
 onLoaded();
-
-
-// document.getElementById("up").addEventListener("click", change_temp_displayed)
-
-// const change_temp_displayed = function() {
-//     const temperature = document.getElementById("temperature-now");
-//     temperature ++;
-//     temperature.innerText = 
-// };
-
-// // const change_temp_displayed = () {
-// //     const temperature = document.getElementById("temperature-now")
-// // };

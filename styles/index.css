@@ -12,7 +12,6 @@
 #garden {
     display: grid;
     justify-content: center;
-    /* grid-column: 2 / 4; */
     grid-row: 1 / span 3;
     background-color: aqua;
 }
@@ -22,6 +21,10 @@
     justify-content: center;
 }
 
+#sky {
+    display: grid;
+    justify-content: center;
+}
 
 /* #temperature-now {
     color: red;

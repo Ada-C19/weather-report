@@ -16,9 +16,9 @@
         <button id="up">&#11014;</button>
         <p id="temperature-now">70</p>
         <button id="down">&#11015;</button>
-        <button>Get Real TIme Temperature</button>
+        <button id="real-time-temp">Get Real TIme Temperature</button>
     <h4>Sky</h4>
-        <select> 
+        <select id="sky-drop-down"> 
             <option value="Sunny">Sunny</option>
             <option value="Cloudy">Cloudy</option>
             <option value="Snowy">Snowy</option>
@@ -29,9 +29,11 @@
             City: 
             <input id ="city" type="text" placeholder="Enter a city"/>  
         </form>
-        <button>Reset</button>
-    <h4 id="garden"> Weather Garden </h4> <span </span id="weather-garden"></span>
-    <script src="./src/index.js"></script>
+        <button id="defaultCity">Reset</button>
+    <h4 id="garden"> Weather Garden </h4> 
+    <span </span id="sky"></span>
+    <span </span id="weather-garden"></span>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
