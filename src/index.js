@@ -9,7 +9,8 @@ const state = {
     weatherGarden: null,
     skyDropDown: null,
     sky: null,
-    defaultCity: null
+    defaultCity: null,
+    realTimeTemp : null
 };
 
 const loadControls = () => {
@@ -25,6 +26,7 @@ const loadControls = () => {
     state.skyDropDown = document.getElementById("sky-drop-down")
     state.sky = document.getElementById("sky")
     state.defaultCity = document.getElementById("defaultCity")
+    state.realTimeTemp = document.getElementById("real-time-temp")
 };
 
 const registerEvents = () => {
@@ -48,7 +50,10 @@ const registerEvents = () => {
         accessLocation();
         changeTemp();
     })
-
+    state.realTimeTemp.addEventListener("click", (e) =>{
+        accessLocation();
+        changeTemp();
+    })
     state.city.addEventListener("keypress", function(e){
         if (e.key === "Enter"){
             e.preventDefault();  // Prevent form submission
@@ -58,7 +63,7 @@ const registerEvents = () => {
             state.headerCity.textContent = cityValue;
             
             // Clear the input field after updating the header
-            state.city.value = "";
+            //state.city.value = "";
         }
     })
 };
