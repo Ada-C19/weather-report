@@ -3,16 +3,21 @@ body {
     font-family: "Helvetica", Sans-Serif;
     text-align: center;
     margin: auto;
+    background-image: url("../assets/images/taylor-van-riper-yQorCngxzwI-unsplash.jpg");
+    width: fit-content;
 }
 
 /* ======================== HEADER ========================*/
 
 header{
-    margin: 20px;
+    margin:10px;
+    background-image: url("../assets/images/ameythst.jpeg");
+    color:white;
+    padding:5px;
+    font-size:25px;
 }
 
 /* h1{} */
-
 
 main{
     display: inline-block;
@@ -20,15 +25,25 @@ main{
 
 /* ======================== SEARCH ========================*/
 #search-container {
-    margin: 30px;
+    margin: 10px;
     overflow: hidden;
-    background-color: black;
     padding: 8px 10px;
 }
 
+#city-intro{
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    margin-left: 40px;
+    margin-right: 40px;
+
+    color:black;
+    /* background-color: grey; */
+}
+
 #search-text-box{
-    font-size: 20px;
-    width:
+    font-size: 15px;
+    width:60%;
 }
 
 #search-button{
@@ -38,6 +53,7 @@ main{
     text-align: center;
     text-decoration: none;
     font-size: 20px;
+    margin-right:60px;
 }
 
 #search-button:hover{
@@ -45,61 +61,117 @@ main{
     color: white;
 }
 
+/* ======================== CITY NAME DISPLAY ========================*/
+
+#city-container{
+    margin: 5px;
+    padding: 5px;
+    margin-bottom: 2px;
+}
+
+
+#city-spotlight{
+    color:white;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size:30px;
+
+}
+
+
+/* ======================== TEMPERATURE DISPLAY ========================*/
+#temperature-container{
+    padding: 5px;
+    margin: 0px;
+}
+
+#temp-header{
+    margin: 0px;
+    font-size: 20px;
+}
+
+.temp-adustment-container{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+}
+
+#temp-number{
+    font-size: 60px;
+    margin: 0px;
+}
+
+#down-button{
+    margin: 20px;
+    margin-bottom: -10px;
+    font-size: 15px;
+}
+
+#up-button{
+    margin: 20px;
+    margin-bottom: -10px;
+    font-size: 15px;
+}
+
+
+/* ======================== TEMPERATURE DISPLAY ========================*/
+#sky-container{
+    display:inline;
+    justify-content:space-around;
+    margin: 0px;
+    overflow: hidden;
+    /* padding: 8px 10px; */
+}
+
+#label{
+    font-size:20px;
+    margin: 0px;;
+}
+
+#select-drop-down {
+    padding:25px;
+    width:max-content;
+}
+
+#weather-conditions{
+    background-color: darkgrey;
+    margin:0px;
+    padding:10px;
+}
+
+/* ======================== GARDEN ICON DISPLAY ========================*/
+#weather-garden-container{
+    display:block;
+    margin: 15px;
+}
+
+#weather-garden-header{
+    font-size: 20px;
+    margin:20px;
+    margin-bottom: 5px;
+}
+
+.weather-icons{
+    display:flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin:10px;
+    font-size: 30px;
+}
+
+
+/* ======================== FOOTER ========================*/
 
 footer {
     font-family: "Helvetica", Sans-Serif;
     text-align: center;
     margin: auto;
+    color:white;
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
 }
-
-
-
-/* .temp-adustment-container {
-    margin: 20px;
-} */
-
-
-
-
-
-
-
-
-/* CITY */
-/* #city-container {} */
-
-
-/* TEMPERATURE */
-/* #temperature-container {} */
-
-
-/* SKY */
-/* #sky-container {} */
-
-/* TEMP ADJUSTMENT BUTTONS */
-/* #temp-adustment-container{
-
-} */
-
-/* .flex-parent {
-    display: flex;
-} */
-
-down-button {
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-up-button {
-    margin-right: 20px;
-    margin-left: 20px;
-}
-
-temp-number {
-    margin-right: 20px;
-    margin-left: 20px; 
-} */
-/* WEATHER GARDEN */
-/* weather-garden-container {}
-
-footer {} */

@@ -14,7 +14,7 @@
 <body>
     <!-- Header -->
     <header>
-        <h1>AnS Weather Report</h1>
+        <h1>AnS Amethyst Weather Report</h1>
     </header>
 
     <main>
@@ -26,18 +26,26 @@
 
         <!-- City Header -->
         <div id="city-container">
-            <span>CITY NAME</span>
+            <h3 id="city-intro">Get the real-time weather in the beautiful city of: </h2>
+
+
+            <span>
+                <h2 id="city-spotlight">CITY NAME</h2>
+            </span>
         </div>
+
 
         <!-- Temperature -->
         <div id="temperature-container">
-            <section id="temp-header">Temperature</section>
+            <h3 id="temp-header">Current Temperature :</h3>
 
                 <!-- Temperature Buttons -->
                 <div class="temp-adustment-container">
                     <button id="down-button">Decrease &#8595;</button>
 
-                    <span id="temp-number">72</span>
+                    <span>
+                        <h2 id="temp-number">72</h2>
+                    </span>
 
                     <button id="up-button">Increase &#8593;</button>
                 </div>
@@ -45,10 +53,13 @@
 
         <!-- Sky conditions -->
         <div id="sky-container">
-            <label for="weather-conditions">Sky Conditions</label>
+            <label for="weather-conditions" id="label">
+                <h4>Sky Condition :</h4>
+            </label>
 
             <select name="weather-conditions" id="weather-conditions">
-                <option value="sunny" selected>Sunny</option>
+                <option value="general" id="select-drop-down" selected>Please select an option</option>
+                <option value="sunny">Sunny</option>
                 <option value="cloudy">Cloudy</option>
                 <option value="rainy">Rainy</option>
                 <option value="snowy">Snowy</option>
@@ -58,25 +69,29 @@
 
         <!-- Weather Garden -->
         <div id="weather-garden-container">
-            <h3>Weather Garden</h3>
-            
-            <div id="sunny-garden-image-container">
-                <div id="sun-garden-icon">☀️</div>
-            </div>
+            <h3 id="weather-garden-header">Weather Garden :</h3>
 
-            <div id="rainy-garden-image-container">
-                <div id="rain-garden-icon">💧</div>
-            </div>
+            <section class="weather-icons"> 
+
+                <div id="sunny-garden-image-container">
+                    <div id="sun-garden-icon">☀️   &nbsp; 🌤</div>
+                </div>
+
+                <div id="cloudy-garden-image-container">
+                    <div id="cloud-garden-icon">☁️</div>
+                </div>
+
+                <div id="rainy-garden-image-container">
+                    <div id="rain-garden-icon">🌦 &nbsp; 🌧 &nbsp; 🌈  &nbsp;💧 &nbsp;  ⚡️ </div>
+                </div>
+
+                <div id="snowy-garden-image-container">
+                    <div id="snow-garden-icon">❄️</div>
+                </div>
+
+            </section>
 
 
-            <div id="cloudy-garden-image-container">
-                <div id="cloud-garden-icon">☁️</div>
-            </div>
-
-
-            <div id="snowy-garden-image-container">
-                <div id="snow-garden-icon">❄️</div>
-            </div>
 
         </div>
     </main>
@@ -84,7 +99,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>© Proudly designed by Anba & Stacey</p>
+        <p>©2023 Amethyst Inc. Proudly designed by Anba & Stacey</p>
     </footer>
 
     <script src="./node_modules/axios/dist/axios.min.js"></script>
