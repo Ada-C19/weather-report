@@ -1,0 +1,146 @@
+body {
+    background-color: #1b69f9;
+    font-family: Rubik, sans-serif;
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+
+header {
+    width: 100vw;
+    height: 100px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.left-side-container {
+    width: 35vw;
+}
+
+.right-side-container {
+    width: 61vw;
+    /* border: solid red; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.right-side-container h2 {
+    color:#ffffff;
+}
+
+.temperature-section {
+    height: 200px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.temperature-section h3{
+    text-align: center;
+    width: 100%;
+    height: 1px;
+}
+
+.temp-btn-sect {
+    margin: 0px 30px;
+    /* padding: 0px 0px 0px 10px; */
+    font-size: 25px;
+}
+
+#get-temp {
+    margin: 40px 0px;
+    padding: 10px 5px;
+    background-color: #1b69f9;
+    color:#ffffff;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.sky-menu {
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 80px;
+    width: auto;
+    margin: 20px 0px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#change-sky {
+    width: 20vw;
+    height: auto;
+    margin: 50px;
+    text-align: center;
+}
+
+.city-choice {
+    background-color: #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    height: 140px;
+    width: auto;
+}
+
+.city-choice h3 {
+    padding: 20px 0px 0px 0px;
+    font-size: 20px;
+}
+
+#city-input {
+    border-radius: 5px;
+}
+
+#resetbtn {
+    background-color: #1b69f9;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 0px 0px 10px;
+    color: #ffffff;
+    
+}
+
+#weather-garden {
+    /* border: solid black; */
+    border-radius: 10px;
+    height: 200px;
+    width: 40vw;;
+    background-color: #ddffff;
+}
+
+#weather-garden p {
+    font-size: 25px;;
+}
+
+#chosen-sky-emojis {
+    justify-content: center;
+    height: 40px;
+    width: auto;
+    /* border: solid green; */
+    padding-top: 30px;
+}
+
+#weather-emojis {
+    width: auto;
+    height: 40px;
+    margin: 70px 0px 0px 0px;
+}
+
+
+
+footer {
+    border-top: solid #ffffff;
+    width: 100vw;
+    height: 10vh;
+    margin: 50px 50px;
+    text-align: center;
+}

@@ -10,7 +10,55 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <header>
+        <h1>Weather Report for the city of <span id="city-display"></span>!</h1>
+    </header>
+    <div class="left-side-container">
+        <section class="temperature-section">
+            <h3>Temperature</h3>
+            <div class="temp-btn-sect">
+                <button type="button" id="up-button">
+                    ⬆️
+                </button>
+                <p id="temperature-now">50</p>
+                <button id="button-down">
+                    ⬇️
+                </button>
+            </div>
+            <button id="get-temp">
+                Get Realtime Temperature!
+            </button>
+        </section>
+        <section class="sky-menu">
+            <label for="change-sky" >Sky Menu:</label>
+            <select name="skies" id="change-sky">
+                <option value="">--Please choose a sky--</option>
+                <option value="sunny">☀️☀️ Sunny ☀️☀️</option>
+                <option value="cloudy">☁️☁️ Cloudy ☁️☁️</option>
+                <option value="rainy">☔️⛈️ Rainy ⛈️☔️</option>
+                <option value="snowy">☃️❄️ Snowy ❄️☃️</option>
+            </select>
+        </section>
+        <section class="city-choice">
+            <h3>City Name</h3>
+            <label for="cityname"></label>
+            <input type="text" id="city-input" name="cityname" oninput="display();" placeholder="Enter a city">
+            <button id="resetbtn">Reset</button>
+        </section>
+    </div>
+    <div class="right-side-container">
+        <section>
+            <h2>Weather Garden</h2>
+            <div id="weather-garden">
+                <p id="chosen-sky-emojis"></p>
+                <p id="weather-emojis">"🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷"</p>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2023 Jay and Megan</p>
+    </footer>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
