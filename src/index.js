@@ -45,12 +45,12 @@ const registerEvents = () => {
         console.log(state.skyDropDown.value)
     });
     state.defaultCity.addEventListener("click", (e) =>{
-        state.headerCity.textContent = "Atlanta"
-        state.city.value = "Atlanta"
-        accessLocation();
-        changeTemp();
+        defaultTemp();
     })
     state.realTimeTemp.addEventListener("click", (e) =>{
+        if (state.city.value === "Atlanta"){
+            defaultTemp();
+        }
         accessLocation();
         changeTemp();
     })
@@ -120,12 +120,19 @@ const changeTemp = () => {
     }
 };
 
+const defaultTemp = () => {
+    state.headerCity.textContent = "Atlanta"
+    state.city.value = "Atlanta"
+    accessLocation();
+    changeTemp();
+}
 
 const onLoaded = () => {
     // steps to carry out when the page is loaded
     loadControls();
     registerEvents();
     changeTemp();
+    defaultTemp();
 };
 
 onLoaded();
