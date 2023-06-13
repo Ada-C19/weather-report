@@ -11,8 +11,6 @@
 </head>
 <body>
     <main class="container">
-            <script src="./src/index.js"></script>
-            <script src="./node_modules/axios/dist/axios.min.js"></script>
             <header class="header">
                 <h1>Weather Report</h1>
                 <h2 id="city">For the lovely city of Atlanta</h2>
@@ -33,7 +31,7 @@
                 </h3>
                 <br>
                 <div>
-                <button class = "current_temp_call_button">
+                <button id = "current_temp_call_button">
                     <span>Get real time temperature</span>
                 </button>
                 </div>
@@ -73,5 +71,7 @@
             </section>
         </section>
     </main>
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>

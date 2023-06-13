@@ -43,7 +43,7 @@ PATH = "http://127.0.0.1:5000/"
 
 const findLatitudeAndLongitude = () => {
     let latitude, longitude;
-    return axios.get(PATH,
+    axios.get(PATH,
         {
             params: {
                 "q": state.city
@@ -60,7 +60,14 @@ const findLatitudeAndLongitude = () => {
         // })
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
+            throw error;
         })
     }
 
-console.log(findLatitudeAndLongitude())
+//    findLatitudeAndLongitude("Atlanta")
+//     .then((coordinates) => {
+//         console.log(coordinates);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     });
