@@ -5,6 +5,7 @@ let emoji = "";
 let sky = ""
 let skyEmoji = "";
 
+
 // DOM elements
 const temperatureElement = document.getElementById('temperature');
 const increaseBtn = document.getElementById('increase-btn');
@@ -13,9 +14,10 @@ const landscapeImg = document.getElementById('landscape-img');
 const emojiElement = document.getElementById('emoji');
 const cityElement = document.getElementById('city');
 const resetCityButton = document.getElementById('reset-city');
+const currentTempButton = document.getElementById('check-current-temp');
 const skyElement = document.getElementById('sky');
 const skyEmojiElement = document.getElementById('skyEmoji');
-const demoElement = document.getElementById('demo');
+
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
