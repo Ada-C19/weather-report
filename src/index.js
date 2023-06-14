@@ -64,25 +64,25 @@ const changeGround = function () {
     else if (state.temp >= 40 && state.temp <= 59) {
         document.querySelector("#currentTemp")
         const tempGroundContainer = document.querySelector("#groundChange")
-        tempGroundContainer.textContent = `🌬️🍂🦃🌾🍂🌰🐿️🌾🍂`
+        tempGroundContainer.textContent = `🌬️ 🍂 🦃 🌾 🍂 🌰 🐿️ 🌾 🍂`
     }
 
     else if (state.temp >= 60 && state.temp <= 69){
         document.querySelector("#currentTemp")
         const tempGroundContainer = document.querySelector("#groundChange")
-        tempGroundContainer.textContent = `🌱🐾🌱🌷🌱🐝🌱🍃🌱`
+        tempGroundContainer.textContent = `🌱 🐾 🌱 🌷 🌱 🐝 🌱 🍃 🌱`
 
     }
     else if (state.temp >= 70 && state.temp <= 89){
         document.querySelector("#currentTemp")
         const tempGroundContainer = document.querySelector("#groundChange")
-        tempGroundContainer.textContent = `🌺🏖️🌴🌺🧉🐠🌺🦋🍔`
+        tempGroundContainer.textContent = `🌺 🏖️ 🌴 🌺 🧉 🐠 🌺 🦋 🍔`
 
     }
     else if (state.temp >= 90){
         document.querySelector("#currentTemp")
         const tempGroundContainer = document.querySelector("#groundChange")
-        tempGroundContainer.textContent = `🔥😈💦🔥🌭🥵❤️‍🔥🧑🏼‍🚒🦂`
+        tempGroundContainer.textContent = `🔥 😈 💦 🔥 🌭 🥵 ❤️‍🔥 🧑🏼‍🚒 🦂`
     }
 }
 
@@ -146,10 +146,12 @@ const getRealTimeTemp = function (){
 }
 
 const resetCityName = function () {
-    state.city = "Atlanta"
-    const resetNowContainer = document.querySelector("#city")
-    console.log(resetNowContainer)
-    resetNowContainer.textContent = `For the lovely city of ${state.city}`
+    state.city = "Atlanta";
+    const resetNowContainer = document.querySelector("#city");
+    console.log(resetNowContainer);
+    resetNowContainer.textContent = `For the lovely city of ${state.city}`;
+    const userInput = document.querySelector("input");
+    userInput.value = '';
     colorChanging();
 }
 
