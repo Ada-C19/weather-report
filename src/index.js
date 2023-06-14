@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
 
     const convert = () => {
-        temperature = (temperature - 273.15) * 9/5 + 32
+        temperature = ((temperature - 273.15) * 9/5 + 32)
     }
     const updateTemp = (temperature) =>  {
         displayTemp.textContent = temperature;
