@@ -1,7 +1,3 @@
-// select the hml element the event has to occur on 
-// make function to run when it occurs
-//register function in event list
-
 state = {
     temp: 50,
     city: "Atlanta",
@@ -24,9 +20,8 @@ const findWeather = () => {
             state.temp = Math.round(((tempK-273.15)*1.8) + 32)
             console.log(response.data.main.temp)
             const tempNumContainer = document.querySelector("#currentTemp")
-
             tempNumContainer.textContent = `${state.temp}°`;
-            })
+        })
         .catch((error) => {
             console.log('error in findWeather for', state.city);
             throw error;
@@ -48,14 +43,11 @@ const findLatitudeAndLongitude = () => {
             console.log('success', state.city, state.latitude, state.longitude);
             findWeather();   
          })
-    
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
             throw error;
         })
     }
-
-
 
 // const colorChanging = function () {
 //     if (state.temp <= 49) {
@@ -85,16 +77,17 @@ const displayCity = function(){
     const tempCityContainer = document.querySelector('#city')
     tempCityContainer.textContent = `For the lovely city of ${state.city}`
 }
+
 const incrementTemp = function() {
     state.temp +=1;
     const tempNumContainer = document.querySelector("#currentTemp")
     tempNumContainer.textContent = `${state.temp}°`;
 };
+
 const decrementTemp = function() {
     state.temp -=1
     const tempNumContainer = document.querySelector("#currentTemp")
-    tempNumContainer.textContent = `${state.temp}°`
-    
+    tempNumContainer.textContent = `${state.temp}°`  
 };
 
 const getRealTimeTemp = function (){
@@ -113,11 +106,6 @@ const newSKySelect = function () {
     const newSkyContainer = document.querySelector("#skyChange")
     newSkyContainer.textContent = skyOption
 }
-
-// findLatitudeAndLongitude()
-// console.log(state.latitude, state.longitude)
-
-
 
 const registerEventHandlers = () => {
     const upArrow = document.querySelector("#up_arrow");
@@ -139,8 +127,7 @@ const registerEventHandlers = () => {
     newSkyDropDown.addEventListener("change", newSKySelect)
 
     // const colorChangeEffect = document.querySelector("currentTemp")
-    // colorChangeEffect.addEventListener("click", colorChangeEffect)
-
-   
+    // colorChangeEffect.addEventListener("click", colorChangeEffect)   
 };
+
 document.addEventListener("DOMContentLoaded", registerEventHandlers);
