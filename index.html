@@ -1,16 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/index.css" />
-</head>
-<body>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    </section>
+      <h1> Raina and Gloria's Weather Report </h1>
+    <section>
+    <section class="feature-container" id="temp-container">
+      <h2>Temperature</h2>
+      <p id="increase-temp">⬆️</p>
+      <p id="display-temp">0</p>
+      <p id="decrease-temp">⬇️</p>
+    </section>
+    <section class="feature-container" id="sky-container">
+      <h2>Sky</h2>
+      <label>
+        <select id="sky-dropdown">
+          Select Sky
+          <option value="sunny">Sunny</option>
+          <option value="cloudy">Cloudy</option>
+          <option value="rainy">Rainy</option>
+          <option value="snowy">Snowy</option>
+      </select>
+      </label>
+    </section>
+    <section class="feature-container" id="city-name-container">
+      <h2>City</h2>
+      <h2 id="city-name">Realtime Text City</h2>
+      <input type="text" id="city-input" id="form1" class="form-control" placeholder="Enter City Name"/>
+        <button id="reset-button" type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+          <h4>Reset</h4>
+        </button>
+        <button id="search-button" type="button" class="btn btn-primary">
+          <i class="fas fa-search"></i>
+          <h4>Search</h4>
+        </button>
+      </div>
+    </section>
+    <section class="feature-container" id="weather-garden">
+      <h2>Weather Garden</h2>
+      <p id="sky">Sky emojis</p>
+      <br>
+      <p id="air"> </p>
+      <br>
+      <p id="landscape">Landscape emojis</p>
+    </section>
+
+    <script src="./node_modules/axios/dist/axios.min.js"></script>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
