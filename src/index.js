@@ -9,11 +9,12 @@ const state = {
     degreeCount: 70,
     sky_options: null,
     temp: 0,
-    tempDisplay: null
+    tempDisplay: null,
+    cityHeader: null
 }
 
 const convertKelvintoFahrenheight = (kelv_degree) => {
-    state.degreeCountLabel.textContent = Math.floor((kelv_degree - 273.15) * 9/5 + 32)
+    state.degreeCount = Math.floor((kelv_degree - 273.15) * 9/5 + 32)
 }
 
 const findCityLocation = async (cityName) => {
@@ -29,15 +30,23 @@ const findCityLocation = async (cityName) => {
                 lon: response.data[0].lon
             }
         }).then(response => {
-            state.temp = response.data.main.temp
-            state.degreeCount = state.temp
+            // state.temp = response.data.main.temp
+            // state.degreeCount = state.temp
+            convertKelvintoFahrenheight(response.data.main.temp)
+            state.degreeCountLabel.textContent = state.degreeCount 
+            change_color()
             console.log(state.degreeCount)
-            convertKelvintoFahrenheight(state.degreeCount)
         })
     })
     .catch((error) => {
         console.log(error);
     })
+}
+
+const resetCity = () => {
+    state.textBox.value = 'Atlanta'
+    state.cityHeader.innerText = 'Atlanta'
+    findCityLocation('Atlanta')
 }
 
 findCityLocation()
@@ -89,7 +98,7 @@ function updateCityName(event) {
         const cityNameInput = document.getElementById('textbox');
         const cityName = cityNameInput.value.trim(); 
     
-        const cityElement = document.getElementById('city');
+        const cityElement = document.getElementById('city-header');
         cityElement.textContent = cityName;
         findCityLocation(cityName)
     }
@@ -108,6 +117,7 @@ let changeSky = (event) => {
 }
  // Updatecity name - takes location and updates city 
     // city and state object 
+    
 const loadControls = () => {
     state.degreeCountLabel = document.getElementById('degrees')
     state.left_arrow = document.querySelector('.fa-chevron-left');
@@ -118,6 +128,8 @@ const loadControls = () => {
     state.landscape = document.getElementById('landscape');
     state.sky_options = document.querySelector('.select-sky');
     state.sky = document.getElementById('sky');
+    state.resetCity = document.getElementById('reset-city');
+    state.cityHeader = document.getElementById('city-header');
 }
 
 const registerEvents = () => {
@@ -125,6 +137,7 @@ const registerEvents = () => {
     state.right_arrow.addEventListener('click', increaseDegree);
     state.textBox.addEventListener('keypress',updateCityName)
     state.sky_options.addEventListener('change', changeSky);
+    state.resetCity.addEventListener('click', resetCity)
 }
 
 const onLoaded = () => {
