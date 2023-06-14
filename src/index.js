@@ -1,7 +1,5 @@
 'use strict'
 
-const { default: axios } = require("axios");
-
 const tempElement = document.getElementById('tempValue');
 let tempValue = parseInt(tempElement.textContent);
 const landscapeElement = document.getElementById('landscape');
@@ -100,22 +98,25 @@ const locationCall = () => {
     .get(`http://127.0.0.1:5000/location?q=${cityNameElement.textContent}`)
     .then((response) => {
         console.log('The value of response is:', response);
-        lat = response.data[0].lat;
-        lon = response.data[0].lon;
+        let lat = response.data[0].lat;
+        let lon = response.data[0].lon;
+        console.log(lat);
+        console.log(lon);
         temperatureCall(lat,lon);
     })
     .catch((error) => {
         console.log('The value of error is:', error);
     });
-
-
+    
 }
 
 const temperatureCall = (lat,lon) => {
     axios
-    .get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}`)
+    .get(`http://127.0.0.1:5000/weather?lat=${lat}lon=${lon}`)
     .then((response) => {
         console.log('The value of response is:', response);
+        let temp = response.data.main.temp;
+        console.log(temp);
     })
     .catch((error) => {
         console.log('The value of error is:', error);
