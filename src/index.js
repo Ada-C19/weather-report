@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
         lands = "🌾🌾   🍃 🪨 🛤 🌾🌾🌾 🍃";
         } else if (temperature <= 59) {
         lands = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-        } else {
-        lands = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
+        // } else {
+        // lands = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
         }
     }
     const increaseTemperature = () => {
