@@ -37,6 +37,7 @@ function decreaseTemperature() {
 // Function to reset city name & clear input field
 function resetCityName() {
     cityElement.value = '';
+    cityInput();
 }
 
 // Function to update the temperature display, change the text color, and update the landscape
@@ -71,6 +72,12 @@ function updateTemperatureDisplay() {
     }
 }
 
+//function to return city input
+function cityInput() {
+    var cityName = document.getElementById("city").value;
+    document.getElementById("cityChoice").innerHTML = cityName;
+}
+//function to update sky selection when there is a change
 function skySelection() {
     var choice = document.getElementById("sky").value;
     updateSkyDisplay();
