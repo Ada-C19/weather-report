@@ -1,6 +1,44 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box; 
+  
+}
+
+h1 {
+  text-align: center;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  font-size: 50px;
+}
+
+h2 {
+  text-align: center;
+}
+main {
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: 100px 100x 100px;
+
+}
+
+section {
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
 }
 
 header, footer, #temperature, #sky, #city {
@@ -8,63 +46,71 @@ header, footer, #temperature, #sky, #city {
 }
 /* Start of Main Field Boxes */
 #temperature {
-    display: flex;
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
+    grid-column: 1 / 3;
+    grid-row: 1;
     background-color:#89CFF0;
-    padding: 20px;
-    margin: 40px; 
+    position: relative;
+}
+
+#temperature > h2 {
+  text-align: left;
+}
+
+#city > h2 {
+  text-align: left;
 }
 
 #sky {
-    display: flex;
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
+    grid-column: 1 ;
+    grid-row: 2 ;
     background-color:pink;
-    padding: 20px;
-    margin: 40px; 
+
 }
 
 #city {
-    display: flex;
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
+    grid-column: 2;
+    grid-row: 2;
     background-color:#f1ffc4;
-    padding: 20px;
-    margin: 40px;  
 }
 
 #garden {
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
-    background-color:#e0bbe4 ;
-    padding: 40px;
-    margin: 40px;   
+    grid-column: 3 ;
+    grid-row: 1 / 3;
+    background-color:#e0bbe4;
+  position: relative;
 }
 /* End of Main Field Boxes */
 
 /* Start: Inside of Temperature Field */
 #button-up {
     max-width: 50px;
-    max-height: 50px;
+    max-height: 100px;
+    position: absolute;
+    padding: 10px;
+    right: 495px;
 }
 #button-down {
     max-width: 50px;
-    max-height: 50px;
+    max-height: 100px;
+    position: absolute;
+    padding: 10px;
+    left: 275px;
 }
 #count {
     color: #d9dddc;
     font-size: 3rem;
+    position: absolute;
+    left: 327px;
 }
 
 #realtime {
-    display: flex;
     background-color:cadetblue;
     /* border: transparent; */
     /* border-radius:10px; */
     border-radius:  100px / 120px;
     padding: 20px;
-    margin: 40px;
+/*     position: absolute;
+    right: 100px; */
 }
 /* End: Inside of Temperature Field */
 
@@ -100,11 +146,22 @@ header, footer, #temperature, #sky, #city {
 
 /* Start:Inside of Garden Field */
 #flowers {
-    display: flex;
-    float: left;
+  display: flex;
+  float: left;
+  position: absolute;
+  bottom:200px;
+  left: 150px;
+
 }
 #clouds {
     display: flex;
     float: right;
+    position: absolute;
+    top:300px;
+    left: 200px;
+}
+
+#garden > content {
+  margin: auto;
 }
 /* End:Inside of Garden Field */
