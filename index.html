@@ -10,7 +10,79 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <main class="container">
+            <header class="header">
+                <h1>Weather Report</h1>
+                <h2 id="city">For the lovely city of Atlanta</h2>
+                <br>
+            </header>
+            <section class="content_container">
+            <section id="temperature_section">
+                <h2>Temperature</h2>
+                    <div class="directional_arrow">
+                        <button id="up_arrow">
+                            <span>^</span>
+                        </button>
+                        <section>
+                            <h4 class=green id="currentTemp">50°</h4>
+                        </section>
+                        <button id="down_arrow">
+                            <span>⌄</span>
+                        </button>
+                    </div>
+                <br>
+                <div>
+                <button id="getTemp">
+                    <span>Get real time temperature</span>
+                </button>
+                </div>
+                <br>
+            </section>
+            <section id="sky_section">
+                <h2>Sky</h2>
+                <div>
+                    <br>
+                    <label for="sky">Choose a sky:
+                    <br>
+                    <br>
+                    <select class="sky_selecting" onchange="skyChange">
+                    <option value="☀️ 🪂 ☀️ 🦜 ☄️ ☀️ 🦜 ☀️ ☁️">Sunny</option>
+                    <option value="☁️ ☁️ ☁️ ☁️ ☁️ 🌤 ☁️ ☁️ ☁️">Cloudy</option>
+                    <option value="🌧 🌈 ⛈ 🌧 💧 ⛈ 🌦 💧 🌧">Rainy</option>
+                    <option value="🌨 ❄️ 🌨 ❄️ 🌨 ❄️ 🌨 ❄️ 🌨">Snowy</option>
+                    </select>
+                    </label>
+                </div>
+                <div class="newSky"></div>
+                <br>
+            </section>
+            <section id="city_section">
+                <h2>City Name</h2>
+                <div>
+                    <label for="city_input"> Enter your city!</label>
+                    <br>
+                    <br>
+                    <input type="text" id="inputCity" name="Thing"><br><br>
+                    </div>
+                    <div>
+                    <button id="reset">
+                        <span>reset</span>
+                    </button>
+                </div>
+            <br>
+            </section>
+            <section id="weather_garden_section">
+                <h2>🌈 Weather Garden 🌤</h2>
+                <p class="weather_emojis" id="skyChange">☀️ 🪂 ☀️ 🦜 ☄️ ☀️ 🦜 ☀️ ☁️</p>
+                <br>
+                <br>
+                <br>
+                <p class="weather_emojis">🏡 🏘️ 🐕 🏡 ⛺🧚🏽 🛖 🐈 ⛺</p>
+                <p class="weather_emojis" id="groundChange">🌱 🐾 🌱 🌷 🌱 🐝 🌱 🍃 🌱</p>
+            </section>
+        </section>
+    </main>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
