@@ -74,7 +74,7 @@ function updateTemperatureDisplay() {
 function skySelection() {
     var choice = document.getElementById("sky").value;
     updateSkyDisplay();
-  }
+}
 
 function updateSkyDisplay() {
     let sky = document.getElementById("sky").value
