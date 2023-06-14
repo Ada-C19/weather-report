@@ -22,6 +22,7 @@ const findWeather = () => {
             const tempNumContainer = document.querySelector("#currentTemp")
             tempNumContainer.textContent = `${state.temp}°`;
             colorChanging();
+            changeGround();
         })
         .catch((error) => {
             console.log('error in findWeather for', state.city);
@@ -44,12 +45,46 @@ const findLatitudeAndLongitude = () => {
             console.log('success', state.city, state.latitude, state.longitude);
             findWeather();
             colorChanging();   
+            changeGround();
          })
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
             throw error;
         })
     }
+
+
+const changeGround = function () {
+    if (state.temp <= 39) {
+        document.querySelector("#currentTemp")
+        const tempGroundContainer = document.querySelector("#groundChange")
+        tempGroundContainer.textContent = `❄️🌲❄️☃️❄️🏂❄️🌲❄️`
+    }
+
+    else if (state.temp >= 40 && state.temp <= 59) {
+        document.querySelector("#currentTemp")
+        const tempGroundContainer = document.querySelector("#groundChange")
+        tempGroundContainer.textContent = `🌬️🍂🦃🌾🍂🌰🐿️🌾🍂`
+    }
+
+    else if (state.temp >= 60 && state.temp <= 69){
+        document.querySelector("#currentTemp")
+        const tempGroundContainer = document.querySelector("#groundChange")
+        tempGroundContainer.textContent = `🌱🐾🌱🌷🌱🐝🌱🍃🌱`
+
+    }
+    else if (state.temp >= 70 && state.temp <= 89){
+        document.querySelector("#currentTemp")
+        const tempGroundContainer = document.querySelector("#groundChange")
+        tempGroundContainer.textContent = `🌺🏖️🌴🌺🧉🐠🌺🦋🍔`
+
+    }
+    else if (state.temp >= 90){
+        document.querySelector("#currentTemp")
+        const tempGroundContainer = document.querySelector("#groundChange")
+        tempGroundContainer.textContent = `🔥😈💦🔥🌭🥵❤️‍🔥🧑🏼‍🚒🦂`
+    }
+}
 
 const colorChanging = function () {
     if (state.temp <= 39) {
@@ -93,6 +128,7 @@ const incrementTemp = function() {
     const tempNumContainer = document.querySelector("#currentTemp")
     tempNumContainer.textContent = `${state.temp}°`;
     colorChanging();
+    changeGround();
 };
 
 const decrementTemp = function() {
@@ -100,11 +136,13 @@ const decrementTemp = function() {
     const tempNumContainer = document.querySelector("#currentTemp")
     tempNumContainer.textContent = `${state.temp}°`;
     colorChanging();
+    changeGround();
 };
 
 const getRealTimeTemp = function (){
     findLatitudeAndLongitude();
     colorChanging();
+    changeGround();
 }
 
 const resetCityName = function () {
@@ -112,6 +150,7 @@ const resetCityName = function () {
     const resetNowContainer = document.querySelector("#city")
     console.log(resetNowContainer)
     resetNowContainer.textContent = `For the lovely city of ${state.city}`
+    colorChanging();
 }
 
 const newSKySelect = function () {
