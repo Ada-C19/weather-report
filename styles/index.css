@@ -61,15 +61,6 @@ button {
     max-height: 400px;
 }
 
-#reset-container{
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    font-size: 24px;
-    margin: 10px;
-    padding: 40px;
-}
-
 #city-container {
     display: flex;
     align-items: left;
@@ -82,7 +73,6 @@ button {
     /* width: 100%; */
     padding: 40px;
 }
-
 
 footer {
     background-color: rgb(40, 12, 181);

@@ -12,13 +12,14 @@ const decreaseBtn = document.getElementById('decrease-btn');
 const landscapeImg = document.getElementById('landscape-img');
 const emojiElement = document.getElementById('emoji');
 const cityElement = document.getElementById('city');
-const resetElement = document.getElementById('reset');
+const resetCityButton = document.getElementById('reset-city');
 const skyElement = document.getElementById('sky');
 const skyEmojiElement = document.getElementById('skyEmoji');
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
 decreaseBtn.addEventListener('click', decreaseTemperature);
+resetCityButton.addEventListener('click', resetCityName);
 
 // Function to increase the temperature
 function increaseTemperature() {
@@ -30,6 +31,11 @@ function increaseTemperature() {
 function decreaseTemperature() {
     temperature--;
     updateTemperatureDisplay();
+}
+
+// Function to reset city name & clear input field
+function resetCityName() {
+    cityElement.value = '';
 }
 
 // Function to update the temperature display, change the text color, and update the landscape
