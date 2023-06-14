@@ -1,5 +1,7 @@
 'use strict'
 
+const { default: axios } = require("axios");
+
 const tempElement = document.getElementById('tempValue');
 let tempValue = parseInt(tempElement.textContent);
 const landscapeElement = document.getElementById('landscape');
@@ -66,6 +68,7 @@ const cityNameInput = document.getElementById('cityNameInput');
 
 const updateCityName = () => {
     cityNameElement.textContent = cityNameInput.value;
+    locationCall()
 }
 
 cityNameInput.addEventListener('input', updateCityName);
@@ -90,6 +93,39 @@ const changeSky = () => {
 // add event listener for the select sky 
 changeSky();
 skyOptions.addEventListener('change', changeSky);
+
+const locationCall = () => {
+//return ...
+    axios
+    .get(`http://127.0.0.1:5000/location?q=${cityNameElement.textContent}`)
+    .then((response) => {
+        console.log('The value of response is:', response);
+        lat = response.data[0].lat;
+        lon = response.data[0].lon;
+        temperatureCall(lat,lon);
+    })
+    .catch((error) => {
+        console.log('The value of error is:', error);
+    });
+
+
+}
+
+const temperatureCall = (lat,lon) => {
+    axios
+    .get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}`)
+    .then((response) => {
+        console.log('The value of response is:', response);
+    })
+    .catch((error) => {
+        console.log('The value of error is:', error);
+    });
+}
+
+locationCall()
+
+
+
 
 
 
