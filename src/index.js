@@ -21,6 +21,7 @@ const findWeather = () => {
             console.log(response.data.main.temp)
             const tempNumContainer = document.querySelector("#currentTemp")
             tempNumContainer.textContent = `${state.temp}°`;
+            colorChanging();
         })
         .catch((error) => {
             console.log('error in findWeather for', state.city);
@@ -41,7 +42,8 @@ const findLatitudeAndLongitude = () => {
             state.latitude = response.data[0].lat;
             state.longitude = response.data[0].lon;
             console.log('success', state.city, state.latitude, state.longitude);
-            findWeather();   
+            findWeather();
+            colorChanging();   
          })
         .catch((error) => {
             console.log('error in findLatitudeAndLongitude for', state.city);
@@ -49,26 +51,34 @@ const findLatitudeAndLongitude = () => {
         })
     }
 
-// const colorChanging = function () {
-//     if (state.temp <= 49) {
-//         document.querySelector("#currentTemp").className = 'teal'
-//     }
-//     else if (state.temp >= 50 || state.temp <= 59) {
-//         color = green
-//     }
+const colorChanging = function () {
+    if (state.temp <= 39) {
+        document.querySelector("#currentTemp").className = 'purple'
+        console.log(document.querySelector("#currentTemp").className)
+    }
 
-//     else if (state.temp >= 60 || state.temp <= 69){
-//         color = yellow
-//     }
+    else if (state.temp >= 40 && state.temp <= 59) {
+        document.querySelector("#currentTemp").className = 'green'
+        console.log(document.querySelector("#currentTemp").className)
 
-//     else if (state.temp >= 70 || state.temp <= 79){
-//         color = orange
-//     }
+    }
 
-//     else if (state.temp >= 80){
-//         color = red 
-//     }
-// }
+    else if (state.temp >= 60 && state.temp <= 69){
+        document.querySelector("#currentTemp").className = 'blue'
+        console.log(document.querySelector("#currentTemp").className)
+
+    }
+    else if (state.temp >= 70 && state.temp <= 89){
+        document.querySelector("#currentTemp").className = 'orange'
+        console.log(document.querySelector("#currentTemp").className)
+
+    }
+    else if (state.temp >= 90){
+        document.querySelector("#currentTemp").className = 'red'
+        console.log(document.querySelector("#currentTemp").className)
+
+    }
+}
 
 const displayCity = function(){
     const inputNow = document.querySelector("input").value
@@ -82,16 +92,19 @@ const incrementTemp = function() {
     state.temp +=1;
     const tempNumContainer = document.querySelector("#currentTemp")
     tempNumContainer.textContent = `${state.temp}°`;
+    colorChanging();
 };
 
 const decrementTemp = function() {
     state.temp -=1
     const tempNumContainer = document.querySelector("#currentTemp")
-    tempNumContainer.textContent = `${state.temp}°`  
+    tempNumContainer.textContent = `${state.temp}°`;
+    colorChanging();
 };
 
 const getRealTimeTemp = function (){
-    findLatitudeAndLongitude()
+    findLatitudeAndLongitude();
+    colorChanging();
 }
 
 const resetCityName = function () {

@@ -57,22 +57,23 @@ html{
 
 }
 
+
 .red {
-    color: 'red'
+    color: red
 }
 
 .orange {
-    color: 'orange'
+    color: orange
 }
 
-.yellow {
-    color: 'yellow'
+.blue {
+    color: rgb(123, 154, 239)
 }
 
 .green {
-    color: 'green'
+    color: green
 }
 
-.teal {
-    color: 'teal'
+.purple {
+    color: rgb(5, 34, 128)
 }
