@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const result = document.querySelector("#sky");
     const landscape = document.querySelector("#landscape");
 
+    
+    // ----- changes temp(converted to fahr) -> landscape -> text color ------
     let temperature = 65;
     let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
 
@@ -24,11 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     const updateTemp = (temperature) =>  {
         displayTemp.textContent = temperature;
-        landscape.textContent = lands;
         updateTempColor(temperature);
         updateLandscape(temperature);
+        landscape.textContent = lands;
     }
-
     const updateTempColor = (temperature) => {
         if (temperature >= 80) {
         displayTemp.style.color = "red";
@@ -42,8 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         displayTemp.style.color = "teal";
         }
     }
-    
-    const updateLandscape = () => {
+    const updateLandscape = (temperature) => {
         if (temperature >= 80) {
         lands = "🌵   🐍 🦂 🌵🌵  🐍 🏜 🦂";
         } else if (temperature >= 70 && temperature <= 79) {
@@ -52,8 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
         lands = "🌾🌾   🍃 🪨 🛤 🌾🌾🌾 🍃";
         } else if (temperature <= 59) {
         lands = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
-        // } else {
-        // lands = "💀💀💀💀💀💀💀💀💀💀💀💀💀";
         }
     }
     const increaseTemperature = () => {
@@ -70,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateTemp(temperature);
     
     // ------------- wave 3 naming the city ------------------
-    
     // Realtime Text City info will come from input value of cityInput
     const updateCityName = () => {
         cityName.textContent = cityInput.value;
@@ -81,7 +78,6 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // ------------- wave 5 selecting sky ------------------
     result.textContent = "🌦 🌈  ☁️☁️☁️  ❄️ 🌨 ☁️"
-    
     selectSky.addEventListener("change", (event) => {
         let newSky = event.target.value
         if (newSky == 'sunny') {
@@ -97,15 +93,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     })
     
-    // -------- wave 6 reset button event listener ---------
+    // -------- wave 6    reset button event listener ---------
     cityName.textContent = state.city
     resetButton.addEventListener("click", function () {
         cityInput.value = state.city; 
         cityName.textContent = state.city;
         updateTemp("65")
-
     } )
 
+    // -------- wave 4    calls API  ---------
     const findLatitudeAndLongitude = async () => {
         // let latitude, longitude;
         await axios.get('http://127.0.0.1:5000/location',
@@ -118,12 +114,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .then( (response) => {
             state.lat= response.data[0].lat;
             state.lon= response.data[0].lon;
-            console.log('success in findLatitudeAndLongitude!', state);
         })
         .catch( (error) => {
             console.log('error in findLatitudeAndLongitude!');
         });
-
         return {
             cityLat: state.lat,
             cityLon: state.lon
@@ -140,9 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
         .then( (response) => {
-            console.log('success in findLocation!', response.data);
             temperature = response.data.main.temp;
-            console.log("temperature inside findTemp: ", temperature)
             return temperature;
         })
         .catch( (error) => {
@@ -153,10 +145,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const findWeather = async () => {
         const cityCoordinates = await findLatitudeAndLongitude();
         await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
-        console.log("temperature returned from findWeather: ", temperature)
     }
 
-    // attempt to add event listener for search button 
+// -------------------    search button    ---------------------
     searchButton.addEventListener("click", async (event) => {
         await findWeather();
         convert()
@@ -166,4 +157,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-// -------- wave 4: calling api  ---------
