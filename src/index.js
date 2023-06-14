@@ -87,62 +87,39 @@ const changeSky = () => {
 }
 
 
+
 skyOptions.addEventListener('change', changeSky);
 
 const locationCall = () => {
-//return ...
-    axios
+    return axios
     .get(`http://127.0.0.1:5000/location?q=${cityNameElement.textContent}`)
     .then((response) => {
         console.log('The value of response is:', response);
         let lat = response.data[0].lat;
         let lon = response.data[0].lon;
-        let temp = temperatureCall(lat,lon);
-        console.log(`hello ${temp}`);
+        return temperatureCall(lat,lon);
     })
     .catch((error) => {
         console.log('The value of error is:', error);
     });
 }
 
-// const temperatureCall = (lat,lon) => {
-//     return new Promise
-//     axios
-//     .get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}`)
-//     .then((response) => {
-//         console.log('The value of response is:', response);
-//         let temp = response.data.main.temp;
-//         let fTemp = (temp - 273.15) * (9/5) + 32;
-//         console.log(fTemp);
-//         resolve(fTemp);
-//     })
-//     .catch((error) => {
-//         console.log('The value of error is:', error);
-//     });
-// }
-
-const temperatureCall = (lat, lon) => {
-    return new Promise((resolve, reject) => {
-        axios
-            .get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}`)
-            .then((response) => {
-            console.log('The value of response is:', response);
-            let temp = response.data.main.temp;
-            let fTemp = (temp - 273.15) * (9 / 5) + 32;
-            console.log(fTemp);
-            resolve(fTemp); // Resolve the promise with fTemp value
-            })
-            .catch((error) => {
-            console.log('The value of error is:', error);
-            reject(error); // Reject the promise with the error
-            });
-        });
-};
+const temperatureCall = (lat,lon) => {
+    return axios
+    .get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}`)
+    .then((response) => {
+        console.log('The value of response is:', response);
+        let temp = response.data.main.temp;
+        let fTemp = (temp - 273.15) * (9/5) + 32;
+        return fTemp;
+    })
+    .catch((error) => {
+        console.log('The value of error is:', error);
+    });
+}
 
 
 const onLoad = () => {
-    getCurrentTemp();
-    locationCall();
     changeSky();
     colorTemp();
     addLandscape();
@@ -152,9 +129,20 @@ document.addEventListener('DOMContentLoaded', onLoad);
 
 
 const getCurrentTemp = () => {
-    let temp = locationCall();
-    console.log(`hi ${temp}`)
+    locationCall()
+    .then((temp) => {
+        tempElement.textContent = parseInt(temp);
+    })
+    .catch((error) => {
+        console.log('The value of error is:', error);
+    });
 }
+
+const currentTempButton = document.getElementById('currentTempButton');
+currentTempButton.addEventListener('click', getCurrentTemp)
+
+
+
 
 
 
