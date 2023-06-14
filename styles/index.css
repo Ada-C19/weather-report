@@ -56,6 +56,9 @@ html{
     grid-row-end: 3;
 }
 
+.weather_emojis {
+    font-size: xx-large;
+}
 
 .red {
     color: red
