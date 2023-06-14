@@ -1,5 +1,5 @@
-html { 
-    background: url(../assets/images/taylor-van-riper-yQorCngxzwI-unsplash.jpg) no-repeat center center fixed; 
+html {
+    background: url(../assets/images/taylor-van-riper-yQorCngxzwI-unsplash.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,7 +11,7 @@ body {
     font-family: "Helvetica", Sans-Serif;
     text-align: center;
     margin: 0px;
-    padding:0px;
+    padding: 0px;
 }
 
 /* ======================== HEADER ========================*/
@@ -19,7 +19,7 @@ body {
 header {
     width: 100vw;
     background: url("../assets/images/ameythst.jpeg") 75% 0 no-repeat;
-    background-size:cover; 
+    background-size: cover;
 }
 
 h1 {
@@ -31,7 +31,7 @@ h1 {
     background: white;
     mix-blend-mode: screen;
     padding: 5px;
-    border:#7F00FF;
+    border: #7F00FF;
     border-style: solid;
     border-width: 5px;
 }
@@ -41,8 +41,8 @@ h1 {
 main {
     margin-top: 5px;
     display: inline-block;
-    margin:0px;
-    padding:0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* ======================== SEARCH ========================*/
@@ -52,7 +52,7 @@ main {
     overflow: hidden;
     padding: 10px 5px;
     background-color: #CBC3E3;
-    width:70vw;
+    width: 70vw;
     border: #5D3FD3;
     border-style: solid;
     justify-content: center;
@@ -74,7 +74,8 @@ main {
     font-style: italic;
 }
 
-#search-button, #reset-button {
+#search-button,
+#reset-button {
     float: right;
     display: block;
     color: #5D3FD3;
@@ -83,11 +84,13 @@ main {
     font-size: 20px;
     margin-right: 8px;
 }
+
 #search-button {
     margin-left: 20px;
 }
 
-#search-button:hover, #reset-button:hover {
+#search-button:hover,
+#reset-button:hover {
     background-color: #BF40BF;
     color: white;
 }
@@ -97,6 +100,10 @@ main {
 #city-container {
     margin: 0px;
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #city-spotlight {
@@ -104,6 +111,7 @@ main {
     margin-top: 1px;
     margin-bottom: 1px;
     font-size: 30px;
+    width: 200px;
 }
 
 /* ======================== TEMPERATURE DISPLAY ========================*/
@@ -114,7 +122,7 @@ main {
 #temp-header {
     margin: 0px;
     font-size: 20px;
-    color:#5D3FD3;
+    color: #5D3FD3;
 }
 
 .temp-adustment-container {
@@ -122,7 +130,7 @@ main {
     align-items: center;
     justify-content: center;
     margin: 0px;
-    color:#301934;
+    color: #301934;
 }
 
 #temp-value {
@@ -144,7 +152,8 @@ main {
     color: #5D3FD3;
 }
 
-#up-button:hover, #down-button:hover {
+#up-button:hover,
+#down-button:hover {
     background-color: #BF40BF;
     color: white;
 }
@@ -161,7 +170,7 @@ main {
 #label {
     font-size: 20px;
     margin: 0px;
-    color:#5D3FD3;
+    color: #5D3FD3;
 }
 
 #select-drop-down {
@@ -191,7 +200,7 @@ main {
     font-size: 20px;
     margin: 20px;
     margin-bottom: 5px;
-    color:#5D3FD3;
+    color: #5D3FD3;
 }
 
 .weather-icons {
@@ -200,7 +209,7 @@ main {
     align-items: center;
     margin: 0px;
     font-size: 30px;
-    background-color:#CBC3E3;
+    background-color: #CBC3E3;
     border: #5D3FD3;
     border-style: solid;
 }
@@ -209,7 +218,7 @@ main {
 
 footer {
     text-align: center;
-    color:white;
+    color: white;
     left: 0;
     bottom: 0;
     width: 100%;

@@ -48,6 +48,7 @@ const getRtWeather = () => {
     .then((response) => {
         state.tempValue = convertK2F(response.data.main.temp);
         document.getElementById("temp-value").innerHTML = state.tempValue;
+        handleTempChanged();
     })
 
     .catch((error) => {
@@ -73,6 +74,7 @@ const handleUpBtnClicked = () => {
     console.log(state.tempValue);
 
     document.getElementById("temp-value").innerHTML = state.tempValue;
+    handleTempChanged();
 }
 
 const handleDownBtnClicked = () => {
@@ -80,6 +82,22 @@ const handleDownBtnClicked = () => {
     console.log(state.tempValue);
 
     document.getElementById("temp-value").innerHTML = state.tempValue;
+    handleTempChanged();
+}
+
+const handleTempChanged = () => {
+    if (state.tempValue > 80) {
+        document.getElementById("temp-value").style.color = '#ff0000';
+    } else if (state.tempValue > 70 && state.tempValue < 79) {
+        document.getElementById("temp-value").style.color = '#FFA500';
+    } else if (state.tempValue > 60 && state.tempValue < 69) {
+        document.getElementById("temp-value").style.color = '#FFFF00';
+    } else if (state.tempValue > 50 && state.tempValue < 59) {
+        document.getElementById("temp-value").style.color = '#00FF00';
+    } else if (state.tempValue < 49) {
+        document.getElementById("temp-value").style.color = '#008080';
+    }
+
 }
 
 const registerEvents = () => {
