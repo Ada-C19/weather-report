@@ -1,24 +1,36 @@
 const state = {
     lat: 33.7488,
-    lon: 84.3877
-    };
-    document.addEventListener("DOMContentLoaded", function () {
+    lon: 84.3877,
+    defaultTemp: 65
+};
+document.addEventListener("DOMContentLoaded", function () {
     // ------------- wave 2: increase and decrease temp ------------------
     // increase temperature 
     const increaseTemp = document.querySelector("#increase-temp");
     const decreaseTemp = document.querySelector("#decrease-temp");
     const displayTemp = document.querySelector("#display-temp");
-    let temperature = 65;
-    // landscape
+    const resetButton = document.querySelector("#reset-button"); 
+    const searchButton = document.querySelector("#search-button");
+    const cityName = document.getElementById("city-name");
+    const cityInput = document.getElementById("city-input");
+    const selectSky = document.querySelector("#sky-dropdown");
+    const result = document.querySelector("#sky");
     const landscape = document.querySelector("#landscape");
+
+    const defaultCity = "Seattle"
+    let temperature = 65;
     let lands = "🌾🌾   🍃 🪨    🛤  🌾🌾🌾  🍃";
-    const updateTemp = () =>  {
-        
+
+    const convert = () => {
+        temperature = (temperature - 273.15) * 9/5 + 32
+    }
+    const updateTemp = (temperature) =>  {
         displayTemp.textContent = temperature;
         landscape.textContent = lands;
         updateTempColor();
         updateLandscape();
     }
+
     const updateTempColor = () => {
         if (temperature >= 80) {
         displayTemp.style.color = "red";
@@ -32,6 +44,7 @@ const state = {
         displayTemp.style.color = "teal";
         }
     }
+    
     const updateLandscape = () => {
         if (temperature >= 80) {
         lands = "🌵   🐍 🦂 🌵🌵  🐍 🏜 🦂";
@@ -47,19 +60,18 @@ const state = {
     }
     const increaseTemperature = () => {
         temperature++;
-        updateTemp();
+        updateTemp(temperature);
     }
     const decreaseTemperature = () => {
         temperature--;
-        updateTemp();
+        updateTemp(temperature);
     }  
+
     increaseTemp.addEventListener("click", increaseTemperature);
     decreaseTemp.addEventListener("click", decreaseTemperature);
-    updateTemp();
+    updateTemp(temperature);
     
     // ------------- wave 3 naming the city ------------------
-    const cityName = document.getElementById("city-name");
-    const cityInput = document.getElementById("city-input");
     
     // Realtime Text City info will come from input value of cityInput
     const updateCityName = () => {
@@ -70,8 +82,6 @@ const state = {
     cityInput.addEventListener("input", updateCityName);
     
     // ------------- wave 5 selecting sky ------------------
-    const selectSky = document.querySelector("#sky-dropdown");
-    const result = document.querySelector("#sky");
     result.textContent = "🌦 🌈  ☁️☁️☁️  ❄️ 🌨 ☁️"
     
     selectSky.addEventListener("change", (event) => {
@@ -90,17 +100,17 @@ const state = {
     })
     
     // -------- wave 6 reset button event listener ---------
-    const resetButton = document.querySelector("#reset-button"); 
-    const defaultCity = "Seattle"
     cityName.textContent = defaultCity
     resetButton.addEventListener("click", function () {
         cityInput.value = defaultCity; 
         cityName.textContent = defaultCity;
+        updateTemp(state.defaultTemp)
+        console.log("reset temp: ", temperature)
+
     } )
     
     // search button 
-    const searchButton = document.querySelector("#search-button");
-    console.log(searchButton);
+
 
     const findLatitudeAndLongitude = async () => {
         // let latitude, longitude;
@@ -138,6 +148,8 @@ const state = {
         .then( (response) => {
             console.log('success in findLocation!', response.data);
             temperature = response.data.main.temp;
+            console.log("temperature inside findTemp: ", temperature)
+            return temperature;
         })
         .catch( (error) => {
             console.log('error in findLocation!');
@@ -146,20 +158,17 @@ const state = {
 
     const findWeather = async () => {
         const cityCoordinates = await findLatitudeAndLongitude();
-        const temp = await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
-
-        console.log(temp);
+        await findTemp(cityCoordinates.cityLat, cityCoordinates.cityLon);
+        console.log("temperature returned from findWeather: ", temperature)
     }
 
     // attempt to add event listener for search button 
     searchButton.addEventListener("click", async (event) => {
-        // console.log(cityName);
-         // alert("I am an alert box!");
-
-        // const {lat, lon} = await findLatitudeAndLongitude(cityInput.value)
         await findWeather();
-        updateTemp()
-    // getResults(searchButton.value);
+        convert()
+        temperature = parseFloat(temperature).toFixed(2)
+        updateTemp(temperature)
+
 });
 
 });
