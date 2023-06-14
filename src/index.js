@@ -3,6 +3,7 @@ const state = {
     lon: 84.3877,
     city: "Seattle"
 };
+
 document.addEventListener("DOMContentLoaded", function () {
     // ------------- wave 2: increase and decrease temp ------------------
     const increaseTemp = document.querySelector("#increase-temp");
