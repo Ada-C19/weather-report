@@ -10,68 +10,73 @@ html {
 body {
     font-family: "Helvetica", Sans-Serif;
     text-align: center;
-    margin: auto;
+    margin: 0px;
+    padding:0px;
 }
 
 /* ======================== HEADER ========================*/
 
 header {
     width: 100vw;
-    /* height: 200px; */
-    background: url("../assets/images/ameythst.jpeg") 50% 0 no-repeat;
-    background-size: cover; 
-    padding: 5px;
+    background: url("../assets/images/ameythst.jpeg") 75% 0 no-repeat;
+    background-size:cover; 
 }
 
 h1 {
     background-size: cover;
-    margin: 0px;
-    height: 168px;
-    font-size: 75px;
-    display: flex;
+    font-size: 60px;
     align-items: center;
     justify-content: center;
-    color: black;
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     background: white;
     mix-blend-mode: screen;
+    padding: 5px;
+    border:#7F00FF;
+    border-style: solid;
+    border-width: 5px;
 }
 
+/* ======================== MAIN ========================*/
+
 main {
-    margin-top: 30px;
+    margin-top: 5px;
     display: inline-block;
+    margin:0px;
+    padding:0px;
 }
 
 /* ======================== SEARCH ========================*/
 #search-container {
-    margin: 10px;
+    margin: 5px;
     display: flex;
     overflow: hidden;
     padding: 8px 10px;
-    background-color: lightgrey;
+    background-color: #CBC3E3;
+    width:50vw;
+    border: #5D3FD3;
+    border-style: solid;
 }
 
 #city-intro {
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: 20px;
+    margin-top: 2px;
     margin-bottom: 2px;
     margin-left: 40px;
     margin-right: 40px;
-
-    color: black;
-    /* background-color: grey; */
+    color: #301934;
 }
 
 #search-input {
     font-size: 15px;
     width: 60%;
     margin-left: 10px;
+    font-style: italic;
 }
 
 #search-button, #reset-button {
     float: right;
     display: block;
-    color: black;
+    color: #5D3FD3;
     text-align: center;
     text-decoration: none;
     font-size: 20px;
@@ -82,34 +87,33 @@ main {
 }
 
 #search-button:hover, #reset-button:hover {
-    background-color: blue;
+    background-color: #BF40BF;
     color: white;
 }
 
 /* ======================== CITY NAME DISPLAY ========================*/
 
 #city-container {
-    margin: 5px;
-    padding: 10px;
-    margin-bottom: 2px;
-    height: 80px;
+    margin: 0px;
+    padding: 5px;
 }
 
 #city-spotlight {
     color: white;
-    /* margin-top: 5px;
-    margin-bottom: 2px; */
+    margin-top: 1px;
+    margin-bottom: 1px;
     font-size: 30px;
 }
 
 /* ======================== TEMPERATURE DISPLAY ========================*/
 #temperature-container {
-    padding: 15px;
+    padding: 10px;
 }
 
 #temp-header {
     margin: 0px;
     font-size: 20px;
+    color:#5D3FD3;
 }
 
 .temp-adustment-container {
@@ -117,6 +121,7 @@ main {
     align-items: center;
     justify-content: center;
     margin: 0px;
+    color:#301934;
 }
 
 #temp-value {
@@ -128,12 +133,19 @@ main {
     margin: 20px;
     margin-bottom: -10px;
     font-size: 15px;
+    color: #5D3FD3;
 }
 
 #up-button {
     margin: 20px;
     margin-bottom: -10px;
     font-size: 15px;
+    color: #5D3FD3;
+}
+
+#up-button:hover, #down-button:hover {
+    background-color: #BF40BF;
+    color: white;
 }
 
 /* ======================== TEMPERATURE DISPLAY ========================*/
@@ -148,18 +160,24 @@ main {
 #label {
     font-size: 20px;
     margin: 0px;
-    ;
+    color:#5D3FD3;
 }
 
 #select-drop-down {
-    padding: 25px;
+    padding: 5px;
     width: max-content;
 }
 
 #weather-conditions {
-    background-color: darkgrey;
+    background-color: #CBC3E3;
     margin: 0px;
     padding: 10px;
+    font-size: 15px;
+}
+
+#weather-conditions:hover {
+    background-color: #BF40BF;
+    color: white;
 }
 
 /* ======================== GARDEN ICON DISPLAY ========================*/
@@ -170,8 +188,9 @@ main {
 
 #weather-garden-header {
     font-size: 20px;
-    margin: 20px;
+    margin: 10px;
     margin-bottom: 5px;
+    color:#5D3FD3;
 }
 
 .weather-icons {
@@ -185,14 +204,10 @@ main {
 /* ======================== FOOTER ========================*/
 
 footer {
-    font-family: "Helvetica", Sans-Serif;
     text-align: center;
-    margin: auto;
-    color: rgb(36, 6, 35);
-    background-color: white;
-    display: block;
-    position: fixed;
+    color:#5D3FD3;
     left: 0;
     bottom: 0;
     width: 100%;
+    background-color: white;
 }
