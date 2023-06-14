@@ -1,16 +1,49 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box; 
 }
 
+header, footer, #temperature, #sky, #city {
+    padding: 1em;
+}
+/* Start of Main Field Boxes */
 #temperature {
     display: flex;
     border: rgb(4, 40, 57) solid 3px;
     border-radius:10px;
     background-color:#89CFF0;
     padding: 20px;
-    margin: 40px;
-    
+    margin: 40px; 
 }
+
+#sky {
+    display: flex;
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:pink;
+    padding: 20px;
+    margin: 40px; 
+}
+
+#city {
+    display: flex;
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:#f1ffc4;
+    padding: 20px;
+    margin: 40px;  
+}
+
+#garden {
+    border: rgb(4, 40, 57) solid 3px;
+    border-radius:10px;
+    background-color:#e0bbe4 ;
+    padding: 40px;
+    margin: 40px;   
+}
+/* End of Main Field Boxes */
+
+/* Start: Inside of Temperature Field */
 #button-up {
     max-width: 50px;
     max-height: 50px;
@@ -33,17 +66,9 @@
     padding: 20px;
     margin: 40px;
 }
+/* End: Inside of Temperature Field */
 
-#sky {
-    display: flex;
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
-    background-color:pink;
-    padding: 20px;
-    margin: 40px;
-    
-}
-
+/* Start:Inside of Sky Field */
 #moods {
     width: 150px;
     height: 35px;
@@ -51,17 +76,9 @@
     margin: 0 auto;
     border-radius: 5px;
 }
+/* End:Inside of Sky Field */
 
-#city {
-    display: flex;
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
-    background-color:#f1ffc4;
-    padding: 20px;
-    margin: 40px;
-    
-}
-
+/* Start:Inside of City Field */
 #search {
     border: 5px;
     border-color:black solid;
@@ -79,15 +96,9 @@
     width: 150px;
     justify-content: center;
 }
+/* End:Inside of City Field */
 
-#garden {
-    border: rgb(4, 40, 57) solid 3px;
-    border-radius:10px;
-    background-color:#e0bbe4 ;
-    padding: 40px;
-    margin: 40px;  
-    
-}
+/* Start:Inside of Garden Field */
 #flowers {
     display: flex;
     float: left;
@@ -96,4 +107,4 @@
     display: flex;
     float: right;
 }
-
+/* End:Inside of Garden Field */
