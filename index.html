@@ -36,13 +36,14 @@
 
     <div id = "sky-container">
         <label for="sky">Choose a sky:</label>
-        <select name="sky" id="sky">
-            <option value=""> </option>
+        <select name="sky" id="sky" onchange="skySelection();">
+            <option value="">--Select Sky-- </option>
             <option value="sunny">Sunny</option>
             <option value="cloudy">Cloudy</option>
             <option value="rainy">Rainy</option>
             <option value="snowy">Snowy</option>
         </select>
+        
     </div>
 
     <div id="sky-emoji-container">

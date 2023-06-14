@@ -2,7 +2,7 @@
 // Global variables
 let temperature = 70; // Initial temperature
 let emoji = "";
-let sky = "";
+let sky = ""
 let skyEmoji = "";
 
 // DOM elements
@@ -15,6 +15,7 @@ const cityElement = document.getElementById('city');
 const resetCityButton = document.getElementById('reset-city');
 const skyElement = document.getElementById('sky');
 const skyEmojiElement = document.getElementById('skyEmoji');
+const demoElement = document.getElementById('demo');
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
@@ -70,10 +71,15 @@ function updateTemperatureDisplay() {
     }
 }
 
-function updateSkyDisplay() {
-    // let sky = skyElement.options[skyElement.selectedIndex].text
+function skySelection() {
+    var choice = document.getElementById("sky").value;
+    updateSkyDisplay();
+  }
 
-    if (sky === 'sunny') {
+function updateSkyDisplay() {
+    let sky = document.getElementById("sky").value
+
+    if (sky == "sunny") {
         skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
 
     } else if (sky === "cloudy") {
