@@ -22,11 +22,9 @@ function kelvinToFahrenheit(kelvin) {
 // 
 // const LOCATIONIQ_KEY = process.env['api_key'];
 const findLatitudeAndLongitude = async (input) => {
-        let latitude, longitude;
             await axios.get('http://127.0.0.1:5000/location',
     {
       params: {
-        // key: LOCATION_KEY,
         q: input,
         format: 'json'
       }
@@ -48,7 +46,7 @@ const findLatitudeAndLongitude = async (input) => {
     axios.get('http://127.0.0.1:5000/weather',
     {
       params: {
-        // key: WEATHER_KEY,
+    
         format: 'json',
         lat: latitude,
         lon: longitude
@@ -79,9 +77,6 @@ console.log(selectRealtime)
 
 // function for Realtime Temperature
 async function resetRealtime() { 
-    // alert("you have reset your temperature!")
-    // state.tempCount = 75
-
     await findLatitudeAndLongitude(state.searchBox.value)
     await findWeather(state.lat, state.lon)
     // console.log(state)
