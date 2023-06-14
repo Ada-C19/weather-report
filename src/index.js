@@ -100,7 +100,7 @@ const locationCall = () => {
         console.log('The value of response is:', response);
         let lat = response.data[0].lat;
         let lon = response.data[0].lon;
-        console.log(lat);
+        console.log(typeof(lat));
         console.log(lon);
         temperatureCall(lat,lon);
     })
@@ -112,18 +112,29 @@ const locationCall = () => {
 
 const temperatureCall = (lat,lon) => {
     axios
-    .get(`http://127.0.0.1:5000/weather?lat=${lat}lon=${lon}`)
+    .get(`http://127.0.0.1:5000/weather?lat=${lat}&lon=${lon}`)
     .then((response) => {
         console.log('The value of response is:', response);
         let temp = response.data.main.temp;
-        console.log(temp);
+        let fTemp = (temp - 273.15) * (9/5) + 32;
+        console.log(fTemp);
     })
     .catch((error) => {
         console.log('The value of error is:', error);
     });
+    return fTemp;
 }
 
 locationCall()
+
+const getCurrentTemp = () => {
+    let temp = locationCall();
+    tempElement.textContent = temp;
+}
+
+getCurrentTemp();
+
+
 
 
 
