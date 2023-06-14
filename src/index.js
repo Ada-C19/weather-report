@@ -132,6 +132,7 @@ const getCurrentTemp = () => {
     locationCall()
     .then((temp) => {
         tempElement.textContent = parseInt(temp);
+        tempValue = parseInt(temp);
     })
     .catch((error) => {
         console.log('The value of error is:', error);
