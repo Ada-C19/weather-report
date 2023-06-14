@@ -86,18 +86,18 @@ const handleDownBtnClicked = () => {
 }
 
 const handleTempChanged = () => {
-    if (state.tempValue > 80) {
+    if (state.tempValue >= 80) {
         document.getElementById("temp-value").style.color = '#ff0000';
-    } else if (state.tempValue > 70 && state.tempValue < 79) {
+    } else if (state.tempValue >= 70 && state.tempValue <= 79) {
         document.getElementById("temp-value").style.color = '#FFA500';
-    } else if (state.tempValue > 60 && state.tempValue < 69) {
+    } else if (state.tempValue >= 60 && state.tempValue <= 69) {
         document.getElementById("temp-value").style.color = '#FFFF00';
-    } else if (state.tempValue > 50 && state.tempValue < 59) {
+    } else if (state.tempValue >= 50 && state.tempValue <= 59) {
         document.getElementById("temp-value").style.color = '#00FF00';
-    } else if (state.tempValue < 49) {
+    } else if (state.tempValue <= 49) {
         document.getElementById("temp-value").style.color = '#008080';
     }
-
+    console.log(document.getElementById("temp-value").style.color);
 }
 
 const registerEvents = () => {
