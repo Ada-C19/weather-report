@@ -10,7 +10,50 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <header class = "site">
+        <h1>Weather Report<span> for the city of</span></h1>
+        <!-- <output type="text" id="search-output"> </output> -->
+        <div id="search-parent"><output type="text" id="search-output"></output></div>
+    </header>
+    <main>
+        <section id = "temperature">
+            <h2>Temperature</h2>
+            <button id="button-up"> &#8593;</button>
+            <span id = "count">0</span>
+            <button id = "button-down"> &#8595;</button>
+            <button id = "realtime">Get Realtime Temperature</button>   
+        </section>
+        <section id = "sky">
+            <h2>Sky</h2>
+            <select id = "moods" name = "moods">
+                <option value = "sunny">Sunny</option>
+                <option value = "cloudy">Cloudy</option>
+                <option value = "rainy">Rainy</option>
+                <option value = "snowy">snowy</option>
+            </select>
+        </section>
+        <section id = "city">
+            <h2>City Name</h2>
+            <input id = "search" type="text" onchange="citySearchFunction(this)" placeholder="type a city" />
+            <button id = "reset">
+                Reset
+            </button>
+        </section>
+        <section id = "garden">
+            <h2>Weather Garden</h2>
+            <content id="clouds">
+                ☁️ 🌞 ☁️ ☀️ ☁️ 🌞
+            </content>
+            <content id="flowers">
+                🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃 
+            </content>
+            
+        </section>
+    </main>
+    <footer>&copy; Copyright 2023 Setharika, Angela</footer>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
+    
 </body>
+
 </html>
