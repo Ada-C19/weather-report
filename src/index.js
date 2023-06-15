@@ -18,32 +18,83 @@ const skyEmojiElement = document.getElementById('skyEmoji');
 const demoElement = document.getElementById('demo');
 
 
-const findCityLocation = async (cityName) => {
-    return axios.get('https://localhost:5000/location/weather', {
+// find city latitude and longitude
+const findCityLocation = () => {
+    let lat;
+    let lon;
+    return axios.get('http://127.0.0.1:5000/location', {
         params: {
-            q: cityName,
-        },
+            q: cityName
+        }
     })
-    .then(response => {
-        const temperature = response.data.temperature;
-        updateTemperatureDisplay(temperature);
-        console.log(temperature);
+    .then((response)=> {
+        state.lat = response.data[0].lat;
+        state.lon = response.data[0].lat;
+        getWeather();
     })
-    .catch(error => {
-        console.log(error);
+    .catch((error) => {
+        console.log(error)
     });
 };
 
+const getWeather = () => {
+    axios.get('http://127.0.0.1:5000/weather', {
+        params: {
+            lat: state.lat,
+            lon: state.lon,
+        }
+    }) 
+    .then((response) => {
+        state.temperature= convertToF(response.data.main.temp);
+        document.getElementById("temperature").innerHTML = state.temperature;
+        updateTemperatureDisplay();
+    })
 
-    const checkTempButton = document.getElementById('check-current-temp');
-    checkTempButton.addEventListener('click', () => {
-    const cityName = cityElement.value;
-    findCityLocation(cityName);
-});
+    .catch((error) => {
+        console.log(error)
+    })
+};
+
+const currentTempButton = () => {
+    cityInput();
+    findCityLocation();
+}
+
+const convertToF = (temp) => {
+    return Math.trunc((temp-273.15) * 9 /5 + 32)
+}
+
+
+
+
+
+
+// const findCityLocation = async (cityName) => {
+//     return axios.get('https://localhost:5000/location/weather', {
+//         params: {
+//             q: cityName,
+//         },
+//     })
+//     .then(response => {
+//         const temperature = response.data.temperature;
+//         updateTemperatureDisplay(temperature);
+//         console.log(temperature);
+//     })
+//     .catch(error => {
+//         console.log(error);
+//     });
+// };
+
+
+//     const checkTempButton = document.getElementById('check-current-temp');
+//     checkTempButton.addEventListener('click', () => {
+//     const cityName = cityElement.value;
+//     findCityLocation(cityName);
+// });
 
 const resetCity = () => {
-    cityElement.value = 'Pittsburgh';
-    findCityLocation('Pittsburgh');
+    cityElement.value = '';
+    // findCityLocation('Pittsburgh');
 };
 
 
@@ -62,14 +113,14 @@ cityElement.addEventListener('keydown', getLocation);
 function increaseTemperature() {
     state.temperature++;
     updateTemperatureDisplay(state.temperature);
-    findCityLocation(cityElement.value);
+    // findCityLocation(cityElement.value);
 }
 
 // Function to decrease the temperature
 function decreaseTemperature() {
     state.temperature--;
     updateTemperatureDisplay(state.temperature);
-    findCityLocation(cityElement.value);
+    // findCityLocation(cityElement.value);
 }
 
 // Function to reset city name & clear input field
@@ -112,7 +163,7 @@ function updateTemperatureDisplay(temperature) {
 
 //function to return city input
 function cityInput() {
-    var cityName = document.getElementById("city").value;
+    let cityName = document.getElementById("city").value;
     document.getElementById("cityChoice").innerHTML = cityName;
 }
 //function to update sky selection when there is a change
