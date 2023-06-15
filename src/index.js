@@ -5,6 +5,7 @@ const state = {
     skyEmoji: null,
 };
 
+
 // DOM elements
 const temperatureElement = document.getElementById('temperature');
 const increaseBtn = document.getElementById('increase-btn');
@@ -13,9 +14,10 @@ const landscapeImg = document.getElementById('landscape-img');
 const emojiElement = document.getElementById('emoji');
 const cityElement = document.getElementById('city');
 const resetCityButton = document.getElementById('reset-city');
+const currentTempButton = document.getElementById('check-current-temp');
 const skyElement = document.getElementById('sky');
 const skyEmojiElement = document.getElementById('skyEmoji');
-const demoElement = document.getElementById('demo');
+
 
 
 const findCityLocation = async (cityName) => {
@@ -114,7 +116,13 @@ function cityInput() {
     var cityName = document.getElementById("city").value;
     document.getElementById("cityChoice").innerHTML = cityName;
 }
-//function to update sky selection when there is a change
+
+// //function to return city name when get current temp button is pressed noyt working
+// function currentTempB() {
+//     cityElement.value = 
+// }
+
+// function to update sky selection when there is a change
 function skySelection() {
     var choice = document.getElementById("sky").value;
     updateSkyDisplay();
@@ -137,3 +145,19 @@ function updateSkyDisplay() {
     }
     
 }
+
+// function updateSkyDisplay(sky) {
+//     let skyEmoji = '';
+
+//     if (sky === 'sunny') {
+//         skyEmoji = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
+//     } else if (sky === 'cloudy') {
+//         skyEmoji = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
+//     } else if (sky === 'rainy') {
+//         skyEmoji = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
+//     } else if (sky === 'snowy') {
+//         skyEmoji = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
+//     }
+
+//     updateSkyDisplay(sky, skyEmoji);
+// }
