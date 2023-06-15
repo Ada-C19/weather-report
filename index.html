@@ -21,10 +21,14 @@
                 <div id="buttom--left--temp">
                     <div id="temp--title">Temperature</div>
                     <div id="temp--controls">
-                        <button id="decrease-t">&#8595;</button>
-                        <div id="temperature">70</div>
-                        <button id="increase-t">&#8593;</button>
+                        <button id="decrease-t">&#x25BC;</button>
+                        <div id="temperature" data-unit="F">
+                        <span id="temp-value">70</span>
+                        <span id="temp-unit">°F</span>
+                        </div>
+                        <button id="increase-t">&#x25B2;</button>
                     </div>
+                    <button id="convert-button">Convert</button>
                 </div>
                 <div id="buttom--left--sky">
                     <div id="sky--title">Sky</div>
@@ -41,7 +45,7 @@
                     <div id="city--title">City</div>
                     <div id="city--controls">
                         <form action="/url" method="GET">
-                            <input id="city-input" type="text" name="city_name" placeholder="Please enter your city" required />
+                            <input id="city-input" type="text" name="city_name" placeholder="Please enter a city name" required />
                             <button id="submit-button" type="submit">Submit</button>
                         </form>
                         <div id="reset-button">

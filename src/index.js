@@ -12,8 +12,13 @@ const state = {
 // changes the temp on the page
 const changesTempDisplay = () => {
   const tempControl = document.getElementById('temperature');
-  tempControl.textContent = `${state.currentTemp}`
-}
+  const tempValue = document.getElementById('temp-value');
+  const tempUnit = document.getElementById('temp-unit');
+
+  tempValue.textContent = Math.round(state.currentTemp);
+  tempUnit.textContent = tempControl.dataset.unit;
+};
+
 // CHANGES TEMP
 const increaseTemp = () => {
   state.currentTemp++;
@@ -60,6 +65,9 @@ const changeBackgrounds = () => {
       state.backgroundColor.style.backgroundColor = 'teal';
   }
 }
+
+
+
 
 // DISPLAY CITY CHANGES ON INPUT
 const updateCity = () => {
@@ -125,6 +133,29 @@ const getWeather = () => {
   })
 }
 
+const convertTemperature = () => {
+  const tempControl = document.getElementById('temperature');
+  const currentUnit = tempControl.dataset.unit;
+
+  let convertedTemperature;
+  let targetUnit;
+
+  if (currentUnit === 'C') {
+    convertedTemperature = (state.currentTemp * 9) / 5 + 32;
+    targetUnit = 'F';
+  } else {
+    convertedTemperature = ((state.currentTemp - 32) * 5) / 9;
+    targetUnit = 'C';
+  }
+
+  state.currentTemp = convertedTemperature;
+  tempControl.dataset.unit = targetUnit;
+  changesTempDisplay();
+};
+
+
+
+
 // REGISTER EVENT LISTENER
 const registerEventHandler = () => {
   const tempDecrease = document.getElementById('decrease-t');
@@ -146,6 +177,10 @@ const registerEventHandler = () => {
   const resetButton = document.getElementById('reset-button');
   resetButton.addEventListener('click', resetCity);
 
+  const convertButton = document.getElementById('convert-button');
+  convertButton.addEventListener('click', convertTemperature);
+
 }
 
 document.addEventListener('DOMContentLoaded', registerEventHandler)
+
