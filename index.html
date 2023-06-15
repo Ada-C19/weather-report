@@ -10,6 +10,60 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
+    <section class="container" id="mainAppContainer">
+        <section class="child header" id="weatherReport">
+            <h2 id="weatherHeader">Weather Report</h2>
+            <div class="cityDisplay">
+                <h3>For the lovely city of...</h3>
+                <h3 id="weatherCity"></h3>
+            </div>
+        </section>
+        <section class="child" id="temp">
+            <h2 id="tempHeader">Temperature</h2>
+            <section id="tempChangesSection">
+                <div id="tempNumberLabel">
+                    <h2 id="tempNumberContainer" class="greenTemp"></h2>
+                </div>
+                <div>
+                    <button id="increaseTempButton">Temp Up</button>
+                </div>
+                <div>
+                    <button id="decreaseTempButton">Temp Down</button>
+                </div>
+            </section>
+        </section>
+        <section class="child" id="sky">
+            <div>
+                <h2 id="skyHeaderContainer">Sky</h2>
+            </div>
+            <div>
+                <select id="skyDropdown">
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+            </div>
+        </section>
+        <section class="child" id="cityInfoDisplay">
+            <div id="cityHeaderContainer">
+                <h2 id="cityNameContainer">City Name</h2>
+            </div>
+            <div id="cityChangesDiv">
+                <input id="cityInput" type="text">
+                <button id="realTempButton" type="reset">Real Temp</button>
+            </div>
+        </section>
+        <section class="child div2" id="weatherGardenSection">
+            <div>
+                <h2 id="weatherGardenHeaderContainer">Weather Garden</h2>
+            </div>
+            <div id="landscapeDisplayContainer">
+                <div id="skyEmojiContainer">☁️ ☁️ ☁️ ☀️ ☁️ ☁️</div>
+                <div id="landEmojiContainer">🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲</div>
+            </div>
+        </section>
+    </section>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
