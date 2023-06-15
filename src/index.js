@@ -3,6 +3,8 @@ const state = {
     emoji: null,
     sky: "😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️",
     skyEmoji: null,
+    lat: null,
+    lon: null
 };
 
 // DOM elements
@@ -15,7 +17,8 @@ const cityElement = document.getElementById('city');
 const resetCityButton = document.getElementById('reset-city');
 const skyElement = document.getElementById('sky');
 const skyEmojiElement = document.getElementById('skyEmoji');
-const demoElement = document.getElementById('demo');
+const checkCurrentTempElement = document.getElementById('check-current-temp');
+// const demoElement = document.getElementById('demo');
 
 
 // find city latitude and longitude
@@ -24,12 +27,14 @@ const findCityLocation = () => {
     let lon;
     return axios.get('http://127.0.0.1:5000/location', {
         params: {
-            q: cityName
+            q: document.getElementById("city").value
         }
     })
     .then((response)=> {
+        console.log(document.getElementById("city").value);
         state.lat = response.data[0].lat;
-        state.lon = response.data[0].lat;
+        state.lon = response.data[0].lon;
+        console.log('success in findLatitudeAndLongitude!', latitude, longitude);
         getWeather();
     })
     .catch((error) => {
@@ -46,7 +51,7 @@ const getWeather = () => {
     }) 
     .then((response) => {
         state.temperature= convertToF(response.data.main.temp);
-        document.getElementById("temperature").innerHTML = state.temperature;
+        document.getElementById("cityTemp").innerHTML = state.temperature;
         updateTemperatureDisplay();
     })
 
@@ -92,22 +97,22 @@ const convertToF = (temp) => {
 //     findCityLocation(cityName);
 // });
 
-const resetCity = () => {
-    cityElement.value = '';
-    // findCityLocation('Pittsburgh');
-};
+// const resetCity = () => {
+//     cityElement.value = '';
+//     // findCityLocation('Pittsburgh');
+// };
 
 
-    const refreshUI = () => {
-        temperatureElement.textContent = state.temperature;
-};
+//     const refreshUI = () => {
+//         temperatureElement.textContent = state.temperature;
+// };
 
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
 decreaseBtn.addEventListener('click', decreaseTemperature);
 resetCityButton.addEventListener('click', resetCityName);
-cityElement.addEventListener('keydown', getLocation);
+checkCurrentTempElement.addEventListener('click', cityInput);
 
 // Function to increase the temperature
 function increaseTemperature() {
