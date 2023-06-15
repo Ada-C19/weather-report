@@ -1,0 +1,220 @@
+h2 {
+    margin: 0 auto 2rem auto;
+}
+
+body {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1fr;
+grid-gap: 1rem;
+background-color: skyblue;
+
+font-family: "Rubik", sans-serif;
+font-size: 18px;
+margin: 2rem;
+}
+
+#default-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+@media (min-aspect-ratio: 16/9){
+    #default-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    #default-video{
+        width: auto;
+        height: 100%;
+    } 
+}
+
+
+.header__header {
+color: navy;
+grid-column: 1 / span 6;
+grid-row: 1;
+align-items: center;
+margin: 5rem auto 3rem ;
+background-image: linear-gradient(to bottom right, skyblue, beige);
+min-height: 100px;
+
+/* max-width: fit-content; */
+}
+
+.header__header > h1 {
+margin-right: 2rem;
+margin-left: 2rem;
+font-size: 4rem;
+}
+
+
+/* #header{
+    font-size: 2rem;
+
+} */
+
+.header__city-name {
+font-style: oblique;
+font-size: 4rem;
+display: flex; 
+justify-content: center 
+
+}
+
+.header__city-name::before,
+.header__city-name::after {
+content: "✨";
+}
+
+.temperature__section
+{
+border-radius: 8px;
+padding: 2rem;
+background-image: linear-gradient(to bottom right,pink, beige, skyblue, pink);
+}
+
+
+.city-name__section {
+border-radius: 8px;
+padding: 2rem;
+background-image: linear-gradient(to bottom right, orange, beige, yellow, orange);
+}
+
+.sky__section
+{
+border-radius: 8px;
+padding: 2rem;
+background-image: linear-gradient(to bottom right, black, navy, gold);
+}
+
+.sky__section>h2
+{
+    color:white;
+}
+
+.temperature__section {
+grid-row: 2;
+grid-column: 2 /span 3;
+}
+
+.temperature__section button {
+background-color: #1b69f9;
+border: none;
+color: white;
+padding: 20px 40px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 30px;
+border-radius: 100px
+}
+
+.sky__section {
+grid-row: 5;
+}
+
+.city-name__section {
+grid-row: 5;
+grid-column: 5;
+}
+
+.garden__section {
+grid-row: 5;
+grid-column: 2 / span 3;
+text-align: center;
+background-image: linear-gradient(to bottom right, pink, green);
+border-radius: 8px;
+}
+
+.temperature__content {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+/* justify-content: center; */
+}
+
+#tempValue {
+font-size: 5rem;
+margin-left: 1.5rem;
+/* padding-right: 1rem; */
+/* margin-right: 1.5rem; */
+}
+
+.temperature__controls {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.garden__section > h2 {
+color: black;
+}
+
+.garden__content {
+min-height: 85px;
+max-width: fit-content;
+margin: auto;
+padding: 2rem;
+
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+border-radius: 8px;
+font-size: 2em;
+}
+
+.city-name__reset-btn {
+border: 0;
+background-color: #1655cc;
+color: white;
+border-radius: 8px;
+padding: 1rem;
+font-family: "Rubik", sans-serif;
+}
+
+.red {
+color: red;
+}
+
+.orange {
+color: orange;
+}
+
+.yellow {
+color: gold;
+}
+
+.yellow-green {
+color: yellowgreen;
+}
+
+.green {
+color: green;
+}
+
+.teal {
+color: teal;
+}
+
+.cloudy {
+background-color: lightgrey;
+}
+
+.sunny {
+background-color: rgb(221, 255, 255);
+}
+
+.rainy {
+background-color: lightblue;
+}
+
+.snowy {
+background-color: lightsteelblue;
+}
