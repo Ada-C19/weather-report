@@ -1,0 +1,95 @@
+#top {
+  background-color: red;
+  height: 30vh;
+}
+
+#buttom {
+  background-color: blue;
+  height: 70vh;
+  display: flex;
+}
+
+#buttom--left {
+  background-color: pink;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#buttom--right {
+  background-color: yellow;
+  width: 75vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../assets/landscape/HD-wallpaper-beautiful-flowers-scenery-spring-sky-clouds-lake-mountains-flowers-nature-sunrise-scenery.jpg);
+  background-size: cover;
+}
+
+#buttom--left--temp,
+#buttom--left--sky,
+#buttom-left--city {
+  background-color: white;
+  width: 80%;
+  /* text-align: center; */
+  padding: 15px 10px;
+}
+
+/* #middle--left--temp{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-;
+
+  } */
+
+#temp--title,
+#sky--title,
+#city--title {
+  /*   background-color: pink; */
+  display: flex;
+  justify-content: center;
+  padding: 0 0 10px 0;
+}
+
+#temp--controls,
+#sky--controls {
+  /*   background-color: gray;  */
+  display: flex;
+  justify-content: space-around;
+
+}
+
+#city--controls {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+}
+
+#reset-button {
+  padding: 10px;
+  width: 80px;
+}
+
+#city-display {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px 10px;
+  width: 250px;
+  height: 50px;
+  font-size: x-large;
+  text-align: center;
+  line-height: 50px;
+}
+
+#top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  background-image: url(../assets/sky/file-20220126-17-1i0g402.jpg.webp);
+  background-size: cover;
+}
+body {
+  margin: 0;
+  }

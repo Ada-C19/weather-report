@@ -31,13 +31,13 @@ const skyBackground = () => {
   const condition = state.skyCondition.value
   if(condition == 'sunny') {
       console.log('sunny')
-      state.skyImg.style.backgroundImage = 'url(assets/sky/kyaw-zay-ya-8vHAfhWoqEQ-unsplash.jpg)';
+      state.skyImg.style.backgroundImage = 'url(../assets/sky/mostlysunny.jpg)';
   } else if(condition == 'rainy') {
-      state.skyImg.style.backgroundImage = 'url(assets/sky/eutah-mizushima-F-t5EpfQNpk-unsplash.jpg)';
+      state.skyImg.style.backgroundImage = 'url(../assets/sky/rain.jpg.webp)';
   } else if(condition == 'snowy'){
-      state.skyImg.style.backgroundImage = 'url(assets/sky/fabrizio-conti-Mbm0WnJ5emc-unsplash.jpg)';
+      state.skyImg.style.backgroundImage = 'url(../assets/sky/25935002bebf62806a58b18614084ab2.jpeg)'; 
   } else if(condition == 'cloudy') {
-      state.skyImg.style.backgroundImage = 'url(assets/sky/daoudi-aissa-Pe1Ol9oLc4o-unsplash.jpg)';
+      state.skyImg.style.backgroundImage = 'url(../assets/sky/dark-sky-with-storm-clouds.jpg)';
   }
 
   }
@@ -46,16 +46,16 @@ const skyBackground = () => {
 const changeBackgrounds = () => {
   if (state.currentTemp >= 80) {
       state.backgroundColor.style.backgroundColor = 'red';
-      state.landscapeImg.style.backgroundImage = 'url(assets/landscape/cody-doherty-AeqlmVWtzFA-unsplash.jpg)';
+      state.landscapeImg.style.backgroundImage = 'url(../assets/landscape/cactus-and-desert-landscape-with-bright-kencanning.jpg)';
   } else if (state.currentTemp >= 70) {
       state.backgroundColor.style.backgroundColor = 'orange';
-      state.landscapeImg.style.backgroundImage = 'url(assets/landscape/alexandr-hovhannisyan-RkOtjbPuHZw-unsplash.jpg)';
+      state.landscapeImg.style.backgroundImage = 'url(../assets/landscape/yellow-flowers-lotus-lotus-wallpaper-preview.jpg)';
   } else if (state.currentTemp >= 60) {
       state.backgroundColor.style.backgroundColor = 'yellow';
-      state.landscapeImg.style.backgroundImage = 'url(assets/landscape/andrew-neel-a_K7R1kugUE-unsplash.jpg)';
+      state.landscapeImg.style.backgroundImage = 'url(../assets/landscape/dry-leaves-covering-ground-surrounded-by-trees-forest-autumn_181624-20780.jpg.avif)';
   } else if (state.currentTemp >= 50) {
       state.backgroundColor.style.backgroundColor = 'green';
-      state.landscapeImg.style.backgroundImage = 'url(assets/landscape/joel-jasmin-forestbird-4S3iMBIappo-unsplash.jpg)';
+      state.landscapeImg.style.backgroundImage = 'url(../assets/landscape/Roads_Mountains_Scenery_461891.jpg)';
   } else {
       state.backgroundColor.style.backgroundColor = 'teal';
   }
