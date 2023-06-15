@@ -1,4 +1,5 @@
-"use strict";
+// import axios from 'axios';
+// "use strict";
 
 
 const changeTextColor = function(tempValue) {
@@ -73,42 +74,59 @@ const resetCityName = function (event) {
 
 
 // // API CALLS : //
+// const axios = require('axios');
 
-const findLatitudeAndLongitude = (query) => {
-let latitude, longitude;
-axios.get('/127.0.0.1:5000/location',
-{
-    params: {
-    q: query,
-    format: 'json'
-    }
+// const LOCATION_KEY = process.env['LOCATION_KEY'];
+// const WEATHERIQ_KEY = process.env['WEATHER_KEY'];
+
+const findLatitudeAndLongitude = (cityNameInput) => {
+// let latitude, longitude;
+    
+    return axios.get('http://127.0.0.1:5000/location',{
+        params: {
+            key: 'location_key',
+            q: cityNameInput,
+            format: 'json'
+        }
 })
 .then( (response) => {
+    console.log(response);
+    if (response.data.error) {
+        console.error(response.data.error)
+        return 
+    }
+    
     latitude = response.data[0].lat;
     longitude = response.data[0].lon;
     console.log('success in findLatitudeAndLongitude!', latitude, longitude);
+    findTemperature(latitude, longitude);
 })
+    
 .catch( (error) => {
     console.log('error in findLatitudeAndLongitude!');
+    console.error(error);
 });
 
 return {
-    cityLat: latitude,
-    cityLon: longitude
+    cityLat: 'latitude',
+    cityLon: 'longitude'
 }
 }
 
 const findTemperature = (latitude, longitude) => {
-axios.get('/127.0.0.1:5000/weather',
+    axios.get('http://127.0.0.1:5000/weather',
 {
     params: {
+    key: 'weather_key',
     format: 'json',
-    lat: 'latitude',
-    lon: 'longitude'
+    lat: latitude,
+    lon: longitude
     }
 })
 .then( (response) => {
     console.log('success in findTemperature!', response.data);
+    const tempElement = document.getElementById('tempValue');
+    tempElement.textContent = response.data.main.temp;
     return response.data;
 })
 .catch( (error) => {
@@ -116,11 +134,13 @@ axios.get('/127.0.0.1:5000/weather',
 });
 }
 
-const cityCoordinates = findLatitudeAndLongitude('cityNameInput.textContent');
 
-const locations = findTemperature(cityCoordinates.cityLat, cityCoordinates.cityLon);
+findLatitudeAndLongitude(document.getElementById('cityNameInput'));
+// const cityCoordinates = findLatitudeAndLongitude('cityNameInput.textContent');
 
-console.log(locations);
+// const locations = findTemperature(cityCoordinates.cityLat, cityCoordinates.cityLon);
+
+// console.log(locations);
 
 // // // making an api call
 // // // .get to 127.0.0.1:5000
@@ -133,6 +153,8 @@ const cityNameResetBtn = document.getElementById('cityNameReset');
 const skyElementSelector = document.getElementById('skySelect');
 const skyElementWithEmojis = document.getElementById('sky');
 const tempValueElement = document.getElementById('tempValue');
+
+
 
 // EVENT LISTENERS //
 const registerEventHandlers = () => {

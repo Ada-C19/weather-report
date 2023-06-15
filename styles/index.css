@@ -18,6 +18,7 @@ h2 {
 #tempValue {
     font-size: 3rem;
     margin-left: 1.5rem;
+    color: orange;
 }
 /* Format the temperature control box */
 .temperature_controls {
