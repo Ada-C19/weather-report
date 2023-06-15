@@ -23,23 +23,23 @@ const skyEmojiElement = document.getElementById('skyEmoji');
 // 1. Get access to lat and lon in response body
 // 2. Send lat and lon in get request to proxy server weather endpoint 
 //  3. Use weather response to update your UI (update displat to show temp found in weather resp)
-async function getLocation(event) {
-    if (event.key === "Enter") {
-        try {
-        const locationResponse = await axios.get(`http://127.0.0.1:5000/location?=${cityElement.value}`);
-        const { latitude, longitude } = locationResponse.data;
+// async function getLocation(event) {
+//     if (event.key === "Enter") {
+//         try {
+//         const locationResponse = await axios.get(`http://127.0.0.1:5000/location?=${cityElement.value}`);
+//         const { latitude, longitude } = locationResponse.data;
 
-        const weatherResponse = await axios.get(`http://127.0.0.1:5000/weather?lat=${latitude}&lon=${longitude}`);
-        const { temperature, sky, skyEmoji } = weatherResponse.data;
+//         const weatherResponse = await axios.get(`http://127.0.0.1:5000/weather?lat=${latitude}&lon=${longitude}`);
+//         const { temperature, sky, skyEmoji } = weatherResponse.data;
 
-        // Update UI with weather data
-        updateTemperatureDisplay(temperature);
-        updateSkyDisplay(sky, skyEmoji);
-        } catch (error) {
-        console.log('Error:', error);
-        }
-    }
-}
+//         // Update UI with weather data
+//         updateTemperatureDisplay(temperature);
+//         updateSkyDisplay(sky, skyEmoji);
+//         } catch (error) {
+//         console.log('Error:', error);
+//         }
+//     }
+// }
 
 
 // Event listeners for the buttons
@@ -104,42 +104,48 @@ function cityInput() {
     var cityName = document.getElementById("city").value;
     document.getElementById("cityChoice").innerHTML = cityName;
 }
-//function to update sky selection when there is a change
+
+// //function to return city name when get current temp button is pressed noyt working
+// function currentTempB() {
+//     cityElement.value = 
+// }
+
+// function to update sky selection when there is a change
 function skySelection() {
     var choice = document.getElementById("sky").value;
     updateSkyDisplay();
 }
 
-// function updateSkyDisplay() {
-//     let sky = document.getElementById("sky").value
+function updateSkyDisplay() {
+    let sky = document.getElementById("sky").value
 
-//     if (sky == "sunny") {
-//         skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
+    if (sky == "sunny") {
+        skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
 
-//     } else if (sky === "cloudy") {
-//         skyEmojiElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
+    } else if (sky === "cloudy") {
+        skyEmojiElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
 
-//     } else if (sky === "rainy") {
-//         skyEmojiElement.textContent = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
+    } else if (sky === "rainy") {
+        skyEmojiElement.textContent = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
         
-//     } else if (sky === "snowy") {
-//         skyEmojiElement.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
-//     }
-    
-// }
-
-function updateSkyDisplay(sky) {
-    let skyEmoji = '';
-
-    if (sky === 'sunny') {
-        skyEmoji = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
-    } else if (sky === 'cloudy') {
-        skyEmoji = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
-    } else if (sky === 'rainy') {
-        skyEmoji = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
-    } else if (sky === 'snowy') {
-        skyEmoji = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
+    } else if (sky === "snowy") {
+        skyEmojiElement.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
     }
-
-    updateSkyDisplay(sky, skyEmoji);
+    
 }
+
+// function updateSkyDisplay(sky) {
+//     let skyEmoji = '';
+
+//     if (sky === 'sunny') {
+//         skyEmoji = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
+//     } else if (sky === 'cloudy') {
+//         skyEmoji = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
+//     } else if (sky === 'rainy') {
+//         skyEmoji = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
+//     } else if (sky === 'snowy') {
+//         skyEmoji = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
+//     }
+
+//     updateSkyDisplay(sky, skyEmoji);
+// }
