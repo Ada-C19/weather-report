@@ -1,9 +1,9 @@
-"use strict";
-// Global variables
-let temperature = 70; // Initial temperature
-let emoji = "";
-let sky = ""
-let skyEmoji = "";
+const state = {
+    temperature: "70",
+    emoji: null,
+    sky: "😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️",
+    skyEmoji: null,
+};
 
 // DOM elements
 const temperatureElement = document.getElementById('temperature');
@@ -18,45 +18,57 @@ const skyEmojiElement = document.getElementById('skyEmoji');
 const demoElement = document.getElementById('demo');
 
 
-// 1. Get access to lat and lon in response body
-// 2. Send lat and lon in get request to proxy server weather endpoint 
-//  3. Use weather response to update your UI (update displat to show temp found in weather resp)
-async function getLocation(event) {
-    if (event.key === "Enter") {
-        try {
-        const locationResponse = await axios.get(`http://127.0.0.1:5000/location?=${cityElement.value}`);
-        const { latitude, longitude } = locationResponse.data;
-
-        const weatherResponse = await axios.get(`http://127.0.0.1:5000/weather?lat=${latitude}&lon=${longitude}`);
-        const { temperature, sky, skyEmoji } = weatherResponse.data;
-
-        // Update UI with weather data
+const findCityLocation = async (cityName) => {
+    return axios.get('https://localhost:5000/location/weather', {
+        params: {
+            q: cityName,
+        },
+    })
+    .then(response => {
+        const temperature = response.data.temperature;
         updateTemperatureDisplay(temperature);
-        updateSkyDisplay(sky, skyEmoji);
-        } catch (error) {
-        console.log('Error:', error);
-        }
-    }
-}
+        console.log(temperature);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+};
+
+    const checkTempButton = document.getElementById('check-current-temp');
+    checkTempButton.addEventListener('click', () => {
+    const cityName = cityElement.value;
+    findCityLocation(cityName);
+});
+
+const resetCity = () => {
+    cityElement.value = 'Pittsburgh';
+    findCityLocation('Pittsburgh');
+};
+
+
+    const refreshUI = () => {
+        temperatureElement.textContent = state.temperature;
+};
 
 
 // Event listeners for the buttons
 increaseBtn.addEventListener('click', increaseTemperature);
 decreaseBtn.addEventListener('click', decreaseTemperature);
 resetCityButton.addEventListener('click', resetCityName);
-cityElement.addEventListener('keypress', getLocation);
-
+cityElement.addEventListener('keydown', getLocation);
 
 // Function to increase the temperature
 function increaseTemperature() {
-    temperature++;
-    updateTemperatureDisplay();
+    state.temperature++;
+    updateTemperatureDisplay(state.temperature);
+    findCityLocation(cityElement.value);
 }
 
 // Function to decrease the temperature
 function decreaseTemperature() {
-    temperature--;
-    updateTemperatureDisplay();
+    state.temperature--;
+    updateTemperatureDisplay(state.temperature);
+    findCityLocation(cityElement.value);
 }
 
 // Function to reset city name & clear input field
@@ -108,36 +120,20 @@ function skySelection() {
     updateSkyDisplay();
 }
 
-// function updateSkyDisplay() {
-//     let sky = document.getElementById("sky").value
+function updateSkyDisplay() {
+    let sky = document.getElementById("sky").value
 
-//     if (sky == "sunny") {
-//         skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
+    if (sky == "sunny") {
+        skyEmojiElement.textContent = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
 
-//     } else if (sky === "cloudy") {
-//         skyEmojiElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
+    } else if (sky === "cloudy") {
+        skyEmojiElement.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
 
-//     } else if (sky === "rainy") {
-//         skyEmojiElement.textContent = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
+    } else if (sky === "rainy") {
+        skyEmojiElement.textContent = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
         
-//     } else if (sky === "snowy") {
-//         skyEmojiElement.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
-//     }
-    
-// }
-
-function updateSkyDisplay(sky) {
-    let skyEmoji = '';
-
-    if (sky === 'sunny') {
-        skyEmoji = '🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️☀🌼😎🌞😎☀️';
-    } else if (sky === 'cloudy') {
-        skyEmoji = '☁️☁️ ☁️ ☁️☁️ ☁️🌤 ☁️ ☁️☁️☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️☁️☁️☁️☁️ ☁️ 🌤 ☁️☁️☁️☁️🌤';
-    } else if (sky === 'rainy') {
-        skyEmoji = '🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️☔️🌈🌦️🌧️🌧️';
-    } else if (sky === 'snowy') {
-        skyEmoji = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
+    } else if (sky === "snowy") {
+        skyEmojiElement.textContent = '❄️❄️☃️☃️⛄️⛄️🤶🏾🥶🥶🥶⛄️⛄️⛄️❄️❄️❄️❄️🌨️🌨️🌨️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️🌨️☃️⛷️⛄️🤶🏾🥶❄️☃️❄️';
     }
-
-    updateSkyDisplay(sky, skyEmoji);
+    
 }
