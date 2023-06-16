@@ -10,7 +10,80 @@
     <link rel="stylesheet" href="styles/index.css" />
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <header>
+        <nav>
+            <h1>Weather Report</h1>
+            <h2>For the city of : <p id="cityChoice"></p> </h2>
+            <!-- <h2>For the city of : <p id="cityTemp"></p> </h2> -->
+        </nav>
+    </header>
+    
+    <div id="temperature-container">
+        <!-- <div id="city-sky-container">
+            <div id="city-container">
+                <label for="city">Enter City:</label>
+                <input type="text" id="city" oninput="cityInput();" city="city">
+                <button id="reset-city">Reset City</button>
+            </div>
+            <div id="sky-container">
+                <label for="sky">Choose a sky:</label>
+                <select name="sky" id="sky" onchange="skySelection();">
+                    <option value="">--Select Sky-- </option>
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+            </div>
+        </div> -->
+        <button id="decrease-btn">Decrease</button>
+        <span id="temperature">70°F</span>
+        <button id="increase-btn">Increase</button>
+    </div>
+    
+    <div id="city-container">
+        <label for="city">Enter City:</label>
+        <input type="text" id="city" oninput="cityInput();" city="city">
+        <button id="check-current-temp" onclick="currentTempButton();" >Check Current Temp </button>
+        <button id="reset-city">Reset City</button>
+    </div>
+    <!-- <p id="temperature"></p> -->
+
+    <div id = "sky-container">
+        <label for="sky">Choose a sky:</label>
+        <select name="sky" id="sky" onchange="skySelection();">
+            <option value="">--Select Sky-- </option>
+            <option value="sunny">Sunny</option>
+            <option value="cloudy">Cloudy</option>
+            <option value="rainy">Rainy</option>
+            <option value="snowy">Snowy</option>
+        </select>
+    </div>
+
+    <div id="sky-emoji-container">
+        <div id="skyEmoji"> 😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️ </div>
+    </div>
+
+    <div id="reset-container">
+        <div id="city-container" value="">
+    </div>
+
+    <div id="landscape-container">
+        <figure>
+            <img id="landscape-img" src="styles/weather.png" alt="Weather">
+        </figure>
+    </div>
+    
+    <div id="emoji-container">
+        <div id="emoji"> 🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️🌡️ </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 Hannah & Phalesa </p>
+    </footer>
+
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
+
