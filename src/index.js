@@ -1,5 +1,7 @@
+"use strict";
+
 const state = {
-    temperature: "70",
+    temperature: 70,
     emoji: null,
     sky: "😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️🌧️😎🌈☁️",
     skyEmoji: null,
@@ -30,29 +32,31 @@ const findCityLocation = () => {
             q: document.getElementById("city").value
         }
     })
-    .then((response)=> {
+    .then( (response) => {
+        console.log(response)
         console.log(document.getElementById("city").value);
-        state.lat = response.data[0].lat;
-        state.lon = response.data[0].lon;
-        console.log('success in findLatitudeAndLongitude!', latitude, longitude);
-        getWeather();
+        lat = response.data[0]['lat'];
+        lon = response.data[0]['lon'];
+        console.log('success in findLatitudeAndLongitude!', lat, lon);
+        getWeather({ lat: lat, lon: lon});
     })
     .catch((error) => {
         console.log(error)
     });
 };
 
-const getWeather = () => {
+const getWeather = (query) => {
     axios.get('http://127.0.0.1:5000/weather', {
         params: {
-            lat: state.lat,
-            lon: state.lon,
+            lat: query.lat,
+            lon: query.lon,
         }
     }) 
     .then((response) => {
-        state.temperature= convertToF(response.data.main.temp);
-        document.getElementById("cityTemp").innerHTML = state.temperature;
-        updateTemperatureDisplay();
+        console.log(response)
+        state.temperature = Math.floor((response.data["main"]["temp"] - 273.15) * 1.8 +32);
+        // document.getElementById("cityTemp").innerHTML = state.temperature;
+        updateTemperatureDisplay(state.temperature);
     })
 
     .catch((error) => {
@@ -61,13 +65,13 @@ const getWeather = () => {
 };
 
 const currentTempButton = () => {
-    cityInput();
+    // cityInput();
     findCityLocation();
 }
 
-const convertToF = (temp) => {
-    return Math.trunc((temp-273.15) * 9 /5 + 32)
-}
+// const convertToF = (temperature) => {
+//     return Math.trunc((temperature-273.15) * 9 /5 + 32)
+// }
 
 
 
