@@ -1,0 +1,189 @@
+h2 {
+    margin: 0 auto 2rem auto;
+}
+body {
+display: grid;
+grid-template-columns: 1fr 2fr;
+grid-template-rows: auto auto auto auto;
+grid-gap: 1rem;
+
+font-family: "Rubik", sans-serif;
+font-size: 18px;
+background: linear-gradient(
+    to bottom,
+    rgb(207, 223, 238),
+    rgb(81, 153, 184),
+    rgb(108, 144, 229),
+    rgb(81, 65, 200),
+    rgb(71, 34, 221),
+    rgb(19, 25, 134),
+    rgb(12, 18, 80)
+);
+margin: 2rem;
+}
+
+.header__header {
+color: white;
+grid-column: span 3;
+display: flex;
+align-items: center;
+margin: 2rem auto 3rem 0;
+}
+
+.header__header > h1 {
+margin-right: 2rem;
+font-size: 3em;
+}
+
+.header__city-name {
+font-style: oblique;
+font-size: 2rem;
+}
+
+.header__city-name::before,
+.header__city-name::after {
+content: "✨";
+}
+
+.temperature__section,
+.sky__section,
+.city-name__section {
+text-align: center;
+border-radius: 8px;
+padding: 2rem;
+background-color: white;
+}
+
+.temperature__section {
+grid-row: 2;
+}
+
+
+.sky__section {
+grid-row: 3;
+}
+
+.garden__section {
+grid-row: 2 / span 3;
+grid-column: 2;
+text-align: center;
+align-self: center;
+}
+
+.temperature__content {
+display: flex;
+flex-direction: row;
+justify-content: space-around;
+/* justify-content: center; */
+}
+
+#tempValue {
+text-align: center;
+font-size: 3rem;
+/* padding-right: 1rem; */
+/* margin-right: 1.5rem; */
+}
+
+.temperature__controls {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.garden__section > h2 {
+color: white;
+}
+
+.garden__section {
+min-height: px;
+max-width: fit-content;
+margin: auto;
+padding: 2rem;
+
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+
+border-radius: 8px;
+font-size: 2em;
+}
+
+.city-name__section {
+    grid-row: 4;
+    text-align: center;
+}
+    
+
+.city-name__reset-btn {
+border: 0;
+background-color: #1655cc;
+color: white;
+border-radius: 8px;
+margin: 10px;
+padding: 1rem;
+font-family: "Rubik", sans-serif;
+width: 200px;
+}
+
+#currentTempButton {
+    background-color: #1b69f9;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px
+}
+
+#cityNameInput {
+    margin: 1rem;
+    border-radius: 4px;
+}
+
+/* these color css arent actually interacting with my javascript */
+
+.red {
+color: red;
+}
+
+.orange {
+color: orange;
+}
+
+.yellow {
+color: gold;
+}
+
+.yellow-green {
+color: yellowgreen;
+}
+
+.green {
+color: green;
+}
+
+.teal {
+color: teal;
+}
+
+.aqua {
+    color: aqua;
+    }
+
+.cloudy {
+background-color: silver;
+}
+
+.sunny {
+background-color: goldenrod;
+}
+
+.rainy {
+background-color: lightblue;
+}
+
+.snowy {
+background-color: lightsteelblue;
+} 
