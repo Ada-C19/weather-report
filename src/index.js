@@ -54,6 +54,34 @@ function updateCityName() {
     headerCityName.textContent = cityNameInput.value;
 }
 
+// Wave 5
+const skySelect = document.getElementById('skySelect');
+const sky = document.getElementById('sky');
+
+function updateSky() {
+    const selectedSky = skySelect.value;
+
+
+    sky.textContent = '';
+
+    switch (selectedSky) {
+        case 'sunny':
+            sky.textContent = '☁️ ☁️ ☁️ ☀️ ☁️ ☁️';
+            break;
+        case 'cloudy':
+            sky.textContent = '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️';
+            break;
+        case 'rainy':
+            sky.textContent = '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧';
+            break;
+        case 'snowy':
+            sky.textContent = '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨';
+            break;
+        default:
+            break;
+        }
+    }
+
 // Wave 6
 const cityNameReset = document.getElementById('cityNameReset');
 const defaultCityName = 'Cleveland';
@@ -68,6 +96,7 @@ increaseTempControl.addEventListener('click', increaseTemperature);
 decreaseTempControl.addEventListener('click', decreaseTemperature);
 cityNameInput.addEventListener('input', updateCityName);
 cityNameReset.addEventListener('click', resetCityName);
+skySelect.addEventListener('change', updateSky);
 
 // Initializations
 updateTemperature();
