@@ -4,9 +4,7 @@ let temperature = 60;
 const tempValue = document.getElementById('tempValue');
 const increaseTempControl = document.getElementById('increaseTempControl');
 const decreaseTempControl = document.getElementById('decreaseTempControl');
-
 const landscape = document.getElementById('landscape');
-
 
 function updateTemperature() {
     tempValue.textContent = temperature;
@@ -56,10 +54,22 @@ function updateCityName() {
     headerCityName.textContent = cityNameInput.value;
 }
 
+// Wave 6
+const cityNameReset = document.getElementById('cityNameReset');
+const defaultCityName = 'Cleveland';
+
+function resetCityName() {
+    cityNameInput.value = defaultCityName;
+    updateCityName();
+}
+
 // Event
 increaseTempControl.addEventListener('click', increaseTemperature);
 decreaseTempControl.addEventListener('click', decreaseTemperature);
 cityNameInput.addEventListener('input', updateCityName);
+cityNameReset.addEventListener('click', resetCityName);
 
+// Initializations
 updateTemperature();
 updateLandscape();
+updateCityName();
