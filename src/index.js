@@ -71,7 +71,6 @@ const handleResetBtnClicked = () => {
 
 const handleUpBtnClicked = () => {
     state.tempValue += 1;
-    console.log(state.tempValue);
 
     document.getElementById("temp-value").innerHTML = state.tempValue;
     handleTempChanged();
@@ -127,46 +126,6 @@ const onLoad = () => {
 
 onLoad();
 
-// axios
-//     .get('https://us1.locationiq.com/v1/search?key=YOUR_ACCESS_TOKEN&q=SEARCH_STRING&format=json')
-//     .then((response) => {
-
-//     })
-//     .catch((error) => {
-
-//     });
-
-
-// additional weather data:
-// let city = 'london'
-// $.ajax({
-//     method: 'GET',
-//     url: 'https://api.api-ninjas.com/v1/weather?city=' + city,
-//     headers: { 'X-Api-Key': 'YOUR_API_KEY'},
-//     contentType: 'application/json',
-//     success: function(result) {
-//         console.log(result);
-//     },
-//     error: function ajaxError(jqXHR) {
-//         console.error('Error: ', jqXHR.responseText);
-//     }
-// });
-
-// random image
-
-// let data = 'https://api-ninjas.com';
-// let category = 'weather'
-// $.ajax({
-//     method: 'GET',
-//     url: 'https://api.api-ninjas.com/v1/randomimage?category=weather' + category,
-//     headers: { 'X-Api-Key': 'API_KEY', 'Accept': 'image/jpg'},
-//     success: function(result) {
-//         console.log(result);
-//     },
-//     error: function ajaxError(jqXHR) {
-//         console.error('Error: ', jqXHR.responseText);
-//     }
-// });
 
 // Sky Condition Weather Icon Garden
 const skyicon = document.getElementById("weather-conditions");
