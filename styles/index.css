@@ -1,0 +1,44 @@
+* {
+    background-color: ;
+}
+
+
+h2 {
+    margin: o auto 2rem auto;
+}
+
+#currentTempButton{
+    background-color: lavenderblush;
+}
+.temperature_content {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+#tempValue {
+    font-size: 3rem;
+    margin-left: 1.5rem;
+    color: orange;
+}
+/* Format the temperature control box */
+.temperature_controls {
+    display:flex;
+    flex-direction:column;
+    align-items:center; 
+}
+/* Temp number color changes based on temp range */
+.red {
+    color: red;
+}
+.orange {
+    color: orange;
+}
+.yellow {
+    color: yellow;
+}
+.green {
+    color:green;
+}
+.teal {
+    color: teal;
+}
