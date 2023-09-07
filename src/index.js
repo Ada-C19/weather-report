@@ -132,9 +132,10 @@ selectedSkyCondition.addEventListener("click", function () {
   updateSky();
 });
 
+const base_url = process.env.REACT_APP_API_BASE_URL || "http://127.0.0.1:5000"
 const getLatLon = () => {
   axios
-    .get("http://127.0.0.1:5000/location", {
+    .get(`${base_url}/location`, {
       params: {
         q: cityNameInput.value,
       },
