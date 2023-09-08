@@ -1,5 +1,4 @@
 // const { default: axios } = require("axios");
-
 // Selecting elements
 const temperatureDisplay = document.getElementById("tempValue");
 const increaseButton = document.getElementById("increaseTempControl");
@@ -11,12 +10,10 @@ const selectedSkyCondition = document.getElementById("skySelect");
 // Selecting elements
 const cityNameInput = document.getElementById("cityNameInput");
 const cityNameDisplay = document.getElementById("headerCityName");
-
 // Function to update the city name
 function updateCityName() {
   cityNameDisplay.textContent = cityNameInput.value;
 }
-
 // Event listener for input change
 cityNameInput.addEventListener("input", updateCityName);
 
@@ -29,21 +26,16 @@ cityNameResetButton.addEventListener("click", function () {
   temperature = 70;
   updateTemperature();
   updateSky();
-  updateLandscape();
-  
+  updateLandscape(); 
 });
-
 // end of wave 3
-
 // Initial temperature and landscape
 let temperature = 70;
 let landscape = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
 let sky = "☁️ ☁️ ☁️ ☀️ ☁️ ☁️";
-
 // Function to update the temperature display and color
 function updateTemperature() {
   temperatureDisplay.textContent = temperature;
-
   if (temperature >= 80) {
     temperatureDisplay.style.color = "red";
     body.style.backgroundColor = "pink";
@@ -165,7 +157,8 @@ const convertKelToFahren = (kelvin) => {
 
 const getWeather = (long, lati) => {
   axios
-    .get("http://127.0.0.1:5000/weather", {
+    // .get("http://127.0.0.1:5000/weather", {
+    .get("https://weather-report-server-j4vl.onrender.com/weather", {
       params: {
         lon: long,
         lat: lati,
