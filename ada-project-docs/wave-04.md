@@ -10,7 +10,7 @@ In order to get the weather of the city, we will need to get the latitude and lo
 
 To get started and generate API tokens, create accounts and log into `LocationIQ` and `OpenWeather`.
 
-## Weather Report Proxy Server
+## Weather Report Proxy **Server**
 
 For Weather Report, we provide a [weather report proxy server](https://github.com/adaGold/weather-report-proxy-server) built with Flask. 
 
@@ -45,7 +45,7 @@ def create_app(test_config=None):
     CORS(app)
     app.config['CORS_HEADERS'] = 'Content-Type'
 
-    from .routes import proxy_bp
+    from .routes import **proxy_bp**
     app.register_blueprint(proxy_bp)
 
     return 
