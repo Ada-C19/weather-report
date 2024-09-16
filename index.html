@@ -9,7 +9,54 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/index.css" />
 </head>
-<body>
+<body id="sky-gradient" class="sunny">
+<header>
+    <section id="sky" class="weather-garden"> ☁️ ☁️ ☁️ ☀️ ☁️ ☁️ </section>
+    <section> <h1 id="weather-report-title">Weather Report</h1>
+    <h2 id="weather-saying">What's the weather like in...</h2>
+    <section >
+        <h2 id="city-title">Atlanta</h2>
+        </section>
+</header>
+<main> 
+    <section id="tilecontainer">
+        <section id="searchbox" class="tiles">
+            <h3>Search Box For City</h3>
+            <input id="city-input" type="text" name="City"> 
+            <button id="reset-button" class="bouncy"> Reset </button>
+        </section>
+        <section id="tempbox" class="tiles"> 
+            <h3>Temperature</h3>
+            <section id="tempButtonsContainer">
+                <section id="decrease-button" class="temp"> ⬅️ </section>
+                <section id="temp-number" class="temp"> F</section>
+                <section id="increase-button" class="temp"> ➡️</section>
+            </section>
+            <section id="change-type-container">
+                <button id="celsius" class="temp-type">°C</button>
+                <button id="fahrenheit" class="temp-type active">°F</button>
+            </section>
+            <button id="real-temp-button" class="bouncy">Get Current Temperature</button>
+        </section>
+        <section id="skybox" class="tiles">
+            <h3>Sky</h3>
+            <section id="skySelectorContainer">
+                <select id="sky-selector" name="sky-selector">
+                    <option value="Sunny">Sunny</option>
+                    <option value="Cloudy">Cloudy</option>
+                    <option value="Rainy">Rainy</option>
+                    <option value="Snowy">Snowy</option>
+                </select>
+            </section>
+        </section>
+    </section>
+    <section id="landscape-container">
+        <section id="landscape" class="weather-garden"> Landscape</section>
+    </section>
+</main>
+<footer> 
+    <section>Created by Agnes and Sydney</section>
+</footer>
     <script src="./src/index.js"></script>
     <script src="./node_modules/axios/dist/axios.min.js"></script>
 </body>
